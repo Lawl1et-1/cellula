@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Instrument_Serif, JetBrains_Mono } from 'next/font/google';
+import { SITE_URL } from '@/site';
 import './globals.css';
 
 const instrument = Instrument_Serif({
@@ -11,10 +12,21 @@ const instrument = Instrument_Serif({
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist' });
 const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains' });
 
+const description =
+  'Voyagez au cœur d’une cellule humaine vivante, comprenez ses organites et observez les effets des maladies, à partir de sources scientifiques citées.';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'Cellula — Explorer une cellule humaine en 3D',
-  description:
-    'Voyagez au cœur d’une cellule humaine vivante, comprenez ses organites et observez les effets des maladies, à partir de sources scientifiques citées.',
+  description,
+  openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+    siteName: 'Cellula',
+    title: 'Cellula — Explorer une cellule humaine en 3D',
+    description,
+  },
+  twitter: { card: 'summary_large_image', title: 'Cellula — Explorer une cellule humaine en 3D', description },
 };
 
 export const viewport: Viewport = {
