@@ -323,7 +323,12 @@ function Bacteria() {
   return (
     <>
       <instancedMesh ref={bodies} args={[assets.body, assets.bodyMat, COUNT]} frustumCulled={false} />
-      <instancedMesh name="actin-tails" ref={tails} args={[assets.tail, assets.tailMat, COUNT * TAIL]} frustumCulled={false} />
+      <instancedMesh
+        name="actin-tails"
+        ref={tails}
+        args={[assets.tail, assets.tailMat, COUNT * TAIL]}
+        frustumCulled={false}
+      />
       <instancedMesh
         ref={vacuoles}
         args={[assets.vac, assets.vacMat, COUNT]}
@@ -338,6 +343,8 @@ export function DiseaseParticles() {
   const systems = useMemo(() => {
     const a = anchors();
     const nucleus = CELL.nucleus.center;
+    // Viral replication organelles: double-membrane vesicles clustered on the ER.
+    const dmv = pool(605, 90, (rng) => ({ p: near(rng, a['rough-er'], 2, 20), s: v(rng.range(1.3, 2.3)) }));
     return {
       blob: blobGeometry(),
       sphere: new IcosahedronGeometry(1, 4),
@@ -371,7 +378,11 @@ export function DiseaseParticles() {
         s: v(rng.range(0.85, 1.1)),
       })),
       // Viral replication organelles: double-membrane vesicles clustered on the ER.
-      dmv: pool(605, 90, (rng) => ({ p: near(rng, a['rough-er'], 2, 20), s: v(rng.range(1.3, 2.3)) })),
+      dmv,
+      dmvInner: {
+        matrices: dmv.matrices.map((m) => m.clone().scale(new Vector3(0.7, 0.7, 0.7))),
+        seeds: dmv.seeds,
+      },
       inclusions: pool(606, 5, (rng) => ({
         p: nucleus.clone().add(rng.direction().multiplyScalar(rng.range(2, 12))),
         s: v(rng.range(2.5, 4)),
@@ -427,6 +438,16 @@ export function DiseaseParticles() {
         material={VIRION}
         {...systems.virions}
         visibleCount={share('cytoplasm.viralParticles', 150)}
+      />
+      {/* Inner membrane: replication organelles are double-membrane vesicles. */}
+      <InstancedOrganelle
+        name="replication-organelles-inner"
+        geometry={systems.sphere}
+        material={DMV}
+        matrices={systems.dmvInner.matrices}
+        seeds={systems.dmvInner.seeds}
+        renderOrder={6}
+        visibleCount={share('er.replicationOrganelles', 90)}
       />
       <InstancedOrganelle
         name="replication-organelles"

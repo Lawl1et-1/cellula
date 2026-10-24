@@ -40,6 +40,7 @@ export const CHANNELS = {
   'membrane.blebbing': { range: [0, 1], rest: 0, doc: 'Bourgeonnement de la membrane' },
   'membrane.receptorDensity': { range: [0, 4], rest: 1, doc: 'Densité de récepteurs' },
   'membrane.integrity': { range: [0, 1], rest: 1, doc: 'Intégrité de la membrane' },
+  'membrane.pit': { range: [0, 1], rest: 0, doc: 'Puits recouvert de clathrine au point d’échange (endocytose)' },
   'cytoskeleton.disruption': { range: [0, 1], rest: 0, doc: 'Désorganisation du cytosquelette' },
   'cytoskeleton.actinTails': { range: [0, 1], rest: 0, doc: "Comètes d'actine (bactéries)" },
   'cell.divisionRate': { range: [0, 5], rest: 1, doc: 'Vitesse de division' },

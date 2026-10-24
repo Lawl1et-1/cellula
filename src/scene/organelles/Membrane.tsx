@@ -22,6 +22,7 @@ import { InstancedOrganelle } from './Instanced';
 import { useHighlight } from '../interaction/highlight';
 import { useFrame } from '@react-three/fiber';
 import { liveChannels } from '@/engine/timeline/live';
+import { EXCHANGE_DIR } from '../actors/anchors';
 import { usePreset } from '@/state/quality';
 
 /** Static large-scale lumps of the membrane, shared by the mesh and the receptors that sit on it. */
@@ -44,13 +45,20 @@ varying vec3 vWorld;
 varying vec3 vDir;
 uniform float uCleave;
 uniform float uBleb;
+uniform float uPit;
+uniform vec3 uPitDir;
 uniform vec3 uRadii;
+varying float vPit;
 void main() {
   vec3 dir = normalize(position);
   vDir = dir;
   float undulate = snoise(dir * 2.6 + vec3(0.0, uTime * 0.07, 0.0)) * 0.9
                  + snoise(dir * 7.0 - vec3(uTime * 0.05)) * 0.35;
   vec3 pos = position + normal * undulate;
+  // Endocytosis: a clathrin-coated pit invaginates at the exchange site.
+  // Real coated pits are 100–200 nm; shown ~4× larger so they read at cell scale.
+  vPit = uPit * smoothstep(0.9968, 0.99995, dot(dir, uPitDir));
+  pos -= normal * vPit * 7.0;
   // Blebbing (apoptosis, cytoskeleton damage): rounded bulges of membrane.
   if (uBleb > 0.001) pos += normal * uBleb * pow(max(0.0, snoise(dir * 5.5 + 3.1)), 2.0) * 22.0;
   // Cytokinesis: a furrow pinches the cell across the spindle axis (x), which also lengthens.
@@ -71,6 +79,7 @@ uniform vec3 uRim;
 uniform vec3 uFilm;
 uniform float uHighlight;
 uniform float uIntegrity;
+varying float vPit;
 varying vec3 vNormal;
 varying vec3 vWorld;
 varying vec3 vDir;
@@ -114,7 +123,10 @@ void main() {
            + uBase * (rafts * 0.05 + proteins * 0.12);
 
   col += vec3(0.55, 0.9, 1.0) * fres * uHighlight * 1.4;
-  float alpha = 0.035 + fres * 0.72 + rafts * 0.03 + proteins * 0.06 + spec * 0.3 + uHighlight * fres * 0.2;
+  // Clathrin coat lining the pit: a bright, faintly latticed cup.
+  float lattice = 0.6 + 0.4 * abs(sin(vDir.x * 900.0) * sin(vDir.y * 900.0 + vDir.z * 600.0));
+  col += vec3(0.95, 0.85, 0.6) * vPit * lattice * 0.45;
+  float alpha = vPit * 0.4 + 0.035 + fres * 0.72 + rafts * 0.03 + proteins * 0.06 + spec * 0.3 + uHighlight * fres * 0.2;
   if (inside) alpha *= 0.55;
   gl_FragColor = vec4(col, clamp(alpha, 0.0, 1.0));
 }
@@ -176,6 +188,8 @@ export function Membrane() {
         uCleave: { value: 0 },
         uBleb: { value: 0 },
         uIntegrity: { value: 1 },
+        uPit: { value: 0 },
+        uPitDir: { value: EXCHANGE_DIR.clone() },
         uRadii: { value: CELL.radii.clone() },
       },
     });
@@ -208,6 +222,7 @@ export function Membrane() {
     material.uniforms.uCleave!.value = liveChannels['cell.cleavage'];
     material.uniforms.uBleb!.value = liveChannels['membrane.blebbing'];
     material.uniforms.uIntegrity!.value = liveChannels['membrane.integrity'];
+    material.uniforms.uPit!.value = liveChannels['membrane.pit'];
   });
 
   return (

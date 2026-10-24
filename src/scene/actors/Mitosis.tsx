@@ -13,7 +13,6 @@ import {
   Mesh,
   MeshBasicMaterial,
   Object3D,
-  Quaternion,
   Vector3,
 } from 'three';
 import { liveChannels } from '@/engine/timeline/live';
@@ -53,11 +52,13 @@ export function Mitosis() {
       const r = k % 2 ? 6 : 13;
       return new Vector3(rng.range(-0.8, 0.8), Math.cos(a) * r, Math.sin(a) * r);
     });
-    // Metaphase chromosomes are micrometres long: here ~1 µm wide pairs, 1–1.2 µm long.
-    const chromatidGeometry = new CapsuleGeometry(1, 8, 6, 12);
+    // One chromatid arm, starting at the centromere (origin) and extending along +Y.
+    // Metaphase chromosomes are micrometres long: arms here are ~0.5 µm long, ~0.2 µm thick.
+    const chromatidGeometry = new CapsuleGeometry(0.95, 4.4, 6, 12);
+    chromatidGeometry.translate(0, 0.95 + 2.2, 0);
     chromatidGeometry.setAttribute(
       'aSeed',
-      new InstancedBufferAttribute(new Float32Array(PAIRS * 2).map((_, i) => (i * 0.37) % 1), 1),
+      new InstancedBufferAttribute(new Float32Array(PAIRS * 4).map((_, i) => (Math.floor(i / 2) * 0.37) % 1), 1),
     );
     const chromatidMaterial = createOrganicMaterial(
       {
@@ -138,15 +139,21 @@ export function Mitosis() {
         const pos = centre.clone().addScaledVector(AXIS, side * (0.7 + separate * (POLE_DISTANCE - 9)));
         pos.lerp(pole.clone().addScaledVector(AXIS, -side * 9).add(assets.plate[k]!.clone().multiplyScalar(0.4)), gather);
         kinetochores.push(pos.clone());
-        // Sisters form an X while paired, then trail behind their centromere as they move.
-        const tilt = (1 - separate) * side * 0.45 + separate * side * 1.2;
-        dummy.position.copy(pos);
-        dummy.quaternion.setFromAxisAngle(new Vector3(0, 0, 1), tilt).multiply(
-          new Quaternion().setFromAxisAngle(AXIS, (k / PAIRS) * Math.PI),
-        );
-        dummy.scale.setScalar(condensed);
-        dummy.updateMatrix();
-        chromatids.current?.setMatrixAt(i++, dummy.matrix);
+        // Each chromatid has two arms hinged at its centromere. Paired sisters splay their arms towards
+        // their own pole (together: an X); pulled in anaphase, the arms fold back and trail (a V).
+        const angle = (70 + 85 * separate) * (Math.PI / 180);
+        const up = new Vector3(0, 1, 0).applyAxisAngle(AXIS, (k / PAIRS) * Math.PI);
+        for (const arm of [1, -1]) {
+          const dir = AXIS.clone()
+            .multiplyScalar(side * Math.cos(angle))
+            .addScaledVector(up, arm * Math.sin(angle))
+            .normalize();
+          dummy.position.copy(pos);
+          dummy.quaternion.setFromUnitVectors(new Vector3(0, 1, 0), dir);
+          dummy.scale.setScalar(condensed);
+          dummy.updateMatrix();
+          chromatids.current?.setMatrixAt(i++, dummy.matrix);
+        }
       }
     }
     if (chromatids.current) chromatids.current.instanceMatrix.needsUpdate = true;
@@ -198,7 +205,7 @@ export function Mitosis() {
     <group ref={group} name="mitosis" visible={false}>
       <instancedMesh
         ref={chromatids}
-        args={[assets.chromatidGeometry, assets.chromatidMaterial, PAIRS * 2]}
+        args={[assets.chromatidGeometry, assets.chromatidMaterial, PAIRS * 4]}
         frustumCulled={false}
       />
       <instancedMesh ref={fibres} args={[assets.fibreGeometry, assets.fibreMaterial, 64]} frustumCulled={false} />

@@ -34,7 +34,9 @@ const CARGO: Record<CargoKind, { color: string; intensity: number; size: number 
   cytokine: { color: '#ffe0f0', intensity: 2.5, size: 0.4 },
 };
 
-const POOL = 128;
+const POOL = 384;
+/** Fading copies drawn behind each travelling cargo (motion trail). */
+const TRAIL = 4;
 const PULSES = 4;
 const STAGGER = 0.16;
 
@@ -104,14 +106,14 @@ function Tokens() {
     const { scenario: process, t } = useScenario.getState();
     let n = 0;
     let np = 0;
-    const put = (pos: Vector3, scale: number, kind: CargoKind) => {
+    const put = (pos: Vector3, scale: number, kind: CargoKind, glow = 1) => {
       if (n >= POOL || scale <= 0.001) return;
       const look = CARGO[kind];
       dummy.position.copy(pos);
       dummy.scale.setScalar(look.size * scale);
       dummy.updateMatrix();
       mesh.setMatrixAt(n, dummy.matrix);
-      mesh.setColorAt(n, color.set(look.color).multiplyScalar(look.intensity));
+      mesh.setColorAt(n, color.set(look.color).multiplyScalar(look.intensity * glow));
       n++;
     };
 
@@ -130,7 +132,14 @@ function Tokens() {
             if (s <= 0 || s >= 1) continue;
             const pos = curve.getPointAt(smooth(s));
             jitter.set(hash(i + 1) - 0.5, hash(i + 7) - 0.5, hash(i + 13) - 0.5).multiplyScalar(2.2);
-            put(pos.add(jitter), Math.min(1, s * 10, (1 - s) * 10), cue.params.cargo);
+            const fade = Math.min(1, s * 10, (1 - s) * 10);
+            put(pos.add(jitter), fade, cue.params.cargo);
+            for (let k = 1; k <= TRAIL; k++) {
+              const sk = s - 0.011 * k;
+              if (sk <= 0) break;
+              const trail = curve.getPointAt(smooth(sk)).add(jitter);
+              put(trail, fade * (1 - k / (TRAIL + 1)) * 0.75, cue.params.cargo, 0.55 - k * 0.1);
+            }
           }
         } else if (cue.actor === 'burst') {
           const from = a[cue.params.from];

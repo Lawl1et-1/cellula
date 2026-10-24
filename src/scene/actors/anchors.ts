@@ -8,7 +8,7 @@ import { roughErAnchors } from '../organelles/EndoplasmicReticulum';
 import { membranePoint } from '../organelles/Membrane';
 
 /** Side of the cell where secretion and uptake are shown: the Golgi pole, facing the default camera. */
-const EXCHANGE_DIR = new Vector3(0.75, 0.12, 0.65).normalize();
+export const EXCHANGE_DIR = new Vector3(0.75, 0.12, 0.65).normalize();
 const CYTOPLASM_SPOT = new Vector3(40, -30, 40);
 
 const nearestInstance = (matrices: { elements: number[] }[], to: Vector3) => {
