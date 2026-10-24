@@ -15,5 +15,21 @@ export const Organelle = z.object({
     .object({ min: z.number().positive(), max: z.number().positive(), unit: z.enum(['nm', 'µm']), note: Claim })
     .optional(),
   camera: CameraHint.optional(),
+  /**
+   * Successive magnified views (e.g. DNA compaction). Each id names a 3D model provided by the scene;
+   * the caption is a sourced claim like everything else.
+   */
+  zoomLevels: z
+    .array(
+      z.object({
+        id: z.enum(['helix', 'nucleosome', 'fiber', 'chromosome']),
+        title: LocalizedText,
+        scale: LocalizedText,
+        claim: Claim,
+      }),
+    )
+    .default([]),
+  /** Id of a process that shows this organelle at work (button in the panel). */
+  relatedProcess: z.string().optional(),
 });
 export type Organelle = z.infer<typeof Organelle>;

@@ -285,6 +285,7 @@ export function Nucleus() {
 
   const group = useRef<Group>(null);
   const reveal = useRef(0);
+  const closeup = useRef(0);
 
   // Disease markers placed on the chromatin strands (nucleus-local coordinates).
   const markers = useMemo(() => {
@@ -314,6 +315,9 @@ export function Nucleus() {
     // Exploring DNA: the envelope fades so the chromatin can be seen.
     const dnaFocus = useSelection.getState().selected?.organelle === 'dna' || useUi.getState().dnaLevel !== null;
     reveal.current += ((dnaFocus ? 1 : 0) - reveal.current) * 0.06;
+    // The compaction close-up replaces the tangle with its magnified models.
+    closeup.current += ((useUi.getState().dnaLevel !== null ? 1 : 0) - closeup.current) * 0.08;
+    const tangle = 1 - closeup.current;
     const envelope =
       liveChannels['nucleus.envelopeIntegrity'] * (1 - liveChannels['nucleus.fragmentation']) * (1 - 0.8 * reveal.current);
     const condensed = liveChannels['nucleus.chromatinCondensation'];
@@ -321,9 +325,9 @@ export function Nucleus() {
     parts.outerMat.uniforms.uRimOpacity!.value = OUTER_ENVELOPE.rimOpacity! * envelope;
     parts.innerMat.uniforms.uOpacity!.value = INNER_ENVELOPE.opacity! * envelope;
     parts.innerMat.uniforms.uRimOpacity!.value = INNER_ENVELOPE.rimOpacity! * envelope;
-    parts.chromatinMat.uniforms.uPresence!.value = 1 - condensed * 0.97;
-    parts.heteroMat.uniforms.uPresence!.value = 1 - condensed * 0.97;
-    parts.nucleolusMat.uniforms.uPresence!.value = 1 - condensed;
+    parts.chromatinMat.uniforms.uPresence!.value = (1 - condensed * 0.97) * tangle;
+    parts.heteroMat.uniforms.uPresence!.value = (1 - condensed * 0.97) * tangle;
+    parts.nucleolusMat.uniforms.uPresence!.value = (1 - condensed) * tangle;
   });
   useHighlight('nucleolus', parts.nucleolusMat);
 

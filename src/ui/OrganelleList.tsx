@@ -21,9 +21,11 @@ export function OrganelleList() {
   const [open, setOpen] = useState(() => typeof window === 'undefined' || window.innerWidth > 900);
 
   const libraryOpen = useUi((s) => s.libraryOpen);
-  // The library drawer and the disease narration use the same space on the left.
+  // The library drawer and the disease narration use the same space on the left…
   const diseasePlaying = useScenario((s) => s.scenario?.kind === 'disease');
-  if (libraryOpen || diseasePlaying) return null;
+  // So does the DNA close-up card.
+  const dnaCloseup = useUi((s) => s.dnaLevel !== null);
+  if (libraryOpen || diseasePlaying || dnaCloseup) return null;
 
   return (
     <nav className={`glass ${styles.list}`} aria-label={fr.list.title} data-open={open}>

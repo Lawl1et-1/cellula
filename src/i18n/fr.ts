@@ -19,6 +19,16 @@ export const fr = {
     read: 'Lire la section',
     simplified: 'Simplification',
   },
+  dna: {
+    title: "Empaquetage de l'ADN",
+    explore: "Explorer l'empaquetage",
+    exploreHint: 'De la double hélice au chromosome, en quatre niveaux de zoom',
+    levels: 'Niveaux de compaction',
+    finer: 'Plus fin',
+    coarser: 'Plus compact',
+    close: "Quitter la vue de l'ADN",
+    process: (name: string) => `Voir : ${name}`,
+  },
   list: {
     title: 'Organites',
   },

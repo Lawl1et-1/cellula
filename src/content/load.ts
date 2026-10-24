@@ -96,6 +96,10 @@ export function checkIntegrity({ sources, organelles, processes, tours, diseases
   organelles.forEach((o) => check(`organelle ${o.id}`, o));
 
   const organelleIds = new Set(organelles.map((o) => o.id));
+  const processIds = new Set(processes.map((p) => p.id));
+  for (const o of organelles)
+    if (o.relatedProcess && !processIds.has(o.relatedProcess))
+      issues.push({ file: `organelle ${o.id}`, message: `processus inconnu : ${o.relatedProcess}` });
   for (const tour of tours) {
     check(`visite ${tour.id}`, tour);
     for (const s of tour.steps)

@@ -316,6 +316,36 @@
   cursor: default;
 }
 
+.dna {
+  /* Beside the info panel (right), not under it. */
+  left: 20px;
+  right: auto;
+  margin-inline: 0;
+  width: min(520px, calc(100vw - 480px));
+  --accent: #ff8fc1;
+}
+
+.scale {
+  margin: -2px 0 8px !important;
+  font-size: 12.5px !important;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint) !important;
+}
+
+/* Level dots: the visible bar is 2px, the click target is taller. */
+.dna .progress button {
+  flex: 1;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  background: linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12)) center / 100% 2px no-repeat;
+  cursor: pointer;
+}
+
+.dna .progress button[data-done='true'] {
+  background-image: linear-gradient(var(--accent), var(--accent));
+}
+
 @media (max-width: 900px) {
   .player[data-with-panel='true'] {
     right: 12px;
@@ -328,6 +358,12 @@
   .player,
   .tour {
     bottom: 150px;
+  }
+  .dna {
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    width: min(560px, calc(100vw - 32px));
   }
   .stage span {
     display: none;

@@ -251,5 +251,96 @@
         ]
       }
     }
+  ],
+  "relatedProcess": "synthese-proteines",
+  "zoomLevels": [
+    {
+      "id": "helix",
+      "title": {
+        "fr": "Double hélice"
+      },
+      "scale": {
+        "fr": "≈ 2 nm"
+      },
+      "claim": {
+        "text": {
+          "fr": "La double hélice d'ADN mesure environ 2 nm de diamètre. Les paires de bases (A–T et G–C) forment les barreaux de cette échelle torsadée, entre deux squelettes de sucres et de phosphates."
+        },
+        "sources": [
+          {
+            "id": "mboc4-dna-complementary"
+          },
+          {
+            "id": "mboc4-chromosomes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nucleosome",
+      "title": {
+        "fr": "Nucléosomes"
+      },
+      "scale": {
+        "fr": "≈ 11 nm"
+      },
+      "claim": {
+        "text": {
+          "fr": "L'ADN s'enroule autour de cœurs de huit histones : c'est le « collier de perles », d'environ 11 nm de diamètre."
+        },
+        "sources": [
+          {
+            "id": "mboc4-nucleosomes"
+          },
+          {
+            "id": "mboc4-chromosomes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fiber",
+      "title": {
+        "fr": "Fibre de chromatine"
+      },
+      "scale": {
+        "fr": "≈ 30 nm"
+      },
+      "claim": {
+        "text": {
+          "fr": "Les nucléosomes s'empilent en une fibre plus compacte, d'environ 30 nm de diamètre."
+        },
+        "sources": [
+          {
+            "id": "mboc4-chromatin-fiber"
+          }
+        ],
+        "simplification": {
+          "fr": "Modèle classique des manuels ; l'organisation réelle de la chromatine est plus irrégulière."
+        }
+      }
+    },
+    {
+      "id": "chromosome",
+      "title": {
+        "fr": "Chromosome condensé"
+      },
+      "scale": {
+        "fr": "≈ 1,4 µm"
+      },
+      "claim": {
+        "text": {
+          "fr": "Au moment de la division, la chromatine se condense au maximum : chaque chromosome est alors formé de deux chromatides sœurs, visibles au microscope optique."
+        },
+        "sources": [
+          {
+            "id": "mboc4-m-phase-stages"
+          },
+          {
+            "id": "mboc4-chromosomes"
+          }
+        ]
+      }
+    }
   ]
 }

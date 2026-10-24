@@ -5,6 +5,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import type { OrganelleId, Source } from '@/content/schema';
 import { fr } from '@/i18n/fr';
 import { useSelection } from '@/state/selection';
+import { useScenario } from '@/state/scenario';
+import { useUi } from '@/state/ui';
+import { useTour } from '@/state/tour';
 import { cameraPosition } from '@/scene/camera/focus';
 import { anchorFor } from '@/scene/interaction/anchors';
 import { ORGANELLE_SWATCHES } from '@/scene/palette';
@@ -49,10 +52,18 @@ export function InfoPanel() {
   const hover = useSelection((s) => s.hover);
   const content = useContent();
   const organelle = selected ? content.organelle(selected.organelle) : undefined;
+  const dnaLevel = useUi((s) => s.dnaLevel);
+  const setDnaLevel = useUi((s) => s.setDnaLevel);
+  const related = organelle?.relatedProcess ? content.processes.find((p) => p.id === organelle.relatedProcess) : undefined;
 
   // Escape closes the panel.
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && select(null);
+    // Escape leaves the DNA close-up first, then closes the panel.
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      if (useUi.getState().dnaLevel !== null) useUi.getState().setDnaLevel(null);
+      else select(null);
+    };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [select]);
@@ -73,6 +84,7 @@ export function InfoPanel() {
           animate={{ opacity: 1, x: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }}
           exit={{ opacity: 0, x: 24, transition: { duration: 0.25 } }}
           aria-labelledby="panel-title"
+          data-behind={dnaLevel !== null}
         >
           <CitationContext.Provider value={citations}>
             <header className={styles.header}>
@@ -90,6 +102,30 @@ export function InfoPanel() {
               <section className={styles.lead}>
                 <Claim claim={organelle.summary} />
               </section>
+
+              {(organelle.zoomLevels.length > 0 || related) && (
+                <div className={styles.actions}>
+                  {organelle.zoomLevels.length > 0 && (
+                    <button className={styles.action} onClick={() => setDnaLevel(0)} aria-pressed={dnaLevel !== null}>
+                      <strong>{fr.dna.explore}</strong>
+                      <span>{fr.dna.exploreHint}</span>
+                    </button>
+                  )}
+                  {related && (
+                    <button
+                      className={styles.action}
+                      onClick={() => {
+                        select(null);
+                        useTour.getState().stop();
+                        useScenario.getState().start({ kind: 'process', ...related });
+                      }}
+                    >
+                      <strong>{fr.dna.process(related.name.fr)}</strong>
+                      <span>{related.summary.text.fr}</span>
+                    </button>
+                  )}
+                </div>
+              )}
 
               {organelle.function.length > 0 && (
                 <section>

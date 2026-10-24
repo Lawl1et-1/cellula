@@ -13,6 +13,7 @@ import { HoverLabel } from './HoverLabel';
 import { ScenarioMenu } from './ScenarioMenu';
 import { ProcessPlayer } from './ProcessPlayer';
 import { TourCard } from './TourCard';
+import { DnaStepper } from './DnaStepper';
 import { DiseasePanel } from './DiseasePanel';
 import { DiseaseLibrary } from './DiseaseLibrary';
 import { Announcer } from './Announcer';
@@ -80,6 +81,9 @@ export function Experience({ intro, content }: { intro: boolean; content: Explor
             </AnimatePresence>
             <AnimatePresence>
               <TourCard key="tour" />
+            </AnimatePresence>
+            <AnimatePresence>
+              <DnaStepper key="dna" />
             </AnimatePresence>
           </>
         )}

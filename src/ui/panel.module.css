@@ -139,6 +139,47 @@
   gap: 12px;
 }
 
+.actions {
+  display: grid;
+  gap: 8px;
+  margin: 4px 0 6px;
+}
+
+.action {
+  display: grid;
+  gap: 3px;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.3s var(--ease),
+    background 0.3s var(--ease);
+}
+
+.action:hover,
+.action[aria-pressed='true'] {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.action strong {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.action span {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--ink-faint);
+}
+
 .link {
   display: inline-flex;
   align-items: center;
@@ -292,6 +333,10 @@
 }
 
 @media (max-width: 900px) {
+  /* The DNA close-up card takes the bottom of the screen; the panel comes back when it closes. */
+  .panel[data-behind='true'] {
+    display: none;
+  }
   .panel {
     top: auto;
     left: 12px;

@@ -6,6 +6,7 @@ import { useFrame } from '@react-three/fiber';
 import { easing } from 'maath';
 import { sharedUniforms } from './shaders/organicMaterial';
 import { useScene } from '@/state/scene';
+import { useUi } from '@/state/ui';
 import { timeScale } from './time';
 import { updateHighlights } from './interaction/highlight';
 import { applyDiseaseLooks } from './disease/bindings';
@@ -17,6 +18,7 @@ import { useQuality } from '@/state/quality';
 import { QUALITY_PRESETS } from '@/engine/quality/presets';
 import { Membrane } from './organelles/Membrane';
 import { Nucleus } from './organelles/Nucleus';
+import { DnaCompaction } from './organelles/DnaCompaction';
 import { EndoplasmicReticulum } from './organelles/EndoplasmicReticulum';
 import { Golgi } from './organelles/Golgi';
 import { SmallOrganelles } from './organelles/SmallOrganelles';
@@ -41,7 +43,9 @@ function Clock() {
     u.uDetail.value = QUALITY_PRESETS[useQuality.getState().level].shading;
     updateHighlights(delta);
     applyDiseaseLooks(delta);
-    easing.damp(u.uDim, 'value', liveChannels['view.focusDim'], 0.4, delta);
+    // The DNA close-up dims the rest of the cell like a scenario focus.
+    const closeup = useUi.getState().dnaLevel !== null ? 0.9 : 0;
+    easing.damp(u.uDim, 'value', Math.max(liveChannels['view.focusDim'], closeup), 0.4, delta);
     const target = MOLECULAR_SCALE[useScene.getState().scaleMode];
     easing.damp(u.uMolecularScale, 'value', target, 0.35, delta);
   });
@@ -63,6 +67,7 @@ export function CellScene() {
       <Clock />
       <Body>
         <Nucleus />
+        <DnaCompaction />
         <EndoplasmicReticulum />
         <Golgi />
         <Mitochondria />
