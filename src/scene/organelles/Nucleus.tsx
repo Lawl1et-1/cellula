@@ -98,11 +98,26 @@ const LESION: OrganicOptions = {
   dimmable: false,
 };
 
+/** Where the point mutation is shown: a chromatin locus on the side the default camera looks from. */
+const FRONT = new Vector3(-0.15, 0.14, 0.98).normalize();
+function mutationSite() {
+  let best = new Vector3();
+  let score = -Infinity;
+  for (const p of chromatinSamples) {
+    const s = p.dot(FRONT) - Math.abs(p.length() - 9) * 2;
+    if (s > score) {
+      score = s;
+      best = p;
+    }
+  }
+  return best;
+}
+
 /** One highlighted locus: a point mutation (channel dna.mutation). */
 const MUTATION: OrganicOptions = {
   color: '#ff5a4a',
   emissive: '#ff3a2a',
-  emissiveStrength: 2.6,
+  emissiveStrength: 3.6,
   sss: 0.6,
   gloss: 0.6,
   wobble: 0.3,
@@ -298,7 +313,7 @@ export function Nucleus() {
         matrices: lesions.map((p) => new Matrix4().compose(p, q, one.clone().multiplyScalar(rng.range(0.5, 0.9)))),
         seeds: lesions.map(() => rng.next()),
       },
-      mutation: { matrices: [new Matrix4().compose(chromatinSamples[7] ?? new Vector3(), q, one.clone().multiplyScalar(1.6))], seeds: [0.5] },
+      mutation: { matrices: [new Matrix4().compose(mutationSite(), q, one.clone().multiplyScalar(2.4))], seeds: [0.5] },
       geometry: new IcosahedronGeometry(1, 2),
     };
   }, [parts]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -312,8 +327,9 @@ export function Nucleus() {
       g.scale.setScalar(s);
       g.position.copy(center).multiplyScalar(1 - s);
     }
-    // Exploring DNA: the envelope fades so the chromatin can be seen.
-    const dnaFocus = useSelection.getState().selected?.organelle === 'dna' || useUi.getState().dnaLevel !== null;
+    // Exploring DNA (or a scenario stage about it): the envelope fades so the chromatin can be seen.
+    const { selected, spotlight } = useSelection.getState();
+    const dnaFocus = selected?.organelle === 'dna' || spotlight === 'dna' || useUi.getState().dnaLevel !== null;
     reveal.current += ((dnaFocus ? 1 : 0) - reveal.current) * 0.06;
     // The compaction close-up replaces the tangle with its magnified models.
     closeup.current += ((useUi.getState().dnaLevel !== null ? 1 : 0) - closeup.current) * 0.08;

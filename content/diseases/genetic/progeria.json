@@ -36,7 +36,7 @@
   "cause": [
     {
       "text": {
-        "fr": "Un variant du gène LMNA, le plus souvent apparu de novo, produit la progérine."
+        "fr": "Un variant du gène LMNA, le plus souvent apparu de novo (c.1824C>T dans la forme classique), produit la progérine."
       },
       "sources": [
         {
@@ -46,6 +46,7 @@
     }
   ],
   "affectedOrganelles": [
+    "dna",
     "nucleus"
   ],
   "affectedPathways": [
@@ -106,7 +107,7 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "nucleus"
+      "focus": "dna"
     },
     {
       "id": "enveloppe",
@@ -169,6 +170,31 @@
   ],
   "tracks": [
     {
+      "channel": "dna.mutation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.1,
+          "v": 1
+        },
+        {
+          "t": 0.35,
+          "v": 1
+        },
+        {
+          "t": 0.5,
+          "v": 0.35
+        },
+        {
+          "t": 1,
+          "v": 0.35
+        }
+      ]
+    },
+    {
       "channel": "nucleus.envelopeBlebbing",
       "keys": [
         {
@@ -227,7 +253,7 @@
   "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {

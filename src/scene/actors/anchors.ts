@@ -84,5 +84,5 @@ function baseFocus(organelle: OrganelleId): Focus {
     return { organelle, position: [GOLGI_CENTER.x, GOLGI_CENTER.y, GOLGI_CENTER.z], radius: 16, axis: [CELL.pole.x, CELL.pole.y, CELL.pole.z] };
   }
   const c = CELL.nucleus.center;
-  return { organelle, position: [c.x, c.y, c.z], radius: organelle === 'nucleus' ? 38 : 30 };
+  return { organelle, position: [c.x, c.y, c.z], radius: organelle === 'nucleus' ? 38 : organelle === 'dna' ? 22 : 30 };
 }

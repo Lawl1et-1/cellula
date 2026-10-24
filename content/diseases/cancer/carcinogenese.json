@@ -54,6 +54,7 @@
     }
   ],
   "affectedOrganelles": [
+    "dna",
     "nucleus",
     "cytoskeleton"
   ],
@@ -131,7 +132,7 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "nucleus"
+      "focus": "dna"
     },
     {
       "id": "proliferation",
@@ -202,6 +203,23 @@
   ],
   "tracks": [
     {
+      "channel": "dna.mutation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.12,
+          "v": 1
+        },
+        {
+          "t": 1,
+          "v": 1
+        }
+      ]
+    },
+    {
       "channel": "cell.divisionRate",
       "keys": [
         {
@@ -269,7 +287,7 @@
   ],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {

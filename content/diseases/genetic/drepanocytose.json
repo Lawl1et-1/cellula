@@ -1,0 +1,352 @@
+{
+  "id": "drepanocytose",
+  "slug": "drepanocytose",
+  "name": {
+    "fr": "Drépanocytose"
+  },
+  "aliases": [
+    "Anémie falciforme",
+    "Sickle cell disease"
+  ],
+  "categories": [
+    "genetic"
+  ],
+  "cellContext": {
+    "cellType": "erythrocyte",
+    "note": {
+      "text": {
+        "fr": "La maladie touche les globules rouges, fabriqués dans la moelle osseuse, et l'hémoglobine qu'ils transportent."
+      },
+      "sources": [
+        {
+          "id": "sp-sickle-cell"
+        }
+      ],
+      "simplification": {
+        "fr": "Les globules rouges matures n'ont plus de noyau. Le modèle montre une cellule générique à noyau, comme les précurseurs des globules rouges où le gène HBB s'exprime ; la forme en faucille du globule rouge n'est pas représentée."
+      }
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie génétique de l'hémoglobine : le changement d'une seule base dans le gène HBB produit une hémoglobine anormale (HbS) qui se polymérise et déforme les globules rouges en faucille."
+    },
+    "sources": [
+      {
+        "id": "sp-sickle-cell"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Les deux copies du gène HBB de la bêta-globine portent une substitution d'un seul nucléotide : l'acide glutamique en position 6 est remplacé par une valine."
+      },
+      "sources": [
+        {
+          "id": "sp-sickle-cell"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "dna",
+    "cytoplasm"
+  ],
+  "affectedPathways": [
+    "hémoglobine"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Une seule base changée"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Une substitution d'un nucléotide dans le gène HBB change un acide aminé de la bêta-globine."
+        },
+        "sources": [
+          {
+            "id": "sp-sickle-cell"
+          }
+        ]
+      },
+      "organelle": "dna"
+    },
+    {
+      "title": {
+        "fr": "Hémoglobine S"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Quand elle perd son oxygène, l'hémoglobine S se polymérise en longues fibres rigides."
+        },
+        "sources": [
+          {
+            "id": "sp-sickle-cell"
+          }
+        ]
+      },
+      "organelle": "cytoplasm"
+    },
+    {
+      "title": {
+        "fr": "Globules rouges en faucille"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Les globules rouges déformés et rigides se détruisent plus vite (hémolyse) et peuvent boucher les petits vaisseaux."
+        },
+        "sources": [
+          {
+            "id": "sp-sickle-cell"
+          }
+        ]
+      }
+    }
+  ],
+  "durationSeconds": 45,
+  "stages": [
+    {
+      "id": "gene",
+      "title": {
+        "fr": "Une base changée dans HBB"
+      },
+      "range": [
+        0,
+        0.32
+      ],
+      "description": {
+        "text": {
+          "fr": "Dans le gène HBB, un seul nucléotide est remplacé par un autre. Cette petite différence change un acide aminé de la bêta-globine."
+        },
+        "sources": [
+          {
+            "id": "sp-sickle-cell"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "La mutation ponctuelle est marquée en rouge dans l'ADN."
+          },
+          "sources": [
+            {
+              "id": "sp-sickle-cell"
+            }
+          ]
+        }
+      ],
+      "focus": "dna"
+    },
+    {
+      "id": "hbs",
+      "title": {
+        "fr": "L'hémoglobine S se polymérise"
+      },
+      "range": [
+        0.32,
+        0.66
+      ],
+      "description": {
+        "text": {
+          "fr": "L'ARN messager du gène muté est traduit en bêta-globine anormale, qui forme l'hémoglobine S. Privée d'oxygène, elle s'assemble en longues fibres."
+        },
+        "sources": [
+          {
+            "id": "sp-sickle-cell"
+          },
+          {
+            "id": "mboc4-transcription-complementary"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Le cytoplasme se charge de fibres d'hémoglobine."
+          },
+          "sources": [
+            {
+              "id": "sp-sickle-cell"
+            }
+          ],
+          "simplification": {
+            "fr": "Les fibres d'hémoglobine S sont suggérées par des agrégats et une teinte, pas dessinées une à une."
+          }
+        }
+      ],
+      "focus": "cytoplasm"
+    },
+    {
+      "id": "faucille",
+      "title": {
+        "fr": "Globules rouges déformés"
+      },
+      "range": [
+        0.66,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les globules rouges prennent une forme de faucille, deviennent rigides et fragiles : ils se détruisent plus vite et peuvent boucher les petits vaisseaux, ce qui provoque des crises douloureuses."
+        },
+        "sources": [
+          {
+            "id": "sp-sickle-cell"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "La cellule perd sa souplesse et sa durée de vie raccourcit."
+          },
+          "sources": [
+            {
+              "id": "sp-sickle-cell"
+            }
+          ]
+        }
+      ],
+      "focus": "plasma-membrane",
+      "camera": {
+        "view": "cell"
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "dna.mutation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.12,
+          "v": 1
+        },
+        {
+          "t": 0.66,
+          "v": 1
+        },
+        {
+          "t": 1,
+          "v": 0.6
+        }
+      ]
+    },
+    {
+      "channel": "cytoplasm.aggregates",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.4,
+          "v": 0
+        },
+        {
+          "t": 0.66,
+          "v": 0.7
+        },
+        {
+          "t": 1,
+          "v": 0.9
+        }
+      ]
+    },
+    {
+      "channel": "cytoplasm.tint",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.4,
+          "v": 0
+        },
+        {
+          "t": 0.66,
+          "v": 0.35
+        },
+        {
+          "t": 1,
+          "v": 0.5
+        }
+      ]
+    },
+    {
+      "channel": "cell.viability",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.7,
+          "v": 1
+        },
+        {
+          "t": 1,
+          "v": 0.7
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.5
+        },
+        {
+          "t": 0.95,
+          "v": 0.5
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "path",
+      "at": 0.3,
+      "until": 0.55,
+      "params": {
+        "path": [
+          "nucleus",
+          "nucleus.pore",
+          "cytoplasm"
+        ],
+        "cargo": "mrna",
+        "count": 6
+      }
+    }
+  ],
+  "treatmentsNote": {
+    "text": {
+      "fr": "Hydroxyurée, transfusions et, dans certains cas, greffe de cellules souches hématopoïétiques ; la prise en charge relève d'équipes spécialisées."
+    },
+    "sources": [
+      {
+        "id": "sp-sickle-cell"
+      }
+    ]
+  },
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-25"
+  }
+}

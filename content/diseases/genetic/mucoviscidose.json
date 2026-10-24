@@ -47,6 +47,7 @@
     }
   ],
   "affectedOrganelles": [
+    "dna",
     "rough-er",
     "plasma-membrane"
   ],
@@ -93,13 +94,46 @@
   ],
   "stages": [
     {
+      "id": "gene",
+      "title": {
+        "fr": "Un gène CFTR modifié"
+      },
+      "range": [
+        0,
+        0.18
+      ],
+      "description": {
+        "text": {
+          "fr": "Les deux copies du gène CFTR portent un variant ; le plus fréquent, p.Phe508del, retire un seul acide aminé de la protéine."
+        },
+        "sources": [
+          {
+            "id": "gr-cf"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Le variant est marqué en rouge dans l'ADN."
+          },
+          "sources": [
+            {
+              "id": "gr-cf"
+            }
+          ]
+        }
+      ],
+      "focus": "dna"
+    },
+    {
       "id": "synthese",
       "title": {
         "fr": "Synthèse de CFTR"
       },
       "range": [
-        0,
-        0.3
+        0.18,
+        0.426
       ],
       "description": {
         "text": {
@@ -120,8 +154,8 @@
         "fr": "Rétention et dégradation"
       },
       "range": [
-        0.3,
-        0.65
+        0.426,
+        0.713
       ],
       "description": {
         "text": {
@@ -156,8 +190,8 @@
         "fr": "Membrane appauvrie"
       },
       "range": [
-        0.65,
-        1
+        0.713,
+        1.0
       ],
       "description": {
         "text": {
@@ -178,18 +212,43 @@
   ],
   "tracks": [
     {
-      "channel": "er.retainedCargo",
+      "channel": "dna.mutation",
       "keys": [
         {
           "t": 0,
           "v": 0
         },
         {
+          "t": 0.06,
+          "v": 1
+        },
+        {
+          "t": 0.18,
+          "v": 1
+        },
+        {
           "t": 0.3,
+          "v": 0.35
+        },
+        {
+          "t": 1,
+          "v": 0.35
+        }
+      ]
+    },
+    {
+      "channel": "er.retainedCargo",
+      "keys": [
+        {
+          "t": 0.18,
+          "v": 0
+        },
+        {
+          "t": 0.426,
           "v": 0.2
         },
         {
-          "t": 0.65,
+          "t": 0.713,
           "v": 0.9
         }
       ]
@@ -198,11 +257,11 @@
       "channel": "er.stress",
       "keys": [
         {
-          "t": 0,
+          "t": 0.18,
           "v": 0
         },
         {
-          "t": 0.65,
+          "t": 0.713,
           "v": 0.3
         }
       ]
@@ -211,15 +270,15 @@
       "channel": "membrane.receptorDensity",
       "keys": [
         {
-          "t": 0,
+          "t": 0.18,
           "v": 1
         },
         {
-          "t": 0.65,
+          "t": 0.713,
           "v": 1
         },
         {
-          "t": 0.9,
+          "t": 0.918,
           "v": 0.35
         }
       ]
@@ -248,9 +307,23 @@
   ],
   "actors": [
     {
+      "actor": "path",
+      "at": 0.1,
+      "until": 0.3,
+      "params": {
+        "path": [
+          "nucleus",
+          "nucleus.pore",
+          "rough-er"
+        ],
+        "cargo": "mrna",
+        "count": 4
+      }
+    },
+    {
       "actor": "pulse",
-      "at": 0.3,
-      "until": 0.65,
+      "at": 0.426,
+      "until": 0.713,
       "params": {
         "at": "rough-er"
       }
@@ -258,7 +331,7 @@
   ],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {

@@ -1,0 +1,335 @@
+{
+  "id": "xeroderma-pigmentosum",
+  "slug": "xeroderma-pigmentosum",
+  "name": {
+    "fr": "Xeroderma pigmentosum"
+  },
+  "aliases": [
+    "XP"
+  ],
+  "categories": [
+    "genetic",
+    "cancer"
+  ],
+  "cellContext": {
+    "cellType": "epithelial",
+    "note": {
+      "text": {
+        "fr": "Les cellules touchées sont surtout celles de la peau et des yeux exposées au soleil. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "gr-xp"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie génétique rare : les cellules réparent mal l'ADN abîmé par les ultraviolets. Les lésions s'accumulent dans la peau exposée au soleil, où des cancers apparaissent très tôt."
+    },
+    "sources": [
+      {
+        "id": "gr-xp"
+      },
+      {
+        "id": "sp-xp"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Des variants des deux copies (transmission autosomique récessive) d'un gène de la réparation de l'ADN par excision de nucléotides (XPA à XPG), ou du gène POLH dans la forme « variante »."
+      },
+      "sources": [
+        {
+          "id": "gr-xp"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "dna",
+    "nucleus"
+  ],
+  "affectedPathways": [
+    "réparation par excision de nucléotides"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Lésions dues aux UV"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Les rayons ultraviolets lient entre elles des bases voisines de l'ADN (dimères de pyrimidines), ce qui déforme la double hélice."
+        },
+        "sources": [
+          {
+            "id": "sp-xp"
+          },
+          {
+            "id": "gr-xp"
+          }
+        ]
+      },
+      "organelle": "dna"
+    },
+    {
+      "title": {
+        "fr": "Réparation défaillante"
+      },
+      "explanation": {
+        "text": {
+          "fr": "La réparation par excision de nucléotides découpe normalement le segment abîmé et le resynthétise ; dans le XP, une de ses protéines manque et les lésions persistent."
+        },
+        "sources": [
+          {
+            "id": "gr-xp"
+          }
+        ]
+      },
+      "organelle": "dna"
+    },
+    {
+      "title": {
+        "fr": "Mutations et cancers"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Les lésions non réparées deviennent des mutations, qui conduisent à des cancers de la peau dès l'enfance."
+        },
+        "sources": [
+          {
+            "id": "gr-xp"
+          },
+          {
+            "id": "sp-xp"
+          }
+        ]
+      },
+      "organelle": "dna"
+    }
+  ],
+  "durationSeconds": 45,
+  "stages": [
+    {
+      "id": "uv",
+      "title": {
+        "fr": "Les UV abîment l'ADN"
+      },
+      "range": [
+        0,
+        0.32
+      ],
+      "description": {
+        "text": {
+          "fr": "Les ultraviolets du soleil atteignent le noyau et lient entre elles des bases voisines de l'ADN : des dimères de pyrimidines apparaissent."
+        },
+        "sources": [
+          {
+            "id": "sp-xp"
+          },
+          {
+            "id": "gr-xp"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Lésions de l'ADN dispersées dans le noyau (marquées en jaune)."
+          },
+          "sources": [
+            {
+              "id": "sp-xp"
+            }
+          ]
+        }
+      ],
+      "focus": "dna"
+    },
+    {
+      "id": "reparation",
+      "title": {
+        "fr": "La réparation échoue"
+      },
+      "range": [
+        0.32,
+        0.66
+      ],
+      "description": {
+        "text": {
+          "fr": "Normalement, la réparation par excision de nucléotides retire et remplace le segment abîmé. Dans le XP, elle est défaillante : les lésions restent en place."
+        },
+        "sources": [
+          {
+            "id": "gr-xp"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Les lésions persistent au lieu d'être réparées."
+          },
+          "sources": [
+            {
+              "id": "gr-xp"
+            }
+          ]
+        }
+      ],
+      "focus": "dna"
+    },
+    {
+      "id": "mutations",
+      "title": {
+        "fr": "Des mutations s'accumulent"
+      },
+      "range": [
+        0.66,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Lorsque l'ADN est copié, les lésions non réparées deviennent des mutations. En s'accumulant, elles mènent à des cancers de la peau."
+        },
+        "sources": [
+          {
+            "id": "gr-xp"
+          },
+          {
+            "id": "sp-xp"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Une mutation (en rouge) apparaît dans l'ADN."
+          },
+          "sources": [
+            {
+              "id": "gr-xp"
+            }
+          ]
+        }
+      ],
+      "focus": "dna"
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "dna.damage",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.3,
+          "v": 0.85
+        },
+        {
+          "t": 0.66,
+          "v": 1
+        },
+        {
+          "t": 1,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "dna.mutation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.66,
+          "v": 0
+        },
+        {
+          "t": 0.8,
+          "v": 1
+        },
+        {
+          "t": 1,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "cell.divisionRate",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.8,
+          "v": 1
+        },
+        {
+          "t": 1,
+          "v": 1.6
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.5
+        },
+        {
+          "t": 0.95,
+          "v": 0.5
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "path",
+      "at": 0.02,
+      "until": 0.3,
+      "params": {
+        "path": [
+          "outside",
+          "membrane",
+          "nucleus"
+        ],
+        "cargo": "uv",
+        "count": 10
+      }
+    }
+  ],
+  "treatmentsNote": {
+    "text": {
+      "fr": "La prise en charge repose sur une protection stricte contre les ultraviolets et une surveillance régulière de la peau et des yeux ; elle relève d'un avis spécialisé."
+    },
+    "sources": [
+      {
+        "id": "gr-xp"
+      }
+    ]
+  },
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-25"
+  }
+}

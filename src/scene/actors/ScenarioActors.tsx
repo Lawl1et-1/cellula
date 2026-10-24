@@ -32,6 +32,7 @@ const CARGO: Record<CargoKind, { color: string; intensity: number; size: number 
   oxygen: { color: '#7fd8ff', intensity: 2.5, size: 0.35 },
   virion: { color: '#ff4a3a', intensity: 3, size: 0.9 },
   cytokine: { color: '#ffe0f0', intensity: 2.5, size: 0.4 },
+  uv: { color: '#b48cff', intensity: 4, size: 0.32 },
 };
 
 const POOL = 384;
