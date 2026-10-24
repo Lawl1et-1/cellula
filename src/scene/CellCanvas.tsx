@@ -1,8 +1,8 @@
 'use client';
 
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { AdaptiveDpr, PerformanceMonitor } from '@react-three/drei';
+import { AdaptiveDpr, PerformanceMonitor, Stats } from '@react-three/drei';
 import { NoToneMapping, SRGBColorSpace } from 'three';
 import type { QualityLevel } from '@/engine/quality/presets';
 import { initQuality, useQuality, usePreset } from '@/state/quality';
@@ -24,8 +24,13 @@ function AdaptiveQuality() {
   return <PerformanceMonitor flipflops={3} onDecline={() => step(-1)} onIncline={() => step(1)} />;
 }
 
+/** `?stats` shows an FPS / frame-time panel. */
+const showStats = () => typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('stats');
+
 export default function CellCanvas() {
   const preset = usePreset();
+  // The canvas is client-only (loaded with ssr: false), so reading the URL at init is safe.
+  const [stats] = useState(showStats);
   useEffect(() => initQuality(), []);
 
   return (
@@ -50,6 +55,7 @@ export default function CellCanvas() {
       </Suspense>
       <CameraRig />
       <PostFX />
+      {stats && <Stats />}
     </Canvas>
   );
 }

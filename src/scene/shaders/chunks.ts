@@ -53,18 +53,18 @@ float snoise(vec3 v) {
   return 42.0 * dot(m * m, vec4(dot(p0, x0), dot(p1, x1), dot(p2, x2), dot(p3, x3)));
 }
 
+/* Two octaves only: simplex noise is the dominant per-pixel cost of the scene. */
 float fbm3(vec3 p) {
-  float a = 0.5, s = 0.0;
-  for (int i = 0; i < 3; i++) { s += a * snoise(p); p = p * 2.03 + 11.7; a *= 0.5; }
-  return s;
+  return snoise(p) * 0.67 + snoise(p * 2.03 + 11.7) * 0.33;
 }
 
-float hash11(float p) { p = fract(p * 0.1031); p *= p + 33.33; p *= p + p; return fract(p); }
-vec3 hash31(float p) {
-  vec3 p3 = fract(vec3(p) * vec3(0.1031, 0.1030, 0.0973));
-  p3 += dot(p3, p3.yzx + 33.33);
-  return fract((p3.xxy + p3.yzz) * p3.zyx);
+/* Very cheap smooth pseudo-noise (a handful of sines) for effects that only need organic motion. */
+float trigNoise(vec3 p) {
+  return sin(p.x * 1.7 + sin(p.y * 1.3 + p.z * 0.7)) *
+         sin(p.y * 1.9 + sin(p.z * 1.1 + p.x * 0.5)) *
+         sin(p.z * 1.5 + sin(p.x * 1.2 + p.y * 0.9));
 }
+
 `;
 
 /** Uniforms shared by every organic material (one object, updated once per frame). */
@@ -84,6 +84,12 @@ uniform float uRimStrength;
 
 /** Brownian-like drift: smooth, bounded, unique per seed. */
 export const drift = /* glsl */ `
+float hash11(float p) { p = fract(p * 0.1031); p *= p + 33.33; p *= p + p; return fract(p); }
+vec3 hash31(float p) {
+  vec3 p3 = fract(vec3(p) * vec3(0.1031, 0.1030, 0.0973));
+  p3 += dot(p3, p3.yzx + 33.33);
+  return fract((p3.xxy + p3.yzz) * p3.zyx);
+}
 vec3 brownian(float seed, float t, float amp) {
   vec3 h = hash31(seed * 91.7 + 3.1);
   return amp * vec3(
@@ -98,8 +104,8 @@ vec3 brownian(float seed, float t, float amp) {
 export const caustics = /* glsl */ `
 float causticPattern(vec3 p) {
   float t = uTime * 0.18;
-  float a = 1.0 - abs(snoise(p * 0.045 + vec3(0.0, t, t * 0.6)));
-  float b = 1.0 - abs(snoise(p * 0.09 + vec3(t * 0.7, -t, 3.1)));
+  float a = 1.0 - abs(trigNoise(p * 0.07 + vec3(0.0, t, t * 0.6)));
+  float b = 1.0 - abs(trigNoise(p * 0.13 + vec3(t * 0.7, -t, 3.1)));
   return pow(a, 10.0) * 0.8 + pow(a * b, 6.0) * 0.6;
 }
 `;

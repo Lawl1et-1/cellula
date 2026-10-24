@@ -215,13 +215,13 @@ void main() {
   vec3 N = normalize(vNormal);
   if (!gl_FrontFacing) N = -N;
 
-  // Fine wet bump: perturb the normal with small-scale noise.
-  vec3 bump = vec3(
-    snoise(vLocal * 1.7 + vec3(0.0, uTime * 0.2, 0.0)),
-    snoise(vLocal * 1.7 + 19.1),
-    snoise(vLocal * 1.7 - 7.3)
-  );
-  N = normalize(N + bump * 0.08);
+  // Fine wet bump from a single noise sample, using screen-space derivatives (surface gradient).
+  float h = snoise(vLocal * 1.7 + vec3(0.0, uTime * 0.2, 0.0)) * 0.12;
+  vec3 dpdx = dFdx(vWorld), dpdy = dFdy(vWorld);
+  vec3 r1 = cross(dpdy, N), r2 = cross(N, dpdx);
+  float det = dot(dpdx, r1);
+  vec3 grad = sign(det) * (dFdx(h) * r1 + dFdy(h) * r2);
+  N = normalize(abs(det) * N - grad);
 
   float emissive = 0.0;
   vec3 albedo = surface(emissive);

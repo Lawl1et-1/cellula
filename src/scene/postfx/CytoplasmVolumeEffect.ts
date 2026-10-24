@@ -9,8 +9,6 @@ import {
   RepeatWrapping,
   Uniform,
   Vector3,
-  type WebGLRenderer,
-  type WebGLRenderTarget,
 } from 'three';
 import { fbm3 } from '@/lib/noise';
 import { CELL } from '../layout/cellLayout';
@@ -150,7 +148,7 @@ export class CytoplasmVolumeEffect extends Effect {
     this.uniforms.get('uSteps')!.value = v;
   }
 
-  override update(_renderer: WebGLRenderer, _input: WebGLRenderTarget, _delta?: number) {
+  override update() {
     const c = this.camera;
     const u = this.uniforms;
     u.get('uProjInv')!.value.copy(c.projectionMatrixInverse);

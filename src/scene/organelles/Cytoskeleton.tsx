@@ -4,7 +4,6 @@ import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import {
   BufferAttribute,
-  BufferGeometry,
   CatmullRomCurve3,
   CylinderGeometry,
   IcosahedronGeometry,

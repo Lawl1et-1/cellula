@@ -77,7 +77,7 @@ void main() {
 
   // Lipid rafts and embedded proteins: fine mottled speckle.
   float rafts = smoothstep(0.35, 0.75, snoise(vDir * 38.0 + uTime * 0.03));
-  float proteins = smoothstep(0.7, 0.95, snoise(vDir * 140.0));
+  float proteins = smoothstep(0.75, 0.98, trigNoise(vDir * 120.0));
 
   vec3 L = normalize(uKeyDir);
   float ndl = dot(N, L);

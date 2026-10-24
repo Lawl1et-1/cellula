@@ -6,7 +6,7 @@ import { useThree } from '@react-three/fiber';
 import { createRng } from '@/lib/random';
 import { randomCytoplasmPoint } from '../layout/cellLayout';
 import { PALETTE } from '../palette';
-import { noise, drift, sharedUniformsDecl } from '../shaders/chunks';
+import { drift, sharedUniformsDecl } from '../shaders/chunks';
 import { sharedUniforms } from '../shaders/organicMaterial';
 import { usePreset } from '@/state/quality';
 
@@ -16,7 +16,6 @@ import { usePreset } from '@/state/quality';
  */
 const vertexShader = /* glsl */ `
 ${sharedUniformsDecl}
-${noise}
 ${drift}
 uniform float uPixelRatio;
 uniform float uSize;
@@ -25,13 +24,13 @@ attribute vec3 aColor;
 varying vec3 vColor;
 varying float vFade;
 
-vec3 curl(vec3 p) {
-  const float e = 0.1;
-  vec3 dx = vec3(e, 0.0, 0.0), dy = vec3(0.0, e, 0.0), dz = vec3(0.0, 0.0, e);
-  float x = snoise(p + dy) - snoise(p - dy) - snoise(p + dz) + snoise(p - dz);
-  float y = snoise(p + dz) - snoise(p - dz) - snoise(p + dx) + snoise(p - dx);
-  float z = snoise(p + dx) - snoise(p - dx) - snoise(p + dy) + snoise(p - dy);
-  return vec3(x, y, z) / (2.0 * e);
+/* Cheap swirling flow (no noise lookups: this runs for every particle, every frame). */
+vec3 flow(vec3 p, float t) {
+  return vec3(
+    sin(p.y * 0.031 + t * 0.21) + sin(p.z * 0.047 - t * 0.13),
+    sin(p.z * 0.029 + t * 0.17) + sin(p.x * 0.043 + t * 0.11),
+    sin(p.x * 0.033 - t * 0.19) + sin(p.y * 0.041 + t * 0.15)
+  );
 }
 
 void main() {
@@ -41,7 +40,7 @@ void main() {
   float ang = uTime * 0.012 * (0.4 + r / 120.0) + aSeed * 0.02;
   float c = cos(ang), s = sin(ang);
   p.xz = mat2(c, -s, s, c) * p.xz;
-  p += curl(p * 0.012 + uTime * 0.01) * 2.2;
+  p += flow(p, uTime) * 2.4;
   p += brownian(aSeed * 311.0, uTime * 2.2, 0.9);
 
   vec4 mv = viewMatrix * modelMatrix * vec4(p, 1.0);

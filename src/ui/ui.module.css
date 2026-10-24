@@ -235,11 +235,21 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
   .dock {
     bottom: 12px;
-    gap: 10px;
-    padding: 8px 10px 10px;
+    width: calc(100vw - 24px);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 14px;
+    padding: 10px 10px 12px;
+    overflow: visible;
+  }
+  .divider {
+    display: none;
+  }
+  .segment {
+    padding: 6px 10px;
   }
   .topbar {
     top: 14px;
