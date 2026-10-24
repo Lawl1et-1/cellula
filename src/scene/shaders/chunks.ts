@@ -77,6 +77,9 @@ uniform vec3 uAmbient;
 uniform vec3 uFogColor;
 uniform float uFogDensity;
 uniform float uCausticStrength;
+/* Per-material weights of the light model. */
+uniform float uDiffuse;
+uniform float uRimStrength;
 `;
 
 /** Brownian-like drift: smooth, bounded, unique per seed. */
@@ -107,7 +110,7 @@ vec3 organicShade(vec3 albedo, vec3 N, vec3 V, vec3 P, float sss, vec3 sssColor,
   vec3 L = normalize(uKeyDir);
   float ndl = dot(N, L);
   float wrap = max((ndl + 0.6) / 1.6, 0.0);
-  vec3 diffuse = albedo * uKeyColor * wrap * wrap;
+  vec3 diffuse = albedo * uKeyColor * wrap * wrap * uDiffuse;
 
   vec3 Lb = normalize(L + N * 0.5);
   float back = pow(clamp(dot(V, -Lb), 0.0, 1.0), 2.5);
@@ -115,7 +118,7 @@ vec3 organicShade(vec3 albedo, vec3 N, vec3 V, vec3 P, float sss, vec3 sssColor,
   vec3 scatter = sssColor * uKeyColor * (back * 0.9 + thin * 0.35) * sss;
 
   float fres = pow(1.0 - clamp(dot(N, V), 0.0, 1.0), 4.0);
-  vec3 rim = uRimColor * fres;
+  vec3 rim = uRimColor * fres * uRimStrength;
 
   vec3 H = normalize(L + V);
   float nh = max(dot(N, H), 0.0);
