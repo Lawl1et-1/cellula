@@ -8,9 +8,10 @@ scientifiques citées.
 
 ![Cellula](docs/reviews/img/01-accueil.jpg)
 
-> Projet en cours — phases 1 à 3 terminées (cellule vivante, organites interactifs, processus animés,
-> 29 maladies). Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) et les bilans de
-> [phase 1](docs/reviews/phase-1.md), [phase 2](docs/reviews/phase-2.md) et [phase 3](docs/reviews/phase-3.md).
+> Les quatre phases sont terminées (cellule vivante, organites interactifs, processus animés, 29 maladies,
+> performance, accessibilité, mobile). Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) et les bilans de
+> [phase 1](docs/reviews/phase-1.md), [phase 2](docs/reviews/phase-2.md), [phase 3](docs/reviews/phase-3.md)
+> et [phase 4](docs/reviews/phase-4.md). Le contenu scientifique attend encore une relecture experte.
 
 ## Ce que l'on peut faire
 
@@ -42,6 +43,19 @@ Puis ouvrir http://localhost:3000. Paramètres utiles : `?stats` (images par sec
 | `npm run build` | Build de production |
 | `npm run perf -- <url>` | Temps GPU par préréglage, sur le GPU réel (Edge sans interface) |
 | `npm run shots -- <url> <dossier> <qualité>` | Captures de référence |
+
+## Accessibilité et performances
+
+- Aucune violation axe-core (WCAG 2.1 AA) ; mouvement réglable (vivant, réduit, pause) ; annonces pour
+  lecteurs d'écran ; version texte si WebGL 2 n'est pas disponible ; mise en page dédiée aux téléphones.
+- Sur une puce graphique intégrée (Intel UHD), première visite affichée en ~3,5 s et 60 images/s en qualité
+  « Bas » (voir `npm run perf`).
+
+## Mise en ligne (Vercel)
+
+1. Importer le dépôt GitHub sur https://vercel.com/new (framework détecté automatiquement : Next.js).
+2. Définir la variable `NEXT_PUBLIC_SITE_URL` avec l'adresse publique du site.
+3. Déployer.
 
 ## Licences
 
