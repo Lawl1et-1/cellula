@@ -1,0 +1,22 @@
+{
+  "id": "smooth-er",
+  "name": {
+    "fr": "Réticulum endoplasmique lisse"
+  },
+  "tagline": {
+    "fr": "Lipides, détoxification et calcium"
+  },
+  "summary": {
+    "text": {
+      "fr": "Réseau de tubules dépourvus de ribosomes, impliqué dans la synthèse des lipides, la détoxification de certaines molécules et le stockage du calcium."
+    },
+    "sources": [
+      {
+        "id": "alberts-mboc-4"
+      },
+      {
+        "id": "cooper-cell-2"
+      }
+    ]
+  }
+}

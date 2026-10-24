@@ -1,0 +1,22 @@
+{
+  "id": "nucleus",
+  "name": {
+    "fr": "Noyau"
+  },
+  "tagline": {
+    "fr": "Le coffre-fort de l'ADN"
+  },
+  "summary": {
+    "text": {
+      "fr": "Compartiment entouré d'une double membrane, l'enveloppe nucléaire, percée de pores. Il contient le génome et est le siège de la réplication de l'ADN et de la transcription."
+    },
+    "sources": [
+      {
+        "id": "alberts-mboc-4"
+      },
+      {
+        "id": "cooper-cell-2"
+      }
+    ]
+  }
+}

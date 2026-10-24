@@ -1,0 +1,22 @@
+{
+  "id": "golgi",
+  "name": {
+    "fr": "Appareil de Golgi"
+  },
+  "tagline": {
+    "fr": "Le centre de tri et d’expédition"
+  },
+  "summary": {
+    "text": {
+      "fr": "Empilement de citernes aplaties qui reçoit les protéines du réticulum endoplasmique, les modifie (notamment par glycosylation), les trie et les expédie vers leur destination."
+    },
+    "sources": [
+      {
+        "id": "alberts-mboc-4"
+      },
+      {
+        "id": "cooper-cell-2"
+      }
+    ]
+  }
+}

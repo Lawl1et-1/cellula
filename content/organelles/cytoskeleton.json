@@ -1,0 +1,22 @@
+{
+  "id": "cytoskeleton",
+  "name": {
+    "fr": "Cytosquelette"
+  },
+  "tagline": {
+    "fr": "Charpente et autoroutes de la cellule"
+  },
+  "summary": {
+    "text": {
+      "fr": "Réseau de filaments protéiques — microfilaments d'actine, microtubules et filaments intermédiaires — qui donne sa forme à la cellule, lui permet de bouger et sert de rails au transport intracellulaire."
+    },
+    "sources": [
+      {
+        "id": "alberts-mboc-4"
+      },
+      {
+        "id": "cooper-cell-2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "vesicle",
+  "name": {
+    "fr": "Vésicules"
+  },
+  "tagline": {
+    "fr": "Les navettes de transport"
+  },
+  "summary": {
+    "text": {
+      "fr": "Petits sacs membranaires qui bourgeonnent d'un compartiment et fusionnent avec un autre, transportant protéines et lipides entre organites et vers la surface cellulaire."
+    },
+    "sources": [
+      {
+        "id": "alberts-mboc-4"
+      },
+      {
+        "id": "cooper-cell-2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "nucleolus",
+  "name": {
+    "fr": "Nucléole"
+  },
+  "tagline": {
+    "fr": "L’usine à ribosomes"
+  },
+  "summary": {
+    "text": {
+      "fr": "Région dense du noyau, sans membrane, où les ARN ribosomiques sont transcrits et assemblés avec des protéines pour former les sous-unités des ribosomes."
+    },
+    "sources": [
+      {
+        "id": "alberts-mboc-4"
+      },
+      {
+        "id": "cooper-cell-2"
+      }
+    ]
+  }
+}

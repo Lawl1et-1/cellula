@@ -1,0 +1,22 @@
+{
+  "id": "rough-er",
+  "name": {
+    "fr": "Réticulum endoplasmique rugueux"
+  },
+  "tagline": {
+    "fr": "Le chantier des protéines sécrétées"
+  },
+  "summary": {
+    "text": {
+      "fr": "Réseau de citernes aplaties, en continuité avec l'enveloppe nucléaire, couvert de ribosomes. Les protéines destinées à la sécrétion, aux membranes et aux lysosomes y sont synthétisées et repliées."
+    },
+    "sources": [
+      {
+        "id": "alberts-mboc-4"
+      },
+      {
+        "id": "cooper-cell-2"
+      }
+    ]
+  }
+}

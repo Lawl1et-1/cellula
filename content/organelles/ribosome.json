@@ -1,0 +1,22 @@
+{
+  "id": "ribosome",
+  "name": {
+    "fr": "Ribosome"
+  },
+  "tagline": {
+    "fr": "La machine qui traduit l’ARN en protéine"
+  },
+  "summary": {
+    "text": {
+      "fr": "Complexe d'ARN et de protéines, formé de deux sous-unités, qui lit l'ARN messager et assemble les acides aminés en chaîne protéique. Libre dans le cytosol ou fixé au réticulum endoplasmique."
+    },
+    "sources": [
+      {
+        "id": "alberts-mboc-4"
+      },
+      {
+        "id": "cooper-cell-2"
+      }
+    ]
+  }
+}

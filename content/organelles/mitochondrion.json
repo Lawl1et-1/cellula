@@ -1,0 +1,22 @@
+{
+  "id": "mitochondrion",
+  "name": {
+    "fr": "Mitochondrie"
+  },
+  "tagline": {
+    "fr": "La centrale énergétique"
+  },
+  "summary": {
+    "text": {
+      "fr": "Organite à double membrane dont la membrane interne, repliée en crêtes, porte la chaîne respiratoire. Elle produit l'essentiel de l'ATP de la cellule par phosphorylation oxydative et possède son propre ADN."
+    },
+    "sources": [
+      {
+        "id": "alberts-mboc-4"
+      },
+      {
+        "id": "cooper-cell-2"
+      }
+    ]
+  }
+}

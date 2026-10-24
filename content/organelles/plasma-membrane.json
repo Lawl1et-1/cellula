@@ -1,0 +1,22 @@
+{
+  "id": "plasma-membrane",
+  "name": {
+    "fr": "Membrane plasmique"
+  },
+  "tagline": {
+    "fr": "La frontière vivante de la cellule"
+  },
+  "summary": {
+    "text": {
+      "fr": "Bicouche lipidique d'environ 5 nm d'épaisseur, parsemée de protéines, qui sépare l'intérieur de la cellule du milieu extérieur et contrôle les échanges."
+    },
+    "sources": [
+      {
+        "id": "alberts-mboc-4"
+      },
+      {
+        "id": "cooper-cell-2"
+      }
+    ]
+  }
+}

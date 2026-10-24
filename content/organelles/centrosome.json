@@ -1,0 +1,22 @@
+{
+  "id": "centrosome",
+  "name": {
+    "fr": "Centrosome"
+  },
+  "tagline": {
+    "fr": "Le centre organisateur des microtubules"
+  },
+  "summary": {
+    "text": {
+      "fr": "Structure proche du noyau formée de deux centrioles entourés de matériel péricentriolaire, d'où rayonnent les microtubules. Il se duplique avant la mitose pour organiser le fuseau."
+    },
+    "sources": [
+      {
+        "id": "alberts-mboc-4"
+      },
+      {
+        "id": "cooper-cell-2"
+      }
+    ]
+  }
+}

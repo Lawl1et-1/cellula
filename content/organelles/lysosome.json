@@ -1,0 +1,22 @@
+{
+  "id": "lysosome",
+  "name": {
+    "fr": "Lysosome"
+  },
+  "tagline": {
+    "fr": "Le centre de recyclage"
+  },
+  "summary": {
+    "text": {
+      "fr": "Vésicule acide (pH d'environ 5) contenant des dizaines d'enzymes hydrolytiques capables de dégrader protéines, lipides, glucides et acides nucléiques."
+    },
+    "sources": [
+      {
+        "id": "alberts-mboc-4"
+      },
+      {
+        "id": "cooper-cell-2"
+      }
+    ]
+  }
+}
