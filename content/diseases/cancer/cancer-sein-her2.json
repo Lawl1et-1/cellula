@@ -1,0 +1,278 @@
+{
+  "id": "cancer-sein-her2",
+  "slug": "cancer-du-sein-her2",
+  "name": {
+    "fr": "Cancer du sein HER2-positif"
+  },
+  "aliases": [],
+  "categories": [
+    "cancer"
+  ],
+  "cellContext": {
+    "cellType": "epithelial",
+    "note": {
+      "text": {
+        "fr": "Il s'agit de cellules épithéliales de la glande mammaire. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "sp-breast-cancer"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Forme de cancer du sein où les cellules portent un très grand nombre de récepteurs HER2 à leur surface, ce qui stimule en permanence leur croissance et leur division."
+    },
+    "sources": [
+      {
+        "id": "pm-her2-2014"
+      },
+      {
+        "id": "sp-breast-cancer"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Une amplification du gène HER2 (ERBB2) : de nombreuses copies du gène entraînent une surexpression du récepteur."
+      },
+      "sources": [
+        {
+          "id": "pm-her2-2014"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "plasma-membrane",
+    "nucleus"
+  ],
+  "affectedPathways": [
+    "signalisation des récepteurs de croissance"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Amplification"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Le gène HER2 est présent en de nombreuses copies."
+        },
+        "sources": [
+          {
+            "id": "pm-her2-2014"
+          }
+        ]
+      },
+      "organelle": "nucleus"
+    },
+    {
+      "title": {
+        "fr": "Récepteurs en excès"
+      },
+      "explanation": {
+        "text": {
+          "fr": "La membrane porte beaucoup trop de récepteurs HER2, qui envoient en continu des signaux de croissance."
+        },
+        "sources": [
+          {
+            "id": "pm-her2-2014"
+          }
+        ]
+      },
+      "organelle": "plasma-membrane"
+    },
+    {
+      "title": {
+        "fr": "Prolifération"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Les cellules se divisent davantage."
+        },
+        "sources": [
+          {
+            "id": "pm-her2-2014"
+          },
+          {
+            "id": "mboc4-cancer-division"
+          }
+        ]
+      }
+    }
+  ],
+  "stages": [
+    {
+      "id": "amplification",
+      "title": {
+        "fr": "Amplification du gène"
+      },
+      "range": [
+        0,
+        0.3
+      ],
+      "description": {
+        "text": {
+          "fr": "Le gène HER2 est amplifié dans le noyau."
+        },
+        "sources": [
+          {
+            "id": "pm-her2-2014"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "nucleus"
+    },
+    {
+      "id": "recepteurs",
+      "title": {
+        "fr": "Surexpression de HER2"
+      },
+      "range": [
+        0.3,
+        0.65
+      ],
+      "description": {
+        "text": {
+          "fr": "Les récepteurs HER2 s'accumulent à la surface de la cellule."
+        },
+        "sources": [
+          {
+            "id": "pm-her2-2014"
+          }
+        ],
+        "simplification": {
+          "fr": "Les récepteurs représentés sont génériques ; leur nombre figure la surexpression de HER2."
+        }
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Membrane couverte de récepteurs."
+          },
+          "sources": [
+            {
+              "id": "pm-her2-2014"
+            }
+          ]
+        }
+      ],
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "proliferation",
+      "title": {
+        "fr": "Prolifération"
+      },
+      "range": [
+        0.65,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les signaux de croissance permanents entraînent la prolifération."
+        },
+        "sources": [
+          {
+            "id": "pm-her2-2014"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "view": "cell",
+        "radius": 170
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "membrane.receptorDensity",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.3,
+          "v": 1.2
+        },
+        {
+          "t": 0.65,
+          "v": 4
+        }
+      ]
+    },
+    {
+      "channel": "cell.divisionRate",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.65,
+          "v": 1.3
+        },
+        {
+          "t": 1,
+          "v": 4
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.25
+        },
+        {
+          "t": 0.95,
+          "v": 0.25
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "pulse",
+      "at": 0.0,
+      "until": 0.3,
+      "params": {
+        "at": "nucleus"
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Des thérapies ciblées anti-HER2 existent ; les traitements relèvent d'une équipe médicale spécialisée."
+    },
+    "sources": [
+      {
+        "id": "pm-her2-2014"
+      },
+      {
+        "id": "sp-breast-cancer"
+      }
+    ]
+  }
+}

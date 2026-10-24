@@ -1,0 +1,307 @@
+{
+  "id": "tuberculose",
+  "slug": "tuberculose",
+  "name": {
+    "fr": "Tuberculose"
+  },
+  "aliases": [],
+  "categories": [
+    "infectious"
+  ],
+  "cellContext": {
+    "cellType": "macrophage",
+    "note": {
+      "text": {
+        "fr": "La bactérie infecte surtout les macrophages des alvéoles pulmonaires. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "sp-tuberculosis"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Infection par Mycobacterium tuberculosis, qui survit à l'intérieur des macrophages en empêchant la maturation du phagosome qui la contient."
+    },
+    "sources": [
+      {
+        "id": "sp-tuberculosis"
+      },
+      {
+        "id": "pm-tb-phagosome-2004"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "La bactérie Mycobacterium tuberculosis, transmise par voie aérienne."
+      },
+      "sources": [
+        {
+          "id": "sp-tuberculosis"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "vesicle",
+    "lysosome"
+  ],
+  "affectedPathways": [
+    "phagocytose",
+    "maturation du phagosome"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Phagocytose"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Le macrophage englobe la bactérie dans un phagosome."
+        },
+        "sources": [
+          {
+            "id": "sp-tuberculosis"
+          },
+          {
+            "id": "mboc4-pathogen-traffic"
+          }
+        ]
+      },
+      "organelle": "vesicle"
+    },
+    {
+      "title": {
+        "fr": "Maturation bloquée"
+      },
+      "explanation": {
+        "text": {
+          "fr": "La bactérie empêche le phagosome de mûrir et de fusionner avec les lysosomes, qui l'auraient détruite."
+        },
+        "sources": [
+          {
+            "id": "pm-tb-phagosome-2004"
+          },
+          {
+            "id": "mboc4-pathogen-traffic"
+          }
+        ]
+      },
+      "organelle": "lysosome"
+    },
+    {
+      "title": {
+        "fr": "Persistance"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Protégée dans son phagosome, la bactérie se multiplie ; l'organisme forme des granulomes autour des cellules infectées."
+        },
+        "sources": [
+          {
+            "id": "sp-tuberculosis"
+          }
+        ]
+      }
+    }
+  ],
+  "stages": [
+    {
+      "id": "phagocytose",
+      "title": {
+        "fr": "Phagocytose"
+      },
+      "range": [
+        0,
+        0.25
+      ],
+      "description": {
+        "text": {
+          "fr": "Le macrophage englobe les bactéries."
+        },
+        "sources": [
+          {
+            "id": "sp-tuberculosis"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm"
+    },
+    {
+      "id": "blocage",
+      "title": {
+        "fr": "Phagosome bloqué"
+      },
+      "range": [
+        0.25,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "Le phagosome ne fusionne pas avec les lysosomes."
+        },
+        "sources": [
+          {
+            "id": "pm-tb-phagosome-2004"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Bactéries vivantes à l'intérieur de vacuoles."
+          },
+          "sources": [
+            {
+              "id": "pm-tb-phagosome-2004"
+            }
+          ]
+        }
+      ],
+      "focus": "cytoplasm",
+      "camera": {
+        "radius": 40
+      }
+    },
+    {
+      "id": "multiplication",
+      "title": {
+        "fr": "Multiplication"
+      },
+      "range": [
+        0.6,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les bactéries survivent et se multiplient à l'intérieur du macrophage."
+        },
+        "sources": [
+          {
+            "id": "sp-tuberculosis"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm"
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "cytoplasm.bacteria",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.1
+        },
+        {
+          "t": 0.25,
+          "v": 0.3
+        },
+        {
+          "t": 0.6,
+          "v": 0.5
+        },
+        {
+          "t": 1,
+          "v": 0.9
+        }
+      ]
+    },
+    {
+      "channel": "cytoplasm.phagosomes",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "lysosome.count",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.6,
+          "v": 1.4
+        }
+      ]
+    },
+    {
+      "channel": "cell.viability",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.85,
+          "v": 1
+        },
+        {
+          "t": 1,
+          "v": 0.75
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.45
+        },
+        {
+          "t": 0.95,
+          "v": 0.45
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "path",
+      "at": 0.0,
+      "until": 0.25,
+      "params": {
+        "path": [
+          "outside",
+          "membrane",
+          "endosome"
+        ],
+        "cargo": "vesicle",
+        "count": 3
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Le traitement repose sur une association d'antibiotiques prise plusieurs mois ; il relève d'un avis médical."
+    },
+    "sources": [
+      {
+        "id": "sp-tuberculosis"
+      }
+    ]
+  }
+}

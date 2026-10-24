@@ -1,0 +1,273 @@
+{
+  "id": "mucoviscidose",
+  "slug": "mucoviscidose",
+  "name": {
+    "fr": "Mucoviscidose"
+  },
+  "aliases": [],
+  "categories": [
+    "genetic"
+  ],
+  "cellContext": {
+    "cellType": "epithelial",
+    "note": {
+      "text": {
+        "fr": "Les cellules épithéliales des voies respiratoires, du pancréas et d'autres organes sont touchées. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "gr-cf"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie génétique due à des variants du gène CFTR, qui code un canal à chlorure de la membrane des cellules épithéliales. Avec le variant le plus fréquent, la protéine est mal repliée et retenue dans le réticulum endoplasmique."
+    },
+    "sources": [
+      {
+        "id": "gr-cf"
+      },
+      {
+        "id": "mboc4-er"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Des variants des deux copies du gène CFTR ; le plus fréquent est p.Phe508del."
+      },
+      "sources": [
+        {
+          "id": "gr-cf"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "rough-er",
+    "plasma-membrane"
+  ],
+  "affectedPathways": [
+    "contrôle qualité du RE",
+    "transport du chlore"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Protéine mal repliée"
+      },
+      "explanation": {
+        "text": {
+          "fr": "La protéine CFTR mutée est mal repliée et retenue par le contrôle qualité du RE, puis dégradée."
+        },
+        "sources": [
+          {
+            "id": "mboc4-er"
+          },
+          {
+            "id": "gr-cf"
+          }
+        ]
+      },
+      "organelle": "rough-er"
+    },
+    {
+      "title": {
+        "fr": "Moins de canaux à la membrane"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Moins de canaux CFTR fonctionnels atteignent la membrane : le transport du chlore et de l'eau est perturbé, et le mucus s'épaissit."
+        },
+        "sources": [
+          {
+            "id": "gr-cf"
+          }
+        ]
+      },
+      "organelle": "plasma-membrane"
+    }
+  ],
+  "stages": [
+    {
+      "id": "synthese",
+      "title": {
+        "fr": "Synthèse de CFTR"
+      },
+      "range": [
+        0,
+        0.3
+      ],
+      "description": {
+        "text": {
+          "fr": "La protéine CFTR est fabriquée dans le réticulum endoplasmique."
+        },
+        "sources": [
+          {
+            "id": "mboc4-er"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "rough-er"
+    },
+    {
+      "id": "retention",
+      "title": {
+        "fr": "Rétention et dégradation"
+      },
+      "range": [
+        0.3,
+        0.65
+      ],
+      "description": {
+        "text": {
+          "fr": "Mal repliée, elle est retenue dans le RE puis dégradée au lieu d'être envoyée vers la membrane."
+        },
+        "sources": [
+          {
+            "id": "mboc4-er"
+          },
+          {
+            "id": "gr-cf"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Protéines retenues dans le RE."
+          },
+          "sources": [
+            {
+              "id": "mboc4-er"
+            }
+          ]
+        }
+      ],
+      "focus": "rough-er"
+    },
+    {
+      "id": "membrane",
+      "title": {
+        "fr": "Membrane appauvrie"
+      },
+      "range": [
+        0.65,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Faute de canaux CFTR à la membrane, le chlore sort moins de la cellule et les sécrétions s'épaississent."
+        },
+        "sources": [
+          {
+            "id": "gr-cf"
+          }
+        ],
+        "simplification": {
+          "fr": "Les récepteurs de la membrane représentent ici l'ensemble de ses protéines : leur raréfaction figure la perte de CFTR."
+        }
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "er.retainedCargo",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.3,
+          "v": 0.2
+        },
+        {
+          "t": 0.65,
+          "v": 0.9
+        }
+      ]
+    },
+    {
+      "channel": "er.stress",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.65,
+          "v": 0.3
+        }
+      ]
+    },
+    {
+      "channel": "membrane.receptorDensity",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.65,
+          "v": 1
+        },
+        {
+          "t": 0.9,
+          "v": 0.35
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.45
+        },
+        {
+          "t": 0.95,
+          "v": 0.45
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "pulse",
+      "at": 0.3,
+      "until": 0.65,
+      "params": {
+        "at": "rough-er"
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Des modulateurs de CFTR peuvent améliorer le repliement et la fonction de la protéine chez certains patients ; ils relèvent d'un avis spécialisé."
+    },
+    "sources": [
+      {
+        "id": "gr-cf"
+      }
+    ]
+  }
+}

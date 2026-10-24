@@ -1,0 +1,368 @@
+{
+  "id": "vih",
+  "slug": "vih-sida",
+  "name": {
+    "fr": "Infection par le VIH"
+  },
+  "aliases": [
+    "VIH",
+    "SIDA"
+  ],
+  "categories": [
+    "infectious"
+  ],
+  "cellContext": {
+    "cellType": "t-lymphocyte",
+    "note": {
+      "text": {
+        "fr": "Le VIH infecte surtout les lymphocytes T CD4, des cellules du système immunitaire. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "sp-hiv"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Infection par le VIH, un rétrovirus : son génome d'ARN est recopié en ADN puis intégré dans les chromosomes de la cellule, qui produit alors de nouveaux virus."
+    },
+    "sources": [
+      {
+        "id": "sp-hiv"
+      },
+      {
+        "id": "mboc4-viral-integration"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Le virus de l'immunodéficience humaine, transmis notamment par voie sexuelle ou sanguine."
+      },
+      "sources": [
+        {
+          "id": "sp-hiv"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "plasma-membrane",
+    "nucleus"
+  ],
+  "affectedPathways": [
+    "entrée virale",
+    "transcription inverse",
+    "intégration"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Entrée"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Le virus se fixe au récepteur CD4 et à un corécepteur, puis son enveloppe fusionne avec la membrane."
+        },
+        "sources": [
+          {
+            "id": "sp-hiv"
+          },
+          {
+            "id": "mboc4-virus-entry"
+          }
+        ]
+      },
+      "organelle": "plasma-membrane"
+    },
+    {
+      "title": {
+        "fr": "Intégration"
+      },
+      "explanation": {
+        "text": {
+          "fr": "La transcriptase inverse recopie l'ARN viral en ADN, que l'intégrase insère dans un chromosome de la cellule."
+        },
+        "sources": [
+          {
+            "id": "sp-hiv"
+          },
+          {
+            "id": "mboc4-viral-integration"
+          }
+        ]
+      },
+      "organelle": "nucleus"
+    },
+    {
+      "title": {
+        "fr": "Production et perte de lymphocytes"
+      },
+      "explanation": {
+        "text": {
+          "fr": "La cellule produit de nouveaux virus ; au fil du temps, le nombre de lymphocytes T CD4 diminue."
+        },
+        "sources": [
+          {
+            "id": "sp-hiv"
+          }
+        ]
+      }
+    }
+  ],
+  "stages": [
+    {
+      "id": "entree",
+      "title": {
+        "fr": "Fusion"
+      },
+      "range": [
+        0,
+        0.2
+      ],
+      "description": {
+        "text": {
+          "fr": "Le virus fusionne avec la membrane du lymphocyte."
+        },
+        "sources": [
+          {
+            "id": "sp-hiv"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "integration",
+      "title": {
+        "fr": "Intégration"
+      },
+      "range": [
+        0.2,
+        0.5
+      ],
+      "description": {
+        "text": {
+          "fr": "L'ADN viral entre dans le noyau et s'intègre au génome."
+        },
+        "sources": [
+          {
+            "id": "mboc4-viral-integration"
+          },
+          {
+            "id": "sp-hiv"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "nucleus"
+    },
+    {
+      "id": "production",
+      "title": {
+        "fr": "Production de virus"
+      },
+      "range": [
+        0.5,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "Les gènes viraux sont exprimés et de nouveaux virions s'assemblent à la membrane."
+        },
+        "sources": [
+          {
+            "id": "sp-hiv"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "perte",
+      "title": {
+        "fr": "Mort du lymphocyte"
+      },
+      "range": [
+        0.8,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les lymphocytes T CD4 infectés finissent par mourir."
+        },
+        "sources": [
+          {
+            "id": "sp-hiv"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "view": "cell",
+        "radius": 120
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "cytoplasm.viralParticles",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.5,
+          "v": 0.05
+        },
+        {
+          "t": 0.8,
+          "v": 0.8
+        }
+      ]
+    },
+    {
+      "channel": "cell.viability",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.8,
+          "v": 0.85
+        },
+        {
+          "t": 1,
+          "v": 0.4
+        }
+      ]
+    },
+    {
+      "channel": "membrane.blebbing",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.85,
+          "v": 0
+        },
+        {
+          "t": 1,
+          "v": 0.5
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.45
+        },
+        {
+          "t": 0.95,
+          "v": 0.45
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "path",
+      "at": 0.0,
+      "until": 0.22,
+      "params": {
+        "path": [
+          "outside",
+          "membrane",
+          "cytoplasm"
+        ],
+        "cargo": "virion",
+        "count": 2
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.18,
+      "until": 0.42,
+      "params": {
+        "path": [
+          "cytoplasm",
+          "nucleus.pore",
+          "nucleus"
+        ],
+        "cargo": "mrna",
+        "count": 3
+      }
+    },
+    {
+      "actor": "pulse",
+      "at": 0.3,
+      "until": 0.55,
+      "params": {
+        "at": "nucleus"
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.5,
+      "until": 0.75,
+      "params": {
+        "path": [
+          "nucleus",
+          "nucleus.pore",
+          "rough-er"
+        ],
+        "cargo": "mrna",
+        "count": 5
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.62,
+      "until": 0.92,
+      "params": {
+        "path": [
+          "rough-er",
+          "golgi.trans",
+          "membrane",
+          "outside"
+        ],
+        "cargo": "virion",
+        "count": 8
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Les traitements antirétroviraux contrôlent l'infection ; ils relèvent d'un avis médical."
+    },
+    "sources": [
+      {
+        "id": "sp-hiv"
+      }
+    ]
+  }
+}

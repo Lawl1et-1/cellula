@@ -1,0 +1,242 @@
+{
+  "id": "progeria",
+  "slug": "progeria-de-hutchinson-gilford",
+  "name": {
+    "fr": "Progéria de Hutchinson-Gilford"
+  },
+  "aliases": [
+    "HGPS"
+  ],
+  "categories": [
+    "genetic"
+  ],
+  "cellContext": {
+    "cellType": "fibroblast",
+    "note": {
+      "text": {
+        "fr": "Les fibroblastes des patients montrent des noyaux déformés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "gr-hgps"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie génétique rare de vieillissement prématuré : une forme anormale de lamine A, la progérine, s'accumule et déforme l'enveloppe nucléaire."
+    },
+    "sources": [
+      {
+        "id": "gr-hgps"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Un variant du gène LMNA, le plus souvent apparu de novo, produit la progérine."
+      },
+      "sources": [
+        {
+          "id": "gr-hgps"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "nucleus"
+  ],
+  "affectedPathways": [
+    "lamina nucléaire"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Progérine"
+      },
+      "explanation": {
+        "text": {
+          "fr": "La progérine reste ancrée à l'enveloppe nucléaire et perturbe la lamina, le réseau qui soutient le noyau."
+        },
+        "sources": [
+          {
+            "id": "gr-hgps"
+          }
+        ]
+      },
+      "organelle": "nucleus"
+    },
+    {
+      "title": {
+        "fr": "Noyau déformé"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Le noyau prend une forme irrégulière, avec des bourgeonnements de l'enveloppe."
+        },
+        "sources": [
+          {
+            "id": "gr-hgps"
+          }
+        ]
+      },
+      "organelle": "nucleus"
+    }
+  ],
+  "stages": [
+    {
+      "id": "progerine",
+      "title": {
+        "fr": "Production de progérine"
+      },
+      "range": [
+        0,
+        0.35
+      ],
+      "description": {
+        "text": {
+          "fr": "Le variant produit une lamine A anormale, la progérine."
+        },
+        "sources": [
+          {
+            "id": "gr-hgps"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "nucleus"
+    },
+    {
+      "id": "enveloppe",
+      "title": {
+        "fr": "Enveloppe déformée"
+      },
+      "range": [
+        0.35,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "La progérine s'accumule et l'enveloppe nucléaire se déforme."
+        },
+        "sources": [
+          {
+            "id": "gr-hgps"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Noyaux irréguliers, enveloppe bosselée."
+          },
+          "sources": [
+            {
+              "id": "gr-hgps"
+            }
+          ]
+        }
+      ],
+      "focus": "nucleus"
+    },
+    {
+      "id": "vieillissement",
+      "title": {
+        "fr": "Vieillissement cellulaire"
+      },
+      "range": [
+        0.8,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les cellules montrent des signes de vieillissement prématuré."
+        },
+        "sources": [
+          {
+            "id": "gr-hgps"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "nucleus",
+      "camera": {
+        "radius": 45
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "nucleus.envelopeBlebbing",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.35,
+          "v": 0.15
+        },
+        {
+          "t": 0.8,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "cytoplasm.tint",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.8,
+          "v": 0.1
+        },
+        {
+          "t": 1,
+          "v": 0.25
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.5
+        },
+        {
+          "t": 0.95,
+          "v": 0.5
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Un inhibiteur de farnésyltransférase (lonafarnib) est utilisé ; il relève d'un avis spécialisé."
+    },
+    "sources": [
+      {
+        "id": "gr-hgps"
+      }
+    ]
+  }
+}

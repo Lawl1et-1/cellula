@@ -1,0 +1,386 @@
+{
+  "id": "diabete-type-1",
+  "slug": "diabete-de-type-1",
+  "name": {
+    "fr": "Diabète de type 1"
+  },
+  "aliases": [],
+  "categories": [
+    "autoimmune",
+    "metabolic"
+  ],
+  "cellContext": {
+    "cellType": "beta-cell",
+    "note": {
+      "text": {
+        "fr": "La cellule représentée est une cellule bêta du pancréas, celle qui produit l'insuline. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "sp-t1d"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie auto-immune : le système immunitaire détruit les cellules bêta du pancréas, qui produisent l'insuline."
+    },
+    "sources": [
+      {
+        "id": "sp-t1d"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Une réaction auto-immune, sur un terrain génétique favorable, dirigée contre les cellules bêta."
+      },
+      "sources": [
+        {
+          "id": "sp-t1d"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "plasma-membrane",
+    "nucleus"
+  ],
+  "affectedPathways": [
+    "réponse immunitaire",
+    "apoptose"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Attaque immunitaire"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Des lymphocytes T s'attaquent aux cellules bêta."
+        },
+        "sources": [
+          {
+            "id": "sp-t1d"
+          }
+        ]
+      }
+    },
+    {
+      "title": {
+        "fr": "Mort par apoptose"
+      },
+      "explanation": {
+        "text": {
+          "fr": "La cellule meurt par apoptose : elle se rétracte, sa membrane bourgeonne et sa chromatine se condense puis se fragmente."
+        },
+        "sources": [
+          {
+            "id": "mboc4-apoptosis"
+          }
+        ]
+      },
+      "organelle": "nucleus"
+    },
+    {
+      "title": {
+        "fr": "Carence en insuline"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Quand la plupart des cellules bêta sont détruites, l'insuline manque."
+        },
+        "sources": [
+          {
+            "id": "sp-t1d"
+          }
+        ]
+      }
+    }
+  ],
+  "stages": [
+    {
+      "id": "attaque",
+      "title": {
+        "fr": "Attaque immunitaire"
+      },
+      "range": [
+        0,
+        0.3
+      ],
+      "description": {
+        "text": {
+          "fr": "Des lymphocytes T reconnaissent et attaquent la cellule bêta."
+        },
+        "sources": [
+          {
+            "id": "sp-t1d"
+          }
+        ],
+        "simplification": {
+          "fr": "Les signaux venus des cellules immunitaires sont représentés par des particules qui arrivent de l'extérieur."
+        }
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "caspases",
+      "title": {
+        "fr": "Déclenchement de l'apoptose"
+      },
+      "range": [
+        0.3,
+        0.55
+      ],
+      "description": {
+        "text": {
+          "fr": "Une cascade de protéases, les caspases, déclenche la mort cellulaire programmée."
+        },
+        "sources": [
+          {
+            "id": "mboc4-apoptosis-cascade"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "nucleus"
+    },
+    {
+      "id": "apoptose",
+      "title": {
+        "fr": "Apoptose"
+      },
+      "range": [
+        0.55,
+        0.85
+      ],
+      "description": {
+        "text": {
+          "fr": "La cellule se rétracte, sa membrane bourgeonne, son noyau se condense et se fragmente."
+        },
+        "sources": [
+          {
+            "id": "mboc4-apoptosis"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Bourgeonnement de la membrane."
+          },
+          "sources": [
+            {
+              "id": "mboc4-apoptosis"
+            }
+          ]
+        },
+        {
+          "text": {
+            "fr": "Chromatine condensée, noyau fragmenté."
+          },
+          "sources": [
+            {
+              "id": "mboc4-apoptosis"
+            }
+          ]
+        }
+      ],
+      "focus": "nucleus",
+      "camera": {
+        "radius": 50
+      }
+    },
+    {
+      "id": "perte",
+      "title": {
+        "fr": "Perte des cellules bêta"
+      },
+      "range": [
+        0.85,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "La destruction des cellules bêta entraîne une carence en insuline."
+        },
+        "sources": [
+          {
+            "id": "sp-t1d"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "view": "cell",
+        "radius": 120
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "membrane.blebbing",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.55,
+          "v": 0
+        },
+        {
+          "t": 0.85,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "nucleus.chromatinCondensation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.5,
+          "v": 0
+        },
+        {
+          "t": 0.75,
+          "v": 0.8
+        }
+      ]
+    },
+    {
+      "channel": "nucleus.fragmentation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.65,
+          "v": 0
+        },
+        {
+          "t": 0.85,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "cell.shrinkage",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.55,
+          "v": 0
+        },
+        {
+          "t": 1,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "cell.viability",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.4,
+          "v": 0.9
+        },
+        {
+          "t": 1,
+          "v": 0.15
+        }
+      ]
+    },
+    {
+      "channel": "mitochondria.potential",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.4,
+          "v": 1
+        },
+        {
+          "t": 0.7,
+          "v": 0.4
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.3
+        },
+        {
+          "t": 0.95,
+          "v": 0.3
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "path",
+      "at": 0.0,
+      "until": 0.3,
+      "params": {
+        "path": [
+          "outside",
+          "membrane"
+        ],
+        "cargo": "cytokine",
+        "count": 10
+      }
+    },
+    {
+      "actor": "pulse",
+      "at": 0.3,
+      "until": 0.55,
+      "params": {
+        "at": "nucleus"
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Le traitement repose sur l'insuline ; il relève d'un avis médical."
+    },
+    "sources": [
+      {
+        "id": "sp-t1d"
+      }
+    ]
+  }
+}

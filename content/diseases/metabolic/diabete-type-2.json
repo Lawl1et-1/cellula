@@ -1,0 +1,234 @@
+{
+  "id": "diabete-type-2",
+  "slug": "diabete-de-type-2",
+  "name": {
+    "fr": "Diabète de type 2"
+  },
+  "aliases": [],
+  "categories": [
+    "metabolic"
+  ],
+  "cellContext": {
+    "cellType": "generic",
+    "note": {
+      "text": {
+        "fr": "Les muscles, le foie et le tissu adipeux deviennent résistants à l'insuline. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "sp-t2d"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie métabolique : les cellules répondent moins bien à l'insuline (insulinorésistance) et le pancréas n'en produit plus assez pour compenser, d'où une hyperglycémie."
+    },
+    "sources": [
+      {
+        "id": "sp-t2d"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Une combinaison de prédisposition génétique et de facteurs de mode de vie, notamment le surpoids et la sédentarité."
+      },
+      "sources": [
+        {
+          "id": "sp-t2d"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "plasma-membrane"
+  ],
+  "affectedPathways": [
+    "signalisation de l'insuline",
+    "entrée du glucose"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Insulinorésistance"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Les cellules répondent moins à l'insuline et captent moins de glucose."
+        },
+        "sources": [
+          {
+            "id": "sp-t2d"
+          }
+        ]
+      },
+      "organelle": "plasma-membrane"
+    },
+    {
+      "title": {
+        "fr": "Épuisement des cellules bêta"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Avec le temps, la sécrétion d'insuline par les cellules bêta du pancréas devient insuffisante."
+        },
+        "sources": [
+          {
+            "id": "sp-t2d"
+          }
+        ]
+      }
+    }
+  ],
+  "stages": [
+    {
+      "id": "normal",
+      "title": {
+        "fr": "Réponse normale"
+      },
+      "range": [
+        0,
+        0.3
+      ],
+      "description": {
+        "text": {
+          "fr": "Sous l'effet de l'insuline, le glucose entre dans la cellule."
+        },
+        "sources": [
+          {
+            "id": "sp-t2d"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "resistance",
+      "title": {
+        "fr": "Insulinorésistance"
+      },
+      "range": [
+        0.3,
+        0.7
+      ],
+      "description": {
+        "text": {
+          "fr": "La cellule répond moins à l'insuline : le glucose entre moins."
+        },
+        "sources": [
+          {
+            "id": "sp-t2d"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "hyperglycemie",
+      "title": {
+        "fr": "Hyperglycémie"
+      },
+      "range": [
+        0.7,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Le glucose reste dans le sang."
+        },
+        "sources": [
+          {
+            "id": "sp-t2d"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.35
+        },
+        {
+          "t": 0.95,
+          "v": 0.35
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    },
+    {
+      "channel": "cytoplasm.tint",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 1,
+          "v": 0.15
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "path",
+      "at": 0.0,
+      "until": 0.3,
+      "params": {
+        "path": [
+          "outside",
+          "membrane",
+          "cytoplasm"
+        ],
+        "cargo": "glucose",
+        "count": 6
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.35,
+      "until": 1.0,
+      "params": {
+        "path": [
+          "outside",
+          "membrane",
+          "outside"
+        ],
+        "cargo": "glucose",
+        "count": 12
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Le traitement associe hygiène de vie et médicaments ; il relève d'un avis médical."
+    },
+    "sources": [
+      {
+        "id": "sp-t2d"
+      }
+    ]
+  }
+}

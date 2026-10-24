@@ -1,0 +1,284 @@
+{
+  "id": "carcinogenese",
+  "slug": "cancer-carcinogenese",
+  "name": {
+    "fr": "Cancer : la cellule qui échappe aux règles"
+  },
+  "aliases": [],
+  "categories": [
+    "cancer",
+    "genetic"
+  ],
+  "cellContext": {
+    "cellType": "epithelial",
+    "note": {
+      "text": {
+        "fr": "La plupart des cancers naissent de cellules épithéliales. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "mboc4-cancer"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Un cancer naît d'une cellule qui accumule des mutations : elle se divise sans contrôle, échappe à la mort cellulaire programmée et devient génétiquement instable."
+    },
+    "sources": [
+      {
+        "id": "mboc4-cancer"
+      },
+      {
+        "id": "mboc4-cancer-behaviour"
+      }
+    ],
+    "simplification": {
+      "fr": "Les cellules voisines qui apparaissent et le noyau qui grossit sont des représentations schématiques."
+    }
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Des mutations s'accumulent dans des gènes qui contrôlent la division (oncogènes et gènes suppresseurs de tumeur), par exemple le gène p53."
+      },
+      "sources": [
+        {
+          "id": "mboc4-cancer-behaviour"
+        },
+        {
+          "id": "mboc4-cancer-division"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "nucleus",
+    "cytoskeleton"
+  ],
+  "affectedPathways": [
+    "contrôle du cycle cellulaire",
+    "apoptose"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Division incontrôlée"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Les gènes mutés stimulent la division ou ne la freinent plus."
+        },
+        "sources": [
+          {
+            "id": "mboc4-cancer-division"
+          }
+        ]
+      },
+      "organelle": "nucleus"
+    },
+    {
+      "title": {
+        "fr": "Échappement à l'apoptose"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Des mutations de gènes qui régulent l'apoptose permettent aux cellules cancéreuses de ne pas mourir."
+        },
+        "sources": [
+          {
+            "id": "mboc4-cancer-apoptosis"
+          }
+        ]
+      }
+    },
+    {
+      "title": {
+        "fr": "Instabilité génétique"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Chaque cancer porte son propre ensemble de lésions génétiques, qui s'accumulent au fil des divisions."
+        },
+        "sources": [
+          {
+            "id": "mboc4-cancer-behaviour"
+          }
+        ]
+      },
+      "organelle": "nucleus"
+    }
+  ],
+  "stages": [
+    {
+      "id": "mutation",
+      "title": {
+        "fr": "Premières mutations"
+      },
+      "range": [
+        0,
+        0.3
+      ],
+      "description": {
+        "text": {
+          "fr": "Une cellule acquiert une mutation dans un gène qui contrôle la division."
+        },
+        "sources": [
+          {
+            "id": "mboc4-cancer-division"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "nucleus"
+    },
+    {
+      "id": "proliferation",
+      "title": {
+        "fr": "Prolifération"
+      },
+      "range": [
+        0.3,
+        0.65
+      ],
+      "description": {
+        "text": {
+          "fr": "Elle se divise plus que ses voisines et transmet ses mutations à ses descendantes."
+        },
+        "sources": [
+          {
+            "id": "mboc4-cancer"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Les cellules se divisent sans contrôle."
+          },
+          "sources": [
+            {
+              "id": "mboc4-cancer-division"
+            }
+          ]
+        }
+      ],
+      "focus": "plasma-membrane",
+      "camera": {
+        "view": "cell",
+        "radius": 170
+      }
+    },
+    {
+      "id": "instabilite",
+      "title": {
+        "fr": "Instabilité et survie"
+      },
+      "range": [
+        0.65,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "De nouvelles mutations s'accumulent et permettent aux cellules d'échapper à l'apoptose."
+        },
+        "sources": [
+          {
+            "id": "mboc4-cancer-apoptosis"
+          },
+          {
+            "id": "mboc4-cancer-behaviour"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "view": "cell",
+        "radius": 190
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "cell.divisionRate",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.3,
+          "v": 1.5
+        },
+        {
+          "t": 0.65,
+          "v": 4
+        },
+        {
+          "t": 1,
+          "v": 5
+        }
+      ]
+    },
+    {
+      "channel": "nucleus.size",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 1,
+          "v": 1.25
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.2
+        },
+        {
+          "t": 0.95,
+          "v": 0.2
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "pulse",
+      "at": 0.0,
+      "until": 0.3,
+      "params": {
+        "at": "nucleus"
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Les traitements dépendent du type de cancer et relèvent d'une équipe médicale spécialisée."
+    },
+    "sources": [
+      {
+        "id": "mboc4-cancer"
+      }
+    ]
+  }
+}

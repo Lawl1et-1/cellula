@@ -1,0 +1,363 @@
+{
+  "id": "covid-19",
+  "slug": "covid-19",
+  "name": {
+    "fr": "COVID-19 (SARS-CoV-2)"
+  },
+  "aliases": [
+    "SARS-CoV-2"
+  ],
+  "categories": [
+    "infectious"
+  ],
+  "cellContext": {
+    "cellType": "epithelial",
+    "note": {
+      "text": {
+        "fr": "Le virus infecte notamment les cellules épithéliales des voies respiratoires. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "sp-covid"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Infection par le coronavirus SARS-CoV-2, qui entre dans la cellule, détourne ses membranes pour fabriquer des usines de réplication et produit de nouvelles particules virales."
+    },
+    "sources": [
+      {
+        "id": "sp-covid"
+      },
+      {
+        "id": "pm-dmv-2020"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Le virus SARS-CoV-2, transmis surtout par voie respiratoire."
+      },
+      "sources": [
+        {
+          "id": "sp-covid"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "plasma-membrane",
+    "rough-er",
+    "golgi"
+  ],
+  "affectedPathways": [
+    "entrée virale",
+    "réplication virale",
+    "voie de sécrétion"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Entrée"
+      },
+      "explanation": {
+        "text": {
+          "fr": "La protéine Spike du virus se lie au récepteur ACE2 de la cellule, puis l'enveloppe virale fusionne avec une membrane cellulaire."
+        },
+        "sources": [
+          {
+            "id": "sp-covid"
+          },
+          {
+            "id": "mboc4-virus-entry"
+          }
+        ]
+      },
+      "organelle": "plasma-membrane"
+    },
+    {
+      "title": {
+        "fr": "Usines de réplication"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Le génome viral est répliqué dans des vésicules à double membrane formées à partir du réticulum endoplasmique."
+        },
+        "sources": [
+          {
+            "id": "pm-dmv-2020"
+          }
+        ]
+      },
+      "organelle": "rough-er"
+    },
+    {
+      "title": {
+        "fr": "Assemblage et sortie"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Les nouvelles particules sont assemblées grâce aux membranes de la cellule puis libérées."
+        },
+        "sources": [
+          {
+            "id": "mboc4-viruses-host"
+          }
+        ]
+      },
+      "organelle": "golgi"
+    }
+  ],
+  "stages": [
+    {
+      "id": "entree",
+      "title": {
+        "fr": "Entrée du virus"
+      },
+      "range": [
+        0,
+        0.2
+      ],
+      "description": {
+        "text": {
+          "fr": "Le virus se fixe au récepteur ACE2 et son génome entre dans la cellule."
+        },
+        "sources": [
+          {
+            "id": "sp-covid"
+          },
+          {
+            "id": "mboc4-virus-entry"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "replication",
+      "title": {
+        "fr": "Usines de réplication"
+      },
+      "range": [
+        0.2,
+        0.55
+      ],
+      "description": {
+        "text": {
+          "fr": "Les protéines virales remodèlent le RE en vésicules à double membrane où le génome est copié."
+        },
+        "sources": [
+          {
+            "id": "pm-dmv-2020"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Vésicules à double membrane près du RE."
+          },
+          "sources": [
+            {
+              "id": "pm-dmv-2020"
+            }
+          ]
+        }
+      ],
+      "focus": "rough-er"
+    },
+    {
+      "id": "assemblage",
+      "title": {
+        "fr": "Assemblage"
+      },
+      "range": [
+        0.55,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "Les nouvelles particules virales sont assemblées en utilisant les membranes de la cellule."
+        },
+        "sources": [
+          {
+            "id": "mboc4-viruses-host"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "golgi"
+    },
+    {
+      "id": "liberation",
+      "title": {
+        "fr": "Libération"
+      },
+      "range": [
+        0.8,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les virions quittent la cellule et vont infecter d'autres cellules."
+        },
+        "sources": [
+          {
+            "id": "mboc4-pathogen-entry-exit"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "er.replicationOrganelles",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.2,
+          "v": 0
+        },
+        {
+          "t": 0.55,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "cytoplasm.viralParticles",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.55,
+          "v": 0.1
+        },
+        {
+          "t": 0.9,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "cell.viability",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.85,
+          "v": 0.95
+        },
+        {
+          "t": 1,
+          "v": 0.7
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.45
+        },
+        {
+          "t": 0.95,
+          "v": 0.45
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "path",
+      "at": 0.0,
+      "until": 0.22,
+      "params": {
+        "path": [
+          "outside",
+          "membrane",
+          "cytoplasm"
+        ],
+        "cargo": "virion",
+        "count": 3
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.15,
+      "until": 0.4,
+      "params": {
+        "path": [
+          "cytoplasm",
+          "rough-er"
+        ],
+        "cargo": "mrna",
+        "count": 4
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.55,
+      "until": 0.85,
+      "params": {
+        "path": [
+          "rough-er",
+          "golgi.cis",
+          "golgi.trans"
+        ],
+        "cargo": "virion",
+        "count": 6
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.78,
+      "until": 1.0,
+      "params": {
+        "path": [
+          "golgi.trans",
+          "membrane",
+          "outside"
+        ],
+        "cargo": "virion",
+        "count": 8
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "La prévention (vaccination) et les traitements relèvent d'un avis médical."
+    },
+    "sources": [
+      {
+        "id": "sp-covid"
+      }
+    ]
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "id": "mucolipidose-ii",
+  "slug": "mucolipidose-de-type-ii",
+  "name": {
+    "fr": "Mucolipidose de type II (maladie des cellules I)"
+  },
+  "aliases": [
+    "Maladie des cellules I",
+    "I-cell disease"
+  ],
+  "categories": [
+    "genetic",
+    "lysosomal-storage"
+  ],
+  "cellContext": {
+    "cellType": "fibroblast",
+    "note": {
+      "text": {
+        "fr": "Les fibroblastes des patients contiennent de nombreuses inclusions, d'où le nom de « cellules I » (inclusion cells). Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "gr-gnptab"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Les enzymes lysosomales ne reçoivent pas leur étiquette d'adressage dans l'appareil de Golgi : elles sont sécrétées hors de la cellule au lieu d'être livrées aux lysosomes, qui se remplissent de matériel non dégradé."
+    },
+    "sources": [
+      {
+        "id": "gr-gnptab"
+      },
+      {
+        "id": "mboc4-golgi-to-lysosomes"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Des variants du gène GNPTAB rendent déficiente l'enzyme qui ajoute le mannose-6-phosphate aux enzymes lysosomales."
+      },
+      "sources": [
+        {
+          "id": "gr-gnptab"
+        },
+        {
+          "id": "mboc4-golgi-to-lysosomes"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "golgi",
+    "lysosome"
+  ],
+  "affectedPathways": [
+    "adressage vers les lysosomes",
+    "mannose-6-phosphate"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Étiquette manquante"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Sans mannose-6-phosphate, les enzymes ne sont pas reconnues par le récepteur qui les dirige vers les lysosomes."
+        },
+        "sources": [
+          {
+            "id": "mboc4-golgi-to-lysosomes"
+          }
+        ]
+      },
+      "organelle": "golgi"
+    },
+    {
+      "title": {
+        "fr": "Enzymes perdues"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Les enzymes partent alors par la voie de sécrétion et quittent la cellule."
+        },
+        "sources": [
+          {
+            "id": "mboc4-golgi-to-lysosomes"
+          },
+          {
+            "id": "gr-gnptab"
+          }
+        ]
+      },
+      "organelle": "golgi"
+    },
+    {
+      "title": {
+        "fr": "Lysosomes vides d'enzymes"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Privés de leurs enzymes, les lysosomes ne peuvent plus dégrader leur contenu, qui s'accumule."
+        },
+        "sources": [
+          {
+            "id": "gr-gnptab"
+          }
+        ]
+      },
+      "organelle": "lysosome"
+    }
+  ],
+  "stages": [
+    {
+      "id": "tri",
+      "title": {
+        "fr": "Erreur de tri dans le Golgi"
+      },
+      "range": [
+        0,
+        0.3
+      ],
+      "description": {
+        "text": {
+          "fr": "Dans le Golgi, les enzymes lysosomales ne sont pas marquées par le mannose-6-phosphate."
+        },
+        "sources": [
+          {
+            "id": "gr-gnptab"
+          },
+          {
+            "id": "mboc4-golgi-to-lysosomes"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "golgi"
+    },
+    {
+      "id": "secretion",
+      "title": {
+        "fr": "Enzymes sécrétées"
+      },
+      "range": [
+        0.3,
+        0.55
+      ],
+      "description": {
+        "text": {
+          "fr": "Les enzymes non marquées sont sécrétées hors de la cellule."
+        },
+        "sources": [
+          {
+            "id": "mboc4-golgi-to-lysosomes"
+          },
+          {
+            "id": "gr-gnptab"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "inclusions",
+      "title": {
+        "fr": "Inclusions"
+      },
+      "range": [
+        0.55,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les lysosomes se remplissent de matériel non dégradé et forment des inclusions."
+        },
+        "sources": [
+          {
+            "id": "gr-gnptab"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Nombreuses inclusions dans le cytoplasme des fibroblastes."
+          },
+          "sources": [
+            {
+              "id": "gr-gnptab"
+            }
+          ]
+        }
+      ],
+      "focus": "lysosome"
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "golgi.missorting",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.2,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "lysosome.storageLoad",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.5,
+          "v": 0.2
+        },
+        {
+          "t": 1,
+          "v": 0.95
+        }
+      ]
+    },
+    {
+      "channel": "lysosome.count",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 1,
+          "v": 2.2
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.45
+        },
+        {
+          "t": 0.95,
+          "v": 0.45
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "pulse",
+      "at": 0.05,
+      "until": 0.3,
+      "params": {
+        "at": "golgi.trans"
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.28,
+      "until": 0.58,
+      "params": {
+        "path": [
+          "golgi.trans",
+          "membrane",
+          "outside"
+        ],
+        "cargo": "protein",
+        "count": 8
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Il n'existe pas de traitement spécifique ; la prise en charge est symptomatique."
+    },
+    "sources": [
+      {
+        "id": "gr-gnptab"
+      }
+    ]
+  }
+}

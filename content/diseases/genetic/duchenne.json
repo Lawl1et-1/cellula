@@ -1,0 +1,264 @@
+{
+  "id": "duchenne",
+  "slug": "myopathie-de-duchenne",
+  "name": {
+    "fr": "Myopathie de Duchenne"
+  },
+  "aliases": [
+    "Dystrophie musculaire de Duchenne"
+  ],
+  "categories": [
+    "genetic"
+  ],
+  "cellContext": {
+    "cellType": "muscle-fiber",
+    "note": {
+      "text": {
+        "fr": "Les fibres musculaires sont touchées. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "gr-dystrophinopathies"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie génétique liée au chromosome X : l'absence de dystrophine, qui relie le cytosquelette des fibres musculaires à leur membrane, rend celle-ci fragile."
+    },
+    "sources": [
+      {
+        "id": "gr-dystrophinopathies"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Des variants du gène DMD, situé sur le chromosome X, empêchent la production de dystrophine."
+      },
+      "sources": [
+        {
+          "id": "gr-dystrophinopathies"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "plasma-membrane",
+    "cytoskeleton"
+  ],
+  "affectedPathways": [
+    "ancrage membrane–cytosquelette"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Dystrophine absente"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Sans dystrophine, le lien entre le cytosquelette d'actine et la membrane est rompu."
+        },
+        "sources": [
+          {
+            "id": "gr-dystrophinopathies"
+          }
+        ]
+      },
+      "organelle": "cytoskeleton"
+    },
+    {
+      "title": {
+        "fr": "Membrane fragile"
+      },
+      "explanation": {
+        "text": {
+          "fr": "La membrane des fibres musculaires est endommagée lors des contractions et les fibres dégénèrent."
+        },
+        "sources": [
+          {
+            "id": "gr-dystrophinopathies"
+          }
+        ]
+      },
+      "organelle": "plasma-membrane"
+    }
+  ],
+  "stages": [
+    {
+      "id": "dystrophine",
+      "title": {
+        "fr": "Absence de dystrophine"
+      },
+      "range": [
+        0,
+        0.3
+      ],
+      "description": {
+        "text": {
+          "fr": "La fibre musculaire ne produit pas de dystrophine."
+        },
+        "sources": [
+          {
+            "id": "gr-dystrophinopathies"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoskeleton"
+    },
+    {
+      "id": "fragilite",
+      "title": {
+        "fr": "Membrane fragilisée"
+      },
+      "range": [
+        0.3,
+        0.7
+      ],
+      "description": {
+        "text": {
+          "fr": "Lors des contractions, la membrane se rompt par endroits."
+        },
+        "sources": [
+          {
+            "id": "gr-dystrophinopathies"
+          }
+        ],
+        "simplification": {
+          "fr": "Les ruptures de membrane sont représentées par des trous ; en réalité ce sont des lésions microscopiques."
+        }
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Lésions de la membrane."
+          },
+          "sources": [
+            {
+              "id": "gr-dystrophinopathies"
+            }
+          ]
+        }
+      ],
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "degenerescence",
+      "title": {
+        "fr": "Dégénérescence"
+      },
+      "range": [
+        0.7,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les fibres musculaires dégénèrent progressivement."
+        },
+        "sources": [
+          {
+            "id": "gr-dystrophinopathies"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "view": "cell",
+        "radius": 120
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "cytoskeleton.disruption",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.3,
+          "v": 0.6
+        }
+      ]
+    },
+    {
+      "channel": "membrane.integrity",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.3,
+          "v": 1
+        },
+        {
+          "t": 0.7,
+          "v": 0.6
+        },
+        {
+          "t": 1,
+          "v": 0.45
+        }
+      ]
+    },
+    {
+      "channel": "cell.viability",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.7,
+          "v": 0.85
+        },
+        {
+          "t": 1,
+          "v": 0.5
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.4
+        },
+        {
+          "t": 0.95,
+          "v": 0.4
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "La prise en charge est multidisciplinaire ; certains traitements relèvent d'un avis spécialisé."
+    },
+    "sources": [
+      {
+        "id": "gr-dystrophinopathies"
+      }
+    ]
+  }
+}

@@ -1,0 +1,307 @@
+{
+  "id": "alzheimer",
+  "slug": "maladie-d-alzheimer",
+  "name": {
+    "fr": "Maladie d'Alzheimer"
+  },
+  "aliases": [],
+  "categories": [
+    "neurodegenerative"
+  ],
+  "cellContext": {
+    "cellType": "neuron",
+    "note": {
+      "text": {
+        "fr": "La maladie touche les neurones du cerveau, en particulier dans les régions de la mémoire. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "sp-alzheimer"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie neurodégénérative marquée par des plaques amyloïdes entre les neurones et des enchevêtrements de protéine tau dans les neurones, qui finissent par mourir."
+    },
+    "sources": [
+      {
+        "id": "sp-alzheimer"
+      },
+      {
+        "id": "mboc4-aggregates"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Dans la grande majorité des cas, la maladie n'est pas due à un seul gène ; de rares formes familiales sont liées à des variants des gènes APP, PSEN1 ou PSEN2."
+      },
+      "sources": [
+        {
+          "id": "gr-alzheimer"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "cytoskeleton",
+    "cytoplasm"
+  ],
+  "affectedPathways": [
+    "agrégation protéique",
+    "transport le long des microtubules"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Plaques amyloïdes"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Des fragments du peptide bêta-amyloïde s'agrègent hors des neurones en plaques."
+        },
+        "sources": [
+          {
+            "id": "sp-alzheimer"
+          },
+          {
+            "id": "mboc4-aggregates"
+          }
+        ],
+        "simplification": {
+          "fr": "Les plaques, situées hors de la cellule, ne sont pas représentées."
+        }
+      }
+    },
+    {
+      "title": {
+        "fr": "Enchevêtrements de tau"
+      },
+      "explanation": {
+        "text": {
+          "fr": "La protéine tau, normalement associée aux microtubules, forme des enchevêtrements neurofibrillaires dans les neurones."
+        },
+        "sources": [
+          {
+            "id": "sp-alzheimer"
+          }
+        ]
+      },
+      "organelle": "cytoskeleton"
+    },
+    {
+      "title": {
+        "fr": "Perte neuronale"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Les neurones dysfonctionnent puis meurent, ce qui entraîne l'atrophie du cerveau."
+        },
+        "sources": [
+          {
+            "id": "sp-alzheimer"
+          }
+        ]
+      }
+    }
+  ],
+  "stages": [
+    {
+      "id": "amyloide",
+      "title": {
+        "fr": "Dépôts amyloïdes"
+      },
+      "range": [
+        0,
+        0.3
+      ],
+      "description": {
+        "text": {
+          "fr": "Le peptide bêta-amyloïde s'accumule et s'agrège entre les neurones."
+        },
+        "sources": [
+          {
+            "id": "sp-alzheimer"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "tau",
+      "title": {
+        "fr": "Enchevêtrements de tau"
+      },
+      "range": [
+        0.3,
+        0.65
+      ],
+      "description": {
+        "text": {
+          "fr": "La protéine tau se détache des microtubules et s'agrège en enchevêtrements à l'intérieur des neurones."
+        },
+        "sources": [
+          {
+            "id": "sp-alzheimer"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Agrégats protéiques dans le cytoplasme."
+          },
+          "sources": [
+            {
+              "id": "sp-alzheimer"
+            },
+            {
+              "id": "mboc4-aggregates"
+            }
+          ]
+        }
+      ],
+      "focus": "cytoskeleton"
+    },
+    {
+      "id": "perte",
+      "title": {
+        "fr": "Perte neuronale"
+      },
+      "range": [
+        0.65,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les neurones atteints dysfonctionnent puis meurent."
+        },
+        "sources": [
+          {
+            "id": "sp-alzheimer"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "view": "cell",
+        "radius": 120
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "cytoplasm.aggregates",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.3,
+          "v": 0.1
+        },
+        {
+          "t": 0.65,
+          "v": 0.75
+        },
+        {
+          "t": 1,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "cytoskeleton.disruption",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.3,
+          "v": 0.1
+        },
+        {
+          "t": 0.7,
+          "v": 0.7
+        }
+      ]
+    },
+    {
+      "channel": "cell.viability",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.65,
+          "v": 0.9
+        },
+        {
+          "t": 1,
+          "v": 0.45
+        }
+      ]
+    },
+    {
+      "channel": "membrane.blebbing",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.8,
+          "v": 0
+        },
+        {
+          "t": 1,
+          "v": 0.4
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.45
+        },
+        {
+          "t": 0.95,
+          "v": 0.45
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Il n'existe pas de traitement curatif ; certains médicaments visent les symptômes ou l'évolution et relèvent d'un avis médical."
+    },
+    "sources": [
+      {
+        "id": "sp-alzheimer"
+      }
+    ]
+  }
+}

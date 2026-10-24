@@ -1,0 +1,282 @@
+{
+  "id": "deficit-alpha-1-antitrypsine",
+  "slug": "deficit-en-alpha-1-antitrypsine",
+  "name": {
+    "fr": "Déficit en alpha-1-antitrypsine"
+  },
+  "aliases": [],
+  "categories": [
+    "genetic"
+  ],
+  "cellContext": {
+    "cellType": "hepatocyte",
+    "note": {
+      "text": {
+        "fr": "Le foie, qui produit l'alpha-1-antitrypsine, et les poumons, qu'elle protège, sont touchés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "gr-a1at"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie génétique : certaines formes de l'alpha-1-antitrypsine se replient mal et s'accumulent dans le réticulum endoplasmique des cellules du foie au lieu d'être sécrétées."
+    },
+    "sources": [
+      {
+        "id": "gr-a1at"
+      },
+      {
+        "id": "mboc4-upr"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Des variants du gène SERPINA1, le plus souvent l'allèle Z."
+      },
+      "sources": [
+        {
+          "id": "gr-a1at"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "rough-er"
+  ],
+  "affectedPathways": [
+    "contrôle qualité du RE",
+    "sécrétion"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Repliement anormal"
+      },
+      "explanation": {
+        "text": {
+          "fr": "La protéine anormale se replie mal et forme des polymères retenus dans le RE."
+        },
+        "sources": [
+          {
+            "id": "gr-a1at"
+          }
+        ]
+      },
+      "organelle": "rough-er"
+    },
+    {
+      "title": {
+        "fr": "Stress du RE"
+      },
+      "explanation": {
+        "text": {
+          "fr": "L'accumulation de protéines mal repliées dans le RE déclenche une réponse au stress (UPR)."
+        },
+        "sources": [
+          {
+            "id": "mboc4-upr"
+          }
+        ]
+      },
+      "organelle": "rough-er"
+    },
+    {
+      "title": {
+        "fr": "Déficit sanguin"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Moins d'alpha-1-antitrypsine est sécrétée, ce qui fragilise les poumons."
+        },
+        "sources": [
+          {
+            "id": "gr-a1at"
+          }
+        ]
+      }
+    }
+  ],
+  "stages": [
+    {
+      "id": "synthese",
+      "title": {
+        "fr": "Synthèse"
+      },
+      "range": [
+        0,
+        0.3
+      ],
+      "description": {
+        "text": {
+          "fr": "L'hépatocyte fabrique l'alpha-1-antitrypsine dans le RE."
+        },
+        "sources": [
+          {
+            "id": "gr-a1at"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "rough-er"
+    },
+    {
+      "id": "retention",
+      "title": {
+        "fr": "Rétention dans le RE"
+      },
+      "range": [
+        0.3,
+        0.7
+      ],
+      "description": {
+        "text": {
+          "fr": "La protéine mal repliée s'accumule dans le RE."
+        },
+        "sources": [
+          {
+            "id": "gr-a1at"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Inclusions dans le RE des hépatocytes."
+          },
+          "sources": [
+            {
+              "id": "gr-a1at"
+            }
+          ]
+        }
+      ],
+      "focus": "rough-er"
+    },
+    {
+      "id": "stress",
+      "title": {
+        "fr": "Stress du RE"
+      },
+      "range": [
+        0.7,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Le RE dilaté déclenche une réponse au stress."
+        },
+        "sources": [
+          {
+            "id": "mboc4-upr"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "rough-er"
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "er.retainedCargo",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.3,
+          "v": 0.2
+        },
+        {
+          "t": 0.7,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "er.stress",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.5,
+          "v": 0.2
+        },
+        {
+          "t": 1,
+          "v": 0.85
+        }
+      ]
+    },
+    {
+      "channel": "cell.viability",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.8,
+          "v": 1
+        },
+        {
+          "t": 1,
+          "v": 0.8
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.45
+        },
+        {
+          "t": 0.95,
+          "v": 0.45
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "pulse",
+      "at": 0.3,
+      "until": 0.7,
+      "params": {
+        "at": "rough-er"
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "La prise en charge dépend des organes atteints et relève d'un avis spécialisé."
+    },
+    "sources": [
+      {
+        "id": "gr-a1at"
+      }
+    ]
+  }
+}

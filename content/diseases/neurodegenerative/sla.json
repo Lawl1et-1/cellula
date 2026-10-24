@@ -1,0 +1,284 @@
+{
+  "id": "sla",
+  "slug": "sclerose-laterale-amyotrophique",
+  "name": {
+    "fr": "Sclérose latérale amyotrophique (SLA)"
+  },
+  "aliases": [
+    "Maladie de Charcot"
+  ],
+  "categories": [
+    "neurodegenerative"
+  ],
+  "cellContext": {
+    "cellType": "neuron",
+    "note": {
+      "text": {
+        "fr": "Les neurones moteurs du cerveau et de la moelle épinière dégénèrent. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "gr-als"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie neurodégénérative des neurones moteurs. Dans la plupart des cas, la protéine TDP-43 quitte le noyau et forme des agrégats dans le cytoplasme."
+    },
+    "sources": [
+      {
+        "id": "gr-als"
+      },
+      {
+        "id": "pm-als-2016"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "La plupart des cas sont sporadiques ; une minorité est familiale, liée notamment aux gènes C9orf72, SOD1, TARDBP ou FUS."
+      },
+      "sources": [
+        {
+          "id": "gr-als"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "nucleus",
+    "cytoplasm",
+    "cytoskeleton"
+  ],
+  "affectedPathways": [
+    "agrégation protéique",
+    "transport axonal"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "TDP-43 hors du noyau"
+      },
+      "explanation": {
+        "text": {
+          "fr": "TDP-43, une protéine qui lie l'ARN, se retrouve dans le cytoplasme où elle s'agrège."
+        },
+        "sources": [
+          {
+            "id": "pm-als-2016"
+          }
+        ]
+      },
+      "organelle": "cytoplasm"
+    },
+    {
+      "title": {
+        "fr": "Transport perturbé"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Le transport le long de l'axone et le métabolisme de l'ARN font partie des processus perturbés."
+        },
+        "sources": [
+          {
+            "id": "pm-als-2016"
+          }
+        ]
+      },
+      "organelle": "cytoskeleton"
+    }
+  ],
+  "stages": [
+    {
+      "id": "tdp43",
+      "title": {
+        "fr": "Délocalisation de TDP-43"
+      },
+      "range": [
+        0,
+        0.4
+      ],
+      "description": {
+        "text": {
+          "fr": "TDP-43 quitte le noyau et s'accumule dans le cytoplasme."
+        },
+        "sources": [
+          {
+            "id": "pm-als-2016"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "nucleus"
+    },
+    {
+      "id": "agregats",
+      "title": {
+        "fr": "Agrégats"
+      },
+      "range": [
+        0.4,
+        0.7
+      ],
+      "description": {
+        "text": {
+          "fr": "Les protéines mal repliées s'agrègent dans le cytoplasme des neurones moteurs."
+        },
+        "sources": [
+          {
+            "id": "pm-als-2016"
+          },
+          {
+            "id": "mboc4-aggregates"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Agrégats protéiques dans le cytoplasme."
+          },
+          "sources": [
+            {
+              "id": "pm-als-2016"
+            }
+          ]
+        }
+      ],
+      "focus": "cytoplasm"
+    },
+    {
+      "id": "degenerescence",
+      "title": {
+        "fr": "Dégénérescence"
+      },
+      "range": [
+        0.7,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les neurones moteurs dégénèrent, ce qui entraîne une faiblesse musculaire progressive."
+        },
+        "sources": [
+          {
+            "id": "gr-als"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "view": "cell",
+        "radius": 120
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "cytoplasm.aggregates",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.4,
+          "v": 0.3
+        },
+        {
+          "t": 0.7,
+          "v": 0.8
+        }
+      ]
+    },
+    {
+      "channel": "cytoskeleton.disruption",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.5,
+          "v": 0.1
+        },
+        {
+          "t": 0.8,
+          "v": 0.5
+        }
+      ]
+    },
+    {
+      "channel": "cell.viability",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.7,
+          "v": 0.9
+        },
+        {
+          "t": 1,
+          "v": 0.45
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.45
+        },
+        {
+          "t": 0.95,
+          "v": 0.45
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "path",
+      "at": 0.0,
+      "until": 0.4,
+      "params": {
+        "path": [
+          "nucleus",
+          "nucleus.pore",
+          "cytoplasm"
+        ],
+        "cargo": "protein",
+        "count": 6
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Il n'existe pas de traitement curatif ; certains traitements peuvent ralentir l'évolution et relèvent d'un avis spécialisé."
+    },
+    "sources": [
+      {
+        "id": "gr-als"
+      }
+    ]
+  }
+}

@@ -1,0 +1,313 @@
+{
+  "id": "listeriose",
+  "slug": "listeriose",
+  "name": {
+    "fr": "Listériose"
+  },
+  "aliases": [],
+  "categories": [
+    "infectious"
+  ],
+  "cellContext": {
+    "cellType": "epithelial",
+    "note": {
+      "text": {
+        "fr": "Listeria peut infecter de nombreux types de cellules, dont les cellules épithéliales de l'intestin. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "sp-listeria"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Infection par la bactérie Listeria monocytogenes, qui vit dans le cytoplasme des cellules et détourne leur actine pour s'y déplacer et passer aux cellules voisines."
+    },
+    "sources": [
+      {
+        "id": "sp-listeria"
+      },
+      {
+        "id": "mboc4-pathogen-cytoskeleton"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "La bactérie Listeria monocytogenes, transmise le plus souvent par des aliments contaminés."
+      },
+      "sources": [
+        {
+          "id": "sp-listeria"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "cytoplasm",
+    "cytoskeleton",
+    "vesicle"
+  ],
+  "affectedPathways": [
+    "échappement du phagosome",
+    "polymérisation de l'actine"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Entrée et sortie de la vacuole"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Après son entrée, la bactérie s'échappe de la vacuole qui l'entoure et se retrouve libre dans le cytoplasme."
+        },
+        "sources": [
+          {
+            "id": "mboc4-pathogen-entry-exit"
+          },
+          {
+            "id": "sp-listeria"
+          }
+        ]
+      },
+      "organelle": "vesicle"
+    },
+    {
+      "title": {
+        "fr": "Comètes d'actine"
+      },
+      "explanation": {
+        "text": {
+          "fr": "À sa surface, la protéine ActA fait polymériser l'actine de la cellule : une « comète » d'actine pousse la bactérie."
+        },
+        "sources": [
+          {
+            "id": "mboc4-pathogen-cytoskeleton"
+          },
+          {
+            "id": "sp-listeria"
+          }
+        ]
+      },
+      "organelle": "cytoskeleton"
+    },
+    {
+      "title": {
+        "fr": "Propagation"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Poussée par l'actine, la bactérie forme des protrusions qui pénètrent dans les cellules voisines."
+        },
+        "sources": [
+          {
+            "id": "mboc4-pathogen-cytoskeleton"
+          }
+        ]
+      }
+    }
+  ],
+  "stages": [
+    {
+      "id": "entree",
+      "title": {
+        "fr": "Entrée"
+      },
+      "range": [
+        0,
+        0.2
+      ],
+      "description": {
+        "text": {
+          "fr": "La bactérie est internalisée dans une vacuole."
+        },
+        "sources": [
+          {
+            "id": "mboc4-pathogen-entry-exit"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm"
+    },
+    {
+      "id": "evasion",
+      "title": {
+        "fr": "Évasion de la vacuole"
+      },
+      "range": [
+        0.2,
+        0.4
+      ],
+      "description": {
+        "text": {
+          "fr": "Elle détruit la membrane de la vacuole et gagne le cytoplasme."
+        },
+        "sources": [
+          {
+            "id": "mboc4-pathogen-entry-exit"
+          },
+          {
+            "id": "sp-listeria"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm"
+    },
+    {
+      "id": "multiplication",
+      "title": {
+        "fr": "Multiplication"
+      },
+      "range": [
+        0.4,
+        0.65
+      ],
+      "description": {
+        "text": {
+          "fr": "La bactérie se multiplie dans le cytoplasme."
+        },
+        "sources": [
+          {
+            "id": "sp-listeria"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm"
+    },
+    {
+      "id": "cometes",
+      "title": {
+        "fr": "Comètes d'actine"
+      },
+      "range": [
+        0.65,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Des comètes d'actine propulsent les bactéries dans la cellule et vers les cellules voisines."
+        },
+        "sources": [
+          {
+            "id": "mboc4-pathogen-cytoskeleton"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Queues d'actine derrière les bactéries."
+          },
+          "sources": [
+            {
+              "id": "mboc4-pathogen-cytoskeleton"
+            }
+          ]
+        }
+      ],
+      "focus": "cytoplasm",
+      "camera": {
+        "radius": 40
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "cytoplasm.bacteria",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.08
+        },
+        {
+          "t": 0.4,
+          "v": 0.15
+        },
+        {
+          "t": 0.65,
+          "v": 0.8
+        },
+        {
+          "t": 1,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "cytoplasm.phagosomes",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.2,
+          "v": 1
+        },
+        {
+          "t": 0.4,
+          "v": 0
+        }
+      ]
+    },
+    {
+      "channel": "cytoskeleton.actinTails",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.62,
+          "v": 0
+        },
+        {
+          "t": 0.8,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.45
+        },
+        {
+          "t": 0.95,
+          "v": 0.45
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Le traitement repose sur des antibiotiques ; il relève d'un avis médical."
+    },
+    "sources": [
+      {
+        "id": "sp-listeria"
+      }
+    ]
+  }
+}

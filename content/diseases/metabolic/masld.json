@@ -1,0 +1,246 @@
+{
+  "id": "masld",
+  "slug": "steatose-hepatique-metabolique",
+  "name": {
+    "fr": "Stéatose hépatique métabolique (MASLD)"
+  },
+  "aliases": [
+    "NAFLD",
+    "Stéatose hépatique non alcoolique"
+  ],
+  "categories": [
+    "metabolic"
+  ],
+  "cellContext": {
+    "cellType": "hepatocyte",
+    "note": {
+      "text": {
+        "fr": "Ce sont les hépatocytes, les cellules du foie, qui se chargent de graisse. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "sp-masld"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie du foie liée au métabolisme : des graisses s'accumulent dans les hépatocytes sous forme de gouttelettes lipidiques ; la maladie peut évoluer vers l'inflammation et la fibrose."
+    },
+    "sources": [
+      {
+        "id": "sp-masld"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Elle est associée au surpoids, au diabète de type 2 et à d'autres facteurs métaboliques."
+      },
+      "sources": [
+        {
+          "id": "sp-masld"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "cytoplasm"
+  ],
+  "affectedPathways": [
+    "métabolisme des lipides"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Stéatose"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Les triglycérides s'accumulent dans l'hépatocyte en gouttelettes lipidiques."
+        },
+        "sources": [
+          {
+            "id": "sp-masld"
+          }
+        ]
+      },
+      "organelle": "cytoplasm"
+    },
+    {
+      "title": {
+        "fr": "Évolution"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Chez certains patients apparaissent une inflammation et des lésions des hépatocytes, puis une fibrose."
+        },
+        "sources": [
+          {
+            "id": "sp-masld"
+          }
+        ]
+      }
+    }
+  ],
+  "stages": [
+    {
+      "id": "gouttelettes",
+      "title": {
+        "fr": "Gouttelettes lipidiques"
+      },
+      "range": [
+        0,
+        0.5
+      ],
+      "description": {
+        "text": {
+          "fr": "Des gouttelettes de graisse apparaissent dans le cytoplasme."
+        },
+        "sources": [
+          {
+            "id": "sp-masld"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm"
+    },
+    {
+      "id": "steatose",
+      "title": {
+        "fr": "Stéatose"
+      },
+      "range": [
+        0.5,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "Les gouttelettes grossissent et occupent une grande partie de la cellule."
+        },
+        "sources": [
+          {
+            "id": "sp-masld"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Grosses gouttelettes lipidiques dans le cytoplasme."
+          },
+          "sources": [
+            {
+              "id": "sp-masld"
+            }
+          ]
+        }
+      ],
+      "focus": "cytoplasm",
+      "camera": {
+        "radius": 45
+      }
+    },
+    {
+      "id": "lesions",
+      "title": {
+        "fr": "Lésions"
+      },
+      "range": [
+        0.8,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Dans les formes évolutives, les hépatocytes sont lésés."
+        },
+        "sources": [
+          {
+            "id": "sp-masld"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "view": "cell",
+        "radius": 120
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "cytoplasm.lipidDroplets",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.5,
+          "v": 0.45
+        },
+        {
+          "t": 0.8,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "cell.viability",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.8,
+          "v": 1
+        },
+        {
+          "t": 1,
+          "v": 0.75
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.4
+        },
+        {
+          "t": 0.95,
+          "v": 0.4
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "La prise en charge repose surtout sur l'hygiène de vie ; elle relève d'un avis médical."
+    },
+    "sources": [
+      {
+        "id": "sp-masld"
+      }
+    ]
+  }
+}

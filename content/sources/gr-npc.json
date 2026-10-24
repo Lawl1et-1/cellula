@@ -1,0 +1,13 @@
+{
+  "id": "gr-npc",
+  "type": "chapter",
+  "title": "Niemann-Pick Disease Type C",
+  "container": "GeneReviews®",
+  "year": 2000,
+  "publisher": "University of Washington, Seattle",
+  "url": "https://www.ncbi.nlm.nih.gov/books/NBK1296/",
+  "verified": {
+    "on": "2026-10-24",
+    "via": "ncbi-bookshelf"
+  }
+}

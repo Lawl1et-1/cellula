@@ -1,0 +1,243 @@
+{
+  "id": "hypercholesterolemie-familiale",
+  "slug": "hypercholesterolemie-familiale",
+  "name": {
+    "fr": "Hypercholestérolémie familiale"
+  },
+  "aliases": [],
+  "categories": [
+    "genetic",
+    "metabolic"
+  ],
+  "cellContext": {
+    "cellType": "hepatocyte",
+    "note": {
+      "text": {
+        "fr": "Le foie, qui capte la plus grande partie du LDL sanguin, est au centre du mécanisme. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "gr-fh"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie génétique : les cellules captent mal le cholestérol LDL du sang, dont le taux augmente."
+    },
+    "sources": [
+      {
+        "id": "gr-fh"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Des variants, le plus souvent du gène LDLR, réduisent la capture des LDL par les cellules."
+      },
+      "sources": [
+        {
+          "id": "gr-fh"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "plasma-membrane",
+    "vesicle"
+  ],
+  "affectedPathways": [
+    "endocytose par récepteurs"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Récepteurs des LDL"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Les LDL sont normalement captées par des récepteurs de la membrane puis internalisées par endocytose."
+        },
+        "sources": [
+          {
+            "id": "mboc4-receptor-endocytosis"
+          }
+        ]
+      },
+      "organelle": "plasma-membrane"
+    },
+    {
+      "title": {
+        "fr": "Capture réduite"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Avec des récepteurs déficients, les LDL restent dans le sang."
+        },
+        "sources": [
+          {
+            "id": "gr-fh"
+          }
+        ]
+      },
+      "organelle": "plasma-membrane"
+    }
+  ],
+  "stages": [
+    {
+      "id": "normal",
+      "title": {
+        "fr": "Capture normale"
+      },
+      "range": [
+        0,
+        0.3
+      ],
+      "description": {
+        "text": {
+          "fr": "Les LDL se lient à leurs récepteurs et sont internalisées."
+        },
+        "sources": [
+          {
+            "id": "mboc4-receptor-endocytosis"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "recepteurs",
+      "title": {
+        "fr": "Récepteurs déficients"
+      },
+      "range": [
+        0.3,
+        0.65
+      ],
+      "description": {
+        "text": {
+          "fr": "Les récepteurs des LDL sont moins nombreux ou moins fonctionnels."
+        },
+        "sources": [
+          {
+            "id": "gr-fh"
+          }
+        ],
+        "simplification": {
+          "fr": "Les récepteurs représentés sont génériques ; leur nombre figure la capacité de capture."
+        }
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "ldl",
+      "title": {
+        "fr": "LDL en excès"
+      },
+      "range": [
+        0.65,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les LDL ne sont plus captées et s'accumulent dans le sang."
+        },
+        "sources": [
+          {
+            "id": "gr-fh"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "membrane.receptorDensity",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.3,
+          "v": 1
+        },
+        {
+          "t": 0.65,
+          "v": 0.25
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.35
+        },
+        {
+          "t": 0.95,
+          "v": 0.35
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "path",
+      "at": 0.0,
+      "until": 0.3,
+      "params": {
+        "path": [
+          "outside",
+          "membrane",
+          "endosome"
+        ],
+        "cargo": "ldl",
+        "count": 6
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.4,
+      "until": 1.0,
+      "params": {
+        "path": [
+          "outside",
+          "membrane",
+          "outside"
+        ],
+        "cargo": "ldl",
+        "count": 10
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Des traitements hypocholestérolémiants existent ; ils relèvent d'un avis médical."
+    },
+    "sources": [
+      {
+        "id": "gr-fh"
+      }
+    ]
+  }
+}

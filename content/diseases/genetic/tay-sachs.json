@@ -1,0 +1,329 @@
+{
+  "id": "tay-sachs",
+  "slug": "maladie-de-tay-sachs",
+  "name": {
+    "fr": "Maladie de Tay-Sachs"
+  },
+  "aliases": [
+    "Déficit en hexosaminidase A",
+    "Gangliosidose GM2"
+  ],
+  "categories": [
+    "genetic",
+    "lysosomal-storage",
+    "neurodegenerative"
+  ],
+  "cellContext": {
+    "cellType": "neuron",
+    "note": {
+      "text": {
+        "fr": "Ce sont surtout les neurones, riches en gangliosides, qui sont touchés, d'où une atteinte neurologique progressive. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "gr-hexa"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie de surcharge lysosomale : faute d'une enzyme fonctionnelle, le ganglioside GM2 s'accumule dans les lysosomes, qui gonflent et perturbent la cellule."
+    },
+    "sources": [
+      {
+        "id": "gr-hexa"
+      },
+      {
+        "id": "mboc4-lysosome-digestion"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Des variants du gène HEXA entraînent un déficit en β-hexosaminidase A, l'enzyme lysosomale qui dégrade le ganglioside GM2."
+      },
+      "sources": [
+        {
+          "id": "gr-hexa"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "lysosome"
+  ],
+  "affectedPathways": [
+    "dégradation lysosomale"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Enzyme lysosomale déficiente"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Des variants du gène HEXA entraînent un déficit en β-hexosaminidase A, l'enzyme lysosomale qui dégrade le ganglioside GM2."
+        },
+        "sources": [
+          {
+            "id": "gr-hexa"
+          }
+        ]
+      },
+      "organelle": "lysosome"
+    },
+    {
+      "title": {
+        "fr": "Accumulation du substrat"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Ne pouvant être dégradé, le ganglioside GM2 reste piégé dans les lysosomes."
+        },
+        "sources": [
+          {
+            "id": "gr-hexa"
+          },
+          {
+            "id": "mboc4-lysosome-digestion"
+          }
+        ]
+      },
+      "organelle": "lysosome"
+    }
+  ],
+  "stages": [
+    {
+      "id": "enzyme",
+      "title": {
+        "fr": "Enzyme déficiente"
+      },
+      "range": [
+        0,
+        0.25
+      ],
+      "description": {
+        "text": {
+          "fr": "Des variants du gène HEXA entraînent un déficit en β-hexosaminidase A, l'enzyme lysosomale qui dégrade le ganglioside GM2."
+        },
+        "sources": [
+          {
+            "id": "gr-hexa"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "lysosome"
+    },
+    {
+      "id": "accumulation",
+      "title": {
+        "fr": "Accumulation"
+      },
+      "range": [
+        0.25,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "Le ganglioside GM2 s'accumule progressivement dans les lysosomes."
+        },
+        "sources": [
+          {
+            "id": "gr-hexa"
+          },
+          {
+            "id": "mboc4-lysosome-digestion"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "lysosome"
+    },
+    {
+      "id": "surcharge",
+      "title": {
+        "fr": "Lysosomes surchargés"
+      },
+      "range": [
+        0.6,
+        0.85
+      ],
+      "description": {
+        "text": {
+          "fr": "Les lysosomes, remplis de matériel non dégradé, augmentent en taille et en nombre."
+        },
+        "sources": [
+          {
+            "id": "gr-hexa"
+          },
+          {
+            "id": "mboc4-lysosome-digestion"
+          }
+        ],
+        "simplification": {
+          "fr": "La vitesse d'accumulation est très accélérée : dans la maladie, elle se fait sur des mois ou des années."
+        }
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Lysosomes distendus, remplis d'un matériel pâle."
+          },
+          "sources": [
+            {
+              "id": "gr-hexa"
+            }
+          ]
+        }
+      ],
+      "focus": "lysosome"
+    },
+    {
+      "id": "dysfonction",
+      "title": {
+        "fr": "Dysfonction cellulaire"
+      },
+      "range": [
+        0.85,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Ce sont surtout les neurones, riches en gangliosides, qui sont touchés, d'où une atteinte neurologique progressive. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        },
+        "sources": [
+          {
+            "id": "gr-hexa"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "radius": 40
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "lysosome.storageLoad",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.25,
+          "v": 0.15
+        },
+        {
+          "t": 0.6,
+          "v": 0.7
+        },
+        {
+          "t": 0.85,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "lysosome.count",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.6,
+          "v": 1.4
+        },
+        {
+          "t": 1,
+          "v": 2.3
+        }
+      ]
+    },
+    {
+      "channel": "cytoplasm.tint",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.8,
+          "v": 0.1
+        },
+        {
+          "t": 1,
+          "v": 0.3
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.4
+        },
+        {
+          "t": 0.95,
+          "v": 0.4
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    },
+    {
+      "channel": "cell.viability",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.8,
+          "v": 1
+        },
+        {
+          "t": 1,
+          "v": 0.6
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "pulse",
+      "at": 0.0,
+      "until": 0.25,
+      "params": {
+        "at": "lysosome"
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Il n'existe pas de traitement curatif ; la prise en charge vise à soulager les symptômes."
+    },
+    "sources": [
+      {
+        "id": "gr-hexa"
+      }
+    ]
+  }
+}

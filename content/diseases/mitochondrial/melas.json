@@ -1,0 +1,342 @@
+{
+  "id": "melas",
+  "slug": "syndrome-melas",
+  "name": {
+    "fr": "Syndrome MELAS"
+  },
+  "aliases": [
+    "Encéphalomyopathie mitochondriale avec acidose lactique et épisodes pseudo-AVC"
+  ],
+  "categories": [
+    "mitochondrial",
+    "genetic",
+    "neurodegenerative"
+  ],
+  "cellContext": {
+    "cellType": "muscle-fiber",
+    "note": {
+      "text": {
+        "fr": "Les muscles et le cerveau, très dépendants de l'énergie, sont les plus touchés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "gr-melas"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie mitochondriale : un défaut de la chaîne respiratoire réduit la production d'énergie (ATP) par les mitochondries."
+    },
+    "sources": [
+      {
+        "id": "gr-melas"
+      },
+      {
+        "id": "mboc4-electron-transport"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Le plus souvent, un variant de l'ADN mitochondrial (m.3243A>G, dans le gène MT-TL1 d'un ARN de transfert) altère la fabrication des protéines mitochondriales."
+      },
+      "sources": [
+        {
+          "id": "gr-melas"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "mitochondrion"
+  ],
+  "affectedPathways": [
+    "phosphorylation oxydative"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Mutation de l'ADN mitochondrial"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Le plus souvent, un variant de l'ADN mitochondrial (m.3243A>G, dans le gène MT-TL1 d'un ARN de transfert) altère la fabrication des protéines mitochondriales."
+        },
+        "sources": [
+          {
+            "id": "gr-melas"
+          }
+        ]
+      },
+      "organelle": "mitochondrion"
+    },
+    {
+      "title": {
+        "fr": "Panne énergétique"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Les complexes de la chaîne respiratoire sont mal assemblés : la production d'ATP diminue."
+        },
+        "sources": [
+          {
+            "id": "gr-melas"
+          },
+          {
+            "id": "mboc4-electron-transport"
+          }
+        ]
+      },
+      "organelle": "mitochondrion"
+    }
+  ],
+  "stages": [
+    {
+      "id": "mutation",
+      "title": {
+        "fr": "Variant pathogène"
+      },
+      "range": [
+        0,
+        0.25
+      ],
+      "description": {
+        "text": {
+          "fr": "Le plus souvent, un variant de l'ADN mitochondrial (m.3243A>G, dans le gène MT-TL1 d'un ARN de transfert) altère la fabrication des protéines mitochondriales."
+        },
+        "sources": [
+          {
+            "id": "gr-melas"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "mitochondrion"
+    },
+    {
+      "id": "chaine",
+      "title": {
+        "fr": "Chaîne respiratoire déficiente"
+      },
+      "range": [
+        0.25,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "Les complexes de la chaîne respiratoire sont mal assemblés : la production d'ATP diminue."
+        },
+        "sources": [
+          {
+            "id": "gr-melas"
+          },
+          {
+            "id": "mboc4-electron-transport"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "mitochondrion"
+    },
+    {
+      "id": "mitochondries",
+      "title": {
+        "fr": "Mitochondries anormales"
+      },
+      "range": [
+        0.6,
+        0.85
+      ],
+      "description": {
+        "text": {
+          "fr": "Les mitochondries deviennent anormales ; leur membrane interne et leurs crêtes peuvent être désorganisées."
+        },
+        "sources": [
+          {
+            "id": "gr-melas"
+          }
+        ],
+        "simplification": {
+          "fr": "L'aspect des mitochondries malades est schématisé (gonflement, perte des crêtes, baisse de la lueur)."
+        }
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Dans le muscle, des mitochondries anormales s'accumulent (fibres « rouges déchiquetées » à la biopsie)."
+          },
+          "sources": [
+            {
+              "id": "gr-melas"
+            }
+          ]
+        }
+      ],
+      "focus": "mitochondrion"
+    },
+    {
+      "id": "cellule",
+      "title": {
+        "fr": "Souffrance cellulaire"
+      },
+      "range": [
+        0.85,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les muscles et le cerveau, très dépendants de l'énergie, sont les plus touchés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        },
+        "sources": [
+          {
+            "id": "gr-melas"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "radius": 40
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "mitochondria.potential",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.25,
+          "v": 0.9
+        },
+        {
+          "t": 0.6,
+          "v": 0.45
+        },
+        {
+          "t": 1,
+          "v": 0.3
+        }
+      ]
+    },
+    {
+      "channel": "mitochondria.cristaeLoss",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.6,
+          "v": 0.3
+        },
+        {
+          "t": 0.85,
+          "v": 0.65
+        }
+      ]
+    },
+    {
+      "channel": "mitochondria.swelling",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.6,
+          "v": 0.2
+        },
+        {
+          "t": 0.9,
+          "v": 0.55
+        }
+      ]
+    },
+    {
+      "channel": "mitochondria.count",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.6,
+          "v": 1
+        },
+        {
+          "t": 0.9,
+          "v": 1.8
+        }
+      ]
+    },
+    {
+      "channel": "cell.viability",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.85,
+          "v": 1
+        },
+        {
+          "t": 1,
+          "v": 0.6
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.4
+        },
+        {
+          "t": 0.95,
+          "v": 0.4
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "pulse",
+      "at": 0.25,
+      "until": 0.6,
+      "params": {
+        "at": "mitochondrion"
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Il n'existe pas de traitement curatif ; la prise en charge vise les symptômes et relève d'un avis spécialisé."
+    },
+    "sources": [
+      {
+        "id": "gr-melas"
+      }
+    ]
+  }
+}

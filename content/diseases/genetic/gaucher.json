@@ -1,0 +1,308 @@
+{
+  "id": "gaucher",
+  "slug": "maladie-de-gaucher",
+  "name": {
+    "fr": "Maladie de Gaucher"
+  },
+  "aliases": [],
+  "categories": [
+    "genetic",
+    "lysosomal-storage"
+  ],
+  "cellContext": {
+    "cellType": "macrophage",
+    "note": {
+      "text": {
+        "fr": "Le glucosylcéramide s'accumule surtout dans les lysosomes des macrophages, qui deviennent des « cellules de Gaucher ». Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "gr-gaucher"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie de surcharge lysosomale : faute d'une enzyme fonctionnelle, le glucosylcéramide s'accumule dans les lysosomes, qui gonflent et perturbent la cellule."
+    },
+    "sources": [
+      {
+        "id": "gr-gaucher"
+      },
+      {
+        "id": "mboc4-lysosome-digestion"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Des variants du gène GBA1 réduisent l'activité de la glucocérébrosidase, une enzyme lysosomale."
+      },
+      "sources": [
+        {
+          "id": "gr-gaucher"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "lysosome"
+  ],
+  "affectedPathways": [
+    "dégradation lysosomale"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Enzyme lysosomale déficiente"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Des variants du gène GBA1 réduisent l'activité de la glucocérébrosidase, une enzyme lysosomale."
+        },
+        "sources": [
+          {
+            "id": "gr-gaucher"
+          }
+        ]
+      },
+      "organelle": "lysosome"
+    },
+    {
+      "title": {
+        "fr": "Accumulation du substrat"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Ne pouvant être dégradé, le glucosylcéramide reste piégé dans les lysosomes."
+        },
+        "sources": [
+          {
+            "id": "gr-gaucher"
+          },
+          {
+            "id": "mboc4-lysosome-digestion"
+          }
+        ]
+      },
+      "organelle": "lysosome"
+    }
+  ],
+  "stages": [
+    {
+      "id": "enzyme",
+      "title": {
+        "fr": "Enzyme déficiente"
+      },
+      "range": [
+        0,
+        0.25
+      ],
+      "description": {
+        "text": {
+          "fr": "Des variants du gène GBA1 réduisent l'activité de la glucocérébrosidase, une enzyme lysosomale."
+        },
+        "sources": [
+          {
+            "id": "gr-gaucher"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "lysosome"
+    },
+    {
+      "id": "accumulation",
+      "title": {
+        "fr": "Accumulation"
+      },
+      "range": [
+        0.25,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "Le glucosylcéramide s'accumule progressivement dans les lysosomes."
+        },
+        "sources": [
+          {
+            "id": "gr-gaucher"
+          },
+          {
+            "id": "mboc4-lysosome-digestion"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "lysosome"
+    },
+    {
+      "id": "surcharge",
+      "title": {
+        "fr": "Lysosomes surchargés"
+      },
+      "range": [
+        0.6,
+        0.85
+      ],
+      "description": {
+        "text": {
+          "fr": "Les lysosomes, remplis de matériel non dégradé, augmentent en taille et en nombre."
+        },
+        "sources": [
+          {
+            "id": "gr-gaucher"
+          },
+          {
+            "id": "mboc4-lysosome-digestion"
+          }
+        ],
+        "simplification": {
+          "fr": "La vitesse d'accumulation est très accélérée : dans la maladie, elle se fait sur des mois ou des années."
+        }
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Lysosomes distendus, remplis d'un matériel pâle."
+          },
+          "sources": [
+            {
+              "id": "gr-gaucher"
+            }
+          ]
+        }
+      ],
+      "focus": "lysosome"
+    },
+    {
+      "id": "dysfonction",
+      "title": {
+        "fr": "Dysfonction cellulaire"
+      },
+      "range": [
+        0.85,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Le glucosylcéramide s'accumule surtout dans les lysosomes des macrophages, qui deviennent des « cellules de Gaucher ». Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        },
+        "sources": [
+          {
+            "id": "gr-gaucher"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "radius": 40
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "lysosome.storageLoad",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.25,
+          "v": 0.15
+        },
+        {
+          "t": 0.6,
+          "v": 0.7
+        },
+        {
+          "t": 0.85,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "lysosome.count",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.6,
+          "v": 1.4
+        },
+        {
+          "t": 1,
+          "v": 2.3
+        }
+      ]
+    },
+    {
+      "channel": "cytoplasm.tint",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.8,
+          "v": 0.1
+        },
+        {
+          "t": 1,
+          "v": 0.3
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.4
+        },
+        {
+          "t": 0.95,
+          "v": 0.4
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "pulse",
+      "at": 0.0,
+      "until": 0.25,
+      "params": {
+        "at": "lysosome"
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Des traitements existent, comme le traitement enzymatique substitutif ou la réduction de substrat ; ils relèvent d'un avis médical spécialisé."
+    },
+    "sources": [
+      {
+        "id": "gr-gaucher"
+      }
+    ]
+  }
+}

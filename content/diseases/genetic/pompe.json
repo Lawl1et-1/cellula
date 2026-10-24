@@ -1,0 +1,311 @@
+{
+  "id": "pompe",
+  "slug": "maladie-de-pompe",
+  "name": {
+    "fr": "Maladie de Pompe"
+  },
+  "aliases": [
+    "Glycogénose de type II"
+  ],
+  "categories": [
+    "genetic",
+    "lysosomal-storage",
+    "metabolic"
+  ],
+  "cellContext": {
+    "cellType": "muscle-fiber",
+    "note": {
+      "text": {
+        "fr": "Le glycogène s'accumule surtout dans les cellules musculaires, notamment du cœur et des muscles squelettiques. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "gr-pompe"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie de surcharge lysosomale : faute d'une enzyme fonctionnelle, le glycogène s'accumule dans les lysosomes, qui gonflent et perturbent la cellule."
+    },
+    "sources": [
+      {
+        "id": "gr-pompe"
+      },
+      {
+        "id": "mboc4-lysosome-digestion"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Des variants du gène GAA réduisent l'activité de l'alpha-glucosidase acide, l'enzyme lysosomale qui dégrade le glycogène."
+      },
+      "sources": [
+        {
+          "id": "gr-pompe"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "lysosome"
+  ],
+  "affectedPathways": [
+    "dégradation lysosomale"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Enzyme lysosomale déficiente"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Des variants du gène GAA réduisent l'activité de l'alpha-glucosidase acide, l'enzyme lysosomale qui dégrade le glycogène."
+        },
+        "sources": [
+          {
+            "id": "gr-pompe"
+          }
+        ]
+      },
+      "organelle": "lysosome"
+    },
+    {
+      "title": {
+        "fr": "Accumulation du substrat"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Ne pouvant être dégradé, le glycogène reste piégé dans les lysosomes."
+        },
+        "sources": [
+          {
+            "id": "gr-pompe"
+          },
+          {
+            "id": "mboc4-lysosome-digestion"
+          }
+        ]
+      },
+      "organelle": "lysosome"
+    }
+  ],
+  "stages": [
+    {
+      "id": "enzyme",
+      "title": {
+        "fr": "Enzyme déficiente"
+      },
+      "range": [
+        0,
+        0.25
+      ],
+      "description": {
+        "text": {
+          "fr": "Des variants du gène GAA réduisent l'activité de l'alpha-glucosidase acide, l'enzyme lysosomale qui dégrade le glycogène."
+        },
+        "sources": [
+          {
+            "id": "gr-pompe"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "lysosome"
+    },
+    {
+      "id": "accumulation",
+      "title": {
+        "fr": "Accumulation"
+      },
+      "range": [
+        0.25,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "Le glycogène s'accumule progressivement dans les lysosomes."
+        },
+        "sources": [
+          {
+            "id": "gr-pompe"
+          },
+          {
+            "id": "mboc4-lysosome-digestion"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "lysosome"
+    },
+    {
+      "id": "surcharge",
+      "title": {
+        "fr": "Lysosomes surchargés"
+      },
+      "range": [
+        0.6,
+        0.85
+      ],
+      "description": {
+        "text": {
+          "fr": "Les lysosomes, remplis de matériel non dégradé, augmentent en taille et en nombre."
+        },
+        "sources": [
+          {
+            "id": "gr-pompe"
+          },
+          {
+            "id": "mboc4-lysosome-digestion"
+          }
+        ],
+        "simplification": {
+          "fr": "La vitesse d'accumulation est très accélérée : dans la maladie, elle se fait sur des mois ou des années."
+        }
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Lysosomes distendus, remplis d'un matériel pâle."
+          },
+          "sources": [
+            {
+              "id": "gr-pompe"
+            }
+          ]
+        }
+      ],
+      "focus": "lysosome"
+    },
+    {
+      "id": "dysfonction",
+      "title": {
+        "fr": "Dysfonction cellulaire"
+      },
+      "range": [
+        0.85,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Le glycogène s'accumule surtout dans les cellules musculaires, notamment du cœur et des muscles squelettiques. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        },
+        "sources": [
+          {
+            "id": "gr-pompe"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "radius": 40
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "lysosome.storageLoad",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.25,
+          "v": 0.15
+        },
+        {
+          "t": 0.6,
+          "v": 0.7
+        },
+        {
+          "t": 0.85,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "lysosome.count",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.6,
+          "v": 1.4
+        },
+        {
+          "t": 1,
+          "v": 2.3
+        }
+      ]
+    },
+    {
+      "channel": "cytoplasm.tint",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.8,
+          "v": 0.1
+        },
+        {
+          "t": 1,
+          "v": 0.3
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.4
+        },
+        {
+          "t": 0.95,
+          "v": 0.4
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "pulse",
+      "at": 0.0,
+      "until": 0.25,
+      "params": {
+        "at": "lysosome"
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Un traitement enzymatique substitutif existe ; il relève d'un avis médical spécialisé."
+    },
+    "sources": [
+      {
+        "id": "gr-pompe"
+      }
+    ]
+  }
+}

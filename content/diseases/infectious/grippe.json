@@ -1,0 +1,348 @@
+{
+  "id": "grippe",
+  "slug": "grippe",
+  "name": {
+    "fr": "Grippe (influenza A)"
+  },
+  "aliases": [],
+  "categories": [
+    "infectious"
+  ],
+  "cellContext": {
+    "cellType": "epithelial",
+    "note": {
+      "text": {
+        "fr": "Le virus infecte les cellules épithéliales des voies respiratoires. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "sp-influenza"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Infection par le virus de la grippe, qui entre par endocytose, fait copier son génome dans le noyau puis bourgeonne à la membrane de la cellule."
+    },
+    "sources": [
+      {
+        "id": "sp-influenza"
+      },
+      {
+        "id": "mboc4-virus-entry"
+      },
+      {
+        "id": "mboc4-viruses-host"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Les virus influenza, transmis par voie respiratoire."
+      },
+      "sources": [
+        {
+          "id": "sp-influenza"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "plasma-membrane",
+    "vesicle",
+    "nucleus"
+  ],
+  "affectedPathways": [
+    "entrée virale",
+    "réplication dans le noyau",
+    "bourgeonnement"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Entrée par endocytose"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Le virus est internalisé dans un endosome ; l'acidité de l'endosome déclenche la fusion de l'enveloppe virale avec sa membrane."
+        },
+        "sources": [
+          {
+            "id": "mboc4-virus-entry"
+          }
+        ]
+      },
+      "organelle": "vesicle"
+    },
+    {
+      "title": {
+        "fr": "Réplication nucléaire"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Le génome viral est transporté dans le noyau, où il est copié."
+        },
+        "sources": [
+          {
+            "id": "mboc4-viruses-host"
+          }
+        ],
+        "simplification": {
+          "fr": "Les nombreux segments du génome viral sont représentés comme un seul flux."
+        }
+      },
+      "organelle": "nucleus"
+    },
+    {
+      "title": {
+        "fr": "Bourgeonnement"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Les nouvelles particules bourgeonnent à la membrane plasmique et sont libérées."
+        },
+        "sources": [
+          {
+            "id": "mboc4-pathogen-entry-exit"
+          },
+          {
+            "id": "sp-influenza"
+          }
+        ]
+      },
+      "organelle": "plasma-membrane"
+    }
+  ],
+  "stages": [
+    {
+      "id": "entree",
+      "title": {
+        "fr": "Entrée"
+      },
+      "range": [
+        0,
+        0.25
+      ],
+      "description": {
+        "text": {
+          "fr": "Le virus se fixe à la cellule puis entre par endocytose."
+        },
+        "sources": [
+          {
+            "id": "mboc4-virus-entry"
+          },
+          {
+            "id": "sp-influenza"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "noyau",
+      "title": {
+        "fr": "Dans le noyau"
+      },
+      "range": [
+        0.25,
+        0.55
+      ],
+      "description": {
+        "text": {
+          "fr": "Le génome viral entre dans le noyau, où il est copié et transcrit."
+        },
+        "sources": [
+          {
+            "id": "mboc4-viruses-host"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "nucleus"
+    },
+    {
+      "id": "synthese",
+      "title": {
+        "fr": "Protéines virales"
+      },
+      "range": [
+        0.55,
+        0.78
+      ],
+      "description": {
+        "text": {
+          "fr": "La machinerie de la cellule fabrique les protéines virales."
+        },
+        "sources": [
+          {
+            "id": "mboc4-viruses-host"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "rough-er"
+    },
+    {
+      "id": "bourgeonnement",
+      "title": {
+        "fr": "Bourgeonnement"
+      },
+      "range": [
+        0.78,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les nouveaux virions bourgeonnent à la membrane et sont libérés."
+        },
+        "sources": [
+          {
+            "id": "mboc4-pathogen-entry-exit"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane"
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "cytoplasm.viralParticles",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.6,
+          "v": 0.1
+        },
+        {
+          "t": 0.95,
+          "v": 0.9
+        }
+      ]
+    },
+    {
+      "channel": "cell.viability",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.85,
+          "v": 0.95
+        },
+        {
+          "t": 1,
+          "v": 0.7
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.45
+        },
+        {
+          "t": 0.95,
+          "v": 0.45
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "path",
+      "at": 0.0,
+      "until": 0.25,
+      "params": {
+        "path": [
+          "outside",
+          "membrane",
+          "endosome"
+        ],
+        "cargo": "virion",
+        "count": 3
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.2,
+      "until": 0.45,
+      "params": {
+        "path": [
+          "endosome",
+          "nucleus.pore",
+          "nucleus"
+        ],
+        "cargo": "mrna",
+        "count": 4
+      }
+    },
+    {
+      "actor": "pulse",
+      "at": 0.3,
+      "until": 0.55,
+      "params": {
+        "at": "nucleus"
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.5,
+      "until": 0.75,
+      "params": {
+        "path": [
+          "nucleus",
+          "nucleus.pore",
+          "rough-er"
+        ],
+        "cargo": "mrna",
+        "count": 5
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.75,
+      "until": 1.0,
+      "params": {
+        "path": [
+          "golgi.trans",
+          "membrane",
+          "outside"
+        ],
+        "cargo": "virion",
+        "count": 8
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "La prévention (vaccination) et les traitements antiviraux relèvent d'un avis médical."
+    },
+    "sources": [
+      {
+        "id": "sp-influenza"
+      }
+    ]
+  }
+}

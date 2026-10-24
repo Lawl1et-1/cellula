@@ -1,0 +1,271 @@
+{
+  "id": "zellweger",
+  "slug": "spectre-de-zellweger",
+  "name": {
+    "fr": "Spectre de Zellweger"
+  },
+  "aliases": [],
+  "categories": [
+    "genetic",
+    "peroxisomal"
+  ],
+  "cellContext": {
+    "cellType": "generic",
+    "note": {
+      "text": {
+        "fr": "De nombreux organes sont touchés, notamment le cerveau et le foie. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "gr-zellweger"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie génétique de la formation des peroxysomes : leurs enzymes ne sont pas importées, si bien que des fonctions comme la dégradation des acides gras à très longue chaîne sont perdues."
+    },
+    "sources": [
+      {
+        "id": "gr-zellweger"
+      },
+      {
+        "id": "mboc4-peroxisomes"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Des variants de gènes PEX, nécessaires à la formation des peroxysomes."
+      },
+      "sources": [
+        {
+          "id": "gr-zellweger"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "peroxisome"
+  ],
+  "affectedPathways": [
+    "biogenèse des peroxysomes",
+    "oxydation des acides gras à très longue chaîne"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Import défaillant"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Les protéines PEX défectueuses empêchent l'import des enzymes dans les peroxysomes."
+        },
+        "sources": [
+          {
+            "id": "gr-zellweger"
+          },
+          {
+            "id": "mboc4-peroxisomes"
+          }
+        ]
+      },
+      "organelle": "peroxisome"
+    },
+    {
+      "title": {
+        "fr": "Peroxysomes vides"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Il reste des membranes de peroxysomes sans enzymes, parfois appelées « fantômes »."
+        },
+        "sources": [
+          {
+            "id": "gr-zellweger"
+          }
+        ]
+      },
+      "organelle": "peroxisome"
+    }
+  ],
+  "stages": [
+    {
+      "id": "import",
+      "title": {
+        "fr": "Import bloqué"
+      },
+      "range": [
+        0,
+        0.4
+      ],
+      "description": {
+        "text": {
+          "fr": "Les enzymes peroxysomales, fabriquées dans le cytosol, ne peuvent pas entrer dans les peroxysomes."
+        },
+        "sources": [
+          {
+            "id": "gr-zellweger"
+          },
+          {
+            "id": "mboc4-peroxisomes"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "peroxisome"
+    },
+    {
+      "id": "fantomes",
+      "title": {
+        "fr": "Peroxysomes fantômes"
+      },
+      "range": [
+        0.4,
+        0.75
+      ],
+      "description": {
+        "text": {
+          "fr": "Les peroxysomes restent vides d'enzymes."
+        },
+        "sources": [
+          {
+            "id": "gr-zellweger"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Peroxysomes absents ou vides."
+          },
+          "sources": [
+            {
+              "id": "gr-zellweger"
+            }
+          ]
+        }
+      ],
+      "focus": "peroxisome"
+    },
+    {
+      "id": "metabolisme",
+      "title": {
+        "fr": "Métabolisme perturbé"
+      },
+      "range": [
+        0.75,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les acides gras à très longue chaîne s'accumulent et la synthèse des plasmalogènes diminue."
+        },
+        "sources": [
+          {
+            "id": "gr-zellweger"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "radius": 40
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "peroxisome.empty",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.4,
+          "v": 0.4
+        },
+        {
+          "t": 0.75,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "peroxisome.count",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.75,
+          "v": 0.7
+        }
+      ]
+    },
+    {
+      "channel": "cytoplasm.tint",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 1,
+          "v": 0.2
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.5
+        },
+        {
+          "t": 0.95,
+          "v": 0.5
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "burst",
+      "at": 0.0,
+      "until": 0.4,
+      "params": {
+        "from": "peroxisome",
+        "cargo": "protein",
+        "count": 12
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "La prise en charge est symptomatique."
+    },
+    "sources": [
+      {
+        "id": "gr-zellweger"
+      }
+    ]
+  }
+}

@@ -1,0 +1,340 @@
+{
+  "id": "leigh",
+  "slug": "syndrome-de-leigh",
+  "name": {
+    "fr": "Syndrome de Leigh (forme liée à l'ADN mitochondrial)"
+  },
+  "aliases": [],
+  "categories": [
+    "mitochondrial",
+    "genetic",
+    "neurodegenerative"
+  ],
+  "cellContext": {
+    "cellType": "neuron",
+    "note": {
+      "text": {
+        "fr": "Le cerveau en développement est le plus touché, avec des lésions de certaines régions. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "gr-leigh-mtdna"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie mitochondriale : un défaut de la chaîne respiratoire réduit la production d'énergie (ATP) par les mitochondries."
+    },
+    "sources": [
+      {
+        "id": "gr-leigh-mtdna"
+      },
+      {
+        "id": "mboc4-electron-transport"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Des variants de l'ADN mitochondrial, par exemple dans le gène MT-ATP6 d'une sous-unité de l'ATP synthase, altèrent la phosphorylation oxydative."
+      },
+      "sources": [
+        {
+          "id": "gr-leigh-mtdna"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "mitochondrion"
+  ],
+  "affectedPathways": [
+    "phosphorylation oxydative"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Mutation de l'ADN mitochondrial"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Des variants de l'ADN mitochondrial, par exemple dans le gène MT-ATP6 d'une sous-unité de l'ATP synthase, altèrent la phosphorylation oxydative."
+        },
+        "sources": [
+          {
+            "id": "gr-leigh-mtdna"
+          }
+        ]
+      },
+      "organelle": "mitochondrion"
+    },
+    {
+      "title": {
+        "fr": "Panne énergétique"
+      },
+      "explanation": {
+        "text": {
+          "fr": "La production d'ATP par les mitochondries diminue."
+        },
+        "sources": [
+          {
+            "id": "gr-leigh-mtdna"
+          },
+          {
+            "id": "mboc4-electron-transport"
+          }
+        ]
+      },
+      "organelle": "mitochondrion"
+    }
+  ],
+  "stages": [
+    {
+      "id": "mutation",
+      "title": {
+        "fr": "Variant pathogène"
+      },
+      "range": [
+        0,
+        0.25
+      ],
+      "description": {
+        "text": {
+          "fr": "Des variants de l'ADN mitochondrial, par exemple dans le gène MT-ATP6 d'une sous-unité de l'ATP synthase, altèrent la phosphorylation oxydative."
+        },
+        "sources": [
+          {
+            "id": "gr-leigh-mtdna"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "mitochondrion"
+    },
+    {
+      "id": "chaine",
+      "title": {
+        "fr": "Chaîne respiratoire déficiente"
+      },
+      "range": [
+        0.25,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "La production d'ATP par les mitochondries diminue."
+        },
+        "sources": [
+          {
+            "id": "gr-leigh-mtdna"
+          },
+          {
+            "id": "mboc4-electron-transport"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "mitochondrion"
+    },
+    {
+      "id": "mitochondries",
+      "title": {
+        "fr": "Mitochondries anormales"
+      },
+      "range": [
+        0.6,
+        0.85
+      ],
+      "description": {
+        "text": {
+          "fr": "Les mitochondries deviennent anormales ; leur membrane interne et leurs crêtes peuvent être désorganisées."
+        },
+        "sources": [
+          {
+            "id": "gr-leigh-mtdna"
+          }
+        ],
+        "simplification": {
+          "fr": "L'aspect des mitochondries malades est schématisé (gonflement, perte des crêtes, baisse de la lueur)."
+        }
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Les mitochondries des cellules touchées produisent moins d'énergie."
+          },
+          "sources": [
+            {
+              "id": "gr-leigh-mtdna"
+            }
+          ]
+        }
+      ],
+      "focus": "mitochondrion"
+    },
+    {
+      "id": "cellule",
+      "title": {
+        "fr": "Souffrance cellulaire"
+      },
+      "range": [
+        0.85,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Le cerveau en développement est le plus touché, avec des lésions de certaines régions. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        },
+        "sources": [
+          {
+            "id": "gr-leigh-mtdna"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "radius": 40
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "mitochondria.potential",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.25,
+          "v": 0.9
+        },
+        {
+          "t": 0.6,
+          "v": 0.45
+        },
+        {
+          "t": 1,
+          "v": 0.3
+        }
+      ]
+    },
+    {
+      "channel": "mitochondria.cristaeLoss",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.6,
+          "v": 0.3
+        },
+        {
+          "t": 0.85,
+          "v": 0.65
+        }
+      ]
+    },
+    {
+      "channel": "mitochondria.swelling",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.6,
+          "v": 0.2
+        },
+        {
+          "t": 0.9,
+          "v": 0.55
+        }
+      ]
+    },
+    {
+      "channel": "mitochondria.count",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.6,
+          "v": 1
+        },
+        {
+          "t": 0.9,
+          "v": 1.0
+        }
+      ]
+    },
+    {
+      "channel": "cell.viability",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.85,
+          "v": 1
+        },
+        {
+          "t": 1,
+          "v": 0.6
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.4
+        },
+        {
+          "t": 0.95,
+          "v": 0.4
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "pulse",
+      "at": 0.25,
+      "until": 0.6,
+      "params": {
+        "at": "mitochondrion"
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Il n'existe pas de traitement curatif ; la prise en charge est symptomatique."
+    },
+    "sources": [
+      {
+        "id": "gr-leigh-mtdna"
+      }
+    ]
+  }
+}

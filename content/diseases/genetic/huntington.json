@@ -1,0 +1,265 @@
+{
+  "id": "huntington",
+  "slug": "maladie-de-huntington",
+  "name": {
+    "fr": "Maladie de Huntington"
+  },
+  "aliases": [],
+  "categories": [
+    "genetic",
+    "neurodegenerative"
+  ],
+  "cellContext": {
+    "cellType": "neuron",
+    "note": {
+      "text": {
+        "fr": "Les neurones du striatum sont les premiers touchés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+      },
+      "sources": [
+        {
+          "id": "gr-huntington"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "text": {
+      "fr": "Maladie génétique neurodégénérative due à une expansion de répétitions CAG dans le gène HTT : la huntingtine produite porte une longue chaîne de glutamines et forme des agrégats."
+    },
+    "sources": [
+      {
+        "id": "gr-huntington"
+      },
+      {
+        "id": "mboc4-aggregates"
+      }
+    ]
+  },
+  "cause": [
+    {
+      "text": {
+        "fr": "Une expansion de répétitions CAG dans le gène HTT, transmise de façon autosomique dominante."
+      },
+      "sources": [
+        {
+          "id": "gr-huntington"
+        }
+      ]
+    }
+  ],
+  "affectedOrganelles": [
+    "nucleus",
+    "cytoplasm"
+  ],
+  "affectedPathways": [
+    "agrégation protéique"
+  ],
+  "mechanism": [
+    {
+      "title": {
+        "fr": "Huntingtine anormale"
+      },
+      "explanation": {
+        "text": {
+          "fr": "La protéine produite contient une longue répétition de glutamines qui favorise son mauvais repliement."
+        },
+        "sources": [
+          {
+            "id": "gr-huntington"
+          },
+          {
+            "id": "mboc4-aggregates"
+          }
+        ]
+      }
+    },
+    {
+      "title": {
+        "fr": "Inclusions"
+      },
+      "explanation": {
+        "text": {
+          "fr": "Les protéines anormalement repliées s'agrègent, notamment en inclusions dans le noyau."
+        },
+        "sources": [
+          {
+            "id": "mboc4-aggregates"
+          }
+        ]
+      },
+      "organelle": "nucleus"
+    }
+  ],
+  "stages": [
+    {
+      "id": "expansion",
+      "title": {
+        "fr": "Huntingtine allongée"
+      },
+      "range": [
+        0,
+        0.3
+      ],
+      "description": {
+        "text": {
+          "fr": "La huntingtine porte une longue répétition de glutamines."
+        },
+        "sources": [
+          {
+            "id": "gr-huntington"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "nucleus"
+    },
+    {
+      "id": "agregats",
+      "title": {
+        "fr": "Agrégats et inclusions"
+      },
+      "range": [
+        0.3,
+        0.7
+      ],
+      "description": {
+        "text": {
+          "fr": "La protéine s'agrège dans le cytoplasme et forme des inclusions dans le noyau."
+        },
+        "sources": [
+          {
+            "id": "mboc4-aggregates"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Inclusions intranucléaires."
+          },
+          "sources": [
+            {
+              "id": "mboc4-aggregates"
+            }
+          ]
+        }
+      ],
+      "focus": "nucleus"
+    },
+    {
+      "id": "perte",
+      "title": {
+        "fr": "Perte neuronale"
+      },
+      "range": [
+        0.7,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les neurones du striatum dégénèrent progressivement."
+        },
+        "sources": [
+          {
+            "id": "gr-huntington"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "view": "cell",
+        "radius": 120
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "nucleus.inclusions",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.3,
+          "v": 0.2
+        },
+        {
+          "t": 0.7,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "cytoplasm.aggregates",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.3,
+          "v": 0.05
+        },
+        {
+          "t": 0.7,
+          "v": 0.4
+        }
+      ]
+    },
+    {
+      "channel": "cell.viability",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.7,
+          "v": 0.9
+        },
+        {
+          "t": 1,
+          "v": 0.5
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.05,
+          "v": 0.5
+        },
+        {
+          "t": 0.95,
+          "v": 0.5
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  },
+  "treatmentsNote": {
+    "text": {
+      "fr": "Il n'existe pas de traitement curatif ; la prise en charge vise les symptômes."
+    },
+    "sources": [
+      {
+        "id": "gr-huntington"
+      }
+    ]
+  }
+}
