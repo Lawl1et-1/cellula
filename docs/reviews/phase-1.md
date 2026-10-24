@@ -1,6 +1,6 @@
 # Phase 0 + 1 review — the living cell
 
-Status: **first pass done, visual polish continues.** Reviewed in the browser, mostly on an Intel UHD (integrated) GPU.
+Status: **done** (first pass + polish pass). Reviewed in the browser, mostly on an Intel UHD (integrated) GPU.
 
 ## What exists
 
@@ -81,3 +81,47 @@ Not yet at the target:
 2. Macro-distance fading of molecular-scale instances.
 3. Nucleus envelope and pore close-up pass.
 4. Production-build performance check on the target laptop with `?stats`.
+
+## Polish pass (follow-up)
+
+Done:
+- **Mitochondria cut-away**: as the camera approaches, a plane slides through the organelle and reveals the
+  inner membrane, lamellar cristae (extruded folds with rounded rims, alternating sides) and matrix granules,
+  with a glowing cut edge. Interior layers are culled entirely when no mitochondrion is near.
+- **Macro-distance LOD**: ribosomes, receptors, actin, motors and pore complexes shrink away with distance
+  (collapsed in the vertex shader, no popping); particles fade earlier.
+- **Nucleus**: stronger envelope (reads as a surface up close), nuclear pore complexes rebuilt as eight-fold
+  cytoplasmic and nuclear rings, central channel and basket.
+- **Tessellation**: membrane and nucleus were faceted (three.js icosahedron detail is a linear subdivision
+  count, not recursive); now 63k / 16k faces.
+
+### Measured performance (Intel UHD Graphics, 1920×1080, `npm run perf`)
+
+GPU time per frame (ms). Budget for 60 fps: 16.7 ms.
+
+| View | Bas | Moyen | Élevé | Ultra |
+|---|---|---|---|---|
+| Outside the cell | 9.6 | 16.4 | 98 | 105 |
+| Inside the cell | 14.8 | 30.3 | 149 | 170 |
+
+First measurement, before the perf work: 47 / 58 / 87 / 122 ms outside, 82 / 91 / 116 / 156 ms inside.
+
+What made the difference:
+1. **Welding instanced geometry.** three.js polyhedra are non-indexed: a 20-face ribosome was 240 vertices
+   instead of 12, × 20 000 ribosomes. About 8 M vertices per frame dropped to under 1 M.
+2. **Render-resolution scale** per preset (0.6 / 0.75 / 1 / 1) and **shading tiers** (bump, caustics, second
+   noise octave only where affordable).
+3. **Front-to-back sorting** of layered structures (Golgi cisternae and ER sheets split into centred meshes).
+4. **Culling** of hidden interior detail; capped particle size near the lens; cheaper membrane shader.
+5. Grain/vignette moved after tone mapping; SMAA and chromatic aberration off on *Moyen*.
+
+On an integrated GPU, the app starts on *Moyen* and the adaptive monitor drops to *Bas* when needed (inside
+the cell), so it stays near 60 fps. *Élevé* / *Ultra* (AO, depth of field, more haze steps at full resolution)
+are meant for dedicated GPUs.
+
+Tools: `npm run perf -- <url>` (GPU timer queries in headless Edge on the real GPU) and
+`npm run shots -- <url> <dir> <quality>` (reference screenshots). `?stats`, `?q=`, `?nofx`, `?cam=` URL flags.
+
+Still open:
+- The volumetric haze runs at full resolution; a half-resolution pass would make it affordable on *Moyen*.
+- Geometry generation still runs on the main thread (~1–2 s on first load, hidden behind the fade-in).

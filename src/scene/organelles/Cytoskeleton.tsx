@@ -56,7 +56,7 @@ const INTERMEDIATE: OrganicOptions = {
 const CENTRIOLE: OrganicOptions = {
   color: PALETTE.centrosome.a,
   emissive: PALETTE.centrosome.glow,
-  emissiveStrength: 0.9,
+  emissiveStrength: 0.35,
   sss: 0.8,
   gloss: 0.7,
 };
@@ -216,7 +216,7 @@ function Motors({ paths, count }: { paths: Vector3[][]; count: number }) {
     const head = weld(mergeGeometries([headA, headB])!);
     head.setAttribute('aSeed', seeds);
     // Its cargo: a membrane vesicle towed on a short stalk.
-    const cargo = weld(new IcosahedronGeometry(1, 2));
+    const cargo = weld(new IcosahedronGeometry(1, 4));
     cargo.translate(0, 1.5, 0);
     cargo.setAttribute('aSeed', seeds);
     return {

@@ -126,7 +126,8 @@ function receptorGeometry() {
 
 export function Membrane() {
   const preset = usePreset();
-  const detail = preset.geometryDetail >= 1 ? 6 : 5;
+  // Linear subdivision count (three.js r125+): 56 → ~63k faces.
+  const detail = preset.geometryDetail >= 1 ? 56 : 36;
 
   const { geometry, material } = useMemo(() => {
     const ico = new IcosahedronGeometry(1, detail);

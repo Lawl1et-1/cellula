@@ -80,9 +80,9 @@ const CRISTAE: OrganicOptions = {
 
 const MATRIX_GRANULES: OrganicOptions = {
   ...MOTION,
-  color: '#e8b07a',
-  emissive: '#ffb066',
-  emissiveStrength: 0.25,
+  color: '#b8784c',
+  emissive: '#ff9a4c',
+  emissiveStrength: 0.12,
   sss: 0.6,
   gloss: 0.4,
   fade: INTERIOR_FADE,

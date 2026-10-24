@@ -23,6 +23,14 @@ interface Props {
  */
 export function weld(geometry: BufferGeometry) {
   const g = geometry.clone();
+  if (g.type === 'IcosahedronGeometry') {
+    // Low-detail icosahedra come with flat normals: weld and smooth them (no faceted "gems").
+    g.deleteAttribute('normal');
+    g.deleteAttribute('uv');
+    const smooth = mergeVertices(g);
+    smooth.computeVertexNormals();
+    return smooth;
+  }
   if (!g.attributes.uv || !g.index) g.deleteAttribute('uv');
   return g.index ? g : mergeVertices(g);
 }

@@ -12,7 +12,8 @@
     "validate:content": "tsx scripts/validate-content.ts",
     "test": "vitest run",
     "check": "npm run typecheck && npm run lint && npm run validate:content && npm run test",
-    "perf": "tsx scripts/perf.ts"
+    "perf": "tsx scripts/perf.ts",
+    "shots": "tsx scripts/shots.ts"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",

@@ -31,9 +31,10 @@ const OUTER_ENVELOPE: OrganicOptions = {
   wobble: 0.55,
   wobbleFreq: 0.09,
   transparent: true,
-  opacity: 0.3,
-  rimOpacity: 0.85,
-  diffuse: 0.5,
+  // Opaque enough to read as a surface up close; chromatin stays a soft shape behind it.
+  opacity: 0.5,
+  rimOpacity: 0.6,
+  diffuse: 0.6,
   rim: 1.6,
 };
 
@@ -85,47 +86,46 @@ const NUCLEOLUS: OrganicOptions = {
   wobbleSpeed: 0.12,
 };
 
+/** Torus whose tube swells eight times around the ring: the eight spokes of a pore complex ring. */
+function eightFoldRing(radius: number, tube: number, z: number) {
+  const g = new TorusGeometry(radius, tube, 10, 48);
+  const pos = g.attributes.position!;
+  const p = new Vector3();
+  for (let i = 0; i < pos.count; i++) {
+    p.fromBufferAttribute(pos, i);
+    const a = Math.atan2(p.y, p.x);
+    const swell = 1 + 0.35 * Math.max(0, Math.cos(a * 8));
+    const ring = new Vector3(Math.cos(a) * radius, Math.sin(a) * radius, 0);
+    p.sub(ring).multiplyScalar(swell).add(ring);
+    pos.setXYZ(i, p.x, p.y, p.z + z);
+  }
+  g.computeVertexNormals();
+  return g;
+}
+
 /**
- * Nuclear pore complex (~120 nm): two eight-fold rings (cytoplasmic and nuclear), a central channel,
- * eight cytoplasmic filaments and the nuclear basket. Local +Z points out of the nucleus.
+ * Nuclear pore complex (~120 nm): cytoplasmic and nuclear eight-fold rings, a central channel and the
+ * distal ring of the nuclear basket. Local +Z points out of the nucleus.
  */
 function poreComplexGeometry() {
-  const parts: BufferGeometry[] = [];
-  const add = (g: BufferGeometry) => {
-    g.deleteAttribute('uv');
-    parts.push(g.index ? g.toNonIndexed() : g);
-  };
-  const ring = 0.55;
+  const parts: BufferGeometry[] = [
+    eightFoldRing(0.55, 0.17, 0.2),
+    eightFoldRing(0.55, 0.15, -0.2),
+    new CylinderGeometry(0.34, 0.34, 0.4, 16, 1, true).rotateX(Math.PI / 2),
+    new TorusGeometry(0.22, 0.05, 6, 16).translate(0, 0, -0.75),
+  ];
   for (let i = 0; i < 8; i++) {
+    // Basket struts converging on the distal ring.
     const a = (i / 8) * Math.PI * 2;
-    const x = Math.cos(a) * ring;
-    const y = Math.sin(a) * ring;
-    for (const z of [0.22, -0.22]) {
-      const sub = new IcosahedronGeometry(0.19, 0);
-      sub.scale(1, 1, 0.8);
-      sub.translate(x, y, z);
-      add(sub);
-    }
-    // Cytoplasmic filament.
-    const fil = new CylinderGeometry(0.025, 0.05, 0.7, 4, 1);
-    fil.rotateX(Math.PI / 2);
-    fil.translate(x * 0.9, y * 0.9, 0.6);
-    add(fil);
-    // Nuclear basket strut, leaning in towards the distal ring.
-    const strut = new CylinderGeometry(0.03, 0.03, 0.75, 4, 1);
-    strut.rotateX(Math.PI / 2);
-    strut.rotateY(Math.cos(a) * -0.45);
-    strut.rotateX(Math.sin(a) * 0.45);
-    strut.translate(x * 0.65, y * 0.65, -0.6);
-    add(strut);
+    const from = new Vector3(Math.cos(a) * 0.55, Math.sin(a) * 0.55, -0.25);
+    const to = new Vector3(Math.cos(a) * 0.22, Math.sin(a) * 0.22, -0.75);
+    const strut = new CylinderGeometry(0.035, 0.035, from.distanceTo(to), 5, 1);
+    strut.applyQuaternion(new Quaternion().setFromUnitVectors(new Vector3(0, 1, 0), to.clone().sub(from).normalize()));
+    const mid = from.clone().lerp(to, 0.5);
+    strut.translate(mid.x, mid.y, mid.z);
+    parts.push(strut);
   }
-  const channel = new CylinderGeometry(0.3, 0.3, 0.42, 12, 1, true);
-  channel.rotateX(Math.PI / 2);
-  add(channel);
-  const distal = new TorusGeometry(0.22, 0.04, 4, 12);
-  distal.translate(0, 0, -0.95);
-  add(distal);
-  return mergeGeometries(parts)!;
+  return mergeGeometries(parts.map((g) => (g.deleteAttribute('uv'), g.index ? g.toNonIndexed() : g)))!;
 }
 
 function chromatinGeometry(count: number, radius: number) {
@@ -159,11 +159,11 @@ export function Nucleus() {
   const { center, radius } = CELL.nucleus;
 
   const parts = useMemo(() => {
-    const detail = preset.geometryDetail >= 1 ? 5 : 4;
+    const detail = preset.geometryDetail >= 1 ? 28 : 18;
     const outer = new IcosahedronGeometry(radius, detail);
-    const inner = new IcosahedronGeometry(radius - 0.9, detail - 1);
-    const nucleolus = new IcosahedronGeometry(6.5, 4);
-    const nucleolus2 = new IcosahedronGeometry(3.2, 3);
+    const inner = new IcosahedronGeometry(radius - 0.9, detail - 6);
+    const nucleolus = new IcosahedronGeometry(6.5, 12);
+    const nucleolus2 = new IcosahedronGeometry(3.2, 7);
     const chromatin = chromatinGeometry(Math.round(32 * preset.geometryDetail), radius - 2.5);
     return {
       outer,

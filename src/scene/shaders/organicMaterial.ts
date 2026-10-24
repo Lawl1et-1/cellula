@@ -10,7 +10,7 @@ export const sharedUniforms = {
   uAmbient: { value: new Color('#1a2a44').multiplyScalar(0.35) },
   uFogColor: { value: new Color('#06101c') },
   uFogDensity: { value: 0.0016 },
-  uCausticStrength: { value: 0.35 },
+  uCausticStrength: { value: 0.22 },
   /** Shading detail level from the quality preset (see QualityPreset.shading). */
   uDetail: { value: 2 },
   /** Size multiplier for molecular-scale objects ('artistic' vs 'real' scale). */

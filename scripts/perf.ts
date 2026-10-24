@@ -44,7 +44,7 @@ async function main() {
         if (ONLY && !ONLY.includes(q)) continue;
         // A fresh page per preset: no leftovers from live switching.
         await page.goto(`${base}/explorer?cam=${cam}&q=${q}&stats${fx ? '' : '&nofx'}`);
-        await page.waitForSelector('canvas', { timeout: 60000 });
+        await page.waitForFunction(() => (window as unknown as { __cellulaReady?: boolean }).__cellulaReady, null, { timeout: 120000 });
         await wait(7000);
         row.push(`${label} ${(await gpuMs()).toFixed(1)}`);
       }

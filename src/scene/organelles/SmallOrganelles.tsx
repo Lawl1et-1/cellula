@@ -78,12 +78,12 @@ export function SmallOrganelles() {
 
   const lysosomes = useMemo(() => {
     const placed = scatter(21, 34, { spacing: 7, margin: 2, scale: uniform(0.7, 1.35) });
-    return { matrices: toMatrices(placed), seeds: placed.map((o) => o.seed), geometry: new IcosahedronGeometry(2.3, 3) };
+    return { matrices: toMatrices(placed), seeds: placed.map((o) => o.seed), geometry: new IcosahedronGeometry(2.3, 6) };
   }, []);
 
   const peroxisomes = useMemo(() => {
     const placed = scatter(31, 42, { spacing: 6, margin: 2, scale: uniform(0.75, 1.2) });
-    return { matrices: toMatrices(placed), seeds: placed.map((o) => o.seed), geometry: new IcosahedronGeometry(1.5, 3) };
+    return { matrices: toMatrices(placed), seeds: placed.map((o) => o.seed), geometry: new IcosahedronGeometry(1.5, 4) };
   }, []);
 
   const vesicles = useMemo(() => {

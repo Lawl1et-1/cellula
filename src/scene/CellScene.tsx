@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { easing } from 'maath';
 import { sharedUniforms } from './shaders/organicMaterial';
@@ -20,7 +21,12 @@ const MOLECULAR_SCALE = { artistic: 1, real: 0.4 };
 
 /** Drives the global clock and scene-wide uniforms; composes every organelle. */
 function Clock() {
+  const frames = useRef(0);
   useFrame((state, delta) => {
+    if (++frames.current === 4) {
+      useScene.setState({ ready: true });
+      (window as unknown as { __cellulaReady: boolean }).__cellulaReady = true;
+    }
     const u = sharedUniforms;
     u.uTime.value = state.clock.elapsedTime;
     u.uDetail.value = QUALITY_PRESETS[useQuality.getState().level].shading;
