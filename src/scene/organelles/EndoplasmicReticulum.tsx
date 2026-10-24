@@ -33,6 +33,7 @@ const ROUGH_ER: OrganicOptions = {
   wobbleFreq: 0.12,
   doubleSide: true,
   vertexSeed: true,
+  fieldCut: true,
 };
 
 const SMOOTH_ER: OrganicOptions = {
@@ -84,11 +85,19 @@ function sheetPoint(s: Sheet, u: number, v: number, out = new Vector3()) {
 }
 
 /** Sheets are perforated (fenestrations) and have irregular edges. */
-function sheetKeeps(s: Sheet, u: number, v: number, p: Vector3) {
+/**
+ * Signed "inside the sheet" field: negative in fenestrations and beyond the ragged rim. It is stored per
+ * vertex and thresholded per pixel, so hole outlines are smooth curves rather than dropped quads.
+ */
+function sheetField(s: Sheet, u: number, v: number, p: Vector3) {
   const hole = valueNoise3(p.x * 0.16, p.y * 0.16, p.z * 0.16, 7 + Math.floor(s.seed * 100));
   const edge = 1 - Math.max(Math.abs(u), Math.abs(v));
   const ragged = 0.08 + 0.12 * (valueNoise3(p.x * 0.07, p.y * 0.07, p.z * 0.07, 3) * 0.5 + 0.5);
-  return hole < 0.42 && edge > ragged;
+  return Math.min(0.42 - hole, (edge - ragged) * 2.5);
+}
+
+function sheetKeeps(s: Sheet, u: number, v: number, p: Vector3) {
+  return sheetField(s, u, v, p) > 0.03;
 }
 
 function sheetGeometry(s: Sheet, res: number) {
@@ -96,7 +105,7 @@ function sheetGeometry(s: Sheet, res: number) {
   const nv = Math.round(46 * res);
   const positions = new Float32Array((nu + 1) * (nv + 1) * 3);
   const uvs = new Float32Array((nu + 1) * (nv + 1) * 2);
-  const keep = new Uint8Array((nu + 1) * (nv + 1));
+  const field = new Float32Array((nu + 1) * (nv + 1));
   const p = new Vector3();
   for (let j = 0; j <= nv; j++) {
     for (let i = 0; i <= nu; i++) {
@@ -106,7 +115,7 @@ function sheetGeometry(s: Sheet, res: number) {
       sheetPoint(s, u, v, p);
       positions.set([p.x, p.y, p.z], k * 3);
       uvs.set([i / nu, j / nv], k * 2);
-      keep[k] = sheetKeeps(s, u, v, p) ? 1 : 0;
+      field[k] = sheetField(s, u, v, p);
     }
   }
   const index: number[] = [];
@@ -116,7 +125,8 @@ function sheetGeometry(s: Sheet, res: number) {
       const b = a + 1;
       const c = a + nu + 1;
       const d = c + 1;
-      if (keep[a]! + keep[b]! + keep[c]! + keep[d]! < 3) continue;
+      // Quads entirely outside the sheet are dropped; partial ones are cut per pixel.
+      if (Math.max(field[a]!, field[b]!, field[c]!, field[d]!) < 0) continue;
       index.push(a, c, b, b, c, d);
     }
   }
@@ -124,6 +134,7 @@ function sheetGeometry(s: Sheet, res: number) {
   g.setAttribute('position', new BufferAttribute(positions, 3));
   g.setAttribute('uv', new BufferAttribute(uvs, 2));
   g.setAttribute('aSeed', new BufferAttribute(new Float32Array(positions.length / 3).fill(s.seed), 1));
+  g.setAttribute('aField', new BufferAttribute(field, 1));
   g.setIndex(index);
   g.computeVertexNormals();
   return g;

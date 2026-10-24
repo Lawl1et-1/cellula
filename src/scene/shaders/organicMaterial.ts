@@ -112,6 +112,8 @@ export interface OrganicOptions {
   vertexColors?: boolean;
   /** Per-vertex seed attribute (merged geometries) instead of per-instance. */
   vertexSeed?: boolean;
+  /** Cut the surface where the per-vertex aField attribute is negative (ER fenestrations). */
+  fieldCut?: boolean;
   /** Dynamic instability: discard beyond an animated length along uv.x (microtubules). */
   growth?: boolean;
   /** Instances shrink to nothing between these camera distances (macro-distance LOD). */
@@ -139,6 +141,10 @@ varying float vHighlightMask;
 #if defined(USE_SEED) || defined(USE_VERTEX_SEED)
 attribute float aSeed;
 #endif
+#ifdef USE_FIELD
+attribute float aField;
+varying float vField;
+#endif
 #ifdef USE_COLOR
 varying vec3 vColor;
 #endif
@@ -159,6 +165,9 @@ void main() {
   #endif
   vSeed = seed;
   vUv = uv;
+  #ifdef USE_FIELD
+  vField = aField;
+  #endif
   // Highlight one instance (uHighlightId) or the whole mesh (-1).
   #ifdef USE_INSTANCING
   float instanceIndex = float(gl_InstanceID);
@@ -247,6 +256,9 @@ varying float vHighlightMask;
 #ifdef USE_COLOR
 varying vec3 vColor;
 #endif
+#ifdef USE_FIELD
+varying float vField;
+#endif
 varying vec3 vNormal;
 varying vec3 vWorld;
 varying vec3 vLocal;
@@ -259,6 +271,7 @@ varying vec3 vCenter;
 ${PATTERNS[pattern]}
 
 void main() {
+  float edgeBand = 0.0;
   // Scenario focus: organelles that are not the subject dissolve into a dithered ghost (screen-door
   // transparency: no sorting, no extra pass; the film grain hides the pattern).
   float ghost = uDim * uDimmable;
@@ -268,6 +281,11 @@ void main() {
   }
   #ifdef USE_HOLES
   if (snoise(vLocal * 0.22 + vSeed * 3.0) > uHoles) discard;
+  #endif
+  #ifdef USE_FIELD
+  if (vField < 0.0) discard;
+  // Membrane edges curl over: brighten a thin band along every cut.
+  edgeBand = 1.0 - smoothstep(0.0, 0.05, vField);
   #endif
   #ifdef USE_GROWTH
   float len = 0.72 + 0.28 * sin(uTime * (0.18 + hash11(vSeed * 13.0) * 0.25) + vSeed * 40.0);
@@ -303,6 +321,7 @@ void main() {
   vec3 col = organicShade(albedo, N, V, vWorld, uSss, uSssColor, uGloss);
   col += uEmissive * emissive * uEmissiveStrength;
   col += uCutEdge * edge * 2.5;
+  col += uSssColor * edgeBand * 0.5;
 
   // Hover / selection: a bright rim and a gentle lift, so the organelle reads against the crowd.
   float hl = uHighlight * vHighlightMask;
@@ -331,6 +350,7 @@ export function createOrganicMaterial(o: OrganicOptions, instanced = false) {
   if (o.molecular) defines.USE_MOLECULAR = '';
   if (o.transparent) defines.USE_TRANSPARENT = '';
   if (o.holes) defines.USE_HOLES = '';
+  if (o.fieldCut) defines.USE_FIELD = '';
   if (o.growth) defines.USE_GROWTH = '';
   if (o.wobble) defines.USE_WOBBLE = '';
   if (o.fade) defines.USE_FADE = '';
