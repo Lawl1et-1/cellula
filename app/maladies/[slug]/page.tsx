@@ -40,7 +40,7 @@ export default async function DiseasePage({ params }: { params: Promise<{ slug: 
         {d.aliases.length > 0 && <p className={styles.lead}>{d.aliases.join(' · ')}</p>}
         <div className={styles.sheet}>
           <article>
-            <DiseaseDetails disease={d} sources={sources} />
+            <DiseaseDetails disease={d} sources={sources} headingLevel={2} />
           </article>
           <aside className={`glass ${styles.aside}`}>
             <Link className={styles.cta} href={`/explorer?disease=${d.slug}`}>

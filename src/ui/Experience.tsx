@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { useScene } from '@/state/scene';
 import { IntroOverlay } from './IntroOverlay';
@@ -15,6 +15,8 @@ import { ProcessPlayer } from './ProcessPlayer';
 import { TourCard } from './TourCard';
 import { DiseasePanel } from './DiseasePanel';
 import { DiseaseLibrary } from './DiseaseLibrary';
+import { Announcer } from './Announcer';
+import { NoWebGL } from './NoWebGL';
 import type { ExplorerContent } from '@/content/bundle';
 
 const CellCanvas = dynamic(() => import('@/scene/CellCanvas'), { ssr: false });
@@ -27,6 +29,26 @@ export function Experience({ intro, content }: { intro: boolean; content: Explor
   useEffect(() => {
     if (!intro) setCameraMode('orbit');
   }, [intro, setCameraMode]);
+
+  // Checked once on the client: without WebGL 2, show a text version instead of a black screen.
+  const [webgl, setWebgl] = useState<boolean | null>(null);
+  useEffect(() => {
+    let ok = false;
+    try {
+      ok = !!document.createElement('canvas').getContext('webgl2');
+    } catch {
+      ok = false;
+    }
+    setWebgl(ok); // eslint-disable-line react-hooks/set-state-in-effect
+  }, []);
+
+  if (webgl === false) {
+    return (
+      <ContentProvider content={content}>
+        <NoWebGL />
+      </ContentProvider>
+    );
+  }
 
   return (
     <ContentProvider content={content}>
@@ -50,6 +72,7 @@ export function Experience({ intro, content }: { intro: boolean; content: Explor
             <InfoPanel />
             <HoverLabel />
             <ScenarioMenu />
+            <Announcer />
             <DiseasePanel />
             <DiseaseLibrary />
             <AnimatePresence>

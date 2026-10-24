@@ -6,6 +6,7 @@ import { useFrame } from '@react-three/fiber';
 import { easing } from 'maath';
 import { sharedUniforms } from './shaders/organicMaterial';
 import { useScene } from '@/state/scene';
+import { timeScale } from './time';
 import { updateHighlights } from './interaction/highlight';
 import { applyDiseaseLooks } from './disease/bindings';
 import { liveChannels } from '@/engine/timeline/live';
@@ -35,7 +36,8 @@ function Clock() {
       (window as unknown as { __cellulaReady: boolean }).__cellulaReady = true;
     }
     const u = sharedUniforms;
-    u.uTime.value = state.clock.elapsedTime;
+    // Ambient life slows down (reduced motion) or stops (paused); scenarios keep their own clock.
+    u.uTime.value += Math.min(delta, 0.1) * timeScale();
     u.uDetail.value = QUALITY_PRESETS[useQuality.getState().level].shading;
     updateHighlights(delta);
     applyDiseaseLooks(delta);

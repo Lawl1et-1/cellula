@@ -16,6 +16,7 @@ import {
 } from 'three';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { liveChannels } from '@/engine/timeline/live';
+import { timeScale } from '../time';
 import { createRng, type Rng } from '@/lib/random';
 import { valueNoise3 } from '@/lib/noise';
 import { CELL, GOLGI_CENTER, insideCytoplasm, randomCytoplasmPoint } from '../layout/cellLayout';
@@ -278,7 +279,7 @@ function Bacteria() {
     const contained = liveChannels['cytoplasm.phagosomes'];
     const n = Math.round(amount * COUNT);
     // Actin-propelled bacteria move fast; contained ones barely drift.
-    travelled.current += Math.min(delta, 0.05) * (0.05 + actin * 0.45);
+    travelled.current += Math.min(delta, 0.05) * (0.05 + actin * 0.45) * timeScale();
     const at = (i: number, s: number, out: Vector3) => {
       const p = assets.paths[i]!;
       const a = p.phase + s * p.speed;

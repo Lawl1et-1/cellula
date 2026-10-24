@@ -42,11 +42,15 @@ export function DiseaseDetails({
   disease,
   sources,
   stage,
+  headingLevel = 3,
 }: {
   disease: Disease;
   sources: Source[];
   stage?: number;
+  /** 3 inside the explorer panel (under its h2), 2 on the disease page (under the h1). */
+  headingLevel?: 2 | 3;
 }) {
+  const H = `h${headingLevel}` as 'h2' | 'h3';
   const citations = useMemo(() => new CitationIndex(), [disease]); // eslint-disable-line react-hooks/exhaustive-deps
   const byId = useMemo(() => new Map(sources.map((s) => [s.id, s])), [sources]);
   const current = stage !== undefined ? disease.stages[stage] : undefined;
@@ -66,9 +70,9 @@ export function DiseaseDetails({
 
         {current && current.cellularSigns.length > 0 && (
           <section className={styles.now}>
-            <h3 className="label">
+            <H className="label">
               {fr.diseases.signs} · {current.title.fr}
-            </h3>
+            </H>
             {current.cellularSigns.map((s, i) => (
               <Claim key={i} claim={s} />
             ))}
@@ -76,20 +80,20 @@ export function DiseaseDetails({
         )}
 
         <section>
-          <h3 className="label">{fr.diseases.cell}</h3>
+          <H className="label">{fr.diseases.cell}</H>
           <p className={styles.cellType}>{fr.diseases.cellTypes[disease.cellContext.cellType]}</p>
           {disease.cellContext.note && <Claim claim={disease.cellContext.note} />}
         </section>
 
         <section>
-          <h3 className="label">{fr.diseases.cause}</h3>
+          <H className="label">{fr.diseases.cause}</H>
           {disease.cause.map((c, i) => (
             <Claim key={i} claim={c} />
           ))}
         </section>
 
         <section>
-          <h3 className="label">{fr.diseases.mechanism}</h3>
+          <H className="label">{fr.diseases.mechanism}</H>
           <ol className={styles.mechanism}>
             {disease.mechanism.map((m, i) => (
               <li key={i}>
@@ -102,24 +106,24 @@ export function DiseaseDetails({
 
         {disease.treatmentsNote && (
           <section>
-            <h3 className="label">{fr.diseases.treatment}</h3>
+            <H className="label">{fr.diseases.treatment}</H>
             <Claim claim={disease.treatmentsNote} />
           </section>
         )}
 
         <p className={styles.disclaimer}>{fr.diseases.disclaimer}</p>
 
-        <Sources citations={citations} byId={byId} />
+        <Sources citations={citations} byId={byId} heading={H} />
       </div>
     </CitationContext.Provider>
   );
 }
 
 /** Rendered last, so every citation above has been numbered. */
-function Sources({ citations, byId }: { citations: CitationIndex; byId: Map<string, Source> }) {
+function Sources({ citations, byId, heading: H }: { citations: CitationIndex; byId: Map<string, Source>; heading: 'h2' | 'h3' }) {
   return (
     <section>
-      <h3 className="label">{fr.panel.sources}</h3>
+      <H className="label">{fr.panel.sources}</H>
       <ol className={styles.sources}>
         {citations.ids.map((id, i) => {
           const s = byId.get(id);

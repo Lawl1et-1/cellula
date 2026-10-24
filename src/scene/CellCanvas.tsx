@@ -97,7 +97,8 @@ export default function CellCanvas() {
         gl.debug.checkShaderErrors = process.env.NODE_ENV !== 'production';
       }}
       style={{ position: 'absolute', inset: 0 }}
-      aria-label="Vue 3D interactive d'une cellule humaine"
+      role="img"
+      aria-label="Vue 3D interactive d'une cellule humaine. Les organites sont aussi accessibles dans la liste « Organites »."
     >
       <color attach="background" args={[PALETTE.background]} />
       <AdaptiveQuality />

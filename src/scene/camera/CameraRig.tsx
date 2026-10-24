@@ -7,6 +7,7 @@ import CameraControlsImpl from 'camera-controls';
 import { Vector3 } from 'three';
 import { useScene } from '@/state/scene';
 import { useSelection } from '@/state/selection';
+import { timeScale } from '../time';
 import { cameraPosition, focusPoint } from './focus';
 
 const ACTION = CameraControlsImpl.ACTION;
@@ -167,9 +168,9 @@ export function CameraRig() {
     const { lastInteraction } = useScene.getState();
 
     if (mode === 'intro') {
-      c.azimuthAngle += dt * 0.006;
+      c.azimuthAngle += dt * 0.006 * timeScale();
     } else if (mode === 'orbit') {
-      if (performance.now() - lastInteraction > IDLE_DELAY) c.azimuthAngle += dt * 0.03;
+      if (performance.now() - lastInteraction > IDLE_DELAY) c.azimuthAngle += dt * 0.03 * timeScale();
     } else {
       const k = keys.current;
       const boost = k.has('ShiftLeft') || k.has('ShiftRight') ? 3 : 1;

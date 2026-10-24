@@ -51,6 +51,8 @@ export function Hud() {
   const scale = useScene((s) => s.scaleMode);
   const setScale = useScene((s) => s.setScaleMode);
   const level = useQuality((s) => s.level);
+  const motionMode = useScene((s) => s.motion);
+  const setMotion = useScene((s) => s.setMotion);
   const setLevel = useQuality((s) => s.setLevel);
 
   return (
@@ -80,6 +82,17 @@ export function Hud() {
           options={[
             { value: 'artistic', label: fr.hud.artistic },
             { value: 'real', label: fr.hud.real },
+          ]}
+        />
+        <span className={styles.divider} aria-hidden />
+        <Segmented<'normal' | 'reduced' | 'paused'>
+          label={fr.hud.motion}
+          value={motionMode}
+          onChange={setMotion}
+          options={[
+            { value: 'normal', label: fr.hud.motionNormal },
+            { value: 'reduced', label: fr.hud.motionReduced },
+            { value: 'paused', label: fr.hud.motionPaused },
           ]}
         />
         <span className={styles.divider} aria-hidden />

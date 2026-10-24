@@ -69,6 +69,15 @@ export const fr = {
       erythrocyte: 'Globule rouge',
     } as Record<string, string>,
   },
+  a11y: {
+    hovered: (name: string) => `Survol : ${name}`,
+    selected: (name: string) => `Sélectionné : ${name}`,
+    stage: (scenario: string, stage: string, i: number, n: number) => `${scenario}, étape ${i} sur ${n} : ${stage}`,
+    noWebgl: 'Votre navigateur ne peut pas afficher la cellule en 3D.',
+    noWebglLead:
+      "WebGL 2 n'est pas disponible (navigateur ancien, accélération matérielle désactivée…). Le contenu reste accessible ci-dessous en version texte.",
+    organelles: 'Les organites',
+  },
   player: {
     stage: 'étape',
     play: 'Lecture',
@@ -93,5 +102,9 @@ export const fr = {
     flightHelp: 'ZQSD / WASD pour avancer · Espace / C pour monter ou descendre · Maj pour accélérer · glisser pour regarder',
     orbitHelp: 'Cliquer sur un organite pour l’explorer · glisser pour tourner · molette pour zoomer',
     disclaimer: 'Outil pédagogique — modèle simplifié, ne constitue pas un avis médical.',
+    motion: 'Mouvement',
+    motionNormal: 'Vivant',
+    motionReduced: 'Réduit',
+    motionPaused: 'Pause',
   },
 } as const;

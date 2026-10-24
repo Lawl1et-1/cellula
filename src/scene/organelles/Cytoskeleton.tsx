@@ -24,6 +24,7 @@ import { InstancedOrganelle, weld } from './Instanced';
 import { useHighlight } from '../interaction/highlight';
 import { usePreset } from '@/state/quality';
 import { useScene } from '@/state/scene';
+import { timeScale } from '../time';
 
 const MICROTUBULE: OrganicOptions = {
   color: '#2a3c5c',
@@ -234,7 +235,7 @@ function Motors({ paths, count }: { paths: Vector3[][]; count: number }) {
     const h = heads.current;
     const c = cargoes.current;
     if (!h || !c) return;
-    const dt = Math.min(delta, 0.05);
+    const dt = Math.min(delta, 0.05) * timeScale();
     parts.motors.forEach((m, i) => {
       m.phase += dt * 4;
       // Discrete 8 nm steps: move during half of each cycle, pause during the other.
