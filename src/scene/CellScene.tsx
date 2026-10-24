@@ -13,6 +13,7 @@ import { applyDiseaseLooks } from './disease/bindings';
 import { liveChannels } from '@/engine/timeline/live';
 import { PickTargets } from './interaction/PickTargets';
 import { ScenarioActors } from './actors/ScenarioActors';
+import { MrnaExport } from './actors/MrnaExport';
 import { DiseaseParticles } from './disease/DiseaseParticles';
 import { useQuality } from '@/state/quality';
 import { QUALITY_PRESETS } from '@/engine/quality/presets';
@@ -78,6 +79,7 @@ export function CellScene() {
       </Body>
       <PickTargets />
       <ScenarioActors />
+      <MrnaExport />
       <DiseaseParticles />
     </>
   );
