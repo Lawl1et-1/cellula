@@ -259,3 +259,14 @@
     bottom: 150px;
   }
 }
+
+@media (max-width: 640px) {
+  .library {
+    top: 104px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    border-radius: 20px 20px 0 0;
+  }
+}

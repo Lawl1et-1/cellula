@@ -42,7 +42,11 @@ export function OrganelleList() {
                   className={styles.listItem}
                   aria-current={selected === id}
                   style={{ ['--dot' as string]: color }}
-                  onClick={() => select(anchorFor(id, cameraPosition))}
+                  onClick={() => {
+                    select(anchorFor(id, cameraPosition));
+                    // On a phone the info sheet takes over the screen: fold the list away.
+                    if (window.matchMedia('(max-width: 640px)').matches) setOpen(false);
+                  }}
                   onMouseEnter={() => hover({ organelle: id })}
                   onMouseLeave={() => hover(null)}
                   onFocus={() => hover({ organelle: id })}

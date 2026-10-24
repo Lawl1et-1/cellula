@@ -260,3 +260,44 @@
     right: 16px;
   }
 }
+
+/* ---------- Phone ---------- */
+
+.settingsButton {
+  position: absolute;
+  right: 14px;
+  bottom: 16px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .scaleChip {
+    display: none;
+  }
+  .wordmark {
+    font-size: 26px;
+  }
+  .dock {
+    left: 12px;
+    right: 12px;
+    bottom: 68px;
+    width: auto;
+    transform: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    max-height: 62vh;
+    overflow-y: auto;
+  }
+  .dock .segmented {
+    flex-wrap: wrap;
+  }
+  .segment {
+    flex: 1;
+    padding: 9px 10px;
+    font-size: 14px;
+  }
+}

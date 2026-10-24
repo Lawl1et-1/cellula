@@ -41,6 +41,7 @@ export const fr = {
     cause: 'Cause',
     mechanism: 'Mécanisme',
     signs: 'Ce que l’on voit à cette étape',
+    sheet: 'Fiche',
     treatment: 'Prise en charge',
     disclaimer:
       'Contenu pédagogique, simplifié à partir des sources citées. Ce n’est pas un avis médical : pour toute question de santé, consultez un professionnel.',
@@ -102,6 +103,8 @@ export const fr = {
     flightHelp: 'ZQSD / WASD pour avancer · Espace / C pour monter ou descendre · Maj pour accélérer · glisser pour regarder',
     orbitHelp: 'Cliquer sur un organite pour l’explorer · glisser pour tourner · molette pour zoomer',
     disclaimer: 'Outil pédagogique — modèle simplifié, ne constitue pas un avis médical.',
+    settings: 'Réglages',
+    closeSettings: 'Fermer les réglages',
     motion: 'Mouvement',
     motionNormal: 'Vivant',
     motionReduced: 'Réduit',

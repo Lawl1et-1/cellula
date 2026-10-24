@@ -5,6 +5,11 @@ import { QUALITY_PRESETS, type QualityLevel } from '@/engine/quality/presets';
 import { fr } from '@/i18n/fr';
 import { useQuality } from '@/state/quality';
 import { useScene, type CameraMode, type ScaleMode } from '@/state/scene';
+import { useSelection } from '@/state/selection';
+import { useScenario } from '@/state/scenario';
+import { useTour } from '@/state/tour';
+import { useUi } from '@/state/ui';
+import { usePhone, useTouch } from './usePhone';
 import styles from './ui.module.css';
 
 interface SegmentedProps<T extends string> {
@@ -29,7 +34,11 @@ function Segmented<T extends string>({ label, value, options, onChange }: Segmen
             onClick={() => onChange(o.value)}
           >
             {value === o.value && (
-              <motion.span layoutId={`seg-${label}`} className={styles.segmentPill} transition={{ type: 'spring', stiffness: 420, damping: 36 }} />
+              <motion.span
+                layoutId={`seg-${label}`}
+                className={styles.segmentPill}
+                transition={{ type: 'spring', stiffness: 420, damping: 36 }}
+              />
             )}
             <span className={styles.segmentText}>{o.label}</span>
           </button>
@@ -54,55 +63,88 @@ export function Hud() {
   const motionMode = useScene((s) => s.motion);
   const setMotion = useScene((s) => s.setMotion);
   const setLevel = useQuality((s) => s.setLevel);
+  const phone = usePhone();
+  const touchDevice = useTouch();
+  const settingsOpen = useUi((s) => s.settingsOpen);
+  const setSettingsOpen = useUi((s) => s.setSettingsOpen);
+  // On a phone, the bottom of the screen belongs to whatever is open (panel, player, tour, library).
+  const hasSelection = useSelection((s) => !!s.selected);
+  const hasScenario = useScenario((s) => !!s.scenario);
+  const hasTour = useTour((s) => !!s.tour);
+  const libraryOpen = useUi((s) => s.libraryOpen);
+  const busy = hasSelection || hasScenario || hasTour || libraryOpen;
+  const showDock = !phone || (settingsOpen && !busy);
 
   return (
     <motion.div className={styles.hud} {...fade}>
       <header className={styles.topbar}>
         <span className={styles.wordmark}>{fr.brand}</span>
         <span className={`label ${styles.scaleChip}`} title={fr.hud.scaleNote}>
-          {scale === 'artistic' ? `${fr.hud.scale} ${fr.hud.artistic.toLowerCase()}` : `${fr.hud.scale} ${fr.hud.real.toLowerCase()}`}
+          {scale === 'artistic'
+            ? `${fr.hud.scale} ${fr.hud.artistic.toLowerCase()}`
+            : `${fr.hud.scale} ${fr.hud.real.toLowerCase()}`}
         </span>
       </header>
 
-      <div className={`glass ${styles.dock}`}>
-        <Segmented<CameraMode>
-          label={fr.hud.camera}
-          value={mode}
-          onChange={setMode}
-          options={[
-            { value: 'orbit', label: fr.hud.orbit },
-            { value: 'flight', label: fr.hud.flight },
-          ]}
-        />
-        <span className={styles.divider} aria-hidden />
-        <Segmented<ScaleMode>
-          label={fr.hud.scale}
-          value={scale}
-          onChange={setScale}
-          options={[
-            { value: 'artistic', label: fr.hud.artistic },
-            { value: 'real', label: fr.hud.real },
-          ]}
-        />
-        <span className={styles.divider} aria-hidden />
-        <Segmented<'normal' | 'reduced' | 'paused'>
-          label={fr.hud.motion}
-          value={motionMode}
-          onChange={setMotion}
-          options={[
-            { value: 'normal', label: fr.hud.motionNormal },
-            { value: 'reduced', label: fr.hud.motionReduced },
-            { value: 'paused', label: fr.hud.motionPaused },
-          ]}
-        />
-        <span className={styles.divider} aria-hidden />
-        <Segmented<QualityLevel>
-          label={fr.hud.quality}
-          value={level}
-          onChange={(l) => setLevel(l, true)}
-          options={(Object.keys(QUALITY_PRESETS) as QualityLevel[]).map((k) => ({ value: k, label: QUALITY_PRESETS[k].label }))}
-        />
-      </div>
+      {phone && !busy && (
+        <button
+          className={`glass ${styles.settingsButton}`}
+          aria-expanded={settingsOpen}
+          onClick={() => setSettingsOpen(!settingsOpen)}
+        >
+          {settingsOpen ? fr.hud.closeSettings : fr.hud.settings}
+        </button>
+      )}
+
+      {showDock && (
+        <div className={`glass ${styles.dock}`}>
+          {/* Free flight needs a keyboard: not offered on touch devices. */}
+          {!touchDevice && (
+            <>
+              <Segmented<CameraMode>
+                label={fr.hud.camera}
+                value={mode}
+                onChange={setMode}
+                options={[
+                  { value: 'orbit', label: fr.hud.orbit },
+                  { value: 'flight', label: fr.hud.flight },
+                ]}
+              />
+              <span className={styles.divider} aria-hidden />
+            </>
+          )}
+          <Segmented<ScaleMode>
+            label={fr.hud.scale}
+            value={scale}
+            onChange={setScale}
+            options={[
+              { value: 'artistic', label: fr.hud.artistic },
+              { value: 'real', label: fr.hud.real },
+            ]}
+          />
+          <span className={styles.divider} aria-hidden />
+          <Segmented<'normal' | 'reduced' | 'paused'>
+            label={fr.hud.motion}
+            value={motionMode}
+            onChange={setMotion}
+            options={[
+              { value: 'normal', label: fr.hud.motionNormal },
+              { value: 'reduced', label: fr.hud.motionReduced },
+              { value: 'paused', label: fr.hud.motionPaused },
+            ]}
+          />
+          <span className={styles.divider} aria-hidden />
+          <Segmented<QualityLevel>
+            label={fr.hud.quality}
+            value={level}
+            onChange={(l) => setLevel(l, true)}
+            options={(Object.keys(QUALITY_PRESETS) as QualityLevel[]).map((k) => ({
+              value: k,
+              label: QUALITY_PRESETS[k].label,
+            }))}
+          />
+        </div>
+      )}
 
       <p className={styles.help}>{mode === 'flight' ? fr.hud.flightHelp : fr.hud.orbitHelp}</p>
       <p className={styles.disclaimer}>{fr.hud.disclaimer}</p>

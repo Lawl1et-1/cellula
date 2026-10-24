@@ -7,6 +7,8 @@ import { useScenario } from '@/state/scenario';
 import { useSelection } from '@/state/selection';
 import { Claim } from './Claim';
 import { SourceLine } from './SourceLine';
+import { useUi } from '@/state/ui';
+import { usePhone } from './usePhone';
 import styles from './player.module.css';
 
 const SPEEDS = [0.5, 1, 2];
@@ -18,6 +20,8 @@ export function ProcessPlayer() {
   const playing = useScenario((s) => s.playing);
   const speed = useScenario((s) => s.speed);
   const { setT, setPlaying, setSpeed, stop } = useScenario.getState();
+  const phone = usePhone();
+  const setSheet = useUi((s) => s.setDiseaseSheet);
 
   if (!process) return null;
   const stageIndex = stageIndexAt(process.stages, t);
@@ -81,6 +85,11 @@ export function ProcessPlayer() {
           />
         </div>
 
+        {phone && process.kind === 'disease' && (
+          <button className={styles.sheetButton} onClick={() => setSheet(true)}>
+            {fr.diseases.sheet}
+          </button>
+        )}
         <div className={styles.speeds} role="radiogroup" aria-label={fr.player.speed}>
           {SPEEDS.map((v) => (
             <button key={v} role="radio" aria-checked={speed === v} data-active={speed === v} onClick={() => setSpeed(v)}>

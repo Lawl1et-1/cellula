@@ -2,10 +2,19 @@ import { create } from 'zustand';
 
 interface UiState {
   libraryOpen: boolean;
+  /** Phone layout: settings sheet and disease details sheet are opened on demand. */
+  settingsOpen: boolean;
+  diseaseSheet: boolean;
   setLibraryOpen: (open: boolean) => void;
+  setSettingsOpen: (open: boolean) => void;
+  setDiseaseSheet: (open: boolean) => void;
 }
 
 export const useUi = create<UiState>((set) => ({
   libraryOpen: false,
+  settingsOpen: false,
+  diseaseSheet: false,
   setLibraryOpen: (libraryOpen) => set({ libraryOpen }),
+  setSettingsOpen: (settingsOpen) => set({ settingsOpen }),
+  setDiseaseSheet: (diseaseSheet) => set({ diseaseSheet }),
 }));
