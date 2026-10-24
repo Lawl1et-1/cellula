@@ -13,7 +13,8 @@
     "test": "vitest run",
     "check": "npm run typecheck && npm run lint && npm run validate:content && npm run test",
     "perf": "tsx scripts/perf.ts",
-    "shots": "tsx scripts/shots.ts"
+    "shots": "tsx scripts/shots.ts",
+    "verify:sources": "tsx scripts/verify-sources.ts"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",

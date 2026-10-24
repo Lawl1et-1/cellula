@@ -2,10 +2,16 @@
   "id": "cooper-cell-2",
   "type": "book",
   "title": "The Cell: A Molecular Approach",
-  "authors": ["Cooper GM"],
+  "authors": [
+    "Cooper GM"
+  ],
   "year": 2000,
   "edition": "2e édition",
   "publisher": "Sinauer Associates",
   "isbn": "0-87893-106-6",
-  "url": "https://www.ncbi.nlm.nih.gov/books/NBK9839/"
+  "url": "https://www.ncbi.nlm.nih.gov/books/NBK9839/",
+  "verified": {
+    "on": "2026-10-24",
+    "via": "ncbi-bookshelf"
+  }
 }
