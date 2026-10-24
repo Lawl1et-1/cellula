@@ -8,15 +8,105 @@
   },
   "summary": {
     "text": {
-      "fr": "Vésicule acide (pH d'environ 5) contenant des dizaines d'enzymes hydrolytiques capables de dégrader protéines, lipides, glucides et acides nucléiques."
+      "fr": "Compartiment acide rempli d'enzymes digestives (hydrolases) capables de dégrader les grandes molécules biologiques."
     },
     "sources": [
       {
-        "id": "alberts-mboc-4"
-      },
-      {
-        "id": "cooper-cell-2"
+        "id": "mboc4-lysosome-digestion"
       }
     ]
-  }
+  },
+  "function": [
+    {
+      "text": {
+        "fr": "Il digère les macromolécules apportées par l'endocytose, la phagocytose ou l'autophagie."
+      },
+      "sources": [
+        {
+          "id": "mboc4-lysosome-digestion"
+        },
+        {
+          "id": "mboc4-endocytosis"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Les produits de la digestion sont renvoyés dans le cytosol pour être réutilisés."
+      },
+      "sources": [
+        {
+          "id": "mboc4-lysosome-digestion"
+        }
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "text": {
+        "fr": "Sa membrane contient des pompes à protons qui maintiennent un pH acide à l'intérieur, nécessaire à l'activité de ses enzymes."
+      },
+      "sources": [
+        {
+          "id": "mboc4-lysosome-digestion"
+        }
+      ]
+    }
+  ],
+  "keyMolecules": [
+    {
+      "name": "Hydrolases acides",
+      "role": {
+        "text": {
+          "fr": "Enzymes (protéases, nucléases, lipases…) actives seulement en milieu acide."
+        },
+        "sources": [
+          {
+            "id": "mboc4-lysosome-digestion"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Pompe à protons (ATPase de type V)",
+      "role": {
+        "text": {
+          "fr": "Acidifie l'intérieur du lysosome."
+        },
+        "sources": [
+          {
+            "id": "mboc4-lysosome-digestion"
+          }
+        ]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "with": "golgi",
+      "description": {
+        "text": {
+          "fr": "Ses enzymes lui sont livrées depuis le Golgi, triées grâce au mannose-6-phosphate."
+        },
+        "sources": [
+          {
+            "id": "mboc4-golgi-to-lysosomes"
+          }
+        ]
+      }
+    },
+    {
+      "with": "vesicle",
+      "description": {
+        "text": {
+          "fr": "Les endosomes et autres vésicules lui apportent le matériel à dégrader."
+        },
+        "sources": [
+          {
+            "id": "mboc4-endocytosis"
+          }
+        ]
+      }
+    }
+  ]
 }

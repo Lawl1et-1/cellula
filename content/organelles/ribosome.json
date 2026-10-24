@@ -4,19 +4,112 @@
     "fr": "Ribosome"
   },
   "tagline": {
-    "fr": "La machine qui traduit l’ARN en protéine"
+    "fr": "La machine qui traduit l'ARN en protéine"
   },
   "summary": {
     "text": {
-      "fr": "Complexe d'ARN et de protéines, formé de deux sous-unités, qui lit l'ARN messager et assemble les acides aminés en chaîne protéique. Libre dans le cytosol ou fixé au réticulum endoplasmique."
+      "fr": "Grand complexe d'ARN et de protéines, formé de deux sous-unités, qui lit l'ARN messager et assemble les acides aminés en protéine."
     },
     "sources": [
       {
-        "id": "alberts-mboc-4"
-      },
-      {
-        "id": "cooper-cell-2"
+        "id": "mboc4-rna-to-protein"
       }
     ]
-  }
+  },
+  "function": [
+    {
+      "text": {
+        "fr": "Il traduit la séquence de l'ARN messager en chaîne d'acides aminés, avec l'aide des ARN de transfert."
+      },
+      "sources": [
+        {
+          "id": "mboc4-rna-to-protein"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Plusieurs ribosomes peuvent traduire le même ARN messager en même temps (polyribosome)."
+      },
+      "sources": [
+        {
+          "id": "mboc4-rna-to-protein"
+        }
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "text": {
+        "fr": "Il est formé d'une grande et d'une petite sous-unité ; il peut être libre dans le cytosol ou fixé au réticulum endoplasmique."
+      },
+      "sources": [
+        {
+          "id": "mboc4-rna-to-protein"
+        },
+        {
+          "id": "mboc4-er"
+        }
+      ],
+      "simplification": {
+        "fr": "En échelle artistique, cette structure est agrandie environ ×2,5 pour rester visible. Le modèle montre beaucoup moins d'exemplaires que dans une vraie cellule, pour rester lisible et fluide."
+      }
+    }
+  ],
+  "keyMolecules": [
+    {
+      "name": "ARN ribosomiques",
+      "role": {
+        "text": {
+          "fr": "Forment le cœur du ribosome et catalysent la formation des liaisons entre acides aminés."
+        },
+        "sources": [
+          {
+            "id": "mboc4-rna-to-protein"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ARN de transfert",
+      "role": {
+        "text": {
+          "fr": "Apportent les acides aminés correspondant à chaque codon."
+        },
+        "sources": [
+          {
+            "id": "mboc4-rna-to-protein"
+          }
+        ]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "with": "rough-er",
+      "description": {
+        "text": {
+          "fr": "Il se fixe au RE quand la protéine en cours de synthèse est destinée à la voie de sécrétion."
+        },
+        "sources": [
+          {
+            "id": "mboc4-er"
+          }
+        ]
+      }
+    },
+    {
+      "with": "nucleolus",
+      "description": {
+        "text": {
+          "fr": "Ses sous-unités sont assemblées dans le nucléole."
+        },
+        "sources": [
+          {
+            "id": "mboc4-nucleolus"
+          }
+        ]
+      }
+    }
+  ]
 }

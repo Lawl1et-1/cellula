@@ -8,15 +8,167 @@
   },
   "summary": {
     "text": {
-      "fr": "Bicouche lipidique d'environ 5 nm d'épaisseur, parsemée de protéines, qui sépare l'intérieur de la cellule du milieu extérieur et contrôle les échanges."
+      "fr": "Une bicouche de lipides, parsemée de protéines, qui enveloppe la cellule, sépare son contenu du milieu extérieur et contrôle ce qui entre et ce qui sort."
     },
     "sources": [
       {
-        "id": "alberts-mboc-4"
+        "id": "mboc4-lipid-bilayer"
       },
       {
-        "id": "cooper-cell-2"
+        "id": "mboc4-membrane-proteins"
       }
     ]
-  }
+  },
+  "function": [
+    {
+      "text": {
+        "fr": "Elle forme une barrière sélective : les petites molécules non chargées la traversent, tandis que les ions et la plupart des molécules polaires ont besoin de protéines de transport."
+      },
+      "sources": [
+        {
+          "id": "mboc4-membrane-transport"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Des protéines de transport (transporteurs et canaux) font passer des ions et des nutriments précis d'un côté à l'autre."
+      },
+      "sources": [
+        {
+          "id": "mboc4-membrane-transport"
+        },
+        {
+          "id": "mboc4-ion-channels"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Des récepteurs membranaires captent des signaux extérieurs et les transmettent à l'intérieur de la cellule."
+      },
+      "sources": [
+        {
+          "id": "mboc4-membrane-proteins"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Elle peut englober des substances extérieures par endocytose et libérer des molécules par exocytose."
+      },
+      "sources": [
+        {
+          "id": "mboc4-endocytosis"
+        },
+        {
+          "id": "mboc4-exocytosis"
+        }
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "text": {
+        "fr": "Les lipides s'organisent en deux couches : leurs têtes, attirées par l'eau, font face à l'extérieur et au cytosol ; leurs queues, qui repoussent l'eau, se cachent au centre."
+      },
+      "sources": [
+        {
+          "id": "mboc4-lipid-bilayer"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "La bicouche est fluide : lipides et nombreuses protéines y diffusent latéralement."
+      },
+      "sources": [
+        {
+          "id": "mboc4-lipid-bilayer"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Beaucoup de protéines et de lipides de la face externe portent des chaînes de sucres."
+      },
+      "sources": [
+        {
+          "id": "mboc4-membrane-proteins"
+        }
+      ]
+    }
+  ],
+  "keyMolecules": [
+    {
+      "name": "Phospholipides",
+      "role": {
+        "text": {
+          "fr": "Principaux constituants de la bicouche."
+        },
+        "sources": [
+          {
+            "id": "mboc4-lipid-bilayer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Cholestérol",
+      "role": {
+        "text": {
+          "fr": "Intercalé entre les phospholipides, il module la fluidité et la rigidité de la membrane."
+        },
+        "sources": [
+          {
+            "id": "mboc4-lipid-bilayer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Canaux ioniques",
+      "role": {
+        "text": {
+          "fr": "Pores protéiques qui laissent passer des ions précis, à l'origine des propriétés électriques des membranes."
+        },
+        "sources": [
+          {
+            "id": "mboc4-ion-channels"
+          }
+        ]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "with": "vesicle",
+      "description": {
+        "text": {
+          "fr": "Les vésicules de sécrétion fusionnent avec elle (exocytose) ; des vésicules d'endocytose s'en détachent."
+        },
+        "sources": [
+          {
+            "id": "mboc4-exocytosis"
+          },
+          {
+            "id": "mboc4-endocytosis"
+          }
+        ]
+      }
+    },
+    {
+      "with": "cytoskeleton",
+      "description": {
+        "text": {
+          "fr": "Un réseau d'actine, le cortex, la soutient de l'intérieur."
+        },
+        "sources": [
+          {
+            "id": "mboc4-cytoskeleton"
+          }
+        ]
+      }
+    }
+  ]
 }

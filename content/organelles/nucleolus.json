@@ -4,19 +4,55 @@
     "fr": "Nucléole"
   },
   "tagline": {
-    "fr": "L’usine à ribosomes"
+    "fr": "L'usine à ribosomes"
   },
   "summary": {
     "text": {
-      "fr": "Région dense du noyau, sans membrane, où les ARN ribosomiques sont transcrits et assemblés avec des protéines pour former les sous-unités des ribosomes."
+      "fr": "Région dense du noyau, sans membrane, où les ARN ribosomiques sont produits et assemblés avec des protéines pour former les sous-unités des ribosomes."
     },
     "sources": [
       {
-        "id": "alberts-mboc-4"
-      },
-      {
-        "id": "cooper-cell-2"
+        "id": "mboc4-nucleolus"
       }
     ]
-  }
+  },
+  "function": [
+    {
+      "text": {
+        "fr": "Il transcrit les gènes des ARN ribosomiques et assemble les sous-unités des ribosomes, qui sont ensuite exportées vers le cytoplasme."
+      },
+      "sources": [
+        {
+          "id": "mboc4-nucleolus"
+        }
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "text": {
+        "fr": "Il n'est pas entouré de membrane : c'est un assemblage de gènes d'ARN ribosomique, d'ARN en cours de maturation et de protéines."
+      },
+      "sources": [
+        {
+          "id": "mboc4-nucleolus"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "with": "ribosome",
+      "description": {
+        "text": {
+          "fr": "Les sous-unités produites ici deviennent les ribosomes du cytoplasme."
+        },
+        "sources": [
+          {
+            "id": "mboc4-nucleolus"
+          }
+        ]
+      }
+    }
+  ]
 }

@@ -8,15 +8,64 @@
   },
   "summary": {
     "text": {
-      "fr": "Structure proche du noyau formée de deux centrioles entourés de matériel péricentriolaire, d'où rayonnent les microtubules. Il se duplique avant la mitose pour organiser le fuseau."
+      "fr": "Petite structure proche du noyau, formée d'une paire de centrioles entourée d'une matrice, d'où partent les microtubules."
     },
     "sources": [
       {
-        "id": "alberts-mboc-4"
-      },
-      {
-        "id": "cooper-cell-2"
+        "id": "mboc4-centrosome-microtubules"
       }
     ]
-  }
+  },
+  "function": [
+    {
+      "text": {
+        "fr": "Il sert de point de départ (nucléation) aux microtubules de la cellule."
+      },
+      "sources": [
+        {
+          "id": "mboc4-centrosome-microtubules"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Il se duplique avant la division ; les deux centrosomes organisent les pôles du fuseau mitotique."
+      },
+      "sources": [
+        {
+          "id": "mboc4-centrosome-duplication"
+        }
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "text": {
+        "fr": "Les deux centrioles sont des cylindres disposés à angle droit, formés de neuf triplets de microtubules."
+      },
+      "sources": [
+        {
+          "id": "mboc4-centrosome-microtubules"
+        }
+      ],
+      "simplification": {
+        "fr": "Les triplets de microtubules sont représentés par de simples bâtonnets."
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "with": "cytoskeleton",
+      "description": {
+        "text": {
+          "fr": "Les microtubules rayonnent depuis lui vers la périphérie."
+        },
+        "sources": [
+          {
+            "id": "mboc4-centrosome-microtubules"
+          }
+        ]
+      }
+    }
+  ]
 }

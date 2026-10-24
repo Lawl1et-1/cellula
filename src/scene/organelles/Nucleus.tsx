@@ -19,6 +19,7 @@ import { CELL } from '../layout/cellLayout';
 import { PALETTE } from '../palette';
 import { createOrganicMaterial, type OrganicOptions } from '../shaders/organicMaterial';
 import { InstancedOrganelle } from './Instanced';
+import { useHighlight } from '../interaction/highlight';
 import { usePreset } from '@/state/quality';
 
 const OUTER_ENVELOPE: OrganicOptions = {
@@ -197,6 +198,9 @@ export function Nucleus() {
     return { matrices, seeds, geometry: poreComplexGeometry() };
   }, [preset.geometryDetail, radius, center]);
 
+  useHighlight('nucleus', parts.outerMat, parts.innerMat, parts.chromatinMat);
+  useHighlight('nucleolus', parts.nucleolusMat);
+
   return (
     <group name="nucleus">
       <group position={center}>
@@ -209,6 +213,7 @@ export function Nucleus() {
       <InstancedOrganelle
         key={pores.seeds.length}
         geometry={pores.geometry}
+        organelle="nucleus"
         material={PORE}
         cullBeyond={230}
         matrices={pores.matrices}

@@ -128,6 +128,8 @@ uniform float uDrift;
 uniform float uBend;
 uniform float uMolecularScale;
 uniform vec2 uFade;
+uniform float uHighlightId;
+varying float vHighlightMask;
 
 #if defined(USE_SEED) || defined(USE_VERTEX_SEED)
 attribute float aSeed;
@@ -152,6 +154,13 @@ void main() {
   #endif
   vSeed = seed;
   vUv = uv;
+  // Highlight one instance (uHighlightId) or the whole mesh (-1).
+  #ifdef USE_INSTANCING
+  float instanceIndex = float(gl_InstanceID);
+  #else
+  float instanceIndex = 0.0;
+  #endif
+  vHighlightMask = (uHighlightId < -0.5 || abs(instanceIndex - uHighlightId) < 0.5) ? 1.0 : 0.0;
   #ifdef USE_COLOR
   vColor = color;
   #endif
@@ -224,6 +233,8 @@ uniform float uRimOpacity;
 uniform float uHoles;
 uniform vec2 uCutaway;
 uniform vec3 uCutEdge;
+uniform float uHighlight;
+varying float vHighlightMask;
 
 #ifdef USE_COLOR
 varying vec3 vColor;
@@ -278,13 +289,18 @@ void main() {
   col += uEmissive * emissive * uEmissiveStrength;
   col += uCutEdge * edge * 2.5;
 
+  // Hover / selection: a bright rim and a gentle lift, so the organelle reads against the crowd.
+  float hl = uHighlight * vHighlightMask;
+  float hlRim = pow(1.0 - abs(dot(N, V)), 2.0);
+  col += (vec3(0.55, 0.9, 1.0) * hlRim * 1.1 + albedo * 0.2) * hl;
+
   float dist = length(cameraPosition - vWorld);
   col = applyFog(col, dist);
 
   float alpha = 1.0;
   #ifdef USE_TRANSPARENT
   float fres = pow(1.0 - abs(dot(N, V)), 2.5);
-  alpha = clamp(uOpacity + fres * uRimOpacity + edge, 0.0, 1.0);
+  alpha = clamp(uOpacity + fres * uRimOpacity + edge + hl * 0.25, 0.0, 1.0);
   #endif
   gl_FragColor = vec4(col, alpha);
 }
@@ -336,6 +352,8 @@ export function createOrganicMaterial(o: OrganicOptions, instanced = false) {
       uFade: { value: new Vector2(...(o.fade ?? [1e5, 1e5 + 1])) },
       uCutaway: { value: new Vector2(...(o.cutaway ?? [0, 1])) },
       uCutEdge: { value: new Color(o.cutawayEdge ?? '#ffd2a0') },
+      uHighlight: { value: 0 },
+      uHighlightId: { value: -1 },
     },
   });
   return material;

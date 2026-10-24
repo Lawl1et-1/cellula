@@ -1,0 +1,23 @@
+{
+  "id": "mboc4-membrane-transport",
+  "type": "chapter",
+  "title": "Principles of Membrane Transport",
+  "container": "Molecular Biology of the Cell",
+  "authors": [
+    "Alberts B",
+    "Johnson A",
+    "Lewis J",
+    "Raff M",
+    "Roberts K",
+    "Walter P"
+  ],
+  "year": 2002,
+  "edition": "4e édition",
+  "publisher": "Garland Science",
+  "isbn": "0-8153-3218-1",
+  "url": "https://www.ncbi.nlm.nih.gov/books/NBK26815/",
+  "verified": {
+    "on": "2026-10-24",
+    "via": "ncbi-bookshelf"
+  }
+}

@@ -8,15 +8,131 @@
   },
   "summary": {
     "text": {
-      "fr": "Organite à double membrane dont la membrane interne, repliée en crêtes, porte la chaîne respiratoire. Elle produit l'essentiel de l'ATP de la cellule par phosphorylation oxydative et possède son propre ADN."
+      "fr": "Organite à deux membranes où l'énergie des nutriments est convertie en ATP, principale monnaie énergétique de la cellule, grâce à l'oxygène."
     },
     "sources": [
       {
-        "id": "alberts-mboc-4"
+        "id": "mboc4-mitochondrion"
       },
       {
-        "id": "cooper-cell-2"
+        "id": "mboc4-electron-transport"
       }
     ]
-  }
+  },
+  "function": [
+    {
+      "text": {
+        "fr": "Elle oxyde le pyruvate et les acides gras dans sa matrice (cycle de l'acide citrique), ce qui fournit des électrons riches en énergie."
+      },
+      "sources": [
+        {
+          "id": "mboc4-energy-from-food"
+        },
+        {
+          "id": "mboc4-mitochondrion"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "La chaîne respiratoire de la membrane interne utilise ces électrons pour pomper des protons ; le gradient ainsi créé alimente l'ATP synthase."
+      },
+      "sources": [
+        {
+          "id": "mboc4-electron-transport"
+        }
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "text": {
+        "fr": "Elle a une membrane externe, une membrane interne, l'espace entre les deux (espace intermembranaire) et un compartiment central, la matrice."
+      },
+      "sources": [
+        {
+          "id": "mboc4-mito-compartments"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "La membrane interne forme de nombreux replis, les crêtes, qui augmentent sa surface."
+      },
+      "sources": [
+        {
+          "id": "mboc4-mito-compartments"
+        }
+      ],
+      "simplification": {
+        "fr": "Les crêtes sont représentées comme des lames régulières ; leur forme réelle varie selon le type de cellule."
+      }
+    },
+    {
+      "text": {
+        "fr": "Elle possède son propre ADN."
+      },
+      "sources": [
+        {
+          "id": "mboc4-mitochondrion"
+        }
+      ]
+    }
+  ],
+  "keyMolecules": [
+    {
+      "name": "ATP synthase",
+      "role": {
+        "text": {
+          "fr": "Turbine moléculaire de la membrane interne qui fabrique l'ATP grâce au flux de protons."
+        },
+        "sources": [
+          {
+            "id": "mboc4-electron-transport"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Complexes de la chaîne respiratoire",
+      "role": {
+        "text": {
+          "fr": "Transfèrent les électrons jusqu'à l'oxygène en pompant des protons."
+        },
+        "sources": [
+          {
+            "id": "mboc4-electron-transport"
+          }
+        ]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "with": "cytoplasm",
+      "description": {
+        "text": {
+          "fr": "Le pyruvate produit dans le cytosol par la glycolyse est importé dans la mitochondrie."
+        },
+        "sources": [
+          {
+            "id": "mboc4-energy-from-food"
+          }
+        ]
+      }
+    },
+    {
+      "with": "cytoskeleton",
+      "description": {
+        "text": {
+          "fr": "Elle se déplace le long des microtubules grâce aux protéines motrices."
+        },
+        "sources": [
+          {
+            "id": "mboc4-motors"
+          }
+        ]
+      }
+    }
+  ]
 }

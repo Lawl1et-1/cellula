@@ -1,0 +1,53 @@
+'use client';
+
+import { useState } from 'react';
+import { fr } from '@/i18n/fr';
+import { useSelection } from '@/state/selection';
+import { cameraPosition } from '@/scene/camera/focus';
+import { anchorFor } from '@/scene/interaction/anchors';
+import { ORGANELLE_SWATCHES } from '@/scene/palette';
+import { useContent } from './ContentContext';
+import styles from './panel.module.css';
+
+/** Keyboard-accessible index of every organelle; hovering an entry lights it up in the scene. */
+export function OrganelleList() {
+  const content = useContent();
+  const selected = useSelection((s) => s.selected?.organelle);
+  const select = useSelection((s) => s.select);
+  const hover = useSelection((s) => s.hover);
+  // Collapsed by default on small screens, where it would cover the cell.
+  const [open, setOpen] = useState(() => typeof window === 'undefined' || window.innerWidth > 900);
+
+  return (
+    <nav className={`glass ${styles.list}`} aria-label={fr.list.title} data-open={open}>
+      <button className={styles.listToggle} onClick={() => setOpen((o) => !o)} aria-expanded={open}>
+        <span className="label">{fr.list.title}</span>
+        <span aria-hidden>{open ? '–' : '+'}</span>
+      </button>
+      {open && (
+        <ul>
+          {ORGANELLE_SWATCHES.map(([id, color]) => {
+            const o = content.organelle(id);
+            if (!o) return null;
+            return (
+              <li key={id}>
+                <button
+                  className={styles.listItem}
+                  aria-current={selected === id}
+                  style={{ ['--dot' as string]: color }}
+                  onClick={() => select(anchorFor(id, cameraPosition))}
+                  onMouseEnter={() => hover({ organelle: id })}
+                  onMouseLeave={() => hover(null)}
+                  onFocus={() => hover({ organelle: id })}
+                  onBlur={() => hover(null)}
+                >
+                  {o.name.fr}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </nav>
+  );
+}

@@ -6,7 +6,8 @@ import { CameraControls } from '@react-three/drei';
 import CameraControlsImpl from 'camera-controls';
 import { Vector3 } from 'three';
 import { useScene } from '@/state/scene';
-import { focusPoint } from './focus';
+import { useSelection } from '@/state/selection';
+import { cameraPosition, focusPoint } from './focus';
 
 const ACTION = CameraControlsImpl.ACTION;
 const INTRO_POSITION = new Vector3(-90, 80, 560);
@@ -69,7 +70,7 @@ export function CameraRig() {
       return;
     }
     if (mode === 'orbit') {
-      c.minDistance = 6;
+      c.minDistance = 2;
       c.maxDistance = 900;
       c.azimuthRotateSpeed = 0.6;
       c.polarRotateSpeed = 0.6;
@@ -112,6 +113,36 @@ export function CameraRig() {
   useEffect(() => {
     if (controls) prevMode.current = mode;
   }, [mode, controls]);
+
+  // Selecting an organelle flies the camera to it, keeping the current viewing direction.
+  useEffect(() => {
+    if (!controls) return;
+    return useSelection.subscribe((state, prev) => {
+      const f = state.selected;
+      if (!f || f === prev.selected) return;
+      const target = new Vector3(...f.position);
+      const from = controls.getPosition(new Vector3());
+      const dir = from.sub(target);
+      if (dir.lengthSq() < 1e-6) dir.set(0.4, 0.3, 1);
+      dir.normalize();
+      if (f.axis) {
+        // Side-on view of elongated organelles, slightly from above.
+        const axis = new Vector3(...f.axis);
+        dir.addScaledVector(axis, -dir.dot(axis));
+        if (dir.lengthSq() < 1e-4) dir.set(axis.y, -axis.x, 0.3);
+        dir.normalize().addScaledVector(axis, 0.15).normalize();
+      }
+      // Close enough to fill the view; for mitochondria this lands inside the cut-away range.
+      const distance = f.organelle === 'plasma-membrane' ? 330 : Math.min(Math.max(f.radius * 2.6, 7), 420);
+      const pos = target.clone().addScaledVector(dir, distance);
+      controls.smoothTime = 0.85;
+      controls.minDistance = 2;
+      void controls.setLookAt(pos.x, pos.y, pos.z, target.x, target.y, target.z, true).then(() => {
+        controls.smoothTime = 0.45;
+      });
+      useScene.getState().touch();
+    });
+  }, [controls]);
 
   // Wheel moves forward in flight mode.
   useEffect(() => {
@@ -160,6 +191,7 @@ export function CameraRig() {
       }
     }
 
+    cameraPosition.copy(camera.position);
     if (mode === 'flight') {
       camera.getWorldDirection(forward);
       focusPoint.copy(camera.position).addScaledVector(forward, 45);

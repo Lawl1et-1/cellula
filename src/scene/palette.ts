@@ -13,7 +13,7 @@ export const PALETTE = {
   roughEr: { a: '#8e7ae8', b: '#c9b5ff', sss: '#e2d0ff' },
   smoothEr: { a: '#7d9cf0', b: '#b9a8ff', sss: '#cfe0ff' },
   ribosome: { a: '#ffe6cf', b: '#ffc79e' },
-  golgi: { cis: '#4f7fe0', trans: '#e0993a', sss: '#ffd59a' },
+  golgi: { cis: '#4f7fe0', trans: '#d98a3a', sss: '#ffc27a' },
   mitochondria: { a: '#a8382a', b: '#ff9a52', glow: '#ff7a2a', sss: '#ff8a66' },
   lysosome: { a: '#b8235f', b: '#ff7ab6', glow: '#ff4f9a' },
   peroxisome: { a: '#6f9a2a', b: '#c8f064', glow: '#b8ff3a' },
@@ -25,3 +25,21 @@ export const PALETTE = {
   motor: { a: '#ffe08a', cargo: '#9ff0ff' },
   particles: ['#9ed8ff', '#ffd6a8', '#c9b8ff', '#a8ffe4'],
 } as const;
+
+/** UI swatch per organelle (list dots, panel accents), in reading order from outside to inside. */
+export const ORGANELLE_SWATCHES = [
+  ['plasma-membrane', '#7fe0ff'],
+  ['cytoplasm', '#9ed8ff'],
+  ['nucleus', '#7466e0'],
+  ['nucleolus', '#ff8a5c'],
+  ['rough-er', '#c9b5ff'],
+  ['ribosome', '#ffc79e'],
+  ['smooth-er', '#9fb6ff'],
+  ['golgi', '#ffcf70'],
+  ['vesicle', '#bfe9ff'],
+  ['lysosome', '#ff4f9a'],
+  ['peroxisome', '#b8ff3a'],
+  ['mitochondrion', '#ff7a2a'],
+  ['cytoskeleton', '#8fc3ff'],
+  ['centrosome', '#ffd27a'],
+] as const;

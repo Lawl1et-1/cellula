@@ -8,15 +8,141 @@
   },
   "summary": {
     "text": {
-      "fr": "Réseau de filaments protéiques — microfilaments d'actine, microtubules et filaments intermédiaires — qui donne sa forme à la cellule, lui permet de bouger et sert de rails au transport intracellulaire."
+      "fr": "Réseau de filaments protéiques (filaments d'actine, microtubules, filaments intermédiaires) qui donne sa forme à la cellule, lui permet de bouger et organise le transport à l'intérieur."
     },
     "sources": [
       {
-        "id": "alberts-mboc-4"
-      },
-      {
-        "id": "cooper-cell-2"
+        "id": "mboc4-cytoskeleton"
       }
     ]
-  }
+  },
+  "function": [
+    {
+      "text": {
+        "fr": "Les microtubules servent de rails aux protéines motrices (kinésines, dynéines) qui transportent vésicules et organites."
+      },
+      "sources": [
+        {
+          "id": "mboc4-motors"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Les filaments intermédiaires donnent à la cellule sa résistance mécanique."
+      },
+      "sources": [
+        {
+          "id": "mboc4-intermediate-filaments"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Le cortex d'actine, sous la membrane, contrôle la forme et les mouvements de la surface cellulaire."
+      },
+      "sources": [
+        {
+          "id": "mboc4-cytoskeleton"
+        }
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "text": {
+        "fr": "Les microtubules rayonnent depuis le centrosome ; ils s'allongent et se raccourcissent sans cesse (instabilité dynamique)."
+      },
+      "sources": [
+        {
+          "id": "mboc4-centrosome-microtubules"
+        },
+        {
+          "id": "mboc4-cytoskeleton"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Les protéines motrices avancent par petits pas le long des filaments en consommant de l'ATP."
+      },
+      "sources": [
+        {
+          "id": "mboc4-motors"
+        }
+      ],
+      "simplification": {
+        "fr": "En échelle artistique, cette structure est agrandie environ ×2,5 pour rester visible."
+      }
+    }
+  ],
+  "keyMolecules": [
+    {
+      "name": "Tubuline",
+      "role": {
+        "text": {
+          "fr": "Protéine qui forme les microtubules."
+        },
+        "sources": [
+          {
+            "id": "mboc4-cytoskeleton"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Actine",
+      "role": {
+        "text": {
+          "fr": "Protéine qui forme les microfilaments."
+        },
+        "sources": [
+          {
+            "id": "mboc4-cytoskeleton"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Kinésines et dynéines",
+      "role": {
+        "text": {
+          "fr": "Moteurs qui marchent le long des microtubules, en général vers l'extrémité plus (kinésines) ou moins (dynéines)."
+        },
+        "sources": [
+          {
+            "id": "mboc4-motors"
+          }
+        ]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "with": "centrosome",
+      "description": {
+        "text": {
+          "fr": "Le centrosome organise le réseau de microtubules."
+        },
+        "sources": [
+          {
+            "id": "mboc4-centrosome-microtubules"
+          }
+        ]
+      }
+    },
+    {
+      "with": "vesicle",
+      "description": {
+        "text": {
+          "fr": "Les vésicules sont transportées le long des microtubules."
+        },
+        "sources": [
+          {
+            "id": "mboc4-motors"
+          }
+        ]
+      }
+    }
+  ]
 }

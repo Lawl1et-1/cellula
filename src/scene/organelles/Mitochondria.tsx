@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { BufferGeometry, CapsuleGeometry, ExtrudeGeometry, IcosahedronGeometry, Shape, Vector3 } from 'three';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { createRng } from '@/lib/random';
-import { CELL, orientTangent, scatter, toMatrices } from '../layout/cellLayout';
+import { mitochondriaLayout } from '../layout/organelleLayout';
 import { PALETTE } from '../palette';
 import type { OrganicOptions } from '../shaders/organicMaterial';
 import { InstancedOrganelle } from './Instanced';
@@ -164,19 +164,7 @@ function granulesGeometry() {
 }
 
 export function Mitochondria() {
-  const layout = useMemo(() => {
-    // Real mitochondria: ~0.5 µm wide, 1–4 µm long (here 5 units wide, ~12–22 long).
-    const placed = orientTangent(
-      scatter(11, 64, {
-        spacing: 10,
-        margin: 3,
-        scale: (rng) => new Vector3(1, rng.range(0.75, 1.45), 1).multiplyScalar(rng.range(0.85, 1.12)),
-        bias: (p) => (p.distanceTo(CELL.nucleus.center) < 60 ? 1 : 0.55),
-      }),
-      12,
-    );
-    return { matrices: toMatrices(placed), seeds: placed.map((o) => o.seed) };
-  }, []);
+  const layout = mitochondriaLayout();
 
   const geometries = useMemo(
     () => ({
@@ -204,7 +192,7 @@ export function Mitochondria() {
         cullBeyond={INTERIOR_FADE[1] + 12}
         {...layout}
       />
-      <InstancedOrganelle name="mitochondria-outer" geometry={geometries.outer} material={OUTER} {...layout} />
+      <InstancedOrganelle organelle="mitochondrion" name="mitochondria-outer" geometry={geometries.outer} material={OUTER} {...layout} />
       <InstancedOrganelle
         name="mitochondria-inner"
         geometry={geometries.inner}

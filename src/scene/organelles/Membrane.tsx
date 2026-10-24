@@ -19,6 +19,7 @@ import { PALETTE } from '../palette';
 import { commonChunks } from '../shaders/chunks';
 import { sharedUniforms, type OrganicOptions } from '../shaders/organicMaterial';
 import { InstancedOrganelle } from './Instanced';
+import { useHighlight } from '../interaction/highlight';
 import { usePreset } from '@/state/quality';
 
 /** Static large-scale lumps of the membrane, shared by the mesh and the receptors that sit on it. */
@@ -57,6 +58,7 @@ ${commonChunks}
 uniform vec3 uBase;
 uniform vec3 uRim;
 uniform vec3 uFilm;
+uniform float uHighlight;
 varying vec3 vNormal;
 varying vec3 vWorld;
 varying vec3 vDir;
@@ -97,7 +99,8 @@ void main() {
            + uBase * c * 0.25
            + uBase * (rafts * 0.05 + proteins * 0.12);
 
-  float alpha = 0.035 + fres * 0.72 + rafts * 0.03 + proteins * 0.06 + spec * 0.3;
+  col += vec3(0.55, 0.9, 1.0) * fres * uHighlight * 1.4;
+  float alpha = 0.035 + fres * 0.72 + rafts * 0.03 + proteins * 0.06 + spec * 0.3 + uHighlight * fres * 0.2;
   if (inside) alpha *= 0.55;
   gl_FragColor = vec4(col, clamp(alpha, 0.0, 1.0));
 }
@@ -154,6 +157,8 @@ export function Membrane() {
         uBase: { value: new Color(PALETTE.membrane.base) },
         uRim: { value: new Color(PALETTE.membrane.rim) },
         uFilm: { value: new Color(PALETTE.membrane.film) },
+        uHighlight: { value: 0 },
+        uHighlightId: { value: -1 },
       },
     });
     return { geometry, material };
@@ -178,6 +183,8 @@ export function Membrane() {
     }
     return { matrices, seeds, geometry: receptorGeometry() };
   }, [preset.receptors]);
+
+  useHighlight('plasma-membrane', material);
 
   return (
     <group name="plasma-membrane">

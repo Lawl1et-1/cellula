@@ -8,15 +8,71 @@
   },
   "summary": {
     "text": {
-      "fr": "Réseau de tubules dépourvus de ribosomes, impliqué dans la synthèse des lipides, la détoxification de certaines molécules et le stockage du calcium."
+      "fr": "Partie du réticulum endoplasmique sans ribosomes, formée de tubules, spécialisée dans le métabolisme des lipides et d'autres fonctions selon le type de cellule."
     },
     "sources": [
       {
-        "id": "alberts-mboc-4"
-      },
-      {
-        "id": "cooper-cell-2"
+        "id": "mboc4-er"
       }
     ]
-  }
+  },
+  "function": [
+    {
+      "text": {
+        "fr": "Il participe à la synthèse des lipides."
+      },
+      "sources": [
+        {
+          "id": "mboc4-er"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Dans les cellules du foie, il contient des enzymes qui détoxifient des médicaments et des composés étrangers."
+      },
+      "sources": [
+        {
+          "id": "mboc4-er"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Il stocke le calcium et le libère dans le cytosol en réponse à des signaux."
+      },
+      "sources": [
+        {
+          "id": "mboc4-er"
+        }
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "text": {
+        "fr": "C'est un réseau de tubules interconnectés, en continuité avec le RE rugueux."
+      },
+      "sources": [
+        {
+          "id": "mboc4-er"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "with": "rough-er",
+      "description": {
+        "text": {
+          "fr": "Le RE lisse et le RE rugueux forment un seul réseau membranaire continu."
+        },
+        "sources": [
+          {
+            "id": "mboc4-er"
+          }
+        ]
+      }
+    }
+  ]
 }

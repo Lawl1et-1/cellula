@@ -5,6 +5,8 @@ import { useFrame } from '@react-three/fiber';
 import { easing } from 'maath';
 import { sharedUniforms } from './shaders/organicMaterial';
 import { useScene } from '@/state/scene';
+import { updateHighlights } from './interaction/highlight';
+import { PickTargets } from './interaction/PickTargets';
 import { useQuality } from '@/state/quality';
 import { QUALITY_PRESETS } from '@/engine/quality/presets';
 import { Membrane } from './organelles/Membrane';
@@ -30,6 +32,7 @@ function Clock() {
     const u = sharedUniforms;
     u.uTime.value = state.clock.elapsedTime;
     u.uDetail.value = QUALITY_PRESETS[useQuality.getState().level].shading;
+    updateHighlights(delta);
     const target = MOLECULAR_SCALE[useScene.getState().scaleMode];
     easing.damp(u.uMolecularScale, 'value', target, 0.35, delta);
   });
@@ -48,6 +51,7 @@ export function CellScene() {
       <Cytoskeleton />
       <Cytoplasm />
       <Membrane />
+      <PickTargets />
     </>
   );
 }

@@ -8,15 +8,81 @@
   },
   "summary": {
     "text": {
-      "fr": "Petits sacs membranaires qui bourgeonnent d'un compartiment et fusionnent avec un autre, transportant protéines et lipides entre organites et vers la surface cellulaire."
+      "fr": "Petits sacs membranaires qui bourgeonnent d'un compartiment et fusionnent avec un autre, transportant protéines et lipides dans la cellule."
     },
     "sources": [
       {
-        "id": "alberts-mboc-4"
+        "id": "mboc4-er-to-golgi"
       },
       {
-        "id": "cooper-cell-2"
+        "id": "mboc4-exocytosis"
       }
     ]
-  }
+  },
+  "function": [
+    {
+      "text": {
+        "fr": "Elles relient le RE, le Golgi, les endosomes, les lysosomes et la membrane plasmique."
+      },
+      "sources": [
+        {
+          "id": "mboc4-er-to-golgi"
+        },
+        {
+          "id": "mboc4-golgi-to-lysosomes"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Des vésicules de sécrétion libèrent leur contenu hors de la cellule en fusionnant avec la membrane plasmique."
+      },
+      "sources": [
+        {
+          "id": "mboc4-exocytosis"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Des vésicules d'endocytose apportent dans la cellule des molécules captées à sa surface."
+      },
+      "sources": [
+        {
+          "id": "mboc4-endocytosis"
+        },
+        {
+          "id": "mboc4-receptor-endocytosis"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "with": "golgi",
+      "description": {
+        "text": {
+          "fr": "Beaucoup naissent du réseau trans-golgien."
+        },
+        "sources": [
+          {
+            "id": "mboc4-exocytosis"
+          }
+        ]
+      }
+    },
+    {
+      "with": "cytoskeleton",
+      "description": {
+        "text": {
+          "fr": "Elles circulent le long des microtubules, tirées par des moteurs."
+        },
+        "sources": [
+          {
+            "id": "mboc4-motors"
+          }
+        ]
+      }
+    }
+  ]
 }

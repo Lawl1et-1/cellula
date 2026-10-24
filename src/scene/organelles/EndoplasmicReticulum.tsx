@@ -19,6 +19,7 @@ import { CELL, insideCytoplasm } from '../layout/cellLayout';
 import { PALETTE } from '../palette';
 import { createOrganicMaterial, type OrganicOptions } from '../shaders/organicMaterial';
 import { InstancedOrganelle, centered, weld } from './Instanced';
+import { useHighlight } from '../interaction/highlight';
 import { usePreset } from '@/state/quality';
 
 const ROUGH_ER: OrganicOptions = {
@@ -155,7 +156,11 @@ function buildSheets(): Sheet[] {
   return sheets;
 }
 
-function smoothErGeometry(res: number) {
+/** Branch points of the smooth ER network (also used as picking anchors). */
+const nodeCache = new Map<number, Vector3[]>();
+export function smoothErNodes(res = 1) {
+  const cached = nodeCache.get(res);
+  if (cached) return cached;
   const rng = createRng(57);
   const nodes: Vector3[] = [];
   const p = new Vector3();
@@ -167,6 +172,32 @@ function smoothErGeometry(res: number) {
     if (nodes.some((n) => n.distanceTo(p) < 5.5)) continue;
     nodes.push(p.clone());
   }
+  nodeCache.set(res, nodes);
+  return nodes;
+}
+
+/** Points spread over the rough ER sheets (picking anchors). */
+let anchorCache: Vector3[] | null = null;
+export function roughErAnchors() {
+  if (anchorCache) return anchorCache;
+  const rng = createRng(77);
+  const sheets = buildSheets();
+  const out: Vector3[] = [];
+  const p = new Vector3();
+  for (let tries = 0; out.length < 220 && tries < 5000; tries++) {
+    const s = rng.pick(sheets);
+    const u = rng.range(-0.9, 0.9);
+    const v = rng.range(-0.9, 0.9);
+    sheetPoint(s, u, v, p);
+    if (sheetKeeps(s, u, v, p)) out.push(p.clone());
+  }
+  anchorCache = out;
+  return out;
+}
+
+function smoothErGeometry(res: number) {
+  const rng = createRng(58);
+  const nodes = smoothErNodes(res);
   const parts: BufferGeometry[] = [];
   const seen = new Set<string>();
   nodes.forEach((a, i) => {
@@ -245,6 +276,9 @@ export function EndoplasmicReticulum() {
     return { matrices, seeds, geometry: new IcosahedronGeometry(0.42, 0) };
   }, [preset.ribosomes, rough.sheets]);
 
+  useHighlight('rough-er', rough.material);
+  useHighlight('smooth-er', smooth.material);
+
   return (
     <group name="er">
       <group name="rough-er">
@@ -255,6 +289,7 @@ export function EndoplasmicReticulum() {
       <mesh name="smooth-er" geometry={smooth.geometry} material={smooth.material} />
       <InstancedOrganelle
         key={ribosomes.seeds.length}
+        organelle="ribosome"
         name="bound-ribosomes"
         geometry={ribosomes.geometry}
         material={BOUND_RIBOSOME}

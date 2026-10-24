@@ -3,7 +3,8 @@
 import { useMemo } from 'react';
 import { IcosahedronGeometry, Matrix4, Quaternion, Vector3 } from 'three';
 import { createRng } from '@/lib/random';
-import { GOLGI_CENTER, scatter, toMatrices, randomCytoplasmPoint } from '../layout/cellLayout';
+import { randomCytoplasmPoint } from '../layout/cellLayout';
+import { lysosomesLayout, peroxisomesLayout, vesiclesLayout } from '../layout/organelleLayout';
 import { PALETTE } from '../palette';
 import type { OrganicOptions } from '../shaders/organicMaterial';
 import { InstancedOrganelle } from './Instanced';
@@ -70,41 +71,12 @@ const FREE_RIBOSOMES: OrganicOptions = {
   drift: 0.9,
 };
 
-const uniform = (min: number, max: number) => (rng: { range: (a: number, b: number) => number }) =>
-  new Vector3(1, 1, 1).multiplyScalar(rng.range(min, max));
-
 export function SmallOrganelles() {
   const preset = usePreset();
 
-  const lysosomes = useMemo(() => {
-    const placed = scatter(21, 34, { spacing: 7, margin: 2, scale: uniform(0.7, 1.35) });
-    return { matrices: toMatrices(placed), seeds: placed.map((o) => o.seed), geometry: new IcosahedronGeometry(2.3, 6) };
-  }, []);
-
-  const peroxisomes = useMemo(() => {
-    const placed = scatter(31, 42, { spacing: 6, margin: 2, scale: uniform(0.75, 1.2) });
-    return { matrices: toMatrices(placed), seeds: placed.map((o) => o.seed), geometry: new IcosahedronGeometry(1.5, 4) };
-  }, []);
-
-  const vesicles = useMemo(() => {
-    const rng = createRng(41);
-    const matrices: Matrix4[] = [];
-    const seeds: number[] = [];
-    const p = new Vector3();
-    const q = new Quaternion();
-    for (let i = 0; i < 220; i++) {
-      if (i < 60) {
-        // Transport vesicles crowd around the Golgi stack.
-        p.copy(GOLGI_CENTER).add(rng.direction().multiplyScalar(rng.range(9, 20)));
-      } else {
-        randomCytoplasmPoint(rng, p, 1);
-      }
-      const s = rng.range(0.6, 1.5);
-      matrices.push(new Matrix4().compose(p, q, new Vector3(s, s, s)));
-      seeds.push(rng.next());
-    }
-    return { matrices, seeds, geometry: new IcosahedronGeometry(1, 3) };
-  }, []);
+  const lysosomes = useMemo(() => ({ ...lysosomesLayout(), geometry: new IcosahedronGeometry(2.3, 6) }), []);
+  const peroxisomes = useMemo(() => ({ ...peroxisomesLayout(), geometry: new IcosahedronGeometry(1.5, 4) }), []);
+  const vesicles = useMemo(() => ({ ...vesiclesLayout(), geometry: new IcosahedronGeometry(1, 3) }), []);
 
   const ribosomes = useMemo(() => {
     const rng = createRng(51);
@@ -125,10 +97,10 @@ export function SmallOrganelles() {
 
   return (
     <group name="small-organelles">
-      <InstancedOrganelle name="lysosomes" material={LYSOSOMES} {...lysosomes} />
-      <InstancedOrganelle name="peroxisomes" material={PEROXISOMES} {...peroxisomes} />
-      <InstancedOrganelle key={ribosomes.seeds.length} name="free-ribosomes" material={FREE_RIBOSOMES} {...ribosomes} />
-      <InstancedOrganelle name="vesicles" material={VESICLES} renderOrder={6} {...vesicles} />
+      <InstancedOrganelle organelle="lysosome" name="lysosomes" material={LYSOSOMES} {...lysosomes} />
+      <InstancedOrganelle organelle="peroxisome" name="peroxisomes" material={PEROXISOMES} {...peroxisomes} />
+      <InstancedOrganelle key={ribosomes.seeds.length} organelle="ribosome" name="free-ribosomes" material={FREE_RIBOSOMES} {...ribosomes} />
+      <InstancedOrganelle organelle="vesicle" name="vesicles" material={VESICLES} renderOrder={6} {...vesicles} />
     </group>
   );
 }

@@ -7,6 +7,7 @@ import { CELL, GOLGI_CENTER } from '../layout/cellLayout';
 import { PALETTE } from '../palette';
 import { createOrganicMaterial, type OrganicOptions } from '../shaders/organicMaterial';
 import { centered } from './Instanced';
+import { useHighlight } from '../interaction/highlight';
 
 const GOLGI: OrganicOptions = {
   color: PALETTE.golgi.cis,
@@ -16,9 +17,11 @@ const GOLGI: OrganicOptions = {
   vertexColors: true,
   vertexSeed: true,
   sss: 1,
-  gloss: 0.85,
-  diffuse: 0.45,
+  gloss: 0.55,
+  diffuse: 0.4,
   rim: 1.4,
+  // Cisternae are perforated by fenestrations.
+  holes: 0.58,
   wobble: 0.3,
   wobbleFreq: 0.25,
 };
@@ -68,6 +71,7 @@ export function Golgi() {
     () => ({ cisternae: golgiGeometry(), material: createOrganicMaterial(GOLGI) }),
     [],
   );
+  useHighlight('golgi', material);
   return (
     <group name="golgi">
       {cisternae.map((c, i) => (

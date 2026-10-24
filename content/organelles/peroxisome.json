@@ -8,15 +8,86 @@
   },
   "summary": {
     "text": {
-      "fr": "Petit organite à membrane simple qui réalise des réactions d'oxydation, dont la dégradation des acides gras à très longue chaîne, et élimine le peroxyde d'hydrogène grâce à la catalase."
+      "fr": "Petit organite entouré d'une seule membrane, qui utilise l'oxygène pour des réactions d'oxydation et produit puis détruit du peroxyde d'hydrogène."
     },
     "sources": [
       {
-        "id": "alberts-mboc-4"
-      },
-      {
-        "id": "cooper-cell-2"
+        "id": "mboc4-peroxisomes"
       }
     ]
-  }
+  },
+  "function": [
+    {
+      "text": {
+        "fr": "Il oxyde divers composés, dont les acides gras, et participe à leur dégradation."
+      },
+      "sources": [
+        {
+          "id": "mboc4-peroxisomes"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "La catalase y décompose le peroxyde d'hydrogène, toxique, ou l'utilise pour oxyder d'autres molécules."
+      },
+      "sources": [
+        {
+          "id": "mboc4-peroxisomes"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Il participe à la synthèse de certains lipides, les plasmalogènes, abondants dans la myéline."
+      },
+      "sources": [
+        {
+          "id": "mboc4-peroxisomes"
+        }
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "text": {
+        "fr": "Il ne possède ni ADN ni ribosomes : ses protéines viennent du cytosol, guidées par un court signal d'adressage."
+      },
+      "sources": [
+        {
+          "id": "mboc4-peroxisomes"
+        }
+      ]
+    }
+  ],
+  "keyMolecules": [
+    {
+      "name": "Catalase",
+      "role": {
+        "text": {
+          "fr": "Enzyme qui décompose le peroxyde d'hydrogène."
+        },
+        "sources": [
+          {
+            "id": "mboc4-peroxisomes"
+          }
+        ]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "with": "cytoplasm",
+      "description": {
+        "text": {
+          "fr": "Ses enzymes sont fabriquées dans le cytosol puis importées."
+        },
+        "sources": [
+          {
+            "id": "mboc4-peroxisomes"
+          }
+        ]
+      }
+    }
+  ]
 }

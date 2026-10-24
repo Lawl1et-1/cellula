@@ -4,19 +4,132 @@
     "fr": "Réticulum endoplasmique rugueux"
   },
   "tagline": {
-    "fr": "Le chantier des protéines sécrétées"
+    "fr": "Le chantier des protéines exportées"
   },
   "summary": {
     "text": {
-      "fr": "Réseau de citernes aplaties, en continuité avec l'enveloppe nucléaire, couvert de ribosomes. Les protéines destinées à la sécrétion, aux membranes et aux lysosomes y sont synthétisées et repliées."
+      "fr": "Réseau de sacs membranaires aplatis, couvert de ribosomes, où sont fabriquées les protéines destinées aux membranes, aux lysosomes ou à la sécrétion."
     },
     "sources": [
       {
-        "id": "alberts-mboc-4"
-      },
-      {
-        "id": "cooper-cell-2"
+        "id": "mboc4-er"
       }
     ]
-  }
+  },
+  "function": [
+    {
+      "text": {
+        "fr": "Les ribosomes fixés à sa surface y injectent les protéines au fur et à mesure de leur synthèse."
+      },
+      "sources": [
+        {
+          "id": "mboc4-er"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Les protéines y sont repliées, souvent glycosylées, et contrôlées avant de partir vers l'appareil de Golgi."
+      },
+      "sources": [
+        {
+          "id": "mboc4-er"
+        },
+        {
+          "id": "mboc4-er-to-golgi"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Il fabrique aussi la plupart des lipides des membranes de la cellule."
+      },
+      "sources": [
+        {
+          "id": "mboc4-er"
+        }
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "text": {
+        "fr": "Ses membranes délimitent un espace intérieur continu, la lumière du RE, et se prolongent par l'enveloppe nucléaire."
+      },
+      "sources": [
+        {
+          "id": "mboc4-er"
+        }
+      ]
+    }
+  ],
+  "keyMolecules": [
+    {
+      "name": "Translocon",
+      "role": {
+        "text": {
+          "fr": "Pore protéique par lequel la chaîne protéique en cours de synthèse traverse la membrane du RE."
+        },
+        "sources": [
+          {
+            "id": "mboc4-er"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Chaperons (ex. BiP)",
+      "role": {
+        "text": {
+          "fr": "Aident les protéines à se replier correctement dans la lumière du RE."
+        },
+        "sources": [
+          {
+            "id": "mboc4-er"
+          }
+        ]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "with": "ribosome",
+      "description": {
+        "text": {
+          "fr": "Les ribosomes s'y fixent dès que la protéine qu'ils fabriquent porte un signal d'adressage au RE."
+        },
+        "sources": [
+          {
+            "id": "mboc4-er"
+          }
+        ]
+      }
+    },
+    {
+      "with": "golgi",
+      "description": {
+        "text": {
+          "fr": "Les protéines correctement repliées partent vers le Golgi dans des vésicules."
+        },
+        "sources": [
+          {
+            "id": "mboc4-er-to-golgi"
+          }
+        ]
+      }
+    },
+    {
+      "with": "nucleus",
+      "description": {
+        "text": {
+          "fr": "Il est en continuité avec la membrane externe de l'enveloppe nucléaire."
+        },
+        "sources": [
+          {
+            "id": "mboc4-er"
+          }
+        ]
+      }
+    }
+  ]
 }

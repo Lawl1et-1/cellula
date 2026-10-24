@@ -8,15 +8,67 @@
   },
   "summary": {
     "text": {
-      "fr": "Tout le contenu de la cellule entre la membrane plasmique et le noyau. Le cytosol, sa partie fluide, est très encombré de protéines et sert de lieu à de nombreuses réactions métaboliques, dont la glycolyse."
+      "fr": "Contenu de la cellule entre la membrane plasmique et le noyau : les organites baignent dans le cytosol, un gel aqueux très encombré de protéines."
     },
     "sources": [
       {
-        "id": "alberts-mboc-4"
-      },
-      {
-        "id": "cooper-cell-2"
+        "id": "mboc4-compartments"
       }
     ]
-  }
+  },
+  "function": [
+    {
+      "text": {
+        "fr": "Le cytosol est le siège de nombreuses réactions, dont la glycolyse, première étape de la dégradation du glucose."
+      },
+      "sources": [
+        {
+          "id": "mboc4-energy-from-food"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "La plupart des protéines y sont fabriquées par les ribosomes libres."
+      },
+      "sources": [
+        {
+          "id": "mboc4-rna-to-protein"
+        }
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "text": {
+        "fr": "Il est traversé par le cytosquelette et rempli d'organites et de macromolécules."
+      },
+      "sources": [
+        {
+          "id": "mboc4-compartments"
+        },
+        {
+          "id": "mboc4-cytoskeleton"
+        }
+      ],
+      "simplification": {
+        "fr": "Les particules qui dérivent représentent l'encombrement moléculaire de façon symbolique, pas des molécules précises."
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "with": "mitochondrion",
+      "description": {
+        "text": {
+          "fr": "Le pyruvate formé dans le cytosol alimente les mitochondries."
+        },
+        "sources": [
+          {
+            "id": "mboc4-energy-from-food"
+          }
+        ]
+      }
+    }
+  ]
 }

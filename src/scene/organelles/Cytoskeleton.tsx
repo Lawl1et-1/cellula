@@ -21,6 +21,7 @@ import { CELL, CENTROSOME, cellDistance } from '../layout/cellLayout';
 import { PALETTE } from '../palette';
 import { createOrganicMaterial, type OrganicOptions } from '../shaders/organicMaterial';
 import { InstancedOrganelle, weld } from './Instanced';
+import { useHighlight } from '../interaction/highlight';
 import { usePreset } from '@/state/quality';
 import { useScene } from '@/state/scene';
 
@@ -293,12 +294,14 @@ export function Cytoskeleton() {
     return { matrices, seeds: matrices.map(() => 0.5), geometry: new CylinderGeometry(0.2, 0.2, 5, 6) };
   }, []);
 
+  useHighlight('cytoskeleton', tubules.material, intermediate.material);
+
   return (
     <group name="cytoskeleton">
       <mesh name="microtubules" geometry={tubules.geometry} material={tubules.material} />
       <mesh name="intermediate-filaments" geometry={intermediate.geometry} material={intermediate.material} />
-      <InstancedOrganelle key={`actin-${actin.matrices.length}-${real}`} name="actin" material={ACTIN} {...actin} />
-      <InstancedOrganelle name="centrioles" material={CENTRIOLE} {...centrioles} />
+      <InstancedOrganelle organelle="cytoskeleton" key={`actin-${actin.matrices.length}-${real}`} name="actin" material={ACTIN} {...actin} />
+      <InstancedOrganelle organelle="centrosome" name="centrioles" material={CENTRIOLE} {...centrioles} />
       <Motors key={`${preset.motors}-${tubules.paths.length}`} paths={tubules.paths} count={preset.motors} />
     </group>
   );

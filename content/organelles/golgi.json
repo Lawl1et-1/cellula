@@ -4,19 +4,135 @@
     "fr": "Appareil de Golgi"
   },
   "tagline": {
-    "fr": "Le centre de tri et d’expédition"
+    "fr": "Le centre de tri et d'expédition"
   },
   "summary": {
     "text": {
-      "fr": "Empilement de citernes aplaties qui reçoit les protéines du réticulum endoplasmique, les modifie (notamment par glycosylation), les trie et les expédie vers leur destination."
+      "fr": "Empilement de sacs aplatis, les citernes, qui reçoit les protéines et les lipides du réticulum endoplasmique, les modifie, les trie et les expédie vers leur destination."
     },
     "sources": [
       {
-        "id": "alberts-mboc-4"
-      },
-      {
-        "id": "cooper-cell-2"
+        "id": "mboc4-er-to-golgi"
       }
     ]
-  }
+  },
+  "function": [
+    {
+      "text": {
+        "fr": "Il modifie les protéines, notamment leurs chaînes de sucres, en passant d'une citerne à l'autre."
+      },
+      "sources": [
+        {
+          "id": "mboc4-er-to-golgi"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Dans le réseau trans-golgien, il trie les molécules vers les lysosomes, la membrane plasmique ou la sécrétion."
+      },
+      "sources": [
+        {
+          "id": "mboc4-golgi-to-lysosomes"
+        },
+        {
+          "id": "mboc4-exocytosis"
+        }
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "text": {
+        "fr": "Il a une polarité : une face cis, qui reçoit les vésicules du RE, et une face trans, d'où partent les produits triés."
+      },
+      "sources": [
+        {
+          "id": "mboc4-er-to-golgi"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Dans les cellules animales, il se trouve souvent près du noyau et du centrosome."
+      },
+      "sources": [
+        {
+          "id": "mboc4-er-to-golgi"
+        }
+      ],
+      "simplification": {
+        "fr": "Le modèle montre une seule pile de six citernes ; une vraie cellule peut en avoir plusieurs, reliées entre elles."
+      }
+    }
+  ],
+  "keyMolecules": [
+    {
+      "name": "Glycosyltransférases",
+      "role": {
+        "text": {
+          "fr": "Enzymes qui ajoutent ou modifient les chaînes de sucres des protéines."
+        },
+        "sources": [
+          {
+            "id": "mboc4-er-to-golgi"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Mannose-6-phosphate",
+      "role": {
+        "text": {
+          "fr": "Étiquette ajoutée aux enzymes destinées aux lysosomes, reconnue par un récepteur du réseau trans-golgien."
+        },
+        "sources": [
+          {
+            "id": "mboc4-golgi-to-lysosomes"
+          }
+        ]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "with": "rough-er",
+      "description": {
+        "text": {
+          "fr": "Il reçoit les protéines fabriquées dans le RE."
+        },
+        "sources": [
+          {
+            "id": "mboc4-er-to-golgi"
+          }
+        ]
+      }
+    },
+    {
+      "with": "lysosome",
+      "description": {
+        "text": {
+          "fr": "Il envoie aux lysosomes leurs enzymes, marquées par le mannose-6-phosphate."
+        },
+        "sources": [
+          {
+            "id": "mboc4-golgi-to-lysosomes"
+          }
+        ]
+      }
+    },
+    {
+      "with": "plasma-membrane",
+      "description": {
+        "text": {
+          "fr": "Des vésicules issues du Golgi fusionnent avec la membrane plasmique (exocytose)."
+        },
+        "sources": [
+          {
+            "id": "mboc4-exocytosis"
+          }
+        ]
+      }
+    }
+  ]
 }

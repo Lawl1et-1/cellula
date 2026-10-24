@@ -5,6 +5,8 @@ export const Source = z
     id: z.string().regex(/^[a-z0-9-]+$/),
     type: z.enum(['article', 'review', 'book', 'chapter', 'database', 'guideline', 'website']),
     title: z.string().min(1),
+    /** Book (or journal) that contains this section or chapter. */
+    container: z.string().optional(),
     authors: z.array(z.string()).optional(),
     year: z.number().int().min(1800).max(2100),
     publisher: z.string().optional(),

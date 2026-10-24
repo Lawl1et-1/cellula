@@ -5,6 +5,8 @@ import { useFrame } from '@react-three/fiber';
 import { BufferGeometry, InstancedBufferAttribute, InstancedMesh, Matrix4, Vector3 } from 'three';
 import { mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { createOrganicMaterial, type OrganicOptions } from '../shaders/organicMaterial';
+import { useHighlight } from '../interaction/highlight';
+import type { OrganelleId } from '@/content/schema/common';
 
 interface Props {
   geometry: BufferGeometry;
@@ -15,6 +17,8 @@ interface Props {
   name?: string;
   /** Skip the whole draw call while the camera is farther than this from every instance. */
   cullBeyond?: number;
+  /** Organelle this mesh belongs to (hover / selection highlight). */
+  organelle?: OrganelleId;
 }
 
 /**
@@ -47,7 +51,7 @@ export function centered(geometry: BufferGeometry) {
 }
 
 /** One draw call for every copy of an organelle; per-instance life comes from the aSeed attribute. */
-export function InstancedOrganelle({ geometry, material, matrices, seeds, renderOrder, name, cullBeyond }: Props) {
+export function InstancedOrganelle({ geometry, material, matrices, seeds, renderOrder, name, cullBeyond, organelle }: Props) {
   const ref = useRef<InstancedMesh>(null);
   const mat = useMemo(() => createOrganicMaterial(material, true), [material]);
   const geo = useMemo(() => {
@@ -55,6 +59,7 @@ export function InstancedOrganelle({ geometry, material, matrices, seeds, render
     g.setAttribute('aSeed', new InstancedBufferAttribute(new Float32Array(seeds), 1));
     return g;
   }, [geometry, seeds]);
+  useHighlight(organelle, mat);
   const centers = useMemo(() => matrices.map((m) => new Vector3().setFromMatrixPosition(m)), [matrices]);
 
   useLayoutEffect(() => {

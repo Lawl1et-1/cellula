@@ -8,15 +8,163 @@
   },
   "summary": {
     "text": {
-      "fr": "Compartiment entouré d'une double membrane, l'enveloppe nucléaire, percée de pores. Il contient le génome et est le siège de la réplication de l'ADN et de la transcription."
+      "fr": "Compartiment entouré d'une double membrane, l'enveloppe nucléaire, qui contient l'essentiel de l'ADN de la cellule. L'ADN y est copié et transcrit en ARN."
     },
     "sources": [
       {
-        "id": "alberts-mboc-4"
+        "id": "mboc4-compartments"
       },
       {
-        "id": "cooper-cell-2"
+        "id": "mboc4-chromosomes"
       }
     ]
-  }
+  },
+  "function": [
+    {
+      "text": {
+        "fr": "Il protège le génome et le sépare des activités du cytoplasme."
+      },
+      "sources": [
+        {
+          "id": "mboc4-compartments"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Les gènes y sont transcrits en ARN, qui est ensuite exporté vers le cytoplasme pour être traduit en protéines."
+      },
+      "sources": [
+        {
+          "id": "mboc4-rna-to-protein"
+        },
+        {
+          "id": "mboc4-nuclear-pores"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Il contrôle les échanges avec le cytoplasme grâce aux complexes du pore nucléaire."
+      },
+      "sources": [
+        {
+          "id": "mboc4-nuclear-pores"
+        },
+        {
+          "id": "mboc4-ran-transport"
+        }
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "text": {
+        "fr": "L'enveloppe nucléaire est faite de deux membranes ; la membrane externe est en continuité avec le réticulum endoplasmique."
+      },
+      "sources": [
+        {
+          "id": "mboc4-nuclear-pores"
+        },
+        {
+          "id": "mboc4-er"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Des complexes du pore nucléaire traversent l'enveloppe ; chacun est une grande structure formée de nombreuses protéines différentes, organisée selon une symétrie d'ordre 8."
+      },
+      "sources": [
+        {
+          "id": "mboc4-nuclear-pores"
+        }
+      ],
+      "simplification": {
+        "fr": "Le modèle montre quelques centaines de pores ; une vraie cellule de mammifère en a plusieurs milliers."
+      }
+    },
+    {
+      "text": {
+        "fr": "L'ADN y est associé à des protéines pour former la chromatine, répartie en chromosomes qui occupent chacun leur propre territoire."
+      },
+      "sources": [
+        {
+          "id": "mboc4-chromosomes"
+        }
+      ]
+    }
+  ],
+  "keyMolecules": [
+    {
+      "name": "ADN et histones",
+      "role": {
+        "text": {
+          "fr": "L'ADN s'enroule autour des histones pour former la chromatine."
+        },
+        "sources": [
+          {
+            "id": "mboc4-chromosomes"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Ran",
+      "role": {
+        "text": {
+          "fr": "Petite GTPase qui donne sa direction au transport à travers les pores nucléaires."
+        },
+        "sources": [
+          {
+            "id": "mboc4-ran-transport"
+          }
+        ]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "with": "rough-er",
+      "description": {
+        "text": {
+          "fr": "La membrane externe de l'enveloppe se prolonge directement par le réticulum endoplasmique."
+        },
+        "sources": [
+          {
+            "id": "mboc4-er"
+          }
+        ]
+      }
+    },
+    {
+      "with": "ribosome",
+      "description": {
+        "text": {
+          "fr": "Les ARN messagers sortent par les pores et sont traduits par les ribosomes dans le cytoplasme."
+        },
+        "sources": [
+          {
+            "id": "mboc4-nuclear-pores"
+          },
+          {
+            "id": "mboc4-rna-to-protein"
+          }
+        ]
+      }
+    },
+    {
+      "with": "nucleolus",
+      "description": {
+        "text": {
+          "fr": "Le nucléole, à l'intérieur du noyau, fabrique les sous-unités des ribosomes."
+        },
+        "sources": [
+          {
+            "id": "mboc4-nucleolus"
+          }
+        ]
+      }
+    }
+  ]
 }
