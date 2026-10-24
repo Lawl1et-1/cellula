@@ -35,6 +35,7 @@ export const CHANNELS = {
   'nucleus.inclusions': { range: [0, 1], rest: 0, doc: 'Inclusions intranucléaires' },
   'nucleus.fragmentation': { range: [0, 1], rest: 0, doc: 'Fragmentation (caryorrhexie)' },
   'nucleus.size': { range: [0.5, 2], rest: 1, doc: 'Taille relative du noyau' },
+  'nucleus.envelopeIntegrity': { range: [0, 1], rest: 1, doc: "Enveloppe nucléaire (1 = intacte, 0 = désassemblée)" },
   'membrane.blebbing': { range: [0, 1], rest: 0, doc: 'Bourgeonnement de la membrane' },
   'membrane.receptorDensity': { range: [0, 4], rest: 1, doc: 'Densité de récepteurs' },
   'membrane.integrity': { range: [0, 1], rest: 1, doc: 'Intégrité de la membrane' },
@@ -42,7 +43,9 @@ export const CHANNELS = {
   'cytoskeleton.actinTails': { range: [0, 1], rest: 0, doc: "Comètes d'actine (bactéries)" },
   'cell.divisionRate': { range: [0, 5], rest: 1, doc: 'Vitesse de division' },
   'cell.shrinkage': { range: [0, 1], rest: 0, doc: 'Rétraction cellulaire (apoptose)' },
+  'cell.cleavage': { range: [0, 1], rest: 0, doc: 'Sillon de division (cytocinèse)' },
   'cell.viability': { range: [0, 1], rest: 1, doc: '1 = saine, 0 = mort cellulaire' },
+  'view.focusDim': { range: [0, 1], rest: 0, doc: "Atténue ce qui n'est pas le sujet de l'étape (lisibilité, pas un phénomène biologique)" },
 } as const satisfies Record<string, ChannelDef>;
 
 export type ChannelIdT = keyof typeof CHANNELS;

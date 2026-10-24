@@ -1,0 +1,255 @@
+{
+  "id": "endocytose-exocytose",
+  "slug": "endocytose-et-exocytose",
+  "name": {
+    "fr": "Endocytose et exocytose"
+  },
+  "summary": {
+    "text": {
+      "fr": "La cellule fait entrer des molécules en les englobant dans des vésicules (endocytose) et en libère d'autres en fusionnant des vésicules avec sa membrane (exocytose)."
+    },
+    "sources": [
+      {
+        "id": "mboc4-endocytosis"
+      },
+      {
+        "id": "mboc4-exocytosis"
+      }
+    ]
+  },
+  "durationSeconds": 60,
+  "stages": [
+    {
+      "id": "liaison",
+      "title": {
+        "fr": "Capture par des récepteurs"
+      },
+      "range": [
+        0,
+        0.2
+      ],
+      "description": {
+        "text": {
+          "fr": "Des récepteurs de la membrane fixent des molécules précises du milieu extérieur, comme les particules de LDL qui transportent le cholestérol."
+        },
+        "sources": [
+          {
+            "id": "mboc4-receptor-endocytosis"
+          }
+        ]
+      },
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "vesicule",
+      "title": {
+        "fr": "Formation de la vésicule"
+      },
+      "range": [
+        0.2,
+        0.4
+      ],
+      "description": {
+        "text": {
+          "fr": "La membrane se creuse en un puits recouvert de clathrine, qui se referme en vésicule à l'intérieur de la cellule."
+        },
+        "sources": [
+          {
+            "id": "mboc4-receptor-endocytosis"
+          },
+          {
+            "id": "mboc4-endocytosis"
+          }
+        ]
+      },
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "endosome",
+      "title": {
+        "fr": "Tri dans l'endosome"
+      },
+      "range": [
+        0.4,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "La vésicule fusionne avec un endosome, où les récepteurs se séparent de leur cargaison et sont souvent renvoyés vers la membrane."
+        },
+        "sources": [
+          {
+            "id": "mboc4-receptor-endocytosis"
+          }
+        ]
+      },
+      "focus": "cytoplasm"
+    },
+    {
+      "id": "lysosome",
+      "title": {
+        "fr": "Digestion dans le lysosome"
+      },
+      "range": [
+        0.6,
+        0.78
+      ],
+      "description": {
+        "text": {
+          "fr": "Le matériel qui n'est pas récupéré finit dans les lysosomes, où il est digéré."
+        },
+        "sources": [
+          {
+            "id": "mboc4-endocytosis"
+          },
+          {
+            "id": "mboc4-lysosome-digestion"
+          }
+        ]
+      },
+      "focus": "lysosome"
+    },
+    {
+      "id": "exocytose",
+      "title": {
+        "fr": "Exocytose"
+      },
+      "range": [
+        0.78,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "À l'inverse, des vésicules issues du réseau trans-golgien fusionnent avec la membrane plasmique et libèrent leur contenu à l'extérieur."
+        },
+        "sources": [
+          {
+            "id": "mboc4-exocytosis"
+          }
+        ]
+      },
+      "focus": "plasma-membrane"
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.04,
+          "v": 0.45
+        },
+        {
+          "t": 0.96,
+          "v": 0.45
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "path",
+      "at": 0.0,
+      "until": 0.3,
+      "params": {
+        "path": [
+          "outside",
+          "membrane"
+        ],
+        "cargo": "ldl",
+        "count": 6
+      }
+    },
+    {
+      "actor": "pulse",
+      "at": 0.15,
+      "until": 0.4,
+      "params": {
+        "at": "membrane"
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.3,
+      "until": 0.55,
+      "params": {
+        "path": [
+          "membrane",
+          "endosome"
+        ],
+        "cargo": "vesicle",
+        "count": 3
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.5,
+      "until": 0.66,
+      "params": {
+        "path": [
+          "endosome",
+          "membrane"
+        ],
+        "cargo": "vesicle",
+        "count": 2
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.55,
+      "until": 0.78,
+      "params": {
+        "path": [
+          "endosome",
+          "lysosome"
+        ],
+        "cargo": "vesicle",
+        "count": 3
+      }
+    },
+    {
+      "actor": "pulse",
+      "at": 0.64,
+      "until": 0.8,
+      "params": {
+        "at": "lysosome"
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.78,
+      "until": 1.0,
+      "params": {
+        "path": [
+          "golgi.trans",
+          "membrane",
+          "outside"
+        ],
+        "cargo": "vesicle",
+        "count": 4
+      }
+    },
+    {
+      "actor": "burst",
+      "at": 0.9,
+      "until": 1.0,
+      "params": {
+        "from": "membrane",
+        "cargo": "protein",
+        "count": 12
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  }
+}

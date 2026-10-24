@@ -19,6 +19,8 @@ interface Props {
   cullBeyond?: number;
   /** Organelle this mesh belongs to (hover / selection highlight). */
   organelle?: OrganelleId;
+  /** Scenario-driven presence in [0, 1], read every frame (1 = fully there). */
+  presence?: () => number;
 }
 
 /**
@@ -51,7 +53,17 @@ export function centered(geometry: BufferGeometry) {
 }
 
 /** One draw call for every copy of an organelle; per-instance life comes from the aSeed attribute. */
-export function InstancedOrganelle({ geometry, material, matrices, seeds, renderOrder, name, cullBeyond, organelle }: Props) {
+export function InstancedOrganelle({
+  geometry,
+  material,
+  matrices,
+  seeds,
+  renderOrder,
+  name,
+  cullBeyond,
+  organelle,
+  presence,
+}: Props) {
   const ref = useRef<InstancedMesh>(null);
   const mat = useMemo(() => createOrganicMaterial(material, true), [material]);
   const geo = useMemo(() => {
@@ -80,6 +92,7 @@ export function InstancedOrganelle({ geometry, material, matrices, seeds, render
 
   useFrame(({ camera }) => {
     const mesh = ref.current;
+    if (presence) mat.uniforms.uPresence!.value = presence();
     if (!mesh || cullBeyond === undefined) return;
     const limit = cullBeyond * cullBeyond;
     let near = false;

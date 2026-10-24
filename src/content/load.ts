@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { z } from 'zod';
-import { Disease, Organelle, Source } from './schema';
+import { Disease, Organelle, Process, Source, Tour } from './schema';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
 
@@ -35,6 +35,8 @@ function parseAll<T extends z.ZodType>(dir: string, schema: T, issues: LoadIssue
 export interface ContentBundle {
   sources: Source[];
   organelles: Organelle[];
+  processes: Process[];
+  tours: Tour[];
   diseases: Disease[];
 }
 
@@ -44,6 +46,8 @@ export function loadContent(): { content: ContentBundle; issues: LoadIssue[] } {
   const content = {
     sources: parseAll('sources', Source, issues),
     organelles: parseAll('organelles', Organelle, issues),
+    processes: parseAll('processes', Process, issues),
+    tours: parseAll('tours', Tour, issues),
     diseases: parseAll('diseases', Disease, issues),
   };
   return { content, issues };
@@ -63,7 +67,19 @@ export function collectSourceRefs(value: unknown, acc: string[] = []): string[] 
 }
 
 /** Cross-file checks the schemas cannot express. */
-export function checkIntegrity({ sources, organelles, diseases }: ContentBundle): LoadIssue[] {
+function checkStages(owner: string, stages: { id: string; range: [number, number] }[], issues: LoadIssue[]) {
+  const sorted = [...stages].sort((a, b) => a.range[0] - b.range[0]);
+  if (sorted[0]?.range[0] !== 0 || sorted.at(-1)?.range[1] !== 1)
+    issues.push({ file: owner, message: 'les stades doivent couvrir [0, 1]' });
+  sorted.forEach((s, i) => {
+    const next = sorted[i + 1];
+    if (s.range[0] >= s.range[1]) issues.push({ file: owner, message: `stade ${s.id} : intervalle vide` });
+    if (next && Math.abs(next.range[0] - s.range[1]) > 1e-6)
+      issues.push({ file: owner, message: `trou ou chevauchement entre ${s.id} et ${next.id}` });
+  });
+}
+
+export function checkIntegrity({ sources, organelles, processes, tours, diseases }: ContentBundle): LoadIssue[] {
   const issues: LoadIssue[] = [];
   const sourceIds = new Set(sources.map((s) => s.id));
   const dup = (ids: string[]) => ids.filter((id, i) => ids.indexOf(id) !== i);
@@ -79,17 +95,21 @@ export function checkIntegrity({ sources, organelles, diseases }: ContentBundle)
   };
   organelles.forEach((o) => check(`organelle ${o.id}`, o));
 
+  const organelleIds = new Set(organelles.map((o) => o.id));
+  for (const tour of tours) {
+    check(`visite ${tour.id}`, tour);
+    for (const s of tour.steps)
+      if (!organelleIds.has(s.focus)) issues.push({ file: `visite ${tour.id}`, message: `organite sans contenu : ${s.focus}` });
+  }
+  for (const id of dup(processes.map((p) => p.slug)))
+    issues.push({ file: 'processes', message: `slug dupliqué : ${id}` });
+  for (const p of processes) {
+    check(`processus ${p.id}`, p);
+    checkStages(`processus ${p.id}`, p.stages, issues);
+  }
   for (const d of diseases) {
     check(`maladie ${d.id}`, d);
-    const stages = [...d.stages].sort((a, b) => a.range[0] - b.range[0]);
-    if (stages[0]?.range[0] !== 0 || stages.at(-1)?.range[1] !== 1)
-      issues.push({ file: `maladie ${d.id}`, message: 'les stades doivent couvrir [0, 1]' });
-    stages.forEach((s, i) => {
-      const next = stages[i + 1];
-      if (s.range[0] >= s.range[1]) issues.push({ file: `maladie ${d.id}`, message: `stade ${s.id} : intervalle vide` });
-      if (next && Math.abs(next.range[0] - s.range[1]) > 1e-6)
-        issues.push({ file: `maladie ${d.id}`, message: `trou ou chevauchement entre ${s.id} et ${next.id}` });
-    });
+    checkStages(`maladie ${d.id}`, d.stages, issues);
   }
   return issues;
 }

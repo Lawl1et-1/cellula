@@ -1,0 +1,270 @@
+{
+  "id": "synthese-proteines",
+  "slug": "synthese-des-proteines",
+  "name": {
+    "fr": "Synthèse et sécrétion d'une protéine"
+  },
+  "summary": {
+    "text": {
+      "fr": "Le trajet d'une protéine sécrétée : de son gène dans le noyau jusqu'à sa libération hors de la cellule, en passant par le réticulum endoplasmique et l'appareil de Golgi."
+    },
+    "sources": [
+      {
+        "id": "mboc4-dna-to-rna"
+      },
+      {
+        "id": "mboc4-er"
+      },
+      {
+        "id": "mboc4-exocytosis"
+      }
+    ],
+    "simplification": {
+      "fr": "Les étapes sont enchaînées pour une seule protéine et fortement accélérées."
+    }
+  },
+  "durationSeconds": 70,
+  "stages": [
+    {
+      "id": "transcription",
+      "title": {
+        "fr": "Transcription"
+      },
+      "range": [
+        0,
+        0.18
+      ],
+      "description": {
+        "text": {
+          "fr": "Dans le noyau, l'ARN polymérase copie un gène en ARN messager."
+        },
+        "sources": [
+          {
+            "id": "mboc4-dna-to-rna"
+          }
+        ]
+      },
+      "focus": "nucleus"
+    },
+    {
+      "id": "export",
+      "title": {
+        "fr": "Export de l'ARN messager"
+      },
+      "range": [
+        0.18,
+        0.32
+      ],
+      "description": {
+        "text": {
+          "fr": "L'ARN messager mature quitte le noyau à travers les complexes du pore nucléaire."
+        },
+        "sources": [
+          {
+            "id": "mboc4-nuclear-pores"
+          },
+          {
+            "id": "mboc4-ran-transport"
+          }
+        ]
+      },
+      "focus": "nucleus"
+    },
+    {
+      "id": "traduction",
+      "title": {
+        "fr": "Traduction au contact du RE"
+      },
+      "range": [
+        0.32,
+        0.5
+      ],
+      "description": {
+        "text": {
+          "fr": "Un ribosome commence la traduction ; une séquence signal de la protéine naissante le dirige vers le réticulum endoplasmique, et la chaîne protéique entre dans la lumière du RE au fur et à mesure de sa synthèse."
+        },
+        "sources": [
+          {
+            "id": "mboc4-rna-to-protein"
+          },
+          {
+            "id": "mboc4-er"
+          }
+        ]
+      },
+      "focus": "rough-er"
+    },
+    {
+      "id": "maturation",
+      "title": {
+        "fr": "Repliement et contrôle"
+      },
+      "range": [
+        0.5,
+        0.62
+      ],
+      "description": {
+        "text": {
+          "fr": "Dans le RE, la protéine est repliée avec l'aide de chaperons, souvent glycosylée, et contrôlée avant de poursuivre sa route."
+        },
+        "sources": [
+          {
+            "id": "mboc4-er"
+          }
+        ]
+      },
+      "focus": "rough-er"
+    },
+    {
+      "id": "golgi",
+      "title": {
+        "fr": "Passage dans le Golgi"
+      },
+      "range": [
+        0.62,
+        0.82
+      ],
+      "description": {
+        "text": {
+          "fr": "Des vésicules l'apportent à la face cis du Golgi ; elle est modifiée en traversant les citernes puis triée dans le réseau trans-golgien."
+        },
+        "sources": [
+          {
+            "id": "mboc4-er-to-golgi"
+          }
+        ]
+      },
+      "focus": "golgi"
+    },
+    {
+      "id": "secretion",
+      "title": {
+        "fr": "Sécrétion"
+      },
+      "range": [
+        0.82,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Des vésicules de sécrétion fusionnent avec la membrane plasmique et libèrent la protéine à l'extérieur : c'est l'exocytose."
+        },
+        "sources": [
+          {
+            "id": "mboc4-exocytosis"
+          }
+        ]
+      },
+      "focus": "plasma-membrane"
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.04,
+          "v": 0.55
+        },
+        {
+          "t": 0.96,
+          "v": 0.55
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "pulse",
+      "at": 0.0,
+      "until": 0.2,
+      "params": {
+        "at": "nucleus"
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.14,
+      "until": 0.36,
+      "params": {
+        "path": [
+          "nucleus",
+          "nucleus.pore",
+          "rough-er"
+        ],
+        "cargo": "mrna",
+        "count": 3
+      }
+    },
+    {
+      "actor": "pulse",
+      "at": 0.32,
+      "until": 0.62,
+      "params": {
+        "at": "rough-er"
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.55,
+      "until": 0.7,
+      "params": {
+        "path": [
+          "rough-er",
+          "golgi.cis"
+        ],
+        "cargo": "vesicle",
+        "count": 3
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.66,
+      "until": 0.84,
+      "params": {
+        "path": [
+          "golgi.cis",
+          "golgi.trans"
+        ],
+        "cargo": "protein",
+        "count": 4
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.8,
+      "until": 1.0,
+      "params": {
+        "path": [
+          "golgi.trans",
+          "membrane",
+          "outside"
+        ],
+        "cargo": "vesicle",
+        "count": 3
+      }
+    },
+    {
+      "actor": "burst",
+      "at": 0.9,
+      "until": 1.0,
+      "params": {
+        "from": "membrane",
+        "cargo": "protein",
+        "count": 14
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  }
+}

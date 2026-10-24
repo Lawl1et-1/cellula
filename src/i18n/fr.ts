@@ -22,6 +22,21 @@ export const fr = {
   list: {
     title: 'Organites',
   },
+  menu: {
+    tour: 'Visite guidée',
+    processes: 'Processus',
+  },
+  player: {
+    stage: 'étape',
+    play: 'Lecture',
+    pause: 'Pause',
+    scrub: 'Position dans le processus',
+    speed: 'Vitesse',
+    close: 'Quitter',
+    prev: 'Précédent',
+    next: 'Suivant',
+    finish: 'Terminer',
+  },
   hud: {
     camera: 'Caméra',
     orbit: 'Orbite',

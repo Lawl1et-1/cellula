@@ -55,6 +55,7 @@ void main() {
 `;
 
 const fragmentShader = /* glsl */ `
+uniform float uDim;
 varying vec3 vColor;
 varying float vFade;
 void main() {
@@ -62,7 +63,7 @@ void main() {
   float r = length(d);
   if (r > 0.5) discard;
   float core = smoothstep(0.5, 0.0, r);
-  gl_FragColor = vec4(vColor * core * core * vFade, 1.0);
+  gl_FragColor = vec4(vColor * core * core * vFade * (1.0 - uDim * 0.7), 1.0);
 }
 `;
 

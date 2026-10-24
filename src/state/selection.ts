@@ -18,8 +18,13 @@ export interface Focus extends Target {
 interface SelectionState {
   hovered: Target | null;
   selected: Focus | null;
+  /** Camera target without opening the info panel (processes, guided tour). */
+  framing: Focus | null;
+  /** Organelle lit up by a process or the tour. */
+  spotlight: OrganelleId | null;
   hover: (t: Target | null) => void;
   select: (f: Focus | null) => void;
+  frame: (f: Focus | null, spotlight?: OrganelleId | null) => void;
 }
 
 const same = (a: Target | null, b: Target | null) =>
@@ -28,8 +33,11 @@ const same = (a: Target | null, b: Target | null) =>
 export const useSelection = create<SelectionState>((set, get) => ({
   hovered: null,
   selected: null,
+  framing: null,
+  spotlight: null,
   hover: (t) => {
     if (!same(get().hovered, t)) set({ hovered: t });
   },
   select: (selected) => set({ selected }),
+  frame: (framing, spotlight = framing?.organelle ?? null) => set({ framing, spotlight }),
 }));

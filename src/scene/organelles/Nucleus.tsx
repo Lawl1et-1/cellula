@@ -20,6 +20,8 @@ import { PALETTE } from '../palette';
 import { createOrganicMaterial, type OrganicOptions } from '../shaders/organicMaterial';
 import { InstancedOrganelle } from './Instanced';
 import { useHighlight } from '../interaction/highlight';
+import { useFrame } from '@react-three/fiber';
+import { liveChannels } from '@/engine/timeline/live';
 import { usePreset } from '@/state/quality';
 
 const OUTER_ENVELOPE: OrganicOptions = {
@@ -199,6 +201,18 @@ export function Nucleus() {
   }, [preset.geometryDetail, radius, center]);
 
   useHighlight('nucleus', parts.outerMat, parts.innerMat, parts.chromatinMat);
+
+  // Mitosis: the envelope disassembles and chromatin condenses (scenario channels).
+  useFrame(() => {
+    const envelope = liveChannels['nucleus.envelopeIntegrity'];
+    const condensed = liveChannels['nucleus.chromatinCondensation'];
+    parts.outerMat.uniforms.uOpacity!.value = OUTER_ENVELOPE.opacity! * envelope;
+    parts.outerMat.uniforms.uRimOpacity!.value = OUTER_ENVELOPE.rimOpacity! * envelope;
+    parts.innerMat.uniforms.uOpacity!.value = INNER_ENVELOPE.opacity! * envelope;
+    parts.innerMat.uniforms.uRimOpacity!.value = INNER_ENVELOPE.rimOpacity! * envelope;
+    parts.chromatinMat.uniforms.uPresence!.value = 1 - condensed * 0.97;
+    parts.nucleolusMat.uniforms.uPresence!.value = 1 - condensed;
+  });
   useHighlight('nucleolus', parts.nucleolusMat);
 
   return (
@@ -214,6 +228,7 @@ export function Nucleus() {
         key={pores.seeds.length}
         geometry={pores.geometry}
         organelle="nucleus"
+        presence={() => liveChannels['nucleus.envelopeIntegrity']}
         material={PORE}
         cullBeyond={230}
         matrices={pores.matrices}

@@ -23,12 +23,12 @@ export function useHighlight(id: OrganelleId | undefined, ...materials: ShaderMa
 
 /** Called once per frame: eases every registered material towards its hover / selection state. */
 export function updateHighlights(delta: number) {
-  const { hovered, selected } = useSelection.getState();
+  const { hovered, selected, spotlight } = useSelection.getState();
   const k = 1 - Math.exp(-delta * 10);
   for (const [id, materials] of registry) {
     const isHovered = hovered?.organelle === id;
     const isSelected = selected?.organelle === id;
-    const target = isHovered ? 1 : isSelected ? 0.55 : 0;
+    const target = isHovered ? 1 : isSelected ? 0.55 : spotlight === id ? 0.3 : 0;
     const instance = isHovered ? hovered.instance : isSelected ? selected.instance : undefined;
     for (const m of materials) {
       const u = m.uniforms;

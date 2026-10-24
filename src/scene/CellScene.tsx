@@ -6,7 +6,9 @@ import { easing } from 'maath';
 import { sharedUniforms } from './shaders/organicMaterial';
 import { useScene } from '@/state/scene';
 import { updateHighlights } from './interaction/highlight';
+import { liveChannels } from '@/engine/timeline/live';
 import { PickTargets } from './interaction/PickTargets';
+import { ScenarioActors } from './actors/ScenarioActors';
 import { useQuality } from '@/state/quality';
 import { QUALITY_PRESETS } from '@/engine/quality/presets';
 import { Membrane } from './organelles/Membrane';
@@ -33,6 +35,7 @@ function Clock() {
     u.uTime.value = state.clock.elapsedTime;
     u.uDetail.value = QUALITY_PRESETS[useQuality.getState().level].shading;
     updateHighlights(delta);
+    easing.damp(u.uDim, 'value', liveChannels['view.focusDim'], 0.4, delta);
     const target = MOLECULAR_SCALE[useScene.getState().scaleMode];
     easing.damp(u.uMolecularScale, 'value', target, 0.35, delta);
   });
@@ -52,6 +55,7 @@ export function CellScene() {
       <Cytoplasm />
       <Membrane />
       <PickTargets />
+      <ScenarioActors />
     </>
   );
 }

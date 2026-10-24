@@ -20,6 +20,8 @@ import { commonChunks } from '../shaders/chunks';
 import { sharedUniforms, type OrganicOptions } from '../shaders/organicMaterial';
 import { InstancedOrganelle } from './Instanced';
 import { useHighlight } from '../interaction/highlight';
+import { useFrame } from '@react-three/fiber';
+import { liveChannels } from '@/engine/timeline/live';
 import { usePreset } from '@/state/quality';
 
 /** Static large-scale lumps of the membrane, shared by the mesh and the receptors that sit on it. */
@@ -40,12 +42,18 @@ ${commonChunks}
 varying vec3 vNormal;
 varying vec3 vWorld;
 varying vec3 vDir;
+uniform float uCleave;
+uniform vec3 uRadii;
 void main() {
   vec3 dir = normalize(position);
   vDir = dir;
   float undulate = snoise(dir * 2.6 + vec3(0.0, uTime * 0.07, 0.0)) * 0.9
                  + snoise(dir * 7.0 - vec3(uTime * 0.05)) * 0.35;
   vec3 pos = position + normal * undulate;
+  // Cytokinesis: a furrow pinches the cell across the spindle axis (x), which also lengthens.
+  float d = pos.x / uRadii.x;
+  pos.yz *= 1.0 - uCleave * 0.94 * exp(-d * d * 14.0);
+  pos.x *= 1.0 + uCleave * 0.18;
   vec4 wp = modelMatrix * vec4(pos, 1.0);
   vWorld = wp.xyz;
   vNormal = normalize(mat3(modelMatrix) * normal);
@@ -159,6 +167,8 @@ export function Membrane() {
         uFilm: { value: new Color(PALETTE.membrane.film) },
         uHighlight: { value: 0 },
         uHighlightId: { value: -1 },
+        uCleave: { value: 0 },
+        uRadii: { value: CELL.radii.clone() },
       },
     });
     return { geometry, material };
@@ -185,6 +195,9 @@ export function Membrane() {
   }, [preset.receptors]);
 
   useHighlight('plasma-membrane', material);
+  useFrame(() => {
+    material.uniforms.uCleave!.value = liveChannels['cell.cleavage'];
+  });
 
   return (
     <group name="plasma-membrane">

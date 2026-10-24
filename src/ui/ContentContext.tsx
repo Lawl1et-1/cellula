@@ -2,10 +2,12 @@
 
 import { createContext, useContext, useMemo } from 'react';
 import type { ExplorerContent } from '@/content/bundle';
-import type { Organelle, OrganelleId, Source } from '@/content/schema';
+import type { Organelle, OrganelleId, Process, Source, Tour } from '@/content/schema';
 
 interface ContentIndex {
   organelles: Organelle[];
+  processes: Process[];
+  tours: Tour[];
   organelle: (id: OrganelleId) => Organelle | undefined;
   source: (id: string) => Source | undefined;
 }
@@ -18,6 +20,8 @@ export function ContentProvider({ content, children }: { content: ExplorerConten
     const sources = new Map(content.sources.map((s) => [s.id, s]));
     return {
       organelles: content.organelles,
+      processes: content.processes,
+      tours: content.tours,
       organelle: (id) => organelles.get(id),
       source: (id) => sources.get(id),
     };

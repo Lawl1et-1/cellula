@@ -1,0 +1,243 @@
+{
+  "id": "respiration",
+  "slug": "respiration-cellulaire",
+  "name": {
+    "fr": "Respiration cellulaire"
+  },
+  "summary": {
+    "text": {
+      "fr": "Comment la cellule tire son énergie du glucose : la glycolyse dans le cytosol, puis l'oxydation dans les mitochondries, qui produit l'essentiel de l'ATP grâce à l'oxygène."
+    },
+    "sources": [
+      {
+        "id": "mboc4-energy-from-food"
+      },
+      {
+        "id": "mboc4-electron-transport"
+      }
+    ],
+    "simplification": {
+      "fr": "Les quantités de molécules ne sont pas à l'échelle ; les flèches montrent le sens des échanges."
+    }
+  },
+  "durationSeconds": 60,
+  "stages": [
+    {
+      "id": "entree",
+      "title": {
+        "fr": "Entrée du glucose"
+      },
+      "range": [
+        0,
+        0.2
+      ],
+      "description": {
+        "text": {
+          "fr": "Le glucose traverse la membrane plasmique grâce à des protéines de transport."
+        },
+        "sources": [
+          {
+            "id": "mboc4-membrane-transport"
+          }
+        ]
+      },
+      "focus": "plasma-membrane"
+    },
+    {
+      "id": "glycolyse",
+      "title": {
+        "fr": "Glycolyse"
+      },
+      "range": [
+        0.2,
+        0.4
+      ],
+      "description": {
+        "text": {
+          "fr": "Dans le cytosol, la glycolyse découpe chaque molécule de glucose en deux molécules de pyruvate et produit un peu d'ATP."
+        },
+        "sources": [
+          {
+            "id": "mboc4-energy-from-food"
+          }
+        ]
+      },
+      "focus": "cytoplasm"
+    },
+    {
+      "id": "krebs",
+      "title": {
+        "fr": "Pyruvate et cycle de l'acide citrique"
+      },
+      "range": [
+        0.4,
+        0.55
+      ],
+      "description": {
+        "text": {
+          "fr": "Le pyruvate entre dans la mitochondrie, où il est transformé en acétyl-CoA qui alimente le cycle de l'acide citrique dans la matrice."
+        },
+        "sources": [
+          {
+            "id": "mboc4-energy-from-food"
+          },
+          {
+            "id": "mboc4-mitochondrion"
+          }
+        ]
+      },
+      "focus": "mitochondrion"
+    },
+    {
+      "id": "chaine",
+      "title": {
+        "fr": "Chaîne respiratoire"
+      },
+      "range": [
+        0.55,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "Les électrons riches en énergie passent le long de la chaîne respiratoire de la membrane interne jusqu'à l'oxygène ; l'énergie libérée sert à pomper des protons hors de la matrice."
+        },
+        "sources": [
+          {
+            "id": "mboc4-electron-transport"
+          }
+        ]
+      },
+      "focus": "mitochondrion"
+    },
+    {
+      "id": "atp",
+      "title": {
+        "fr": "Synthèse d'ATP"
+      },
+      "range": [
+        0.8,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les protons reviennent dans la matrice à travers l'ATP synthase, qui fabrique l'ATP ; celui-ci est ensuite exporté vers le reste de la cellule."
+        },
+        "sources": [
+          {
+            "id": "mboc4-electron-transport"
+          },
+          {
+            "id": "mboc4-mitochondrion"
+          }
+        ]
+      },
+      "focus": "mitochondrion"
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.04,
+          "v": 0.45
+        },
+        {
+          "t": 0.96,
+          "v": 0.45
+        },
+        {
+          "t": 1,
+          "v": 0
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "path",
+      "at": 0.0,
+      "until": 0.25,
+      "params": {
+        "path": [
+          "outside",
+          "membrane",
+          "cytoplasm"
+        ],
+        "cargo": "glucose",
+        "count": 5
+      }
+    },
+    {
+      "actor": "pulse",
+      "at": 0.2,
+      "until": 0.42,
+      "params": {
+        "at": "cytoplasm"
+      }
+    },
+    {
+      "actor": "burst",
+      "at": 0.28,
+      "until": 0.42,
+      "params": {
+        "from": "cytoplasm",
+        "cargo": "atp",
+        "count": 6
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.38,
+      "until": 0.58,
+      "params": {
+        "path": [
+          "cytoplasm",
+          "mitochondrion"
+        ],
+        "cargo": "pyruvate",
+        "count": 6
+      }
+    },
+    {
+      "actor": "path",
+      "at": 0.5,
+      "until": 0.8,
+      "params": {
+        "path": [
+          "outside",
+          "membrane",
+          "mitochondrion"
+        ],
+        "cargo": "oxygen",
+        "count": 6
+      }
+    },
+    {
+      "actor": "pulse",
+      "at": 0.55,
+      "until": 0.82,
+      "params": {
+        "at": "mitochondrion"
+      }
+    },
+    {
+      "actor": "burst",
+      "at": 0.8,
+      "until": 1.0,
+      "params": {
+        "from": "mitochondrion",
+        "cargo": "atp",
+        "count": 28
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  }
+}

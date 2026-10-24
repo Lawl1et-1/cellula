@@ -144,7 +144,7 @@ function cristaeGeometry() {
     g.rotateY((i % 2 ? Math.PI : 0) + rng.range(-0.5, 0.5));
     g.translate(0, y + rng.range(-0.12, 0.12), 0);
     g.deleteAttribute('uv');
-    parts.push(g.toNonIndexed());
+    parts.push(g.index ? g.toNonIndexed() : g);
   }
   return mergeGeometries(parts)!;
 }

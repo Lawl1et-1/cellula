@@ -13,6 +13,8 @@ export const sharedUniforms = {
   uCausticStrength: { value: 0.22 },
   /** Shading detail level from the quality preset (see QualityPreset.shading). */
   uDetail: { value: 2 },
+  /** Scenario focus: dims everything that is not highlighted (see channel view.focusDim). */
+  uDim: { value: 0 },
   /** Size multiplier for molecular-scale objects ('artistic' vs 'real' scale). */
   uMolecularScale: { value: 1 },
 };
@@ -114,6 +116,8 @@ export interface OrganicOptions {
   growth?: boolean;
   /** Instances shrink to nothing between these camera distances (macro-distance LOD). */
   fade?: [number, number];
+  /** False for scenario actors, which must stay bright while the rest of the cell is dimmed. */
+  dimmable?: boolean;
   /** Cross-section opens when the camera comes within these distances of the instance. */
   cutaway?: [number, number];
   cutawayEdge?: string;
@@ -128,6 +132,7 @@ uniform float uDrift;
 uniform float uBend;
 uniform float uMolecularScale;
 uniform vec2 uFade;
+uniform float uPresence;
 uniform float uHighlightId;
 varying float vHighlightMask;
 
@@ -194,6 +199,8 @@ void main() {
   #ifdef USE_CUTAWAY
   vCenter = center;
   #endif
+  // Scenario-driven presence (e.g. chromatin condensing, pores disassembling).
+  pos *= uPresence;
   #ifdef USE_FADE
   // Collapsed triangles are discarded by the rasteriser: far instances cost almost nothing.
   pos *= 1.0 - smoothstep(uFade.x, uFade.y, length(cameraPosition - center));
@@ -234,6 +241,7 @@ uniform float uHoles;
 uniform vec2 uCutaway;
 uniform vec3 uCutEdge;
 uniform float uHighlight;
+uniform float uDimmable;
 varying float vHighlightMask;
 
 #ifdef USE_COLOR
@@ -251,6 +259,13 @@ varying vec3 vCenter;
 ${PATTERNS[pattern]}
 
 void main() {
+  // Scenario focus: organelles that are not the subject dissolve into a dithered ghost (screen-door
+  // transparency: no sorting, no extra pass; the film grain hides the pattern).
+  float ghost = uDim * uDimmable;
+  if (ghost > 0.01) {
+    float ign = fract(52.9829189 * fract(dot(gl_FragCoord.xy, vec2(0.06711056, 0.00583715))));
+    if (ign < ghost * 0.82 * (1.0 - smoothstep(0.1, 0.28, uHighlight))) discard;
+  }
   #ifdef USE_HOLES
   if (snoise(vLocal * 0.22 + vSeed * 3.0) > uHoles) discard;
   #endif
@@ -293,6 +308,7 @@ void main() {
   float hl = uHighlight * vHighlightMask;
   float hlRim = pow(1.0 - abs(dot(N, V)), 2.0);
   col += (vec3(0.55, 0.9, 1.0) * hlRim * 1.1 + albedo * 0.2) * hl;
+  col *= 1.0 - uDim * uDimmable * 0.5 * (1.0 - smoothstep(0.1, 0.28, hl));
 
   float dist = length(cameraPosition - vWorld);
   col = applyFog(col, dist);
@@ -353,6 +369,8 @@ export function createOrganicMaterial(o: OrganicOptions, instanced = false) {
       uCutaway: { value: new Vector2(...(o.cutaway ?? [0, 1])) },
       uCutEdge: { value: new Color(o.cutawayEdge ?? '#ffd2a0') },
       uHighlight: { value: 0 },
+      uPresence: { value: 1 },
+      uDimmable: { value: o.dimmable === false ? 0 : 1 },
       uHighlightId: { value: -1 },
     },
   });

@@ -1,0 +1,312 @@
+{
+  "id": "mitose",
+  "slug": "mitose",
+  "name": {
+    "fr": "Mitose et cytocinèse"
+  },
+  "summary": {
+    "text": {
+      "fr": "La division d'une cellule en deux : les chromosomes, déjà dupliqués, sont répartis également entre deux noyaux, puis la cellule se scinde en deux."
+    },
+    "sources": [
+      {
+        "id": "mboc4-m-phase"
+      },
+      {
+        "id": "mboc4-mitosis"
+      }
+    ],
+    "simplification": {
+      "fr": "Seuls quelques chromosomes sont représentés et les organites ne sont pas répartis entre les cellules filles."
+    }
+  },
+  "durationSeconds": 80,
+  "stages": [
+    {
+      "id": "prophase",
+      "title": {
+        "fr": "Prophase"
+      },
+      "range": [
+        0,
+        0.18
+      ],
+      "description": {
+        "text": {
+          "fr": "La chromatine se condense en chromosomes, chacun formé de deux chromatides sœurs ; les deux centrosomes, dupliqués pendant l'interphase, s'écartent pour former le fuseau."
+        },
+        "sources": [
+          {
+            "id": "mboc4-m-phase-stages"
+          },
+          {
+            "id": "mboc4-centrosome-duplication"
+          }
+        ]
+      },
+      "focus": "nucleus",
+      "camera": {
+        "radius": 45,
+        "sideOn": [
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "prometaphase",
+      "title": {
+        "fr": "Prométaphase"
+      },
+      "range": [
+        0.18,
+        0.32
+      ],
+      "description": {
+        "text": {
+          "fr": "L'enveloppe nucléaire se désassemble ; les microtubules du fuseau s'attachent aux chromosomes."
+        },
+        "sources": [
+          {
+            "id": "mboc4-envelope-disassembly"
+          },
+          {
+            "id": "mboc4-mitosis"
+          }
+        ]
+      },
+      "focus": "nucleus",
+      "camera": {
+        "radius": 58,
+        "sideOn": [
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "metaphase",
+      "title": {
+        "fr": "Métaphase"
+      },
+      "range": [
+        0.32,
+        0.48
+      ],
+      "description": {
+        "text": {
+          "fr": "Les chromosomes s'alignent sur la plaque équatoriale, à mi-chemin entre les deux pôles du fuseau."
+        },
+        "sources": [
+          {
+            "id": "mboc4-m-phase-stages"
+          }
+        ]
+      },
+      "focus": "nucleus",
+      "camera": {
+        "radius": 58,
+        "sideOn": [
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "anaphase",
+      "title": {
+        "fr": "Anaphase"
+      },
+      "range": [
+        0.48,
+        0.64
+      ],
+      "description": {
+        "text": {
+          "fr": "Les chromatides sœurs se séparent et sont tirées vers les pôles opposés du fuseau."
+        },
+        "sources": [
+          {
+            "id": "mboc4-m-phase-stages"
+          },
+          {
+            "id": "mboc4-mitosis"
+          }
+        ]
+      },
+      "focus": "nucleus",
+      "camera": {
+        "radius": 58,
+        "sideOn": [
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "telophase",
+      "title": {
+        "fr": "Télophase"
+      },
+      "range": [
+        0.64,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "Une enveloppe nucléaire se reforme autour de chaque lot de chromosomes, qui se décondensent."
+        },
+        "sources": [
+          {
+            "id": "mboc4-m-phase-stages"
+          }
+        ]
+      },
+      "focus": "nucleus",
+      "camera": {
+        "radius": 58,
+        "sideOn": [
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "cytocinese",
+      "title": {
+        "fr": "Cytocinèse"
+      },
+      "range": [
+        0.8,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Un anneau contractile d'actine et de myosine II resserre la cellule en son milieu et la divise en deux cellules filles."
+        },
+        "sources": [
+          {
+            "id": "mboc4-contractile-ring"
+          }
+        ]
+      },
+      "focus": "plasma-membrane",
+      "camera": {
+        "view": "cell",
+        "radius": 120,
+        "sideOn": [
+          1,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "channel": "nucleus.chromatinCondensation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.16,
+          "v": 1
+        },
+        {
+          "t": 0.68,
+          "v": 1
+        },
+        {
+          "t": 0.84,
+          "v": 0
+        }
+      ]
+    },
+    {
+      "channel": "nucleus.envelopeIntegrity",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1
+        },
+        {
+          "t": 0.16,
+          "v": 1
+        },
+        {
+          "t": 0.3,
+          "v": 0
+        },
+        {
+          "t": 0.66,
+          "v": 0
+        },
+        {
+          "t": 0.82,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "cell.cleavage",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.8,
+          "v": 0
+        },
+        {
+          "t": 1,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "view.focusDim",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0
+        },
+        {
+          "t": 0.08,
+          "v": 0.75
+        },
+        {
+          "t": 0.78,
+          "v": 0.75
+        },
+        {
+          "t": 0.86,
+          "v": 0.3
+        },
+        {
+          "t": 1,
+          "v": 0.3
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "mitosis",
+      "at": 0,
+      "until": 1,
+      "params": {}
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "lastChecked": "2026-10-24"
+  }
+}

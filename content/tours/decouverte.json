@@ -1,0 +1,59 @@
+{
+  "id": "decouverte",
+  "name": {
+    "fr": "Visite guidée"
+  },
+  "intro": {
+    "fr": "Un tour de la cellule, de sa frontière à son centre, puis vers ses usines et ses centrales."
+  },
+  "steps": [
+    {
+      "focus": "plasma-membrane",
+      "seconds": 9
+    },
+    {
+      "focus": "cytoplasm",
+      "seconds": 8
+    },
+    {
+      "focus": "nucleus",
+      "seconds": 10
+    },
+    {
+      "focus": "nucleolus",
+      "seconds": 8
+    },
+    {
+      "focus": "rough-er",
+      "seconds": 10
+    },
+    {
+      "focus": "golgi",
+      "seconds": 10
+    },
+    {
+      "focus": "vesicle",
+      "seconds": 8
+    },
+    {
+      "focus": "lysosome",
+      "seconds": 9
+    },
+    {
+      "focus": "mitochondrion",
+      "seconds": 11
+    },
+    {
+      "focus": "peroxisome",
+      "seconds": 8
+    },
+    {
+      "focus": "cytoskeleton",
+      "seconds": 9
+    },
+    {
+      "focus": "centrosome",
+      "seconds": 8
+    }
+  ]
+}

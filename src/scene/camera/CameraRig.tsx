@@ -118,8 +118,13 @@ export function CameraRig() {
   useEffect(() => {
     if (!controls) return;
     return useSelection.subscribe((state, prev) => {
-      const f = state.selected;
-      if (!f || f === prev.selected) return;
+      const f =
+        state.selected && state.selected !== prev.selected
+          ? state.selected
+          : state.framing && state.framing !== prev.framing
+            ? state.framing
+            : null;
+      if (!f) return;
       const target = new Vector3(...f.position);
       const from = controls.getPosition(new Vector3());
       const dir = from.sub(target);
@@ -133,7 +138,8 @@ export function CameraRig() {
         dir.normalize().addScaledVector(axis, 0.15).normalize();
       }
       // Close enough to fill the view; for mitochondria this lands inside the cut-away range.
-      const distance = f.organelle === 'plasma-membrane' ? 330 : Math.min(Math.max(f.radius * 2.6, 7), 420);
+      const wholeCell = f.organelle === 'plasma-membrane' && f.radius >= 90;
+      const distance = wholeCell ? f.radius * 2.75 : Math.min(Math.max(f.radius * 2.6, 7), 420);
       const pos = target.clone().addScaledVector(dir, distance);
       controls.smoothTime = 0.85;
       controls.minDistance = 2;
