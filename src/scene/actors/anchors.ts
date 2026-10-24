@@ -3,7 +3,7 @@ import type { AnchorId } from '@/content/schema/scenario';
 import type { OrganelleId } from '@/content/schema/common';
 import type { Focus } from '@/state/selection';
 import { CELL, GOLGI_CENTER } from '../layout/cellLayout';
-import { lysosomesLayout, mitochondriaLayout } from '../layout/organelleLayout';
+import { healthy, lysosomesLayout, mitochondriaLayout } from '../layout/organelleLayout';
 import { roughErAnchors } from '../organelles/EndoplasmicReticulum';
 import { membranePoint } from '../organelles/Membrane';
 
@@ -45,8 +45,8 @@ export function anchors(): Record<AnchorId, Vector3> {
     'rough-er': er,
     'golgi.cis': GOLGI_CENTER.clone().addScaledVector(CELL.pole, -1),
     'golgi.trans': GOLGI_CENTER.clone().addScaledVector(CELL.pole, 13),
-    mitochondrion: nearestInstance(mitochondriaLayout().matrices, CYTOPLASM_SPOT),
-    lysosome: nearestInstance(lysosomesLayout().matrices, endosome),
+    mitochondrion: nearestInstance(healthy(mitochondriaLayout(), 'mitochondrion').matrices, CYTOPLASM_SPOT),
+    lysosome: nearestInstance(healthy(lysosomesLayout(), 'lysosome').matrices, endosome),
     peroxisome: CYTOPLASM_SPOT.clone().add(new Vector3(6, 4, -5)),
   };
   return cache;

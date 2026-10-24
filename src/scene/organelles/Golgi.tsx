@@ -1,13 +1,15 @@
 'use client';
 
-import { useMemo } from 'react';
-import { BufferAttribute, BufferGeometry, Color, Quaternion, SphereGeometry, Vector3 } from 'three';
+import { useMemo, useRef } from 'react';
+import { BufferAttribute, BufferGeometry, Color, Quaternion, SphereGeometry, Vector3, type Mesh } from 'three';
 import { createRng } from '@/lib/random';
 import { CELL, GOLGI_CENTER } from '../layout/cellLayout';
 import { PALETTE } from '../palette';
 import { createOrganicMaterial, type OrganicOptions } from '../shaders/organicMaterial';
 import { centered } from './Instanced';
 import { useHighlight } from '../interaction/highlight';
+import { useFrame } from '@react-three/fiber';
+import { liveChannels } from '@/engine/timeline/live';
 
 const GOLGI: OrganicOptions = {
   color: PALETTE.golgi.cis,
@@ -72,10 +74,36 @@ export function Golgi() {
     [],
   );
   useHighlight('golgi', material);
+
+  // Golgi fragmentation (disease channel): the stack scatters into smaller pieces.
+  const meshes = useRef<(Mesh | null)[]>([]);
+  const scatterDirs = useMemo(() => {
+    const rng = createRng(909);
+    return cisternae.map(() => rng.direction());
+  }, [cisternae]);
+  useFrame(() => {
+    const f = liveChannels['golgi.fragmentation'];
+    cisternae.forEach((c, i) => {
+      const m = meshes.current[i];
+      if (!m) return;
+      m.position.copy(c.position).addScaledVector(scatterDirs[i]!, f * 12);
+      m.scale.setScalar(1 - 0.45 * f);
+      m.rotation.set(scatterDirs[i]!.x * f, scatterDirs[i]!.y * f, scatterDirs[i]!.z * f);
+    });
+  });
+
   return (
     <group name="golgi">
       {cisternae.map((c, i) => (
-        <mesh key={i} geometry={c.geometry} material={material} position={c.position} />
+        <mesh
+          key={i}
+          ref={(m) => {
+            meshes.current[i] = m;
+          }}
+          geometry={c.geometry}
+          material={material}
+          position={c.position}
+        />
       ))}
     </group>
   );

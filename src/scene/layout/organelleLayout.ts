@@ -16,12 +16,15 @@ const once = <T>(fn: () => T) => {
   return () => (value ??= fn());
 };
 
+/** Instances drawn in a healthy cell; layouts hold more so diseases can make organelles proliferate. */
+export const BASE_COUNT = { mitochondrion: 64, lysosome: 34, peroxisome: 42 } as const;
+
 const uniform = (min: number, max: number) => (rng: Rng) => new Vector3(1, 1, 1).multiplyScalar(rng.range(min, max));
 
 /** Real mitochondria: ~0.5 µm wide, 1–4 µm long (here 5 units wide, ~12–22 long). */
 export const mitochondriaLayout = once<InstanceLayout>(() => {
   const placed = orientTangent(
-    scatter(11, 64, {
+    scatter(11, Math.round(BASE_COUNT.mitochondrion * 2.5), {
       spacing: 10,
       margin: 3,
       scale: (rng) => new Vector3(1, rng.range(0.75, 1.45), 1).multiplyScalar(rng.range(0.85, 1.12)),
@@ -33,14 +36,20 @@ export const mitochondriaLayout = once<InstanceLayout>(() => {
 });
 
 export const lysosomesLayout = once<InstanceLayout>(() => {
-  const placed = scatter(21, 34, { spacing: 7, margin: 2, scale: uniform(0.7, 1.35) });
+  const placed = scatter(21, BASE_COUNT.lysosome * 3, { spacing: 6, margin: 2, scale: uniform(0.7, 1.35) });
   return { matrices: toMatrices(placed), seeds: placed.map((o) => o.seed) };
 });
 
 export const peroxisomesLayout = once<InstanceLayout>(() => {
-  const placed = scatter(31, 42, { spacing: 6, margin: 2, scale: uniform(0.75, 1.2) });
+  const placed = scatter(31, BASE_COUNT.peroxisome * 3, { spacing: 5, margin: 2, scale: uniform(0.75, 1.2) });
   return { matrices: toMatrices(placed), seeds: placed.map((o) => o.seed) };
 });
+
+/** Only the instances present in a healthy cell (picking, camera anchors, scenario anchors). */
+export function healthy(layout: InstanceLayout, id: keyof typeof BASE_COUNT): InstanceLayout {
+  const n = BASE_COUNT[id];
+  return { matrices: layout.matrices.slice(0, n), seeds: layout.seeds.slice(0, n) };
+}
 
 export const vesiclesLayout = once<InstanceLayout>(() => {
   const rng = createRng(41);

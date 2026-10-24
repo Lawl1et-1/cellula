@@ -21,6 +21,8 @@ import { createOrganicMaterial, type OrganicOptions } from '../shaders/organicMa
 import { InstancedOrganelle } from './Instanced';
 import { useHighlight } from '../interaction/highlight';
 import { useFrame } from '@react-three/fiber';
+import { useRef } from 'react';
+import type { Group } from 'three';
 import { liveChannels } from '@/engine/timeline/live';
 import { usePreset } from '@/state/quality';
 
@@ -202,9 +204,18 @@ export function Nucleus() {
 
   useHighlight('nucleus', parts.outerMat, parts.innerMat, parts.chromatinMat);
 
+  const group = useRef<Group>(null);
+
   // Mitosis: the envelope disassembles and chromatin condenses (scenario channels).
+  // Diseases: the nucleus grows (cancer) or shrinks and breaks up (apoptosis).
   useFrame(() => {
-    const envelope = liveChannels['nucleus.envelopeIntegrity'];
+    const g = group.current;
+    if (g) {
+      const s = liveChannels['nucleus.size'] * (1 - 0.35 * liveChannels['nucleus.fragmentation']);
+      g.scale.setScalar(s);
+      g.position.copy(center).multiplyScalar(1 - s);
+    }
+    const envelope = liveChannels['nucleus.envelopeIntegrity'] * (1 - liveChannels['nucleus.fragmentation']);
     const condensed = liveChannels['nucleus.chromatinCondensation'];
     parts.outerMat.uniforms.uOpacity!.value = OUTER_ENVELOPE.opacity! * envelope;
     parts.outerMat.uniforms.uRimOpacity!.value = OUTER_ENVELOPE.rimOpacity! * envelope;
@@ -216,7 +227,7 @@ export function Nucleus() {
   useHighlight('nucleolus', parts.nucleolusMat);
 
   return (
-    <group name="nucleus">
+    <group name="nucleus" ref={group}>
       <group position={center}>
         <mesh geometry={parts.chromatin} material={parts.chromatinMat} />
         <mesh geometry={parts.nucleolus} material={parts.nucleolusMat} position={[7, 5, -4]} />

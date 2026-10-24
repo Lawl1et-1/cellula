@@ -15,14 +15,14 @@ export function ScenarioMenu() {
   const content = useContent();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const running = useScenario((s) => s.process?.id);
+  const running = useScenario((s) => s.scenario?.id);
 
   // Deep link: `?process=<id>&t=0.4` opens a process paused at that moment (sharing, review captures).
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const p = content.processes.find((x) => x.id === params.get('process'));
     if (!p) return;
-    useScenario.getState().start(p);
+    useScenario.getState().start({ kind: 'process', ...p });
     const t = Number(params.get('t'));
     if (params.has('t') && Number.isFinite(t)) {
       useScenario.getState().setT(t);
@@ -74,7 +74,7 @@ export function ScenarioMenu() {
                   aria-current={running === p.id}
                   onClick={() => {
                     prepare();
-                    useScenario.getState().start(p);
+                    useScenario.getState().start({ kind: 'process', ...p });
                     setOpen(false);
                   }}
                 >

@@ -1,13 +1,16 @@
 import { create } from 'zustand';
-import type { Process } from '@/content/schema';
+import type { Disease, Process } from '@/content/schema';
+
+/** Anything that plays on the timeline: a biological process or a disease. */
+export type Scenario = ({ kind: 'process' } & Process) | ({ kind: 'disease' } & Disease);
 
 interface ScenarioState {
-  process: Process | null;
+  scenario: Scenario | null;
   /** Normalised time in [0, 1]. */
   t: number;
   playing: boolean;
   speed: number;
-  start: (p: Process) => void;
+  start: (s: Scenario) => void;
   stop: () => void;
   setT: (t: number) => void;
   setPlaying: (playing: boolean) => void;
@@ -15,12 +18,12 @@ interface ScenarioState {
 }
 
 export const useScenario = create<ScenarioState>((set) => ({
-  process: null,
+  scenario: null,
   t: 0,
   playing: false,
   speed: 1,
-  start: (process) => set({ process, t: 0, playing: true }),
-  stop: () => set({ process: null, t: 0, playing: false }),
+  start: (scenario) => set({ scenario, t: 0, playing: true }),
+  stop: () => set({ scenario: null, t: 0, playing: false }),
   setT: (t) => set({ t: Math.min(1, Math.max(0, t)) }),
   setPlaying: (playing) => set((s) => ({ playing, t: playing && s.t >= 1 ? 0 : s.t })),
   setSpeed: (speed) => set({ speed }),

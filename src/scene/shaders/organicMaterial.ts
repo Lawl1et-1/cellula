@@ -15,6 +15,9 @@ export const sharedUniforms = {
   uDetail: { value: 2 },
   /** Scenario focus: dims everything that is not highlighted (see channel view.focusDim). */
   uDim: { value: 0 },
+  /** Disease: global loss of colour towards a sickly tone (cytoplasm.tint, cell.viability). */
+  uTint: { value: 0 },
+  uTintColor: { value: new Color('#8a7c6a') },
   /** Size multiplier for molecular-scale objects ('artistic' vs 'real' scale). */
   uMolecularScale: { value: 1 },
 };
@@ -136,6 +139,11 @@ uniform float uMolecularScale;
 uniform vec2 uFade;
 uniform float uPresence;
 uniform float uHighlightId;
+// Disease deformations (see src/scene/disease/bindings.ts).
+uniform float uSwell;
+uniform float uStretch;
+uniform float uInflate;
+uniform float uBleb;
 varying float vHighlightMask;
 
 #if defined(USE_SEED) || defined(USE_VERTEX_SEED)
@@ -192,6 +200,10 @@ void main() {
   float w = snoise(pos * uWobbleFreq + vec3(seed * 17.0, uTime * uWobbleSpeed, seed * 5.0));
   pos += nrm * w * uWobble;
   #endif
+  // Disease deformations: lengthening/shortening, dilation along the normal, lobulation (blebs).
+  pos.y *= uStretch;
+  pos += nrm * uInflate;
+  if (uBleb > 0.001) pos += nrm * uBleb * max(0.0, snoise(pos * 0.11 + seed * 7.0)) * 6.0;
   vLocal = pos;
 
   // Object centre in world space (drift included): drives distance LOD and cut-aways.
@@ -209,7 +221,8 @@ void main() {
   vCenter = center;
   #endif
   // Scenario-driven presence (e.g. chromatin condensing, pores disassembling).
-  pos *= uPresence;
+  // Per-instance variation so a swollen population is not uniform.
+  pos *= uPresence * (1.0 + uSwell * (0.55 + 0.9 * hash11(seed * 71.0 + 0.3)));
   #ifdef USE_FADE
   // Collapsed triangles are discarded by the rasteriser: far instances cost almost nothing.
   pos *= 1.0 - smoothstep(uFade.x, uFade.y, length(cameraPosition - center));
@@ -251,6 +264,10 @@ uniform vec2 uCutaway;
 uniform vec3 uCutEdge;
 uniform float uHighlight;
 uniform float uDimmable;
+uniform float uGlow;
+uniform float uStain;
+uniform vec3 uStainColor;
+uniform float uGrowthScale;
 varying float vHighlightMask;
 
 #ifdef USE_COLOR
@@ -288,7 +305,7 @@ void main() {
   edgeBand = 1.0 - smoothstep(0.0, 0.05, vField);
   #endif
   #ifdef USE_GROWTH
-  float len = 0.72 + 0.28 * sin(uTime * (0.18 + hash11(vSeed * 13.0) * 0.25) + vSeed * 40.0);
+  float len = (0.72 + 0.28 * sin(uTime * (0.18 + hash11(vSeed * 13.0) * 0.25) + vSeed * 40.0)) * uGrowthScale;
   if (vUv.x > len) discard;
   #endif
 
@@ -318,6 +335,10 @@ void main() {
 
   float emissive = 0.0;
   vec3 albedo = surface(emissive);
+  // Disease: material accumulating or degrading (storage material, damaged membranes…).
+  float stainNoise = 0.75 + 0.5 * snoise(vLocal * 0.6 + vSeed * 5.0);
+  albedo = mix(albedo, uStainColor * stainNoise, clamp(uStain, 0.0, 1.0) * 0.85);
+  emissive *= uGlow;
   vec3 col = organicShade(albedo, N, V, vWorld, uSss, uSssColor, uGloss);
   col += uEmissive * emissive * uEmissiveStrength;
   col += uCutEdge * edge * 2.5;
@@ -328,6 +349,9 @@ void main() {
   float hlRim = pow(1.0 - abs(dot(N, V)), 2.0);
   col += (vec3(0.55, 0.9, 1.0) * hlRim * 1.1 + albedo * 0.2) * hl;
   col *= 1.0 - uDim * uDimmable * 0.5 * (1.0 - smoothstep(0.1, 0.28, hl));
+
+  float luma = dot(col, vec3(0.299, 0.587, 0.114));
+  col = mix(col, luma * uTintColor * 1.6, uTint * 0.6);
 
   float dist = length(cameraPosition - vWorld);
   col = applyFog(col, dist);
@@ -390,6 +414,14 @@ export function createOrganicMaterial(o: OrganicOptions, instanced = false) {
       uCutEdge: { value: new Color(o.cutawayEdge ?? '#ffd2a0') },
       uHighlight: { value: 0 },
       uPresence: { value: 1 },
+      uSwell: { value: 0 },
+      uStretch: { value: 1 },
+      uInflate: { value: 0 },
+      uBleb: { value: 0 },
+      uGlow: { value: 1 },
+      uStain: { value: 0 },
+      uStainColor: { value: new Color('#e9dcc0') },
+      uGrowthScale: { value: 1 },
       uDimmable: { value: o.dimmable === false ? 0 : 1 },
       uHighlightId: { value: -1 },
     },

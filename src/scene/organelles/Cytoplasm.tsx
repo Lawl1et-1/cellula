@@ -47,9 +47,10 @@ void main() {
   gl_Position = projectionMatrix * mv;
   float depth = -mv.z;
   // Capped: huge sprites right at the lens are pure overdraw.
-  gl_PointSize = min(uSize * uPixelRatio * (0.6 + aSeed) * (300.0 / max(depth, 1.0)), 18.0 * uPixelRatio);
+  gl_PointSize = min(uSize * uPixelRatio * (0.6 + aSeed) * (300.0 / max(depth, 1.0)), 9.0 * uPixelRatio);
   // Fade particles that get too close to the lens or too far into the fog.
-  vFade = smoothstep(2.0, 14.0, depth) * (1.0 - smoothstep(220.0, 400.0, depth));
+  // Particles right at the lens become a glittery wall: fade them over the first 30 units.
+  vFade = smoothstep(4.0, 30.0, depth) * (1.0 - smoothstep(220.0, 400.0, depth));
   vColor = aColor;
 }
 `;

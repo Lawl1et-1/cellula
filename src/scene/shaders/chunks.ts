@@ -81,6 +81,8 @@ uniform float uFogDensity;
 uniform float uCausticStrength;
 uniform float uDetail;
 uniform float uDim;
+uniform float uTint;
+uniform vec3 uTintColor;
 /* Per-material weights of the light model. */
 uniform float uDiffuse;
 uniform float uRimStrength;

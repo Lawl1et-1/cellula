@@ -284,7 +284,7 @@ export function EndoplasmicReticulum() {
         seeds.push(rng.next());
       }
     }
-    return { matrices, seeds, geometry: new IcosahedronGeometry(0.42, 0) };
+    return { matrices, seeds, geometry: new IcosahedronGeometry(0.42, 1) };
   }, [preset.ribosomes, rough.sheets]);
 
   useHighlight('rough-er', rough.material);

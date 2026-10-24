@@ -29,6 +29,7 @@ export const CHANNELS = {
   'cytoplasm.glycogen': { range: [0, 1], rest: 0, doc: 'Granules de glycogène' },
   'cytoplasm.viralParticles': { range: [0, 1], rest: 0, doc: 'Particules virales' },
   'cytoplasm.bacteria': { range: [0, 1], rest: 0, doc: 'Bactéries intracellulaires' },
+  'cytoplasm.phagosomes': { range: [0, 1], rest: 0, doc: 'Bactéries enfermées dans des vacuoles (phagosomes)' },
   'cytoplasm.tint': { range: [0, 1], rest: 0, doc: 'Altération globale de la couleur (souffrance)' },
   'nucleus.envelopeBlebbing': { range: [0, 1], rest: 0, doc: "Déformation de l'enveloppe nucléaire" },
   'nucleus.chromatinCondensation': { range: [0, 1], rest: 0, doc: 'Condensation de la chromatine' },

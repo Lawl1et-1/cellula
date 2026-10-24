@@ -21,6 +21,8 @@ interface Props {
   organelle?: OrganelleId;
   /** Scenario-driven presence in [0, 1], read every frame (1 = fully there). */
   presence?: () => number;
+  /** How many instances to draw, read every frame (disease proliferation / loss). Defaults to all. */
+  visibleCount?: () => number;
 }
 
 /**
@@ -63,6 +65,7 @@ export function InstancedOrganelle({
   cullBeyond,
   organelle,
   presence,
+  visibleCount,
 }: Props) {
   const ref = useRef<InstancedMesh>(null);
   const mat = useMemo(() => createOrganicMaterial(material, true), [material]);
@@ -93,6 +96,7 @@ export function InstancedOrganelle({
   useFrame(({ camera }) => {
     const mesh = ref.current;
     if (presence) mat.uniforms.uPresence!.value = presence();
+    if (mesh && visibleCount) mesh.count = Math.max(0, Math.min(matrices.length, Math.round(visibleCount())));
     if (!mesh || cullBeyond === undefined) return;
     const limit = cullBeyond * cullBeyond;
     let near = false;

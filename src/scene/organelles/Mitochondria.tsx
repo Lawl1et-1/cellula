@@ -4,7 +4,12 @@ import { useMemo } from 'react';
 import { BufferGeometry, CapsuleGeometry, ExtrudeGeometry, IcosahedronGeometry, Shape, Vector3 } from 'three';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { createRng } from '@/lib/random';
-import { mitochondriaLayout } from '../layout/organelleLayout';
+import { BASE_COUNT, mitochondriaLayout } from '../layout/organelleLayout';
+import { liveChannels } from '@/engine/timeline/live';
+
+/** Proliferation (count) and fission (fragmentation) both add mitochondria. */
+const mitochondriaCount = () =>
+  BASE_COUNT.mitochondrion * liveChannels['mitochondria.count'] * (1 + 0.8 * liveChannels['mitochondria.fragmentation']);
 import { PALETTE } from '../palette';
 import type { OrganicOptions } from '../shaders/organicMaterial';
 import { InstancedOrganelle } from './Instanced';
@@ -179,26 +184,39 @@ export function Mitochondria() {
   return (
     <group name="mitochondria">
       <InstancedOrganelle
+        organelle="mitochondrion"
         name="mitochondria-cristae"
         geometry={geometries.cristae}
         material={CRISTAE}
         cullBeyond={INTERIOR_FADE[1] + 12}
+        visibleCount={mitochondriaCount}
         {...layout}
       />
       <InstancedOrganelle
+        organelle="mitochondrion"
         name="mitochondria-granules"
         geometry={geometries.granules}
         material={MATRIX_GRANULES}
         cullBeyond={INTERIOR_FADE[1] + 12}
+        visibleCount={mitochondriaCount}
         {...layout}
       />
-      <InstancedOrganelle organelle="mitochondrion" name="mitochondria-outer" geometry={geometries.outer} material={OUTER} {...layout} />
       <InstancedOrganelle
+        organelle="mitochondrion"
+        name="mitochondria-outer"
+        geometry={geometries.outer}
+        material={OUTER}
+        visibleCount={mitochondriaCount}
+        {...layout}
+      />
+      <InstancedOrganelle
+        organelle="mitochondrion"
         name="mitochondria-inner"
         geometry={geometries.inner}
         material={INNER}
         renderOrder={5}
         cullBeyond={INTERIOR_FADE[1] + 12}
+        visibleCount={mitochondriaCount}
         {...layout}
       />
     </group>

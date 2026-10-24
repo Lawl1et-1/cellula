@@ -13,6 +13,10 @@ export function registerHighlight(id: OrganelleId, material: ShaderMaterial) {
   return () => void set!.delete(material);
 }
 
+export function materialsOf(id: OrganelleId): Iterable<ShaderMaterial> {
+  return registry.get(id) ?? [];
+}
+
 export function useHighlight(id: OrganelleId | undefined, ...materials: ShaderMaterial[]) {
   useEffect(() => {
     if (!id) return;

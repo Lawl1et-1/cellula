@@ -30,6 +30,8 @@ const CARGO: Record<CargoKind, { color: string; intensity: number; size: number 
   atp: { color: '#b8ff3a', intensity: 3.5, size: 0.4 },
   ldl: { color: '#ffd59a', intensity: 2.2, size: 0.9 },
   oxygen: { color: '#7fd8ff', intensity: 2.5, size: 0.35 },
+  virion: { color: '#ff4a3a', intensity: 3, size: 0.9 },
+  cytokine: { color: '#ffe0f0', intensity: 2.5, size: 0.4 },
 };
 
 const POOL = 128;
@@ -48,7 +50,7 @@ function Player() {
   const lastStage = useRef<string | null>(null);
   useFrame((_, delta) => {
     const s = useScenario.getState();
-    const p = s.process;
+    const p = s.scenario;
     if (!p) {
       if (lastStage.current !== null) {
         evaluateChannels([], 0, liveChannels);
@@ -99,7 +101,7 @@ function Tokens() {
     const mesh = ref.current;
     const pulses = pulseRef.current;
     if (!mesh || !pulses) return;
-    const { process, t } = useScenario.getState();
+    const { scenario: process, t } = useScenario.getState();
     let n = 0;
     let np = 0;
     const put = (pos: Vector3, scale: number, kind: CargoKind) => {

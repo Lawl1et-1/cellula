@@ -1,14 +1,17 @@
 'use client';
 
 import { useRef } from 'react';
+import type { Group } from 'three';
 import { useFrame } from '@react-three/fiber';
 import { easing } from 'maath';
 import { sharedUniforms } from './shaders/organicMaterial';
 import { useScene } from '@/state/scene';
 import { updateHighlights } from './interaction/highlight';
+import { applyDiseaseLooks } from './disease/bindings';
 import { liveChannels } from '@/engine/timeline/live';
 import { PickTargets } from './interaction/PickTargets';
 import { ScenarioActors } from './actors/ScenarioActors';
+import { DiseaseParticles } from './disease/DiseaseParticles';
 import { useQuality } from '@/state/quality';
 import { QUALITY_PRESETS } from '@/engine/quality/presets';
 import { Membrane } from './organelles/Membrane';
@@ -35,6 +38,7 @@ function Clock() {
     u.uTime.value = state.clock.elapsedTime;
     u.uDetail.value = QUALITY_PRESETS[useQuality.getState().level].shading;
     updateHighlights(delta);
+    applyDiseaseLooks(delta);
     easing.damp(u.uDim, 'value', liveChannels['view.focusDim'], 0.4, delta);
     const target = MOLECULAR_SCALE[useScene.getState().scaleMode];
     easing.damp(u.uMolecularScale, 'value', target, 0.35, delta);
@@ -42,20 +46,32 @@ function Clock() {
   return null;
 }
 
+/** Apoptotic cells shrink as a whole (cell.shrinkage). */
+function Body({ children }: { children: React.ReactNode }) {
+  const ref = useRef<Group>(null);
+  useFrame(() => {
+    ref.current?.scale.setScalar(1 - 0.3 * liveChannels['cell.shrinkage']);
+  });
+  return <group ref={ref}>{children}</group>;
+}
+
 export function CellScene() {
   return (
     <>
       <Clock />
-      <Nucleus />
-      <EndoplasmicReticulum />
-      <Golgi />
-      <Mitochondria />
-      <SmallOrganelles />
-      <Cytoskeleton />
-      <Cytoplasm />
-      <Membrane />
+      <Body>
+        <Nucleus />
+        <EndoplasmicReticulum />
+        <Golgi />
+        <Mitochondria />
+        <SmallOrganelles />
+        <Cytoskeleton />
+        <Cytoplasm />
+        <Membrane />
+      </Body>
       <PickTargets />
       <ScenarioActors />
+      <DiseaseParticles />
     </>
   );
 }

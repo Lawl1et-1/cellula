@@ -47,6 +47,8 @@ export const Disease = z.object({
   mechanism: z
     .array(z.object({ title: LocalizedText, explanation: Claim, organelle: OrganelleId.optional() }))
     .min(1),
+  /** Playback length at normal speed. */
+  durationSeconds: z.number().positive().default(50),
   stages: z.array(Stage).min(2),
   tracks: z.array(ChannelTrack).default([]),
   actors: z.array(ActorCue).default([]),

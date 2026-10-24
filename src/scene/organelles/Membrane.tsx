@@ -43,6 +43,7 @@ varying vec3 vNormal;
 varying vec3 vWorld;
 varying vec3 vDir;
 uniform float uCleave;
+uniform float uBleb;
 uniform vec3 uRadii;
 void main() {
   vec3 dir = normalize(position);
@@ -50,6 +51,8 @@ void main() {
   float undulate = snoise(dir * 2.6 + vec3(0.0, uTime * 0.07, 0.0)) * 0.9
                  + snoise(dir * 7.0 - vec3(uTime * 0.05)) * 0.35;
   vec3 pos = position + normal * undulate;
+  // Blebbing (apoptosis, cytoskeleton damage): rounded bulges of membrane.
+  if (uBleb > 0.001) pos += normal * uBleb * pow(max(0.0, snoise(dir * 5.5 + 3.1)), 2.0) * 22.0;
   // Cytokinesis: a furrow pinches the cell across the spindle axis (x), which also lengthens.
   float d = pos.x / uRadii.x;
   pos.yz *= 1.0 - uCleave * 0.94 * exp(-d * d * 14.0);
@@ -67,11 +70,14 @@ uniform vec3 uBase;
 uniform vec3 uRim;
 uniform vec3 uFilm;
 uniform float uHighlight;
+uniform float uIntegrity;
 varying vec3 vNormal;
 varying vec3 vWorld;
 varying vec3 vDir;
 
 void main() {
+  // Loss of membrane integrity (necrosis, pore-forming toxins): holes open in the bilayer.
+  if (uIntegrity < 0.999 && trigNoise(vDir * 9.0) > uIntegrity * 2.2 - 1.0) discard;
   vec3 V = normalize(cameraPosition - vWorld);
   vec3 N = normalize(vNormal);
   bool inside = !gl_FrontFacing;
@@ -168,6 +174,8 @@ export function Membrane() {
         uHighlight: { value: 0 },
         uHighlightId: { value: -1 },
         uCleave: { value: 0 },
+        uBleb: { value: 0 },
+        uIntegrity: { value: 1 },
         uRadii: { value: CELL.radii.clone() },
       },
     });
@@ -182,7 +190,8 @@ export function Membrane() {
     const p = new Vector3();
     const n = new Vector3();
     const up = new Vector3(0, 1, 0);
-    for (let i = 0; i < preset.receptors; i++) {
+    // Room for up to 4× more receptors (overexpression, e.g. HER2); healthy cells draw the first quarter.
+    for (let i = 0; i < preset.receptors * 4; i++) {
       rng.direction(d);
       membranePoint(d, p);
       n.set(p.x / CELL.radii.x ** 2, p.y / CELL.radii.y ** 2, p.z / CELL.radii.z ** 2).normalize();
@@ -197,6 +206,8 @@ export function Membrane() {
   useHighlight('plasma-membrane', material);
   useFrame(() => {
     material.uniforms.uCleave!.value = liveChannels['cell.cleavage'];
+    material.uniforms.uBleb!.value = liveChannels['membrane.blebbing'];
+    material.uniforms.uIntegrity!.value = liveChannels['membrane.integrity'];
   });
 
   return (
@@ -207,6 +218,7 @@ export function Membrane() {
         material={RECEPTOR}
         matrices={receptors.matrices}
         seeds={receptors.seeds}
+        visibleCount={() => preset.receptors * liveChannels['membrane.receptorDensity']}
       />
       <mesh geometry={geometry} material={material} renderOrder={10} />
     </group>

@@ -80,7 +80,7 @@ export const QUALITY_PRESETS: Record<QualityLevel, QualityPreset> = {
     resolution: 1,
     shading: 2,
     smaa: true,
-    particles: 150_000,
+    particles: 90_000,
     ribosomes: 36_000,
     receptors: 5_000,
     microtubules: 170,

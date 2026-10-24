@@ -111,7 +111,7 @@ export function Mitosis() {
 
   useFrame(() => {
     const g = group.current;
-    const { process, t } = useScenario.getState();
+    const { scenario: process, t } = useScenario.getState();
     const active = !!process?.actors.some((a) => a.actor === 'mitosis');
     if (!g) return;
     g.visible = active;

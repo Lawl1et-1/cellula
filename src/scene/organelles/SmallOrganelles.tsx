@@ -4,7 +4,8 @@ import { useMemo } from 'react';
 import { IcosahedronGeometry, Matrix4, Quaternion, Vector3 } from 'three';
 import { createRng } from '@/lib/random';
 import { randomCytoplasmPoint } from '../layout/cellLayout';
-import { lysosomesLayout, peroxisomesLayout, vesiclesLayout } from '../layout/organelleLayout';
+import { BASE_COUNT, lysosomesLayout, peroxisomesLayout, vesiclesLayout } from '../layout/organelleLayout';
+import { liveChannels } from '@/engine/timeline/live';
 import { PALETTE } from '../palette';
 import type { OrganicOptions } from '../shaders/organicMaterial';
 import { InstancedOrganelle } from './Instanced';
@@ -92,13 +93,19 @@ export function SmallOrganelles() {
       matrices.push(new Matrix4().compose(p, q, one));
       seeds.push(rng.next());
     }
-    return { matrices, seeds, geometry: new IcosahedronGeometry(0.26, 0) };
+    return { matrices, seeds, geometry: new IcosahedronGeometry(0.26, 1) };
   }, [preset.ribosomes]);
 
   return (
     <group name="small-organelles">
-      <InstancedOrganelle organelle="lysosome" name="lysosomes" material={LYSOSOMES} {...lysosomes} />
-      <InstancedOrganelle organelle="peroxisome" name="peroxisomes" material={PEROXISOMES} {...peroxisomes} />
+      <InstancedOrganelle
+        organelle="lysosome"
+        visibleCount={() => BASE_COUNT.lysosome * liveChannels['lysosome.count']}
+        name="lysosomes" material={LYSOSOMES} {...lysosomes} />
+      <InstancedOrganelle
+        organelle="peroxisome"
+        visibleCount={() => BASE_COUNT.peroxisome * liveChannels['peroxisome.count']}
+        name="peroxisomes" material={PEROXISOMES} {...peroxisomes} />
       <InstancedOrganelle key={ribosomes.seeds.length} organelle="ribosome" name="free-ribosomes" material={FREE_RIBOSOMES} {...ribosomes} />
       <InstancedOrganelle organelle="vesicle" name="vesicles" material={VESICLES} renderOrder={6} {...vesicles} />
     </group>

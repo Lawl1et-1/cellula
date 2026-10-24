@@ -13,7 +13,7 @@ const SPEEDS = [0.5, 1, 2];
 
 /** Timeline scrubber + narration for a running process (and, in Phase 3, a disease). */
 export function ProcessPlayer() {
-  const process = useScenario((s) => s.process);
+  const process = useScenario((s) => s.scenario);
   const t = useScenario((s) => s.t);
   const playing = useScenario((s) => s.playing);
   const speed = useScenario((s) => s.speed);

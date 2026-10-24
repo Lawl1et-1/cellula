@@ -34,7 +34,7 @@ export const AnchorId = z.enum(ANCHOR_IDS);
 export type AnchorId = z.infer<typeof AnchorId>;
 
 /** What an actor carries; each kind has its own look (colour, size, glow). */
-export const CargoKind = z.enum(['mrna', 'protein', 'vesicle', 'glucose', 'pyruvate', 'atp', 'ldl', 'oxygen']);
+export const CargoKind = z.enum(['mrna', 'protein', 'vesicle', 'glucose', 'pyruvate', 'atp', 'ldl', 'oxygen', 'virion', 'cytokine']);
 export type CargoKind = z.infer<typeof CargoKind>;
 
 const timing = {

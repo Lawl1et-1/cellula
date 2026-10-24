@@ -7,6 +7,7 @@ import {
   mitochondriaLayout,
   peroxisomesLayout,
   vesiclesLayout,
+  healthy,
   type InstanceLayout,
 } from '../layout/organelleLayout';
 import { roughErAnchors, smoothErNodes } from '../organelles/EndoplasmicReticulum';
@@ -24,9 +25,9 @@ export const INSTANCE_RADIUS: Partial<Record<OrganelleId, number>> = {
 };
 
 export const INSTANCED: Partial<Record<OrganelleId, () => InstanceLayout>> = {
-  mitochondrion: mitochondriaLayout,
-  lysosome: lysosomesLayout,
-  peroxisome: peroxisomesLayout,
+  mitochondrion: () => healthy(mitochondriaLayout(), 'mitochondrion'),
+  lysosome: () => healthy(lysosomesLayout(), 'lysosome'),
+  peroxisome: () => healthy(peroxisomesLayout(), 'peroxisome'),
   vesicle: vesiclesLayout,
 };
 
