@@ -7,6 +7,7 @@ import { useScenario } from '@/state/scenario';
 import { useSelection } from '@/state/selection';
 import { useTour } from '@/state/tour';
 import { useScene } from '@/state/scene';
+import { useUi } from '@/state/ui';
 import { useContent } from './ContentContext';
 import styles from './player.module.css';
 
@@ -16,6 +17,8 @@ export function ScenarioMenu() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const running = useScenario((s) => s.scenario?.id);
+  const libraryOpen = useUi((s) => s.libraryOpen);
+  const setLibraryOpen = useUi((s) => s.setLibraryOpen);
 
   // Deep link: `?process=<id>&t=0.4` opens a process paused at that moment (sharing, review captures).
   useEffect(() => {
@@ -59,6 +62,13 @@ export function ScenarioMenu() {
       )}
       <button className={`glass ${styles.menuButton}`} aria-expanded={open} onClick={() => setOpen((o) => !o)}>
         {fr.menu.processes} <span aria-hidden>▾</span>
+      </button>
+      <button
+        className={`glass ${styles.menuButton} ${styles.menuAccent}`}
+        aria-expanded={libraryOpen}
+        onClick={() => setLibraryOpen(!libraryOpen)}
+      >
+        {fr.menu.diseases}
       </button>
       <AnimatePresence>
         {open && (

@@ -2,12 +2,14 @@
 
 import { createContext, useContext, useMemo } from 'react';
 import type { ExplorerContent } from '@/content/bundle';
-import type { Organelle, OrganelleId, Process, Source, Tour } from '@/content/schema';
+import type { Disease, Organelle, OrganelleId, Process, Source, Tour } from '@/content/schema';
 
 interface ContentIndex {
   organelles: Organelle[];
   processes: Process[];
   tours: Tour[];
+  diseases: Disease[];
+  sources: Source[];
   organelle: (id: OrganelleId) => Organelle | undefined;
   source: (id: string) => Source | undefined;
 }
@@ -22,6 +24,8 @@ export function ContentProvider({ content, children }: { content: ExplorerConten
       organelles: content.organelles,
       processes: content.processes,
       tours: content.tours,
+      diseases: content.diseases,
+      sources: content.sources,
       organelle: (id) => organelles.get(id),
       source: (id) => sources.get(id),
     };

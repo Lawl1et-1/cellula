@@ -13,6 +13,8 @@ import { HoverLabel } from './HoverLabel';
 import { ScenarioMenu } from './ScenarioMenu';
 import { ProcessPlayer } from './ProcessPlayer';
 import { TourCard } from './TourCard';
+import { DiseasePanel } from './DiseasePanel';
+import { DiseaseLibrary } from './DiseaseLibrary';
 import type { ExplorerContent } from '@/content/bundle';
 
 const CellCanvas = dynamic(() => import('@/scene/CellCanvas'), { ssr: false });
@@ -48,6 +50,8 @@ export function Experience({ intro, content }: { intro: boolean; content: Explor
             <InfoPanel />
             <HoverLabel />
             <ScenarioMenu />
+            <DiseasePanel />
+            <DiseaseLibrary />
             <AnimatePresence>
               <ProcessPlayer key="process" />
             </AnimatePresence>

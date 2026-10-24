@@ -1,0 +1,158 @@
+/* Reading pages (disease library and disease sheets): the explorer locks scrolling, these pages scroll. */
+
+.page {
+  height: 100vh;
+  overflow-y: auto;
+  background:
+    radial-gradient(80% 60% at 80% 0%, rgba(116, 102, 224, 0.14), transparent 60%),
+    radial-gradient(60% 50% at 0% 100%, rgba(255, 138, 138, 0.08), transparent 60%),
+    var(--bg);
+}
+
+.inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 28px 20px 80px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 40px;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 30px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 18px;
+  font-size: 13px;
+}
+
+.nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--ink);
+}
+
+.title {
+  margin: 8px 0 10px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1.02;
+}
+
+.lead {
+  max-width: 62ch;
+  margin: 0 0 28px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.tools {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.grid {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+
+.cardItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 16px 18px;
+}
+
+.cardLink {
+  display: grid;
+  gap: 6px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.cardLink strong {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.cardText {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-faint);
+}
+
+.view {
+  font-size: 13px;
+  color: #ffb0a8;
+  text-decoration: none;
+}
+
+.sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 40px;
+  align-items: start;
+}
+
+.sheet article {
+  max-width: 68ch;
+}
+
+.aside {
+  position: sticky;
+  top: 24px;
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+}
+
+.cta {
+  display: inline-flex;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 138, 138, 0.5);
+  background: rgba(255, 138, 138, 0.1);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.stages {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 860px) {
+  .sheet {
+    grid-template-columns: 1fr;
+  }
+  .aside {
+    position: static;
+  }
+}
