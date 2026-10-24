@@ -106,7 +106,7 @@ float causticPattern(vec3 p) {
   float t = uTime * 0.18;
   float a = 1.0 - abs(trigNoise(p * 0.07 + vec3(0.0, t, t * 0.6)));
   float b = 1.0 - abs(trigNoise(p * 0.13 + vec3(t * 0.7, -t, 3.1)));
-  return pow(a, 10.0) * 0.8 + pow(a * b, 6.0) * 0.6;
+  return pow(a, 18.0) * 0.7 + pow(a * b, 10.0) * 0.5;
 }
 `;
 

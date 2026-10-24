@@ -10,7 +10,7 @@ export const sharedUniforms = {
   uAmbient: { value: new Color('#1a2a44').multiplyScalar(0.35) },
   uFogColor: { value: new Color('#06101c') },
   uFogDensity: { value: 0.0016 },
-  uCausticStrength: { value: 0.55 },
+  uCausticStrength: { value: 0.35 },
   /** Size multiplier for molecular-scale objects ('artistic' vs 'real' scale). */
   uMolecularScale: { value: 1 },
 };
@@ -216,7 +216,7 @@ void main() {
   if (!gl_FrontFacing) N = -N;
 
   // Fine wet bump from a single noise sample, using screen-space derivatives (surface gradient).
-  float h = snoise(vLocal * 1.7 + vec3(0.0, uTime * 0.2, 0.0)) * 0.12;
+  float h = snoise(vLocal * 0.9 + vec3(0.0, uTime * 0.2, 0.0)) * 0.05;
   vec3 dpdx = dFdx(vWorld), dpdy = dFdy(vWorld);
   vec3 r1 = cross(dpdy, N), r2 = cross(N, dpdx);
   float det = dot(dpdx, r1);

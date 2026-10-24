@@ -97,6 +97,9 @@
 }
 
 .introScale {
+  /* Never uppercase: µm would become "MM". */
+  text-transform: none;
+  letter-spacing: 0.06em;
   position: absolute;
   left: clamp(24px, 6vw, 96px);
   bottom: 28px;

@@ -6,7 +6,28 @@ Cellula est une expérience web éducative et cinématographique : un voyage à 
 vivante, organite par organite, avec une bibliothèque de maladies simulées étape par étape à partir de sources
 scientifiques citées.
 
-> Projet en cours — phase de conception. Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+> Projet en cours — phase 1 (la cellule vivante). Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) et
+> [docs/reviews/phase-1.md](docs/reviews/phase-1.md).
+
+## Lancer le projet
+
+```bash
+npm install
+npm run dev
+```
+
+Puis ouvrir http://localhost:3000. Paramètres utiles : `?stats` (images par seconde),
+`?cam=px,py,pz,tx,ty,tz` (point de vue partageable).
+
+| Script | Rôle |
+|---|---|
+| `npm run check` | Types, lint, validation du contenu, tests |
+| `npm run validate:content` | Vérifie schémas, sources et cohérence du dossier `content/` |
+| `npm run build` | Build de production |
+
+## Licences
+
+Code : MIT. Contenu scientifique (`content/`) : CC BY-SA 4.0.
 
 ## Stack
 

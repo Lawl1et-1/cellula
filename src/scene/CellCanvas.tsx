@@ -43,7 +43,7 @@ export default function CellCanvas() {
         toneMapping: NoToneMapping,
         outputColorSpace: SRGBColorSpace,
       }}
-      camera={{ fov: 38, near: 0.1, far: 2400, position: [40, 140, 1150] }}
+      camera={{ fov: 38, near: 0.1, far: 2400, position: [-90, 80, 560] }}
       style={{ position: 'absolute', inset: 0 }}
       aria-label="Vue 3D interactive d'une cellule humaine"
     >

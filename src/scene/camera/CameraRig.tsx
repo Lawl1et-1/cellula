@@ -9,7 +9,8 @@ import { useScene } from '@/state/scene';
 import { focusPoint } from './focus';
 
 const ACTION = CameraControlsImpl.ACTION;
-const INTRO_POSITION = new Vector3(40, 140, 1150);
+const INTRO_POSITION = new Vector3(-90, 80, 560);
+const INTRO_TARGET = new Vector3(-120, 20, 0);
 const ORBIT_POSITION = new Vector3(170, 70, 235);
 const IDLE_DELAY = 6000;
 const FLIGHT_SPEED = 28;
@@ -55,13 +56,15 @@ export function CameraRig() {
   const touch = useScene((s) => s.touch);
   const keys = useFlightKeys();
   const wheelBoost = useRef(0);
+  const prevMode = useRef(mode);
 
   // Mode transitions.
   useEffect(() => {
     const c = controls;
     if (!c) return;
     if (mode === 'intro') {
-      c.setLookAt(INTRO_POSITION.x, INTRO_POSITION.y, INTRO_POSITION.z, 0, 0, 0, false);
+      // Aim left of the cell so it sits on the right of the frame, clear of the title.
+      c.setLookAt(INTRO_POSITION.x, INTRO_POSITION.y, INTRO_POSITION.z, INTRO_TARGET.x, INTRO_TARGET.y, INTRO_TARGET.z, false);
       c.smoothTime = 1.6;
       return;
     }
@@ -78,7 +81,7 @@ export function CameraRig() {
       if (shared) {
         void c.setLookAt(...shared, false);
         c.smoothTime = 0.45;
-      } else if (tmp.distanceTo(INTRO_POSITION) < 1) {
+      } else if (prevMode.current === 'intro') {
         // First entry: a slow, eased dive towards the cell.
         c.smoothTime = 1.4;
         void c.setLookAt(ORBIT_POSITION.x, ORBIT_POSITION.y, ORBIT_POSITION.z, 0, 0, 0, true).then(() => {
@@ -106,6 +109,10 @@ export function CameraRig() {
     void c.setLookAt(tmp.x, tmp.y, tmp.z, target.x, target.y, target.z, false);
   }, [mode, camera, controls]);
 
+  useEffect(() => {
+    if (controls) prevMode.current = mode;
+  }, [mode, controls]);
+
   // Wheel moves forward in flight mode.
   useEffect(() => {
     if (mode !== 'flight') return;
@@ -123,7 +130,7 @@ export function CameraRig() {
     const { lastInteraction } = useScene.getState();
 
     if (mode === 'intro') {
-      c.azimuthAngle += dt * 0.025;
+      c.azimuthAngle += dt * 0.006;
     } else if (mode === 'orbit') {
       if (performance.now() - lastInteraction > IDLE_DELAY) c.azimuthAngle += dt * 0.03;
     } else {

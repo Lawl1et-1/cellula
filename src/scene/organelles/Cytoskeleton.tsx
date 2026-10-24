@@ -61,13 +61,24 @@ const CENTRIOLE: OrganicOptions = {
 
 const MOTOR: OrganicOptions = {
   color: PALETTE.motor.a,
-  color2: PALETTE.motor.cargo,
-  emissive: PALETTE.motor.cargo,
-  emissiveStrength: 0.5,
+  emissive: PALETTE.motor.a,
+  emissiveStrength: 0.9,
   sss: 0.8,
-  gloss: 0.9,
-  wobble: 0.1,
-  wobbleFreq: 1.5,
+  gloss: 0.6,
+};
+
+const CARGO: OrganicOptions = {
+  color: PALETTE.motor.cargo,
+  sssColor: PALETTE.motor.cargo,
+  sss: 0.6,
+  gloss: 1,
+  wobble: 0.06,
+  wobbleFreq: 1.4,
+  transparent: true,
+  opacity: 0.05,
+  rimOpacity: 0.75,
+  diffuse: 0.15,
+  rim: 1.5,
 };
 
 /** Microtubules radiate from the centrosome to the periphery, bending around the nucleus. */
@@ -179,8 +190,9 @@ interface Motor {
 }
 
 function Motors({ paths, count }: { paths: Vector3[][]; count: number }) {
-  const ref = useRef<InstancedMesh>(null);
-  const { geometry, material, motors } = useMemo(() => {
+  const heads = useRef<InstancedMesh>(null);
+  const cargoes = useRef<InstancedMesh>(null);
+  const parts = useMemo(() => {
     const rng = createRng(909);
     const sampled = paths.map((p) => new CatmullRomCurve3(p).getSpacedPoints(80));
     const motors: Motor[] = Array.from({ length: count }, () => ({
@@ -191,22 +203,34 @@ function Motors({ paths, count }: { paths: Vector3[][]; count: number }) {
       speed: (rng.next() < 0.6 ? 1 : -1) * rng.range(0.01, 0.025),
       phase: rng.next() * 10,
     }));
-    const head = new IcosahedronGeometry(0.45, 1);
-    head.deleteAttribute('uv');
-    const cargo = new IcosahedronGeometry(1.1, 2);
-    cargo.deleteAttribute('uv');
-    cargo.translate(0, 1.7, 0);
-    const geometry = mergeGeometries([head, cargo])!;
-    geometry.setAttribute('aSeed', new InstancedBufferAttribute(new Float32Array(count).map(() => rng.next()), 1));
-    return { geometry, material: createOrganicMaterial(MOTOR, true), motors };
+    const seeds = new InstancedBufferAttribute(new Float32Array(count).map(() => rng.next()), 1);
+    // The motor protein itself: two small heads walking on the tubule.
+    const headA = new IcosahedronGeometry(0.28, 1);
+    headA.translate(0.22, 0.1, 0);
+    const headB = new IcosahedronGeometry(0.28, 1);
+    headB.translate(-0.22, 0.1, 0);
+    const head = mergeGeometries([headA, headB])!;
+    head.setAttribute('aSeed', seeds);
+    // Its cargo: a membrane vesicle towed on a short stalk.
+    const cargo = new IcosahedronGeometry(1, 3);
+    cargo.translate(0, 1.5, 0);
+    cargo.setAttribute('aSeed', seeds);
+    return {
+      motors,
+      head,
+      cargo,
+      headMat: createOrganicMaterial(MOTOR, true),
+      cargoMat: createOrganicMaterial(CARGO, true),
+    };
   }, [paths, count]);
 
   const dummy = useMemo(() => new Object3D(), []);
   useFrame((_, delta) => {
-    const mesh = ref.current;
-    if (!mesh) return;
+    const h = heads.current;
+    const c = cargoes.current;
+    if (!h || !c) return;
     const dt = Math.min(delta, 0.05);
-    motors.forEach((m, i) => {
+    parts.motors.forEach((m, i) => {
       m.phase += dt * 4;
       // Discrete 8 nm steps: move during half of each cycle, pause during the other.
       const stepping = Math.sin(m.phase) > 0 ? 1 : 0.1;
@@ -220,12 +244,19 @@ function Motors({ paths, count }: { paths: Vector3[][]; count: number }) {
       dummy.lookAt(b);
       dummy.rotateX(Math.PI / 2 + Math.sin(m.phase) * 0.15);
       dummy.updateMatrix();
-      mesh.setMatrixAt(i, dummy.matrix);
+      h.setMatrixAt(i, dummy.matrix);
+      c.setMatrixAt(i, dummy.matrix);
     });
-    mesh.instanceMatrix.needsUpdate = true;
+    h.instanceMatrix.needsUpdate = true;
+    c.instanceMatrix.needsUpdate = true;
   });
 
-  return <instancedMesh ref={ref} args={[geometry, material, count]} frustumCulled={false} />;
+  return (
+    <>
+      <instancedMesh ref={heads} args={[parts.head, parts.headMat, count]} frustumCulled={false} />
+      <instancedMesh ref={cargoes} args={[parts.cargo, parts.cargoMat, count]} frustumCulled={false} renderOrder={6} />
+    </>
+  );
 }
 
 export function Cytoskeleton() {

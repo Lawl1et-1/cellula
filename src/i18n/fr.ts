@@ -5,7 +5,7 @@ export const fr = {
     title: 'Entrez dans une cellule humaine',
     lead: "Vingt micromètres. Des milliards de molécules. Une machinerie qui ne s'arrête jamais. Explorez ses organites, comprenez leurs échanges, et observez ce que les maladies leur font.",
     enter: 'Entrer dans la cellule',
-    scale: '1 cellule ≈ 20 µm · 1/5 de l’épaisseur d’un cheveu',
+    scale: 'Une cellule humaine typique mesure 10 à 30 µm',
   },
   hud: {
     camera: 'Caméra',
