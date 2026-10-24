@@ -31,6 +31,7 @@ export function ProcessPlayer() {
   return (
     <motion.section
       className={styles.player}
+      data-with-panel={process.kind === 'disease'}
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 16 }}

@@ -81,6 +81,14 @@
   z-index: 2;
 }
 
+.player[data-with-panel='true'] {
+  /* Leave room for the disease panel on the right. */
+  right: 440px;
+  left: 20px;
+  margin-inline: 0;
+  width: auto;
+}
+
 .narration {
   max-width: 560px;
   padding: 16px 20px 14px;
@@ -309,6 +317,10 @@
 }
 
 @media (max-width: 900px) {
+  .player[data-with-panel='true'] {
+    right: 12px;
+    left: 12px;
+  }
   .menu {
     top: 64px;
     right: 12px;

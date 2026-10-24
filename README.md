@@ -8,9 +8,9 @@ scientifiques citées.
 
 ![Cellula](docs/reviews/img/01-accueil.jpg)
 
-> Projet en cours — phases 1 et 2 terminées (la cellule vivante, organites interactifs, visite guidée et
-> processus animés). Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md),
-> [docs/reviews/phase-1.md](docs/reviews/phase-1.md) et [docs/reviews/phase-2.md](docs/reviews/phase-2.md).
+> Projet en cours — phases 1 à 3 terminées (cellule vivante, organites interactifs, processus animés,
+> 29 maladies). Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) et les bilans de
+> [phase 1](docs/reviews/phase-1.md), [phase 2](docs/reviews/phase-2.md) et [phase 3](docs/reviews/phase-3.md).
 
 ## Ce que l'on peut faire
 
@@ -19,6 +19,9 @@ scientifiques citées.
 - Suivre une visite guidée de 12 étapes.
 - Regarder quatre processus animés, étape par étape : synthèse et sécrétion d'une protéine, respiration
   cellulaire, endocytose et exocytose, mitose et cytocinèse.
+- Choisir parmi 29 maladies (surcharges lysosomales, maladies mitochondriales, neurodégénératives,
+  infections, cancers…) et voir, étape par étape, ce qu'elles font à la cellule. 83 sources, toutes
+  vérifiées sur NCBI (PubMed, GeneReviews, StatPearls).
 
 ## Lancer le projet
 
@@ -35,6 +38,7 @@ Puis ouvrir http://localhost:3000. Paramètres utiles : `?stats` (images par sec
 |---|---|
 | `npm run check` | Types, lint, validation du contenu, tests |
 | `npm run validate:content` | Vérifie schémas, sources et cohérence du dossier `content/` |
+| `npm run verify:sources` | Vérifie chaque source sur NCBI (PubMed, Bookshelf) ; `-- --write` enregistre la date |
 | `npm run build` | Build de production |
 | `npm run perf -- <url>` | Temps GPU par préréglage, sur le GPU réel (Edge sans interface) |
 | `npm run shots -- <url> <dossier> <qualité>` | Captures de référence |

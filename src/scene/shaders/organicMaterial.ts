@@ -203,7 +203,7 @@ void main() {
   // Disease deformations: lengthening/shortening, dilation along the normal, lobulation (blebs).
   pos.y *= uStretch;
   pos += nrm * uInflate;
-  if (uBleb > 0.001) pos += nrm * uBleb * max(0.0, snoise(pos * 0.11 + seed * 7.0)) * 6.0;
+  if (uBleb > 0.001) pos += nrm * uBleb * max(0.0, snoise(pos * 0.11 + seed * 7.0)) * 4.0;
   vLocal = pos;
 
   // Object centre in world space (drift included): drives distance LOD and cut-aways.
@@ -336,8 +336,11 @@ void main() {
   float emissive = 0.0;
   vec3 albedo = surface(emissive);
   // Disease: material accumulating or degrading (storage material, damaged membranes…).
-  float stainNoise = 0.75 + 0.5 * snoise(vLocal * 0.6 + vSeed * 5.0);
-  albedo = mix(albedo, uStainColor * stainNoise, clamp(uStain, 0.0, 1.0) * 0.85);
+  // Branch on a uniform: healthy cells skip the extra noise entirely.
+  if (uStain > 0.001) {
+    float stainNoise = 0.75 + 0.5 * snoise(vLocal * 0.6 + vSeed * 5.0);
+    albedo = mix(albedo, uStainColor * stainNoise, min(uStain, 1.0) * 0.85);
+  }
   emissive *= uGlow;
   vec3 col = organicShade(albedo, N, V, vWorld, uSss, uSssColor, uGloss);
   col += uEmissive * emissive * uEmissiveStrength;

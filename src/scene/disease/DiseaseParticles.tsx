@@ -248,11 +248,12 @@ function Bacteria() {
       new Float32Array(COUNT * TAIL).map(() => rng.next()),
       1,
     );
-    const body = new CapsuleGeometry(0.9, 3.4, 4, 10);
+    // Listeria / mycobacteria: ~0.5 µm wide, 1–3 µm long.
+    const body = new CapsuleGeometry(2.4, 9, 6, 14);
     body.setAttribute('aSeed', seeds);
-    const tail = weld(new IcosahedronGeometry(0.42, 1));
+    const tail = weld(new IcosahedronGeometry(1.1, 2));
     tail.setAttribute('aSeed', seeds);
-    const vac = weld(new IcosahedronGeometry(3.4, 3));
+    const vac = weld(new IcosahedronGeometry(8, 4));
     vac.setAttribute('aSeed', seeds);
     return {
       paths,
@@ -304,7 +305,9 @@ function Bacteria() {
       vac.setMatrixAt(i, dummy.matrix);
       // Comet tail of polymerising actin left behind the bacterium.
       for (let k = 0; k < TAIL; k++) {
-        at(i, travelled.current - 0.012 * (k + 1.5), pos);
+        // Spaced by distance along the path, starting just behind the bacterium's rear pole.
+        const p = assets.paths[i]!;
+        at(i, travelled.current - (7.5 + k * 2.2) / (p.radius * p.speed), pos);
         dummy.position.copy(pos);
         dummy.scale.setScalar(i < n ? actin * (1 - k / TAIL) * 1.3 : 0);
         dummy.updateMatrix();
@@ -319,7 +322,7 @@ function Bacteria() {
   return (
     <>
       <instancedMesh ref={bodies} args={[assets.body, assets.bodyMat, COUNT]} frustumCulled={false} />
-      <instancedMesh ref={tails} args={[assets.tail, assets.tailMat, COUNT * TAIL]} frustumCulled={false} />
+      <instancedMesh name="actin-tails" ref={tails} args={[assets.tail, assets.tailMat, COUNT * TAIL]} frustumCulled={false} />
       <instancedMesh
         ref={vacuoles}
         args={[assets.vac, assets.vacMat, COUNT]}

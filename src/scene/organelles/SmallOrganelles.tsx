@@ -93,8 +93,8 @@ export function SmallOrganelles() {
       matrices.push(new Matrix4().compose(p, q, one));
       seeds.push(rng.next());
     }
-    return { matrices, seeds, geometry: new IcosahedronGeometry(0.26, 1) };
-  }, [preset.ribosomes]);
+    return { matrices, seeds, geometry: new IcosahedronGeometry(0.26, preset.geometryDetail >= 1 ? 1 : 0) };
+  }, [preset.ribosomes, preset.geometryDetail]);
 
   return (
     <group name="small-organelles">

@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { fr } from '@/i18n/fr';
 import { useSelection } from '@/state/selection';
+import { useUi } from '@/state/ui';
+import { useScenario } from '@/state/scenario';
 import { cameraPosition } from '@/scene/camera/focus';
 import { anchorFor } from '@/scene/interaction/anchors';
 import { ORGANELLE_SWATCHES } from '@/scene/palette';
@@ -17,6 +19,11 @@ export function OrganelleList() {
   const hover = useSelection((s) => s.hover);
   // Collapsed by default on small screens, where it would cover the cell.
   const [open, setOpen] = useState(() => typeof window === 'undefined' || window.innerWidth > 900);
+
+  const libraryOpen = useUi((s) => s.libraryOpen);
+  // The library drawer and the disease narration use the same space on the left.
+  const diseasePlaying = useScenario((s) => s.scenario?.kind === 'disease');
+  if (libraryOpen || diseasePlaying) return null;
 
   return (
     <nav className={`glass ${styles.list}`} aria-label={fr.list.title} data-open={open}>
