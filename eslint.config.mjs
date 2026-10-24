@@ -4,7 +4,7 @@ import nextTs from 'eslint-config-next/typescript';
 const config = [
   ...nextVitals,
   ...nextTs,
-  { ignores: ['.next/**', 'out/**', 'node_modules/**', 'next-env.d.ts'] },
+  { ignores: ['.next/**', 'out/**', 'node_modules/**', 'next-env.d.ts', '_*.ts'] },
   {
     rules: {
       // R3F mutates three.js objects inside useFrame by design.
