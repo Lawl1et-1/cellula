@@ -16,7 +16,7 @@ import { mergeGeometries, mergeVertices } from 'three/examples/jsm/utils/BufferG
 import { createRng } from '@/lib/random';
 import { CELL } from '../layout/cellLayout';
 import { PALETTE } from '../palette';
-import { commonChunks } from '../shaders/chunks';
+import { commonChunks, vertexChunks } from '../shaders/chunks';
 import { sharedUniforms, type OrganicOptions } from '../shaders/organicMaterial';
 import { InstancedOrganelle } from './Instanced';
 import { useHighlight } from '../interaction/highlight';
@@ -38,7 +38,7 @@ export function membranePoint(d: Vector3, out = new Vector3()) {
 }
 
 const membraneVertex = /* glsl */ `
-${commonChunks}
+${vertexChunks}
 varying vec3 vNormal;
 varying vec3 vWorld;
 varying vec3 vDir;

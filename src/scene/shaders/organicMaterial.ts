@@ -1,5 +1,6 @@
 import { AdditiveBlending, Color, DoubleSide, FrontSide, NormalBlending, ShaderMaterial, Vector2, Vector3 } from 'three';
-import { commonChunks } from './chunks';
+import { commonChunks, vertexChunks } from './chunks';
+import { noiseTexture } from './noiseTexture';
 
 /** Uniform objects shared by reference across every material: updating them once updates the whole cell. */
 export const sharedUniforms = {
@@ -18,6 +19,8 @@ export const sharedUniforms = {
   /** Disease: global loss of colour towards a sickly tone (cytoplasm.tint, cell.viability). */
   uTint: { value: 0 },
   uTintColor: { value: new Color('#8a7c6a') },
+  /** Shared 3D noise volume (replaces procedural noise in every shader). */
+  uNoiseTex: { value: noiseTexture() },
   /** Size multiplier for molecular-scale objects ('artistic' vs 'real' scale). */
   uMolecularScale: { value: 1 },
 };
@@ -129,7 +132,7 @@ export interface OrganicOptions {
 }
 
 const vertexShader = /* glsl */ `
-${commonChunks}
+${vertexChunks}
 uniform float uWobble;
 uniform float uWobbleFreq;
 uniform float uWobbleSpeed;

@@ -1,16 +1,12 @@
 import { BlendFunction, Effect, EffectAttribute } from 'postprocessing';
 import {
   Color,
-  Data3DTexture,
-  LinearFilter,
   Matrix4,
   PerspectiveCamera,
-  RedFormat,
-  RepeatWrapping,
   Uniform,
   Vector3,
 } from 'three';
-import { fbm3 } from '@/lib/noise';
+import { noiseTexture } from '../shaders/noiseTexture';
 import { CELL } from '../layout/cellLayout';
 import { sharedUniforms } from '../shaders/organicMaterial';
 
@@ -97,25 +93,6 @@ void mainImage(const in vec4 inputColor, const in vec2 uv, const in float depth,
 }
 `;
 
-function createNoiseTexture(size = 64) {
-  const data = new Uint8Array(size * size * size);
-  const period = 4;
-  for (let z = 0; z < size; z++)
-    for (let y = 0; y < size; y++)
-      for (let x = 0; x < size; x++) {
-        const s = period / size;
-        const v = fbm3(x * s, y * s, z * s, 5, 4, period);
-        data[x + y * size + z * size * size] = Math.max(0, Math.min(255, (v * 0.5 + 0.5) * 255));
-      }
-  const tex = new Data3DTexture(data, size, size, size);
-  tex.format = RedFormat;
-  tex.minFilter = tex.magFilter = LinearFilter;
-  tex.wrapS = tex.wrapT = tex.wrapR = RepeatWrapping;
-  tex.unpackAlignment = 1;
-  tex.needsUpdate = true;
-  return tex;
-}
-
 export class CytoplasmVolumeEffect extends Effect {
   private camera: PerspectiveCamera;
 
@@ -124,7 +101,7 @@ export class CytoplasmVolumeEffect extends Effect {
       blendFunction: BlendFunction.NORMAL,
       attributes: EffectAttribute.DEPTH,
       uniforms: new Map<string, Uniform>([
-        ['uNoise', new Uniform(createNoiseTexture())],
+        ['uNoise', new Uniform(noiseTexture())],
         ['uProjInv', new Uniform(new Matrix4())],
         ['uViewInv', new Uniform(new Matrix4())],
         ['uCamPos', new Uniform(new Vector3())],

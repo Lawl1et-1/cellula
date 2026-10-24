@@ -32,12 +32,14 @@ export function GpuTimer() {
   }, [gl]);
 
   const scene = useThree((s) => s.scene);
+  const renderer = useThree((s) => s.gl);
   useEffect(() => {
     document.body.appendChild(state.el);
     // Debug handle for profiling (toggle groups from the console). Stats mode only.
     (window as unknown as { __cellulaScene: unknown }).__cellulaScene = scene;
+    (window as unknown as { __cellulaRenderer: unknown }).__cellulaRenderer = renderer;
     return () => state.el.remove();
-  }, [state, scene]);
+  }, [state, scene, renderer]);
 
   // Runs before the scene and the composer (negative priority).
   useFrame(() => {
