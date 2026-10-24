@@ -165,6 +165,19 @@
           }
         ]
       }
+    },
+    {
+      "with": "dna",
+      "description": {
+        "text": {
+          "fr": "Le noyau renferme l'ADN, empaqueté en chromatine."
+        },
+        "sources": [
+          {
+            "id": "mboc4-chromatin-packaging"
+          }
+        ]
+      }
     }
   ]
 }

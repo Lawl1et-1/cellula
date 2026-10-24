@@ -5,6 +5,9 @@ interface UiState {
   /** Phone layout: settings sheet and disease details sheet are opened on demand. */
   settingsOpen: boolean;
   diseaseSheet: boolean;
+  /** DNA compaction close-up: index of the level shown (null = closed). */
+  dnaLevel: number | null;
+  setDnaLevel: (level: number | null) => void;
   setLibraryOpen: (open: boolean) => void;
   setSettingsOpen: (open: boolean) => void;
   setDiseaseSheet: (open: boolean) => void;
@@ -14,6 +17,8 @@ export const useUi = create<UiState>((set) => ({
   libraryOpen: false,
   settingsOpen: false,
   diseaseSheet: false,
+  dnaLevel: null,
+  setDnaLevel: (dnaLevel) => set({ dnaLevel }),
   setLibraryOpen: (libraryOpen) => set({ libraryOpen }),
   setSettingsOpen: (settingsOpen) => set({ settingsOpen }),
   setDiseaseSheet: (diseaseSheet) => set({ diseaseSheet }),

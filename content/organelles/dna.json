@@ -1,0 +1,255 @@
+{
+  "id": "dna",
+  "name": {
+    "fr": "ADN et chromatine"
+  },
+  "tagline": {
+    "fr": "Le génome, empaqueté dans le noyau"
+  },
+  "summary": {
+    "text": {
+      "fr": "L'ADN est la molécule qui porte l'information génétique. Dans le noyau, il est associé à des protéines pour former la chromatine, un enchevêtrement de fibres très fines."
+    },
+    "sources": [
+      {
+        "id": "mboc4-dna-structure"
+      },
+      {
+        "id": "mboc4-chromatin-packaging"
+      }
+    ]
+  },
+  "function": [
+    {
+      "text": {
+        "fr": "Les gènes sont des segments d'ADN. Lors de la transcription, un brin sert de modèle pour fabriquer un ARN de séquence complémentaire."
+      },
+      "sources": [
+        {
+          "id": "mboc4-transcription-complementary"
+        },
+        {
+          "id": "mboc4-dna-to-rna"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Les ARN messagers quittent le noyau par les complexes du pore nucléaire, puis sont traduits en protéines par les ribosomes, libres dans le cytosol ou fixés au réticulum endoplasmique rugueux."
+      },
+      "sources": [
+        {
+          "id": "mboc4-nuclear-pores"
+        },
+        {
+          "id": "mboc4-rna-to-protein"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Avant chaque division, l'ADN est entièrement copié : les deux brins se séparent et chacun sert de modèle à un nouveau brin complémentaire."
+      },
+      "sources": [
+        {
+          "id": "mboc4-dna-replication"
+        },
+        {
+          "id": "mboc4-dna-complementary"
+        }
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "text": {
+        "fr": "L'ADN est formé de deux brins enroulés l'un autour de l'autre en double hélice. Chaque brin est une chaîne de nucléotides reliés par un squelette de sucres (désoxyribose) et de phosphates."
+      },
+      "sources": [
+        {
+          "id": "mboc4-dna-complementary"
+        },
+        {
+          "id": "mboc4-dna-structure"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Il existe quatre bases : adénine (A), thymine (T), guanine (G) et cytosine (C). Les deux brins sont complémentaires : A s'apparie toujours avec T, et G avec C."
+      },
+      "sources": [
+        {
+          "id": "mboc4-dna-complementary"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Le génome humain compte environ 3,2 milliards de paires de nucléotides, réparties sur 24 chromosomes différents ; une cellule somatique en possède deux jeux, soit 46 chromosomes (23 paires)."
+      },
+      "sources": [
+        {
+          "id": "mboc4-chromosome-set"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Mis bout à bout, l'ADN d'une seule cellule humaine mesurerait environ 2 mètres, alors que le noyau ne mesure qu'environ 6 µm de diamètre."
+      },
+      "sources": [
+        {
+          "id": "mboc4-chromatin-packaging"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "L'unité de base de cet empaquetage est le nucléosome : environ 146 paires de nucléotides d'ADN enroulées autour d'un cœur de huit histones. Reliés par de l'ADN de liaison, les nucléosomes forment un « collier de perles »."
+      },
+      "sources": [
+        {
+          "id": "mboc4-nucleosomes"
+        }
+      ]
+    },
+    {
+      "text": {
+        "fr": "Les nucléosomes s'empilent en une fibre de chromatine plus compacte, d'environ 30 nm de diamètre, qui se replie à son tour ; au moment de la division, elle se condense au maximum en chromosomes."
+      },
+      "sources": [
+        {
+          "id": "mboc4-chromatin-fiber"
+        },
+        {
+          "id": "mboc4-m-phase-stages"
+        }
+      ],
+      "simplification": {
+        "fr": "La fibre de 30 nm est montrée selon le modèle classique des manuels ; l'organisation réelle de la chromatine est plus irrégulière."
+      }
+    },
+    {
+      "text": {
+        "fr": "L'hétérochromatine, très condensée, est en général silencieuse ; l'euchromatine, moins compacte, contient la plupart des gènes actifs."
+      },
+      "sources": [
+        {
+          "id": "mboc4-heterochromatin"
+        }
+      ],
+      "simplification": {
+        "fr": "Dans le modèle, l'hétérochromatine (plus sombre) est placée contre l'enveloppe et autour du nucléole, l'euchromatine (plus claire) au centre."
+      }
+    },
+    {
+      "text": {
+        "fr": "Les mitochondries possèdent aussi leur propre petit génome, distinct de l'ADN du noyau."
+      },
+      "sources": [
+        {
+          "id": "mboc4-organelle-genomes"
+        },
+        {
+          "id": "mboc4-mitochondrion"
+        }
+      ]
+    }
+  ],
+  "keyMolecules": [
+    {
+      "name": "Histones",
+      "role": {
+        "text": {
+          "fr": "Protéines autour desquelles l'ADN s'enroule pour former les nucléosomes."
+        },
+        "sources": [
+          {
+            "id": "mboc4-nucleosomes"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ARN polymérase",
+      "role": {
+        "text": {
+          "fr": "Enzyme qui fabrique un ARN en copiant un brin d'ADN."
+        },
+        "sources": [
+          {
+            "id": "mboc4-dna-to-rna"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ADN polymérase",
+      "role": {
+        "text": {
+          "fr": "Enzyme qui copie l'ADN lors de la réplication."
+        },
+        "sources": [
+          {
+            "id": "mboc4-dna-replication"
+          }
+        ]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "with": "nucleus",
+      "description": {
+        "text": {
+          "fr": "L'enveloppe nucléaire isole l'ADN du cytoplasme ; les échanges passent par les pores nucléaires."
+        },
+        "sources": [
+          {
+            "id": "mboc4-nuclear-pores"
+          }
+        ]
+      }
+    },
+    {
+      "with": "nucleolus",
+      "description": {
+        "text": {
+          "fr": "Le nucléole se forme autour des gènes des ARN ribosomiques."
+        },
+        "sources": [
+          {
+            "id": "mboc4-nucleolus"
+          }
+        ]
+      }
+    },
+    {
+      "with": "ribosome",
+      "description": {
+        "text": {
+          "fr": "Les ARN messagers transcrits à partir de l'ADN sont traduits par les ribosomes."
+        },
+        "sources": [
+          {
+            "id": "mboc4-rna-to-protein"
+          }
+        ]
+      }
+    },
+    {
+      "with": "mitochondrion",
+      "description": {
+        "text": {
+          "fr": "Les mitochondries ont leur propre ADN, distinct de celui du noyau."
+        },
+        "sources": [
+          {
+            "id": "mboc4-organelle-genomes"
+          }
+        ]
+      }
+    }
+  ]
+}

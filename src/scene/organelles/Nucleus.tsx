@@ -25,6 +25,8 @@ import { useRef } from 'react';
 import type { Group } from 'three';
 import { liveChannels } from '@/engine/timeline/live';
 import { usePreset } from '@/state/quality';
+import { useSelection } from '@/state/selection';
+import { useUi } from '@/state/ui';
 
 const OUTER_ENVELOPE: OrganicOptions = {
   color: PALETTE.nucleus.envelope,
@@ -61,19 +63,52 @@ const PORE: OrganicOptions = {
   emissiveStrength: 0.9,
 };
 
-const CHROMATIN: OrganicOptions = {
+const EUCHROMATIN: OrganicOptions = {
   color: PALETTE.chromatin.a,
   color2: PALETTE.chromatin.b,
   sssColor: PALETTE.chromatin.b,
   emissive: PALETTE.chromatin.glow,
-  emissiveStrength: 0.55,
+  emissiveStrength: 0.5,
   pattern: 'fibrous',
-  patternScale: 0.25,
+  patternScale: 0.3,
   sss: 0.9,
   gloss: 0.35,
-  wobble: 0.18,
-  wobbleFreq: 0.4,
+  wobble: 0.1,
+  wobbleFreq: 0.5,
   vertexSeed: true,
+};
+
+/** Heterochromatin: more compact, darker, less glow (largely silent). */
+const HETEROCHROMATIN: OrganicOptions = {
+  ...EUCHROMATIN,
+  color: PALETTE.chromatin.hetero,
+  color2: PALETTE.chromatin.a,
+  emissiveStrength: 0.18,
+  gloss: 0.5,
+  wobble: 0.06,
+};
+
+/** UV-type lesions on the chromatin (channel dna.damage). */
+const LESION: OrganicOptions = {
+  color: '#fff1b0',
+  emissive: '#ffd66b',
+  emissiveStrength: 2.2,
+  sss: 0.5,
+  gloss: 0.6,
+  dimmable: false,
+};
+
+/** One highlighted locus: a point mutation (channel dna.mutation). */
+const MUTATION: OrganicOptions = {
+  color: '#ff5a4a',
+  emissive: '#ff3a2a',
+  emissiveStrength: 2.6,
+  sss: 0.6,
+  gloss: 0.6,
+  wobble: 0.3,
+  wobbleFreq: 1.2,
+  wobbleSpeed: 1.5,
+  dimmable: false,
 };
 
 const NUCLEOLUS: OrganicOptions = {
@@ -82,11 +117,12 @@ const NUCLEOLUS: OrganicOptions = {
   sssColor: PALETTE.nucleolus.b,
   emissive: PALETTE.nucleolus.glow,
   emissiveStrength: 0.7,
-  pattern: 'fibrous',
-  patternScale: 0.55,
+  // Dense, granular: the nucleolus reads as a distinct region inside the chromatin.
+  pattern: 'granular',
+  patternScale: 1.1,
   sss: 1,
   gloss: 0.4,
-  wobble: 1.1,
+  wobble: 0.7,
   wobbleFreq: 0.28,
   wobbleSpeed: 0.12,
 };
@@ -133,25 +169,62 @@ function poreComplexGeometry() {
   return mergeGeometries(parts.map((g) => (g.deleteAttribute('uv'), g.index ? g.toNonIndexed() : g)))!;
 }
 
-function chromatinGeometry(count: number, radius: number) {
-  const rng = createRng(77);
+/** Nucleolus positions inside the nucleus (local space), shared with the chromatin that packs around them. */
+export const NUCLEOLI = [
+  { at: new Vector3(7, 5, -4), radius: 7.2 },
+  { at: new Vector3(-9, -6, 6), radius: 3.6 },
+];
+
+/** Points along the chromatin strands (nucleus-local), used to place DNA lesions in disease mode. */
+export const chromatinSamples: Vector3[] = [];
+
+const insideNucleolus = (p: Vector3, margin: number) => NUCLEOLI.some((n) => p.distanceTo(n.at) < n.radius + margin);
+
+/**
+ * Chromatin as a tangle of fine fibres, in two populations:
+ * - euchromatin, loose and spread through the nucleus;
+ * - heterochromatin, thicker and denser, packed against the envelope and around the nucleoli.
+ */
+function chromatinGeometry(count: number, radius: number, kind: 'eu' | 'hetero') {
+  const rng = createRng(kind === 'eu' ? 77 : 78);
   const parts: BufferGeometry[] = [];
   const dir = new Vector3();
+  const steps = kind === 'eu' ? 44 : 30;
+  const stepLength = kind === 'eu' ? 1.7 : 1.2;
   for (let c = 0; c < count; c++) {
     const pts: Vector3[] = [];
-    const p = rng.direction().multiplyScalar(rng.range(0, radius * 0.8));
+    // Heterochromatin starts at the periphery or next to a nucleolus; euchromatin anywhere.
+    const nearNucleolus = kind === 'hetero' && rng.next() < 0.3;
+    const n = rng.pick(NUCLEOLI);
+    const p =
+      kind === 'eu'
+        ? rng.direction().multiplyScalar(rng.range(0, radius * 0.85))
+        : nearNucleolus
+          ? n.at.clone().add(rng.direction().multiplyScalar(n.radius + rng.range(0.6, 2)))
+          : rng.direction().multiplyScalar(rng.range(radius - 4.5, radius - 0.8));
     rng.direction(dir);
-    for (let i = 0; i < 26; i++) {
+    for (let i = 0; i < steps; i++) {
       pts.push(p.clone());
-      dir.addScaledVector(rng.direction(), 0.75).normalize();
-      p.addScaledVector(dir, 2.4);
+      dir.addScaledVector(rng.direction(), kind === 'eu' ? 0.85 : 1.1).normalize();
+      p.addScaledVector(dir, stepLength);
       if (p.length() > radius) {
-        // Bounce back inside: chromosomes occupy territories within the envelope.
+        // Bounce back inside: chromatin stays within the envelope.
         dir.addScaledVector(p.clone().normalize(), -1.6).normalize();
         p.setLength(radius - 0.5);
       }
+      if (kind === 'hetero' && !nearNucleolus && p.length() < radius - 6) {
+        // Peripheral heterochromatin hugs the nuclear lamina.
+        dir.addScaledVector(p.clone().normalize(), 1.4).normalize();
+      }
+      for (const nu of NUCLEOLI) {
+        if (p.distanceTo(nu.at) < nu.radius + 0.4) p.copy(nu.at).add(p.clone().sub(nu.at).setLength(nu.radius + 0.4));
+      }
     }
-    const tube = new TubeGeometry(new CatmullRomCurve3(pts), 90, rng.range(0.35, 0.6), 5, false);
+    if (pts.some((q) => insideNucleolus(q, -0.2))) continue;
+    if (kind === 'eu') for (let i = 0; i < pts.length; i += 6) chromatinSamples.push(pts[i]!.clone());
+    const thickness = kind === 'eu' ? rng.range(0.14, 0.24) : rng.range(0.28, 0.42);
+    const tube = new TubeGeometry(new CatmullRomCurve3(pts), steps * 3, thickness, 4, false);
+    tube.deleteAttribute('uv');
     const seeds = new Float32Array(tube.attributes.position!.count).fill(rng.next());
     tube.setAttribute('aSeed', new BufferAttribute(seeds, 1));
     parts.push(tube);
@@ -167,18 +240,22 @@ export function Nucleus() {
     const detail = preset.geometryDetail >= 1 ? 28 : 18;
     const outer = new IcosahedronGeometry(radius, detail);
     const inner = new IcosahedronGeometry(radius - 0.9, detail - 6);
-    const nucleolus = new IcosahedronGeometry(6.5, 12);
-    const nucleolus2 = new IcosahedronGeometry(3.2, 7);
-    const chromatin = chromatinGeometry(Math.round(32 * preset.geometryDetail), radius - 2.5);
+    const nucleolus = new IcosahedronGeometry(NUCLEOLI[0]!.radius - 0.7, 12);
+    const nucleolus2 = new IcosahedronGeometry(NUCLEOLI[1]!.radius - 0.4, 7);
+    chromatinSamples.length = 0;
+    const euchromatin = chromatinGeometry(Math.round(110 * preset.geometryDetail), radius - 2.5, 'eu');
+    const heterochromatin = chromatinGeometry(Math.round(42 * preset.geometryDetail), radius - 1.5, 'hetero');
     return {
       outer,
       inner,
       nucleolus,
       nucleolus2,
-      chromatin,
+      euchromatin,
+      heterochromatin,
       outerMat: createOrganicMaterial(OUTER_ENVELOPE),
       innerMat: createOrganicMaterial(INNER_ENVELOPE),
-      chromatinMat: createOrganicMaterial(CHROMATIN),
+      chromatinMat: createOrganicMaterial(EUCHROMATIN),
+      heteroMat: createOrganicMaterial(HETEROCHROMATIN),
       nucleolusMat: createOrganicMaterial(NUCLEOLUS),
     };
   }, [preset.geometryDetail, radius]);
@@ -202,9 +279,28 @@ export function Nucleus() {
     return { matrices, seeds, geometry: poreComplexGeometry() };
   }, [preset.geometryDetail, radius, center]);
 
-  useHighlight('nucleus', parts.outerMat, parts.innerMat, parts.chromatinMat);
+  useHighlight('nucleus', parts.outerMat, parts.innerMat);
+  // DNA (chromatin) is its own explorable element inside the nucleus.
+  useHighlight('dna', parts.chromatinMat, parts.heteroMat);
 
   const group = useRef<Group>(null);
+  const reveal = useRef(0);
+
+  // Disease markers placed on the chromatin strands (nucleus-local coordinates).
+  const markers = useMemo(() => {
+    const rng = createRng(1717);
+    const lesions = Array.from({ length: 80 }, () => rng.pick(chromatinSamples));
+    const one = new Vector3(1, 1, 1);
+    const q = new Quaternion();
+    return {
+      lesions: {
+        matrices: lesions.map((p) => new Matrix4().compose(p, q, one.clone().multiplyScalar(rng.range(0.5, 0.9)))),
+        seeds: lesions.map(() => rng.next()),
+      },
+      mutation: { matrices: [new Matrix4().compose(chromatinSamples[7] ?? new Vector3(), q, one.clone().multiplyScalar(1.6))], seeds: [0.5] },
+      geometry: new IcosahedronGeometry(1, 2),
+    };
+  }, [parts]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Mitosis: the envelope disassembles and chromatin condenses (scenario channels).
   // Diseases: the nucleus grows (cancer) or shrinks and breaks up (apoptosis).
@@ -215,13 +311,18 @@ export function Nucleus() {
       g.scale.setScalar(s);
       g.position.copy(center).multiplyScalar(1 - s);
     }
-    const envelope = liveChannels['nucleus.envelopeIntegrity'] * (1 - liveChannels['nucleus.fragmentation']);
+    // Exploring DNA: the envelope fades so the chromatin can be seen.
+    const dnaFocus = useSelection.getState().selected?.organelle === 'dna' || useUi.getState().dnaLevel !== null;
+    reveal.current += ((dnaFocus ? 1 : 0) - reveal.current) * 0.06;
+    const envelope =
+      liveChannels['nucleus.envelopeIntegrity'] * (1 - liveChannels['nucleus.fragmentation']) * (1 - 0.8 * reveal.current);
     const condensed = liveChannels['nucleus.chromatinCondensation'];
     parts.outerMat.uniforms.uOpacity!.value = OUTER_ENVELOPE.opacity! * envelope;
     parts.outerMat.uniforms.uRimOpacity!.value = OUTER_ENVELOPE.rimOpacity! * envelope;
     parts.innerMat.uniforms.uOpacity!.value = INNER_ENVELOPE.opacity! * envelope;
     parts.innerMat.uniforms.uRimOpacity!.value = INNER_ENVELOPE.rimOpacity! * envelope;
     parts.chromatinMat.uniforms.uPresence!.value = 1 - condensed * 0.97;
+    parts.heteroMat.uniforms.uPresence!.value = 1 - condensed * 0.97;
     parts.nucleolusMat.uniforms.uPresence!.value = 1 - condensed;
   });
   useHighlight('nucleolus', parts.nucleolusMat);
@@ -229,9 +330,25 @@ export function Nucleus() {
   return (
     <group name="nucleus" ref={group}>
       <group position={center}>
-        <mesh geometry={parts.chromatin} material={parts.chromatinMat} />
-        <mesh geometry={parts.nucleolus} material={parts.nucleolusMat} position={[7, 5, -4]} />
-        <mesh geometry={parts.nucleolus2} material={parts.nucleolusMat} position={[-9, -6, 6]} />
+        <mesh name="euchromatin" geometry={parts.euchromatin} material={parts.chromatinMat} />
+        <mesh name="heterochromatin" geometry={parts.heterochromatin} material={parts.heteroMat} />
+        <mesh geometry={parts.nucleolus} material={parts.nucleolusMat} position={NUCLEOLI[0]!.at} />
+        <mesh geometry={parts.nucleolus2} material={parts.nucleolusMat} position={NUCLEOLI[1]!.at} />
+        <InstancedOrganelle
+          name="dna-lesions"
+          geometry={markers.geometry}
+          material={LESION}
+          {...markers.lesions}
+          visibleCount={() => Math.ceil(liveChannels['dna.damage'] * 80 - 0.01)}
+        />
+        <InstancedOrganelle
+          name="dna-mutation"
+          geometry={markers.geometry}
+          material={MUTATION}
+          {...markers.mutation}
+          visibleCount={() => (liveChannels['dna.mutation'] > 0.02 ? 1 : 0)}
+          presence={() => liveChannels['dna.mutation']}
+        />
         <mesh geometry={parts.inner} material={parts.innerMat} renderOrder={4} />
         <mesh geometry={parts.outer} material={parts.outerMat} renderOrder={5} />
       </group>

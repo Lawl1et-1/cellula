@@ -133,6 +133,19 @@
           }
         ]
       }
+    },
+    {
+      "with": "dna",
+      "description": {
+        "text": {
+          "fr": "Elle possède son propre petit génome, distinct de l'ADN du noyau."
+        },
+        "sources": [
+          {
+            "id": "mboc4-organelle-genomes"
+          }
+        ]
+      }
     }
   ]
 }

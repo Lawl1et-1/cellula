@@ -26,6 +26,7 @@ export const ORGANELLE_IDS = [
   'plasma-membrane',
   'nucleus',
   'nucleolus',
+  'dna',
   'rough-er',
   'smooth-er',
   'golgi',

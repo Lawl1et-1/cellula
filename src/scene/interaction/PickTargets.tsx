@@ -4,6 +4,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import { useThree, type ThreeEvent } from '@react-three/fiber';
 import {
   CapsuleGeometry,
+  DoubleSide,
   IcosahedronGeometry,
   InstancedMesh,
   Matrix4,
@@ -27,17 +28,21 @@ import { INSTANCED, anchorFor, instanceFocus } from './anchors';
 export const PICK_LAYER = 1;
 
 const material = new MeshBasicMaterial();
+/** Hit from inside too: the DNA proxy is picked when the camera is inside the nucleus. */
+const insideMaterial = new MeshBasicMaterial({ side: DoubleSide });
 
 function Proxies({
   geometry,
   matrices,
   organelle,
   radius,
+  doubleSide,
 }: {
   geometry: BufferGeometry;
   matrices: Matrix4[];
   organelle: OrganelleId;
   radius?: number;
+  doubleSide?: boolean;
 }) {
   const ref = useRef<InstancedMesh>(null);
   useLayoutEffect(() => {
@@ -51,7 +56,7 @@ function Proxies({
   return (
     <instancedMesh
       ref={ref}
-      args={[geometry, material, matrices.length]}
+      args={[geometry, doubleSide ? insideMaterial : material, matrices.length]}
       userData={{ organelle, instanced: !!INSTANCED[organelle], radius }}
     />
   );
@@ -103,6 +108,8 @@ export function PickTargets() {
       { organelle: 'peroxisome' as const, geometry: sphere, matrices: INSTANCED.peroxisome!().matrices.map((m) => m.clone().scale(new Vector3(1.7, 1.7, 1.7))) },
       { organelle: 'vesicle' as const, geometry: sphere, matrices: INSTANCED.vesicle!().matrices.map((m) => m.clone().scale(new Vector3(1.2, 1.2, 1.2))) },
       { organelle: 'nucleus' as const, geometry: sphere, matrices: [at(CELL.nucleus.center, CELL.nucleus.radius + 0.5)] },
+      // From outside, the nucleus proxy is hit first; from inside, only this one is.
+      { organelle: 'dna' as const, geometry: sphere, matrices: [at(CELL.nucleus.center, CELL.nucleus.radius - 3)], doubleSide: true },
       { organelle: 'golgi' as const, geometry: sphere, matrices: [golgi] },
       { organelle: 'centrosome' as const, geometry: sphere, matrices: [at(CENTROSOME, 4)] },
       { organelle: 'rough-er' as const, geometry: sphere, matrices: roughErAnchors().map((p) => at(p, 4.5)) },
@@ -156,8 +163,8 @@ export function PickTargets() {
               ? new Vector3()
               : point;
       focus =
-        target.organelle === 'golgi'
-          ? anchorFor('golgi', camera.position)
+        target.organelle === 'golgi' || target.organelle === 'dna'
+          ? anchorFor(target.organelle, camera.position)
           : { ...target, position: [center.x, center.y, center.z], radius: radius[target.organelle] ?? 10 };
     }
     if (useScene.getState().cameraMode === 'flight') useScene.getState().setCameraMode('orbit');

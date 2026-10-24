@@ -46,6 +46,8 @@ export const CHANNELS = {
   'cell.divisionRate': { range: [0, 5], rest: 1, doc: 'Vitesse de division' },
   'cell.shrinkage': { range: [0, 1], rest: 0, doc: 'Rétraction cellulaire (apoptose)' },
   'cell.cleavage': { range: [0, 1], rest: 0, doc: 'Sillon de division (cytocinèse)' },
+  'dna.damage': { range: [0, 1], rest: 0, doc: "Lésions de l'ADN (par exemple dues aux UV)" },
+  'dna.mutation': { range: [0, 1], rest: 0, doc: 'Mutation ponctuelle mise en évidence' },
   'cell.viability': { range: [0, 1], rest: 1, doc: '1 = saine, 0 = mort cellulaire' },
   'view.focusDim': { range: [0, 1], rest: 0, doc: "Atténue ce qui n'est pas le sujet de l'étape (lisibilité, pas un phénomène biologique)" },
 } as const satisfies Record<string, ChannelDef>;

@@ -81,6 +81,9 @@ export function anchorFor(organelle: OrganelleId, camera: Vector3): Focus {
   switch (organelle) {
     case 'nucleus':
       return at(CELL.nucleus.center, CELL.nucleus.radius);
+    case 'dna':
+      // Just outside the envelope, which fades while DNA is selected.
+      return at(CELL.nucleus.center, 11);
     case 'nucleolus':
       return at(CELL.nucleus.center.clone().add(NUCLEOLUS_OFFSET), 7);
     case 'plasma-membrane':

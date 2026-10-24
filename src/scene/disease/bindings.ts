@@ -55,6 +55,8 @@ const BINDINGS: Partial<Record<OrganelleId, (c: ChannelValues) => Look>> = {
   // Peroxisome biogenesis disorders: "ghost" peroxisomes without enzymes.
   peroxisome: (c) => ({ glow: 1 - c['peroxisome.empty'], stain: c['peroxisome.empty'], stainColor: '#7a7f88' }),
   nucleus: (c) => ({ bleb: c['nucleus.envelopeBlebbing'] }),
+  // DNA damage dulls the chromatin around the lesions.
+  dna: (c) => ({ stain: 0.45 * c['dna.damage'], stainColor: '#b9a27a' }),
   cytoskeleton: (c) => ({ growth: 1 - 0.7 * c['cytoskeleton.disruption'] }),
 };
 

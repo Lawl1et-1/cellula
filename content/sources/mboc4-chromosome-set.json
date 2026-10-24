@@ -1,0 +1,23 @@
+{
+  "id": "mboc4-chromosome-set",
+  "type": "chapter",
+  "title": "Eucaryotic DNA Is Packaged into a Set of Chromosomes",
+  "container": "Molecular Biology of the Cell",
+  "year": 2002,
+  "publisher": "Garland Science",
+  "url": "https://www.ncbi.nlm.nih.gov/books/NBK26834/#A609",
+  "verified": {
+    "on": "2026-10-25",
+    "via": "ncbi-bookshelf"
+  },
+  "authors": [
+    "Alberts B",
+    "Johnson A",
+    "Lewis J",
+    "Raff M",
+    "Roberts K",
+    "Walter P"
+  ],
+  "edition": "4e édition",
+  "isbn": "0-8153-3218-1"
+}
