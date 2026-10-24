@@ -48,7 +48,7 @@ void main() {
   float depth = -mv.z;
   gl_PointSize = uSize * uPixelRatio * (0.6 + aSeed) * (300.0 / max(depth, 1.0));
   // Fade particles that get too close to the lens or too far into the fog.
-  vFade = smoothstep(2.0, 14.0, depth) * (1.0 - smoothstep(380.0, 620.0, depth));
+  vFade = smoothstep(2.0, 14.0, depth) * (1.0 - smoothstep(220.0, 400.0, depth));
   vColor = aColor;
 }
 `;

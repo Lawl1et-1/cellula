@@ -1,4 +1,4 @@
-import { AdditiveBlending, Color, DoubleSide, FrontSide, NormalBlending, ShaderMaterial, Vector3 } from 'three';
+import { AdditiveBlending, Color, DoubleSide, FrontSide, NormalBlending, ShaderMaterial, Vector2, Vector3 } from 'three';
 import { commonChunks } from './chunks';
 
 /** Uniform objects shared by reference across every material: updating them once updates the whole cell. */
@@ -35,6 +35,8 @@ export const PATTERNS = {
       float ridge = smoothstep(0.94, 0.998, folds) * smoothstep(-0.6, 0.2, snoise(vLocal * 0.4 + vSeed * 4.0));
       float body = smoothstep(0.0, 0.6, 1.0 - folds);
       float pulse = 0.6 + 0.4 * sin(uTime * 1.1 + vSeed * 40.0 + vLocal.y * 0.2);
+      // Seen from inside (cut-away), the real cristae take over: fade the painted ones.
+      if (!gl_FrontFacing) { ridge *= 0.15; body *= 0.3; }
       // Inner glow (membrane potential) breathes behind the folds.
       emissive += (ridge * 0.6 + body * 0.15) * pulse;
       return mix(uColor, uColor2, ridge * 0.35);
@@ -108,6 +110,11 @@ export interface OrganicOptions {
   vertexSeed?: boolean;
   /** Dynamic instability: discard beyond an animated length along uv.x (microtubules). */
   growth?: boolean;
+  /** Instances shrink to nothing between these camera distances (macro-distance LOD). */
+  fade?: [number, number];
+  /** Cross-section opens when the camera comes within these distances of the instance. */
+  cutaway?: [number, number];
+  cutawayEdge?: string;
 }
 
 const vertexShader = /* glsl */ `
@@ -118,6 +125,7 @@ uniform float uWobbleSpeed;
 uniform float uDrift;
 uniform float uBend;
 uniform float uMolecularScale;
+uniform vec2 uFade;
 
 #if defined(USE_SEED) || defined(USE_VERTEX_SEED)
 attribute float aSeed;
@@ -131,6 +139,9 @@ varying vec3 vWorld;
 varying vec3 vLocal;
 varying float vSeed;
 varying vec2 vUv;
+#ifdef USE_CUTAWAY
+varying vec3 vCenter;
+#endif
 
 void main() {
   float seed = 0.0;
@@ -152,9 +163,30 @@ void main() {
   pos.z += cos(pos.y * 0.11 + seed * 3.0) * uBend * 0.5;
   #endif
 
+  #ifdef USE_WOBBLE
   float w = snoise(pos * uWobbleFreq + vec3(seed * 17.0, uTime * uWobbleSpeed, seed * 5.0));
   pos += nrm * w * uWobble;
+  #endif
   vLocal = pos;
+
+  // Object centre in world space (drift included): drives distance LOD and cut-aways.
+  #ifdef USE_INSTANCING
+  vec3 center = (modelMatrix * instanceMatrix * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
+  #else
+  vec3 center = (modelMatrix * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
+  #endif
+  vec3 drifted = vec3(0.0);
+  #ifdef USE_SEED
+  drifted = brownian(seed, uTime, uDrift);
+  center += drifted;
+  #endif
+  #ifdef USE_CUTAWAY
+  vCenter = center;
+  #endif
+  #ifdef USE_FADE
+  // Collapsed triangles are discarded by the rasteriser: far instances cost almost nothing.
+  pos *= 1.0 - smoothstep(uFade.x, uFade.y, length(cameraPosition - center));
+  #endif
 
   #ifdef USE_MOLECULAR
   pos *= uMolecularScale;
@@ -166,9 +198,7 @@ void main() {
   nrm = mat3(instanceMatrix) * nrm;
   #endif
   wp = modelMatrix * wp;
-  #ifdef USE_SEED
-  wp.xyz += brownian(seed, uTime, uDrift);
-  #endif
+  wp.xyz += drifted;
 
   vNormal = normalize(mat3(modelMatrix) * nrm);
   vWorld = wp.xyz;
@@ -190,6 +220,8 @@ uniform float uPatternScale;
 uniform float uOpacity;
 uniform float uRimOpacity;
 uniform float uHoles;
+uniform vec2 uCutaway;
+uniform vec3 uCutEdge;
 
 #ifdef USE_COLOR
 varying vec3 vColor;
@@ -199,6 +231,9 @@ varying vec3 vWorld;
 varying vec3 vLocal;
 varying float vSeed;
 varying vec2 vUv;
+#ifdef USE_CUTAWAY
+varying vec3 vCenter;
+#endif
 
 ${PATTERNS[pattern]}
 
@@ -209,6 +244,16 @@ void main() {
   #ifdef USE_GROWTH
   float len = 0.72 + 0.28 * sin(uTime * (0.18 + hash11(vSeed * 13.0) * 0.25) + vSeed * 40.0);
   if (vUv.x > len) discard;
+  #endif
+
+  float edge = 0.0;
+  #ifdef USE_CUTAWAY
+  // A plane through the object, facing the camera, slides in as the camera approaches.
+  vec3 toCam = cameraPosition - vCenter;
+  float open = 1.0 - smoothstep(uCutaway.x, uCutaway.y, length(toCam));
+  float cut = dot(vWorld - vCenter, normalize(toCam)) - mix(12.0, -0.4, open);
+  if (cut > 0.0) discard;
+  edge = smoothstep(-0.35, 0.0, cut) * step(0.001, open);
   #endif
 
   vec3 V = normalize(cameraPosition - vWorld);
@@ -227,6 +272,7 @@ void main() {
   vec3 albedo = surface(emissive);
   vec3 col = organicShade(albedo, N, V, vWorld, uSss, uSssColor, uGloss);
   col += uEmissive * emissive * uEmissiveStrength;
+  col += uCutEdge * edge * 2.5;
 
   float dist = length(cameraPosition - vWorld);
   col = applyFog(col, dist);
@@ -234,7 +280,7 @@ void main() {
   float alpha = 1.0;
   #ifdef USE_TRANSPARENT
   float fres = pow(1.0 - abs(dot(N, V)), 2.5);
-  alpha = clamp(uOpacity + fres * uRimOpacity, 0.0, 1.0);
+  alpha = clamp(uOpacity + fres * uRimOpacity + edge, 0.0, 1.0);
   #endif
   gl_FragColor = vec4(col, alpha);
 }
@@ -250,6 +296,9 @@ export function createOrganicMaterial(o: OrganicOptions, instanced = false) {
   if (o.transparent) defines.USE_TRANSPARENT = '';
   if (o.holes) defines.USE_HOLES = '';
   if (o.growth) defines.USE_GROWTH = '';
+  if (o.wobble) defines.USE_WOBBLE = '';
+  if (o.fade) defines.USE_FADE = '';
+  if (o.cutaway) defines.USE_CUTAWAY = '';
 
   const material = new ShaderMaterial({
     vertexShader,
@@ -280,6 +329,9 @@ export function createOrganicMaterial(o: OrganicOptions, instanced = false) {
       uHoles: { value: o.holes ?? 1 },
       uDiffuse: { value: o.diffuse ?? 0.7 },
       uRimStrength: { value: o.rim ?? 1 },
+      uFade: { value: new Vector2(...(o.fade ?? [1e5, 1e5 + 1])) },
+      uCutaway: { value: new Vector2(...(o.cutaway ?? [0, 1])) },
+      uCutEdge: { value: new Color(o.cutawayEdge ?? '#ffd2a0') },
     },
   });
   return material;

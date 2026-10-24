@@ -54,6 +54,7 @@ const BOUND_RIBOSOME: OrganicOptions = {
   emissive: PALETTE.ribosome.b,
   emissiveStrength: 0.35,
   molecular: true,
+  fade: [170, 280],
 };
 
 interface Sheet {

@@ -35,9 +35,11 @@ const MICROTUBULE: OrganicOptions = {
 };
 
 const ACTIN: OrganicOptions = {
-  color: PALETTE.actin.a,
+  fade: [190, 300],
+  color: '#7a4a40',
   emissive: PALETTE.actin.glow,
-  emissiveStrength: 0.35,
+  emissiveStrength: 0.2,
+  diffuse: 0.4,
   sss: 0.6,
   gloss: 0.4,
 };
@@ -60,6 +62,7 @@ const CENTRIOLE: OrganicOptions = {
 };
 
 const MOTOR: OrganicOptions = {
+  fade: [150, 250],
   color: PALETTE.motor.a,
   emissive: PALETTE.motor.a,
   emissiveStrength: 0.9,
@@ -68,6 +71,7 @@ const MOTOR: OrganicOptions = {
 };
 
 const CARGO: OrganicOptions = {
+  fade: [150, 250],
   color: PALETTE.motor.cargo,
   sssColor: PALETTE.motor.cargo,
   sss: 0.6,

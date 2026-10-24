@@ -107,6 +107,7 @@ const RECEPTOR: OrganicOptions = {
   molecular: true,
   emissive: PALETTE.receptor.a,
   emissiveStrength: 0.15,
+  fade: [200, 320],
 };
 
 function receptorGeometry() {

@@ -1,32 +1,13 @@
 'use client';
 
 import { useMemo } from 'react';
-import { CapsuleGeometry, IcosahedronGeometry, Matrix4, Quaternion, Vector3 } from 'three';
+import { IcosahedronGeometry, Matrix4, Quaternion, Vector3 } from 'three';
 import { createRng } from '@/lib/random';
-import { GOLGI_CENTER, CELL, orientTangent, scatter, toMatrices, randomCytoplasmPoint } from '../layout/cellLayout';
+import { GOLGI_CENTER, scatter, toMatrices, randomCytoplasmPoint } from '../layout/cellLayout';
 import { PALETTE } from '../palette';
 import type { OrganicOptions } from '../shaders/organicMaterial';
 import { InstancedOrganelle } from './Instanced';
 import { usePreset } from '@/state/quality';
-
-const MITOCHONDRIA: OrganicOptions = {
-  color: PALETTE.mitochondria.a,
-  color2: PALETTE.mitochondria.b,
-  sssColor: PALETTE.mitochondria.sss,
-  emissive: PALETTE.mitochondria.glow,
-  emissiveStrength: 0.8,
-  pattern: 'cristae',
-  patternScale: 2.4,
-  sss: 1,
-  gloss: 0.9,
-  diffuse: 0.45,
-  rim: 1.3,
-  wobble: 0.28,
-  wobbleFreq: 0.35,
-  wobbleSpeed: 0.4,
-  bend: 1.3,
-  drift: 0.7,
-};
 
 const LYSOSOMES: OrganicOptions = {
   color: PALETTE.lysosome.a,
@@ -81,6 +62,8 @@ const FREE_RIBOSOMES: OrganicOptions = {
   emissive: PALETTE.ribosome.b,
   emissiveStrength: 0.18,
   diffuse: 0.5,
+  // Molecular-scale detail only matters up close; from afar it is just noise.
+  fade: [140, 240],
   sss: 0.4,
   gloss: 0.3,
   molecular: true,
@@ -92,20 +75,6 @@ const uniform = (min: number, max: number) => (rng: { range: (a: number, b: numb
 
 export function SmallOrganelles() {
   const preset = usePreset();
-
-  const mitochondria = useMemo(() => {
-    // Real mitochondria: ~0.5 µm wide, 1–4 µm long (here 5 units wide, ~12–22 long).
-    const placed = orientTangent(
-      scatter(11, 64, {
-        spacing: 10,
-        margin: 3,
-        scale: (rng) => new Vector3(1, rng.range(0.75, 1.45), 1).multiplyScalar(rng.range(0.85, 1.12)),
-        bias: (p) => (p.distanceTo(CELL.nucleus.center) < 60 ? 1 : 0.55),
-      }),
-      12,
-    );
-    return { matrices: toMatrices(placed), seeds: placed.map((o) => o.seed), geometry: new CapsuleGeometry(2.4, 9, 8, 18) };
-  }, []);
 
   const lysosomes = useMemo(() => {
     const placed = scatter(21, 34, { spacing: 7, margin: 2, scale: uniform(0.7, 1.35) });
@@ -156,7 +125,6 @@ export function SmallOrganelles() {
 
   return (
     <group name="small-organelles">
-      <InstancedOrganelle name="mitochondria" material={MITOCHONDRIA} {...mitochondria} />
       <InstancedOrganelle name="lysosomes" material={LYSOSOMES} {...lysosomes} />
       <InstancedOrganelle name="peroxisomes" material={PEROXISOMES} {...peroxisomes} />
       <InstancedOrganelle key={ribosomes.seeds.length} name="free-ribosomes" material={FREE_RIBOSOMES} {...ribosomes} />

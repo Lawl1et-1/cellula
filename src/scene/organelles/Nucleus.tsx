@@ -42,6 +42,7 @@ const INNER_ENVELOPE: OrganicOptions = {
 };
 
 const PORE: OrganicOptions = {
+  fade: [300, 460],
   color: PALETTE.nucleus.envelope2,
   color2: PALETTE.nucleus.pore,
   sss: 0.5,

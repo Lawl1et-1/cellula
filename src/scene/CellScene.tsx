@@ -9,6 +9,7 @@ import { Nucleus } from './organelles/Nucleus';
 import { EndoplasmicReticulum } from './organelles/EndoplasmicReticulum';
 import { Golgi } from './organelles/Golgi';
 import { SmallOrganelles } from './organelles/SmallOrganelles';
+import { Mitochondria } from './organelles/Mitochondria';
 import { Cytoskeleton } from './organelles/Cytoskeleton';
 import { Cytoplasm } from './organelles/Cytoplasm';
 
@@ -33,6 +34,7 @@ export function CellScene() {
       <Nucleus />
       <EndoplasmicReticulum />
       <Golgi />
+      <Mitochondria />
       <SmallOrganelles />
       <Cytoskeleton />
       <Cytoplasm />
