@@ -55,7 +55,9 @@ float snoise(vec3 v) {
 
 /* Two octaves only: simplex noise is the dominant per-pixel cost of the scene. */
 float fbm3(vec3 p) {
-  return snoise(p) * 0.67 + snoise(p * 2.03 + 11.7) * 0.33;
+  float n = snoise(p) * 0.67;
+  if (uDetail > 1.5) n += snoise(p * 2.03 + 11.7) * 0.33;
+  return n;
 }
 
 /* Very cheap smooth pseudo-noise (a handful of sines) for effects that only need organic motion. */
@@ -77,6 +79,7 @@ uniform vec3 uAmbient;
 uniform vec3 uFogColor;
 uniform float uFogDensity;
 uniform float uCausticStrength;
+uniform float uDetail;
 /* Per-material weights of the light model. */
 uniform float uDiffuse;
 uniform float uRimStrength;
@@ -130,7 +133,7 @@ vec3 organicShade(vec3 albedo, vec3 N, vec3 V, vec3 P, float sss, vec3 sssColor,
   float nh = max(dot(N, H), 0.0);
   float spec = pow(nh, mix(24.0, 220.0, gloss)) * gloss * 2.2 + pow(nh, 10.0) * 0.05 * gloss;
 
-  float c = causticPattern(P) * smoothstep(-0.2, 0.6, ndl) * uCausticStrength;
+  float c = uDetail > 0.5 ? causticPattern(P) * smoothstep(-0.2, 0.6, ndl) * uCausticStrength : 0.0;
 
   return uAmbient * albedo + diffuse + scatter + rim + uKeyColor * spec + albedo * uKeyColor * c;
 }

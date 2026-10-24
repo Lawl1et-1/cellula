@@ -2,7 +2,13 @@ export type QualityLevel = 'low' | 'medium' | 'high' | 'ultra';
 
 export interface QualityPreset {
   label: string;
+  /** Upper bound for the device pixel ratio. */
   dpr: number;
+  /** Render-resolution scale (rendered smaller, then upscaled): the biggest lever on integrated GPUs. */
+  resolution: number;
+  /** Shading detail: 0 = no bump / caustics / second noise octave, 1 = bump + caustics, 2 = full. */
+  shading: number;
+  smaa: boolean;
   particles: number;
   ribosomes: number;
   receptors: number;
@@ -19,6 +25,9 @@ export const QUALITY_PRESETS: Record<QualityLevel, QualityPreset> = {
   low: {
     label: 'Bas',
     dpr: 1,
+    resolution: 0.6,
+    shading: 0,
+    smaa: false,
     particles: 8_000,
     ribosomes: 4_000,
     receptors: 900,
@@ -33,20 +42,27 @@ export const QUALITY_PRESETS: Record<QualityLevel, QualityPreset> = {
   medium: {
     label: 'Moyen',
     dpr: 1,
+    resolution: 0.75,
+    shading: 1,
+    // The upscale and film grain already soften edges: SMAA is not worth its cost here.
+    smaa: false,
     particles: 20_000,
     ribosomes: 10_000,
     receptors: 1_800,
     microtubules: 90,
     motors: 120,
-    volumeSteps: 8,
+    volumeSteps: 6,
     ao: false,
     dof: false,
-    chromatic: true,
+    chromatic: false,
     geometryDetail: 0.75,
   },
   high: {
     label: 'Élevé',
     dpr: 1.25,
+    resolution: 1,
+    shading: 2,
+    smaa: true,
     particles: 60_000,
     ribosomes: 20_000,
     receptors: 3_000,
@@ -61,6 +77,9 @@ export const QUALITY_PRESETS: Record<QualityLevel, QualityPreset> = {
   ultra: {
     label: 'Ultra',
     dpr: 1.75,
+    resolution: 1,
+    shading: 2,
+    smaa: true,
     particles: 150_000,
     ribosomes: 36_000,
     receptors: 5_000,

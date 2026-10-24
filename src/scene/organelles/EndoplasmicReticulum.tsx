@@ -18,7 +18,7 @@ import { fbm3, valueNoise3 } from '@/lib/noise';
 import { CELL, insideCytoplasm } from '../layout/cellLayout';
 import { PALETTE } from '../palette';
 import { createOrganicMaterial, type OrganicOptions } from '../shaders/organicMaterial';
-import { InstancedOrganelle } from './Instanced';
+import { InstancedOrganelle, centered, weld } from './Instanced';
 import { usePreset } from '@/state/quality';
 
 const ROUGH_ER: OrganicOptions = {
@@ -191,7 +191,7 @@ function smoothErGeometry(res: number) {
     junction.translate(a.x, a.y, a.z);
     parts.push(junction);
   });
-  const merged = mergeGeometries(parts.map((g) => (g.index ? g.toNonIndexed() : g)))!;
+  const merged = weld(mergeGeometries(parts.map((g) => (g.index ? g.toNonIndexed() : g)))!);
   merged.setAttribute('aSeed', new BufferAttribute(new Float32Array(merged.attributes.position!.count).fill(0.37), 1));
   return merged;
 }
@@ -202,8 +202,9 @@ export function EndoplasmicReticulum() {
 
   const rough = useMemo(() => {
     const sheets = buildSheets();
-    const geometry = mergeGeometries(sheets.map((s) => sheetGeometry(s, res)))!;
-    return { sheets, geometry, material: createOrganicMaterial(ROUGH_ER) };
+    // Separate, centred sheets: stacked cisternae are then drawn front-to-back.
+    const meshes = sheets.map((s) => centered(sheetGeometry(s, res)));
+    return { sheets, meshes, material: createOrganicMaterial(ROUGH_ER) };
   }, [res]);
 
   const smooth = useMemo(
@@ -241,12 +242,16 @@ export function EndoplasmicReticulum() {
         seeds.push(rng.next());
       }
     }
-    return { matrices, seeds, geometry: new IcosahedronGeometry(0.42, 1) };
+    return { matrices, seeds, geometry: new IcosahedronGeometry(0.42, 0) };
   }, [preset.ribosomes, rough.sheets]);
 
   return (
     <group name="er">
-      <mesh name="rough-er" geometry={rough.geometry} material={rough.material} />
+      <group name="rough-er">
+        {rough.meshes.map((m, i) => (
+          <mesh key={i} geometry={m.geometry} material={rough.material} position={m.position} />
+        ))}
+      </group>
       <mesh name="smooth-er" geometry={smooth.geometry} material={smooth.material} />
       <InstancedOrganelle
         key={ribosomes.seeds.length}

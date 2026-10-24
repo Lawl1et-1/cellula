@@ -2,11 +2,11 @@
 
 import { useMemo } from 'react';
 import { BufferAttribute, BufferGeometry, Color, Quaternion, SphereGeometry, Vector3 } from 'three';
-import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { createRng } from '@/lib/random';
 import { CELL, GOLGI_CENTER } from '../layout/cellLayout';
 import { PALETTE } from '../palette';
 import { createOrganicMaterial, type OrganicOptions } from '../shaders/organicMaterial';
+import { centered } from './Instanced';
 
 const GOLGI: OrganicOptions = {
   color: PALETTE.golgi.cis,
@@ -54,16 +54,25 @@ function golgiGeometry() {
     g.setAttribute('aSeed', new BufferAttribute(new Float32Array(pos.count).fill(rng.next()), 1));
     parts.push(g.toNonIndexed());
   }
-  const merged = mergeGeometries(parts)!;
-  merged.applyQuaternion(new Quaternion().setFromUnitVectors(new Vector3(0, 1, 0), CELL.pole));
-  merged.translate(GOLGI_CENTER.x, GOLGI_CENTER.y, GOLGI_CENTER.z);
-  return merged;
+  const q = new Quaternion().setFromUnitVectors(new Vector3(0, 1, 0), CELL.pole);
+  // One mesh per cisterna so they are drawn front-to-back (a merged stack overdraws 6×).
+  return parts.map((g) => {
+    g.applyQuaternion(q);
+    g.translate(GOLGI_CENTER.x, GOLGI_CENTER.y, GOLGI_CENTER.z);
+    return centered(g);
+  });
 }
 
 export function Golgi() {
-  const { geometry, material } = useMemo(
-    () => ({ geometry: golgiGeometry(), material: createOrganicMaterial(GOLGI) }),
+  const { cisternae, material } = useMemo(
+    () => ({ cisternae: golgiGeometry(), material: createOrganicMaterial(GOLGI) }),
     [],
   );
-  return <mesh name="golgi" geometry={geometry} material={material} />;
+  return (
+    <group name="golgi">
+      {cisternae.map((c, i) => (
+        <mesh key={i} geometry={c.geometry} material={material} position={c.position} />
+      ))}
+    </group>
+  );
 }

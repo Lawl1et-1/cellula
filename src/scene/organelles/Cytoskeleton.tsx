@@ -20,7 +20,7 @@ import { createRng } from '@/lib/random';
 import { CELL, CENTROSOME, cellDistance } from '../layout/cellLayout';
 import { PALETTE } from '../palette';
 import { createOrganicMaterial, type OrganicOptions } from '../shaders/organicMaterial';
-import { InstancedOrganelle } from './Instanced';
+import { InstancedOrganelle, weld } from './Instanced';
 import { usePreset } from '@/state/quality';
 import { useScene } from '@/state/scene';
 
@@ -213,10 +213,10 @@ function Motors({ paths, count }: { paths: Vector3[][]; count: number }) {
     headA.translate(0.22, 0.1, 0);
     const headB = new IcosahedronGeometry(0.28, 1);
     headB.translate(-0.22, 0.1, 0);
-    const head = mergeGeometries([headA, headB])!;
+    const head = weld(mergeGeometries([headA, headB])!);
     head.setAttribute('aSeed', seeds);
     // Its cargo: a membrane vesicle towed on a short stalk.
-    const cargo = new IcosahedronGeometry(1, 3);
+    const cargo = weld(new IcosahedronGeometry(1, 2));
     cargo.translate(0, 1.5, 0);
     cargo.setAttribute('aSeed', seeds);
     return {

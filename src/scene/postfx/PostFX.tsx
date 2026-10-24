@@ -40,7 +40,7 @@ export function PostFX() {
   });
 
   return (
-    <EffectComposer multisampling={0} key={`${preset.ao}-${preset.dof}-${preset.volumeSteps > 0}-${preset.chromatic}`}>
+    <EffectComposer multisampling={0} key={`${preset.ao}-${preset.dof}-${preset.volumeSteps > 0}-${preset.chromatic}-${preset.smaa}`}>
       <>{preset.ao && <N8AO aoRadius={8} distanceFalloff={1.5} intensity={2.2} quality="medium" halfRes />}</>
       <>{preset.volumeSteps > 0 && <CytoplasmVolume steps={preset.volumeSteps} />}</>
       <>
@@ -59,7 +59,7 @@ export function PostFX() {
           blending of HDR values > 1 goes negative and AgX turns it into cyan/blue holes. */}
       <Vignette offset={0.22} darkness={0.72} />
       <Noise blendFunction={BlendFunction.OVERLAY} opacity={0.09} />
-      <SMAA />
+      <>{preset.smaa && <SMAA />}</>
     </EffectComposer>
   );
 }

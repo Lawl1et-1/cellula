@@ -71,19 +71,24 @@ void main() {
   float fres = pow(1.0 - ndv, 3.0);
 
   // Thin-film interference: the lipid bilayer's pearly sheen.
-  float film = fbm3(vDir * 5.0 + uTime * 0.02) * 0.5 + 0.5;
+  // The membrane covers the whole screen from inside: keep its shader cheap (trig noise only).
+  float film = trigNoise(vDir * 6.0 + uTime * 0.03) * 0.5 + 0.5;
   vec3 irid = 0.5 + 0.5 * cos(6.2831 * (vec3(0.0, 0.33, 0.67) + film * 0.8 + ndv * 1.3));
   irid = mix(vec3(1.0), irid, 0.35) * uFilm;
 
   // Lipid rafts and embedded proteins: fine mottled speckle.
-  float rafts = smoothstep(0.35, 0.75, snoise(vDir * 38.0 + uTime * 0.03));
-  float proteins = smoothstep(0.75, 0.98, trigNoise(vDir * 120.0));
+  float rafts = 0.0;
+  float proteins = 0.0;
+  if (!inside && uDetail > 0.5) {
+    rafts = smoothstep(0.3, 0.8, trigNoise(vDir * 30.0 + uTime * 0.03));
+    proteins = smoothstep(0.75, 0.98, trigNoise(vDir * 120.0));
+  }
 
   vec3 L = normalize(uKeyDir);
   float ndl = dot(N, L);
   vec3 H = normalize(L + V);
   float spec = pow(max(dot(N, H), 0.0), 160.0) * 1.8;
-  float c = causticPattern(vWorld) * uCausticStrength;
+  float c = uDetail > 1.5 ? causticPattern(vWorld) * uCausticStrength : 0.0;
 
   vec3 col = uBase * (0.06 + 0.25 * max(ndl, 0.0))
            + uRim * fres * 1.25

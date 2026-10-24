@@ -16,6 +16,11 @@ export const useQuality = create<QualityState>((set) => ({
 
 export const usePreset = () => QUALITY_PRESETS[useQuality((s) => s.level)];
 
+const LEVELS = Object.keys(QUALITY_PRESETS) as QualityLevel[];
+
+/** `?q=low|medium|high|ultra` forces a level (profiling, sharing); otherwise guess from the GPU. */
 export function initQuality() {
-  if (!useQuality.getState().locked) useQuality.setState({ level: detectInitialQuality() });
+  const forced = new URLSearchParams(window.location.search).get('q') as QualityLevel | null;
+  if (forced && LEVELS.includes(forced)) useQuality.getState().setLevel(forced, true);
+  else if (!useQuality.getState().locked) useQuality.setState({ level: detectInitialQuality() });
 }

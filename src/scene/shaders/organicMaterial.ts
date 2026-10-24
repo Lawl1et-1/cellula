@@ -11,6 +11,8 @@ export const sharedUniforms = {
   uFogColor: { value: new Color('#06101c') },
   uFogDensity: { value: 0.0016 },
   uCausticStrength: { value: 0.35 },
+  /** Shading detail level from the quality preset (see QualityPreset.shading). */
+  uDetail: { value: 2 },
   /** Size multiplier for molecular-scale objects ('artistic' vs 'real' scale). */
   uMolecularScale: { value: 1 },
 };
@@ -261,12 +263,14 @@ void main() {
   if (!gl_FrontFacing) N = -N;
 
   // Fine wet bump from a single noise sample, using screen-space derivatives (surface gradient).
-  float h = snoise(vLocal * 0.9 + vec3(0.0, uTime * 0.2, 0.0)) * 0.05;
-  vec3 dpdx = dFdx(vWorld), dpdy = dFdy(vWorld);
-  vec3 r1 = cross(dpdy, N), r2 = cross(N, dpdx);
-  float det = dot(dpdx, r1);
-  vec3 grad = sign(det) * (dFdx(h) * r1 + dFdy(h) * r2);
-  N = normalize(abs(det) * N - grad);
+  if (uDetail > 1.5) {
+    float h = snoise(vLocal * 0.9 + vec3(0.0, uTime * 0.2, 0.0)) * 0.05;
+    vec3 dpdx = dFdx(vWorld), dpdy = dFdy(vWorld);
+    vec3 r1 = cross(dpdy, N), r2 = cross(N, dpdx);
+    float det = dot(dpdx, r1);
+    vec3 grad = sign(det) * (dFdx(h) * r1 + dFdy(h) * r2);
+    N = normalize(abs(det) * N - grad);
+  }
 
   float emissive = 0.0;
   vec3 albedo = surface(emissive);

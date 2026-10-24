@@ -85,7 +85,7 @@ void mainImage(const in vec4 inputColor, const in vec2 uv, const in float depth,
     vec3 p = uCamPos + rd * (t0 + (float(i) + jitter) * dt);
     vec3 q = p * 0.0055 + vec3(0.0, uTimeV * 0.006, uTimeV * 0.003);
     float n = texture(uNoise, q).r;
-    float n2 = texture(uNoise, q * 3.1 + 0.37).r;
+    float n2 = uSteps > 10 ? texture(uNoise, q * 3.1 + 0.37).r : 0.5;
     float dens = smoothstep(0.3, 0.85, n * 0.75 + n2 * 0.35) * uDensity;
     float lit = hitsSphere(p, uKeyDirV, uNucleus, uNucleusRadius) ? 0.18 : 1.0;
     vec3 scatter = uHaze + uLight * phase * lit;

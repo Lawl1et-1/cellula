@@ -4,6 +4,8 @@ import { useFrame } from '@react-three/fiber';
 import { easing } from 'maath';
 import { sharedUniforms } from './shaders/organicMaterial';
 import { useScene } from '@/state/scene';
+import { useQuality } from '@/state/quality';
+import { QUALITY_PRESETS } from '@/engine/quality/presets';
 import { Membrane } from './organelles/Membrane';
 import { Nucleus } from './organelles/Nucleus';
 import { EndoplasmicReticulum } from './organelles/EndoplasmicReticulum';
@@ -21,6 +23,7 @@ function Clock() {
   useFrame((state, delta) => {
     const u = sharedUniforms;
     u.uTime.value = state.clock.elapsedTime;
+    u.uDetail.value = QUALITY_PRESETS[useQuality.getState().level].shading;
     const target = MOLECULAR_SCALE[useScene.getState().scaleMode];
     easing.damp(u.uMolecularScale, 'value', target, 0.35, delta);
   });

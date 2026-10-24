@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 import {
   BufferAttribute,
+  CylinderGeometry,
   BufferGeometry,
   CatmullRomCurve3,
   IcosahedronGeometry,
@@ -30,8 +31,10 @@ const OUTER_ENVELOPE: OrganicOptions = {
   wobble: 0.55,
   wobbleFreq: 0.09,
   transparent: true,
-  opacity: 0.22,
-  rimOpacity: 0.7,
+  opacity: 0.3,
+  rimOpacity: 0.85,
+  diffuse: 0.5,
+  rim: 1.6,
 };
 
 const INNER_ENVELOPE: OrganicOptions = {
@@ -42,7 +45,7 @@ const INNER_ENVELOPE: OrganicOptions = {
 };
 
 const PORE: OrganicOptions = {
-  fade: [300, 460],
+  fade: [140, 220],
   color: PALETTE.nucleus.envelope2,
   color2: PALETTE.nucleus.pore,
   sss: 0.5,
@@ -50,8 +53,6 @@ const PORE: OrganicOptions = {
   patternScale: 1.5,
   emissive: PALETTE.nucleus.pore,
   emissiveStrength: 0.9,
-  wobble: 0.08,
-  wobbleFreq: 0.9,
 };
 
 const CHROMATIN: OrganicOptions = {
@@ -83,6 +84,49 @@ const NUCLEOLUS: OrganicOptions = {
   wobbleFreq: 0.28,
   wobbleSpeed: 0.12,
 };
+
+/**
+ * Nuclear pore complex (~120 nm): two eight-fold rings (cytoplasmic and nuclear), a central channel,
+ * eight cytoplasmic filaments and the nuclear basket. Local +Z points out of the nucleus.
+ */
+function poreComplexGeometry() {
+  const parts: BufferGeometry[] = [];
+  const add = (g: BufferGeometry) => {
+    g.deleteAttribute('uv');
+    parts.push(g.index ? g.toNonIndexed() : g);
+  };
+  const ring = 0.55;
+  for (let i = 0; i < 8; i++) {
+    const a = (i / 8) * Math.PI * 2;
+    const x = Math.cos(a) * ring;
+    const y = Math.sin(a) * ring;
+    for (const z of [0.22, -0.22]) {
+      const sub = new IcosahedronGeometry(0.19, 0);
+      sub.scale(1, 1, 0.8);
+      sub.translate(x, y, z);
+      add(sub);
+    }
+    // Cytoplasmic filament.
+    const fil = new CylinderGeometry(0.025, 0.05, 0.7, 4, 1);
+    fil.rotateX(Math.PI / 2);
+    fil.translate(x * 0.9, y * 0.9, 0.6);
+    add(fil);
+    // Nuclear basket strut, leaning in towards the distal ring.
+    const strut = new CylinderGeometry(0.03, 0.03, 0.75, 4, 1);
+    strut.rotateX(Math.PI / 2);
+    strut.rotateY(Math.cos(a) * -0.45);
+    strut.rotateX(Math.sin(a) * 0.45);
+    strut.translate(x * 0.65, y * 0.65, -0.6);
+    add(strut);
+  }
+  const channel = new CylinderGeometry(0.3, 0.3, 0.42, 12, 1, true);
+  channel.rotateX(Math.PI / 2);
+  add(channel);
+  const distal = new TorusGeometry(0.22, 0.04, 4, 12);
+  distal.translate(0, 0, -0.95);
+  add(distal);
+  return mergeGeometries(parts)!;
+}
 
 function chromatinGeometry(count: number, radius: number) {
   const rng = createRng(77);
@@ -150,7 +194,7 @@ export function Nucleus() {
       matrices.push(new Matrix4().compose(p, q, new Vector3(1, 1, 1).multiplyScalar(rng.range(0.85, 1.1))));
       seeds.push(rng.next());
     }
-    return { matrices, seeds, geometry: new TorusGeometry(0.85, 0.36, 6, 14) };
+    return { matrices, seeds, geometry: poreComplexGeometry() };
   }, [preset.geometryDetail, radius, center]);
 
   return (
@@ -166,6 +210,7 @@ export function Nucleus() {
         key={pores.seeds.length}
         geometry={pores.geometry}
         material={PORE}
+        cullBeyond={230}
         matrices={pores.matrices}
         seeds={pores.seeds}
       />

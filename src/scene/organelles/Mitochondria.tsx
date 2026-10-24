@@ -111,7 +111,7 @@ function cristaeGeometry() {
     const limit = -r + 2 * r * rng.range(0.55, 0.85);
     const a0 = Math.acos(Math.min(1, limit / r));
     const shape = new Shape();
-    const steps = 28;
+    const steps = 18;
     for (let k = 0; k <= steps; k++) {
       const a = a0 + ((Math.PI * 2 - 2 * a0) * k) / steps;
       const x = r * Math.cos(a);
@@ -127,8 +127,8 @@ function cristaeGeometry() {
       bevelEnabled: true,
       bevelThickness: 0.07,
       bevelSize: 0.07,
-      bevelSegments: 2,
-      curveSegments: 6,
+      bevelSegments: 1,
+      curveSegments: 4,
     });
     g.translate(0, 0, -0.04);
     g.rotateX(-Math.PI / 2);
@@ -190,14 +190,27 @@ export function Mitochondria() {
 
   return (
     <group name="mitochondria">
-      <InstancedOrganelle name="mitochondria-cristae" geometry={geometries.cristae} material={CRISTAE} {...layout} />
-      <InstancedOrganelle name="mitochondria-granules" geometry={geometries.granules} material={MATRIX_GRANULES} {...layout} />
+      <InstancedOrganelle
+        name="mitochondria-cristae"
+        geometry={geometries.cristae}
+        material={CRISTAE}
+        cullBeyond={INTERIOR_FADE[1] + 12}
+        {...layout}
+      />
+      <InstancedOrganelle
+        name="mitochondria-granules"
+        geometry={geometries.granules}
+        material={MATRIX_GRANULES}
+        cullBeyond={INTERIOR_FADE[1] + 12}
+        {...layout}
+      />
       <InstancedOrganelle name="mitochondria-outer" geometry={geometries.outer} material={OUTER} {...layout} />
       <InstancedOrganelle
         name="mitochondria-inner"
         geometry={geometries.inner}
         material={INNER}
         renderOrder={5}
+        cullBeyond={INTERIOR_FADE[1] + 12}
         {...layout}
       />
     </group>
