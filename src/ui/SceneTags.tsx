@@ -2,7 +2,9 @@
 
 import { useEffect, useRef } from 'react';
 import { stageIndexAt } from '@/engine/timeline/evaluate';
-import { useL } from '@/i18n/locale';
+import { useL, useT } from '@/i18n/locale';
+import { useSelection } from '@/state/selection';
+import { BASE_COLORS, DNA_TAGS } from '@/scene/organelles/DnaCompaction';
 import { labelScreen } from '@/scene/actors/labels';
 import { useScenario } from '@/state/scenario';
 
@@ -12,6 +14,8 @@ import { useScenario } from '@/state/scenario';
  */
 export function SceneTags() {
   const l = useL();
+  const t = useT();
+  const dna = useSelection((s) => s.selected?.organelle === 'dna');
   const scenario = useScenario((s) => s.scenario);
   const index = useScenario((s) => (s.scenario ? stageIndexAt(s.scenario.stages, s.t) : -1));
   const stage = scenario && index >= 0 ? scenario.stages[index] : undefined;
@@ -22,7 +26,10 @@ export function SceneTags() {
     const tick = () => {
       for (const [key, el] of refs.current) {
         const p = labelScreen.get(key);
-        if (!p) continue;
+        if (!p) {
+          el.style.opacity = '0';
+          continue;
+        }
         el.style.transform = `translate(${p.x}px, ${p.y}px) translate(-50%, -100%)`;
         el.style.opacity = p.visible ? '1' : '0';
       }
@@ -32,12 +39,20 @@ export function SceneTags() {
     return () => cancelAnimationFrame(raf);
   }, []);
 
-  if (!scenario || !stage) return null;
-  const id = `${scenario.id}:${stage.id}`;
-  const tags = [
-    ...stage.heroes.flatMap((h, i) => (h.label ? [{ key: `${id}:hero:${i}`, text: l(h.label) }] : [])),
-    ...stage.labels.map((lb, i) => ({ key: `${id}:label:${i}`, text: l(lb.text) })),
-  ];
+  const id = stage ? `${scenario!.id}:${stage.id}` : '';
+  const tags: { key: string; text: string; color?: string }[] = stage
+    ? [
+        ...stage.heroes.flatMap((h, i) => (h.label ? [{ key: `${id}:hero:${i}`, text: l(h.label) }] : [])),
+        ...stage.labels.map((lb, i) => ({ key: `${id}:label:${i}`, text: l(lb.text) })),
+      ]
+    : dna
+      ? DNA_TAGS.map((k) => ({
+          key: `dna:${k}`,
+          text: t.dna.tags[k]!,
+          color: k === 'backbone' ? undefined : BASE_COLORS[k],
+        }))
+      : [];
+  if (!tags.length) return null;
   return (
     <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1, overflow: 'hidden' }} aria-hidden>
       {tags.map((tag) => (
@@ -50,6 +65,7 @@ export function SceneTags() {
             else refs.current.delete(tag.key);
           }}
         >
+          {tag.color && <i className="scene-tag-dot" style={{ background: tag.color }} />}
           {tag.text}
         </span>
       ))}

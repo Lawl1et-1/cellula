@@ -9,6 +9,7 @@ export const labelScreen = new Map<string, { x: number; y: number; visible: bool
 
 const v = new Vector3();
 export function projectLabels(camera: Camera, width: number, height: number) {
+  for (const key of labelScreen.keys()) if (!labelWorld.has(key)) labelScreen.delete(key);
   for (const [key, world] of labelWorld) {
     v.copy(world).project(camera);
     const visible = v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1;
