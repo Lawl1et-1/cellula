@@ -125,124 +125,397 @@
   ],
   "stages": [
     {
-      "id": "entree",
+      "id": "attachment",
       "title": {
-        "fr": "Fusion",
-        "en": "Fusion"
+        "fr": "Fixation au récepteur CD4",
+        "en": "Binding to CD4"
       },
       "range": [
-        0,
-        0.2
+        0.0,
+        0.1667
       ],
       "description": {
         "text": {
-          "fr": "Le virus fusionne avec la membrane du lymphocyte.",
-          "en": "The virus fuses with the lymphocyte's membrane."
+          "fr": "Le VIH se fixe au récepteur CD4 d'un lymphocyte T, puis à un corécepteur de la membrane.",
+          "en": "HIV binds to the CD4 receptor of a T lymphocyte, then to a co-receptor in the membrane."
         },
         "sources": [
           {
             "id": "sp-hiv"
+          },
+          {
+            "id": "mboc4-virus-entry"
           }
         ]
       },
       "cellularSigns": [],
-      "focus": "plasma-membrane"
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 10
+      },
+      "heroes": [
+        {
+          "model": "hiv",
+          "path": [
+            "outside",
+            "membrane"
+          ],
+          "offset": [
+            4.1,
+            0.7,
+            3.6
+          ],
+          "label": {
+            "fr": "VIH",
+            "en": "HIV"
+          }
+        },
+        {
+          "model": "receptor",
+          "path": [
+            "membrane"
+          ],
+          "offset": [
+            0.6,
+            0.1,
+            0.5
+          ],
+          "label": {
+            "fr": "Récepteur CD4",
+            "en": "CD4 receptor"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "integration",
+      "id": "fusion",
       "title": {
-        "fr": "Intégration",
-        "en": "Integration"
+        "fr": "Fusion de l'enveloppe",
+        "en": "Envelope fusion"
       },
       "range": [
-        0.2,
+        0.1667,
+        0.3333
+      ],
+      "description": {
+        "text": {
+          "fr": "L'enveloppe du virus fusionne avec la membrane plasmique : le contenu du virus, dont son génome d'ARN, entre dans le cytoplasme.",
+          "en": "The virus's envelope fuses with the plasma membrane: the contents of the virus, including its RNA genome, enter the cytoplasm."
+        },
+        "sources": [
+          {
+            "id": "sp-hiv"
+          },
+          {
+            "id": "mboc4-virus-entry"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 11
+      },
+      "heroes": [
+        {
+          "model": "hiv",
+          "path": [
+            "membrane"
+          ],
+          "offset": [
+            4.1,
+            0.7,
+            3.6
+          ],
+          "label": {
+            "fr": "VIH",
+            "en": "HIV"
+          }
+        },
+        {
+          "model": "viral-rna",
+          "path": [
+            "membrane",
+            "cytoplasm"
+          ],
+          "label": {
+            "fr": "ARN viral",
+            "en": "Viral RNA"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "reverse",
+      "title": {
+        "fr": "De l'ARN à l'ADN",
+        "en": "From RNA to DNA"
+      },
+      "range": [
+        0.3333,
         0.5
       ],
       "description": {
         "text": {
-          "fr": "L'ADN viral entre dans le noyau et s'intègre au génome.",
-          "en": "The viral DNA enters the nucleus and is integrated into the genome."
+          "fr": "Dans le cytoplasme, une enzyme du virus, la transcriptase inverse, recopie son génome d'ARN en ADN.",
+          "en": "In the cytoplasm, a viral enzyme, reverse transcriptase, copies its RNA genome into DNA."
         },
         "sources": [
           {
-            "id": "mboc4-viral-integration"
+            "id": "sp-hiv"
           },
           {
-            "id": "sp-hiv"
-          }
-        ]
-      },
-      "cellularSigns": [],
-      "focus": "nucleus"
-    },
-    {
-      "id": "production",
-      "title": {
-        "fr": "Production de virus",
-        "en": "Virus production"
-      },
-      "range": [
-        0.5,
-        0.8
-      ],
-      "description": {
-        "text": {
-          "fr": "Les gènes viraux sont exprimés et de nouveaux virions s'assemblent à la membrane.",
-          "en": "Viral genes are expressed and new virions assemble at the membrane."
-        },
-        "sources": [
-          {
-            "id": "sp-hiv"
-          }
-        ]
-      },
-      "cellularSigns": [],
-      "focus": "plasma-membrane"
-    },
-    {
-      "id": "perte",
-      "title": {
-        "fr": "Mort du lymphocyte",
-        "en": "Death of the lymphocyte"
-      },
-      "range": [
-        0.8,
-        1
-      ],
-      "description": {
-        "text": {
-          "fr": "Les lymphocytes T CD4 infectés finissent par mourir.",
-          "en": "Infected CD4 T lymphocytes eventually die."
-        },
-        "sources": [
-          {
-            "id": "sp-hiv"
+            "id": "mboc4-viral-integration"
           }
         ]
       },
       "cellularSigns": [],
       "focus": "cytoplasm",
       "camera": {
+        "at": "cytoplasm",
+        "radius": 10
+      },
+      "heroes": [
+        {
+          "model": "viral-rna",
+          "path": [
+            "cytoplasm"
+          ],
+          "label": {
+            "fr": "ARN viral → ADN viral",
+            "en": "Viral RNA → viral DNA"
+          }
+        },
+        {
+          "model": "enzyme",
+          "path": [
+            "cytoplasm"
+          ],
+          "offset": [
+            2.5,
+            1.5,
+            0
+          ],
+          "label": {
+            "fr": "Transcriptase inverse",
+            "en": "Reverse transcriptase"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "integration",
+      "title": {
+        "fr": "Intégration au génome",
+        "en": "Integration into the genome"
+      },
+      "range": [
+        0.5,
+        0.6667
+      ],
+      "description": {
+        "text": {
+          "fr": "L'ADN viral entre dans le noyau ; une autre enzyme virale, l'intégrase, l'insère dans un chromosome de la cellule.",
+          "en": "The viral DNA enters the nucleus; another viral enzyme, integrase, inserts it into one of the cell's chromosomes."
+        },
+        "sources": [
+          {
+            "id": "sp-hiv"
+          },
+          {
+            "id": "mboc4-viral-integration"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Le point rouge marque l'endroit où l'ADN viral est intégré.",
+            "en": "The red spot marks where the viral DNA is integrated."
+          },
+          "sources": [
+            {
+              "id": "sp-hiv"
+            }
+          ],
+          "simplification": {
+            "fr": "Une seule copie est montrée ; le site d'intégration est schématique.",
+            "en": "A single copy is shown; the integration site is schematic."
+          }
+        }
+      ],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "heroes": [
+        {
+          "model": "viral-rna",
+          "path": [
+            "cytoplasm",
+            "nucleus.pore",
+            "dna"
+          ],
+          "label": {
+            "fr": "ADN viral",
+            "en": "Viral DNA"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "production",
+      "title": {
+        "fr": "Production de virus",
+        "en": "Making new viruses"
+      },
+      "range": [
+        0.6667,
+        0.8333
+      ],
+      "description": {
+        "text": {
+          "fr": "La cellule transcrit les gènes viraux comme les siens ; les protéines et les génomes viraux rejoignent la membrane, où de nouveaux virions s'assemblent.",
+          "en": "The cell transcribes the viral genes like its own; viral proteins and genomes travel to the membrane, where new virions assemble."
+        },
+        "sources": [
+          {
+            "id": "sp-hiv"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "rough-er",
+      "camera": {
+        "at": "rough-er",
+        "radius": 14
+      },
+      "highlight": [
+        "ribosome",
+        "dna"
+      ],
+      "heroes": [
+        {
+          "model": "mrna",
+          "path": [
+            "nucleus.pore",
+            "rough-er"
+          ],
+          "label": {
+            "fr": "ARN viral",
+            "en": "Viral RNA"
+          }
+        },
+        {
+          "model": "protein",
+          "path": [
+            "rough-er"
+          ],
+          "offset": [
+            3,
+            -2,
+            2
+          ],
+          "count": 5,
+          "label": {
+            "fr": "Protéines virales",
+            "en": "Viral proteins"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "budding",
+      "title": {
+        "fr": "Bourgeonnement et perte des lymphocytes",
+        "en": "Budding and loss of lymphocytes"
+      },
+      "range": [
+        0.8333,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Les virions bourgeonnent hors de la cellule ; au fil du temps, les lymphocytes T CD4 infectés meurent et leur nombre diminue.",
+          "en": "Virions bud off the cell; over time, infected CD4 T lymphocytes die and their numbers fall."
+        },
+        "sources": [
+          {
+            "id": "sp-hiv"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
         "view": "cell",
-        "radius": 120
-      }
+        "radius": 75
+      },
+      "highlight": [
+        "virions"
+      ],
+      "heroes": [
+        {
+          "model": "hiv",
+          "path": [
+            "membrane",
+            "outside"
+          ],
+          "offset": [
+            4.1,
+            0.7,
+            3.6
+          ],
+          "count": 4,
+          "label": {
+            "fr": "Nouveaux virions",
+            "en": "New virions"
+          }
+        }
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
+    {
+      "channel": "dna.mutation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.5167,
+          "v": 0.0
+        },
+        {
+          "t": 0.6167,
+          "v": 1
+        }
+      ]
+    },
     {
       "channel": "cytoplasm.viralParticles",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.5,
-          "v": 0.05
+          "t": 0.85,
+          "v": 0.0
         },
         {
-          "t": 0.8,
-          "v": 0.8
+          "t": 0.95,
+          "v": 0.5
         }
       ]
     },
@@ -251,15 +524,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.8,
-          "v": 0.85
+          "t": 0.85,
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 0.4
+          "t": 0.95,
+          "v": 0.45
         }
       ]
     },
@@ -268,110 +541,40 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
           "t": 0.85,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 1,
+          "t": 0.95,
           "v": 0.5
         }
       ]
     },
     {
-      "channel": "view.focusDim",
+      "channel": "cell.shrinkage",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.05,
-          "v": 0.45
+          "t": 0.85,
+          "v": 0.0
         },
         {
           "t": 0.95,
-          "v": 0.45
-        },
-        {
-          "t": 1,
-          "v": 0
+          "v": 0.25
         }
       ]
     }
   ],
-  "actors": [
-    {
-      "actor": "path",
-      "at": 0.0,
-      "until": 0.22,
-      "params": {
-        "path": [
-          "outside",
-          "membrane",
-          "cytoplasm"
-        ],
-        "cargo": "virion",
-        "count": 2
-      }
-    },
-    {
-      "actor": "path",
-      "at": 0.18,
-      "until": 0.42,
-      "params": {
-        "path": [
-          "cytoplasm",
-          "nucleus.pore",
-          "nucleus"
-        ],
-        "cargo": "mrna",
-        "count": 3
-      }
-    },
-    {
-      "actor": "pulse",
-      "at": 0.3,
-      "until": 0.55,
-      "params": {
-        "at": "nucleus"
-      }
-    },
-    {
-      "actor": "path",
-      "at": 0.5,
-      "until": 0.75,
-      "params": {
-        "path": [
-          "nucleus",
-          "nucleus.pore",
-          "rough-er"
-        ],
-        "cargo": "mrna",
-        "count": 5
-      }
-    },
-    {
-      "actor": "path",
-      "at": 0.62,
-      "until": 0.92,
-      "params": {
-        "path": [
-          "rough-er",
-          "golgi.trans",
-          "membrane",
-          "outside"
-        ],
-        "cargo": "virion",
-        "count": 8
-      }
-    }
-  ],
+  "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -383,5 +586,6 @@
         "id": "sp-hiv"
       }
     ]
-  }
+  },
+  "durationSeconds": 72
 }

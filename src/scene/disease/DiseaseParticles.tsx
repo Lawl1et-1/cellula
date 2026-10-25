@@ -226,12 +226,14 @@ function Bacteria() {
   const vacuoles = useRef<InstancedMesh>(null);
   const assets = useMemo(() => {
     const rng = createRng(515);
-    const paths = Array.from({ length: COUNT }, () => {
-      const center = randomCytoplasmPoint(rng, new Vector3(), 10).clone();
+    // The first bacteria circle the spot that focus mode frames, so they are on screen when a step shows them.
+    const spot = anchors().cytoplasm;
+    const paths = Array.from({ length: COUNT }, (_, i) => {
+      const center = i < 3 ? spot.clone().add(rng.direction().multiplyScalar(4)) : randomCytoplasmPoint(rng, new Vector3(), 10).clone();
       return {
         center,
         axis: rng.direction(),
-        radius: rng.range(8, 18),
+        radius: i < 3 ? rng.range(7, 10) : rng.range(8, 18),
         phase: rng.range(0, 6.28),
         speed: rng.range(0.6, 1),
       };

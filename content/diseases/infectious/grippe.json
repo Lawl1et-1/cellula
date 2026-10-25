@@ -128,19 +128,84 @@
   ],
   "stages": [
     {
-      "id": "entree",
+      "id": "attachment",
       "title": {
-        "fr": "Entrée",
-        "en": "Entry"
+        "fr": "Fixation à la cellule",
+        "en": "Attachment to the cell"
       },
       "range": [
-        0,
-        0.25
+        0.0,
+        0.1667
       ],
       "description": {
         "text": {
-          "fr": "Le virus se fixe à la cellule puis entre par endocytose.",
-          "en": "The virus attaches to the cell and then enters by endocytosis."
+          "fr": "Le virus de la grippe s'accroche à la surface de la cellule : son hémagglutinine se fixe à des récepteurs portant de l'acide sialique.",
+          "en": "The flu virus attaches to the cell surface: its haemagglutinin binds to receptors carrying sialic acid."
+        },
+        "sources": [
+          {
+            "id": "sp-influenza"
+          },
+          {
+            "id": "mboc4-virus-entry"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 10
+      },
+      "heroes": [
+        {
+          "model": "influenza",
+          "path": [
+            "outside",
+            "membrane"
+          ],
+          "offset": [
+            4.1,
+            0.7,
+            3.6
+          ],
+          "label": {
+            "fr": "Virus de la grippe",
+            "en": "Influenza virus"
+          }
+        },
+        {
+          "model": "receptor",
+          "path": [
+            "membrane"
+          ],
+          "offset": [
+            0.6,
+            0.1,
+            0.5
+          ],
+          "label": {
+            "fr": "Récepteur à acide sialique",
+            "en": "Sialic acid receptor"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "endocytosis",
+      "title": {
+        "fr": "Entrée par endocytose",
+        "en": "Entry by endocytosis"
+      },
+      "range": [
+        0.1667,
+        0.3333
+      ],
+      "description": {
+        "text": {
+          "fr": "La membrane se creuse autour du virus et l'enferme dans une vésicule, l'endosome, à l'intérieur de la cellule.",
+          "en": "The membrane folds in around the virus and encloses it in a vesicle, the endosome, inside the cell."
         },
         "sources": [
           {
@@ -152,22 +217,147 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "plasma-membrane"
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 12
+      },
+      "highlight": [
+        "vesicle"
+      ],
+      "heroes": [
+        {
+          "model": "influenza",
+          "path": [
+            "membrane",
+            "endosome"
+          ],
+          "offset": [
+            4.1,
+            0.7,
+            3.6
+          ],
+          "label": {
+            "fr": "Virus de la grippe",
+            "en": "Influenza virus"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "noyau",
+      "id": "release",
       "title": {
-        "fr": "Dans le noyau",
-        "en": "In the nucleus"
+        "fr": "Libération du génome",
+        "en": "Genome release"
       },
       "range": [
-        0.25,
-        0.55
+        0.3333,
+        0.5
       ],
       "description": {
         "text": {
-          "fr": "Le génome viral entre dans le noyau, où il est copié et transcrit.",
-          "en": "The viral genome enters the nucleus, where it is copied and transcribed."
+          "fr": "L'acidité de l'endosome déclenche la fusion de l'enveloppe virale avec sa membrane : les segments d'ARN du génome viral sont libérés dans le cytoplasme.",
+          "en": "The acidity of the endosome triggers fusion of the viral envelope with its membrane: the RNA segments of the viral genome are released into the cytoplasm."
+        },
+        "sources": [
+          {
+            "id": "mboc4-virus-entry"
+          },
+          {
+            "id": "sp-influenza"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "endosome",
+        "radius": 11
+      },
+      "highlight": [
+        "vesicle"
+      ],
+      "heroes": [
+        {
+          "model": "viral-rna",
+          "path": [
+            "endosome",
+            "cytoplasm"
+          ],
+          "count": 3,
+          "label": {
+            "fr": "ARN viral",
+            "en": "Viral RNA"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "nucleus",
+      "title": {
+        "fr": "Copie dans le noyau",
+        "en": "Copying in the nucleus"
+      },
+      "range": [
+        0.5,
+        0.6667
+      ],
+      "description": {
+        "text": {
+          "fr": "Contrairement à beaucoup de virus à ARN, le génome de la grippe entre dans le noyau, où il est copié et transcrit en ARN messagers viraux.",
+          "en": "Unlike many RNA viruses, the flu genome enters the nucleus, where it is copied and transcribed into viral messenger RNAs."
+        },
+        "sources": [
+          {
+            "id": "mboc4-viruses-host"
+          },
+          {
+            "id": "sp-influenza"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "nucleus",
+      "camera": {
+        "at": "nucleus.pore",
+        "radius": 14
+      },
+      "highlight": [
+        "dna"
+      ],
+      "heroes": [
+        {
+          "model": "viral-rna",
+          "path": [
+            "cytoplasm",
+            "nucleus.pore",
+            "nucleus"
+          ],
+          "count": 3,
+          "label": {
+            "fr": "ARN viral",
+            "en": "Viral RNA"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "proteins",
+      "title": {
+        "fr": "Fabrication des protéines virales",
+        "en": "Making viral proteins"
+      },
+      "range": [
+        0.6667,
+        0.8333
+      ],
+      "description": {
+        "text": {
+          "fr": "Les ARN messagers viraux quittent le noyau ; les ribosomes de la cellule les traduisent en protéines virales, dont les protéines de surface fabriquées sur le réticulum endoplasmique.",
+          "en": "The viral messenger RNAs leave the nucleus; the cell's ribosomes translate them into viral proteins, including the surface proteins made on the endoplasmic reticulum."
         },
         "sources": [
           {
@@ -176,72 +366,158 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "nucleus"
-    },
-    {
-      "id": "synthese",
-      "title": {
-        "fr": "Protéines virales",
-        "en": "Viral proteins"
+      "focus": "rough-er",
+      "camera": {
+        "at": "rough-er",
+        "radius": 14
       },
-      "range": [
-        0.55,
-        0.78
+      "highlight": [
+        "ribosome",
+        "nucleus"
       ],
-      "description": {
-        "text": {
-          "fr": "La machinerie de la cellule fabrique les protéines virales.",
-          "en": "The cell's machinery makes the viral proteins."
-        },
-        "sources": [
-          {
-            "id": "mboc4-viruses-host"
+      "heroes": [
+        {
+          "model": "mrna",
+          "path": [
+            "nucleus.pore",
+            "rough-er"
+          ],
+          "label": {
+            "fr": "ARN messager viral",
+            "en": "Viral messenger RNA"
           }
-        ]
-      },
-      "cellularSigns": [],
-      "focus": "rough-er"
+        },
+        {
+          "model": "protein",
+          "path": [
+            "rough-er"
+          ],
+          "offset": [
+            3,
+            -2,
+            2
+          ],
+          "count": 6,
+          "label": {
+            "fr": "Protéines virales",
+            "en": "Viral proteins"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "bourgeonnement",
+      "id": "budding",
       "title": {
         "fr": "Bourgeonnement",
         "en": "Budding"
       },
       "range": [
-        0.78,
+        0.8333,
         1
       ],
       "description": {
         "text": {
-          "fr": "Les nouveaux virions bourgeonnent à la membrane et sont libérés.",
-          "en": "New virions bud from the membrane and are released."
+          "fr": "Les nouveaux virions s'assemblent sous la membrane plasmique, bourgeonnent et sont libérés pour infecter d'autres cellules.",
+          "en": "New virions assemble beneath the plasma membrane, bud off and are released to infect other cells."
         },
         "sources": [
           {
             "id": "mboc4-pathogen-entry-exit"
+          },
+          {
+            "id": "sp-influenza"
           }
         ]
       },
       "cellularSigns": [],
-      "focus": "plasma-membrane"
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 16
+      },
+      "highlight": [
+        "virions"
+      ],
+      "heroes": [
+        {
+          "model": "influenza",
+          "path": [
+            "membrane",
+            "outside"
+          ],
+          "offset": [
+            4.1,
+            0.7,
+            3.6
+          ],
+          "count": 4,
+          "label": {
+            "fr": "Nouveaux virions",
+            "en": "New virions"
+          }
+        }
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
+    {
+      "channel": "membrane.pit",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.1834,
+          "v": 0.0
+        },
+        {
+          "t": 0.2833,
+          "v": 1
+        },
+        {
+          "t": 0.35,
+          "v": 1
+        },
+        {
+          "t": 0.45,
+          "v": 0
+        }
+      ]
+    },
+    {
+      "channel": "er.stress",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.6834,
+          "v": 0.0
+        },
+        {
+          "t": 0.7833,
+          "v": 0.3
+        }
+      ]
+    },
     {
       "channel": "cytoplasm.viralParticles",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.6,
-          "v": 0.1
+          "t": 0.85,
+          "v": 0.0
         },
         {
           "t": 0.95,
-          "v": 0.9
+          "v": 0.5
         }
       ]
     },
@@ -250,109 +526,23 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
           "t": 0.85,
-          "v": 0.95
-        },
-        {
-          "t": 1,
-          "v": 0.7
-        }
-      ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
-        },
-        {
-          "t": 0.05,
-          "v": 0.45
+          "v": 1.0
         },
         {
           "t": 0.95,
-          "v": 0.45
-        },
-        {
-          "t": 1,
-          "v": 0
+          "v": 0.8
         }
       ]
     }
   ],
-  "actors": [
-    {
-      "actor": "path",
-      "at": 0.0,
-      "until": 0.25,
-      "params": {
-        "path": [
-          "outside",
-          "membrane",
-          "endosome"
-        ],
-        "cargo": "virion",
-        "count": 3
-      }
-    },
-    {
-      "actor": "path",
-      "at": 0.2,
-      "until": 0.45,
-      "params": {
-        "path": [
-          "endosome",
-          "nucleus.pore",
-          "nucleus"
-        ],
-        "cargo": "mrna",
-        "count": 4
-      }
-    },
-    {
-      "actor": "pulse",
-      "at": 0.3,
-      "until": 0.55,
-      "params": {
-        "at": "nucleus"
-      }
-    },
-    {
-      "actor": "path",
-      "at": 0.5,
-      "until": 0.75,
-      "params": {
-        "path": [
-          "nucleus",
-          "nucleus.pore",
-          "rough-er"
-        ],
-        "cargo": "mrna",
-        "count": 5
-      }
-    },
-    {
-      "actor": "path",
-      "at": 0.75,
-      "until": 1.0,
-      "params": {
-        "path": [
-          "golgi.trans",
-          "membrane",
-          "outside"
-        ],
-        "cargo": "virion",
-        "count": 8
-      }
-    }
-  ],
+  "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -364,5 +554,6 @@
         "id": "sp-influenza"
       }
     ]
-  }
+  },
+  "durationSeconds": 72
 }
