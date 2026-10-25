@@ -15,6 +15,7 @@ import { liveChannels } from '@/engine/timeline/live';
 import { PickTargets } from './interaction/PickTargets';
 import { ScenarioActors } from './actors/ScenarioActors';
 import { MrnaExport } from './actors/MrnaExport';
+import { Heroes } from './actors/Heroes';
 import { DiseaseParticles } from './disease/DiseaseParticles';
 import { useQuality } from '@/state/quality';
 import { QUALITY_PRESETS } from '@/engine/quality/presets';
@@ -83,6 +84,7 @@ export function CellScene() {
       <PickTargets />
       <ScenarioActors />
       <MrnaExport />
+      <Heroes />
       <DiseaseParticles />
     </>
   );
