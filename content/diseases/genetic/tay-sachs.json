@@ -232,7 +232,7 @@
         {
           "model": "substrate",
           "path": [
-            "cytoplasm",
+            "endosome",
             "lysosome"
           ],
           "count": 8,

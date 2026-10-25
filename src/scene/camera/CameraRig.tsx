@@ -150,7 +150,7 @@ export function CameraRig() {
       const pos = target.clone().addScaledVector(dir, distance);
       // Focus mode: the caption and controls cover the lower part of the screen, so the subject is
       // framed a little above the centre.
-      const raise = useScenario.getState().scenario && !wholeCell ? -distance * 0.14 : 0;
+      const raise = useScenario.getState().scenario && !wholeCell ? distance * 0.14 : 0;
       void controls.setFocalOffset(0, raise, 0, true);
       controls.smoothTime = 0.85;
       controls.minDistance = 2;

@@ -139,7 +139,7 @@ function buildModel(model: HeroModel): Part[] {
       return [{ geometry: g, look: look('#5cf0a8', '#c0ffe0', { doubleSide: true }) }];
     }
     case 'substrate':
-      return [{ geometry: new CapsuleGeometry(0.2, 0.5, 4, 8), look: look('#f2e3a0', '#fff6cc', { emissiveStrength: 0.8 }) }];
+      return [{ geometry: new CapsuleGeometry(0.35, 0.9, 4, 8), look: look('#f2e3a0', '#fff6cc', { emissiveStrength: 0.8 }) }];
     case 'ldl':
       return [{ geometry: new IcosahedronGeometry(1.1, 3), look: look('#ffc46b', '#ffe6b0', { pattern: 'granular', patternScale: 3 }) }];
     case 'glucose':

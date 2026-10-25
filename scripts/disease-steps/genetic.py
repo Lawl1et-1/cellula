@@ -37,7 +37,7 @@ def lysosomal(id, gene, enzyme, substrate, gr, consequence, cell_note=None):
                f"Lysosomes receive {sen}, which this enzyme should cut up so that its pieces can be recycled.",
                'mboc4-lysosome-digestion', gr),
              'lysosome', highlight=['vesicle'], camera={"at": "lysosome", "radius": 9},
-             heroes=[hero('substrate', ['cytoplasm', 'lysosome'], (noart(sfr), noart(sen)), count=8)]),
+             heroes=[hero('substrate', ['endosome', 'lysosome'], (noart(sfr), noart(sen)), count=8)]),
         step('storage', ("Les lysosomes se remplissent", "Lysosomes fill up"),
              C(f"Faute d'être dégradé, {sfr} reste piégé : les lysosomes gonflent, se remplissent d'un matériel pâle et deviennent plus nombreux.",
                f"Since it cannot be broken down, {sen} stays trapped: lysosomes swell, fill with pale material and multiply.",
