@@ -85,7 +85,7 @@ cellula/
 │  │
 │  ├─ state/                     # Zustand stores: scene, camera, selection, scenario, quality, ui
 │  ├─ ui/                        # Glass panels, InfoPanel, Library, Timeline, Tour, Sources, Disclaimer
-│  ├─ i18n/                      # fr.ts (UI strings); structure ready for en.ts
+│  ├─ i18n/                      # fr.ts / en.ts (UI strings), locale store (client-side FR | EN switch)
 │  └─ lib/                       # seeded RNG, math, a11y helpers
 │
 ├─ content/                      # ← all scientific content, no code
@@ -380,6 +380,7 @@ Implemented as scenarios on the same engine:
 2. **Scale.** Artistic compressed scale by default with a "taille réelle" toggle — OK?
 3. **Hosting.** Vercel (simplest for Next.js, preview deployments per push) vs GitHub Pages (static export).
 4. **Content language.** UI and content in French only, with the schema already supporting `en` for later — OK?
+   *Update:* French and English are both shipped; every content string has `en`, enforced by the validator.
 5. **Licence.** Code MIT and content CC BY-SA 4.0, or keep all rights reserved?
 
 ---

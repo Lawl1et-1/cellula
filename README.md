@@ -8,21 +8,26 @@ scientifiques citées.
 
 ![Cellula](docs/reviews/img/01-accueil.jpg)
 
-> Les quatre phases sont terminées (cellule vivante, organites interactifs, processus animés, 29 maladies,
-> performance, accessibilité, mobile). Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) et les bilans de
-> [phase 1](docs/reviews/phase-1.md), [phase 2](docs/reviews/phase-2.md), [phase 3](docs/reviews/phase-3.md)
-> et [phase 4](docs/reviews/phase-4.md). Le contenu scientifique attend encore une relecture experte.
+> Les quatre phases sont terminées (cellule vivante, organites interactifs, processus animés, 31 maladies,
+> performance, accessibilité, mobile), ainsi que l'ADN explorable et le site en français et en anglais. Voir
+> [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) et les bilans de [phase 1](docs/reviews/phase-1.md),
+> [phase 2](docs/reviews/phase-2.md), [phase 3](docs/reviews/phase-3.md), [phase 4](docs/reviews/phase-4.md) et
+> [ADN et langues](docs/reviews/dna-and-languages.md). Le contenu scientifique attend encore une relecture experte.
 
 ## Ce que l'on peut faire
 
 - Explorer une cellule humaine en 3D, cliquer sur chaque organite et lire sa fiche (rôle, structure,
   molécules clés, interactions), chaque affirmation renvoyant à une section précise d'un manuel de référence.
+- Plonger dans l'ADN du noyau : chromatine, nucléole, et un gros plan sur l'empaquetage en quatre niveaux
+  (double hélice, nucléosomes, fibre de chromatine, chromosome condensé), avec les ARN messagers qui sortent
+  par les pores.
 - Suivre une visite guidée de 12 étapes.
 - Regarder quatre processus animés, étape par étape : synthèse et sécrétion d'une protéine, respiration
   cellulaire, endocytose et exocytose, mitose et cytocinèse.
-- Choisir parmi 29 maladies (surcharges lysosomales, maladies mitochondriales, neurodégénératives,
-  infections, cancers…) et voir, étape par étape, ce qu'elles font à la cellule. 83 sources, toutes
-  vérifiées sur NCBI (PubMed, GeneReviews, StatPearls).
+- Choisir parmi 31 maladies (surcharges lysosomales, maladies mitochondriales, neurodégénératives,
+  infections, cancers, xeroderma pigmentosum, drépanocytose…) et voir, étape par étape, ce qu'elles font à la
+  cellule. 96 sources, toutes vérifiées sur NCBI (PubMed, GeneReviews, StatPearls).
+- Passer du français à l'anglais à tout moment (bouton « FR | EN »), sans recharger la scène.
 
 ## Lancer le projet
 
@@ -38,7 +43,7 @@ Puis ouvrir http://localhost:3000. Paramètres utiles : `?stats` (images par sec
 | Script | Rôle |
 |---|---|
 | `npm run check` | Types, lint, validation du contenu, tests |
-| `npm run validate:content` | Vérifie schémas, sources et cohérence du dossier `content/` |
+| `npm run validate:content` | Vérifie schémas, sources, traductions anglaises et cohérence du dossier `content/` |
 | `npm run verify:sources` | Vérifie chaque source sur NCBI (PubMed, Bookshelf) ; `-- --write` enregistre la date |
 | `npm run build` | Build de production |
 | `npm run perf -- <url>` | Temps GPU par préréglage, sur le GPU réel (Edge sans interface) |
