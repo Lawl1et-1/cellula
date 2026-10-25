@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import {
   BufferGeometry,
@@ -18,6 +18,13 @@ import {
 } from 'three';
 import { liveChannels } from '@/engine/timeline/live';
 import { useUi } from '@/state/ui';
+import { useSelection } from '@/state/selection';
+import { useScenario } from '@/state/scenario';
+import { anchors } from '../actors/anchors';
+import { anchorFor } from '../interaction/anchors';
+import { cameraPosition } from '../camera/focus';
+import { labelWorld } from '../actors/labels';
+import { dnaZoom } from '../interaction/zoom';
 import { CELL } from '../layout/cellLayout';
 import { PALETTE } from '../palette';
 import { createOrganicMaterial, type OrganicOptions } from '../shaders/organicMaterial';
@@ -145,6 +152,25 @@ function buildHelix() {
     rung: new CylinderGeometry(0.22, 0.22, 1, 8, 1),
     rungs,
     mutation: [mutation],
+    // Where the zoom labels sit: one half-rung of each base near the middle, and a backbone point.
+    tags: {
+      ...(Object.fromEntries(
+        (Object.keys(rungs) as (keyof typeof BASE_COLORS)[]).map((b) => {
+          const p = new Vector3();
+          let best = Infinity;
+          const q = new Vector3();
+          for (const m of rungs[b]) {
+            q.setFromMatrixPosition(m);
+            if (Math.abs(q.x + (b === 'A' || b === 'T' ? 2 : -2)) < best) {
+              best = Math.abs(q.x + (b === 'A' || b === 'T' ? 2 : -2));
+              p.copy(q);
+            }
+          }
+          return [b, p];
+        }),
+      ) as Record<keyof typeof BASE_COLORS, Vector3>),
+      backbone: point(0.33, 0).multiplyScalar(1.15),
+    },
     seeds: { A: seeds(rungs.A.length), T: seeds(rungs.T.length), G: seeds(rungs.G.length), C: seeds(rungs.C.length) },
   };
 }
@@ -216,6 +242,97 @@ type Models = {
   fiber: ReturnType<typeof buildFiber>;
   chromosome: ReturnType<typeof buildChromosome>;
 };
+
+/** Words shown next to the zoomed helix (keys of the DNA tags in the overlay). */
+export const DNA_TAGS = ['A', 'T', 'G', 'C', 'backbone'] as const;
+
+/**
+ * DNA zoom (clicking DNA): the camera flies to a chromatin locus and, as it closes in, the strand there
+ * resolves into nucleosomes and then into the double helix, while the rest of the cell ghosts away.
+ * Same interaction as the mitochondria: select, fly, orbit; closing the panel leaves.
+ */
+export function DnaZoom() {
+  const selected = useSelection((s) => s.selected?.organelle === 'dna');
+  const root = useRef<Group>(null);
+  const helixGroup = useRef<Group>(null);
+  const beadsGroup = useRef<Group>(null);
+  const [active, setActive] = useState(false);
+  useEffect(() => {
+    if (selected) setActive(true); // eslint-disable-line react-hooks/set-state-in-effect
+    // Leaving DNA from deep inside the nucleus: pull back out to the whole nucleus.
+    else if (dnaZoom.value > 0.3 && !useSelection.getState().selected && !useScenario.getState().scenario)
+      useSelection.getState().frame(anchorFor('nucleus', cameraPosition), null);
+  }, [selected]);
+  const models = useMemo(() => (active ? buildModels() : null), [active]);
+  const materials = useMemo(
+    () =>
+      models && {
+        strandA: createOrganicMaterial({ ...backbone(PALETTE.chromatin.b), vertexSeed: true }),
+        strandB: createOrganicMaterial({ ...backbone('#c98bff'), vertexSeed: true }),
+      },
+    [models],
+  );
+  const at = useMemo(() => anchors().dna, []);
+
+  useFrame(({ camera }, delta) => {
+    const { dnaLevel } = useUi.getState();
+    const zooming = useSelection.getState().selected?.organelle === 'dna' && dnaLevel === null && !useScenario.getState().scenario;
+    const d = camera.position.distanceTo(at);
+    // 0 far away, 1 once the camera is at the helix.
+    const target = zooming ? Math.min(1, Math.max(0, (34 - d) / 22)) : 0;
+    dnaZoom.value += (target - dnaZoom.value) * Math.min(1, delta * 4);
+    const z = dnaZoom.value;
+    const beads = Math.max(0, Math.min(1, z * 3)) * Math.max(0, Math.min(1, (0.75 - z) * 4));
+    const helix = Math.max(0, Math.min(1, (z - 0.55) * 3));
+    if (beadsGroup.current) {
+      beadsGroup.current.visible = beads > 0.01;
+      beadsGroup.current.scale.setScalar(0.32 * (0.6 + 0.4 * beads));
+    }
+    if (helixGroup.current) {
+      helixGroup.current.visible = helix > 0.01;
+      helixGroup.current.scale.setScalar(0.36 * (0.5 + 0.5 * helix));
+    }
+    // Labels on the helix once it is there.
+    if (models && helixGroup.current && helix > 0.8) {
+      helixGroup.current.updateMatrixWorld();
+      for (const key of DNA_TAGS) {
+        const world = labelWorld.get(`dna:${key}`) ?? new Vector3();
+        labelWorld.set(`dna:${key}`, world.copy(models.helix.tags[key]).applyMatrix4(helixGroup.current.matrixWorld));
+      }
+    } else for (const key of DNA_TAGS) labelWorld.delete(`dna:${key}`);
+  });
+
+  if (!models || !materials) return null;
+  const h = models.helix;
+  return (
+    <group ref={root} name="dna-zoom" position={at}>
+      <group ref={beadsGroup} visible={false}>
+        <mesh geometry={models.nucleosome.dna} material={materials.strandA} />
+        <InstancedOrganelle
+          name="zoom-histones"
+          geometry={models.nucleosome.histone}
+          material={HISTONE}
+          matrices={models.nucleosome.histones}
+          seeds={models.nucleosome.seeds}
+        />
+      </group>
+      <group ref={helixGroup} visible={false}>
+        <mesh geometry={h.strandA} material={materials.strandA} />
+        <mesh geometry={h.strandB} material={materials.strandB} />
+        {(Object.keys(h.rungs) as (keyof typeof BASE_COLORS)[]).map((b) => (
+          <InstancedOrganelle
+            key={b}
+            name={`zoom-base-${b}`}
+            geometry={h.rung}
+            material={BASE_MATERIALS[b]}
+            matrices={h.rungs[b]}
+            seeds={h.seeds[b]}
+          />
+        ))}
+      </group>
+    </group>
+  );
+}
 
 export function DnaCompaction() {
   const level = useUi((s) => s.dnaLevel);

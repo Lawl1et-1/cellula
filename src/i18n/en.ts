@@ -48,6 +48,14 @@ export const en: Dictionary = {
     coarser: 'More compact',
     close: 'Leave the DNA view',
     process: (name: string) => `Watch: ${name}`,
+    tags: {
+      A: 'A · adenine',
+      T: 'T · thymine',
+      G: 'G · guanine',
+      C: 'C · cytosine',
+      backbone: 'Sugar-phosphate backbone',
+    },
+    pairing: 'A pairs with T, G with C',
   },
   list: {
     title: 'Organelles',

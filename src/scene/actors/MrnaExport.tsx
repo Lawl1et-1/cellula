@@ -11,6 +11,7 @@ import { CELL } from '../layout/cellLayout';
 import { chromatinSamples } from '../organelles/Nucleus';
 import { roughErAnchors } from '../organelles/EndoplasmicReticulum';
 import { timeScale } from '../time';
+import { dnaZoom } from '../interaction/zoom';
 
 const STREAMS = 14;
 const PER_STREAM = 3;
@@ -42,7 +43,8 @@ export function MrnaExport() {
     const active =
       useSelection.getState().selected?.organelle === 'dna' &&
       !useScenario.getState().scenario &&
-      useUi.getState().dnaLevel === null;
+      useUi.getState().dnaLevel === null &&
+      dnaZoom.value < 0.4;
     presence.current += ((active ? 1 : 0) - presence.current) * Math.min(1, delta * 2);
     if (presence.current < 0.01) {
       mesh.visible = false;

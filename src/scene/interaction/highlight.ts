@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import type { ShaderMaterial } from 'three';
 import type { FocusKey } from '@/content/schema/scenario';
 import { useSelection } from '@/state/selection';
+import { dnaZoom } from './zoom';
 
 /** Materials that glow when their organelle is hovered or selected. */
 const registry = new Map<FocusKey, Set<ShaderMaterial>>();
@@ -34,7 +35,9 @@ export function updateHighlights(delta: number) {
     const isHovered = hovered?.organelle === id;
     const isSelected = selected?.organelle === id;
     const inFocus = spotlight === id || focusKeys.includes(id);
-    const target = isHovered ? 1 : isSelected ? 0.55 : inFocus ? 0.3 : 0;
+    // Zoomed onto the helix: the chromatin tangle ghosts away with the rest of the cell.
+    const zoomedPast = id === 'dna' && dnaZoom.value > 0.35;
+    const target = zoomedPast ? 0 : isHovered ? 1 : isSelected ? 0.55 : inFocus ? 0.3 : 0;
     const instance = isHovered ? hovered.instance : isSelected ? selected.instance : undefined;
     for (const m of materials) {
       const u = m.uniforms;

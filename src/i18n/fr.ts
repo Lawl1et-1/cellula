@@ -48,6 +48,14 @@ export const fr = {
     coarser: 'Plus compact',
     close: "Quitter la vue de l'ADN",
     process: (name: string) => `Voir : ${name}`,
+    tags: {
+      A: 'A · adénine',
+      T: 'T · thymine',
+      G: 'G · guanine',
+      C: 'C · cytosine',
+      backbone: 'Squelette sucre-phosphate',
+    } as Record<string, string>,
+    pairing: 'A s’apparie avec T, G avec C',
   },
   list: {
     title: 'Organites',

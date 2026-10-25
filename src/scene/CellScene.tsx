@@ -21,7 +21,9 @@ import { useQuality } from '@/state/quality';
 import { QUALITY_PRESETS } from '@/engine/quality/presets';
 import { Membrane } from './organelles/Membrane';
 import { Nucleus } from './organelles/Nucleus';
-import { DnaCompaction } from './organelles/DnaCompaction';
+import { DnaCompaction, DnaZoom } from './organelles/DnaCompaction';
+import { dnaZoom } from './interaction/zoom';
+import { projectLabels } from './actors/labels';
 import { EndoplasmicReticulum } from './organelles/EndoplasmicReticulum';
 import { Golgi } from './organelles/Golgi';
 import { SmallOrganelles } from './organelles/SmallOrganelles';
@@ -50,7 +52,9 @@ function Clock() {
     // Focus mode (a process or disease is playing) ghosts whatever the current step does not involve.
     const closeup = useUi.getState().dnaLevel !== null ? 0.9 : 0;
     const focusMode = useScenario.getState().scenario ? 0.85 : 0;
-    easing.damp(u.uDim, 'value', Math.max(liveChannels['view.focusDim'], closeup, focusMode), 0.6, delta);
+    const zoom = dnaZoom.value * 0.92;
+    easing.damp(u.uDim, 'value', Math.max(liveChannels['view.focusDim'], closeup, focusMode, zoom), 0.6, delta);
+    projectLabels(state.camera, state.size.width, state.size.height);
     const target = MOLECULAR_SCALE[useScene.getState().scaleMode];
     easing.damp(u.uMolecularScale, 'value', target, 0.35, delta);
   });
@@ -73,6 +77,7 @@ export function CellScene() {
       <Body>
         <Nucleus />
         <DnaCompaction />
+        <DnaZoom />
         <EndoplasmicReticulum />
         <Golgi />
         <Mitochondria />

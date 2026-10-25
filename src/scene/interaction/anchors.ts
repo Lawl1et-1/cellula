@@ -12,6 +12,9 @@ import {
 } from '../layout/organelleLayout';
 import { roughErAnchors, smoothErNodes } from '../organelles/EndoplasmicReticulum';
 import { createRng } from '@/lib/random';
+import { anchors as scenarioAnchors } from '../actors/anchors';
+
+const dnaLocus = () => scenarioAnchors().dna;
 
 const tmp = new Vector3();
 const toTuple = (v: Vector3): [number, number, number] => [v.x, v.y, v.z];
@@ -82,9 +85,9 @@ export function anchorFor(organelle: OrganelleId, camera: Vector3): Focus {
     case 'nucleus':
       return at(CELL.nucleus.center, CELL.nucleus.radius);
     case 'dna':
-      // Inside the nucleus, among the chromatin (the envelope fades while DNA is selected). Framed from
-      // just outside, the idle orbit would sweep the camera through the ER and pores around the envelope.
-      return at(CELL.nucleus.center, 7.5);
+      // Zoom onto one chromatin locus, where the double helix resolves (see DnaZoom), like the
+      // mitochondria close-up.
+      return at(dnaLocus(), 3.6);
     case 'nucleolus':
       return at(CELL.nucleus.center.clone().add(NUCLEOLUS_OFFSET), 7);
     case 'plasma-membrane':

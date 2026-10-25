@@ -23,7 +23,7 @@ import { createRng } from '@/lib/random';
 import { useScenario } from '@/state/scenario';
 import { timeScale } from '../time';
 import { anchors } from './anchors';
-import { labelWorld, projectLabels } from './labels';
+import { labelWorld } from './labels';
 import { createOrganicMaterial, type OrganicOptions } from '../shaders/organicMaterial';
 import { weld } from '../organelles/Instanced';
 
@@ -261,12 +261,6 @@ function HeroActor({ hero, stage, labelKey }: { hero: Hero; stage: [number, numb
   );
 }
 
-/** Projects every label anchor to the screen once per frame (read by the DOM overlay). */
-function LabelProjector() {
-  useFrame(({ camera, size }) => projectLabels(camera, size.width, size.height));
-  return null;
-}
-
 export function Heroes() {
   const scenario = useScenario((s) => s.scenario);
   const index = useScenario((s) => (s.scenario ? stageIndexAt(s.scenario.stages, s.t) : -1));
@@ -286,7 +280,6 @@ export function Heroes() {
   if (!scenario || !stage) return null;
   return (
     <group name="heroes" key={id}>
-      <LabelProjector />
       {stage.heroes.map((h, i) => (
         <HeroActor key={i} hero={h} stage={stage.range} labelKey={`${id}:hero:${i}`} />
       ))}

@@ -95,3 +95,12 @@ button {
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(6px);
 }
+
+.scene-tag-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 50%;
+  vertical-align: 0;
+}
