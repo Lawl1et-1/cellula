@@ -100,19 +100,19 @@
   ],
   "stages": [
     {
-      "id": "enzyme",
+      "id": "gene",
       "title": {
-        "fr": "Enzyme déficiente",
-        "en": "Deficient enzyme"
+        "fr": "Un gène GLA modifié",
+        "en": "An altered GLA gene"
       },
       "range": [
-        0,
-        0.25
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Des variants du gène GLA, situé sur le chromosome X, réduisent l'activité de l'alpha-galactosidase A.",
-          "en": "Variants of the GLA gene, on the X chromosome, reduce the activity of alpha-galactosidase A."
+          "fr": "Tout commence dans l'ADN : un variant du gène GLA réduit l'activité de l'alpha-galactosidase A, une enzyme des lysosomes.",
+          "en": "It all starts in the DNA: a variant of the GLA gene reduces the activity of alpha-galactosidase A, a lysosomal enzyme."
         },
         "sources": [
           {
@@ -120,50 +120,140 @@
           }
         ]
       },
-      "cellularSigns": [],
-      "focus": "lysosome"
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Le variant est marqué en rouge dans l'ADN.",
+            "en": "The variant is marked in red in the DNA."
+          },
+          "sources": [
+            {
+              "id": "gr-fabry"
+            }
+          ]
+        }
+      ],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "seconds": 12
     },
     {
-      "id": "accumulation",
+      "id": "enzyme",
       "title": {
-        "fr": "Accumulation",
-        "en": "Build-up"
+        "fr": "Une enzyme qui manque",
+        "en": "A missing enzyme"
       },
       "range": [
-        0.25,
-        0.6
+        0.2,
+        0.4
       ],
       "description": {
         "text": {
-          "fr": "Le globotriaosylcéramide (Gb3) s'accumule progressivement dans les lysosomes.",
-          "en": "Globotriaosylceramide (Gb3) gradually accumulates in lysosomes."
+          "fr": "Comme les autres enzymes lysosomales, l'alpha-galactosidase A est fabriquée sur le réticulum endoplasmique puis envoyée par l'appareil de Golgi vers les lysosomes ; ici, elle est absente ou peu active.",
+          "en": "Like other lysosomal enzymes, alpha-galactosidase A is made on the endoplasmic reticulum and sent by the Golgi apparatus to the lysosomes; here, it is missing or works poorly."
         },
         "sources": [
           {
             "id": "gr-fabry"
           },
           {
-            "id": "mboc4-lysosome-digestion"
+            "id": "mboc4-golgi-to-lysosomes"
           }
         ]
       },
       "cellularSigns": [],
-      "focus": "lysosome"
+      "focus": "lysosome",
+      "camera": {
+        "at": "golgi",
+        "radius": 22
+      },
+      "highlight": [
+        "rough-er",
+        "golgi"
+      ],
+      "heroes": [
+        {
+          "model": "enzyme",
+          "path": [
+            "rough-er",
+            "golgi",
+            "lysosome"
+          ],
+          "count": 2,
+          "label": {
+            "fr": "Alpha-galactosidase A",
+            "en": "Alpha-galactosidase A"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "surcharge",
+      "id": "substrate",
       "title": {
-        "fr": "Lysosomes surchargés",
-        "en": "Overloaded lysosomes"
+        "fr": "Le substrat arrive",
+        "en": "The substrate arrives"
       },
       "range": [
-        0.6,
-        0.85
+        0.4,
+        0.6
       ],
       "description": {
         "text": {
-          "fr": "Les lysosomes, remplis de matériel non dégradé, augmentent en taille et en nombre.",
-          "en": "Filled with undegraded material, lysosomes grow in size and number."
+          "fr": "Les lysosomes reçoivent le globotriaosylcéramide (Gb3), que cette enzyme devrait découper pour que ses morceaux soient recyclés.",
+          "en": "Lysosomes receive globotriaosylceramide (Gb3), which this enzyme should cut up so that its pieces can be recycled."
+        },
+        "sources": [
+          {
+            "id": "mboc4-lysosome-digestion"
+          },
+          {
+            "id": "gr-fabry"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "lysosome",
+      "camera": {
+        "at": "lysosome",
+        "radius": 9
+      },
+      "highlight": [
+        "vesicle"
+      ],
+      "heroes": [
+        {
+          "model": "substrate",
+          "path": [
+            "cytoplasm",
+            "lysosome"
+          ],
+          "count": 8,
+          "label": {
+            "fr": "Globotriaosylcéramide (Gb3)",
+            "en": "Globotriaosylceramide (Gb3)"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "storage",
+      "title": {
+        "fr": "Les lysosomes se remplissent",
+        "en": "Lysosomes fill up"
+      },
+      "range": [
+        0.6,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "Faute d'être dégradé, le globotriaosylcéramide (Gb3) reste piégé : les lysosomes gonflent, se remplissent d'un matériel pâle et deviennent plus nombreux.",
+          "en": "Since it cannot be broken down, globotriaosylceramide (Gb3) stays trapped: lysosomes swell, fill with pale material and multiply."
         },
         "sources": [
           {
@@ -174,8 +264,8 @@
           }
         ],
         "simplification": {
-          "fr": "La vitesse d'accumulation est très accélérée : dans la maladie, elle se fait sur des mois ou des années.",
-          "en": "The build-up is greatly sped up: in the disease, it takes months or years."
+          "fr": "L'accumulation, qui prend des mois ou des années, est fortement accélérée.",
+          "en": "The build-up, which takes months or years, is greatly sped up."
         }
       },
       "cellularSigns": [
@@ -191,22 +281,27 @@
           ]
         }
       ],
-      "focus": "lysosome"
+      "focus": "lysosome",
+      "camera": {
+        "at": "lysosome",
+        "radius": 12
+      },
+      "seconds": 12
     },
     {
-      "id": "dysfonction",
+      "id": "consequence",
       "title": {
-        "fr": "Dysfonction cellulaire",
-        "en": "Cell dysfunction"
+        "fr": "Conséquences pour la cellule",
+        "en": "Consequences for the cell"
       },
       "range": [
-        0.85,
+        0.8,
         1
       ],
       "description": {
         "text": {
-          "fr": "Le Gb3 s'accumule dans de nombreux types de cellules, notamment des vaisseaux, des reins et du cœur. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
-          "en": "Gb3 accumulates in many cell types, notably in blood vessels, the kidneys and the heart. The model shows a generic cell; the changes shown are those described in the affected cells."
+          "fr": "Le Gb3 s'accumule dans de nombreuses cellules, notamment des vaisseaux, des reins et du cœur, qu'il finit par endommager.",
+          "en": "Gb3 builds up in many cells, notably in blood vessels, the kidneys and the heart, which it eventually damages."
         },
         "sources": [
           {
@@ -217,29 +312,47 @@
       "cellularSigns": [],
       "focus": "cytoplasm",
       "camera": {
-        "radius": 40
-      }
+        "view": "cell",
+        "radius": 90
+      },
+      "highlight": [
+        "lysosome"
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
+    {
+      "channel": "dna.mutation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.02,
+          "v": 0.0
+        },
+        {
+          "t": 0.14,
+          "v": 1
+        }
+      ]
+    },
     {
       "channel": "lysosome.storageLoad",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.25,
-          "v": 0.15
+          "t": 0.62,
+          "v": 0.0
         },
         {
-          "t": 0.6,
-          "v": 0.7
-        },
-        {
-          "t": 0.85,
-          "v": 1
+          "t": 0.74,
+          "v": 0.95
         }
       ]
     },
@@ -248,15 +361,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.6,
-          "v": 1.4
+          "t": 0.62,
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 2.3
+          "t": 0.74,
+          "v": 1.8
         }
       ]
     },
@@ -265,53 +378,40 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.8,
-          "v": 0.1
+          "t": 0.82,
+          "v": 0.0
         },
         {
-          "t": 1,
+          "t": 0.94,
           "v": 0.3
         }
       ]
     },
     {
-      "channel": "view.focusDim",
+      "channel": "cell.viability",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 1.0
         },
         {
-          "t": 0.05,
-          "v": 0.4
+          "t": 0.82,
+          "v": 1.0
         },
         {
-          "t": 0.95,
-          "v": 0.4
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.94,
+          "v": 0.8
         }
       ]
     }
   ],
-  "actors": [
-    {
-      "actor": "pulse",
-      "at": 0.0,
-      "until": 0.25,
-      "params": {
-        "at": "lysosome"
-      }
-    }
-  ],
+  "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -323,5 +423,6 @@
         "id": "gr-fabry"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }

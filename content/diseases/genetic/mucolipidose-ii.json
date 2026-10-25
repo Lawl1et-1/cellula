@@ -126,46 +126,109 @@
   ],
   "stages": [
     {
-      "id": "tri",
+      "id": "gene",
       "title": {
-        "fr": "Erreur de tri dans le Golgi",
-        "en": "Sorting error in the Golgi"
+        "fr": "Un gène GNPTAB modifié",
+        "en": "An altered GNPTAB gene"
       },
       "range": [
-        0,
-        0.3
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Dans le Golgi, les enzymes lysosomales ne sont pas marquées par le mannose-6-phosphate.",
-          "en": "In the Golgi, lysosomal enzymes are not tagged with mannose 6-phosphate."
+          "fr": "Tout commence dans l'ADN : des variants du gène GNPTAB rendent déficiente l'enzyme qui pose une étiquette, le mannose-6-phosphate, sur les enzymes destinées aux lysosomes.",
+          "en": "It all starts in the DNA: variants of the GNPTAB gene disable the enzyme that puts a tag, mannose 6-phosphate, on enzymes bound for lysosomes."
         },
         "sources": [
           {
             "id": "gr-gnptab"
-          },
-          {
-            "id": "mboc4-golgi-to-lysosomes"
           }
         ]
       },
-      "cellularSigns": [],
-      "focus": "golgi"
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Le variant est marqué en rouge dans l'ADN.",
+            "en": "The variant is marked in red in the DNA."
+          },
+          "sources": [
+            {
+              "id": "gr-gnptab"
+            }
+          ]
+        }
+      ],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "seconds": 12
     },
     {
-      "id": "secretion",
+      "id": "golgi",
       "title": {
-        "fr": "Enzymes sécrétées",
-        "en": "Secreted enzymes"
+        "fr": "Pas d'étiquette dans le Golgi",
+        "en": "No tag in the Golgi"
       },
       "range": [
-        0.3,
-        0.55
+        0.2,
+        0.4
       ],
       "description": {
         "text": {
-          "fr": "Les enzymes non marquées sont sécrétées hors de la cellule.",
-          "en": "The untagged enzymes are secreted out of the cell."
+          "fr": "Les enzymes lysosomales traversent l'appareil de Golgi sans recevoir leur étiquette mannose-6-phosphate.",
+          "en": "Lysosomal enzymes pass through the Golgi apparatus without receiving their mannose 6-phosphate tag."
+        },
+        "sources": [
+          {
+            "id": "gr-gnptab"
+          },
+          {
+            "id": "mboc4-golgi-to-lysosomes"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "golgi",
+      "camera": {
+        "at": "golgi",
+        "radius": 16
+      },
+      "highlight": [
+        "rough-er"
+      ],
+      "heroes": [
+        {
+          "model": "enzyme",
+          "path": [
+            "rough-er",
+            "golgi"
+          ],
+          "count": 4,
+          "label": {
+            "fr": "Enzymes lysosomales sans étiquette",
+            "en": "Untagged lysosomal enzymes"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "sorting",
+      "title": {
+        "fr": "Mauvais tri",
+        "en": "Wrong sorting"
+      },
+      "range": [
+        0.4,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "Sans étiquette, le récepteur qui dirige les enzymes vers les lysosomes ne les reconnaît pas : elles partent par la voie de sécrétion.",
+          "en": "Without the tag, the receptor that directs enzymes to lysosomes does not recognise them: they leave by the secretory pathway."
         },
         "sources": [
           {
@@ -177,26 +240,103 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "plasma-membrane"
+      "focus": "golgi",
+      "camera": {
+        "at": "golgi.trans",
+        "radius": 16
+      },
+      "highlight": [
+        "vesicle"
+      ],
+      "heroes": [
+        {
+          "model": "enzyme",
+          "path": [
+            "golgi",
+            "golgi.trans",
+            "membrane"
+          ],
+          "count": 4,
+          "label": {
+            "fr": "Enzymes lysosomales",
+            "en": "Lysosomal enzymes"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "secreted",
+      "title": {
+        "fr": "Enzymes perdues",
+        "en": "Lost enzymes"
+      },
+      "range": [
+        0.6,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "Les enzymes sont libérées hors de la cellule au lieu d'être livrées aux lysosomes.",
+          "en": "The enzymes are released outside the cell instead of being delivered to lysosomes."
+        },
+        "sources": [
+          {
+            "id": "gr-gnptab"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 16
+      },
+      "highlight": [
+        "vesicle"
+      ],
+      "heroes": [
+        {
+          "model": "enzyme",
+          "path": [
+            "membrane",
+            "outside"
+          ],
+          "offset": [
+            4.1,
+            0.7,
+            3.6
+          ],
+          "count": 4,
+          "label": {
+            "fr": "Enzymes sécrétées",
+            "en": "Secreted enzymes"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
       "id": "inclusions",
       "title": {
-        "fr": "Inclusions",
-        "en": "Inclusions"
+        "fr": "Lysosomes remplis d'inclusions",
+        "en": "Lysosomes full of inclusions"
       },
       "range": [
-        0.55,
+        0.8,
         1
       ],
       "description": {
         "text": {
-          "fr": "Les lysosomes se remplissent de matériel non dégradé et forment des inclusions.",
-          "en": "Lysosomes fill with undegraded material and form inclusions."
+          "fr": "Privés de leurs enzymes, les lysosomes ne dégradent plus leur contenu, qui s'accumule et forme de nombreuses inclusions.",
+          "en": "Deprived of their enzymes, lysosomes no longer break down their contents, which build up and form many inclusions."
         },
         "sources": [
           {
             "id": "gr-gnptab"
+          },
+          {
+            "id": "mboc4-lysosome-digestion"
           }
         ]
       },
@@ -213,20 +353,46 @@
           ]
         }
       ],
-      "focus": "lysosome"
+      "focus": "lysosome",
+      "camera": {
+        "at": "lysosome",
+        "radius": 12
+      },
+      "seconds": 12
     }
   ],
   "tracks": [
+    {
+      "channel": "dna.mutation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.02,
+          "v": 0.0
+        },
+        {
+          "t": 0.14,
+          "v": 1
+        }
+      ]
+    },
     {
       "channel": "golgi.missorting",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.2,
-          "v": 1
+          "t": 0.22,
+          "v": 0.0
+        },
+        {
+          "t": 0.34,
+          "v": 0.8
         }
       ]
     },
@@ -235,14 +401,14 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.5,
-          "v": 0.2
+          "t": 0.82,
+          "v": 0.0
         },
         {
-          "t": 1,
+          "t": 0.94,
           "v": 0.95
         }
       ]
@@ -252,63 +418,23 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 2.2
-        }
-      ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
+          "t": 0.82,
+          "v": 1.0
         },
         {
-          "t": 0.05,
-          "v": 0.45
-        },
-        {
-          "t": 0.95,
-          "v": 0.45
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.94,
+          "v": 1.7
         }
       ]
     }
   ],
-  "actors": [
-    {
-      "actor": "pulse",
-      "at": 0.05,
-      "until": 0.3,
-      "params": {
-        "at": "golgi.trans"
-      }
-    },
-    {
-      "actor": "path",
-      "at": 0.28,
-      "until": 0.58,
-      "params": {
-        "path": [
-          "golgi.trans",
-          "membrane",
-          "outside"
-        ],
-        "cargo": "protein",
-        "count": 8
-      }
-    }
-  ],
+  "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -320,5 +446,6 @@
         "id": "gr-gnptab"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }

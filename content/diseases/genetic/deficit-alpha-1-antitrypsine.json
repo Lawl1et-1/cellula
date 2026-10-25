@@ -114,19 +114,19 @@
   ],
   "stages": [
     {
-      "id": "synthese",
+      "id": "gene",
       "title": {
-        "fr": "Synthèse",
-        "en": "Synthesis"
+        "fr": "Un gène SERPINA1 modifié",
+        "en": "An altered SERPINA1 gene"
       },
       "range": [
-        0,
-        0.3
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "L'hépatocyte fabrique l'alpha-1-antitrypsine dans le RE.",
-          "en": "The hepatocyte makes alpha-1 antitrypsin in the ER."
+          "fr": "Tout commence dans l'ADN : des variants du gène SERPINA1, le plus souvent l'allèle Z, modifient l'alpha-1-antitrypsine, une protéine fabriquée par le foie.",
+          "en": "It all starts in the DNA: variants of the SERPINA1 gene, most often the Z allele, alter alpha-1 antitrypsin, a protein made by the liver."
         },
         "sources": [
           {
@@ -134,23 +134,93 @@
           }
         ]
       },
-      "cellularSigns": [],
-      "focus": "rough-er"
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Le variant est marqué en rouge dans l'ADN.",
+            "en": "The variant is marked in red in the DNA."
+          },
+          "sources": [
+            {
+              "id": "gr-a1at"
+            }
+          ]
+        }
+      ],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "seconds": 12
     },
     {
-      "id": "retention",
+      "id": "synthesis",
       "title": {
-        "fr": "Rétention dans le RE",
-        "en": "Retention in the ER"
+        "fr": "Fabrication dans le RE",
+        "en": "Made in the ER"
       },
       "range": [
-        0.3,
-        0.7
+        0.2,
+        0.4
       ],
       "description": {
         "text": {
-          "fr": "La protéine mal repliée s'accumule dans le RE.",
-          "en": "The misfolded protein accumulates in the ER."
+          "fr": "L'hépatocyte fabrique l'alpha-1-antitrypsine dans le réticulum endoplasmique, d'où elle devrait être sécrétée dans le sang.",
+          "en": "The hepatocyte makes alpha-1 antitrypsin in the endoplasmic reticulum, from where it should be secreted into the blood."
+        },
+        "sources": [
+          {
+            "id": "gr-a1at"
+          },
+          {
+            "id": "mboc4-er"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "rough-er",
+      "camera": {
+        "at": "rough-er",
+        "radius": 14
+      },
+      "highlight": [
+        "ribosome"
+      ],
+      "heroes": [
+        {
+          "model": "protein",
+          "path": [
+            "rough-er"
+          ],
+          "offset": [
+            2,
+            2,
+            1
+          ],
+          "count": 4,
+          "label": {
+            "fr": "Alpha-1-antitrypsine",
+            "en": "Alpha-1 antitrypsin"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "polymers",
+      "title": {
+        "fr": "Repliement anormal",
+        "en": "Misfolding"
+      },
+      "range": [
+        0.4,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "La forme Z se replie mal et s'assemble en polymères qui restent coincés dans le RE.",
+          "en": "The Z form misfolds and assembles into polymers that stay stuck in the ER."
         },
         "sources": [
           {
@@ -171,7 +241,30 @@
           ]
         }
       ],
-      "focus": "rough-er"
+      "focus": "rough-er",
+      "camera": {
+        "at": "rough-er",
+        "radius": 12
+      },
+      "heroes": [
+        {
+          "model": "misfolded",
+          "path": [
+            "rough-er"
+          ],
+          "offset": [
+            2,
+            2,
+            1
+          ],
+          "count": 4,
+          "label": {
+            "fr": "Polymères de la forme Z",
+            "en": "Z-form polymers"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
       "id": "stress",
@@ -180,39 +273,111 @@
         "en": "ER stress"
       },
       "range": [
-        0.7,
-        1
+        0.6,
+        0.8
       ],
       "description": {
         "text": {
-          "fr": "Le RE dilaté déclenche une réponse au stress.",
-          "en": "The dilated ER triggers a stress response."
+          "fr": "Cette accumulation de protéines mal repliées déclenche une réponse au stress du RE, qui peut endommager le foie.",
+          "en": "This build-up of misfolded proteins triggers an ER stress response, which can damage the liver."
         },
         "sources": [
           {
             "id": "mboc4-upr"
+          },
+          {
+            "id": "gr-a1at"
           }
         ]
       },
       "cellularSigns": [],
-      "focus": "rough-er"
+      "focus": "rough-er",
+      "camera": {
+        "at": "rough-er",
+        "radius": 16
+      },
+      "seconds": 12
+    },
+    {
+      "id": "lungs",
+      "title": {
+        "fr": "Les poumons sans protection",
+        "en": "Lungs left unprotected"
+      },
+      "range": [
+        0.8,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Peu d'alpha-1-antitrypsine quitte la cellule : dans le sang, il en manque pour protéger les poumons.",
+          "en": "Little alpha-1 antitrypsin leaves the cell: there is too little in the blood to protect the lungs."
+        },
+        "sources": [
+          {
+            "id": "gr-a1at"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 18
+      },
+      "highlight": [
+        "golgi",
+        "vesicle"
+      ],
+      "heroes": [
+        {
+          "model": "protein",
+          "path": [
+            "golgi.trans",
+            "membrane",
+            "outside"
+          ],
+          "label": {
+            "fr": "Peu de protéine sécrétée",
+            "en": "Little protein secreted"
+          }
+        }
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
+    {
+      "channel": "dna.mutation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.02,
+          "v": 0.0
+        },
+        {
+          "t": 0.14,
+          "v": 1
+        }
+      ]
+    },
     {
       "channel": "er.retainedCargo",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.3,
-          "v": 0.2
+          "t": 0.42,
+          "v": 0.0
         },
         {
-          "t": 0.7,
-          "v": 1
+          "t": 0.54,
+          "v": 0.9
         }
       ]
     },
@@ -221,70 +386,23 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.5,
-          "v": 0.2
+          "t": 0.62,
+          "v": 0.0
         },
         {
-          "t": 1,
-          "v": 0.85
-        }
-      ]
-    },
-    {
-      "channel": "cell.viability",
-      "keys": [
-        {
-          "t": 0,
-          "v": 1
-        },
-        {
-          "t": 0.8,
-          "v": 1
-        },
-        {
-          "t": 1,
-          "v": 0.8
-        }
-      ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
-        },
-        {
-          "t": 0.05,
-          "v": 0.45
-        },
-        {
-          "t": 0.95,
-          "v": 0.45
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.74,
+          "v": 0.9
         }
       ]
     }
   ],
-  "actors": [
-    {
-      "actor": "pulse",
-      "at": 0.3,
-      "until": 0.7,
-      "params": {
-        "at": "rough-er"
-      }
-    }
-  ],
+  "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -296,5 +414,6 @@
         "id": "gr-a1at"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }

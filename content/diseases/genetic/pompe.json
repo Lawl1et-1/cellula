@@ -103,19 +103,19 @@
   ],
   "stages": [
     {
-      "id": "enzyme",
+      "id": "gene",
       "title": {
-        "fr": "Enzyme déficiente",
-        "en": "Deficient enzyme"
+        "fr": "Un gène GAA modifié",
+        "en": "An altered GAA gene"
       },
       "range": [
-        0,
-        0.25
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Des variants du gène GAA réduisent l'activité de l'alpha-glucosidase acide, l'enzyme lysosomale qui dégrade le glycogène.",
-          "en": "Variants of the GAA gene reduce the activity of acid alpha-glucosidase, the lysosomal enzyme that breaks down glycogen."
+          "fr": "Tout commence dans l'ADN : un variant du gène GAA réduit l'activité de l'alpha-glucosidase acide, une enzyme des lysosomes.",
+          "en": "It all starts in the DNA: a variant of the GAA gene reduces the activity of acid alpha-glucosidase, a lysosomal enzyme."
         },
         "sources": [
           {
@@ -123,50 +123,140 @@
           }
         ]
       },
-      "cellularSigns": [],
-      "focus": "lysosome"
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Le variant est marqué en rouge dans l'ADN.",
+            "en": "The variant is marked in red in the DNA."
+          },
+          "sources": [
+            {
+              "id": "gr-pompe"
+            }
+          ]
+        }
+      ],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "seconds": 12
     },
     {
-      "id": "accumulation",
+      "id": "enzyme",
       "title": {
-        "fr": "Accumulation",
-        "en": "Build-up"
+        "fr": "Une enzyme qui manque",
+        "en": "A missing enzyme"
       },
       "range": [
-        0.25,
-        0.6
+        0.2,
+        0.4
       ],
       "description": {
         "text": {
-          "fr": "Le glycogène s'accumule progressivement dans les lysosomes.",
-          "en": "Glycogen gradually accumulates in lysosomes."
+          "fr": "Comme les autres enzymes lysosomales, l'alpha-glucosidase acide est fabriquée sur le réticulum endoplasmique puis envoyée par l'appareil de Golgi vers les lysosomes ; ici, elle est absente ou peu active.",
+          "en": "Like other lysosomal enzymes, acid alpha-glucosidase is made on the endoplasmic reticulum and sent by the Golgi apparatus to the lysosomes; here, it is missing or works poorly."
         },
         "sources": [
           {
             "id": "gr-pompe"
           },
           {
-            "id": "mboc4-lysosome-digestion"
+            "id": "mboc4-golgi-to-lysosomes"
           }
         ]
       },
       "cellularSigns": [],
-      "focus": "lysosome"
+      "focus": "lysosome",
+      "camera": {
+        "at": "golgi",
+        "radius": 22
+      },
+      "highlight": [
+        "rough-er",
+        "golgi"
+      ],
+      "heroes": [
+        {
+          "model": "enzyme",
+          "path": [
+            "rough-er",
+            "golgi",
+            "lysosome"
+          ],
+          "count": 2,
+          "label": {
+            "fr": "Alpha-glucosidase acide",
+            "en": "Acid alpha-glucosidase"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "surcharge",
+      "id": "substrate",
       "title": {
-        "fr": "Lysosomes surchargés",
-        "en": "Overloaded lysosomes"
+        "fr": "Le substrat arrive",
+        "en": "The substrate arrives"
       },
       "range": [
-        0.6,
-        0.85
+        0.4,
+        0.6
       ],
       "description": {
         "text": {
-          "fr": "Les lysosomes, remplis de matériel non dégradé, augmentent en taille et en nombre.",
-          "en": "Filled with undegraded material, lysosomes grow in size and number."
+          "fr": "Les lysosomes reçoivent le glycogène, que cette enzyme devrait découper pour que ses morceaux soient recyclés.",
+          "en": "Lysosomes receive glycogen, which this enzyme should cut up so that its pieces can be recycled."
+        },
+        "sources": [
+          {
+            "id": "mboc4-lysosome-digestion"
+          },
+          {
+            "id": "gr-pompe"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "lysosome",
+      "camera": {
+        "at": "lysosome",
+        "radius": 9
+      },
+      "highlight": [
+        "vesicle"
+      ],
+      "heroes": [
+        {
+          "model": "substrate",
+          "path": [
+            "cytoplasm",
+            "lysosome"
+          ],
+          "count": 8,
+          "label": {
+            "fr": "Glycogène",
+            "en": "Glycogen"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "storage",
+      "title": {
+        "fr": "Les lysosomes se remplissent",
+        "en": "Lysosomes fill up"
+      },
+      "range": [
+        0.6,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "Faute d'être dégradé, le glycogène reste piégé : les lysosomes gonflent, se remplissent d'un matériel pâle et deviennent plus nombreux.",
+          "en": "Since it cannot be broken down, glycogen stays trapped: lysosomes swell, fill with pale material and multiply."
         },
         "sources": [
           {
@@ -177,8 +267,8 @@
           }
         ],
         "simplification": {
-          "fr": "La vitesse d'accumulation est très accélérée : dans la maladie, elle se fait sur des mois ou des années.",
-          "en": "The build-up is greatly sped up: in the disease, it takes months or years."
+          "fr": "L'accumulation, qui prend des mois ou des années, est fortement accélérée.",
+          "en": "The build-up, which takes months or years, is greatly sped up."
         }
       },
       "cellularSigns": [
@@ -194,22 +284,27 @@
           ]
         }
       ],
-      "focus": "lysosome"
+      "focus": "lysosome",
+      "camera": {
+        "at": "lysosome",
+        "radius": 12
+      },
+      "seconds": 12
     },
     {
-      "id": "dysfonction",
+      "id": "consequence",
       "title": {
-        "fr": "Dysfonction cellulaire",
-        "en": "Cell dysfunction"
+        "fr": "Conséquences pour la cellule",
+        "en": "Consequences for the cell"
       },
       "range": [
-        0.85,
+        0.8,
         1
       ],
       "description": {
         "text": {
-          "fr": "Le glycogène s'accumule surtout dans les cellules musculaires, notamment du cœur et des muscles squelettiques. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
-          "en": "Glycogen accumulates mainly in muscle cells, notably in the heart and skeletal muscles. The model shows a generic cell; the changes shown are those described in the affected cells."
+          "fr": "Le glycogène s'accumule surtout dans les cellules musculaires, notamment du cœur et des muscles squelettiques, qui s'affaiblissent.",
+          "en": "Glycogen builds up mainly in muscle cells, notably in the heart and skeletal muscles, which weaken."
         },
         "sources": [
           {
@@ -220,29 +315,47 @@
       "cellularSigns": [],
       "focus": "cytoplasm",
       "camera": {
-        "radius": 40
-      }
+        "view": "cell",
+        "radius": 90
+      },
+      "highlight": [
+        "lysosome"
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
+    {
+      "channel": "dna.mutation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.02,
+          "v": 0.0
+        },
+        {
+          "t": 0.14,
+          "v": 1
+        }
+      ]
+    },
     {
       "channel": "lysosome.storageLoad",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.25,
-          "v": 0.15
+          "t": 0.62,
+          "v": 0.0
         },
         {
-          "t": 0.6,
-          "v": 0.7
-        },
-        {
-          "t": 0.85,
-          "v": 1
+          "t": 0.74,
+          "v": 0.95
         }
       ]
     },
@@ -251,15 +364,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.6,
-          "v": 1.4
+          "t": 0.62,
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 2.3
+          "t": 0.74,
+          "v": 1.8
         }
       ]
     },
@@ -268,53 +381,40 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.8,
-          "v": 0.1
+          "t": 0.82,
+          "v": 0.0
         },
         {
-          "t": 1,
+          "t": 0.94,
           "v": 0.3
         }
       ]
     },
     {
-      "channel": "view.focusDim",
+      "channel": "cell.viability",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 1.0
         },
         {
-          "t": 0.05,
-          "v": 0.4
+          "t": 0.82,
+          "v": 1.0
         },
         {
-          "t": 0.95,
-          "v": 0.4
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.94,
+          "v": 0.8
         }
       ]
     }
   ],
-  "actors": [
-    {
-      "actor": "pulse",
-      "at": 0.0,
-      "until": 0.25,
-      "params": {
-        "at": "lysosome"
-      }
-    }
-  ],
+  "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -326,5 +426,6 @@
         "id": "gr-pompe"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }

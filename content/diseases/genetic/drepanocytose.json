@@ -116,22 +116,22 @@
       }
     }
   ],
-  "durationSeconds": 45,
+  "durationSeconds": 60,
   "stages": [
     {
       "id": "gene",
       "title": {
-        "fr": "Une base changée dans HBB",
-        "en": "One base changed in HBB"
+        "fr": "Un gène HBB modifié",
+        "en": "An altered HBB gene"
       },
       "range": [
-        0,
-        0.32
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Dans le gène HBB, un seul nucléotide est remplacé par un autre. Cette petite différence change un acide aminé de la bêta-globine.",
-          "en": "In the HBB gene, a single nucleotide is replaced by another. This small difference changes one amino acid of beta-globin."
+          "fr": "Tout commence dans l'ADN : dans les deux copies du gène HBB de la bêta-globine, un seul nucléotide est remplacé par un autre.",
+          "en": "It all starts in the DNA: in both copies of the HBB gene for beta-globin, a single nucleotide is replaced by another."
         },
         "sources": [
           {
@@ -142,8 +142,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "La mutation ponctuelle est marquée en rouge dans l'ADN.",
-            "en": "The point mutation is marked in red in the DNA."
+            "fr": "Le variant est marqué en rouge dans l'ADN.",
+            "en": "The variant is marked in red in the DNA."
           },
           "sources": [
             {
@@ -152,22 +152,27 @@
           ]
         }
       ],
-      "focus": "dna"
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "seconds": 12
     },
     {
-      "id": "hbs",
+      "id": "globin",
       "title": {
-        "fr": "L'hémoglobine S se polymérise",
-        "en": "Haemoglobin S polymerises"
+        "fr": "Une bêta-globine modifiée",
+        "en": "An altered beta-globin"
       },
       "range": [
-        0.32,
-        0.66
+        0.2,
+        0.4
       ],
       "description": {
         "text": {
-          "fr": "L'ARN messager du gène muté est traduit en bêta-globine anormale, qui forme l'hémoglobine S. Privée d'oxygène, elle s'assemble en longues fibres.",
-          "en": "The messenger RNA of the mutated gene is translated into abnormal beta-globin, which forms haemoglobin S. Without oxygen, it assembles into long fibres."
+          "fr": "L'ARN messager du gène muté est traduit par les ribosomes : dans la bêta-globine, l'acide glutamique en position 6 est remplacé par une valine.",
+          "en": "The messenger RNA of the mutated gene is translated by ribosomes: in beta-globin, glutamic acid at position 6 is replaced by valine."
         },
         "sources": [
           {
@@ -178,39 +183,128 @@
           }
         ]
       },
-      "cellularSigns": [
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "nucleus.pore",
+        "radius": 14
+      },
+      "highlight": [
+        "ribosome",
+        "nucleus"
+      ],
+      "heroes": [
         {
-          "text": {
-            "fr": "Le cytoplasme se charge de fibres d'hémoglobine.",
-            "en": "The cytoplasm fills with haemoglobin fibres."
-          },
-          "sources": [
-            {
-              "id": "sp-sickle-cell"
-            }
+          "model": "mrna",
+          "path": [
+            "nucleus.pore",
+            "cytoplasm"
           ],
-          "simplification": {
-            "fr": "Les fibres d'hémoglobine S sont suggérées par des agrégats et une teinte, pas dessinées une à une.",
-            "en": "Haemoglobin S fibres are suggested by aggregates and a change of tint, not drawn one by one."
+          "label": {
+            "fr": "ARN messager HBB",
+            "en": "HBB messenger RNA"
+          }
+        },
+        {
+          "model": "protein",
+          "path": [
+            "cytoplasm"
+          ],
+          "count": 5,
+          "label": {
+            "fr": "Bêta-globine",
+            "en": "Beta-globin"
           }
         }
       ],
-      "focus": "cytoplasm"
+      "seconds": 12
     },
     {
-      "id": "faucille",
+      "id": "polymer",
       "title": {
-        "fr": "Globules rouges déformés",
-        "en": "Deformed red blood cells"
+        "fr": "L'hémoglobine S se polymérise",
+        "en": "Haemoglobin S polymerises"
       },
       "range": [
-        0.66,
+        0.4,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "Avec les autres chaînes, elle forme l'hémoglobine S ; privée d'oxygène, celle-ci s'assemble en longues fibres rigides.",
+          "en": "Together with the other chains, it forms haemoglobin S; without oxygen, it assembles into long, stiff fibres."
+        },
+        "sources": [
+          {
+            "id": "sp-sickle-cell"
+          }
+        ],
+        "simplification": {
+          "fr": "Les fibres sont suggérées par des agrégats, pas dessinées une à une.",
+          "en": "The fibres are suggested by aggregates, not drawn one by one."
+        }
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "cytoplasm",
+        "radius": 24
+      },
+      "highlight": [
+        "aggregates"
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "sickle",
+      "title": {
+        "fr": "Des globules rouges en faucille",
+        "en": "Sickle-shaped red blood cells"
+      },
+      "range": [
+        0.6,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "Les globules rouges se déforment en faucille et deviennent rigides et fragiles.",
+          "en": "Red blood cells deform into a sickle shape and become stiff and fragile."
+        },
+        "sources": [
+          {
+            "id": "sp-sickle-cell"
+          }
+        ],
+        "simplification": {
+          "fr": "La forme en faucille n'est pas représentée : le modèle reste une cellule générique.",
+          "en": "The sickle shape is not shown: the model stays a generic cell."
+        }
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "view": "cell",
+        "radius": 90
+      },
+      "highlight": [
+        "aggregates"
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "consequences",
+      "title": {
+        "fr": "Hémolyse et crises",
+        "en": "Haemolysis and crises"
+      },
+      "range": [
+        0.8,
         1
       ],
       "description": {
         "text": {
-          "fr": "Les globules rouges prennent une forme de faucille, deviennent rigides et fragiles : ils se détruisent plus vite et peuvent boucher les petits vaisseaux, ce qui provoque des crises douloureuses.",
-          "en": "Red blood cells take on a sickle shape and become stiff and fragile: they are destroyed faster and can block small blood vessels, causing painful crises."
+          "fr": "Ces globules rouges sont détruits plus vite (hémolyse) et peuvent boucher les petits vaisseaux, ce qui provoque des crises douloureuses.",
+          "en": "These red blood cells are destroyed faster (haemolysis) and can block small blood vessels, causing painful crises."
         },
         "sources": [
           {
@@ -218,23 +312,13 @@
           }
         ]
       },
-      "cellularSigns": [
-        {
-          "text": {
-            "fr": "La cellule perd sa souplesse et sa durée de vie raccourcit.",
-            "en": "The cell loses its flexibility and its lifespan shortens."
-          },
-          "sources": [
-            {
-              "id": "sp-sickle-cell"
-            }
-          ]
-        }
-      ],
+      "cellularSigns": [],
       "focus": "plasma-membrane",
       "camera": {
-        "view": "cell"
-      }
+        "view": "cell",
+        "radius": 100
+      },
+      "seconds": 12
     }
   ],
   "tracks": [
@@ -243,19 +327,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.12,
+          "t": 0.02,
+          "v": 0.0
+        },
+        {
+          "t": 0.14,
           "v": 1
-        },
-        {
-          "t": 0.66,
-          "v": 1
-        },
-        {
-          "t": 1,
-          "v": 0.6
         }
       ]
     },
@@ -264,18 +344,22 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.4,
-          "v": 0
+          "t": 0.42,
+          "v": 0.0
         },
         {
-          "t": 0.66,
+          "t": 0.54,
           "v": 0.7
         },
         {
-          "t": 1,
+          "t": 0.62,
+          "v": 0.7
+        },
+        {
+          "t": 0.74,
           "v": 0.9
         }
       ]
@@ -285,18 +369,22 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.4,
-          "v": 0
+          "t": 0.42,
+          "v": 0.0
         },
         {
-          "t": 0.66,
-          "v": 0.35
+          "t": 0.54,
+          "v": 0.3
         },
         {
-          "t": 1,
+          "t": 0.62,
+          "v": 0.3
+        },
+        {
+          "t": 0.74,
           "v": 0.5
         }
       ]
@@ -306,56 +394,20 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.7,
-          "v": 1
+          "t": 0.82,
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 0.7
-        }
-      ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
-        },
-        {
-          "t": 0.05,
-          "v": 0.5
-        },
-        {
-          "t": 0.95,
-          "v": 0.5
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.94,
+          "v": 0.65
         }
       ]
     }
   ],
-  "actors": [
-    {
-      "actor": "path",
-      "at": 0.3,
-      "until": 0.55,
-      "params": {
-        "path": [
-          "nucleus",
-          "nucleus.pore",
-          "cytoplasm"
-        ],
-        "cargo": "mrna",
-        "count": 6
-      }
-    }
-  ],
+  "actors": [],
   "treatmentsNote": {
     "text": {
       "fr": "Hydroxyurée, transfusions et, dans certains cas, greffe de cellules souches hématopoïétiques ; la prise en charge relève d'équipes spécialisées.",

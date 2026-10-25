@@ -95,71 +95,188 @@
   ],
   "stages": [
     {
+      "id": "gene",
+      "title": {
+        "fr": "Un gène LDLR modifié",
+        "en": "An altered LDLR gene"
+      },
+      "range": [
+        0.0,
+        0.25
+      ],
+      "description": {
+        "text": {
+          "fr": "Tout commence dans l'ADN : des variants, le plus souvent du gène LDLR, touchent le récepteur qui capte le cholestérol LDL du sang.",
+          "en": "It all starts in the DNA: variants, most often of the LDLR gene, affect the receptor that captures LDL cholesterol from the blood."
+        },
+        "sources": [
+          {
+            "id": "gr-fh"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Le variant est marqué en rouge dans l'ADN.",
+            "en": "The variant is marked in red in the DNA."
+          },
+          "sources": [
+            {
+              "id": "gr-fh"
+            }
+          ]
+        }
+      ],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "seconds": 12
+    },
+    {
       "id": "normal",
       "title": {
         "fr": "Capture normale",
         "en": "Normal uptake"
       },
       "range": [
-        0,
-        0.3
+        0.25,
+        0.5
       ],
       "description": {
         "text": {
-          "fr": "Les LDL se lient à leurs récepteurs et sont internalisées.",
-          "en": "LDL binds to its receptors and is taken into the cell."
+          "fr": "Normalement, les particules de LDL se fixent à leurs récepteurs sur la membrane et sont internalisées par endocytose.",
+          "en": "Normally, LDL particles bind to their receptors on the membrane and are taken into the cell by endocytosis."
         },
         "sources": [
           {
             "id": "mboc4-receptor-endocytosis"
+          },
+          {
+            "id": "gr-fh"
           }
         ]
       },
       "cellularSigns": [],
-      "focus": "plasma-membrane"
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 12
+      },
+      "highlight": [
+        "vesicle"
+      ],
+      "heroes": [
+        {
+          "model": "ldl",
+          "path": [
+            "outside",
+            "membrane",
+            "endosome"
+          ],
+          "offset": [
+            4.1,
+            0.7,
+            3.6
+          ],
+          "count": 5,
+          "label": {
+            "fr": "LDL",
+            "en": "LDL"
+          }
+        },
+        {
+          "model": "receptor",
+          "path": [
+            "membrane"
+          ],
+          "offset": [
+            0.6,
+            0.1,
+            0.5
+          ],
+          "label": {
+            "fr": "Récepteur des LDL",
+            "en": "LDL receptor"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "recepteurs",
+      "id": "faulty",
       "title": {
         "fr": "Récepteurs déficients",
         "en": "Faulty receptors"
       },
       "range": [
-        0.3,
-        0.65
+        0.5,
+        0.75
       ],
       "description": {
         "text": {
-          "fr": "Les récepteurs des LDL sont moins nombreux ou moins fonctionnels.",
-          "en": "LDL receptors are fewer or work less well."
+          "fr": "Dans l'hypercholestérolémie familiale, les récepteurs des LDL sont moins nombreux ou fonctionnent mal.",
+          "en": "In familial hypercholesterolaemia, LDL receptors are fewer or work poorly."
         },
         "sources": [
           {
             "id": "gr-fh"
           }
-        ],
-        "simplification": {
-          "fr": "Les récepteurs représentés sont génériques ; leur nombre figure la capacité de capture.",
-          "en": "The receptors shown are generic; their number stands for the uptake capacity."
-        }
+        ]
       },
-      "cellularSigns": [],
-      "focus": "plasma-membrane"
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Les récepteurs représentés sont génériques ; leur nombre figure la capacité de capture.",
+            "en": "The receptors shown are generic; their number stands for the uptake capacity."
+          },
+          "sources": [
+            {
+              "id": "gr-fh"
+            }
+          ]
+        }
+      ],
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 13
+      },
+      "heroes": [
+        {
+          "model": "receptor",
+          "path": [
+            "membrane"
+          ],
+          "offset": [
+            0.6,
+            0.1,
+            0.5
+          ],
+          "label": {
+            "fr": "Récepteur des LDL déficient",
+            "en": "Faulty LDL receptor"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "ldl",
+      "id": "excess",
       "title": {
-        "fr": "LDL en excès",
-        "en": "Excess LDL"
+        "fr": "Le LDL reste dans le sang",
+        "en": "LDL stays in the blood"
       },
       "range": [
-        0.65,
+        0.75,
         1
       ],
       "description": {
         "text": {
-          "fr": "Les LDL ne sont plus captées et s'accumulent dans le sang.",
-          "en": "LDL is no longer taken up and builds up in the blood."
+          "fr": "Mal captées, les particules de LDL restent dans le sang : le taux de cholestérol LDL augmente.",
+          "en": "Poorly captured, LDL particles stay in the blood: the LDL cholesterol level rises."
         },
         "sources": [
           {
@@ -168,82 +285,98 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "plasma-membrane"
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 18
+      },
+      "heroes": [
+        {
+          "model": "ldl",
+          "path": [
+            "outside",
+            "membrane"
+          ],
+          "offset": [
+            12,
+            2,
+            10.5
+          ],
+          "count": 10,
+          "label": {
+            "fr": "LDL en excès",
+            "en": "Excess LDL"
+          }
+        }
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
+    {
+      "channel": "dna.mutation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.025,
+          "v": 0.0
+        },
+        {
+          "t": 0.175,
+          "v": 1
+        }
+      ]
+    },
+    {
+      "channel": "membrane.pit",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.275,
+          "v": 0.0
+        },
+        {
+          "t": 0.425,
+          "v": 1
+        },
+        {
+          "t": 0.525,
+          "v": 1
+        },
+        {
+          "t": 0.675,
+          "v": 0
+        }
+      ]
+    },
     {
       "channel": "membrane.receptorDensity",
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.3,
-          "v": 1
+          "t": 0.525,
+          "v": 1.0
         },
         {
-          "t": 0.65,
-          "v": 0.25
-        }
-      ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
-        },
-        {
-          "t": 0.05,
-          "v": 0.35
-        },
-        {
-          "t": 0.95,
-          "v": 0.35
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.675,
+          "v": 0.3
         }
       ]
     }
   ],
-  "actors": [
-    {
-      "actor": "path",
-      "at": 0.0,
-      "until": 0.3,
-      "params": {
-        "path": [
-          "outside",
-          "membrane",
-          "endosome"
-        ],
-        "cargo": "ldl",
-        "count": 6
-      }
-    },
-    {
-      "actor": "path",
-      "at": 0.4,
-      "until": 1.0,
-      "params": {
-        "path": [
-          "outside",
-          "membrane",
-          "outside"
-        ],
-        "cargo": "ldl",
-        "count": 10
-      }
-    }
-  ],
+  "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -255,5 +388,6 @@
         "id": "gr-fh"
       }
     ]
-  }
+  },
+  "durationSeconds": 48
 }
