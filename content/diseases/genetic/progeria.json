@@ -2,7 +2,8 @@
   "id": "progeria",
   "slug": "progeria-de-hutchinson-gilford",
   "name": {
-    "fr": "Progéria de Hutchinson-Gilford"
+    "fr": "Progéria de Hutchinson-Gilford",
+    "en": "Hutchinson-Gilford progeria syndrome"
   },
   "aliases": [
     "HGPS"
@@ -14,7 +15,8 @@
     "cellType": "fibroblast",
     "note": {
       "text": {
-        "fr": "Les fibroblastes des patients montrent des noyaux déformés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Les fibroblastes des patients montrent des noyaux déformés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "Patients' fibroblasts show misshapen nuclei. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -25,7 +27,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie génétique rare de vieillissement prématuré : une forme anormale de lamine A, la progérine, s'accumule et déforme l'enveloppe nucléaire."
+      "fr": "Maladie génétique rare de vieillissement prématuré : une forme anormale de lamine A, la progérine, s'accumule et déforme l'enveloppe nucléaire.",
+      "en": "A rare genetic disease of premature ageing: an abnormal form of lamin A, progerin, builds up and deforms the nuclear envelope."
     },
     "sources": [
       {
@@ -36,7 +39,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Un variant du gène LMNA, le plus souvent apparu de novo (c.1824C>T dans la forme classique), produit la progérine."
+        "fr": "Un variant du gène LMNA, le plus souvent apparu de novo (c.1824C>T dans la forme classique), produit la progérine.",
+        "en": "A variant of the LMNA gene, usually arising de novo (c.1824C>T in the classic form), produces progerin."
       },
       "sources": [
         {
@@ -55,11 +59,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Progérine"
+        "fr": "Progérine",
+        "en": "Progerin"
       },
       "explanation": {
         "text": {
-          "fr": "La progérine reste ancrée à l'enveloppe nucléaire et perturbe la lamina, le réseau qui soutient le noyau."
+          "fr": "La progérine reste ancrée à l'enveloppe nucléaire et perturbe la lamina, le réseau qui soutient le noyau.",
+          "en": "Progerin stays anchored to the nuclear envelope and disrupts the lamina, the meshwork that supports the nucleus."
         },
         "sources": [
           {
@@ -71,11 +77,13 @@
     },
     {
       "title": {
-        "fr": "Noyau déformé"
+        "fr": "Noyau déformé",
+        "en": "Misshapen nucleus"
       },
       "explanation": {
         "text": {
-          "fr": "Le noyau prend une forme irrégulière, avec des bourgeonnements de l'enveloppe."
+          "fr": "Le noyau prend une forme irrégulière, avec des bourgeonnements de l'enveloppe.",
+          "en": "The nucleus becomes irregular, with blebs in its envelope."
         },
         "sources": [
           {
@@ -90,7 +98,8 @@
     {
       "id": "progerine",
       "title": {
-        "fr": "Production de progérine"
+        "fr": "Production de progérine",
+        "en": "Progerin production"
       },
       "range": [
         0,
@@ -98,7 +107,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le variant produit une lamine A anormale, la progérine."
+          "fr": "Le variant produit une lamine A anormale, la progérine.",
+          "en": "The variant produces an abnormal lamin A, progerin."
         },
         "sources": [
           {
@@ -112,7 +122,8 @@
     {
       "id": "enveloppe",
       "title": {
-        "fr": "Enveloppe déformée"
+        "fr": "Enveloppe déformée",
+        "en": "Deformed envelope"
       },
       "range": [
         0.35,
@@ -120,7 +131,8 @@
       ],
       "description": {
         "text": {
-          "fr": "La progérine s'accumule et l'enveloppe nucléaire se déforme."
+          "fr": "La progérine s'accumule et l'enveloppe nucléaire se déforme.",
+          "en": "Progerin builds up and the nuclear envelope becomes deformed."
         },
         "sources": [
           {
@@ -131,7 +143,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Noyaux irréguliers, enveloppe bosselée."
+            "fr": "Noyaux irréguliers, enveloppe bosselée.",
+            "en": "Irregular nuclei with a lumpy envelope."
           },
           "sources": [
             {
@@ -145,7 +158,8 @@
     {
       "id": "vieillissement",
       "title": {
-        "fr": "Vieillissement cellulaire"
+        "fr": "Vieillissement cellulaire",
+        "en": "Cellular ageing"
       },
       "range": [
         0.8,
@@ -153,7 +167,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les cellules montrent des signes de vieillissement prématuré."
+          "fr": "Les cellules montrent des signes de vieillissement prématuré.",
+          "en": "The cells show signs of premature ageing."
         },
         "sources": [
           {
@@ -257,7 +272,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Un inhibiteur de farnésyltransférase (lonafarnib) est utilisé ; il relève d'un avis spécialisé."
+      "fr": "Un inhibiteur de farnésyltransférase (lonafarnib) est utilisé ; il relève d'un avis spécialisé.",
+      "en": "A farnesyltransferase inhibitor (lonafarnib) is used; it requires specialist advice."
     },
     "sources": [
       {

@@ -2,7 +2,8 @@
   "id": "fabry",
   "slug": "maladie-de-fabry",
   "name": {
-    "fr": "Maladie de Fabry"
+    "fr": "Maladie de Fabry",
+    "en": "Fabry disease"
   },
   "aliases": [],
   "categories": [
@@ -13,7 +14,8 @@
     "cellType": "generic",
     "note": {
       "text": {
-        "fr": "Le Gb3 s'accumule dans de nombreux types de cellules, notamment des vaisseaux, des reins et du cœur. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Le Gb3 s'accumule dans de nombreux types de cellules, notamment des vaisseaux, des reins et du cœur. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "Gb3 accumulates in many cell types, notably in blood vessels, the kidneys and the heart. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -24,7 +26,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie de surcharge lysosomale : faute d'une enzyme fonctionnelle, le globotriaosylcéramide (Gb3) s'accumule dans les lysosomes, qui gonflent et perturbent la cellule."
+      "fr": "Maladie de surcharge lysosomale : faute d'une enzyme fonctionnelle, le globotriaosylcéramide (Gb3) s'accumule dans les lysosomes, qui gonflent et perturbent la cellule.",
+      "en": "A lysosomal storage disease: without a working enzyme, globotriaosylceramide (Gb3) accumulates in lysosomes, which swell and disrupt the cell."
     },
     "sources": [
       {
@@ -38,7 +41,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Des variants du gène GLA, situé sur le chromosome X, réduisent l'activité de l'alpha-galactosidase A."
+        "fr": "Des variants du gène GLA, situé sur le chromosome X, réduisent l'activité de l'alpha-galactosidase A.",
+        "en": "Variants of the GLA gene, on the X chromosome, reduce the activity of alpha-galactosidase A."
       },
       "sources": [
         {
@@ -56,11 +60,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Enzyme lysosomale déficiente"
+        "fr": "Enzyme lysosomale déficiente",
+        "en": "Deficient lysosomal enzyme"
       },
       "explanation": {
         "text": {
-          "fr": "Des variants du gène GLA, situé sur le chromosome X, réduisent l'activité de l'alpha-galactosidase A."
+          "fr": "Des variants du gène GLA, situé sur le chromosome X, réduisent l'activité de l'alpha-galactosidase A.",
+          "en": "Variants of the GLA gene, on the X chromosome, reduce the activity of alpha-galactosidase A."
         },
         "sources": [
           {
@@ -72,11 +78,13 @@
     },
     {
       "title": {
-        "fr": "Accumulation du substrat"
+        "fr": "Accumulation du substrat",
+        "en": "Substrate build-up"
       },
       "explanation": {
         "text": {
-          "fr": "Ne pouvant être dégradé, le globotriaosylcéramide (Gb3) reste piégé dans les lysosomes."
+          "fr": "Ne pouvant être dégradé, le globotriaosylcéramide (Gb3) reste piégé dans les lysosomes.",
+          "en": "Since it cannot be broken down, globotriaosylceramide (Gb3) stays trapped in lysosomes."
         },
         "sources": [
           {
@@ -94,7 +102,8 @@
     {
       "id": "enzyme",
       "title": {
-        "fr": "Enzyme déficiente"
+        "fr": "Enzyme déficiente",
+        "en": "Deficient enzyme"
       },
       "range": [
         0,
@@ -102,7 +111,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Des variants du gène GLA, situé sur le chromosome X, réduisent l'activité de l'alpha-galactosidase A."
+          "fr": "Des variants du gène GLA, situé sur le chromosome X, réduisent l'activité de l'alpha-galactosidase A.",
+          "en": "Variants of the GLA gene, on the X chromosome, reduce the activity of alpha-galactosidase A."
         },
         "sources": [
           {
@@ -116,7 +126,8 @@
     {
       "id": "accumulation",
       "title": {
-        "fr": "Accumulation"
+        "fr": "Accumulation",
+        "en": "Build-up"
       },
       "range": [
         0.25,
@@ -124,7 +135,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le globotriaosylcéramide (Gb3) s'accumule progressivement dans les lysosomes."
+          "fr": "Le globotriaosylcéramide (Gb3) s'accumule progressivement dans les lysosomes.",
+          "en": "Globotriaosylceramide (Gb3) gradually accumulates in lysosomes."
         },
         "sources": [
           {
@@ -141,7 +153,8 @@
     {
       "id": "surcharge",
       "title": {
-        "fr": "Lysosomes surchargés"
+        "fr": "Lysosomes surchargés",
+        "en": "Overloaded lysosomes"
       },
       "range": [
         0.6,
@@ -149,7 +162,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les lysosomes, remplis de matériel non dégradé, augmentent en taille et en nombre."
+          "fr": "Les lysosomes, remplis de matériel non dégradé, augmentent en taille et en nombre.",
+          "en": "Filled with undegraded material, lysosomes grow in size and number."
         },
         "sources": [
           {
@@ -160,13 +174,15 @@
           }
         ],
         "simplification": {
-          "fr": "La vitesse d'accumulation est très accélérée : dans la maladie, elle se fait sur des mois ou des années."
+          "fr": "La vitesse d'accumulation est très accélérée : dans la maladie, elle se fait sur des mois ou des années.",
+          "en": "The build-up is greatly sped up: in the disease, it takes months or years."
         }
       },
       "cellularSigns": [
         {
           "text": {
-            "fr": "Lysosomes distendus, remplis d'un matériel pâle."
+            "fr": "Lysosomes distendus, remplis d'un matériel pâle.",
+            "en": "Distended lysosomes filled with pale material."
           },
           "sources": [
             {
@@ -180,7 +196,8 @@
     {
       "id": "dysfonction",
       "title": {
-        "fr": "Dysfonction cellulaire"
+        "fr": "Dysfonction cellulaire",
+        "en": "Cell dysfunction"
       },
       "range": [
         0.85,
@@ -188,7 +205,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le Gb3 s'accumule dans de nombreux types de cellules, notamment des vaisseaux, des reins et du cœur. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+          "fr": "Le Gb3 s'accumule dans de nombreux types de cellules, notamment des vaisseaux, des reins et du cœur. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+          "en": "Gb3 accumulates in many cell types, notably in blood vessels, the kidneys and the heart. The model shows a generic cell; the changes shown are those described in the affected cells."
         },
         "sources": [
           {
@@ -297,7 +315,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Des traitements existent, comme le traitement enzymatique substitutif ; ils relèvent d'un avis médical spécialisé."
+      "fr": "Des traitements existent, comme le traitement enzymatique substitutif ; ils relèvent d'un avis médical spécialisé.",
+      "en": "Treatments exist, such as enzyme replacement therapy; they require specialist medical advice."
     },
     "sources": [
       {

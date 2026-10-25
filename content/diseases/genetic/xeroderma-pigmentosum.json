@@ -2,7 +2,8 @@
   "id": "xeroderma-pigmentosum",
   "slug": "xeroderma-pigmentosum",
   "name": {
-    "fr": "Xeroderma pigmentosum"
+    "fr": "Xeroderma pigmentosum",
+    "en": "Xeroderma pigmentosum"
   },
   "aliases": [
     "XP"
@@ -15,7 +16,8 @@
     "cellType": "epithelial",
     "note": {
       "text": {
-        "fr": "Les cellules touchées sont surtout celles de la peau et des yeux exposées au soleil. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Les cellules touchées sont surtout celles de la peau et des yeux exposées au soleil. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "The cells affected are mainly those of the skin and eyes that are exposed to sunlight. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -26,7 +28,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie génétique rare : les cellules réparent mal l'ADN abîmé par les ultraviolets. Les lésions s'accumulent dans la peau exposée au soleil, où des cancers apparaissent très tôt."
+      "fr": "Maladie génétique rare : les cellules réparent mal l'ADN abîmé par les ultraviolets. Les lésions s'accumulent dans la peau exposée au soleil, où des cancers apparaissent très tôt.",
+      "en": "A rare genetic disease: cells repair DNA damaged by ultraviolet light poorly. The lesions build up in sun-exposed skin, where cancers appear very early."
     },
     "sources": [
       {
@@ -40,7 +43,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Des variants des deux copies (transmission autosomique récessive) d'un gène de la réparation de l'ADN par excision de nucléotides (XPA à XPG), ou du gène POLH dans la forme « variante »."
+        "fr": "Des variants des deux copies (transmission autosomique récessive) d'un gène de la réparation de l'ADN par excision de nucléotides (XPA à XPG), ou du gène POLH dans la forme « variante ».",
+        "en": "Variants in both copies (autosomal recessive inheritance) of a nucleotide excision repair gene (XPA to XPG), or of the POLH gene in the “variant” form."
       },
       "sources": [
         {
@@ -59,11 +63,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Lésions dues aux UV"
+        "fr": "Lésions dues aux UV",
+        "en": "UV damage"
       },
       "explanation": {
         "text": {
-          "fr": "Les rayons ultraviolets lient entre elles des bases voisines de l'ADN (dimères de pyrimidines), ce qui déforme la double hélice."
+          "fr": "Les rayons ultraviolets lient entre elles des bases voisines de l'ADN (dimères de pyrimidines), ce qui déforme la double hélice.",
+          "en": "Ultraviolet rays link neighbouring DNA bases together (pyrimidine dimers), which distorts the double helix."
         },
         "sources": [
           {
@@ -78,11 +84,13 @@
     },
     {
       "title": {
-        "fr": "Réparation défaillante"
+        "fr": "Réparation défaillante",
+        "en": "Faulty repair"
       },
       "explanation": {
         "text": {
-          "fr": "La réparation par excision de nucléotides découpe normalement le segment abîmé et le resynthétise ; dans le XP, une de ses protéines manque et les lésions persistent."
+          "fr": "La réparation par excision de nucléotides découpe normalement le segment abîmé et le resynthétise ; dans le XP, une de ses protéines manque et les lésions persistent.",
+          "en": "Nucleotide excision repair normally cuts out the damaged stretch and resynthesises it; in XP, one of its proteins is missing and the lesions remain."
         },
         "sources": [
           {
@@ -94,11 +102,13 @@
     },
     {
       "title": {
-        "fr": "Mutations et cancers"
+        "fr": "Mutations et cancers",
+        "en": "Mutations and cancers"
       },
       "explanation": {
         "text": {
-          "fr": "Les lésions non réparées deviennent des mutations, qui conduisent à des cancers de la peau dès l'enfance."
+          "fr": "Les lésions non réparées deviennent des mutations, qui conduisent à des cancers de la peau dès l'enfance.",
+          "en": "Unrepaired lesions become mutations, which lead to skin cancers from childhood."
         },
         "sources": [
           {
@@ -117,7 +127,8 @@
     {
       "id": "uv",
       "title": {
-        "fr": "Les UV abîment l'ADN"
+        "fr": "Les UV abîment l'ADN",
+        "en": "UV light damages DNA"
       },
       "range": [
         0,
@@ -125,7 +136,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les ultraviolets du soleil atteignent le noyau et lient entre elles des bases voisines de l'ADN : des dimères de pyrimidines apparaissent."
+          "fr": "Les ultraviolets du soleil atteignent le noyau et lient entre elles des bases voisines de l'ADN : des dimères de pyrimidines apparaissent.",
+          "en": "Ultraviolet light from the sun reaches the nucleus and links neighbouring DNA bases together: pyrimidine dimers form."
         },
         "sources": [
           {
@@ -139,7 +151,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Lésions de l'ADN dispersées dans le noyau (marquées en jaune)."
+            "fr": "Lésions de l'ADN dispersées dans le noyau (marquées en jaune).",
+            "en": "DNA lesions scattered through the nucleus (marked in yellow)."
           },
           "sources": [
             {
@@ -153,7 +166,8 @@
     {
       "id": "reparation",
       "title": {
-        "fr": "La réparation échoue"
+        "fr": "La réparation échoue",
+        "en": "Repair fails"
       },
       "range": [
         0.32,
@@ -161,7 +175,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Normalement, la réparation par excision de nucléotides retire et remplace le segment abîmé. Dans le XP, elle est défaillante : les lésions restent en place."
+          "fr": "Normalement, la réparation par excision de nucléotides retire et remplace le segment abîmé. Dans le XP, elle est défaillante : les lésions restent en place.",
+          "en": "Normally, nucleotide excision repair removes and replaces the damaged stretch. In XP it fails: the lesions stay in place."
         },
         "sources": [
           {
@@ -172,7 +187,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Les lésions persistent au lieu d'être réparées."
+            "fr": "Les lésions persistent au lieu d'être réparées.",
+            "en": "The lesions remain instead of being repaired."
           },
           "sources": [
             {
@@ -186,7 +202,8 @@
     {
       "id": "mutations",
       "title": {
-        "fr": "Des mutations s'accumulent"
+        "fr": "Des mutations s'accumulent",
+        "en": "Mutations build up"
       },
       "range": [
         0.66,
@@ -194,7 +211,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Lorsque l'ADN est copié, les lésions non réparées deviennent des mutations. En s'accumulant, elles mènent à des cancers de la peau."
+          "fr": "Lorsque l'ADN est copié, les lésions non réparées deviennent des mutations. En s'accumulant, elles mènent à des cancers de la peau.",
+          "en": "When the DNA is copied, unrepaired lesions become mutations. As they build up, they lead to skin cancers."
         },
         "sources": [
           {
@@ -208,7 +226,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Une mutation (en rouge) apparaît dans l'ADN."
+            "fr": "Une mutation (en rouge) apparaît dans l'ADN.",
+            "en": "A mutation (in red) appears in the DNA."
           },
           "sources": [
             {
@@ -320,7 +339,8 @@
   ],
   "treatmentsNote": {
     "text": {
-      "fr": "La prise en charge repose sur une protection stricte contre les ultraviolets et une surveillance régulière de la peau et des yeux ; elle relève d'un avis spécialisé."
+      "fr": "La prise en charge repose sur une protection stricte contre les ultraviolets et une surveillance régulière de la peau et des yeux ; elle relève d'un avis spécialisé.",
+      "en": "Care relies on strict protection from ultraviolet light and regular checks of the skin and eyes; it requires specialist advice."
     },
     "sources": [
       {

@@ -2,7 +2,8 @@
   "id": "pompe",
   "slug": "maladie-de-pompe",
   "name": {
-    "fr": "Maladie de Pompe"
+    "fr": "Maladie de Pompe",
+    "en": "Pompe disease"
   },
   "aliases": [
     "Glycogénose de type II"
@@ -16,7 +17,8 @@
     "cellType": "muscle-fiber",
     "note": {
       "text": {
-        "fr": "Le glycogène s'accumule surtout dans les cellules musculaires, notamment du cœur et des muscles squelettiques. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Le glycogène s'accumule surtout dans les cellules musculaires, notamment du cœur et des muscles squelettiques. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "Glycogen accumulates mainly in muscle cells, notably in the heart and skeletal muscles. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -27,7 +29,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie de surcharge lysosomale : faute d'une enzyme fonctionnelle, le glycogène s'accumule dans les lysosomes, qui gonflent et perturbent la cellule."
+      "fr": "Maladie de surcharge lysosomale : faute d'une enzyme fonctionnelle, le glycogène s'accumule dans les lysosomes, qui gonflent et perturbent la cellule.",
+      "en": "A lysosomal storage disease: without a working enzyme, glycogen accumulates in lysosomes, which swell and disrupt the cell."
     },
     "sources": [
       {
@@ -41,7 +44,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Des variants du gène GAA réduisent l'activité de l'alpha-glucosidase acide, l'enzyme lysosomale qui dégrade le glycogène."
+        "fr": "Des variants du gène GAA réduisent l'activité de l'alpha-glucosidase acide, l'enzyme lysosomale qui dégrade le glycogène.",
+        "en": "Variants of the GAA gene reduce the activity of acid alpha-glucosidase, the lysosomal enzyme that breaks down glycogen."
       },
       "sources": [
         {
@@ -59,11 +63,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Enzyme lysosomale déficiente"
+        "fr": "Enzyme lysosomale déficiente",
+        "en": "Deficient lysosomal enzyme"
       },
       "explanation": {
         "text": {
-          "fr": "Des variants du gène GAA réduisent l'activité de l'alpha-glucosidase acide, l'enzyme lysosomale qui dégrade le glycogène."
+          "fr": "Des variants du gène GAA réduisent l'activité de l'alpha-glucosidase acide, l'enzyme lysosomale qui dégrade le glycogène.",
+          "en": "Variants of the GAA gene reduce the activity of acid alpha-glucosidase, the lysosomal enzyme that breaks down glycogen."
         },
         "sources": [
           {
@@ -75,11 +81,13 @@
     },
     {
       "title": {
-        "fr": "Accumulation du substrat"
+        "fr": "Accumulation du substrat",
+        "en": "Substrate build-up"
       },
       "explanation": {
         "text": {
-          "fr": "Ne pouvant être dégradé, le glycogène reste piégé dans les lysosomes."
+          "fr": "Ne pouvant être dégradé, le glycogène reste piégé dans les lysosomes.",
+          "en": "Since it cannot be broken down, glycogen stays trapped in lysosomes."
         },
         "sources": [
           {
@@ -97,7 +105,8 @@
     {
       "id": "enzyme",
       "title": {
-        "fr": "Enzyme déficiente"
+        "fr": "Enzyme déficiente",
+        "en": "Deficient enzyme"
       },
       "range": [
         0,
@@ -105,7 +114,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Des variants du gène GAA réduisent l'activité de l'alpha-glucosidase acide, l'enzyme lysosomale qui dégrade le glycogène."
+          "fr": "Des variants du gène GAA réduisent l'activité de l'alpha-glucosidase acide, l'enzyme lysosomale qui dégrade le glycogène.",
+          "en": "Variants of the GAA gene reduce the activity of acid alpha-glucosidase, the lysosomal enzyme that breaks down glycogen."
         },
         "sources": [
           {
@@ -119,7 +129,8 @@
     {
       "id": "accumulation",
       "title": {
-        "fr": "Accumulation"
+        "fr": "Accumulation",
+        "en": "Build-up"
       },
       "range": [
         0.25,
@@ -127,7 +138,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le glycogène s'accumule progressivement dans les lysosomes."
+          "fr": "Le glycogène s'accumule progressivement dans les lysosomes.",
+          "en": "Glycogen gradually accumulates in lysosomes."
         },
         "sources": [
           {
@@ -144,7 +156,8 @@
     {
       "id": "surcharge",
       "title": {
-        "fr": "Lysosomes surchargés"
+        "fr": "Lysosomes surchargés",
+        "en": "Overloaded lysosomes"
       },
       "range": [
         0.6,
@@ -152,7 +165,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les lysosomes, remplis de matériel non dégradé, augmentent en taille et en nombre."
+          "fr": "Les lysosomes, remplis de matériel non dégradé, augmentent en taille et en nombre.",
+          "en": "Filled with undegraded material, lysosomes grow in size and number."
         },
         "sources": [
           {
@@ -163,13 +177,15 @@
           }
         ],
         "simplification": {
-          "fr": "La vitesse d'accumulation est très accélérée : dans la maladie, elle se fait sur des mois ou des années."
+          "fr": "La vitesse d'accumulation est très accélérée : dans la maladie, elle se fait sur des mois ou des années.",
+          "en": "The build-up is greatly sped up: in the disease, it takes months or years."
         }
       },
       "cellularSigns": [
         {
           "text": {
-            "fr": "Lysosomes distendus, remplis d'un matériel pâle."
+            "fr": "Lysosomes distendus, remplis d'un matériel pâle.",
+            "en": "Distended lysosomes filled with pale material."
           },
           "sources": [
             {
@@ -183,7 +199,8 @@
     {
       "id": "dysfonction",
       "title": {
-        "fr": "Dysfonction cellulaire"
+        "fr": "Dysfonction cellulaire",
+        "en": "Cell dysfunction"
       },
       "range": [
         0.85,
@@ -191,7 +208,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le glycogène s'accumule surtout dans les cellules musculaires, notamment du cœur et des muscles squelettiques. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+          "fr": "Le glycogène s'accumule surtout dans les cellules musculaires, notamment du cœur et des muscles squelettiques. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+          "en": "Glycogen accumulates mainly in muscle cells, notably in the heart and skeletal muscles. The model shows a generic cell; the changes shown are those described in the affected cells."
         },
         "sources": [
           {
@@ -300,7 +318,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Un traitement enzymatique substitutif existe ; il relève d'un avis médical spécialisé."
+      "fr": "Un traitement enzymatique substitutif existe ; il relève d'un avis médical spécialisé.",
+      "en": "Enzyme replacement therapy exists; it requires specialist medical advice."
     },
     "sources": [
       {

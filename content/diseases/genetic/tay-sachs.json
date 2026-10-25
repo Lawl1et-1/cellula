@@ -2,7 +2,8 @@
   "id": "tay-sachs",
   "slug": "maladie-de-tay-sachs",
   "name": {
-    "fr": "Maladie de Tay-Sachs"
+    "fr": "Maladie de Tay-Sachs",
+    "en": "Tay-Sachs disease"
   },
   "aliases": [
     "Déficit en hexosaminidase A",
@@ -17,7 +18,8 @@
     "cellType": "neuron",
     "note": {
       "text": {
-        "fr": "Ce sont surtout les neurones, riches en gangliosides, qui sont touchés, d'où une atteinte neurologique progressive. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Ce sont surtout les neurones, riches en gangliosides, qui sont touchés, d'où une atteinte neurologique progressive. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "Neurons, which are rich in gangliosides, are the main cells affected, hence progressive neurological damage. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -28,7 +30,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie de surcharge lysosomale : faute d'une enzyme fonctionnelle, le ganglioside GM2 s'accumule dans les lysosomes, qui gonflent et perturbent la cellule."
+      "fr": "Maladie de surcharge lysosomale : faute d'une enzyme fonctionnelle, le ganglioside GM2 s'accumule dans les lysosomes, qui gonflent et perturbent la cellule.",
+      "en": "A lysosomal storage disease: without a working enzyme, GM2 ganglioside accumulates in lysosomes, which swell and disrupt the cell."
     },
     "sources": [
       {
@@ -42,7 +45,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Des variants du gène HEXA entraînent un déficit en β-hexosaminidase A, l'enzyme lysosomale qui dégrade le ganglioside GM2."
+        "fr": "Des variants du gène HEXA entraînent un déficit en β-hexosaminidase A, l'enzyme lysosomale qui dégrade le ganglioside GM2.",
+        "en": "Variants of the HEXA gene cause a deficiency of β-hexosaminidase A, the lysosomal enzyme that breaks down GM2 ganglioside."
       },
       "sources": [
         {
@@ -60,11 +64,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Enzyme lysosomale déficiente"
+        "fr": "Enzyme lysosomale déficiente",
+        "en": "Deficient lysosomal enzyme"
       },
       "explanation": {
         "text": {
-          "fr": "Des variants du gène HEXA entraînent un déficit en β-hexosaminidase A, l'enzyme lysosomale qui dégrade le ganglioside GM2."
+          "fr": "Des variants du gène HEXA entraînent un déficit en β-hexosaminidase A, l'enzyme lysosomale qui dégrade le ganglioside GM2.",
+          "en": "Variants of the HEXA gene cause a deficiency of β-hexosaminidase A, the lysosomal enzyme that breaks down GM2 ganglioside."
         },
         "sources": [
           {
@@ -76,11 +82,13 @@
     },
     {
       "title": {
-        "fr": "Accumulation du substrat"
+        "fr": "Accumulation du substrat",
+        "en": "Substrate build-up"
       },
       "explanation": {
         "text": {
-          "fr": "Ne pouvant être dégradé, le ganglioside GM2 reste piégé dans les lysosomes."
+          "fr": "Ne pouvant être dégradé, le ganglioside GM2 reste piégé dans les lysosomes.",
+          "en": "Since it cannot be broken down, GM2 ganglioside stays trapped in lysosomes."
         },
         "sources": [
           {
@@ -98,7 +106,8 @@
     {
       "id": "enzyme",
       "title": {
-        "fr": "Enzyme déficiente"
+        "fr": "Enzyme déficiente",
+        "en": "Deficient enzyme"
       },
       "range": [
         0,
@@ -106,7 +115,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Des variants du gène HEXA entraînent un déficit en β-hexosaminidase A, l'enzyme lysosomale qui dégrade le ganglioside GM2."
+          "fr": "Des variants du gène HEXA entraînent un déficit en β-hexosaminidase A, l'enzyme lysosomale qui dégrade le ganglioside GM2.",
+          "en": "Variants of the HEXA gene cause a deficiency of β-hexosaminidase A, the lysosomal enzyme that breaks down GM2 ganglioside."
         },
         "sources": [
           {
@@ -120,7 +130,8 @@
     {
       "id": "accumulation",
       "title": {
-        "fr": "Accumulation"
+        "fr": "Accumulation",
+        "en": "Build-up"
       },
       "range": [
         0.25,
@@ -128,7 +139,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le ganglioside GM2 s'accumule progressivement dans les lysosomes."
+          "fr": "Le ganglioside GM2 s'accumule progressivement dans les lysosomes.",
+          "en": "GM2 ganglioside gradually accumulates in lysosomes."
         },
         "sources": [
           {
@@ -145,7 +157,8 @@
     {
       "id": "surcharge",
       "title": {
-        "fr": "Lysosomes surchargés"
+        "fr": "Lysosomes surchargés",
+        "en": "Overloaded lysosomes"
       },
       "range": [
         0.6,
@@ -153,7 +166,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les lysosomes, remplis de matériel non dégradé, augmentent en taille et en nombre."
+          "fr": "Les lysosomes, remplis de matériel non dégradé, augmentent en taille et en nombre.",
+          "en": "Filled with undegraded material, lysosomes grow in size and number."
         },
         "sources": [
           {
@@ -164,13 +178,15 @@
           }
         ],
         "simplification": {
-          "fr": "La vitesse d'accumulation est très accélérée : dans la maladie, elle se fait sur des mois ou des années."
+          "fr": "La vitesse d'accumulation est très accélérée : dans la maladie, elle se fait sur des mois ou des années.",
+          "en": "The build-up is greatly sped up: in the disease, it takes months or years."
         }
       },
       "cellularSigns": [
         {
           "text": {
-            "fr": "Lysosomes distendus, remplis d'un matériel pâle."
+            "fr": "Lysosomes distendus, remplis d'un matériel pâle.",
+            "en": "Distended lysosomes filled with pale material."
           },
           "sources": [
             {
@@ -184,7 +200,8 @@
     {
       "id": "dysfonction",
       "title": {
-        "fr": "Dysfonction cellulaire"
+        "fr": "Dysfonction cellulaire",
+        "en": "Cell dysfunction"
       },
       "range": [
         0.85,
@@ -192,7 +209,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Ce sont surtout les neurones, riches en gangliosides, qui sont touchés, d'où une atteinte neurologique progressive. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+          "fr": "Ce sont surtout les neurones, riches en gangliosides, qui sont touchés, d'où une atteinte neurologique progressive. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+          "en": "Neurons, which are rich in gangliosides, are the main cells affected, hence progressive neurological damage. The model shows a generic cell; the changes shown are those described in the affected cells."
         },
         "sources": [
           {
@@ -318,7 +336,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Il n'existe pas de traitement curatif ; la prise en charge vise à soulager les symptômes."
+      "fr": "Il n'existe pas de traitement curatif ; la prise en charge vise à soulager les symptômes.",
+      "en": "There is no cure; care aims to relieve the symptoms."
     },
     "sources": [
       {

@@ -2,7 +2,8 @@
   "id": "duchenne",
   "slug": "myopathie-de-duchenne",
   "name": {
-    "fr": "Myopathie de Duchenne"
+    "fr": "Myopathie de Duchenne",
+    "en": "Duchenne muscular dystrophy"
   },
   "aliases": [
     "Dystrophie musculaire de Duchenne"
@@ -14,7 +15,8 @@
     "cellType": "muscle-fiber",
     "note": {
       "text": {
-        "fr": "Les fibres musculaires sont touchées. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Les fibres musculaires sont touchées. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "Muscle fibres are affected. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -25,7 +27,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie génétique liée au chromosome X : l'absence de dystrophine, qui relie le cytosquelette des fibres musculaires à leur membrane, rend celle-ci fragile."
+      "fr": "Maladie génétique liée au chromosome X : l'absence de dystrophine, qui relie le cytosquelette des fibres musculaires à leur membrane, rend celle-ci fragile.",
+      "en": "An X-linked genetic disease: the lack of dystrophin, which links the cytoskeleton of muscle fibres to their membrane, makes the membrane fragile."
     },
     "sources": [
       {
@@ -36,7 +39,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Des variants du gène DMD, situé sur le chromosome X, empêchent la production de dystrophine."
+        "fr": "Des variants du gène DMD, situé sur le chromosome X, empêchent la production de dystrophine.",
+        "en": "Variants of the DMD gene, on the X chromosome, prevent dystrophin from being made."
       },
       "sources": [
         {
@@ -55,11 +59,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Dystrophine absente"
+        "fr": "Dystrophine absente",
+        "en": "No dystrophin"
       },
       "explanation": {
         "text": {
-          "fr": "Sans dystrophine, le lien entre le cytosquelette d'actine et la membrane est rompu."
+          "fr": "Sans dystrophine, le lien entre le cytosquelette d'actine et la membrane est rompu.",
+          "en": "Without dystrophin, the link between the actin cytoskeleton and the membrane is broken."
         },
         "sources": [
           {
@@ -71,11 +77,13 @@
     },
     {
       "title": {
-        "fr": "Membrane fragile"
+        "fr": "Membrane fragile",
+        "en": "Fragile membrane"
       },
       "explanation": {
         "text": {
-          "fr": "La membrane des fibres musculaires est endommagée lors des contractions et les fibres dégénèrent."
+          "fr": "La membrane des fibres musculaires est endommagée lors des contractions et les fibres dégénèrent.",
+          "en": "The membrane of muscle fibres is damaged during contractions and the fibres degenerate."
         },
         "sources": [
           {
@@ -90,7 +98,8 @@
     {
       "id": "dystrophine",
       "title": {
-        "fr": "Absence de dystrophine"
+        "fr": "Absence de dystrophine",
+        "en": "Lack of dystrophin"
       },
       "range": [
         0,
@@ -98,7 +107,8 @@
       ],
       "description": {
         "text": {
-          "fr": "La fibre musculaire ne produit pas de dystrophine."
+          "fr": "La fibre musculaire ne produit pas de dystrophine.",
+          "en": "The muscle fibre makes no dystrophin."
         },
         "sources": [
           {
@@ -112,7 +122,8 @@
     {
       "id": "fragilite",
       "title": {
-        "fr": "Membrane fragilisée"
+        "fr": "Membrane fragilisée",
+        "en": "Weakened membrane"
       },
       "range": [
         0.3,
@@ -120,7 +131,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Lors des contractions, la membrane se rompt par endroits."
+          "fr": "Lors des contractions, la membrane se rompt par endroits.",
+          "en": "During contractions, the membrane tears in places."
         },
         "sources": [
           {
@@ -128,13 +140,15 @@
           }
         ],
         "simplification": {
-          "fr": "Les ruptures de membrane sont représentées par des trous ; en réalité ce sont des lésions microscopiques."
+          "fr": "Les ruptures de membrane sont représentées par des trous ; en réalité ce sont des lésions microscopiques.",
+          "en": "Membrane tears are shown as holes; in reality they are microscopic lesions."
         }
       },
       "cellularSigns": [
         {
           "text": {
-            "fr": "Lésions de la membrane."
+            "fr": "Lésions de la membrane.",
+            "en": "Membrane lesions."
           },
           "sources": [
             {
@@ -148,7 +162,8 @@
     {
       "id": "degenerescence",
       "title": {
-        "fr": "Dégénérescence"
+        "fr": "Dégénérescence",
+        "en": "Degeneration"
       },
       "range": [
         0.7,
@@ -156,7 +171,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les fibres musculaires dégénèrent progressivement."
+          "fr": "Les fibres musculaires dégénèrent progressivement.",
+          "en": "Muscle fibres gradually degenerate."
         },
         "sources": [
           {
@@ -253,7 +269,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "La prise en charge est multidisciplinaire ; certains traitements relèvent d'un avis spécialisé."
+      "fr": "La prise en charge est multidisciplinaire ; certains traitements relèvent d'un avis spécialisé.",
+      "en": "Care is multidisciplinary; some treatments require specialist advice."
     },
     "sources": [
       {

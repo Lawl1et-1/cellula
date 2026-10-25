@@ -2,7 +2,8 @@
   "id": "deficit-alpha-1-antitrypsine",
   "slug": "deficit-en-alpha-1-antitrypsine",
   "name": {
-    "fr": "Déficit en alpha-1-antitrypsine"
+    "fr": "Déficit en alpha-1-antitrypsine",
+    "en": "Alpha-1 antitrypsin deficiency"
   },
   "aliases": [],
   "categories": [
@@ -12,7 +13,8 @@
     "cellType": "hepatocyte",
     "note": {
       "text": {
-        "fr": "Le foie, qui produit l'alpha-1-antitrypsine, et les poumons, qu'elle protège, sont touchés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Le foie, qui produit l'alpha-1-antitrypsine, et les poumons, qu'elle protège, sont touchés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "The liver, which makes alpha-1 antitrypsin, and the lungs, which it protects, are affected. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -23,7 +25,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie génétique : certaines formes de l'alpha-1-antitrypsine se replient mal et s'accumulent dans le réticulum endoplasmique des cellules du foie au lieu d'être sécrétées."
+      "fr": "Maladie génétique : certaines formes de l'alpha-1-antitrypsine se replient mal et s'accumulent dans le réticulum endoplasmique des cellules du foie au lieu d'être sécrétées.",
+      "en": "A genetic disease: some forms of alpha-1 antitrypsin misfold and accumulate in the endoplasmic reticulum of liver cells instead of being secreted."
     },
     "sources": [
       {
@@ -37,7 +40,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Des variants du gène SERPINA1, le plus souvent l'allèle Z."
+        "fr": "Des variants du gène SERPINA1, le plus souvent l'allèle Z.",
+        "en": "Variants of the SERPINA1 gene, most often the Z allele."
       },
       "sources": [
         {
@@ -56,11 +60,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Repliement anormal"
+        "fr": "Repliement anormal",
+        "en": "Misfolding"
       },
       "explanation": {
         "text": {
-          "fr": "La protéine anormale se replie mal et forme des polymères retenus dans le RE."
+          "fr": "La protéine anormale se replie mal et forme des polymères retenus dans le RE.",
+          "en": "The abnormal protein misfolds and forms polymers that are retained in the ER."
         },
         "sources": [
           {
@@ -72,11 +78,13 @@
     },
     {
       "title": {
-        "fr": "Stress du RE"
+        "fr": "Stress du RE",
+        "en": "ER stress"
       },
       "explanation": {
         "text": {
-          "fr": "L'accumulation de protéines mal repliées dans le RE déclenche une réponse au stress (UPR)."
+          "fr": "L'accumulation de protéines mal repliées dans le RE déclenche une réponse au stress (UPR).",
+          "en": "The build-up of misfolded proteins in the ER triggers a stress response (the UPR)."
         },
         "sources": [
           {
@@ -88,11 +96,13 @@
     },
     {
       "title": {
-        "fr": "Déficit sanguin"
+        "fr": "Déficit sanguin",
+        "en": "Deficiency in the blood"
       },
       "explanation": {
         "text": {
-          "fr": "Moins d'alpha-1-antitrypsine est sécrétée, ce qui fragilise les poumons."
+          "fr": "Moins d'alpha-1-antitrypsine est sécrétée, ce qui fragilise les poumons.",
+          "en": "Less alpha-1 antitrypsin is secreted, which leaves the lungs vulnerable."
         },
         "sources": [
           {
@@ -106,7 +116,8 @@
     {
       "id": "synthese",
       "title": {
-        "fr": "Synthèse"
+        "fr": "Synthèse",
+        "en": "Synthesis"
       },
       "range": [
         0,
@@ -114,7 +125,8 @@
       ],
       "description": {
         "text": {
-          "fr": "L'hépatocyte fabrique l'alpha-1-antitrypsine dans le RE."
+          "fr": "L'hépatocyte fabrique l'alpha-1-antitrypsine dans le RE.",
+          "en": "The hepatocyte makes alpha-1 antitrypsin in the ER."
         },
         "sources": [
           {
@@ -128,7 +140,8 @@
     {
       "id": "retention",
       "title": {
-        "fr": "Rétention dans le RE"
+        "fr": "Rétention dans le RE",
+        "en": "Retention in the ER"
       },
       "range": [
         0.3,
@@ -136,7 +149,8 @@
       ],
       "description": {
         "text": {
-          "fr": "La protéine mal repliée s'accumule dans le RE."
+          "fr": "La protéine mal repliée s'accumule dans le RE.",
+          "en": "The misfolded protein accumulates in the ER."
         },
         "sources": [
           {
@@ -147,7 +161,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Inclusions dans le RE des hépatocytes."
+            "fr": "Inclusions dans le RE des hépatocytes.",
+            "en": "Inclusions in the ER of hepatocytes."
           },
           "sources": [
             {
@@ -161,7 +176,8 @@
     {
       "id": "stress",
       "title": {
-        "fr": "Stress du RE"
+        "fr": "Stress du RE",
+        "en": "ER stress"
       },
       "range": [
         0.7,
@@ -169,7 +185,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le RE dilaté déclenche une réponse au stress."
+          "fr": "Le RE dilaté déclenche une réponse au stress.",
+          "en": "The dilated ER triggers a stress response."
         },
         "sources": [
           {
@@ -271,7 +288,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "La prise en charge dépend des organes atteints et relève d'un avis spécialisé."
+      "fr": "La prise en charge dépend des organes atteints et relève d'un avis spécialisé.",
+      "en": "Management depends on the organs involved and requires specialist advice."
     },
     "sources": [
       {

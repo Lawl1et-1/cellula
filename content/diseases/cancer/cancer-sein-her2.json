@@ -2,7 +2,8 @@
   "id": "cancer-sein-her2",
   "slug": "cancer-du-sein-her2",
   "name": {
-    "fr": "Cancer du sein HER2-positif"
+    "fr": "Cancer du sein HER2-positif",
+    "en": "HER2-positive breast cancer"
   },
   "aliases": [],
   "categories": [
@@ -12,7 +13,8 @@
     "cellType": "epithelial",
     "note": {
       "text": {
-        "fr": "Il s'agit de cellules épithéliales de la glande mammaire. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Il s'agit de cellules épithéliales de la glande mammaire. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "These are epithelial cells of the mammary gland. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -23,7 +25,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Forme de cancer du sein où les cellules portent un très grand nombre de récepteurs HER2 à leur surface, ce qui stimule en permanence leur croissance et leur division."
+      "fr": "Forme de cancer du sein où les cellules portent un très grand nombre de récepteurs HER2 à leur surface, ce qui stimule en permanence leur croissance et leur division.",
+      "en": "A form of breast cancer in which the cells carry a very large number of HER2 receptors on their surface, which constantly drives their growth and division."
     },
     "sources": [
       {
@@ -37,7 +40,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Une amplification du gène HER2 (ERBB2) : de nombreuses copies du gène entraînent une surexpression du récepteur."
+        "fr": "Une amplification du gène HER2 (ERBB2) : de nombreuses copies du gène entraînent une surexpression du récepteur.",
+        "en": "Amplification of the HER2 (ERBB2) gene: many copies of the gene lead to overexpression of the receptor."
       },
       "sources": [
         {
@@ -56,11 +60,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Amplification"
+        "fr": "Amplification",
+        "en": "Amplification"
       },
       "explanation": {
         "text": {
-          "fr": "Le gène HER2 est présent en de nombreuses copies."
+          "fr": "Le gène HER2 est présent en de nombreuses copies.",
+          "en": "The HER2 gene is present in many copies."
         },
         "sources": [
           {
@@ -72,11 +78,13 @@
     },
     {
       "title": {
-        "fr": "Récepteurs en excès"
+        "fr": "Récepteurs en excès",
+        "en": "Too many receptors"
       },
       "explanation": {
         "text": {
-          "fr": "La membrane porte beaucoup trop de récepteurs HER2, qui envoient en continu des signaux de croissance."
+          "fr": "La membrane porte beaucoup trop de récepteurs HER2, qui envoient en continu des signaux de croissance.",
+          "en": "The membrane carries far too many HER2 receptors, which send growth signals non-stop."
         },
         "sources": [
           {
@@ -88,11 +96,13 @@
     },
     {
       "title": {
-        "fr": "Prolifération"
+        "fr": "Prolifération",
+        "en": "Proliferation"
       },
       "explanation": {
         "text": {
-          "fr": "Les cellules se divisent davantage."
+          "fr": "Les cellules se divisent davantage.",
+          "en": "The cells divide more."
         },
         "sources": [
           {
@@ -109,7 +119,8 @@
     {
       "id": "amplification",
       "title": {
-        "fr": "Amplification du gène"
+        "fr": "Amplification du gène",
+        "en": "Gene amplification"
       },
       "range": [
         0,
@@ -117,7 +128,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le gène HER2 est amplifié dans le noyau."
+          "fr": "Le gène HER2 est amplifié dans le noyau.",
+          "en": "The HER2 gene is amplified in the nucleus."
         },
         "sources": [
           {
@@ -131,7 +143,8 @@
     {
       "id": "recepteurs",
       "title": {
-        "fr": "Surexpression de HER2"
+        "fr": "Surexpression de HER2",
+        "en": "HER2 overexpression"
       },
       "range": [
         0.3,
@@ -139,7 +152,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les récepteurs HER2 s'accumulent à la surface de la cellule."
+          "fr": "Les récepteurs HER2 s'accumulent à la surface de la cellule.",
+          "en": "HER2 receptors pile up on the cell surface."
         },
         "sources": [
           {
@@ -147,13 +161,15 @@
           }
         ],
         "simplification": {
-          "fr": "Les récepteurs représentés sont génériques ; leur nombre figure la surexpression de HER2."
+          "fr": "Les récepteurs représentés sont génériques ; leur nombre figure la surexpression de HER2.",
+          "en": "The receptors shown are generic; their number stands for HER2 overexpression."
         }
       },
       "cellularSigns": [
         {
           "text": {
-            "fr": "Membrane couverte de récepteurs."
+            "fr": "Membrane couverte de récepteurs.",
+            "en": "Membrane covered in receptors."
           },
           "sources": [
             {
@@ -167,7 +183,8 @@
     {
       "id": "proliferation",
       "title": {
-        "fr": "Prolifération"
+        "fr": "Prolifération",
+        "en": "Proliferation"
       },
       "range": [
         0.65,
@@ -175,7 +192,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les signaux de croissance permanents entraînent la prolifération."
+          "fr": "Les signaux de croissance permanents entraînent la prolifération.",
+          "en": "Constant growth signals drive proliferation."
         },
         "sources": [
           {
@@ -264,7 +282,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Des thérapies ciblées anti-HER2 existent ; les traitements relèvent d'une équipe médicale spécialisée."
+      "fr": "Des thérapies ciblées anti-HER2 existent ; les traitements relèvent d'une équipe médicale spécialisée.",
+      "en": "Targeted anti-HER2 therapies exist; treatment is a matter for a specialist medical team."
     },
     "sources": [
       {

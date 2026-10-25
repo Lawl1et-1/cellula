@@ -2,7 +2,8 @@
   "id": "zellweger",
   "slug": "spectre-de-zellweger",
   "name": {
-    "fr": "Spectre de Zellweger"
+    "fr": "Spectre de Zellweger",
+    "en": "Zellweger spectrum disorder"
   },
   "aliases": [],
   "categories": [
@@ -13,7 +14,8 @@
     "cellType": "generic",
     "note": {
       "text": {
-        "fr": "De nombreux organes sont touchés, notamment le cerveau et le foie. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "De nombreux organes sont touchés, notamment le cerveau et le foie. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "Many organs are affected, notably the brain and the liver. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -24,7 +26,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie génétique de la formation des peroxysomes : leurs enzymes ne sont pas importées, si bien que des fonctions comme la dégradation des acides gras à très longue chaîne sont perdues."
+      "fr": "Maladie génétique de la formation des peroxysomes : leurs enzymes ne sont pas importées, si bien que des fonctions comme la dégradation des acides gras à très longue chaîne sont perdues.",
+      "en": "A genetic disease of peroxisome formation: their enzymes are not imported, so functions such as the breakdown of very-long-chain fatty acids are lost."
     },
     "sources": [
       {
@@ -38,7 +41,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Des variants de gènes PEX, nécessaires à la formation des peroxysomes."
+        "fr": "Des variants de gènes PEX, nécessaires à la formation des peroxysomes.",
+        "en": "Variants of PEX genes, which are needed to form peroxisomes."
       },
       "sources": [
         {
@@ -57,11 +61,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Import défaillant"
+        "fr": "Import défaillant",
+        "en": "Faulty import"
       },
       "explanation": {
         "text": {
-          "fr": "Les protéines PEX défectueuses empêchent l'import des enzymes dans les peroxysomes."
+          "fr": "Les protéines PEX défectueuses empêchent l'import des enzymes dans les peroxysomes.",
+          "en": "Defective PEX proteins prevent enzymes from being imported into peroxisomes."
         },
         "sources": [
           {
@@ -76,11 +82,13 @@
     },
     {
       "title": {
-        "fr": "Peroxysomes vides"
+        "fr": "Peroxysomes vides",
+        "en": "Empty peroxisomes"
       },
       "explanation": {
         "text": {
-          "fr": "Il reste des membranes de peroxysomes sans enzymes, parfois appelées « fantômes »."
+          "fr": "Il reste des membranes de peroxysomes sans enzymes, parfois appelées « fantômes ».",
+          "en": "Peroxisome membranes without enzymes remain, sometimes called “ghosts”."
         },
         "sources": [
           {
@@ -95,7 +103,8 @@
     {
       "id": "import",
       "title": {
-        "fr": "Import bloqué"
+        "fr": "Import bloqué",
+        "en": "Import blocked"
       },
       "range": [
         0,
@@ -103,7 +112,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les enzymes peroxysomales, fabriquées dans le cytosol, ne peuvent pas entrer dans les peroxysomes."
+          "fr": "Les enzymes peroxysomales, fabriquées dans le cytosol, ne peuvent pas entrer dans les peroxysomes.",
+          "en": "Peroxisomal enzymes, made in the cytosol, cannot get into peroxisomes."
         },
         "sources": [
           {
@@ -120,7 +130,8 @@
     {
       "id": "fantomes",
       "title": {
-        "fr": "Peroxysomes fantômes"
+        "fr": "Peroxysomes fantômes",
+        "en": "Ghost peroxisomes"
       },
       "range": [
         0.4,
@@ -128,7 +139,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les peroxysomes restent vides d'enzymes."
+          "fr": "Les peroxysomes restent vides d'enzymes.",
+          "en": "Peroxisomes stay empty of enzymes."
         },
         "sources": [
           {
@@ -139,7 +151,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Peroxysomes absents ou vides."
+            "fr": "Peroxysomes absents ou vides.",
+            "en": "Peroxisomes missing or empty."
           },
           "sources": [
             {
@@ -153,7 +166,8 @@
     {
       "id": "metabolisme",
       "title": {
-        "fr": "Métabolisme perturbé"
+        "fr": "Métabolisme perturbé",
+        "en": "Disturbed metabolism"
       },
       "range": [
         0.75,
@@ -161,7 +175,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les acides gras à très longue chaîne s'accumulent et la synthèse des plasmalogènes diminue."
+          "fr": "Les acides gras à très longue chaîne s'accumulent et la synthèse des plasmalogènes diminue.",
+          "en": "Very-long-chain fatty acids build up and plasmalogen synthesis falls."
         },
         "sources": [
           {
@@ -260,7 +275,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "La prise en charge est symptomatique."
+      "fr": "La prise en charge est symptomatique.",
+      "en": "Care is supportive."
     },
     "sources": [
       {

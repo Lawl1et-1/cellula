@@ -2,7 +2,8 @@
   "id": "diabete-type-1",
   "slug": "diabete-de-type-1",
   "name": {
-    "fr": "Diabète de type 1"
+    "fr": "Diabète de type 1",
+    "en": "Type 1 diabetes"
   },
   "aliases": [],
   "categories": [
@@ -13,7 +14,8 @@
     "cellType": "beta-cell",
     "note": {
       "text": {
-        "fr": "La cellule représentée est une cellule bêta du pancréas, celle qui produit l'insuline. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "La cellule représentée est une cellule bêta du pancréas, celle qui produit l'insuline. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "The cell shown is a pancreatic beta cell, the cell that makes insulin. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -24,7 +26,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie auto-immune : le système immunitaire détruit les cellules bêta du pancréas, qui produisent l'insuline."
+      "fr": "Maladie auto-immune : le système immunitaire détruit les cellules bêta du pancréas, qui produisent l'insuline.",
+      "en": "An autoimmune disease: the immune system destroys the beta cells of the pancreas, which make insulin."
     },
     "sources": [
       {
@@ -35,7 +38,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Une réaction auto-immune, sur un terrain génétique favorable, dirigée contre les cellules bêta."
+        "fr": "Une réaction auto-immune, sur un terrain génétique favorable, dirigée contre les cellules bêta.",
+        "en": "An autoimmune reaction against beta cells, on a predisposing genetic background."
       },
       "sources": [
         {
@@ -55,11 +59,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Attaque immunitaire"
+        "fr": "Attaque immunitaire",
+        "en": "Immune attack"
       },
       "explanation": {
         "text": {
-          "fr": "Des lymphocytes T s'attaquent aux cellules bêta."
+          "fr": "Des lymphocytes T s'attaquent aux cellules bêta.",
+          "en": "T lymphocytes attack the beta cells."
         },
         "sources": [
           {
@@ -70,11 +76,13 @@
     },
     {
       "title": {
-        "fr": "Mort par apoptose"
+        "fr": "Mort par apoptose",
+        "en": "Death by apoptosis"
       },
       "explanation": {
         "text": {
-          "fr": "La cellule meurt par apoptose : elle se rétracte, sa membrane bourgeonne et sa chromatine se condense puis se fragmente."
+          "fr": "La cellule meurt par apoptose : elle se rétracte, sa membrane bourgeonne et sa chromatine se condense puis se fragmente.",
+          "en": "The cell dies by apoptosis: it shrinks, its membrane blebs, and its chromatin condenses and then breaks up."
         },
         "sources": [
           {
@@ -86,11 +94,13 @@
     },
     {
       "title": {
-        "fr": "Carence en insuline"
+        "fr": "Carence en insuline",
+        "en": "Insulin deficiency"
       },
       "explanation": {
         "text": {
-          "fr": "Quand la plupart des cellules bêta sont détruites, l'insuline manque."
+          "fr": "Quand la plupart des cellules bêta sont détruites, l'insuline manque.",
+          "en": "Once most beta cells are destroyed, insulin runs short."
         },
         "sources": [
           {
@@ -104,7 +114,8 @@
     {
       "id": "attaque",
       "title": {
-        "fr": "Attaque immunitaire"
+        "fr": "Attaque immunitaire",
+        "en": "Immune attack"
       },
       "range": [
         0,
@@ -112,7 +123,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Des lymphocytes T reconnaissent et attaquent la cellule bêta."
+          "fr": "Des lymphocytes T reconnaissent et attaquent la cellule bêta.",
+          "en": "T lymphocytes recognise and attack the beta cell."
         },
         "sources": [
           {
@@ -120,7 +132,8 @@
           }
         ],
         "simplification": {
-          "fr": "Les signaux venus des cellules immunitaires sont représentés par des particules qui arrivent de l'extérieur."
+          "fr": "Les signaux venus des cellules immunitaires sont représentés par des particules qui arrivent de l'extérieur.",
+          "en": "Signals from immune cells are shown as particles arriving from outside."
         }
       },
       "cellularSigns": [],
@@ -129,7 +142,8 @@
     {
       "id": "caspases",
       "title": {
-        "fr": "Déclenchement de l'apoptose"
+        "fr": "Déclenchement de l'apoptose",
+        "en": "Apoptosis is triggered"
       },
       "range": [
         0.3,
@@ -137,7 +151,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Une cascade de protéases, les caspases, déclenche la mort cellulaire programmée."
+          "fr": "Une cascade de protéases, les caspases, déclenche la mort cellulaire programmée.",
+          "en": "A cascade of proteases, the caspases, sets off programmed cell death."
         },
         "sources": [
           {
@@ -151,7 +166,8 @@
     {
       "id": "apoptose",
       "title": {
-        "fr": "Apoptose"
+        "fr": "Apoptose",
+        "en": "Apoptosis"
       },
       "range": [
         0.55,
@@ -159,7 +175,8 @@
       ],
       "description": {
         "text": {
-          "fr": "La cellule se rétracte, sa membrane bourgeonne, son noyau se condense et se fragmente."
+          "fr": "La cellule se rétracte, sa membrane bourgeonne, son noyau se condense et se fragmente.",
+          "en": "The cell shrinks, its membrane blebs, and its nucleus condenses and breaks up."
         },
         "sources": [
           {
@@ -170,7 +187,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Bourgeonnement de la membrane."
+            "fr": "Bourgeonnement de la membrane.",
+            "en": "Membrane blebbing."
           },
           "sources": [
             {
@@ -180,7 +198,8 @@
         },
         {
           "text": {
-            "fr": "Chromatine condensée, noyau fragmenté."
+            "fr": "Chromatine condensée, noyau fragmenté.",
+            "en": "Condensed chromatin, fragmented nucleus."
           },
           "sources": [
             {
@@ -197,7 +216,8 @@
     {
       "id": "perte",
       "title": {
-        "fr": "Perte des cellules bêta"
+        "fr": "Perte des cellules bêta",
+        "en": "Loss of beta cells"
       },
       "range": [
         0.85,
@@ -205,7 +225,8 @@
       ],
       "description": {
         "text": {
-          "fr": "La destruction des cellules bêta entraîne une carence en insuline."
+          "fr": "La destruction des cellules bêta entraîne une carence en insuline.",
+          "en": "The destruction of beta cells leads to insulin deficiency."
         },
         "sources": [
           {
@@ -375,7 +396,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Le traitement repose sur l'insuline ; il relève d'un avis médical."
+      "fr": "Le traitement repose sur l'insuline ; il relève d'un avis médical.",
+      "en": "Treatment relies on insulin and requires medical advice."
     },
     "sources": [
       {

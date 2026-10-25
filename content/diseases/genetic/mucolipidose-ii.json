@@ -2,7 +2,8 @@
   "id": "mucolipidose-ii",
   "slug": "mucolipidose-de-type-ii",
   "name": {
-    "fr": "Mucolipidose de type II (maladie des cellules I)"
+    "fr": "Mucolipidose de type II (maladie des cellules I)",
+    "en": "Mucolipidosis type II (I-cell disease)"
   },
   "aliases": [
     "Maladie des cellules I",
@@ -16,7 +17,8 @@
     "cellType": "fibroblast",
     "note": {
       "text": {
-        "fr": "Les fibroblastes des patients contiennent de nombreuses inclusions, d'où le nom de « cellules I » (inclusion cells). Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Les fibroblastes des patients contiennent de nombreuses inclusions, d'où le nom de « cellules I » (inclusion cells). Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "Patients' fibroblasts contain many inclusions, hence the name “I-cells” (inclusion cells). The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -27,7 +29,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Les enzymes lysosomales ne reçoivent pas leur étiquette d'adressage dans l'appareil de Golgi : elles sont sécrétées hors de la cellule au lieu d'être livrées aux lysosomes, qui se remplissent de matériel non dégradé."
+      "fr": "Les enzymes lysosomales ne reçoivent pas leur étiquette d'adressage dans l'appareil de Golgi : elles sont sécrétées hors de la cellule au lieu d'être livrées aux lysosomes, qui se remplissent de matériel non dégradé.",
+      "en": "Lysosomal enzymes do not receive their address tag in the Golgi apparatus: they are secreted out of the cell instead of being delivered to lysosomes, which fill up with undegraded material."
     },
     "sources": [
       {
@@ -41,7 +44,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Des variants du gène GNPTAB rendent déficiente l'enzyme qui ajoute le mannose-6-phosphate aux enzymes lysosomales."
+        "fr": "Des variants du gène GNPTAB rendent déficiente l'enzyme qui ajoute le mannose-6-phosphate aux enzymes lysosomales.",
+        "en": "Variants of the GNPTAB gene disable the enzyme that adds mannose 6-phosphate to lysosomal enzymes."
       },
       "sources": [
         {
@@ -64,11 +68,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Étiquette manquante"
+        "fr": "Étiquette manquante",
+        "en": "Missing tag"
       },
       "explanation": {
         "text": {
-          "fr": "Sans mannose-6-phosphate, les enzymes ne sont pas reconnues par le récepteur qui les dirige vers les lysosomes."
+          "fr": "Sans mannose-6-phosphate, les enzymes ne sont pas reconnues par le récepteur qui les dirige vers les lysosomes.",
+          "en": "Without mannose 6-phosphate, the enzymes are not recognised by the receptor that sends them to lysosomes."
         },
         "sources": [
           {
@@ -80,11 +86,13 @@
     },
     {
       "title": {
-        "fr": "Enzymes perdues"
+        "fr": "Enzymes perdues",
+        "en": "Lost enzymes"
       },
       "explanation": {
         "text": {
-          "fr": "Les enzymes partent alors par la voie de sécrétion et quittent la cellule."
+          "fr": "Les enzymes partent alors par la voie de sécrétion et quittent la cellule.",
+          "en": "The enzymes then take the secretory pathway and leave the cell."
         },
         "sources": [
           {
@@ -99,11 +107,13 @@
     },
     {
       "title": {
-        "fr": "Lysosomes vides d'enzymes"
+        "fr": "Lysosomes vides d'enzymes",
+        "en": "Lysosomes without enzymes"
       },
       "explanation": {
         "text": {
-          "fr": "Privés de leurs enzymes, les lysosomes ne peuvent plus dégrader leur contenu, qui s'accumule."
+          "fr": "Privés de leurs enzymes, les lysosomes ne peuvent plus dégrader leur contenu, qui s'accumule.",
+          "en": "Deprived of their enzymes, lysosomes can no longer break down their contents, which build up."
         },
         "sources": [
           {
@@ -118,7 +128,8 @@
     {
       "id": "tri",
       "title": {
-        "fr": "Erreur de tri dans le Golgi"
+        "fr": "Erreur de tri dans le Golgi",
+        "en": "Sorting error in the Golgi"
       },
       "range": [
         0,
@@ -126,7 +137,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Dans le Golgi, les enzymes lysosomales ne sont pas marquées par le mannose-6-phosphate."
+          "fr": "Dans le Golgi, les enzymes lysosomales ne sont pas marquées par le mannose-6-phosphate.",
+          "en": "In the Golgi, lysosomal enzymes are not tagged with mannose 6-phosphate."
         },
         "sources": [
           {
@@ -143,7 +155,8 @@
     {
       "id": "secretion",
       "title": {
-        "fr": "Enzymes sécrétées"
+        "fr": "Enzymes sécrétées",
+        "en": "Secreted enzymes"
       },
       "range": [
         0.3,
@@ -151,7 +164,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les enzymes non marquées sont sécrétées hors de la cellule."
+          "fr": "Les enzymes non marquées sont sécrétées hors de la cellule.",
+          "en": "The untagged enzymes are secreted out of the cell."
         },
         "sources": [
           {
@@ -168,7 +182,8 @@
     {
       "id": "inclusions",
       "title": {
-        "fr": "Inclusions"
+        "fr": "Inclusions",
+        "en": "Inclusions"
       },
       "range": [
         0.55,
@@ -176,7 +191,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les lysosomes se remplissent de matériel non dégradé et forment des inclusions."
+          "fr": "Les lysosomes se remplissent de matériel non dégradé et forment des inclusions.",
+          "en": "Lysosomes fill with undegraded material and form inclusions."
         },
         "sources": [
           {
@@ -187,7 +203,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Nombreuses inclusions dans le cytoplasme des fibroblastes."
+            "fr": "Nombreuses inclusions dans le cytoplasme des fibroblastes.",
+            "en": "Many inclusions in the cytoplasm of fibroblasts."
           },
           "sources": [
             {
@@ -295,7 +312,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Il n'existe pas de traitement spécifique ; la prise en charge est symptomatique."
+      "fr": "Il n'existe pas de traitement spécifique ; la prise en charge est symptomatique.",
+      "en": "There is no specific treatment; care is supportive."
     },
     "sources": [
       {

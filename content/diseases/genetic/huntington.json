@@ -2,7 +2,8 @@
   "id": "huntington",
   "slug": "maladie-de-huntington",
   "name": {
-    "fr": "Maladie de Huntington"
+    "fr": "Maladie de Huntington",
+    "en": "Huntington disease"
   },
   "aliases": [],
   "categories": [
@@ -13,7 +14,8 @@
     "cellType": "neuron",
     "note": {
       "text": {
-        "fr": "Les neurones du striatum sont les premiers touchés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Les neurones du striatum sont les premiers touchés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "Neurons of the striatum are the first to be affected. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -24,7 +26,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie génétique neurodégénérative due à une expansion de répétitions CAG dans le gène HTT : la huntingtine produite porte une longue chaîne de glutamines et forme des agrégats."
+      "fr": "Maladie génétique neurodégénérative due à une expansion de répétitions CAG dans le gène HTT : la huntingtine produite porte une longue chaîne de glutamines et forme des agrégats.",
+      "en": "A neurodegenerative genetic disease caused by an expanded CAG repeat in the HTT gene: the huntingtin produced carries a long stretch of glutamines and forms aggregates."
     },
     "sources": [
       {
@@ -38,7 +41,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Une expansion de répétitions CAG dans le gène HTT, transmise de façon autosomique dominante."
+        "fr": "Une expansion de répétitions CAG dans le gène HTT, transmise de façon autosomique dominante.",
+        "en": "An expanded CAG repeat in the HTT gene, inherited in an autosomal dominant manner."
       },
       "sources": [
         {
@@ -57,11 +61,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Huntingtine anormale"
+        "fr": "Huntingtine anormale",
+        "en": "Abnormal huntingtin"
       },
       "explanation": {
         "text": {
-          "fr": "La protéine produite contient une longue répétition de glutamines qui favorise son mauvais repliement."
+          "fr": "La protéine produite contient une longue répétition de glutamines qui favorise son mauvais repliement.",
+          "en": "The protein produced contains a long run of glutamines that promotes its misfolding."
         },
         "sources": [
           {
@@ -75,11 +81,13 @@
     },
     {
       "title": {
-        "fr": "Inclusions"
+        "fr": "Inclusions",
+        "en": "Inclusions"
       },
       "explanation": {
         "text": {
-          "fr": "Les protéines anormalement repliées s'agrègent, notamment en inclusions dans le noyau."
+          "fr": "Les protéines anormalement repliées s'agrègent, notamment en inclusions dans le noyau.",
+          "en": "The misfolded proteins aggregate, notably into inclusions in the nucleus."
         },
         "sources": [
           {
@@ -94,7 +102,8 @@
     {
       "id": "expansion",
       "title": {
-        "fr": "Huntingtine allongée"
+        "fr": "Huntingtine allongée",
+        "en": "Lengthened huntingtin"
       },
       "range": [
         0,
@@ -102,7 +111,8 @@
       ],
       "description": {
         "text": {
-          "fr": "La huntingtine porte une longue répétition de glutamines."
+          "fr": "La huntingtine porte une longue répétition de glutamines.",
+          "en": "Huntingtin carries a long run of glutamines."
         },
         "sources": [
           {
@@ -116,7 +126,8 @@
     {
       "id": "agregats",
       "title": {
-        "fr": "Agrégats et inclusions"
+        "fr": "Agrégats et inclusions",
+        "en": "Aggregates and inclusions"
       },
       "range": [
         0.3,
@@ -124,7 +135,8 @@
       ],
       "description": {
         "text": {
-          "fr": "La protéine s'agrège dans le cytoplasme et forme des inclusions dans le noyau."
+          "fr": "La protéine s'agrège dans le cytoplasme et forme des inclusions dans le noyau.",
+          "en": "The protein aggregates in the cytoplasm and forms inclusions in the nucleus."
         },
         "sources": [
           {
@@ -135,7 +147,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Inclusions intranucléaires."
+            "fr": "Inclusions intranucléaires.",
+            "en": "Intranuclear inclusions."
           },
           "sources": [
             {
@@ -149,7 +162,8 @@
     {
       "id": "perte",
       "title": {
-        "fr": "Perte neuronale"
+        "fr": "Perte neuronale",
+        "en": "Neuronal loss"
       },
       "range": [
         0.7,
@@ -157,7 +171,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les neurones du striatum dégénèrent progressivement."
+          "fr": "Les neurones du striatum dégénèrent progressivement.",
+          "en": "Neurons of the striatum gradually degenerate."
         },
         "sources": [
           {
@@ -254,7 +269,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Il n'existe pas de traitement curatif ; la prise en charge vise les symptômes."
+      "fr": "Il n'existe pas de traitement curatif ; la prise en charge vise les symptômes.",
+      "en": "There is no cure; care aims at the symptoms."
     },
     "sources": [
       {

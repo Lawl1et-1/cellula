@@ -2,7 +2,8 @@
   "id": "niemann-pick-c",
   "slug": "maladie-de-niemann-pick-type-c",
   "name": {
-    "fr": "Maladie de Niemann-Pick de type C"
+    "fr": "Maladie de Niemann-Pick de type C",
+    "en": "Niemann-Pick disease type C"
   },
   "aliases": [],
   "categories": [
@@ -14,7 +15,8 @@
     "cellType": "neuron",
     "note": {
       "text": {
-        "fr": "Le cerveau et le foie sont particulièrement touchés ; l'atteinte des neurones explique les troubles neurologiques progressifs. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Le cerveau et le foie sont particulièrement touchés ; l'atteinte des neurones explique les troubles neurologiques progressifs. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "The brain and the liver are especially affected; damage to neurons explains the progressive neurological problems. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -25,7 +27,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie de surcharge lysosomale : faute d'une enzyme fonctionnelle, le cholestérol non estérifié s'accumule dans les lysosomes, qui gonflent et perturbent la cellule."
+      "fr": "Maladie de surcharge lysosomale : faute d'une enzyme fonctionnelle, le cholestérol non estérifié s'accumule dans les lysosomes, qui gonflent et perturbent la cellule.",
+      "en": "A lysosomal storage disease: without a working enzyme, unesterified cholesterol accumulates in lysosomes, which swell and disrupt the cell."
     },
     "sources": [
       {
@@ -39,7 +42,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Des variants des gènes NPC1 ou NPC2 empêchent le cholestérol de sortir des endosomes tardifs et des lysosomes."
+        "fr": "Des variants des gènes NPC1 ou NPC2 empêchent le cholestérol de sortir des endosomes tardifs et des lysosomes.",
+        "en": "Variants of the NPC1 or NPC2 genes prevent cholesterol from leaving late endosomes and lysosomes."
       },
       "sources": [
         {
@@ -57,11 +61,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Enzyme lysosomale déficiente"
+        "fr": "Enzyme lysosomale déficiente",
+        "en": "Deficient lysosomal enzyme"
       },
       "explanation": {
         "text": {
-          "fr": "Des variants des gènes NPC1 ou NPC2 empêchent le cholestérol de sortir des endosomes tardifs et des lysosomes."
+          "fr": "Des variants des gènes NPC1 ou NPC2 empêchent le cholestérol de sortir des endosomes tardifs et des lysosomes.",
+          "en": "Variants of the NPC1 or NPC2 genes prevent cholesterol from leaving late endosomes and lysosomes."
         },
         "sources": [
           {
@@ -73,11 +79,13 @@
     },
     {
       "title": {
-        "fr": "Accumulation du substrat"
+        "fr": "Accumulation du substrat",
+        "en": "Substrate build-up"
       },
       "explanation": {
         "text": {
-          "fr": "Ne pouvant être dégradé, le cholestérol non estérifié reste piégé dans les lysosomes."
+          "fr": "Ne pouvant être dégradé, le cholestérol non estérifié reste piégé dans les lysosomes.",
+          "en": "Since it cannot be broken down, unesterified cholesterol stays trapped in lysosomes."
         },
         "sources": [
           {
@@ -95,7 +103,8 @@
     {
       "id": "enzyme",
       "title": {
-        "fr": "Enzyme déficiente"
+        "fr": "Enzyme déficiente",
+        "en": "Deficient enzyme"
       },
       "range": [
         0,
@@ -103,7 +112,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Des variants des gènes NPC1 ou NPC2 empêchent le cholestérol de sortir des endosomes tardifs et des lysosomes."
+          "fr": "Des variants des gènes NPC1 ou NPC2 empêchent le cholestérol de sortir des endosomes tardifs et des lysosomes.",
+          "en": "Variants of the NPC1 or NPC2 genes prevent cholesterol from leaving late endosomes and lysosomes."
         },
         "sources": [
           {
@@ -117,7 +127,8 @@
     {
       "id": "accumulation",
       "title": {
-        "fr": "Accumulation"
+        "fr": "Accumulation",
+        "en": "Build-up"
       },
       "range": [
         0.25,
@@ -125,7 +136,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le cholestérol non estérifié s'accumule progressivement dans les lysosomes."
+          "fr": "Le cholestérol non estérifié s'accumule progressivement dans les lysosomes.",
+          "en": "Unesterified cholesterol gradually accumulates in lysosomes."
         },
         "sources": [
           {
@@ -142,7 +154,8 @@
     {
       "id": "surcharge",
       "title": {
-        "fr": "Lysosomes surchargés"
+        "fr": "Lysosomes surchargés",
+        "en": "Overloaded lysosomes"
       },
       "range": [
         0.6,
@@ -150,7 +163,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les lysosomes, remplis de matériel non dégradé, augmentent en taille et en nombre."
+          "fr": "Les lysosomes, remplis de matériel non dégradé, augmentent en taille et en nombre.",
+          "en": "Filled with undegraded material, lysosomes grow in size and number."
         },
         "sources": [
           {
@@ -161,13 +175,15 @@
           }
         ],
         "simplification": {
-          "fr": "La vitesse d'accumulation est très accélérée : dans la maladie, elle se fait sur des mois ou des années."
+          "fr": "La vitesse d'accumulation est très accélérée : dans la maladie, elle se fait sur des mois ou des années.",
+          "en": "The build-up is greatly sped up: in the disease, it takes months or years."
         }
       },
       "cellularSigns": [
         {
           "text": {
-            "fr": "Lysosomes distendus, remplis d'un matériel pâle."
+            "fr": "Lysosomes distendus, remplis d'un matériel pâle.",
+            "en": "Distended lysosomes filled with pale material."
           },
           "sources": [
             {
@@ -181,7 +197,8 @@
     {
       "id": "dysfonction",
       "title": {
-        "fr": "Dysfonction cellulaire"
+        "fr": "Dysfonction cellulaire",
+        "en": "Cell dysfunction"
       },
       "range": [
         0.85,
@@ -189,7 +206,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le cerveau et le foie sont particulièrement touchés ; l'atteinte des neurones explique les troubles neurologiques progressifs. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+          "fr": "Le cerveau et le foie sont particulièrement touchés ; l'atteinte des neurones explique les troubles neurologiques progressifs. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+          "en": "The brain and the liver are especially affected; damage to neurons explains the progressive neurological problems. The model shows a generic cell; the changes shown are those described in the affected cells."
         },
         "sources": [
           {
@@ -298,7 +316,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Il n'existe pas de traitement curatif ; certains traitements visent à ralentir l'évolution et relèvent d'un avis spécialisé."
+      "fr": "Il n'existe pas de traitement curatif ; certains traitements visent à ralentir l'évolution et relèvent d'un avis spécialisé.",
+      "en": "There is no cure; some treatments aim to slow the disease and require specialist advice."
     },
     "sources": [
       {

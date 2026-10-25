@@ -94,7 +94,8 @@
     },
     {
       "title": {
-        "fr": "Perte neuronale"
+        "fr": "Perte neuronale",
+        "en": "Neuronal loss"
       },
       "explanation": {
         "text": {
@@ -170,7 +171,8 @@
     {
       "id": "perte",
       "title": {
-        "fr": "Perte neuronale"
+        "fr": "Perte neuronale",
+        "en": "Neuronal loss"
       },
       "range": [
         0.65,

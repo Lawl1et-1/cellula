@@ -2,7 +2,8 @@
   "id": "mucoviscidose",
   "slug": "mucoviscidose",
   "name": {
-    "fr": "Mucoviscidose"
+    "fr": "Mucoviscidose",
+    "en": "Cystic fibrosis"
   },
   "aliases": [],
   "categories": [
@@ -12,7 +13,8 @@
     "cellType": "epithelial",
     "note": {
       "text": {
-        "fr": "Les cellules épithéliales des voies respiratoires, du pancréas et d'autres organes sont touchées. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Les cellules épithéliales des voies respiratoires, du pancréas et d'autres organes sont touchées. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "Epithelial cells of the airways, the pancreas and other organs are affected. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -23,7 +25,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie génétique due à des variants du gène CFTR, qui code un canal à chlorure de la membrane des cellules épithéliales. Avec le variant le plus fréquent, la protéine est mal repliée et retenue dans le réticulum endoplasmique."
+      "fr": "Maladie génétique due à des variants du gène CFTR, qui code un canal à chlorure de la membrane des cellules épithéliales. Avec le variant le plus fréquent, la protéine est mal repliée et retenue dans le réticulum endoplasmique.",
+      "en": "A genetic disease caused by variants of the CFTR gene, which encodes a chloride channel in the membrane of epithelial cells. With the most common variant, the protein misfolds and is retained in the endoplasmic reticulum."
     },
     "sources": [
       {
@@ -37,7 +40,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Des variants des deux copies du gène CFTR ; le plus fréquent est p.Phe508del."
+        "fr": "Des variants des deux copies du gène CFTR ; le plus fréquent est p.Phe508del.",
+        "en": "Variants in both copies of the CFTR gene; the most common is p.Phe508del."
       },
       "sources": [
         {
@@ -58,11 +62,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Protéine mal repliée"
+        "fr": "Protéine mal repliée",
+        "en": "Misfolded protein"
       },
       "explanation": {
         "text": {
-          "fr": "La protéine CFTR mutée est mal repliée et retenue par le contrôle qualité du RE, puis dégradée."
+          "fr": "La protéine CFTR mutée est mal repliée et retenue par le contrôle qualité du RE, puis dégradée.",
+          "en": "The mutated CFTR protein misfolds, is held back by ER quality control, and is then degraded."
         },
         "sources": [
           {
@@ -77,11 +83,13 @@
     },
     {
       "title": {
-        "fr": "Moins de canaux à la membrane"
+        "fr": "Moins de canaux à la membrane",
+        "en": "Fewer channels in the membrane"
       },
       "explanation": {
         "text": {
-          "fr": "Moins de canaux CFTR fonctionnels atteignent la membrane : le transport du chlore et de l'eau est perturbé, et le mucus s'épaissit."
+          "fr": "Moins de canaux CFTR fonctionnels atteignent la membrane : le transport du chlore et de l'eau est perturbé, et le mucus s'épaissit.",
+          "en": "Fewer working CFTR channels reach the membrane: the transport of chloride and water is disturbed, and the mucus thickens."
         },
         "sources": [
           {
@@ -96,7 +104,8 @@
     {
       "id": "gene",
       "title": {
-        "fr": "Un gène CFTR modifié"
+        "fr": "Un gène CFTR modifié",
+        "en": "An altered CFTR gene"
       },
       "range": [
         0,
@@ -104,7 +113,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les deux copies du gène CFTR portent un variant ; le plus fréquent, p.Phe508del, retire un seul acide aminé de la protéine."
+          "fr": "Les deux copies du gène CFTR portent un variant ; le plus fréquent, p.Phe508del, retire un seul acide aminé de la protéine.",
+          "en": "Both copies of the CFTR gene carry a variant; the most common, p.Phe508del, removes a single amino acid from the protein."
         },
         "sources": [
           {
@@ -115,7 +125,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Le variant est marqué en rouge dans l'ADN."
+            "fr": "Le variant est marqué en rouge dans l'ADN.",
+            "en": "The variant is marked in red in the DNA."
           },
           "sources": [
             {
@@ -129,7 +140,8 @@
     {
       "id": "synthese",
       "title": {
-        "fr": "Synthèse de CFTR"
+        "fr": "Synthèse de CFTR",
+        "en": "CFTR synthesis"
       },
       "range": [
         0.18,
@@ -137,7 +149,8 @@
       ],
       "description": {
         "text": {
-          "fr": "La protéine CFTR est fabriquée dans le réticulum endoplasmique."
+          "fr": "La protéine CFTR est fabriquée dans le réticulum endoplasmique.",
+          "en": "The CFTR protein is made in the endoplasmic reticulum."
         },
         "sources": [
           {
@@ -151,7 +164,8 @@
     {
       "id": "retention",
       "title": {
-        "fr": "Rétention et dégradation"
+        "fr": "Rétention et dégradation",
+        "en": "Retention and degradation"
       },
       "range": [
         0.426,
@@ -159,7 +173,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Mal repliée, elle est retenue dans le RE puis dégradée au lieu d'être envoyée vers la membrane."
+          "fr": "Mal repliée, elle est retenue dans le RE puis dégradée au lieu d'être envoyée vers la membrane.",
+          "en": "Misfolded, it is held in the ER and then degraded instead of being sent to the membrane."
         },
         "sources": [
           {
@@ -173,7 +188,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Protéines retenues dans le RE."
+            "fr": "Protéines retenues dans le RE.",
+            "en": "Proteins retained in the ER."
           },
           "sources": [
             {
@@ -187,7 +203,8 @@
     {
       "id": "membrane",
       "title": {
-        "fr": "Membrane appauvrie"
+        "fr": "Membrane appauvrie",
+        "en": "A depleted membrane"
       },
       "range": [
         0.713,
@@ -195,7 +212,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Faute de canaux CFTR à la membrane, le chlore sort moins de la cellule et les sécrétions s'épaississent."
+          "fr": "Faute de canaux CFTR à la membrane, le chlore sort moins de la cellule et les sécrétions s'épaississent.",
+          "en": "Without CFTR channels in the membrane, less chloride leaves the cell and secretions thicken."
         },
         "sources": [
           {
@@ -203,7 +221,8 @@
           }
         ],
         "simplification": {
-          "fr": "Les récepteurs de la membrane représentent ici l'ensemble de ses protéines : leur raréfaction figure la perte de CFTR."
+          "fr": "Les récepteurs de la membrane représentent ici l'ensemble de ses protéines : leur raréfaction figure la perte de CFTR.",
+          "en": "Here the membrane receptors stand for all of its proteins: their thinning out represents the loss of CFTR."
         }
       },
       "cellularSigns": [],
@@ -335,7 +354,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Des modulateurs de CFTR peuvent améliorer le repliement et la fonction de la protéine chez certains patients ; ils relèvent d'un avis spécialisé."
+      "fr": "Des modulateurs de CFTR peuvent améliorer le repliement et la fonction de la protéine chez certains patients ; ils relèvent d'un avis spécialisé.",
+      "en": "CFTR modulators can improve the folding and function of the protein in some patients; they require specialist advice."
     },
     "sources": [
       {

@@ -2,7 +2,8 @@
   "id": "drepanocytose",
   "slug": "drepanocytose",
   "name": {
-    "fr": "Drépanocytose"
+    "fr": "Drépanocytose",
+    "en": "Sickle cell disease"
   },
   "aliases": [
     "Anémie falciforme",
@@ -15,7 +16,8 @@
     "cellType": "erythrocyte",
     "note": {
       "text": {
-        "fr": "La maladie touche les globules rouges, fabriqués dans la moelle osseuse, et l'hémoglobine qu'ils transportent."
+        "fr": "La maladie touche les globules rouges, fabriqués dans la moelle osseuse, et l'hémoglobine qu'ils transportent.",
+        "en": "The disease affects red blood cells, which are made in the bone marrow, and the haemoglobin they carry."
       },
       "sources": [
         {
@@ -23,13 +25,15 @@
         }
       ],
       "simplification": {
-        "fr": "Les globules rouges matures n'ont plus de noyau. Le modèle montre une cellule générique à noyau, comme les précurseurs des globules rouges où le gène HBB s'exprime ; la forme en faucille du globule rouge n'est pas représentée."
+        "fr": "Les globules rouges matures n'ont plus de noyau. Le modèle montre une cellule générique à noyau, comme les précurseurs des globules rouges où le gène HBB s'exprime ; la forme en faucille du globule rouge n'est pas représentée.",
+        "en": "Mature red blood cells no longer have a nucleus. The model shows a generic nucleated cell, like the red blood cell precursors in which the HBB gene is expressed; the sickle shape of the red blood cell itself is not shown."
       }
     }
   },
   "summary": {
     "text": {
-      "fr": "Maladie génétique de l'hémoglobine : le changement d'une seule base dans le gène HBB produit une hémoglobine anormale (HbS) qui se polymérise et déforme les globules rouges en faucille."
+      "fr": "Maladie génétique de l'hémoglobine : le changement d'une seule base dans le gène HBB produit une hémoglobine anormale (HbS) qui se polymérise et déforme les globules rouges en faucille.",
+      "en": "A genetic disease of haemoglobin: a change in a single base of the HBB gene produces an abnormal haemoglobin (HbS) that polymerises and bends red blood cells into a sickle shape."
     },
     "sources": [
       {
@@ -40,7 +44,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Les deux copies du gène HBB de la bêta-globine portent une substitution d'un seul nucléotide : l'acide glutamique en position 6 est remplacé par une valine."
+        "fr": "Les deux copies du gène HBB de la bêta-globine portent une substitution d'un seul nucléotide : l'acide glutamique en position 6 est remplacé par une valine.",
+        "en": "Both copies of the HBB gene, which encodes beta-globin, carry a single-nucleotide substitution: glutamic acid at position 6 is replaced by valine."
       },
       "sources": [
         {
@@ -59,11 +64,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Une seule base changée"
+        "fr": "Une seule base changée",
+        "en": "A single base changed"
       },
       "explanation": {
         "text": {
-          "fr": "Une substitution d'un nucléotide dans le gène HBB change un acide aminé de la bêta-globine."
+          "fr": "Une substitution d'un nucléotide dans le gène HBB change un acide aminé de la bêta-globine.",
+          "en": "A one-nucleotide substitution in the HBB gene changes one amino acid of beta-globin."
         },
         "sources": [
           {
@@ -75,11 +82,13 @@
     },
     {
       "title": {
-        "fr": "Hémoglobine S"
+        "fr": "Hémoglobine S",
+        "en": "Haemoglobin S"
       },
       "explanation": {
         "text": {
-          "fr": "Quand elle perd son oxygène, l'hémoglobine S se polymérise en longues fibres rigides."
+          "fr": "Quand elle perd son oxygène, l'hémoglobine S se polymérise en longues fibres rigides.",
+          "en": "When it loses its oxygen, haemoglobin S polymerises into long, stiff fibres."
         },
         "sources": [
           {
@@ -91,11 +100,13 @@
     },
     {
       "title": {
-        "fr": "Globules rouges en faucille"
+        "fr": "Globules rouges en faucille",
+        "en": "Sickled red blood cells"
       },
       "explanation": {
         "text": {
-          "fr": "Les globules rouges déformés et rigides se détruisent plus vite (hémolyse) et peuvent boucher les petits vaisseaux."
+          "fr": "Les globules rouges déformés et rigides se détruisent plus vite (hémolyse) et peuvent boucher les petits vaisseaux.",
+          "en": "Deformed, rigid red blood cells are destroyed faster (haemolysis) and can block small blood vessels."
         },
         "sources": [
           {
@@ -110,7 +121,8 @@
     {
       "id": "gene",
       "title": {
-        "fr": "Une base changée dans HBB"
+        "fr": "Une base changée dans HBB",
+        "en": "One base changed in HBB"
       },
       "range": [
         0,
@@ -118,7 +130,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Dans le gène HBB, un seul nucléotide est remplacé par un autre. Cette petite différence change un acide aminé de la bêta-globine."
+          "fr": "Dans le gène HBB, un seul nucléotide est remplacé par un autre. Cette petite différence change un acide aminé de la bêta-globine.",
+          "en": "In the HBB gene, a single nucleotide is replaced by another. This small difference changes one amino acid of beta-globin."
         },
         "sources": [
           {
@@ -129,7 +142,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "La mutation ponctuelle est marquée en rouge dans l'ADN."
+            "fr": "La mutation ponctuelle est marquée en rouge dans l'ADN.",
+            "en": "The point mutation is marked in red in the DNA."
           },
           "sources": [
             {
@@ -143,7 +157,8 @@
     {
       "id": "hbs",
       "title": {
-        "fr": "L'hémoglobine S se polymérise"
+        "fr": "L'hémoglobine S se polymérise",
+        "en": "Haemoglobin S polymerises"
       },
       "range": [
         0.32,
@@ -151,7 +166,8 @@
       ],
       "description": {
         "text": {
-          "fr": "L'ARN messager du gène muté est traduit en bêta-globine anormale, qui forme l'hémoglobine S. Privée d'oxygène, elle s'assemble en longues fibres."
+          "fr": "L'ARN messager du gène muté est traduit en bêta-globine anormale, qui forme l'hémoglobine S. Privée d'oxygène, elle s'assemble en longues fibres.",
+          "en": "The messenger RNA of the mutated gene is translated into abnormal beta-globin, which forms haemoglobin S. Without oxygen, it assembles into long fibres."
         },
         "sources": [
           {
@@ -165,7 +181,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Le cytoplasme se charge de fibres d'hémoglobine."
+            "fr": "Le cytoplasme se charge de fibres d'hémoglobine.",
+            "en": "The cytoplasm fills with haemoglobin fibres."
           },
           "sources": [
             {
@@ -173,7 +190,8 @@
             }
           ],
           "simplification": {
-            "fr": "Les fibres d'hémoglobine S sont suggérées par des agrégats et une teinte, pas dessinées une à une."
+            "fr": "Les fibres d'hémoglobine S sont suggérées par des agrégats et une teinte, pas dessinées une à une.",
+            "en": "Haemoglobin S fibres are suggested by aggregates and a change of tint, not drawn one by one."
           }
         }
       ],
@@ -182,7 +200,8 @@
     {
       "id": "faucille",
       "title": {
-        "fr": "Globules rouges déformés"
+        "fr": "Globules rouges déformés",
+        "en": "Deformed red blood cells"
       },
       "range": [
         0.66,
@@ -190,7 +209,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les globules rouges prennent une forme de faucille, deviennent rigides et fragiles : ils se détruisent plus vite et peuvent boucher les petits vaisseaux, ce qui provoque des crises douloureuses."
+          "fr": "Les globules rouges prennent une forme de faucille, deviennent rigides et fragiles : ils se détruisent plus vite et peuvent boucher les petits vaisseaux, ce qui provoque des crises douloureuses.",
+          "en": "Red blood cells take on a sickle shape and become stiff and fragile: they are destroyed faster and can block small blood vessels, causing painful crises."
         },
         "sources": [
           {
@@ -201,7 +221,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "La cellule perd sa souplesse et sa durée de vie raccourcit."
+            "fr": "La cellule perd sa souplesse et sa durée de vie raccourcit.",
+            "en": "The cell loses its flexibility and its lifespan shortens."
           },
           "sources": [
             {
@@ -337,7 +358,8 @@
   ],
   "treatmentsNote": {
     "text": {
-      "fr": "Hydroxyurée, transfusions et, dans certains cas, greffe de cellules souches hématopoïétiques ; la prise en charge relève d'équipes spécialisées."
+      "fr": "Hydroxyurée, transfusions et, dans certains cas, greffe de cellules souches hématopoïétiques ; la prise en charge relève d'équipes spécialisées.",
+      "en": "Hydroxyurea, transfusions and, in some cases, haematopoietic stem cell transplantation; care is provided by specialist teams."
     },
     "sources": [
       {

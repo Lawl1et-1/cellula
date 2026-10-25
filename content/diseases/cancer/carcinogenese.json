@@ -2,7 +2,8 @@
   "id": "carcinogenese",
   "slug": "cancer-carcinogenese",
   "name": {
-    "fr": "Cancer : la cellule qui échappe aux règles"
+    "fr": "Cancer : la cellule qui échappe aux règles",
+    "en": "Cancer: the cell that breaks the rules"
   },
   "aliases": [],
   "categories": [
@@ -13,7 +14,8 @@
     "cellType": "epithelial",
     "note": {
       "text": {
-        "fr": "La plupart des cancers naissent de cellules épithéliales. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "La plupart des cancers naissent de cellules épithéliales. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "Most cancers arise from epithelial cells. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -24,7 +26,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Un cancer naît d'une cellule qui accumule des mutations : elle se divise sans contrôle, échappe à la mort cellulaire programmée et devient génétiquement instable."
+      "fr": "Un cancer naît d'une cellule qui accumule des mutations : elle se divise sans contrôle, échappe à la mort cellulaire programmée et devient génétiquement instable.",
+      "en": "A cancer starts from a cell that accumulates mutations: it divides out of control, escapes programmed cell death and becomes genetically unstable."
     },
     "sources": [
       {
@@ -35,13 +38,15 @@
       }
     ],
     "simplification": {
-      "fr": "Les cellules voisines qui apparaissent et le noyau qui grossit sont des représentations schématiques."
+      "fr": "Les cellules voisines qui apparaissent et le noyau qui grossit sont des représentations schématiques.",
+      "en": "The neighbouring cells that appear and the enlarging nucleus are schematic representations."
     }
   },
   "cause": [
     {
       "text": {
-        "fr": "Des mutations s'accumulent dans des gènes qui contrôlent la division (oncogènes et gènes suppresseurs de tumeur), par exemple le gène p53."
+        "fr": "Des mutations s'accumulent dans des gènes qui contrôlent la division (oncogènes et gènes suppresseurs de tumeur), par exemple le gène p53.",
+        "en": "Mutations build up in genes that control division (oncogenes and tumour suppressor genes), such as the p53 gene."
       },
       "sources": [
         {
@@ -65,11 +70,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Division incontrôlée"
+        "fr": "Division incontrôlée",
+        "en": "Uncontrolled division"
       },
       "explanation": {
         "text": {
-          "fr": "Les gènes mutés stimulent la division ou ne la freinent plus."
+          "fr": "Les gènes mutés stimulent la division ou ne la freinent plus.",
+          "en": "The mutated genes drive division or no longer hold it back."
         },
         "sources": [
           {
@@ -81,11 +88,13 @@
     },
     {
       "title": {
-        "fr": "Échappement à l'apoptose"
+        "fr": "Échappement à l'apoptose",
+        "en": "Escape from apoptosis"
       },
       "explanation": {
         "text": {
-          "fr": "Des mutations de gènes qui régulent l'apoptose permettent aux cellules cancéreuses de ne pas mourir."
+          "fr": "Des mutations de gènes qui régulent l'apoptose permettent aux cellules cancéreuses de ne pas mourir.",
+          "en": "Mutations in genes that regulate apoptosis let cancer cells avoid dying."
         },
         "sources": [
           {
@@ -96,11 +105,13 @@
     },
     {
       "title": {
-        "fr": "Instabilité génétique"
+        "fr": "Instabilité génétique",
+        "en": "Genetic instability"
       },
       "explanation": {
         "text": {
-          "fr": "Chaque cancer porte son propre ensemble de lésions génétiques, qui s'accumulent au fil des divisions."
+          "fr": "Chaque cancer porte son propre ensemble de lésions génétiques, qui s'accumulent au fil des divisions.",
+          "en": "Each cancer carries its own set of genetic lesions, which build up over successive divisions."
         },
         "sources": [
           {
@@ -115,7 +126,8 @@
     {
       "id": "mutation",
       "title": {
-        "fr": "Premières mutations"
+        "fr": "Premières mutations",
+        "en": "First mutations"
       },
       "range": [
         0,
@@ -123,7 +135,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Une cellule acquiert une mutation dans un gène qui contrôle la division."
+          "fr": "Une cellule acquiert une mutation dans un gène qui contrôle la division.",
+          "en": "A cell acquires a mutation in a gene that controls division."
         },
         "sources": [
           {
@@ -137,7 +150,8 @@
     {
       "id": "proliferation",
       "title": {
-        "fr": "Prolifération"
+        "fr": "Prolifération",
+        "en": "Proliferation"
       },
       "range": [
         0.3,
@@ -145,7 +159,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Elle se divise plus que ses voisines et transmet ses mutations à ses descendantes."
+          "fr": "Elle se divise plus que ses voisines et transmet ses mutations à ses descendantes.",
+          "en": "It divides more than its neighbours and passes its mutations on to its daughter cells."
         },
         "sources": [
           {
@@ -156,7 +171,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Les cellules se divisent sans contrôle."
+            "fr": "Les cellules se divisent sans contrôle.",
+            "en": "The cells divide out of control."
           },
           "sources": [
             {
@@ -174,7 +190,8 @@
     {
       "id": "instabilite",
       "title": {
-        "fr": "Instabilité et survie"
+        "fr": "Instabilité et survie",
+        "en": "Instability and survival"
       },
       "range": [
         0.65,
@@ -182,7 +199,8 @@
       ],
       "description": {
         "text": {
-          "fr": "De nouvelles mutations s'accumulent et permettent aux cellules d'échapper à l'apoptose."
+          "fr": "De nouvelles mutations s'accumulent et permettent aux cellules d'échapper à l'apoptose.",
+          "en": "New mutations build up and let the cells escape apoptosis."
         },
         "sources": [
           {
@@ -291,7 +309,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Les traitements dépendent du type de cancer et relèvent d'une équipe médicale spécialisée."
+      "fr": "Les traitements dépendent du type de cancer et relèvent d'une équipe médicale spécialisée.",
+      "en": "Treatment depends on the type of cancer and is a matter for a specialist medical team."
     },
     "sources": [
       {
