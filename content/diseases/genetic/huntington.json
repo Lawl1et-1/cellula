@@ -100,19 +100,19 @@
   ],
   "stages": [
     {
-      "id": "expansion",
+      "id": "gene",
       "title": {
-        "fr": "Huntingtine allongée",
-        "en": "Lengthened huntingtin"
+        "fr": "Un gène HTT modifié",
+        "en": "An altered HTT gene"
       },
       "range": [
-        0,
-        0.3
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "La huntingtine porte une longue répétition de glutamines.",
-          "en": "Huntingtin carries a long run of glutamines."
+          "fr": "Tout commence dans l'ADN : le gène HTT porte une répétition CAG anormalement longue, transmise de façon autosomique dominante.",
+          "en": "It all starts in the DNA: the HTT gene carries an abnormally long CAG repeat, inherited in an autosomal dominant manner."
         },
         "sources": [
           {
@@ -120,25 +120,129 @@
           }
         ]
       },
-      "cellularSigns": [],
-      "focus": "nucleus"
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Le variant est marqué en rouge dans l'ADN.",
+            "en": "The variant is marked in red in the DNA."
+          },
+          "sources": [
+            {
+              "id": "gr-huntington"
+            }
+          ]
+        }
+      ],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "seconds": 12
     },
     {
-      "id": "agregats",
+      "id": "protein",
       "title": {
-        "fr": "Agrégats et inclusions",
-        "en": "Aggregates and inclusions"
+        "fr": "Une huntingtine allongée",
+        "en": "A lengthened huntingtin"
       },
       "range": [
-        0.3,
-        0.7
+        0.2,
+        0.4
       ],
       "description": {
         "text": {
-          "fr": "La protéine s'agrège dans le cytoplasme et forme des inclusions dans le noyau.",
-          "en": "The protein aggregates in the cytoplasm and forms inclusions in the nucleus."
+          "fr": "La huntingtine produite contient une longue chaîne de glutamines, qui favorise son mauvais repliement.",
+          "en": "The huntingtin produced contains a long run of glutamines, which promotes its misfolding."
         },
         "sources": [
+          {
+            "id": "gr-huntington"
+          },
+          {
+            "id": "mboc4-aggregates"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "nucleus.pore",
+        "radius": 13
+      },
+      "highlight": [
+        "ribosome"
+      ],
+      "heroes": [
+        {
+          "model": "misfolded",
+          "path": [
+            "nucleus.pore",
+            "cytoplasm"
+          ],
+          "count": 3,
+          "label": {
+            "fr": "Huntingtine mal repliée",
+            "en": "Misfolded huntingtin"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "aggregates",
+      "title": {
+        "fr": "Agrégats",
+        "en": "Aggregates"
+      },
+      "range": [
+        0.4,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "Les protéines mal repliées s'agrègent dans le cytoplasme.",
+          "en": "The misfolded proteins aggregate in the cytoplasm."
+        },
+        "sources": [
+          {
+            "id": "mboc4-aggregates"
+          },
+          {
+            "id": "gr-huntington"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "cytoplasm",
+        "radius": 26
+      },
+      "highlight": [
+        "aggregates"
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "inclusions",
+      "title": {
+        "fr": "Inclusions dans le noyau",
+        "en": "Inclusions in the nucleus"
+      },
+      "range": [
+        0.6,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "Elles forment aussi des inclusions à l'intérieur du noyau.",
+          "en": "They also form inclusions inside the nucleus."
+        },
+        "sources": [
+          {
+            "id": "gr-huntington"
+          },
           {
             "id": "mboc4-aggregates"
           }
@@ -152,27 +256,35 @@
           },
           "sources": [
             {
-              "id": "mboc4-aggregates"
+              "id": "gr-huntington"
             }
           ]
         }
       ],
-      "focus": "nucleus"
+      "focus": "nucleus",
+      "camera": {
+        "at": "nucleus",
+        "radius": 32
+      },
+      "highlight": [
+        "inclusions"
+      ],
+      "seconds": 12
     },
     {
-      "id": "perte",
+      "id": "loss",
       "title": {
         "fr": "Perte neuronale",
         "en": "Neuronal loss"
       },
       "range": [
-        0.7,
+        0.8,
         1
       ],
       "description": {
         "text": {
-          "fr": "Les neurones du striatum dégénèrent progressivement.",
-          "en": "Neurons of the striatum gradually degenerate."
+          "fr": "Les neurones du striatum, les premiers touchés, dégénèrent progressivement.",
+          "en": "Neurons of the striatum, the first to be affected, gradually degenerate."
         },
         "sources": [
           {
@@ -184,24 +296,29 @@
       "focus": "cytoplasm",
       "camera": {
         "view": "cell",
-        "radius": 120
-      }
+        "radius": 90
+      },
+      "highlight": [
+        "aggregates",
+        "inclusions"
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
     {
-      "channel": "nucleus.inclusions",
+      "channel": "dna.mutation",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.3,
-          "v": 0.2
+          "t": 0.02,
+          "v": 0.0
         },
         {
-          "t": 0.7,
+          "t": 0.14,
           "v": 1
         }
       ]
@@ -211,15 +328,32 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.3,
-          "v": 0.05
+          "t": 0.42,
+          "v": 0.0
         },
         {
-          "t": 0.7,
-          "v": 0.4
+          "t": 0.54,
+          "v": 0.6
+        }
+      ]
+    },
+    {
+      "channel": "nucleus.inclusions",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.62,
+          "v": 0.0
+        },
+        {
+          "t": 0.74,
+          "v": 0.9
         }
       ]
     },
@@ -228,36 +362,32 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.7,
-          "v": 0.9
+          "t": 0.82,
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 0.5
+          "t": 0.94,
+          "v": 0.55
         }
       ]
     },
     {
-      "channel": "view.focusDim",
+      "channel": "cell.shrinkage",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.05,
-          "v": 0.5
+          "t": 0.82,
+          "v": 0.0
         },
         {
-          "t": 0.95,
-          "v": 0.5
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.94,
+          "v": 0.15
         }
       ]
     }
@@ -265,7 +395,7 @@
   "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -277,5 +407,6 @@
         "id": "gr-huntington"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }

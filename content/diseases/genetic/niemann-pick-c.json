@@ -101,19 +101,19 @@
   ],
   "stages": [
     {
-      "id": "enzyme",
+      "id": "gene",
       "title": {
-        "fr": "Enzyme déficiente",
-        "en": "Deficient enzyme"
+        "fr": "Un gène NPC1 modifié",
+        "en": "An altered NPC1 gene"
       },
       "range": [
-        0,
-        0.25
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Des variants des gènes NPC1 ou NPC2 empêchent le cholestérol de sortir des endosomes tardifs et des lysosomes.",
-          "en": "Variants of the NPC1 or NPC2 genes prevent cholesterol from leaving late endosomes and lysosomes."
+          "fr": "Tout commence dans l'ADN : des variants des gènes NPC1 ou NPC2 privent la cellule de protéines qui font sortir le cholestérol des lysosomes.",
+          "en": "It all starts in the DNA: variants of the NPC1 or NPC2 genes deprive the cell of proteins that move cholesterol out of lysosomes."
         },
         "sources": [
           {
@@ -121,50 +121,134 @@
           }
         ]
       },
-      "cellularSigns": [],
-      "focus": "lysosome"
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Le variant est marqué en rouge dans l'ADN.",
+            "en": "The variant is marked in red in the DNA."
+          },
+          "sources": [
+            {
+              "id": "gr-npc"
+            }
+          ]
+        }
+      ],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "seconds": 12
     },
     {
-      "id": "accumulation",
+      "id": "arrival",
       "title": {
-        "fr": "Accumulation",
-        "en": "Build-up"
+        "fr": "Le cholestérol arrive",
+        "en": "Cholesterol arrives"
       },
       "range": [
-        0.25,
+        0.2,
+        0.4
+      ],
+      "description": {
+        "text": {
+          "fr": "Le cholestérol entre dans la cellule avec les particules de LDL, capturées par endocytose puis livrées aux endosomes et aux lysosomes.",
+          "en": "Cholesterol enters the cell with LDL particles, captured by endocytosis and then delivered to endosomes and lysosomes."
+        },
+        "sources": [
+          {
+            "id": "mboc4-receptor-endocytosis"
+          },
+          {
+            "id": "gr-npc"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "lysosome",
+      "camera": {
+        "at": "endosome",
+        "radius": 14
+      },
+      "highlight": [
+        "plasma-membrane",
+        "vesicle"
+      ],
+      "heroes": [
+        {
+          "model": "ldl",
+          "path": [
+            "outside",
+            "membrane",
+            "endosome",
+            "lysosome"
+          ],
+          "count": 4,
+          "label": {
+            "fr": "LDL (cholestérol)",
+            "en": "LDL (cholesterol)"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "trapped",
+      "title": {
+        "fr": "Bloqué dans les lysosomes",
+        "en": "Trapped in lysosomes"
+      },
+      "range": [
+        0.4,
         0.6
       ],
       "description": {
         "text": {
-          "fr": "Le cholestérol non estérifié s'accumule progressivement dans les lysosomes.",
-          "en": "Unesterified cholesterol gradually accumulates in lysosomes."
+          "fr": "Sans protéines NPC1 ou NPC2 fonctionnelles, le cholestérol non estérifié ne peut pas quitter les endosomes tardifs et les lysosomes.",
+          "en": "Without working NPC1 or NPC2 proteins, unesterified cholesterol cannot leave late endosomes and lysosomes."
         },
         "sources": [
           {
             "id": "gr-npc"
-          },
-          {
-            "id": "mboc4-lysosome-digestion"
           }
         ]
       },
       "cellularSigns": [],
-      "focus": "lysosome"
+      "focus": "lysosome",
+      "camera": {
+        "at": "lysosome",
+        "radius": 9
+      },
+      "heroes": [
+        {
+          "model": "substrate",
+          "path": [
+            "lysosome"
+          ],
+          "count": 8,
+          "label": {
+            "fr": "Cholestérol non estérifié",
+            "en": "Unesterified cholesterol"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "surcharge",
+      "id": "storage",
       "title": {
-        "fr": "Lysosomes surchargés",
-        "en": "Overloaded lysosomes"
+        "fr": "Les lysosomes se remplissent",
+        "en": "Lysosomes fill up"
       },
       "range": [
         0.6,
-        0.85
+        0.8
       ],
       "description": {
         "text": {
-          "fr": "Les lysosomes, remplis de matériel non dégradé, augmentent en taille et en nombre.",
-          "en": "Filled with undegraded material, lysosomes grow in size and number."
+          "fr": "Le cholestérol s'accumule : les lysosomes gonflent et se multiplient.",
+          "en": "Cholesterol builds up: lysosomes swell and multiply."
         },
         "sources": [
           {
@@ -175,39 +259,32 @@
           }
         ],
         "simplification": {
-          "fr": "La vitesse d'accumulation est très accélérée : dans la maladie, elle se fait sur des mois ou des années.",
-          "en": "The build-up is greatly sped up: in the disease, it takes months or years."
+          "fr": "L'accumulation est fortement accélérée.",
+          "en": "The build-up is greatly sped up."
         }
       },
-      "cellularSigns": [
-        {
-          "text": {
-            "fr": "Lysosomes distendus, remplis d'un matériel pâle.",
-            "en": "Distended lysosomes filled with pale material."
-          },
-          "sources": [
-            {
-              "id": "gr-npc"
-            }
-          ]
-        }
-      ],
-      "focus": "lysosome"
+      "cellularSigns": [],
+      "focus": "lysosome",
+      "camera": {
+        "at": "lysosome",
+        "radius": 12
+      },
+      "seconds": 12
     },
     {
-      "id": "dysfonction",
+      "id": "consequence",
       "title": {
-        "fr": "Dysfonction cellulaire",
-        "en": "Cell dysfunction"
+        "fr": "Conséquences",
+        "en": "Consequences"
       },
       "range": [
-        0.85,
+        0.8,
         1
       ],
       "description": {
         "text": {
-          "fr": "Le cerveau et le foie sont particulièrement touchés ; l'atteinte des neurones explique les troubles neurologiques progressifs. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
-          "en": "The brain and the liver are especially affected; damage to neurons explains the progressive neurological problems. The model shows a generic cell; the changes shown are those described in the affected cells."
+          "fr": "Le cerveau et le foie sont particulièrement touchés ; l'atteinte des neurones explique les troubles neurologiques progressifs.",
+          "en": "The brain and the liver are especially affected; damage to neurons explains the progressive neurological problems."
         },
         "sources": [
           {
@@ -218,29 +295,55 @@
       "cellularSigns": [],
       "focus": "cytoplasm",
       "camera": {
-        "radius": 40
-      }
+        "view": "cell",
+        "radius": 90
+      },
+      "highlight": [
+        "lysosome"
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
+    {
+      "channel": "dna.mutation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.02,
+          "v": 0.0
+        },
+        {
+          "t": 0.14,
+          "v": 1
+        }
+      ]
+    },
     {
       "channel": "lysosome.storageLoad",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.25,
-          "v": 0.15
+          "t": 0.42,
+          "v": 0.0
         },
         {
-          "t": 0.6,
-          "v": 0.7
+          "t": 0.54,
+          "v": 0.5
         },
         {
-          "t": 0.85,
-          "v": 1
+          "t": 0.62,
+          "v": 0.5
+        },
+        {
+          "t": 0.74,
+          "v": 0.95
         }
       ]
     },
@@ -249,15 +352,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.6,
-          "v": 1.4
+          "t": 0.62,
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 2.3
+          "t": 0.74,
+          "v": 1.8
         }
       ]
     },
@@ -266,53 +369,40 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.8,
-          "v": 0.1
+          "t": 0.82,
+          "v": 0.0
         },
         {
-          "t": 1,
+          "t": 0.94,
           "v": 0.3
         }
       ]
     },
     {
-      "channel": "view.focusDim",
+      "channel": "cell.viability",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 1.0
         },
         {
-          "t": 0.05,
-          "v": 0.4
+          "t": 0.82,
+          "v": 1.0
         },
         {
-          "t": 0.95,
-          "v": 0.4
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.94,
+          "v": 0.8
         }
       ]
     }
   ],
-  "actors": [
-    {
-      "actor": "pulse",
-      "at": 0.0,
-      "until": 0.25,
-      "params": {
-        "at": "lysosome"
-      }
-    }
-  ],
+  "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -324,5 +414,6 @@
         "id": "gr-npc"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }

@@ -96,19 +96,19 @@
   ],
   "stages": [
     {
-      "id": "dystrophine",
+      "id": "gene",
       "title": {
-        "fr": "Absence de dystrophine",
-        "en": "Lack of dystrophin"
+        "fr": "Un gène DMD modifié",
+        "en": "An altered DMD gene"
       },
       "range": [
-        0,
-        0.3
+        0.0,
+        0.25
       ],
       "description": {
         "text": {
-          "fr": "La fibre musculaire ne produit pas de dystrophine.",
-          "en": "The muscle fibre makes no dystrophin."
+          "fr": "Tout commence dans l'ADN : des variants du gène DMD, porté par le chromosome X, empêchent la fabrication de la dystrophine.",
+          "en": "It all starts in the DNA: variants of the DMD gene, on the X chromosome, prevent dystrophin from being made."
         },
         "sources": [
           {
@@ -116,39 +116,11 @@
           }
         ]
       },
-      "cellularSigns": [],
-      "focus": "cytoskeleton"
-    },
-    {
-      "id": "fragilite",
-      "title": {
-        "fr": "Membrane fragilisée",
-        "en": "Weakened membrane"
-      },
-      "range": [
-        0.3,
-        0.7
-      ],
-      "description": {
-        "text": {
-          "fr": "Lors des contractions, la membrane se rompt par endroits.",
-          "en": "During contractions, the membrane tears in places."
-        },
-        "sources": [
-          {
-            "id": "gr-dystrophinopathies"
-          }
-        ],
-        "simplification": {
-          "fr": "Les ruptures de membrane sont représentées par des trous ; en réalité ce sont des lésions microscopiques.",
-          "en": "Membrane tears are shown as holes; in reality they are microscopic lesions."
-        }
-      },
       "cellularSigns": [
         {
           "text": {
-            "fr": "Lésions de la membrane.",
-            "en": "Membrane lesions."
+            "fr": "Le variant est marqué en rouge dans l'ADN.",
+            "en": "The variant is marked in red in the DNA."
           },
           "sources": [
             {
@@ -157,22 +129,106 @@
           ]
         }
       ],
-      "focus": "plasma-membrane"
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "seconds": 12
     },
     {
-      "id": "degenerescence",
+      "id": "dystrophin",
+      "title": {
+        "fr": "Un lien qui manque",
+        "en": "A missing link"
+      },
+      "range": [
+        0.25,
+        0.5
+      ],
+      "description": {
+        "text": {
+          "fr": "Dans la fibre musculaire, la dystrophine relie le cytosquelette d'actine, sous la membrane, aux protéines de la membrane ; sans elle, ce lien est rompu.",
+          "en": "In the muscle fibre, dystrophin links the actin cytoskeleton under the membrane to membrane proteins; without it, this link is broken."
+        },
+        "sources": [
+          {
+            "id": "gr-dystrophinopathies"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoskeleton",
+      "camera": {
+        "at": "membrane",
+        "radius": 16
+      },
+      "highlight": [
+        "plasma-membrane"
+      ],
+      "labels": [
+        {
+          "at": "membrane",
+          "text": {
+            "fr": "Dystrophine absente",
+            "en": "No dystrophin"
+          },
+          "offset": [
+            -2,
+            3,
+            -1.7
+          ]
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "contraction",
+      "title": {
+        "fr": "Contractions et déchirures",
+        "en": "Contractions and tears"
+      },
+      "range": [
+        0.5,
+        0.75
+      ],
+      "description": {
+        "text": {
+          "fr": "À chaque contraction, la membrane mal soutenue est endommagée par endroits.",
+          "en": "With each contraction, the poorly supported membrane is damaged in places."
+        },
+        "sources": [
+          {
+            "id": "gr-dystrophinopathies"
+          }
+        ],
+        "simplification": {
+          "fr": "Les ruptures sont représentées par des trous ; ce sont en réalité des lésions microscopiques.",
+          "en": "Tears are shown as holes; in reality they are microscopic lesions."
+        }
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 20
+      },
+      "seconds": 12
+    },
+    {
+      "id": "degeneration",
       "title": {
         "fr": "Dégénérescence",
         "en": "Degeneration"
       },
       "range": [
-        0.7,
+        0.75,
         1
       ],
       "description": {
         "text": {
-          "fr": "Les fibres musculaires dégénèrent progressivement.",
-          "en": "Muscle fibres gradually degenerate."
+          "fr": "Les fibres musculaires lésées dégénèrent progressivement, ce qui entraîne une faiblesse musculaire.",
+          "en": "Damaged muscle fibres gradually degenerate, causing muscle weakness."
         },
         "sources": [
           {
@@ -184,20 +240,42 @@
       "focus": "plasma-membrane",
       "camera": {
         "view": "cell",
-        "radius": 120
-      }
+        "radius": 90
+      },
+      "seconds": 12
     }
   ],
   "tracks": [
+    {
+      "channel": "dna.mutation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.025,
+          "v": 0.0
+        },
+        {
+          "t": 0.175,
+          "v": 1
+        }
+      ]
+    },
     {
       "channel": "cytoskeleton.disruption",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.3,
+          "t": 0.275,
+          "v": 0.0
+        },
+        {
+          "t": 0.425,
           "v": 0.6
         }
       ]
@@ -207,18 +285,14 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.3,
-          "v": 1
+          "t": 0.525,
+          "v": 1.0
         },
         {
-          "t": 0.7,
-          "v": 0.6
-        },
-        {
-          "t": 1,
+          "t": 0.675,
           "v": 0.45
         }
       ]
@@ -228,36 +302,32 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.7,
-          "v": 0.85
+          "t": 0.775,
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 0.5
+          "t": 0.925,
+          "v": 0.55
         }
       ]
     },
     {
-      "channel": "view.focusDim",
+      "channel": "cytoplasm.tint",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.05,
-          "v": 0.4
+          "t": 0.775,
+          "v": 0.0
         },
         {
-          "t": 0.95,
-          "v": 0.4
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.925,
+          "v": 0.3
         }
       ]
     }
@@ -265,7 +335,7 @@
   "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -277,5 +347,6 @@
         "id": "gr-dystrophinopathies"
       }
     ]
-  }
+  },
+  "durationSeconds": 48
 }

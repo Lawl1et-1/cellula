@@ -101,46 +101,153 @@
   ],
   "stages": [
     {
-      "id": "import",
+      "id": "gene",
       "title": {
-        "fr": "Import bloqué",
-        "en": "Import blocked"
+        "fr": "Un gène PEX modifié",
+        "en": "An altered PEX gene"
       },
       "range": [
-        0,
-        0.4
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Les enzymes peroxysomales, fabriquées dans le cytosol, ne peuvent pas entrer dans les peroxysomes.",
-          "en": "Peroxisomal enzymes, made in the cytosol, cannot get into peroxisomes."
+          "fr": "Tout commence dans l'ADN : des variants de gènes PEX, nécessaires à la formation des peroxysomes, désorganisent l'import de leurs enzymes.",
+          "en": "It all starts in the DNA: variants of PEX genes, which are needed to form peroxisomes, disrupt the import of their enzymes."
         },
         "sources": [
           {
             "id": "gr-zellweger"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Le variant est marqué en rouge dans l'ADN.",
+            "en": "The variant is marked in red in the DNA."
           },
+          "sources": [
+            {
+              "id": "gr-zellweger"
+            }
+          ]
+        }
+      ],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "seconds": 12
+    },
+    {
+      "id": "made",
+      "title": {
+        "fr": "Enzymes fabriquées dans le cytosol",
+        "en": "Enzymes made in the cytosol"
+      },
+      "range": [
+        0.2,
+        0.4
+      ],
+      "description": {
+        "text": {
+          "fr": "Les enzymes des peroxysomes sont fabriquées dans le cytosol ; un court signal d'adressage les guide normalement vers les peroxysomes.",
+          "en": "Peroxisomal enzymes are made in the cytosol; a short targeting signal normally guides them to peroxisomes."
+        },
+        "sources": [
           {
             "id": "mboc4-peroxisomes"
           }
         ]
       },
       "cellularSigns": [],
-      "focus": "peroxisome"
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "peroxisome",
+        "radius": 12
+      },
+      "highlight": [
+        "peroxisome"
+      ],
+      "heroes": [
+        {
+          "model": "enzyme",
+          "path": [
+            "cytoplasm",
+            "peroxisome"
+          ],
+          "count": 4,
+          "label": {
+            "fr": "Enzymes peroxysomales",
+            "en": "Peroxisomal enzymes"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "fantomes",
+      "id": "blocked",
+      "title": {
+        "fr": "Import bloqué",
+        "en": "Import blocked"
+      },
+      "range": [
+        0.4,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "Les protéines PEX défectueuses empêchent ces enzymes d'entrer : elles restent dans le cytosol.",
+          "en": "Defective PEX proteins prevent these enzymes from getting in: they stay in the cytosol."
+        },
+        "sources": [
+          {
+            "id": "gr-zellweger"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "peroxisome",
+      "camera": {
+        "at": "peroxisome",
+        "radius": 10
+      },
+      "heroes": [
+        {
+          "model": "enzyme",
+          "path": [
+            "peroxisome"
+          ],
+          "offset": [
+            3,
+            1,
+            0
+          ],
+          "count": 4,
+          "label": {
+            "fr": "Enzymes restées dehors",
+            "en": "Enzymes left outside"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "ghosts",
       "title": {
         "fr": "Peroxysomes fantômes",
         "en": "Ghost peroxisomes"
       },
       "range": [
-        0.4,
-        0.75
+        0.6,
+        0.8
       ],
       "description": {
         "text": {
-          "fr": "Les peroxysomes restent vides d'enzymes.",
-          "en": "Peroxisomes stay empty of enzymes."
+          "fr": "Il ne reste que des membranes de peroxysomes vides d'enzymes, parfois appelées « fantômes ».",
+          "en": "Only empty peroxisome membranes remain, sometimes called “ghosts”."
         },
         "sources": [
           {
@@ -161,22 +268,27 @@
           ]
         }
       ],
-      "focus": "peroxisome"
+      "focus": "peroxisome",
+      "camera": {
+        "at": "peroxisome",
+        "radius": 10
+      },
+      "seconds": 12
     },
     {
-      "id": "metabolisme",
+      "id": "metabolism",
       "title": {
         "fr": "Métabolisme perturbé",
         "en": "Disturbed metabolism"
       },
       "range": [
-        0.75,
+        0.8,
         1
       ],
       "description": {
         "text": {
-          "fr": "Les acides gras à très longue chaîne s'accumulent et la synthèse des plasmalogènes diminue.",
-          "en": "Very-long-chain fatty acids build up and plasmalogen synthesis falls."
+          "fr": "Les acides gras à très longue chaîne ne sont plus dégradés et s'accumulent, et la synthèse des plasmalogènes diminue ; le cerveau et le foie sont particulièrement touchés.",
+          "en": "Very-long-chain fatty acids are no longer broken down and build up, and plasmalogen synthesis falls; the brain and the liver are especially affected."
         },
         "sources": [
           {
@@ -187,91 +299,98 @@
       "cellularSigns": [],
       "focus": "cytoplasm",
       "camera": {
-        "radius": 40
-      }
+        "view": "cell",
+        "radius": 90
+      },
+      "highlight": [
+        "peroxisome",
+        "lipids"
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
+    {
+      "channel": "dna.mutation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.02,
+          "v": 0.0
+        },
+        {
+          "t": 0.14,
+          "v": 1
+        }
+      ]
+    },
     {
       "channel": "peroxisome.empty",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.4,
-          "v": 0.4
+          "t": 0.42,
+          "v": 0.0
         },
         {
-          "t": 0.75,
+          "t": 0.54,
+          "v": 0.9
+        },
+        {
+          "t": 0.62,
+          "v": 0.9
+        },
+        {
+          "t": 0.74,
           "v": 1
         }
       ]
     },
     {
-      "channel": "peroxisome.count",
+      "channel": "cytoplasm.lipidDroplets",
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 0.0
         },
         {
-          "t": 0.75,
-          "v": 0.7
+          "t": 0.82,
+          "v": 0.0
+        },
+        {
+          "t": 0.94,
+          "v": 0.3
         }
       ]
     },
     {
-      "channel": "cytoplasm.tint",
+      "channel": "cell.viability",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 0.2
-        }
-      ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
+          "t": 0.82,
+          "v": 1.0
         },
         {
-          "t": 0.05,
-          "v": 0.5
-        },
-        {
-          "t": 0.95,
-          "v": 0.5
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.94,
+          "v": 0.8
         }
       ]
     }
   ],
-  "actors": [
-    {
-      "actor": "burst",
-      "at": 0.0,
-      "until": 0.4,
-      "params": {
-        "from": "peroxisome",
-        "cargo": "protein",
-        "count": 12
-      }
-    }
-  ],
+  "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -283,5 +402,6 @@
         "id": "gr-zellweger"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }

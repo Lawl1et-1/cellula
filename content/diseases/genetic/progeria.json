@@ -96,19 +96,60 @@
   ],
   "stages": [
     {
-      "id": "progerine",
+      "id": "gene",
       "title": {
-        "fr": "Production de progérine",
-        "en": "Progerin production"
+        "fr": "Un gène LMNA modifié",
+        "en": "An altered LMNA gene"
       },
       "range": [
-        0,
-        0.35
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Le variant produit une lamine A anormale, la progérine.",
-          "en": "The variant produces an abnormal lamin A, progerin."
+          "fr": "Tout commence dans l'ADN : un variant du gène LMNA, le plus souvent apparu de novo (c.1824C>T dans la forme classique), modifie la lamine A.",
+          "en": "It all starts in the DNA: a variant of the LMNA gene, usually arising de novo (c.1824C>T in the classic form), alters lamin A."
+        },
+        "sources": [
+          {
+            "id": "gr-hgps"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Le variant est marqué en rouge dans l'ADN.",
+            "en": "The variant is marked in red in the DNA."
+          },
+          "sources": [
+            {
+              "id": "gr-hgps"
+            }
+          ]
+        }
+      ],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "seconds": 12
+    },
+    {
+      "id": "progerin",
+      "title": {
+        "fr": "La progérine",
+        "en": "Progerin"
+      },
+      "range": [
+        0.2,
+        0.4
+      ],
+      "description": {
+        "text": {
+          "fr": "Le variant produit une forme anormale de lamine A, la progérine, qui reste ancrée à l'enveloppe du noyau.",
+          "en": "The variant produces an abnormal form of lamin A, progerin, which stays anchored to the nuclear envelope."
         },
         "sources": [
           {
@@ -117,22 +158,70 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "dna"
+      "focus": "nucleus",
+      "camera": {
+        "at": "nucleus.pore",
+        "radius": 14
+      },
+      "heroes": [
+        {
+          "model": "misfolded",
+          "path": [
+            "cytoplasm",
+            "nucleus.pore"
+          ],
+          "count": 3,
+          "label": {
+            "fr": "Progérine",
+            "en": "Progerin"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "enveloppe",
+      "id": "lamina",
       "title": {
-        "fr": "Enveloppe déformée",
-        "en": "Deformed envelope"
+        "fr": "Une lamina perturbée",
+        "en": "A disrupted lamina"
       },
       "range": [
-        0.35,
+        0.4,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "La progérine perturbe la lamina, le réseau de protéines qui soutient l'enveloppe nucléaire de l'intérieur.",
+          "en": "Progerin disrupts the lamina, the protein meshwork that supports the nuclear envelope from inside."
+        },
+        "sources": [
+          {
+            "id": "gr-hgps"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "nucleus",
+      "camera": {
+        "at": "nucleus",
+        "radius": 32
+      },
+      "seconds": 12
+    },
+    {
+      "id": "deformed",
+      "title": {
+        "fr": "Noyau déformé",
+        "en": "Misshapen nucleus"
+      },
+      "range": [
+        0.6,
         0.8
       ],
       "description": {
         "text": {
-          "fr": "La progérine s'accumule et l'enveloppe nucléaire se déforme.",
-          "en": "Progerin builds up and the nuclear envelope becomes deformed."
+          "fr": "Le noyau prend une forme irrégulière, avec des bourgeonnements de l'enveloppe.",
+          "en": "The nucleus becomes irregular, with blebs in its envelope."
         },
         "sources": [
           {
@@ -153,13 +242,18 @@
           ]
         }
       ],
-      "focus": "nucleus"
+      "focus": "nucleus",
+      "camera": {
+        "at": "nucleus",
+        "radius": 34
+      },
+      "seconds": 12
     },
     {
-      "id": "vieillissement",
+      "id": "ageing",
       "title": {
-        "fr": "Vieillissement cellulaire",
-        "en": "Cellular ageing"
+        "fr": "Vieillissement prématuré",
+        "en": "Premature ageing"
       },
       "range": [
         0.8,
@@ -167,8 +261,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les cellules montrent des signes de vieillissement prématuré.",
-          "en": "The cells show signs of premature ageing."
+          "fr": "Les cellules montrent des signes de vieillissement prématuré, à l'origine des signes de la maladie.",
+          "en": "The cells show signs of premature ageing, which underlie the signs of the disease."
         },
         "sources": [
           {
@@ -179,8 +273,10 @@
       "cellularSigns": [],
       "focus": "nucleus",
       "camera": {
-        "radius": 45
-      }
+        "view": "cell",
+        "radius": 90
+      },
+      "seconds": 12
     }
   ],
   "tracks": [
@@ -189,23 +285,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.1,
+          "t": 0.02,
+          "v": 0.0
+        },
+        {
+          "t": 0.14,
           "v": 1
-        },
-        {
-          "t": 0.35,
-          "v": 1
-        },
-        {
-          "t": 0.5,
-          "v": 0.35
-        },
-        {
-          "t": 1,
-          "v": 0.35
         }
       ]
     },
@@ -214,14 +302,22 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.35,
-          "v": 0.15
+          "t": 0.42,
+          "v": 0.0
         },
         {
-          "t": 0.8,
+          "t": 0.54,
+          "v": 0.45
+        },
+        {
+          "t": 0.62,
+          "v": 0.45
+        },
+        {
+          "t": 0.74,
           "v": 1
         }
       ]
@@ -231,36 +327,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.8,
-          "v": 0.1
+          "t": 0.82,
+          "v": 0.0
         },
         {
-          "t": 1,
+          "t": 0.94,
           "v": 0.25
-        }
-      ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
-        },
-        {
-          "t": 0.05,
-          "v": 0.5
-        },
-        {
-          "t": 0.95,
-          "v": 0.5
-        },
-        {
-          "t": 1,
-          "v": 0
         }
       ]
     }
@@ -280,5 +355,6 @@
         "id": "gr-hgps"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }

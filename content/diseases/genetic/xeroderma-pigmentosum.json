@@ -122,22 +122,72 @@
       "organelle": "dna"
     }
   ],
-  "durationSeconds": 45,
+  "durationSeconds": 60,
   "stages": [
     {
       "id": "uv",
       "title": {
-        "fr": "Les UV abîment l'ADN",
-        "en": "UV light damages DNA"
+        "fr": "Les UV atteignent le noyau",
+        "en": "UV light reaches the nucleus"
       },
       "range": [
-        0,
-        0.32
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Les ultraviolets du soleil atteignent le noyau et lient entre elles des bases voisines de l'ADN : des dimères de pyrimidines apparaissent.",
-          "en": "Ultraviolet light from the sun reaches the nucleus and links neighbouring DNA bases together: pyrimidine dimers form."
+          "fr": "Dans la peau exposée au soleil, les rayons ultraviolets traversent la cellule jusqu'à l'ADN du noyau.",
+          "en": "In sun-exposed skin, ultraviolet rays pass through the cell to the DNA in the nucleus."
+        },
+        "sources": [
+          {
+            "id": "sp-xp"
+          },
+          {
+            "id": "gr-xp"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "nucleus",
+      "camera": {
+        "at": "nucleus",
+        "radius": 40
+      },
+      "highlight": [
+        "dna"
+      ],
+      "heroes": [
+        {
+          "model": "uv",
+          "path": [
+            "outside",
+            "membrane",
+            "nucleus"
+          ],
+          "count": 5,
+          "label": {
+            "fr": "Rayons UV",
+            "en": "UV rays"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "dimers",
+      "title": {
+        "fr": "Des bases soudées",
+        "en": "Bases stuck together"
+      },
+      "range": [
+        0.2,
+        0.4
+      ],
+      "description": {
+        "text": {
+          "fr": "Les UV lient entre elles des bases voisines de l'ADN : des dimères de pyrimidines apparaissent et déforment la double hélice.",
+          "en": "UV light links neighbouring DNA bases together: pyrimidine dimers form and distort the double helix."
         },
         "sources": [
           {
@@ -161,22 +211,30 @@
           ]
         }
       ],
-      "focus": "dna"
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 14
+      },
+      "highlight": [
+        "lesions"
+      ],
+      "seconds": 12
     },
     {
-      "id": "reparation",
+      "id": "repair",
       "title": {
-        "fr": "La réparation échoue",
-        "en": "Repair fails"
+        "fr": "La réparation normale",
+        "en": "Normal repair"
       },
       "range": [
-        0.32,
-        0.66
+        0.4,
+        0.6
       ],
       "description": {
         "text": {
-          "fr": "Normalement, la réparation par excision de nucléotides retire et remplace le segment abîmé. Dans le XP, elle est défaillante : les lésions restent en place.",
-          "en": "Normally, nucleotide excision repair removes and replaces the damaged stretch. In XP it fails: the lesions stay in place."
+          "fr": "Normalement, la réparation par excision de nucléotides découpe le segment abîmé et le resynthétise à partir du brin intact.",
+          "en": "Normally, nucleotide excision repair cuts out the damaged stretch and resynthesises it from the intact strand."
         },
         "sources": [
           {
@@ -184,35 +242,81 @@
           }
         ]
       },
-      "cellularSigns": [
+      "cellularSigns": [],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "highlight": [
+        "lesions"
+      ],
+      "heroes": [
         {
-          "text": {
-            "fr": "Les lésions persistent au lieu d'être réparées.",
-            "en": "The lesions remain instead of being repaired."
-          },
-          "sources": [
-            {
-              "id": "gr-xp"
-            }
-          ]
+          "model": "enzyme",
+          "path": [
+            "dna"
+          ],
+          "offset": [
+            1.5,
+            1.5,
+            0
+          ],
+          "count": 3,
+          "label": {
+            "fr": "Protéines de réparation",
+            "en": "Repair proteins"
+          }
         }
       ],
-      "focus": "dna"
+      "seconds": 12
+    },
+    {
+      "id": "fails",
+      "title": {
+        "fr": "La réparation échoue",
+        "en": "Repair fails"
+      },
+      "range": [
+        0.6,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "Dans le XP, une des protéines de cette réparation manque : les lésions restent en place.",
+          "en": "In XP, one of the proteins of this repair system is missing: the lesions stay in place."
+        },
+        "sources": [
+          {
+            "id": "gr-xp"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 14
+      },
+      "highlight": [
+        "lesions"
+      ],
+      "seconds": 12
     },
     {
       "id": "mutations",
       "title": {
-        "fr": "Des mutations s'accumulent",
-        "en": "Mutations build up"
+        "fr": "Des mutations, puis des cancers",
+        "en": "Mutations, then cancers"
       },
       "range": [
-        0.66,
+        0.8,
         1
       ],
       "description": {
         "text": {
-          "fr": "Lorsque l'ADN est copié, les lésions non réparées deviennent des mutations. En s'accumulant, elles mènent à des cancers de la peau.",
-          "en": "When the DNA is copied, unrepaired lesions become mutations. As they build up, they lead to skin cancers."
+          "fr": "Quand l'ADN est copié, les lésions non réparées deviennent des mutations ; en s'accumulant, elles mènent à des cancers de la peau dès l'enfance.",
+          "en": "When DNA is copied, unrepaired lesions become mutations; as they build up, they lead to skin cancers from childhood."
         },
         "sources": [
           {
@@ -223,20 +327,16 @@
           }
         ]
       },
-      "cellularSigns": [
-        {
-          "text": {
-            "fr": "Une mutation (en rouge) apparaît dans l'ADN.",
-            "en": "A mutation (in red) appears in the DNA."
-          },
-          "sources": [
-            {
-              "id": "gr-xp"
-            }
-          ]
-        }
+      "cellularSigns": [],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 16
+      },
+      "highlight": [
+        "lesions"
       ],
-      "focus": "dna"
+      "seconds": 12
     }
   ],
   "tracks": [
@@ -245,18 +345,22 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.3,
+          "t": 0.22,
+          "v": 0.0
+        },
+        {
+          "t": 0.34,
           "v": 0.85
         },
         {
-          "t": 0.66,
-          "v": 1
+          "t": 0.62,
+          "v": 0.85
         },
         {
-          "t": 1,
+          "t": 0.74,
           "v": 1
         }
       ]
@@ -266,18 +370,14 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.66,
-          "v": 0
+          "t": 0.82,
+          "v": 0.0
         },
         {
-          "t": 0.8,
-          "v": 1
-        },
-        {
-          "t": 1,
+          "t": 0.94,
           "v": 1
         }
       ]
@@ -287,36 +387,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.8,
-          "v": 1
+          "t": 0.82,
+          "v": 1.0
         },
         {
-          "t": 1,
+          "t": 0.94,
           "v": 1.6
-        }
-      ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
-        },
-        {
-          "t": 0.05,
-          "v": 0.5
-        },
-        {
-          "t": 0.95,
-          "v": 0.5
-        },
-        {
-          "t": 1,
-          "v": 0
         }
       ]
     }
@@ -324,8 +403,8 @@
   "actors": [
     {
       "actor": "path",
-      "at": 0.02,
-      "until": 0.3,
+      "at": 0.01,
+      "until": 0.18,
       "params": {
         "path": [
           "outside",

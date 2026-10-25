@@ -108,13 +108,13 @@
         "en": "An altered CFTR gene"
       },
       "range": [
-        0,
-        0.18
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Les deux copies du gène CFTR portent un variant ; le plus fréquent, p.Phe508del, retire un seul acide aminé de la protéine.",
-          "en": "Both copies of the CFTR gene carry a variant; the most common, p.Phe508del, removes a single amino acid from the protein."
+          "fr": "Tout commence dans l'ADN : les deux copies du gène CFTR portent un variant ; le plus fréquent, p.Phe508del, retire un seul acide aminé de la protéine.",
+          "en": "It all starts in the DNA: both copies of the CFTR gene carry a variant; the most common, p.Phe508del, removes a single amino acid from the protein."
         },
         "sources": [
           {
@@ -135,53 +135,83 @@
           ]
         }
       ],
-      "focus": "dna"
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "seconds": 12
     },
     {
-      "id": "synthese",
+      "id": "synthesis",
       "title": {
-        "fr": "Synthèse de CFTR",
-        "en": "CFTR synthesis"
+        "fr": "Fabrication de CFTR",
+        "en": "Making CFTR"
       },
       "range": [
-        0.18,
-        0.426
+        0.2,
+        0.4
       ],
       "description": {
         "text": {
-          "fr": "La protéine CFTR est fabriquée dans le réticulum endoplasmique.",
-          "en": "The CFTR protein is made in the endoplasmic reticulum."
+          "fr": "L'ARN messager de CFTR est traduit sur le réticulum endoplasmique, où la protéine, un canal à chlorure, devrait se replier.",
+          "en": "CFTR messenger RNA is translated on the endoplasmic reticulum, where the protein, a chloride channel, should fold."
         },
         "sources": [
+          {
+            "id": "gr-cf"
+          },
           {
             "id": "mboc4-er"
           }
         ]
       },
       "cellularSigns": [],
-      "focus": "rough-er"
+      "focus": "rough-er",
+      "camera": {
+        "at": "rough-er",
+        "radius": 14
+      },
+      "highlight": [
+        "ribosome",
+        "nucleus"
+      ],
+      "heroes": [
+        {
+          "model": "mrna",
+          "path": [
+            "nucleus.pore",
+            "rough-er"
+          ],
+          "label": {
+            "fr": "ARN messager CFTR",
+            "en": "CFTR messenger RNA"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
       "id": "retention",
       "title": {
-        "fr": "Rétention et dégradation",
-        "en": "Retention and degradation"
+        "fr": "Mal repliée, retenue",
+        "en": "Misfolded and held back"
       },
       "range": [
-        0.426,
-        0.713
+        0.4,
+        0.6
       ],
       "description": {
         "text": {
-          "fr": "Mal repliée, elle est retenue dans le RE puis dégradée au lieu d'être envoyée vers la membrane.",
-          "en": "Misfolded, it is held in the ER and then degraded instead of being sent to the membrane."
+          "fr": "Mal repliée, la protéine est retenue par le contrôle qualité du RE puis dégradée, au lieu d'être envoyée vers la membrane.",
+          "en": "Misfolded, the protein is held back by ER quality control and then degraded, instead of being sent to the membrane."
         },
         "sources": [
           {
-            "id": "mboc4-er"
+            "id": "gr-cf"
           },
           {
-            "id": "gr-cf"
+            "id": "mboc4-er"
           }
         ]
       },
@@ -198,35 +228,117 @@
           ]
         }
       ],
-      "focus": "rough-er"
+      "focus": "rough-er",
+      "camera": {
+        "at": "rough-er",
+        "radius": 12
+      },
+      "heroes": [
+        {
+          "model": "misfolded",
+          "path": [
+            "rough-er"
+          ],
+          "offset": [
+            2,
+            2,
+            1
+          ],
+          "count": 3,
+          "label": {
+            "fr": "CFTR mal repliée",
+            "en": "Misfolded CFTR"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
       "id": "membrane",
       "title": {
-        "fr": "Membrane appauvrie",
-        "en": "A depleted membrane"
+        "fr": "Moins de canaux à la membrane",
+        "en": "Fewer channels in the membrane"
       },
       "range": [
-        0.713,
-        1.0
+        0.6,
+        0.8
       ],
       "description": {
         "text": {
-          "fr": "Faute de canaux CFTR à la membrane, le chlore sort moins de la cellule et les sécrétions s'épaississent.",
-          "en": "Without CFTR channels in the membrane, less chloride leaves the cell and secretions thicken."
+          "fr": "Peu de canaux CFTR atteignent la membrane plasmique : le chlore sort moins de la cellule.",
+          "en": "Few CFTR channels reach the plasma membrane: less chloride leaves the cell."
         },
         "sources": [
           {
             "id": "gr-cf"
           }
-        ],
-        "simplification": {
-          "fr": "Les récepteurs de la membrane représentent ici l'ensemble de ses protéines : leur raréfaction figure la perte de CFTR.",
-          "en": "Here the membrane receptors stand for all of its proteins: their thinning out represents the loss of CFTR."
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Les récepteurs de la membrane représentent ici l'ensemble de ses protéines : leur raréfaction figure la perte de CFTR.",
+            "en": "Here the membrane receptors stand for all of its proteins: their thinning out represents the loss of CFTR."
+          },
+          "sources": [
+            {
+              "id": "gr-cf"
+            }
+          ]
         }
+      ],
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 13
+      },
+      "heroes": [
+        {
+          "model": "receptor",
+          "path": [
+            "membrane"
+          ],
+          "offset": [
+            0.6,
+            0.1,
+            0.5
+          ],
+          "label": {
+            "fr": "Canal CFTR (rare)",
+            "en": "CFTR channel (scarce)"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "mucus",
+      "title": {
+        "fr": "Un mucus épais",
+        "en": "Thick mucus"
+      },
+      "range": [
+        0.8,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Le transport du chlore et de l'eau est perturbé : les sécrétions s'épaississent, notamment dans les voies respiratoires et le pancréas.",
+          "en": "Chloride and water transport is disturbed: secretions thicken, notably in the airways and the pancreas."
+        },
+        "sources": [
+          {
+            "id": "gr-cf"
+          }
+        ]
       },
       "cellularSigns": [],
-      "focus": "plasma-membrane"
+      "focus": "plasma-membrane",
+      "camera": {
+        "view": "cell",
+        "radius": 90
+      },
+      "seconds": 12
     }
   ],
   "tracks": [
@@ -235,23 +347,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.06,
+          "t": 0.02,
+          "v": 0.0
+        },
+        {
+          "t": 0.14,
           "v": 1
-        },
-        {
-          "t": 0.18,
-          "v": 1
-        },
-        {
-          "t": 0.3,
-          "v": 0.35
-        },
-        {
-          "t": 1,
-          "v": 0.35
         }
       ]
     },
@@ -259,15 +363,15 @@
       "channel": "er.retainedCargo",
       "keys": [
         {
-          "t": 0.18,
-          "v": 0
+          "t": 0,
+          "v": 0.0
         },
         {
-          "t": 0.426,
-          "v": 0.2
+          "t": 0.42,
+          "v": 0.0
         },
         {
-          "t": 0.713,
+          "t": 0.54,
           "v": 0.9
         }
       ]
@@ -276,12 +380,16 @@
       "channel": "er.stress",
       "keys": [
         {
-          "t": 0.18,
-          "v": 0
+          "t": 0,
+          "v": 0.0
         },
         {
-          "t": 0.713,
-          "v": 0.3
+          "t": 0.42,
+          "v": 0.0
+        },
+        {
+          "t": 0.54,
+          "v": 0.4
         }
       ]
     },
@@ -289,65 +397,21 @@
       "channel": "membrane.receptorDensity",
       "keys": [
         {
-          "t": 0.18,
-          "v": 1
-        },
-        {
-          "t": 0.713,
-          "v": 1
-        },
-        {
-          "t": 0.918,
-          "v": 0.35
-        }
-      ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
           "t": 0,
-          "v": 0
+          "v": 1.0
         },
         {
-          "t": 0.05,
-          "v": 0.45
+          "t": 0.62,
+          "v": 1.0
         },
         {
-          "t": 0.95,
-          "v": 0.45
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.74,
+          "v": 0.3
         }
       ]
     }
   ],
-  "actors": [
-    {
-      "actor": "path",
-      "at": 0.1,
-      "until": 0.3,
-      "params": {
-        "path": [
-          "nucleus",
-          "nucleus.pore",
-          "rough-er"
-        ],
-        "cargo": "mrna",
-        "count": 4
-      }
-    },
-    {
-      "actor": "pulse",
-      "at": 0.426,
-      "until": 0.713,
-      "params": {
-        "at": "rough-er"
-      }
-    }
-  ],
+  "actors": [],
   "review": {
     "status": "draft",
     "lastChecked": "2026-10-25"
@@ -362,5 +426,6 @@
         "id": "gr-cf"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }
