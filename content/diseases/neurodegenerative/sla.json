@@ -103,17 +103,17 @@
     {
       "id": "tdp43",
       "title": {
-        "fr": "Délocalisation de TDP-43",
-        "en": "TDP-43 mislocalisation"
+        "fr": "TDP-43, une protéine du noyau",
+        "en": "TDP-43, a nuclear protein"
       },
       "range": [
-        0,
-        0.4
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "TDP-43 quitte le noyau et s'accumule dans le cytoplasme.",
-          "en": "TDP-43 leaves the nucleus and builds up in the cytoplasm."
+          "fr": "TDP-43 est une protéine qui lie l'ARN ; elle se trouve normalement dans le noyau.",
+          "en": "TDP-43 is an RNA-binding protein; it is normally found in the nucleus."
         },
         "sources": [
           {
@@ -122,22 +122,92 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "nucleus"
+      "focus": "nucleus",
+      "camera": {
+        "at": "nucleus.pore",
+        "radius": 15
+      },
+      "heroes": [
+        {
+          "model": "protein",
+          "path": [
+            "nucleus.pore"
+          ],
+          "offset": [
+            -3,
+            -2,
+            -2
+          ],
+          "count": 4,
+          "label": {
+            "fr": "TDP-43",
+            "en": "TDP-43"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "agregats",
+      "id": "leaves",
+      "title": {
+        "fr": "TDP-43 quitte le noyau",
+        "en": "TDP-43 leaves the nucleus"
+      },
+      "range": [
+        0.2,
+        0.4
+      ],
+      "description": {
+        "text": {
+          "fr": "Dans la plupart des cas de SLA, TDP-43 quitte le noyau et s'accumule dans le cytoplasme.",
+          "en": "In most cases of ALS, TDP-43 leaves the nucleus and builds up in the cytoplasm."
+        },
+        "sources": [
+          {
+            "id": "pm-als-2016"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "nucleus.pore",
+        "radius": 15
+      },
+      "highlight": [
+        "nucleus"
+      ],
+      "heroes": [
+        {
+          "model": "protein",
+          "path": [
+            "nucleus",
+            "nucleus.pore",
+            "cytoplasm"
+          ],
+          "count": 4,
+          "label": {
+            "fr": "TDP-43",
+            "en": "TDP-43"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "aggregates",
       "title": {
         "fr": "Agrégats",
         "en": "Aggregates"
       },
       "range": [
         0.4,
-        0.7
+        0.6
       ],
       "description": {
         "text": {
-          "fr": "Les protéines mal repliées s'agrègent dans le cytoplasme des neurones moteurs.",
-          "en": "Misfolded proteins aggregate in the cytoplasm of motor neurons."
+          "fr": "Dans le cytoplasme, les protéines mal repliées s'agrègent.",
+          "en": "In the cytoplasm, the misfolded proteins aggregate."
         },
         "sources": [
           {
@@ -148,35 +218,76 @@
           }
         ]
       },
-      "cellularSigns": [
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "cytoplasm",
+        "radius": 26
+      },
+      "highlight": [
+        "aggregates"
+      ],
+      "heroes": [
         {
-          "text": {
-            "fr": "Agrégats protéiques dans le cytoplasme.",
-            "en": "Protein aggregates in the cytoplasm."
-          },
-          "sources": [
-            {
-              "id": "pm-als-2016"
-            }
-          ]
+          "model": "misfolded",
+          "path": [
+            "cytoplasm"
+          ],
+          "count": 3,
+          "label": {
+            "fr": "Agrégats de TDP-43",
+            "en": "TDP-43 aggregates"
+          }
         }
       ],
-      "focus": "cytoplasm"
+      "seconds": 12
     },
     {
-      "id": "degenerescence",
+      "id": "transport",
       "title": {
-        "fr": "Dégénérescence",
-        "en": "Degeneration"
+        "fr": "Transport perturbé",
+        "en": "Disrupted transport"
       },
       "range": [
-        0.7,
+        0.6,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "Le métabolisme de l'ARN et le transport le long de l'axone font partie des processus perturbés.",
+          "en": "RNA metabolism and transport along the axon are among the processes that are disrupted."
+        },
+        "sources": [
+          {
+            "id": "pm-als-2016"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoskeleton",
+      "camera": {
+        "at": "centrosome",
+        "radius": 24
+      },
+      "highlight": [
+        "aggregates"
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "degeneration",
+      "title": {
+        "fr": "Les neurones moteurs dégénèrent",
+        "en": "Motor neurons degenerate"
+      },
+      "range": [
+        0.8,
         1
       ],
       "description": {
         "text": {
-          "fr": "Les neurones moteurs dégénèrent, ce qui entraîne une faiblesse musculaire progressive.",
-          "en": "Motor neurons degenerate, causing progressive muscle weakness."
+          "fr": "Les neurones moteurs du cerveau et de la moelle épinière dégénèrent, ce qui entraîne une faiblesse musculaire progressive.",
+          "en": "Motor neurons in the brain and spinal cord degenerate, causing progressive muscle weakness."
         },
         "sources": [
           {
@@ -188,8 +299,12 @@
       "focus": "cytoplasm",
       "camera": {
         "view": "cell",
-        "radius": 120
-      }
+        "radius": 90
+      },
+      "highlight": [
+        "aggregates"
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
@@ -198,15 +313,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.4,
-          "v": 0.3
+          "t": 0.42,
+          "v": 0.0
         },
         {
-          "t": 0.7,
-          "v": 0.8
+          "t": 0.54,
+          "v": 0.7
         }
       ]
     },
@@ -215,15 +330,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.5,
-          "v": 0.1
+          "t": 0.62,
+          "v": 0.0
         },
         {
-          "t": 0.8,
-          "v": 0.5
+          "t": 0.74,
+          "v": 0.6
         }
       ]
     },
@@ -232,59 +347,23 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.7,
-          "v": 0.9
+          "t": 0.82,
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 0.45
-        }
-      ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
-        },
-        {
-          "t": 0.05,
-          "v": 0.45
-        },
-        {
-          "t": 0.95,
-          "v": 0.45
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.94,
+          "v": 0.5
         }
       ]
     }
   ],
-  "actors": [
-    {
-      "actor": "path",
-      "at": 0.0,
-      "until": 0.4,
-      "params": {
-        "path": [
-          "nucleus",
-          "nucleus.pore",
-          "cytoplasm"
-        ],
-        "cargo": "protein",
-        "count": 6
-      }
-    }
-  ],
+  "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -296,5 +375,6 @@
         "id": "gr-als"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }

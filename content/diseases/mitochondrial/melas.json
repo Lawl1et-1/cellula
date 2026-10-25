@@ -103,43 +103,65 @@
   ],
   "stages": [
     {
-      "id": "mutation",
+      "id": "mtdna",
       "title": {
-        "fr": "Variant pathogène",
-        "en": "Pathogenic variant"
+        "fr": "Une erreur dans l'ADN mitochondrial",
+        "en": "An error in mitochondrial DNA"
       },
       "range": [
-        0,
-        0.25
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Le plus souvent, un variant de l'ADN mitochondrial (m.3243A>G, dans le gène MT-TL1 d'un ARN de transfert) altère la fabrication des protéines mitochondriales.",
-          "en": "Most often, a variant of mitochondrial DNA (m.3243A>G, in the MT-TL1 gene for a transfer RNA) impairs the making of mitochondrial proteins."
+          "fr": "Les mitochondries possèdent leur propre petit génome, distinct de celui du noyau. Le plus souvent, le variant m.3243A>G touche le gène MT-TL1 d'un ARN de transfert, nécessaire pour fabriquer les protéines codées par la mitochondrie.",
+          "en": "Mitochondria have their own small genome, separate from the nucleus. Most often, the m.3243A>G variant affects the MT-TL1 gene for a transfer RNA, needed to make the proteins encoded by the mitochondrion."
         },
         "sources": [
           {
             "id": "gr-melas"
+          },
+          {
+            "id": "mboc4-organelle-genomes"
           }
         ]
       },
       "cellularSigns": [],
-      "focus": "mitochondrion"
+      "focus": "mitochondrion",
+      "camera": {
+        "at": "mitochondrion",
+        "radius": 9
+      },
+      "labels": [
+        {
+          "at": "mitochondrion",
+          "text": {
+            "fr": "ADN mitochondrial",
+            "en": "Mitochondrial DNA"
+          },
+          "offset": [
+            0,
+            4,
+            0
+          ]
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "chaine",
+      "id": "chain",
       "title": {
-        "fr": "Chaîne respiratoire déficiente",
-        "en": "Deficient respiratory chain"
+        "fr": "La chaîne respiratoire en panne",
+        "en": "The respiratory chain fails"
       },
       "range": [
-        0.25,
-        0.6
+        0.2,
+        0.4
       ],
       "description": {
         "text": {
-          "fr": "Les complexes de la chaîne respiratoire sont mal assemblés : la production d'ATP diminue.",
-          "en": "The respiratory chain complexes are poorly assembled: ATP production falls."
+          "fr": "Ces protéines manquent : les complexes de la chaîne respiratoire sont mal assemblés.",
+          "en": "These proteins are lacking: the respiratory chain complexes are poorly assembled."
         },
         "sources": [
           {
@@ -151,22 +173,73 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "mitochondrion"
+      "focus": "mitochondrion",
+      "camera": {
+        "at": "mitochondrion",
+        "radius": 8
+      },
+      "labels": [
+        {
+          "at": "mitochondrion",
+          "text": {
+            "fr": "Chaîne respiratoire (membrane interne)",
+            "en": "Respiratory chain (inner membrane)"
+          },
+          "offset": [
+            0,
+            -3.5,
+            0
+          ]
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "mitochondries",
+      "id": "energy",
       "title": {
-        "fr": "Mitochondries anormales",
+        "fr": "Moins d'énergie",
+        "en": "Less energy"
+      },
+      "range": [
+        0.4,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "La production d'ATP, la monnaie énergétique de la cellule, diminue.",
+          "en": "The production of ATP, the cell's energy currency, falls."
+        },
+        "sources": [
+          {
+            "id": "gr-melas"
+          },
+          {
+            "id": "mboc4-electron-transport"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "mitochondrion",
+      "camera": {
+        "at": "mitochondrion",
+        "radius": 14
+      },
+      "seconds": 12
+    },
+    {
+      "id": "organelle",
+      "title": {
+        "fr": "Des mitochondries anormales",
         "en": "Abnormal mitochondria"
       },
       "range": [
         0.6,
-        0.85
+        0.8
       ],
       "description": {
         "text": {
-          "fr": "Les mitochondries deviennent anormales ; leur membrane interne et leurs crêtes peuvent être désorganisées.",
-          "en": "Mitochondria become abnormal; their inner membrane and cristae can become disorganised."
+          "fr": "Les mitochondries deviennent anormales : leur membrane interne et leurs crêtes peuvent se désorganiser.",
+          "en": "The mitochondria become abnormal: their inner membrane and cristae can become disorganised."
         },
         "sources": [
           {
@@ -178,35 +251,28 @@
           "en": "The look of diseased mitochondria is schematic (swelling, loss of cristae, dimmer glow)."
         }
       },
-      "cellularSigns": [
-        {
-          "text": {
-            "fr": "Dans le muscle, des mitochondries anormales s'accumulent (fibres « rouges déchiquetées » à la biopsie).",
-            "en": "In muscle, abnormal mitochondria accumulate (“ragged red fibres” on biopsy)."
-          },
-          "sources": [
-            {
-              "id": "gr-melas"
-            }
-          ]
-        }
-      ],
-      "focus": "mitochondrion"
+      "cellularSigns": [],
+      "focus": "mitochondrion",
+      "camera": {
+        "at": "mitochondrion",
+        "radius": 10
+      },
+      "seconds": 12
     },
     {
-      "id": "cellule",
+      "id": "tissue",
       "title": {
-        "fr": "Souffrance cellulaire",
-        "en": "Cell distress"
+        "fr": "Les tissus qui consomment le plus",
+        "en": "The hungriest tissues suffer most"
       },
       "range": [
-        0.85,
+        0.8,
         1
       ],
       "description": {
         "text": {
-          "fr": "Les muscles et le cerveau, très dépendants de l'énergie, sont les plus touchés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
-          "en": "Muscles and the brain, which depend heavily on energy, are the most affected. The model shows a generic cell; the changes shown are those described in the affected cells."
+          "fr": "Les muscles et le cerveau, très dépendants de l'énergie, sont les plus touchés.",
+          "en": "Muscles and the brain, which depend heavily on energy, are the most affected."
         },
         "sources": [
           {
@@ -217,8 +283,13 @@
       "cellularSigns": [],
       "focus": "cytoplasm",
       "camera": {
-        "radius": 40
-      }
+        "view": "cell",
+        "radius": 90
+      },
+      "highlight": [
+        "mitochondrion"
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
@@ -227,19 +298,23 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.25,
-          "v": 0.9
+          "t": 0.22,
+          "v": 1.0
         },
         {
-          "t": 0.6,
-          "v": 0.45
+          "t": 0.34,
+          "v": 0.5
         },
         {
-          "t": 1,
-          "v": 0.3
+          "t": 0.42,
+          "v": 0.5
+        },
+        {
+          "t": 0.54,
+          "v": 0.25
         }
       ]
     },
@@ -248,15 +323,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.6,
-          "v": 0.3
+          "t": 0.62,
+          "v": 0.0
         },
         {
-          "t": 0.85,
-          "v": 0.65
+          "t": 0.74,
+          "v": 0.85
         }
       ]
     },
@@ -265,15 +340,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.6,
-          "v": 0.2
+          "t": 0.62,
+          "v": 0.0
         },
         {
-          "t": 0.9,
-          "v": 0.55
+          "t": 0.74,
+          "v": 0.6
         }
       ]
     },
@@ -282,15 +357,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.6,
-          "v": 1
+          "t": 0.62,
+          "v": 1.0
         },
         {
-          "t": 0.9,
-          "v": 1.8
+          "t": 0.74,
+          "v": 1.4
         }
       ]
     },
@@ -299,53 +374,51 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.85,
-          "v": 1
+          "t": 0.82,
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 0.6
+          "t": 0.94,
+          "v": 0.7
         }
       ]
     },
     {
-      "channel": "view.focusDim",
+      "channel": "cytoplasm.tint",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.05,
-          "v": 0.4
+          "t": 0.82,
+          "v": 0.0
         },
         {
-          "t": 0.95,
-          "v": 0.4
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.94,
+          "v": 0.25
         }
       ]
     }
   ],
   "actors": [
     {
-      "actor": "pulse",
-      "at": 0.25,
-      "until": 0.6,
+      "actor": "burst",
+      "at": 0.42,
+      "until": 0.58,
       "params": {
-        "at": "mitochondrion"
+        "from": "mitochondrion",
+        "cargo": "atp",
+        "count": 4
       }
     }
   ],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -357,5 +430,6 @@
         "id": "gr-melas"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }

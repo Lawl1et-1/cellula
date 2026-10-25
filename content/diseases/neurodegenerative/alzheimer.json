@@ -121,19 +121,69 @@
   ],
   "stages": [
     {
-      "id": "amyloide",
+      "id": "amyloid",
       "title": {
-        "fr": "Dépôts amyloïdes",
-        "en": "Amyloid deposits"
+        "fr": "Plaques amyloïdes",
+        "en": "Amyloid plaques"
       },
       "range": [
-        0,
-        0.3
+        0.0,
+        0.25
       ],
       "description": {
         "text": {
-          "fr": "Le peptide bêta-amyloïde s'accumule et s'agrège entre les neurones.",
-          "en": "Amyloid-beta peptide builds up and aggregates between neurons."
+          "fr": "Entre les neurones, des fragments du peptide bêta-amyloïde s'agrègent en plaques.",
+          "en": "Between neurons, fragments of the amyloid-beta peptide aggregate into plaques."
+        },
+        "sources": [
+          {
+            "id": "sp-alzheimer"
+          },
+          {
+            "id": "gr-alzheimer"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 22
+      },
+      "heroes": [
+        {
+          "model": "misfolded",
+          "path": [
+            "outside"
+          ],
+          "offset": [
+            -12,
+            0,
+            -10
+          ],
+          "count": 5,
+          "label": {
+            "fr": "Bêta-amyloïde (hors de la cellule)",
+            "en": "Amyloid beta (outside the cell)"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "tau",
+      "title": {
+        "fr": "Tau et les microtubules",
+        "en": "Tau and microtubules"
+      },
+      "range": [
+        0.25,
+        0.5
+      ],
+      "description": {
+        "text": {
+          "fr": "Dans le neurone, la protéine tau est normalement associée aux microtubules, qu'elle aide à stabiliser.",
+          "en": "Inside the neuron, tau protein is normally bound to microtubules, which it helps to stabilise."
         },
         "sources": [
           {
@@ -142,26 +192,48 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "plasma-membrane"
+      "focus": "cytoskeleton",
+      "camera": {
+        "at": "centrosome",
+        "radius": 22
+      },
+      "labels": [
+        {
+          "at": "centrosome",
+          "text": {
+            "fr": "Microtubules",
+            "en": "Microtubules"
+          },
+          "offset": [
+            0,
+            6,
+            0
+          ]
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "tau",
+      "id": "tangles",
       "title": {
         "fr": "Enchevêtrements de tau",
         "en": "Tau tangles"
       },
       "range": [
-        0.3,
-        0.65
+        0.5,
+        0.75
       ],
       "description": {
         "text": {
-          "fr": "La protéine tau se détache des microtubules et s'agrège en enchevêtrements à l'intérieur des neurones.",
-          "en": "Tau protein comes off the microtubules and aggregates into tangles inside neurons."
+          "fr": "Dans la maladie, tau se détache des microtubules et s'agrège en enchevêtrements neurofibrillaires à l'intérieur des neurones.",
+          "en": "In the disease, tau comes off the microtubules and aggregates into neurofibrillary tangles inside neurons."
         },
         "sources": [
           {
             "id": "sp-alzheimer"
+          },
+          {
+            "id": "mboc4-aggregates"
           }
         ]
       },
@@ -174,33 +246,55 @@
           "sources": [
             {
               "id": "sp-alzheimer"
-            },
-            {
-              "id": "mboc4-aggregates"
             }
           ]
         }
       ],
-      "focus": "cytoskeleton"
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "cytoplasm",
+        "radius": 26
+      },
+      "highlight": [
+        "aggregates",
+        "cytoskeleton"
+      ],
+      "heroes": [
+        {
+          "model": "misfolded",
+          "path": [
+            "cytoplasm"
+          ],
+          "count": 3,
+          "label": {
+            "fr": "Enchevêtrements de tau",
+            "en": "Tau tangles"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "perte",
+      "id": "loss",
       "title": {
-        "fr": "Perte neuronale",
-        "en": "Neuronal loss"
+        "fr": "Les neurones meurent",
+        "en": "Neurons die"
       },
       "range": [
-        0.65,
+        0.75,
         1
       ],
       "description": {
         "text": {
-          "fr": "Les neurones atteints dysfonctionnent puis meurent.",
-          "en": "The affected neurons stop working properly and then die."
+          "fr": "Les neurones atteints dysfonctionnent puis meurent ; le cerveau s'atrophie, en particulier dans les régions de la mémoire.",
+          "en": "The affected neurons stop working properly and then die; the brain shrinks, especially in the regions involved in memory."
         },
         "sources": [
           {
             "id": "sp-alzheimer"
+          },
+          {
+            "id": "gr-alzheimer"
           }
         ]
       },
@@ -208,8 +302,12 @@
       "focus": "cytoplasm",
       "camera": {
         "view": "cell",
-        "radius": 120
-      }
+        "radius": 90
+      },
+      "highlight": [
+        "aggregates"
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
@@ -218,19 +316,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.3,
-          "v": 0.1
+          "t": 0.525,
+          "v": 0.0
         },
         {
-          "t": 0.65,
-          "v": 0.75
-        },
-        {
-          "t": 1,
-          "v": 1
+          "t": 0.675,
+          "v": 0.6
         }
       ]
     },
@@ -239,15 +333,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.3,
-          "v": 0.1
+          "t": 0.525,
+          "v": 0.0
         },
         {
-          "t": 0.7,
-          "v": 0.7
+          "t": 0.675,
+          "v": 0.6
         }
       ]
     },
@@ -256,15 +350,32 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.65,
-          "v": 0.9
+          "t": 0.775,
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 0.45
+          "t": 0.925,
+          "v": 0.5
+        }
+      ]
+    },
+    {
+      "channel": "cell.shrinkage",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.775,
+          "v": 0.0
+        },
+        {
+          "t": 0.925,
+          "v": 0.2
         }
       ]
     },
@@ -273,36 +384,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.8,
-          "v": 0
+          "t": 0.775,
+          "v": 0.0
         },
         {
-          "t": 1,
+          "t": 0.925,
           "v": 0.4
-        }
-      ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
-        },
-        {
-          "t": 0.05,
-          "v": 0.45
-        },
-        {
-          "t": 0.95,
-          "v": 0.45
-        },
-        {
-          "t": 1,
-          "v": 0
         }
       ]
     }
@@ -310,7 +400,7 @@
   "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -322,5 +412,6 @@
         "id": "sp-alzheimer"
       }
     ]
-  }
+  },
+  "durationSeconds": 48
 }
