@@ -98,19 +98,19 @@
   ],
   "stages": [
     {
-      "id": "synucleine",
+      "id": "misfold",
       "title": {
-        "fr": "Agrégation de l'alpha-synucléine",
-        "en": "Alpha-synuclein aggregation"
+        "fr": "L'alpha-synucléine se replie mal",
+        "en": "Alpha-synuclein misfolds"
       },
       "range": [
-        0,
-        0.35
+        0.0,
+        0.25
       ],
       "description": {
         "text": {
-          "fr": "L'alpha-synucléine se replie mal et s'agrège.",
-          "en": "Alpha-synuclein misfolds and aggregates."
+          "fr": "L'alpha-synucléine, une protéine abondante dans les neurones, se replie mal.",
+          "en": "Alpha-synuclein, a protein abundant in neurons, misfolds."
         },
         "sources": [
           {
@@ -122,26 +122,47 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "cytoplasm"
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "cytoplasm",
+        "radius": 12
+      },
+      "heroes": [
+        {
+          "model": "misfolded",
+          "path": [
+            "cytoplasm"
+          ],
+          "count": 3,
+          "label": {
+            "fr": "Alpha-synucléine mal repliée",
+            "en": "Misfolded alpha-synuclein"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
       "id": "lewy",
       "title": {
-        "fr": "Corps de Lewy",
+        "fr": "Les corps de Lewy",
         "en": "Lewy bodies"
       },
       "range": [
-        0.35,
-        0.65
+        0.25,
+        0.5
       ],
       "description": {
         "text": {
-          "fr": "Les agrégats forment des inclusions, les corps de Lewy.",
-          "en": "The aggregates form inclusions, the Lewy bodies."
+          "fr": "Les protéines mal repliées s'agrègent en inclusions dans le neurone : les corps de Lewy.",
+          "en": "The misfolded proteins aggregate into inclusions inside the neuron: the Lewy bodies."
         },
         "sources": [
           {
             "id": "sp-parkinson"
+          },
+          {
+            "id": "mboc4-aggregates"
           }
         ]
       },
@@ -158,22 +179,30 @@
           ]
         }
       ],
-      "focus": "cytoplasm"
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "cytoplasm",
+        "radius": 26
+      },
+      "highlight": [
+        "aggregates"
+      ],
+      "seconds": 12
     },
     {
-      "id": "mitochondries",
+      "id": "mitochondria",
       "title": {
-        "fr": "Stress mitochondrial",
-        "en": "Mitochondrial stress"
+        "fr": "Des mitochondries fragilisées",
+        "en": "Weakened mitochondria"
       },
       "range": [
-        0.65,
-        0.85
+        0.5,
+        0.75
       ],
       "description": {
         "text": {
-          "fr": "Les mitochondries fonctionnent moins bien.",
-          "en": "Mitochondria work less well."
+          "fr": "Un dysfonctionnement des mitochondries participe à la mort des neurones dopaminergiques.",
+          "en": "Mitochondrial dysfunction contributes to the death of dopaminergic neurons."
         },
         "sources": [
           {
@@ -182,22 +211,30 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "mitochondrion"
+      "focus": "mitochondrion",
+      "camera": {
+        "at": "mitochondrion",
+        "radius": 12
+      },
+      "highlight": [
+        "aggregates"
+      ],
+      "seconds": 12
     },
     {
-      "id": "perte",
+      "id": "death",
       "title": {
-        "fr": "Mort neuronale",
-        "en": "Neuronal death"
+        "fr": "Les neurones dopaminergiques meurent",
+        "en": "Dopaminergic neurons die"
       },
       "range": [
-        0.85,
+        0.75,
         1
       ],
       "description": {
         "text": {
-          "fr": "Les neurones dopaminergiques meurent, ce qui réduit la dopamine disponible.",
-          "en": "Dopaminergic neurons die, which reduces the dopamine available."
+          "fr": "Les neurones dopaminergiques de la substance noire meurent : la dopamine manque, ce qui provoque les troubles du mouvement.",
+          "en": "The dopaminergic neurons of the substantia nigra die: dopamine runs short, which causes the movement problems."
         },
         "sources": [
           {
@@ -209,8 +246,13 @@
       "focus": "cytoplasm",
       "camera": {
         "view": "cell",
-        "radius": 120
-      }
+        "radius": 90
+      },
+      "highlight": [
+        "aggregates",
+        "mitochondrion"
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
@@ -219,19 +261,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.35,
-          "v": 0.3
+          "t": 0.275,
+          "v": 0.0
         },
         {
-          "t": 0.65,
-          "v": 0.8
-        },
-        {
-          "t": 1,
-          "v": 0.9
+          "t": 0.425,
+          "v": 0.7
         }
       ]
     },
@@ -240,15 +278,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.65,
-          "v": 0.9
+          "t": 0.525,
+          "v": 1.0
         },
         {
-          "t": 0.85,
-          "v": 0.5
+          "t": 0.675,
+          "v": 0.45
         }
       ]
     },
@@ -257,14 +295,14 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.65,
-          "v": 0.1
+          "t": 0.525,
+          "v": 0.0
         },
         {
-          "t": 0.85,
+          "t": 0.675,
           "v": 0.6
         }
       ]
@@ -274,36 +312,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.85,
-          "v": 0.85
+          "t": 0.775,
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 0.45
-        }
-      ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
-        },
-        {
-          "t": 0.05,
-          "v": 0.45
-        },
-        {
-          "t": 0.95,
-          "v": 0.45
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.925,
+          "v": 0.5
         }
       ]
     }
@@ -311,7 +328,7 @@
   "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -323,5 +340,6 @@
         "id": "sp-parkinson"
       }
     ]
-  }
+  },
+  "durationSeconds": 48
 }

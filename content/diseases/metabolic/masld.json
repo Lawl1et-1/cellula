@@ -95,19 +95,19 @@
   ],
   "stages": [
     {
-      "id": "gouttelettes",
+      "id": "triglycerides",
       "title": {
-        "fr": "Gouttelettes lipidiques",
-        "en": "Lipid droplets"
+        "fr": "Des graisses s'accumulent",
+        "en": "Fat builds up"
       },
       "range": [
-        0,
-        0.5
+        0.0,
+        0.25
       ],
       "description": {
         "text": {
-          "fr": "Des gouttelettes de graisse apparaissent dans le cytoplasme.",
-          "en": "Fat droplets appear in the cytoplasm."
+          "fr": "Associée au surpoids et au diabète de type 2, la maladie commence quand des triglycérides s'accumulent dans les hépatocytes, les cellules du foie.",
+          "en": "Associated with excess weight and type 2 diabetes, the disease starts when triglycerides build up in hepatocytes, the liver cells."
         },
         "sources": [
           {
@@ -116,22 +116,76 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "cytoplasm"
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "cytoplasm",
+        "radius": 26
+      },
+      "highlight": [
+        "lipids"
+      ],
+      "seconds": 12
     },
     {
-      "id": "steatose",
+      "id": "droplets",
+      "title": {
+        "fr": "Gouttelettes lipidiques",
+        "en": "Lipid droplets"
+      },
+      "range": [
+        0.25,
+        0.5
+      ],
+      "description": {
+        "text": {
+          "fr": "Ces graisses sont stockées sous forme de gouttelettes lipidiques dans le cytoplasme.",
+          "en": "These fats are stored as lipid droplets in the cytoplasm."
+        },
+        "sources": [
+          {
+            "id": "sp-masld"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "cytoplasm",
+        "radius": 28
+      },
+      "highlight": [
+        "lipids"
+      ],
+      "labels": [
+        {
+          "at": "cytoplasm",
+          "text": {
+            "fr": "Gouttelettes lipidiques",
+            "en": "Lipid droplets"
+          },
+          "offset": [
+            0,
+            8,
+            0
+          ]
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "steatosis",
       "title": {
         "fr": "Stéatose",
         "en": "Steatosis"
       },
       "range": [
         0.5,
-        0.8
+        0.75
       ],
       "description": {
         "text": {
-          "fr": "Les gouttelettes grossissent et occupent une grande partie de la cellule.",
-          "en": "The droplets grow and fill a large part of the cell."
+          "fr": "Les gouttelettes grossissent et finissent par occuper une grande partie de la cellule : c'est la stéatose.",
+          "en": "The droplets grow and end up filling a large part of the cell: this is steatosis."
         },
         "sources": [
           {
@@ -154,23 +208,28 @@
       ],
       "focus": "cytoplasm",
       "camera": {
-        "radius": 45
-      }
+        "view": "cell",
+        "radius": 90
+      },
+      "highlight": [
+        "lipids"
+      ],
+      "seconds": 12
     },
     {
-      "id": "lesions",
+      "id": "damage",
       "title": {
-        "fr": "Lésions",
-        "en": "Damage"
+        "fr": "Inflammation et fibrose",
+        "en": "Inflammation and fibrosis"
       },
       "range": [
-        0.8,
+        0.75,
         1
       ],
       "description": {
         "text": {
-          "fr": "Dans les formes évolutives, les hépatocytes sont lésés.",
-          "en": "In progressive forms, the hepatocytes are damaged."
+          "fr": "Chez certains patients apparaissent une inflammation et des lésions des hépatocytes, puis une fibrose du foie.",
+          "en": "In some patients, inflammation and hepatocyte damage appear, followed by fibrosis of the liver."
         },
         "sources": [
           {
@@ -182,8 +241,12 @@
       "focus": "cytoplasm",
       "camera": {
         "view": "cell",
-        "radius": 120
-      }
+        "radius": 90
+      },
+      "highlight": [
+        "lipids"
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
@@ -192,14 +255,30 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.5,
-          "v": 0.45
+          "t": 0.025,
+          "v": 0.0
         },
         {
-          "t": 0.8,
+          "t": 0.175,
+          "v": 0.25
+        },
+        {
+          "t": 0.275,
+          "v": 0.25
+        },
+        {
+          "t": 0.425,
+          "v": 0.65
+        },
+        {
+          "t": 0.525,
+          "v": 0.65
+        },
+        {
+          "t": 0.675,
           "v": 1
         }
       ]
@@ -209,36 +288,32 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.8,
-          "v": 1
+          "t": 0.775,
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 0.75
+          "t": 0.925,
+          "v": 0.7
         }
       ]
     },
     {
-      "channel": "view.focusDim",
+      "channel": "cytoplasm.tint",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.05,
-          "v": 0.4
+          "t": 0.775,
+          "v": 0.0
         },
         {
-          "t": 0.95,
-          "v": 0.4
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.925,
+          "v": 0.3
         }
       ]
     }
@@ -246,7 +321,7 @@
   "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -258,5 +333,6 @@
         "id": "sp-masld"
       }
     ]
-  }
+  },
+  "durationSeconds": 48
 }

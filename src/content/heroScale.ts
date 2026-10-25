@@ -17,7 +17,7 @@ export const HERO_SIZES: Record<HeroModel, { realNm: number; shownNm: number } |
   protein: { realNm: 5, shownNm: 160 },
   misfolded: { realNm: 20, shownNm: 300 },
   enzyme: { realNm: 5, shownNm: 200 },
-  substrate: { realNm: 2, shownNm: 80 },
+  substrate: { realNm: 2, shownNm: 160 },
   ldl: { realNm: 22, shownNm: 220 },
   glucose: { realNm: 1, shownNm: 80 },
   insulin: { realNm: 3, shownNm: 120 },

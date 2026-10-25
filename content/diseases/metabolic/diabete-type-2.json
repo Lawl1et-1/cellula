@@ -93,19 +93,19 @@
   ],
   "stages": [
     {
-      "id": "normal",
+      "id": "insulin",
       "title": {
-        "fr": "Réponse normale",
-        "en": "Normal response"
+        "fr": "L'insuline se fixe à son récepteur",
+        "en": "Insulin binds to its receptor"
       },
       "range": [
-        0,
-        0.3
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Sous l'effet de l'insuline, le glucose entre dans la cellule.",
-          "en": "Under the effect of insulin, glucose enters the cell."
+          "fr": "Après un repas, l'insuline produite par le pancréas se fixe à son récepteur, à la surface des cellules.",
+          "en": "After a meal, insulin made by the pancreas binds to its receptor on the surface of cells."
         },
         "sources": [
           {
@@ -114,7 +114,93 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "plasma-membrane"
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 11
+      },
+      "heroes": [
+        {
+          "model": "insulin",
+          "path": [
+            "outside",
+            "membrane"
+          ],
+          "offset": [
+            4.1,
+            0.7,
+            3.6
+          ],
+          "count": 3,
+          "label": {
+            "fr": "Insuline",
+            "en": "Insulin"
+          }
+        },
+        {
+          "model": "receptor",
+          "path": [
+            "membrane"
+          ],
+          "offset": [
+            0.6,
+            0.1,
+            0.5
+          ],
+          "label": {
+            "fr": "Récepteur de l'insuline",
+            "en": "Insulin receptor"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "glucose",
+      "title": {
+        "fr": "Le glucose entre",
+        "en": "Glucose comes in"
+      },
+      "range": [
+        0.2,
+        0.4
+      ],
+      "description": {
+        "text": {
+          "fr": "En réponse, la cellule fait entrer le glucose du sang.",
+          "en": "In response, the cell takes glucose in from the blood."
+        },
+        "sources": [
+          {
+            "id": "sp-t2d"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 14
+      },
+      "highlight": [
+        "cytoplasm"
+      ],
+      "heroes": [
+        {
+          "model": "glucose",
+          "path": [
+            "outside",
+            "membrane",
+            "cytoplasm"
+          ],
+          "count": 8,
+          "label": {
+            "fr": "Glucose",
+            "en": "Glucose"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
       "id": "resistance",
@@ -123,13 +209,13 @@
         "en": "Insulin resistance"
       },
       "range": [
-        0.3,
-        0.7
+        0.4,
+        0.6
       ],
       "description": {
         "text": {
-          "fr": "La cellule répond moins à l'insuline : le glucose entre moins.",
-          "en": "The cell responds less to insulin: less glucose gets in."
+          "fr": "Dans le diabète de type 2, les cellules répondent moins bien à l'insuline : moins de glucose entre.",
+          "en": "In type 2 diabetes, cells respond less well to insulin: less glucose gets in."
         },
         "sources": [
           {
@@ -138,22 +224,110 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "plasma-membrane"
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 14
+      },
+      "heroes": [
+        {
+          "model": "insulin",
+          "path": [
+            "outside",
+            "membrane"
+          ],
+          "offset": [
+            4.1,
+            0.7,
+            3.6
+          ],
+          "count": 3,
+          "label": {
+            "fr": "Insuline",
+            "en": "Insulin"
+          }
+        },
+        {
+          "model": "glucose",
+          "path": [
+            "outside",
+            "membrane"
+          ],
+          "offset": [
+            12,
+            2,
+            10.5
+          ],
+          "count": 8,
+          "label": {
+            "fr": "Glucose bloqué dehors",
+            "en": "Glucose kept outside"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "hyperglycemie",
+      "id": "beta",
+      "title": {
+        "fr": "Les cellules bêta s'épuisent",
+        "en": "Beta cells wear out"
+      },
+      "range": [
+        0.6,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "Pour compenser, le pancréas sécrète plus d'insuline ; avec le temps, ses cellules bêta n'y parviennent plus.",
+          "en": "To compensate, the pancreas secretes more insulin; over time, its beta cells can no longer keep up."
+        },
+        "sources": [
+          {
+            "id": "sp-t2d"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "view": "cell",
+        "radius": 100
+      },
+      "heroes": [
+        {
+          "model": "insulin",
+          "path": [
+            "outside",
+            "membrane"
+          ],
+          "offset": [
+            4.1,
+            0.7,
+            3.6
+          ],
+          "label": {
+            "fr": "Moins d’insuline",
+            "en": "Less insulin"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "hyperglycaemia",
       "title": {
         "fr": "Hyperglycémie",
         "en": "High blood sugar"
       },
       "range": [
-        0.7,
+        0.8,
         1
       ],
       "description": {
         "text": {
-          "fr": "Le glucose reste dans le sang.",
-          "en": "Glucose stays in the blood."
+          "fr": "Le glucose reste dans le sang : c'est l'hyperglycémie, qui abîme à long terme les vaisseaux et les organes.",
+          "en": "Glucose stays in the blood: this is high blood sugar, which damages blood vessels and organs over time."
         },
         "sources": [
           {
@@ -162,78 +336,55 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "plasma-membrane"
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 18
+      },
+      "heroes": [
+        {
+          "model": "glucose",
+          "path": [
+            "outside"
+          ],
+          "offset": [
+            -6,
+            0,
+            -5
+          ],
+          "count": 12,
+          "label": {
+            "fr": "Glucose en excès dans le sang",
+            "en": "Excess glucose in the blood"
+          }
+        }
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
-        },
-        {
-          "t": 0.05,
-          "v": 0.35
-        },
-        {
-          "t": 0.95,
-          "v": 0.35
-        },
-        {
-          "t": 1,
-          "v": 0
-        }
-      ]
-    },
     {
       "channel": "cytoplasm.tint",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 1,
+          "t": 0.82,
+          "v": 0.0
+        },
+        {
+          "t": 0.94,
           "v": 0.15
         }
       ]
     }
   ],
-  "actors": [
-    {
-      "actor": "path",
-      "at": 0.0,
-      "until": 0.3,
-      "params": {
-        "path": [
-          "outside",
-          "membrane",
-          "cytoplasm"
-        ],
-        "cargo": "glucose",
-        "count": 6
-      }
-    },
-    {
-      "actor": "path",
-      "at": 0.35,
-      "until": 1.0,
-      "params": {
-        "path": [
-          "outside",
-          "membrane",
-          "outside"
-        ],
-        "cargo": "glucose",
-        "count": 12
-      }
-    }
-  ],
+  "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -245,5 +396,6 @@
         "id": "sp-t2d"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }

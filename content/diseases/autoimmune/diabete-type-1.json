@@ -112,121 +112,19 @@
   ],
   "stages": [
     {
-      "id": "attaque",
+      "id": "attack",
       "title": {
-        "fr": "Attaque immunitaire",
-        "en": "Immune attack"
+        "fr": "Les lymphocytes T attaquent",
+        "en": "T lymphocytes attack"
       },
       "range": [
-        0,
-        0.3
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Des lymphocytes T reconnaissent et attaquent la cellule bêta.",
-          "en": "T lymphocytes recognise and attack the beta cell."
-        },
-        "sources": [
-          {
-            "id": "sp-t1d"
-          }
-        ],
-        "simplification": {
-          "fr": "Les signaux venus des cellules immunitaires sont représentés par des particules qui arrivent de l'extérieur.",
-          "en": "Signals from immune cells are shown as particles arriving from outside."
-        }
-      },
-      "cellularSigns": [],
-      "focus": "plasma-membrane"
-    },
-    {
-      "id": "caspases",
-      "title": {
-        "fr": "Déclenchement de l'apoptose",
-        "en": "Apoptosis is triggered"
-      },
-      "range": [
-        0.3,
-        0.55
-      ],
-      "description": {
-        "text": {
-          "fr": "Une cascade de protéases, les caspases, déclenche la mort cellulaire programmée.",
-          "en": "A cascade of proteases, the caspases, sets off programmed cell death."
-        },
-        "sources": [
-          {
-            "id": "mboc4-apoptosis-cascade"
-          }
-        ]
-      },
-      "cellularSigns": [],
-      "focus": "nucleus"
-    },
-    {
-      "id": "apoptose",
-      "title": {
-        "fr": "Apoptose",
-        "en": "Apoptosis"
-      },
-      "range": [
-        0.55,
-        0.85
-      ],
-      "description": {
-        "text": {
-          "fr": "La cellule se rétracte, sa membrane bourgeonne, son noyau se condense et se fragmente.",
-          "en": "The cell shrinks, its membrane blebs, and its nucleus condenses and breaks up."
-        },
-        "sources": [
-          {
-            "id": "mboc4-apoptosis"
-          }
-        ]
-      },
-      "cellularSigns": [
-        {
-          "text": {
-            "fr": "Bourgeonnement de la membrane.",
-            "en": "Membrane blebbing."
-          },
-          "sources": [
-            {
-              "id": "mboc4-apoptosis"
-            }
-          ]
-        },
-        {
-          "text": {
-            "fr": "Chromatine condensée, noyau fragmenté.",
-            "en": "Condensed chromatin, fragmented nucleus."
-          },
-          "sources": [
-            {
-              "id": "mboc4-apoptosis"
-            }
-          ]
-        }
-      ],
-      "focus": "nucleus",
-      "camera": {
-        "radius": 50
-      }
-    },
-    {
-      "id": "perte",
-      "title": {
-        "fr": "Perte des cellules bêta",
-        "en": "Loss of beta cells"
-      },
-      "range": [
-        0.85,
-        1
-      ],
-      "description": {
-        "text": {
-          "fr": "La destruction des cellules bêta entraîne une carence en insuline.",
-          "en": "The destruction of beta cells leads to insulin deficiency."
+          "fr": "Le système immunitaire se retourne contre les cellules bêta du pancréas : des lymphocytes T les reconnaissent et les attaquent.",
+          "en": "The immune system turns against the beta cells of the pancreas: T lymphocytes recognise and attack them."
         },
         "sources": [
           {
@@ -239,24 +137,266 @@
       "camera": {
         "view": "cell",
         "radius": 120
-      }
+      },
+      "heroes": [
+        {
+          "model": "t-cell",
+          "path": [
+            "outside"
+          ],
+          "offset": [
+            25,
+            4,
+            22
+          ],
+          "label": {
+            "fr": "Lymphocyte T",
+            "en": "T lymphocyte"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "signals",
+      "title": {
+        "fr": "Des signaux de mort",
+        "en": "Death signals"
+      },
+      "range": [
+        0.2,
+        0.4
+      ],
+      "description": {
+        "text": {
+          "fr": "Les cellules immunitaires envoient à la cellule bêta des signaux qui déclenchent sa mort programmée, l'apoptose.",
+          "en": "The immune cells send the beta cell signals that trigger its programmed death, apoptosis."
+        },
+        "sources": [
+          {
+            "id": "sp-t1d"
+          },
+          {
+            "id": "mboc4-apoptosis"
+          }
+        ],
+        "simplification": {
+          "fr": "Les signaux sont représentés par des particules venues de l'extérieur.",
+          "en": "The signals are shown as particles arriving from outside."
+        }
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 22
+      },
+      "heroes": [
+        {
+          "model": "t-cell",
+          "path": [
+            "outside"
+          ],
+          "offset": [
+            25,
+            4,
+            22
+          ],
+          "label": {
+            "fr": "Lymphocyte T",
+            "en": "T lymphocyte"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "caspases",
+      "title": {
+        "fr": "La cascade des caspases",
+        "en": "The caspase cascade"
+      },
+      "range": [
+        0.4,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "À l'intérieur, une cascade de protéases, les caspases, s'active et commence à démonter la cellule.",
+          "en": "Inside, a cascade of proteases, the caspases, switches on and starts taking the cell apart."
+        },
+        "sources": [
+          {
+            "id": "mboc4-apoptosis-cascade"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "cytoplasm",
+        "radius": 14
+      },
+      "highlight": [
+        "mitochondrion"
+      ],
+      "heroes": [
+        {
+          "model": "enzyme",
+          "path": [
+            "cytoplasm"
+          ],
+          "count": 6,
+          "label": {
+            "fr": "Caspases",
+            "en": "Caspases"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "apoptosis",
+      "title": {
+        "fr": "Apoptose",
+        "en": "Apoptosis"
+      },
+      "range": [
+        0.6,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "La cellule se rétracte, sa membrane bourgeonne, son noyau se condense puis se fragmente.",
+          "en": "The cell shrinks, its membrane blebs, and its nucleus condenses and then breaks up."
+        },
+        "sources": [
+          {
+            "id": "mboc4-apoptosis"
+          }
+        ]
+      },
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "Membrane bourgeonnante, noyau fragmenté.",
+            "en": "Blebbing membrane, fragmented nucleus."
+          },
+          "sources": [
+            {
+              "id": "mboc4-apoptosis"
+            }
+          ]
+        }
+      ],
+      "focus": "nucleus",
+      "camera": {
+        "view": "cell",
+        "radius": 100
+      },
+      "highlight": [
+        "plasma-membrane",
+        "fragments"
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "insulin",
+      "title": {
+        "fr": "L'insuline manque",
+        "en": "Insulin runs short"
+      },
+      "range": [
+        0.8,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Quand la plupart des cellules bêta ont été détruites, l'insuline manque et le taux de glucose dans le sang augmente.",
+          "en": "Once most beta cells have been destroyed, insulin runs short and blood glucose rises."
+        },
+        "sources": [
+          {
+            "id": "sp-t1d"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "view": "cell",
+        "radius": 110
+      },
+      "heroes": [
+        {
+          "model": "glucose",
+          "path": [
+            "outside"
+          ],
+          "offset": [
+            -6,
+            0,
+            -5
+          ],
+          "count": 12,
+          "label": {
+            "fr": "Glucose en excès",
+            "en": "Excess glucose"
+          }
+        }
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
+    {
+      "channel": "mitochondria.potential",
+      "keys": [
+        {
+          "t": 0,
+          "v": 1.0
+        },
+        {
+          "t": 0.42,
+          "v": 1.0
+        },
+        {
+          "t": 0.54,
+          "v": 0.5
+        }
+      ]
+    },
+    {
+      "channel": "cell.shrinkage",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.62,
+          "v": 0.0
+        },
+        {
+          "t": 0.74,
+          "v": 0.3
+        }
+      ]
+    },
     {
       "channel": "membrane.blebbing",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.55,
-          "v": 0
+          "t": 0.62,
+          "v": 0.0
         },
         {
-          "t": 0.85,
-          "v": 1
+          "t": 0.74,
+          "v": 0.9
         }
       ]
     },
@@ -265,14 +405,14 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.5,
-          "v": 0
+          "t": 0.62,
+          "v": 0.0
         },
         {
-          "t": 0.75,
+          "t": 0.74,
           "v": 0.8
         }
       ]
@@ -282,32 +422,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.65,
-          "v": 0
+          "t": 0.62,
+          "v": 0.0
         },
         {
-          "t": 0.85,
-          "v": 1
-        }
-      ]
-    },
-    {
-      "channel": "cell.shrinkage",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
-        },
-        {
-          "t": 0.55,
-          "v": 0
-        },
-        {
-          "t": 1,
-          "v": 1
+          "t": 0.74,
+          "v": 0.6
         }
       ]
     },
@@ -316,53 +439,23 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.4,
-          "v": 0.9
+          "t": 0.62,
+          "v": 1.0
         },
         {
-          "t": 1,
+          "t": 0.74,
+          "v": 0.3
+        },
+        {
+          "t": 0.82,
+          "v": 0.3
+        },
+        {
+          "t": 0.94,
           "v": 0.15
-        }
-      ]
-    },
-    {
-      "channel": "mitochondria.potential",
-      "keys": [
-        {
-          "t": 0,
-          "v": 1
-        },
-        {
-          "t": 0.4,
-          "v": 1
-        },
-        {
-          "t": 0.7,
-          "v": 0.4
-        }
-      ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
-        },
-        {
-          "t": 0.05,
-          "v": 0.3
-        },
-        {
-          "t": 0.95,
-          "v": 0.3
-        },
-        {
-          "t": 1,
-          "v": 0
         }
       ]
     }
@@ -370,29 +463,22 @@
   "actors": [
     {
       "actor": "path",
-      "at": 0.0,
-      "until": 0.3,
+      "at": 0.21,
+      "until": 0.39,
       "params": {
         "path": [
           "outside",
-          "membrane"
+          "membrane",
+          "cytoplasm"
         ],
         "cargo": "cytokine",
         "count": 10
-      }
-    },
-    {
-      "actor": "pulse",
-      "at": 0.3,
-      "until": 0.55,
-      "params": {
-        "at": "nucleus"
       }
     }
   ],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -404,5 +490,6 @@
         "id": "sp-t1d"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }

@@ -101,43 +101,65 @@
   ],
   "stages": [
     {
-      "id": "mutation",
+      "id": "mtdna",
       "title": {
-        "fr": "Variant pathogène",
-        "en": "Pathogenic variant"
+        "fr": "Une erreur dans l'ADN mitochondrial",
+        "en": "An error in mitochondrial DNA"
       },
       "range": [
-        0,
-        0.25
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Des variants de l'ADN mitochondrial, par exemple dans le gène MT-ATP6 d'une sous-unité de l'ATP synthase, altèrent la phosphorylation oxydative.",
-          "en": "Variants of mitochondrial DNA, for example in the MT-ATP6 gene for a subunit of ATP synthase, impair oxidative phosphorylation."
+          "fr": "Les mitochondries possèdent leur propre petit génome, distinct de celui du noyau. Ici, un variant touche par exemple le gène MT-ATP6, qui code une sous-unité de l'ATP synthase.",
+          "en": "Mitochondria have their own small genome, separate from the nucleus. Here a variant affects, for example, the MT-ATP6 gene, which encodes a subunit of ATP synthase."
         },
         "sources": [
           {
             "id": "gr-leigh-mtdna"
+          },
+          {
+            "id": "mboc4-organelle-genomes"
           }
         ]
       },
       "cellularSigns": [],
-      "focus": "mitochondrion"
+      "focus": "mitochondrion",
+      "camera": {
+        "at": "mitochondrion",
+        "radius": 9
+      },
+      "labels": [
+        {
+          "at": "mitochondrion",
+          "text": {
+            "fr": "ADN mitochondrial",
+            "en": "Mitochondrial DNA"
+          },
+          "offset": [
+            0,
+            4,
+            0
+          ]
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "chaine",
+      "id": "chain",
       "title": {
-        "fr": "Chaîne respiratoire déficiente",
-        "en": "Deficient respiratory chain"
+        "fr": "La chaîne respiratoire en panne",
+        "en": "The respiratory chain fails"
       },
       "range": [
-        0.25,
-        0.6
+        0.2,
+        0.4
       ],
       "description": {
         "text": {
-          "fr": "La production d'ATP par les mitochondries diminue.",
-          "en": "ATP production by mitochondria falls."
+          "fr": "La phosphorylation oxydative, qui fabrique l'ATP à partir du flux de protons dans la membrane interne, est altérée.",
+          "en": "Oxidative phosphorylation, which makes ATP from the flow of protons across the inner membrane, is impaired."
         },
         "sources": [
           {
@@ -149,22 +171,73 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "mitochondrion"
+      "focus": "mitochondrion",
+      "camera": {
+        "at": "mitochondrion",
+        "radius": 8
+      },
+      "labels": [
+        {
+          "at": "mitochondrion",
+          "text": {
+            "fr": "Chaîne respiratoire (membrane interne)",
+            "en": "Respiratory chain (inner membrane)"
+          },
+          "offset": [
+            0,
+            -3.5,
+            0
+          ]
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "mitochondries",
+      "id": "energy",
       "title": {
-        "fr": "Mitochondries anormales",
+        "fr": "Moins d'énergie",
+        "en": "Less energy"
+      },
+      "range": [
+        0.4,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "La production d'ATP, la monnaie énergétique de la cellule, diminue.",
+          "en": "The production of ATP, the cell's energy currency, falls."
+        },
+        "sources": [
+          {
+            "id": "gr-leigh-mtdna"
+          },
+          {
+            "id": "mboc4-electron-transport"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "mitochondrion",
+      "camera": {
+        "at": "mitochondrion",
+        "radius": 14
+      },
+      "seconds": 12
+    },
+    {
+      "id": "organelle",
+      "title": {
+        "fr": "Des mitochondries anormales",
         "en": "Abnormal mitochondria"
       },
       "range": [
         0.6,
-        0.85
+        0.8
       ],
       "description": {
         "text": {
-          "fr": "Les mitochondries deviennent anormales ; leur membrane interne et leurs crêtes peuvent être désorganisées.",
-          "en": "Mitochondria become abnormal; their inner membrane and cristae can become disorganised."
+          "fr": "Les mitochondries deviennent anormales : leur membrane interne et leurs crêtes peuvent se désorganiser.",
+          "en": "The mitochondria become abnormal: their inner membrane and cristae can become disorganised."
         },
         "sources": [
           {
@@ -176,35 +249,28 @@
           "en": "The look of diseased mitochondria is schematic (swelling, loss of cristae, dimmer glow)."
         }
       },
-      "cellularSigns": [
-        {
-          "text": {
-            "fr": "Les mitochondries des cellules touchées produisent moins d'énergie.",
-            "en": "Mitochondria in the affected cells produce less energy."
-          },
-          "sources": [
-            {
-              "id": "gr-leigh-mtdna"
-            }
-          ]
-        }
-      ],
-      "focus": "mitochondrion"
+      "cellularSigns": [],
+      "focus": "mitochondrion",
+      "camera": {
+        "at": "mitochondrion",
+        "radius": 10
+      },
+      "seconds": 12
     },
     {
-      "id": "cellule",
+      "id": "tissue",
       "title": {
-        "fr": "Souffrance cellulaire",
-        "en": "Cell distress"
+        "fr": "Les tissus qui consomment le plus",
+        "en": "The hungriest tissues suffer most"
       },
       "range": [
-        0.85,
+        0.8,
         1
       ],
       "description": {
         "text": {
-          "fr": "Le cerveau en développement est le plus touché, avec des lésions de certaines régions. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
-          "en": "The developing brain is the most affected, with lesions in certain regions. The model shows a generic cell; the changes shown are those described in the affected cells."
+          "fr": "Le cerveau en développement, très gourmand en énergie, est le plus touché, avec des lésions de certaines régions.",
+          "en": "The developing brain, which uses a great deal of energy, is the most affected, with lesions in certain regions."
         },
         "sources": [
           {
@@ -215,8 +281,13 @@
       "cellularSigns": [],
       "focus": "cytoplasm",
       "camera": {
-        "radius": 40
-      }
+        "view": "cell",
+        "radius": 90
+      },
+      "highlight": [
+        "mitochondrion"
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
@@ -225,19 +296,23 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.25,
-          "v": 0.9
+          "t": 0.22,
+          "v": 1.0
         },
         {
-          "t": 0.6,
-          "v": 0.45
+          "t": 0.34,
+          "v": 0.5
         },
         {
-          "t": 1,
-          "v": 0.3
+          "t": 0.42,
+          "v": 0.5
+        },
+        {
+          "t": 0.54,
+          "v": 0.25
         }
       ]
     },
@@ -246,15 +321,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.6,
-          "v": 0.3
+          "t": 0.62,
+          "v": 0.0
         },
         {
-          "t": 0.85,
-          "v": 0.65
+          "t": 0.74,
+          "v": 0.85
         }
       ]
     },
@@ -263,15 +338,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.6,
-          "v": 0.2
+          "t": 0.62,
+          "v": 0.0
         },
         {
-          "t": 0.9,
-          "v": 0.55
+          "t": 0.74,
+          "v": 0.6
         }
       ]
     },
@@ -280,15 +355,15 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
-        },
-        {
-          "t": 0.6,
-          "v": 1
-        },
-        {
-          "t": 0.9,
           "v": 1.0
+        },
+        {
+          "t": 0.62,
+          "v": 1.0
+        },
+        {
+          "t": 0.74,
+          "v": 1.4
         }
       ]
     },
@@ -297,53 +372,51 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.85,
-          "v": 1
+          "t": 0.82,
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 0.6
+          "t": 0.94,
+          "v": 0.7
         }
       ]
     },
     {
-      "channel": "view.focusDim",
+      "channel": "cytoplasm.tint",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.05,
-          "v": 0.4
+          "t": 0.82,
+          "v": 0.0
         },
         {
-          "t": 0.95,
-          "v": 0.4
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.94,
+          "v": 0.25
         }
       ]
     }
   ],
   "actors": [
     {
-      "actor": "pulse",
-      "at": 0.25,
-      "until": 0.6,
+      "actor": "burst",
+      "at": 0.42,
+      "until": 0.58,
       "params": {
-        "at": "mitochondrion"
+        "from": "mitochondrion",
+        "cargo": "atp",
+        "count": 4
       }
     }
   ],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -355,5 +428,6 @@
         "id": "gr-leigh-mtdna"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }
