@@ -2,9 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { loadContent } from '@/content/load';
 import { searchDiseases } from '@/content/search';
 import { fr } from '@/i18n/fr';
+import { en } from '@/i18n/en';
 
 const { content } = loadContent();
-const labels = fr.diseases.categories;
+const labels = [fr.diseases.categories, en.diseases.categories];
 
 describe('disease search', () => {
   it('ignores accents and case', () => {
@@ -22,6 +23,6 @@ describe('disease search', () => {
   });
 
   it('every disease has a label for each of its categories', () => {
-    for (const d of content.diseases) for (const c of d.categories) expect(labels[c]).toBeTruthy();
+    for (const d of content.diseases) for (const c of d.categories) for (const l of labels) expect(l[c]).toBeTruthy();
   });
 });

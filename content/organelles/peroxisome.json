@@ -62,7 +62,9 @@
   ],
   "keyMolecules": [
     {
-      "name": "Catalase",
+      "name": {
+        "fr": "Catalase"
+      },
       "role": {
         "text": {
           "fr": "Enzyme qui décompose le peroxyde d'hydrogène."

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { fr } from '@/i18n/fr';
+import { useL, useT } from '@/i18n/locale';
 import { useSelection } from '@/state/selection';
 import { useUi } from '@/state/ui';
 import { useScenario } from '@/state/scenario';
@@ -13,6 +13,8 @@ import styles from './panel.module.css';
 
 /** Keyboard-accessible index of every organelle; hovering an entry lights it up in the scene. */
 export function OrganelleList() {
+  const t = useT();
+  const l = useL();
   const content = useContent();
   const selected = useSelection((s) => s.selected?.organelle);
   const select = useSelection((s) => s.select);
@@ -28,9 +30,9 @@ export function OrganelleList() {
   if (libraryOpen || diseasePlaying || dnaCloseup) return null;
 
   return (
-    <nav className={`glass ${styles.list}`} aria-label={fr.list.title} data-open={open}>
+    <nav className={`glass ${styles.list}`} aria-label={t.list.title} data-open={open}>
       <button className={styles.listToggle} onClick={() => setOpen((o) => !o)} aria-expanded={open}>
-        <span className="label">{fr.list.title}</span>
+        <span className="label">{t.list.title}</span>
         <span aria-hidden>{open ? '–' : '+'}</span>
       </button>
       {open && (
@@ -54,7 +56,7 @@ export function OrganelleList() {
                   onFocus={() => hover({ organelle: id })}
                   onBlur={() => hover(null)}
                 >
-                  {o.name.fr}
+                  {l(o.name)}
                 </button>
               </li>
             );

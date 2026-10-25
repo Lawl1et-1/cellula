@@ -55,7 +55,9 @@
   ],
   "keyMolecules": [
     {
-      "name": "Hydrolases acides",
+      "name": {
+        "fr": "Hydrolases acides"
+      },
       "role": {
         "text": {
           "fr": "Enzymes (protéases, nucléases, lipases…) actives seulement en milieu acide."
@@ -68,7 +70,9 @@
       }
     },
     {
-      "name": "Pompe à protons (ATPase de type V)",
+      "name": {
+        "fr": "Pompe à protons (ATPase de type V)"
+      },
       "role": {
         "text": {
           "fr": "Acidifie l'intérieur du lysosome."

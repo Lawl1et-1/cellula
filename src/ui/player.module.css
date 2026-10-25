@@ -3,7 +3,8 @@
 .menu {
   position: absolute;
   top: 18px;
-  right: 20px;
+  /* Leaves room for the language switch in the top-right corner. */
+  right: 118px;
   display: flex;
   gap: 8px;
   z-index: 3;

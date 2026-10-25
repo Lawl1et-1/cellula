@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { QUALITY_PRESETS, type QualityLevel } from '@/engine/quality/presets';
-import { fr } from '@/i18n/fr';
+import { useT } from '@/i18n/locale';
 import { useQuality } from '@/state/quality';
 import { useScene, type CameraMode, type ScaleMode } from '@/state/scene';
 import { useSelection } from '@/state/selection';
@@ -55,6 +55,7 @@ const fade = {
 };
 
 export function Hud() {
+  const t = useT();
   const mode = useScene((s) => s.cameraMode);
   const setMode = useScene((s) => s.setCameraMode);
   const scale = useScene((s) => s.scaleMode);
@@ -78,11 +79,9 @@ export function Hud() {
   return (
     <motion.div className={styles.hud} {...fade}>
       <header className={styles.topbar}>
-        <span className={styles.wordmark}>{fr.brand}</span>
-        <span className={`label ${styles.scaleChip}`} title={fr.hud.scaleNote}>
-          {scale === 'artistic'
-            ? `${fr.hud.scale} ${fr.hud.artistic.toLowerCase()}`
-            : `${fr.hud.scale} ${fr.hud.real.toLowerCase()}`}
+        <span className={styles.wordmark}>{t.brand}</span>
+        <span className={`label ${styles.scaleChip}`} title={t.hud.scaleNote}>
+          {t.hud.scaleChip[scale]}
         </span>
       </header>
 
@@ -92,7 +91,7 @@ export function Hud() {
           aria-expanded={settingsOpen}
           onClick={() => setSettingsOpen(!settingsOpen)}
         >
-          {settingsOpen ? fr.hud.closeSettings : fr.hud.settings}
+          {settingsOpen ? t.hud.closeSettings : t.hud.settings}
         </button>
       )}
 
@@ -102,52 +101,52 @@ export function Hud() {
           {!touchDevice && (
             <>
               <Segmented<CameraMode>
-                label={fr.hud.camera}
+                label={t.hud.camera}
                 value={mode}
                 onChange={setMode}
                 options={[
-                  { value: 'orbit', label: fr.hud.orbit },
-                  { value: 'flight', label: fr.hud.flight },
+                  { value: 'orbit', label: t.hud.orbit },
+                  { value: 'flight', label: t.hud.flight },
                 ]}
               />
               <span className={styles.divider} aria-hidden />
             </>
           )}
           <Segmented<ScaleMode>
-            label={fr.hud.scale}
+            label={t.hud.scale}
             value={scale}
             onChange={setScale}
             options={[
-              { value: 'artistic', label: fr.hud.artistic },
-              { value: 'real', label: fr.hud.real },
+              { value: 'artistic', label: t.hud.artistic },
+              { value: 'real', label: t.hud.real },
             ]}
           />
           <span className={styles.divider} aria-hidden />
           <Segmented<'normal' | 'reduced' | 'paused'>
-            label={fr.hud.motion}
+            label={t.hud.motion}
             value={motionMode}
             onChange={setMotion}
             options={[
-              { value: 'normal', label: fr.hud.motionNormal },
-              { value: 'reduced', label: fr.hud.motionReduced },
-              { value: 'paused', label: fr.hud.motionPaused },
+              { value: 'normal', label: t.hud.motionNormal },
+              { value: 'reduced', label: t.hud.motionReduced },
+              { value: 'paused', label: t.hud.motionPaused },
             ]}
           />
           <span className={styles.divider} aria-hidden />
           <Segmented<QualityLevel>
-            label={fr.hud.quality}
+            label={t.hud.quality}
             value={level}
             onChange={(l) => setLevel(l, true)}
             options={(Object.keys(QUALITY_PRESETS) as QualityLevel[]).map((k) => ({
               value: k,
-              label: QUALITY_PRESETS[k].label,
+              label: t.hud.qualityLevels[k] ?? QUALITY_PRESETS[k].label,
             }))}
           />
         </div>
       )}
 
-      <p className={styles.help}>{mode === 'flight' ? fr.hud.flightHelp : fr.hud.orbitHelp}</p>
-      <p className={styles.disclaimer}>{fr.hud.disclaimer}</p>
+      <p className={styles.help}>{mode === 'flight' ? t.hud.flightHelp : t.hud.orbitHelp}</p>
+      <p className={styles.disclaimer}>{t.hud.disclaimer}</p>
     </motion.div>
   );
 }

@@ -7,6 +7,7 @@ import type { Object3D } from 'three';
 import { NoToneMapping, SRGBColorSpace } from 'three';
 import type { QualityLevel } from '@/engine/quality/presets';
 import { initQuality, useQuality, usePreset } from '@/state/quality';
+import { useT } from '@/i18n/locale';
 import { PALETTE } from './palette';
 import { CellScene } from './CellScene';
 import { CameraRig } from './camera/CameraRig';
@@ -70,6 +71,7 @@ function WarmUp({ onDone }: { onDone: () => void }) {
 }
 
 export default function CellCanvas() {
+  const t = useT();
   const preset = usePreset();
   // The canvas is client-only (loaded with ssr: false), so reading the URL at init is safe.
   const [stats] = useState(showStats);
@@ -98,7 +100,7 @@ export default function CellCanvas() {
       }}
       style={{ position: 'absolute', inset: 0 }}
       role="img"
-      aria-label="Vue 3D interactive d'une cellule humaine. Les organites sont aussi accessibles dans la liste « Organites »."
+      aria-label={t.a11y.canvas}
     >
       <color attach="background" args={[PALETTE.background]} />
       <AdaptiveQuality />

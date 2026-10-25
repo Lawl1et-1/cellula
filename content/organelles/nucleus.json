@@ -97,7 +97,9 @@
   ],
   "keyMolecules": [
     {
-      "name": "ADN et histones",
+      "name": {
+        "fr": "ADN et histones"
+      },
       "role": {
         "text": {
           "fr": "L'ADN s'enroule autour des histones pour former la chromatine."
@@ -110,7 +112,9 @@
       }
     },
     {
-      "name": "Ran",
+      "name": {
+        "fr": "Ran"
+      },
       "role": {
         "text": {
           "fr": "Petite GTPase qui donne sa direction au transport à travers les pores nucléaires."

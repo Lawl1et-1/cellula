@@ -58,7 +58,9 @@
   ],
   "keyMolecules": [
     {
-      "name": "ARN ribosomiques",
+      "name": {
+        "fr": "ARN ribosomiques"
+      },
       "role": {
         "text": {
           "fr": "Forment le cœur du ribosome et catalysent la formation des liaisons entre acides aminés."
@@ -71,7 +73,9 @@
       }
     },
     {
-      "name": "ARN de transfert",
+      "name": {
+        "fr": "ARN de transfert"
+      },
       "role": {
         "text": {
           "fr": "Apportent les acides aminés correspondant à chaque codon."

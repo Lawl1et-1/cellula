@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { fr } from '@/i18n/fr';
+import { useL, useT } from '@/i18n/locale';
 import { useScenario } from '@/state/scenario';
 import { useSelection } from '@/state/selection';
 import { useTour } from '@/state/tour';
@@ -13,6 +13,8 @@ import styles from './player.module.css';
 
 /** Entry points: the guided tour and the animated processes. */
 export function ScenarioMenu() {
+  const t = useT();
+  const l = useL();
   const content = useContent();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -26,9 +28,9 @@ export function ScenarioMenu() {
     const p = content.processes.find((x) => x.id === params.get('process'));
     if (!p) return;
     useScenario.getState().start({ kind: 'process', ...p });
-    const t = Number(params.get('t'));
-    if (params.has('t') && Number.isFinite(t)) {
-      useScenario.getState().setT(t);
+    const at = Number(params.get('t'));
+    if (params.has('t') && Number.isFinite(at)) {
+      useScenario.getState().setT(at);
       useScenario.getState().setPlaying(false);
     }
   }, [content.processes]);
@@ -57,18 +59,18 @@ export function ScenarioMenu() {
             useTour.getState().start(content.tours[0]!);
           }}
         >
-          {fr.menu.tour}
+          {t.menu.tour}
         </button>
       )}
       <button className={`glass ${styles.menuButton}`} aria-expanded={open} onClick={() => setOpen((o) => !o)}>
-        {fr.menu.processes} <span aria-hidden>▾</span>
+        {t.menu.processes} <span aria-hidden>▾</span>
       </button>
       <button
         className={`glass ${styles.menuButton} ${styles.menuAccent}`}
         aria-expanded={libraryOpen}
         onClick={() => setLibraryOpen(!libraryOpen)}
       >
-        {fr.menu.diseases}
+        {t.menu.diseases}
       </button>
       <AnimatePresence>
         {open && (
@@ -88,8 +90,8 @@ export function ScenarioMenu() {
                     setOpen(false);
                   }}
                 >
-                  <strong>{p.name.fr}</strong>
-                  <span>{p.summary.text.fr}</span>
+                  <strong>{l(p.name)}</strong>
+                  <span>{l(p.summary.text)}</span>
                 </button>
               </li>
             ))}

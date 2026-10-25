@@ -18,6 +18,9 @@ import { DiseasePanel } from './DiseasePanel';
 import { DiseaseLibrary } from './DiseaseLibrary';
 import { Announcer } from './Announcer';
 import { NoWebGL } from './NoWebGL';
+import { LanguageSwitch } from './LanguageSwitch';
+import { PageMeta } from './PageMeta';
+import { DICTIONARIES } from '@/i18n/locale';
 import type { ExplorerContent } from '@/content/bundle';
 
 const CellCanvas = dynamic(() => import('@/scene/CellCanvas'), { ssr: false });
@@ -43,9 +46,13 @@ export function Experience({ intro, content }: { intro: boolean; content: Explor
     setWebgl(ok); // eslint-disable-line react-hooks/set-state-in-effect
   }, []);
 
+  // The landing page keeps the site title; /explorer has its own.
+  const meta = intro ? undefined : { fr: DICTIONARIES.fr.meta.explorer, en: DICTIONARIES.en.meta.explorer };
+
   if (webgl === false) {
     return (
       <ContentProvider content={content}>
+        <PageMeta title={meta} />
         <NoWebGL />
       </ContentProvider>
     );
@@ -53,6 +60,7 @@ export function Experience({ intro, content }: { intro: boolean; content: Explor
 
   return (
     <ContentProvider content={content}>
+      <PageMeta title={meta} />
       <main style={{ position: 'fixed', inset: 0 }}>
         {/* The scene fades in once its shaders are compiled instead of popping in. */}
         <div
@@ -67,6 +75,7 @@ export function Experience({ intro, content }: { intro: boolean; content: Explor
             <Hud key="hud" />
           )}
         </AnimatePresence>
+        <LanguageSwitch />
         {mode !== 'intro' && (
           <>
             <OrganelleList />

@@ -65,7 +65,9 @@
   ],
   "keyMolecules": [
     {
-      "name": "Translocon",
+      "name": {
+        "fr": "Translocon"
+      },
       "role": {
         "text": {
           "fr": "Pore protéique par lequel la chaîne protéique en cours de synthèse traverse la membrane du RE."
@@ -78,7 +80,9 @@
       }
     },
     {
-      "name": "Chaperons (ex. BiP)",
+      "name": {
+        "fr": "Chaperons (ex. BiP)"
+      },
       "role": {
         "text": {
           "fr": "Aident les protéines à se replier correctement dans la lumière du RE."

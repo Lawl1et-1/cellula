@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { fr } from '@/i18n/fr';
+import { useL, useT } from '@/i18n/locale';
 import { useSelection } from '@/state/selection';
 import { useUi } from '@/state/ui';
 import { CELL } from '@/scene/layout/cellLayout';
@@ -15,6 +15,8 @@ import styles from './player.module.css';
 
 /** DNA compaction close-up: steps from the double helix to the condensed chromosome. */
 export function DnaStepper() {
+  const t = useT();
+  const l = useL();
   const level = useUi((s) => s.dnaLevel);
   const setLevel = useUi((s) => s.setDnaLevel);
   const selected = useSelection((s) => s.selected?.organelle);
@@ -61,30 +63,30 @@ export function DnaStepper() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 16 }}
-      aria-label={fr.dna.title}
+      aria-label={t.dna.title}
       aria-live="polite"
     >
       <div className={styles.tourHead}>
         <span className="label">
-          {fr.dna.title} · {level + 1}/{levels.length}
+          {t.dna.title} · {level + 1}/{levels.length}
         </span>
-        <button className={styles.closeBtn} onClick={() => setLevel(null)} aria-label={fr.dna.close}>
+        <button className={styles.closeBtn} onClick={() => setLevel(null)} aria-label={t.dna.close}>
           ×
         </button>
       </div>
       <motion.div key={current.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-        <h3 className={styles.stageTitle}>{current.title.fr}</h3>
-        <p className={styles.scale}>{current.scale.fr}</p>
+        <h3 className={styles.stageTitle}>{l(current.title)}</h3>
+        <p className={styles.scale}>{l(current.scale)}</p>
         <Claim claim={current.claim} />
         <SourceLine claim={current.claim} />
       </motion.div>
-      <div className={styles.progress} role="tablist" aria-label={fr.dna.levels}>
-        {levels.map((l, i) => (
+      <div className={styles.progress} role="tablist" aria-label={t.dna.levels}>
+        {levels.map((lv, i) => (
           <button
-            key={l.id}
+            key={lv.id}
             role="tab"
             aria-selected={i === level}
-            aria-label={l.title.fr}
+            aria-label={l(lv.title)}
             data-done={i <= level}
             onClick={() => setLevel(i)}
           />
@@ -92,10 +94,10 @@ export function DnaStepper() {
       </div>
       <div className={styles.tourControls}>
         <button onClick={() => setLevel(level - 1)} disabled={level === 0}>
-          ← {fr.dna.finer}
+          ← {t.dna.finer}
         </button>
         <button onClick={() => setLevel(level + 1)} disabled={level === levels.length - 1}>
-          {fr.dna.coarser} →
+          {t.dna.coarser} →
         </button>
       </div>
     </motion.section>

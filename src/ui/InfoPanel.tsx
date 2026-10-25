@@ -3,7 +3,7 @@
 import { useEffect, useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { OrganelleId, Source } from '@/content/schema';
-import { fr } from '@/i18n/fr';
+import { useL, useT } from '@/i18n/locale';
 import { useSelection } from '@/state/selection';
 import { useScenario } from '@/state/scenario';
 import { useUi } from '@/state/ui';
@@ -18,6 +18,7 @@ import styles from './panel.module.css';
 const swatch = (id: OrganelleId) => ORGANELLE_SWATCHES.find(([k]) => k === id)?.[1] ?? '#8fe3ff';
 
 function SourceEntry({ source, n }: { source: Source; n: number }) {
+  const t = useT();
   return (
     <li id={`source-${n}`} className={styles.source}>
       <span className={styles.sourceN}>{n}</span>
@@ -37,7 +38,7 @@ function SourceEntry({ source, n }: { source: Source; n: number }) {
           <>
             {' '}
             <a href={source.url} target="_blank" rel="noreferrer">
-              {fr.panel.read} ↗
+              {t.panel.read} ↗
             </a>
           </>
         )}
@@ -47,6 +48,8 @@ function SourceEntry({ source, n }: { source: Source; n: number }) {
 }
 
 export function InfoPanel() {
+  const t = useT();
+  const l = useL();
   const selected = useSelection((s) => s.selected);
   const select = useSelection((s) => s.select);
   const hover = useSelection((s) => s.hover);
@@ -71,6 +74,10 @@ export function InfoPanel() {
   // A fresh citation index per organelle; filled while rendering, read by the sources list below.
   const citations = useMemo(() => new CitationIndex(), [organelle]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const withName = (id: OrganelleId) => {
+    const o = content.organelle(id);
+    return o ? l(o.name) : id;
+  };
   const goTo = (id: OrganelleId) => select(anchorFor(id, cameraPosition));
 
   return (
@@ -88,12 +95,12 @@ export function InfoPanel() {
         >
           <CitationContext.Provider value={citations}>
             <header className={styles.header}>
-              <span className="label">{fr.panel.kicker}</span>
+              <span className="label">{t.panel.kicker}</span>
               <h2 id="panel-title" className={styles.title}>
-                {organelle.name.fr}
+                {l(organelle.name)}
               </h2>
-              <p className={styles.tagline}>{organelle.tagline.fr}</p>
-              <button className={styles.close} onClick={() => select(null)} aria-label={fr.panel.close}>
+              <p className={styles.tagline}>{l(organelle.tagline)}</p>
+              <button className={styles.close} onClick={() => select(null)} aria-label={t.panel.close}>
                 ×
               </button>
             </header>
@@ -107,8 +114,8 @@ export function InfoPanel() {
                 <div className={styles.actions}>
                   {organelle.zoomLevels.length > 0 && (
                     <button className={styles.action} onClick={() => setDnaLevel(0)} aria-pressed={dnaLevel !== null}>
-                      <strong>{fr.dna.explore}</strong>
-                      <span>{fr.dna.exploreHint}</span>
+                      <strong>{t.dna.explore}</strong>
+                      <span>{t.dna.exploreHint}</span>
                     </button>
                   )}
                   {related && (
@@ -120,8 +127,8 @@ export function InfoPanel() {
                         useScenario.getState().start({ kind: 'process', ...related });
                       }}
                     >
-                      <strong>{fr.dna.process(related.name.fr)}</strong>
-                      <span>{related.summary.text.fr}</span>
+                      <strong>{t.dna.process(l(related.name))}</strong>
+                      <span>{l(related.summary.text)}</span>
                     </button>
                   )}
                 </div>
@@ -129,7 +136,7 @@ export function InfoPanel() {
 
               {organelle.function.length > 0 && (
                 <section>
-                  <h3 className="label">{fr.panel.function}</h3>
+                  <h3 className="label">{t.panel.function}</h3>
                   {organelle.function.map((c, i) => (
                     <Claim key={i} claim={c} />
                   ))}
@@ -138,7 +145,7 @@ export function InfoPanel() {
 
               {organelle.structure.length > 0 && (
                 <section>
-                  <h3 className="label">{fr.panel.structure}</h3>
+                  <h3 className="label">{t.panel.structure}</h3>
                   {organelle.structure.map((c, i) => (
                     <Claim key={i} claim={c} />
                   ))}
@@ -147,11 +154,11 @@ export function InfoPanel() {
 
               {organelle.keyMolecules.length > 0 && (
                 <section>
-                  <h3 className="label">{fr.panel.molecules}</h3>
+                  <h3 className="label">{t.panel.molecules}</h3>
                   <dl className={styles.molecules}>
                     {organelle.keyMolecules.map((m) => (
-                      <div key={m.name}>
-                        <dt>{m.name}</dt>
+                      <div key={m.name.fr}>
+                        <dt>{l(m.name)}</dt>
                         <dd>
                           <Claim claim={m.role} as="span" />
                         </dd>
@@ -163,7 +170,7 @@ export function InfoPanel() {
 
               {organelle.interactions.length > 0 && (
                 <section>
-                  <h3 className="label">{fr.panel.interactions}</h3>
+                  <h3 className="label">{t.panel.interactions}</h3>
                   <ul className={styles.interactions}>
                     {organelle.interactions.map((it) => (
                       <li key={it.with}>
@@ -174,7 +181,7 @@ export function InfoPanel() {
                           onMouseEnter={() => hover({ organelle: it.with })}
                           onMouseLeave={() => hover(null)}
                         >
-                          {content.organelle(it.with)?.name.fr ?? it.with}
+                          {withName(it.with)}
                         </button>
                         <Claim claim={it.description} as="span" />
                       </li>
@@ -194,10 +201,11 @@ export function InfoPanel() {
 
 /** Rendered last, so every citation above has been numbered. */
 function SourcesList({ citations }: { citations: CitationIndex }) {
+  const t = useT();
   const content = useContent();
   return (
     <section>
-      <h3 className="label">{fr.panel.sources}</h3>
+      <h3 className="label">{t.panel.sources}</h3>
       <ol className={styles.sources}>
         {citations.ids.map((id, i) => {
           const s = content.source(id);

@@ -78,7 +78,9 @@
   ],
   "keyMolecules": [
     {
-      "name": "Tubuline",
+      "name": {
+        "fr": "Tubuline"
+      },
       "role": {
         "text": {
           "fr": "Protéine qui forme les microtubules."
@@ -91,7 +93,9 @@
       }
     },
     {
-      "name": "Actine",
+      "name": {
+        "fr": "Actine"
+      },
       "role": {
         "text": {
           "fr": "Protéine qui forme les microfilaments."
@@ -104,7 +108,9 @@
       }
     },
     {
-      "name": "Kinésines et dynéines",
+      "name": {
+        "fr": "Kinésines et dynéines"
+      },
       "role": {
         "text": {
           "fr": "Moteurs qui marchent le long des microtubules, en général vers l'extrémité plus (kinésines) ou moins (dynéines)."

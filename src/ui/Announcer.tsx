@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { stageIndexAt } from '@/engine/timeline/evaluate';
-import { fr } from '@/i18n/fr';
+import { DICTIONARIES, getLocale, pick } from '@/i18n/locale';
 import { useScenario } from '@/state/scenario';
 import { useSelection } from '@/state/selection';
 import { useContent } from './ContentContext';
@@ -20,7 +20,8 @@ export function Announcer() {
       useSelection.subscribe((state, prev) => {
         if (state.selected && state.selected !== prev.selected) {
           const o = content.organelle(state.selected.organelle);
-          if (o) setMessage(`${fr.a11y.selected(o.name.fr)}. ${o.summary.text.fr}`);
+          const locale = getLocale();
+          if (o) setMessage(`${DICTIONARIES[locale].a11y.selected(pick(o.name, locale))}. ${pick(o.summary.text, locale)}`);
         }
       }),
     [content],
@@ -39,7 +40,9 @@ export function Announcer() {
       if (key === last) return;
       last = key;
       const stage = s.stages[i]!;
-      setMessage(`${fr.a11y.stage(s.name.fr, stage.title.fr, i + 1, s.stages.length)}. ${stage.description.text.fr}`);
+      const locale = getLocale();
+      const l = (text: Parameters<typeof pick>[0]) => pick(text, locale);
+      setMessage(`${DICTIONARIES[locale].a11y.stage(l(s.name), l(stage.title), i + 1, s.stages.length)}. ${l(stage.description.text)}`);
     });
   }, []);
 

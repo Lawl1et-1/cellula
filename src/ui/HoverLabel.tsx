@@ -1,12 +1,14 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { useL } from '@/i18n/locale';
 import { useSelection } from '@/state/selection';
 import { useContent } from './ContentContext';
 import styles from './panel.module.css';
 
 /** Small label that follows the pointer while it rests on an organelle in the scene. */
 export function HoverLabel() {
+  const l = useL();
   const hovered = useSelection((s) => s.hovered);
   const content = useContent();
   const ref = useRef<HTMLDivElement>(null);
@@ -24,8 +26,8 @@ export function HoverLabel() {
     <div ref={ref} className={styles.hover} data-visible={!!o} aria-hidden>
       {o && (
         <>
-          <strong>{o.name.fr}</strong>
-          <span>{o.tagline.fr}</span>
+          <strong>{l(o.name)}</strong>
+          <span>{l(o.tagline)}</span>
         </>
       )}
     </div>

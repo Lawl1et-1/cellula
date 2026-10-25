@@ -159,7 +159,9 @@
   ],
   "keyMolecules": [
     {
-      "name": "Histones",
+      "name": {
+        "fr": "Histones"
+      },
       "role": {
         "text": {
           "fr": "Protéines autour desquelles l'ADN s'enroule pour former les nucléosomes."
@@ -172,7 +174,9 @@
       }
     },
     {
-      "name": "ARN polymérase",
+      "name": {
+        "fr": "ARN polymérase"
+      },
       "role": {
         "text": {
           "fr": "Enzyme qui fabrique un ARN en copiant un brin d'ADN."
@@ -185,7 +189,9 @@
       }
     },
     {
-      "name": "ADN polymérase",
+      "name": {
+        "fr": "ADN polymérase"
+      },
       "role": {
         "text": {
           "fr": "Enzyme qui copie l'ADN lors de la réplication."

@@ -1,5 +1,25 @@
+import type { Widen } from './config';
+
 export const fr = {
   brand: 'Cellula',
+  meta: {
+    title: 'Cellula — Explorer une cellule humaine en 3D',
+    description:
+      'Voyagez au cœur d’une cellule humaine vivante, comprenez ses organites et observez les effets des maladies, à partir de sources scientifiques citées.',
+    explorer: 'Explorer — Cellula',
+    diseases: 'Bibliothèque des maladies — Cellula',
+    diseasesDescription:
+      'Ce que les maladies font à la cellule humaine, étape par étape : surcharges lysosomales, maladies mitochondriales, neurodégénératives, infections, cancers… Chaque affirmation est sourcée.',
+    ogLocale: 'fr_FR',
+  },
+  language: {
+    label: 'Langue',
+    fr: 'Français',
+    en: 'English',
+  },
+  nav: {
+    explore: 'Explorer la cellule',
+  },
   intro: {
     kicker: 'Un voyage au cœur du vivant',
     title: 'Entrez dans une cellule humaine',
@@ -47,6 +67,9 @@ export const fr = {
     view: 'Voir dans la cellule',
     readMore: 'Fiche complète',
     kicker: 'Maladie',
+    kickerPlural: 'Maladies',
+    stages: 'Étapes',
+    categoriesLabel: 'Catégories',
     cell: 'Cellule touchée',
     cause: 'Cause',
     mechanism: 'Mécanisme',
@@ -88,6 +111,7 @@ export const fr = {
     noWebglLead:
       "WebGL 2 n'est pas disponible (navigateur ancien, accélération matérielle désactivée…). Le contenu reste accessible ci-dessous en version texte.",
     organelles: 'Les organites',
+    canvas: "Vue 3D interactive d'une cellule humaine. Les organites sont aussi accessibles dans la liste « Organites ».",
   },
   player: {
     stage: 'étape',
@@ -108,6 +132,7 @@ export const fr = {
     scale: 'Échelle',
     artistic: 'Artistique',
     real: 'Réelle',
+    scaleChip: { artistic: 'Échelle artistique', real: 'Échelle réelle' },
     scaleNote:
       "Échelle artistique : ribosomes, filaments et récepteurs sont agrandis ×2,5 pour rester visibles. Les organites sont proches de leur taille réelle.",
     flightHelp: 'ZQSD / WASD pour avancer · Espace / C pour monter ou descendre · Maj pour accélérer · glisser pour regarder',
@@ -119,5 +144,9 @@ export const fr = {
     motionNormal: 'Vivant',
     motionReduced: 'Réduit',
     motionPaused: 'Pause',
+    qualityLevels: { low: 'Bas', medium: 'Moyen', high: 'Élevé', ultra: 'Ultra' } as Record<string, string>,
   },
 } as const;
+
+/** Shape every language must provide. */
+export type Dictionary = Widen<typeof fr>;

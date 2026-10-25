@@ -68,7 +68,9 @@
   ],
   "keyMolecules": [
     {
-      "name": "Glycosyltransférases",
+      "name": {
+        "fr": "Glycosyltransférases"
+      },
       "role": {
         "text": {
           "fr": "Enzymes qui ajoutent ou modifient les chaînes de sucres des protéines."
@@ -81,7 +83,9 @@
       }
     },
     {
-      "name": "Mannose-6-phosphate",
+      "name": {
+        "fr": "Mannose-6-phosphate"
+      },
       "role": {
         "text": {
           "fr": "Étiquette ajoutée aux enzymes destinées aux lysosomes, reconnue par un récepteur du réseau trans-golgien."

@@ -101,7 +101,9 @@
   ],
   "keyMolecules": [
     {
-      "name": "Phospholipides",
+      "name": {
+        "fr": "Phospholipides"
+      },
       "role": {
         "text": {
           "fr": "Principaux constituants de la bicouche."
@@ -114,7 +116,9 @@
       }
     },
     {
-      "name": "Cholestérol",
+      "name": {
+        "fr": "Cholestérol"
+      },
       "role": {
         "text": {
           "fr": "Intercalé entre les phospholipides, il module la fluidité et la rigidité de la membrane."
@@ -127,7 +131,9 @@
       }
     },
     {
-      "name": "Canaux ioniques",
+      "name": {
+        "fr": "Canaux ioniques"
+      },
       "role": {
         "text": {
           "fr": "Pores protéiques qui laissent passer des ions précis, à l'origine des propriétés électriques des membranes."

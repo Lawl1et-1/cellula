@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { fr } from '@/i18n/fr';
+import { useT } from '@/i18n/locale';
 import styles from './ui.module.css';
 
 const rise = {
@@ -15,6 +15,7 @@ const rise = {
 };
 
 export function IntroOverlay({ onEnter }: { onEnter: () => void }) {
+  const t = useT();
   return (
     <motion.section
       className={styles.intro}
@@ -24,19 +25,19 @@ export function IntroOverlay({ onEnter }: { onEnter: () => void }) {
     >
       <div className={styles.introInner}>
         <motion.p className="label" variants={rise} initial="hidden" animate="show" custom={0}>
-          {fr.intro.kicker}
+          {t.intro.kicker}
         </motion.p>
         <motion.h1 id="intro-title" className={styles.introTitle} variants={rise} initial="hidden" animate="show" custom={1}>
-          <span className={styles.brand}>{fr.brand}</span>
-          <span className={styles.introSub}>{fr.intro.title}</span>
+          <span className={styles.brand}>{t.brand}</span>
+          <span className={styles.introSub}>{t.intro.title}</span>
         </motion.h1>
         <motion.p className={styles.introLead} variants={rise} initial="hidden" animate="show" custom={2}>
-          {fr.intro.lead}
+          {t.intro.lead}
         </motion.p>
         <motion.div variants={rise} initial="hidden" animate="show" custom={3}>
           <button className={styles.enter} onClick={onEnter} autoFocus>
             <span className={styles.enterDot} aria-hidden />
-            {fr.intro.enter}
+            {t.intro.enter}
           </button>
         </motion.div>
       </div>
@@ -45,7 +46,7 @@ export function IntroOverlay({ onEnter }: { onEnter: () => void }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { delay: 1.6, duration: 1.2 } }}
       >
-        {fr.intro.scale}
+        {t.intro.scale}
       </motion.p>
     </motion.section>
   );

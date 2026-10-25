@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { stageIndexAt } from '@/engine/timeline/evaluate';
-import { fr } from '@/i18n/fr';
+import { useL, useT } from '@/i18n/locale';
 import { useScenario } from '@/state/scenario';
 import { useSelection } from '@/state/selection';
 import { useContent } from './ContentContext';
@@ -14,8 +14,10 @@ import panel from './panel.module.css';
 
 /** Right-hand panel while a disease plays: what it is, why, and what is visible right now. */
 export function DiseasePanel() {
+  const t = useT();
+  const l = useL();
   const scenario = useScenario((s) => s.scenario);
-  const t = useScenario((s) => s.t);
+  const time = useScenario((s) => s.t);
   const selected = useSelection((s) => s.selected);
   const content = useContent();
   const disease = scenario?.kind === 'disease' ? scenario : null;
@@ -37,21 +39,21 @@ export function DiseasePanel() {
           aria-labelledby="disease-title"
         >
           <header className={panel.header}>
-            <span className="label">{fr.diseases.kicker}</span>
+            <span className="label">{t.diseases.kicker}</span>
             <h2 id="disease-title" className={panel.title}>
-              {disease.name.fr}
+              {l(disease.name)}
             </h2>
             <Link className={panel.tagline} href={`/maladies/${disease.slug}`}>
-              {fr.diseases.readMore} →
+              {t.diseases.readMore} →
             </Link>
             {phone && (
-              <button className={panel.close} onClick={() => setSheet(false)} aria-label={fr.panel.close}>
+              <button className={panel.close} onClick={() => setSheet(false)} aria-label={t.panel.close}>
                 ×
               </button>
             )}
           </header>
           <div className={panel.body}>
-            <DiseaseDetails disease={disease} sources={content.sources} stage={stageIndexAt(disease.stages, t)} />
+            <DiseaseDetails disease={disease} sources={content.sources} stage={stageIndexAt(disease.stages, time)} />
           </div>
         </motion.aside>
       )}

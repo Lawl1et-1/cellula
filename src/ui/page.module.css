@@ -17,8 +17,10 @@
 
 .top {
   display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   margin-bottom: 40px;
 }
 
@@ -32,7 +34,10 @@
 
 .nav {
   display: flex;
-  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px 18px;
   font-size: 13px;
 }
 

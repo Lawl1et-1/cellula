@@ -301,3 +301,70 @@
     font-size: 14px;
   }
 }
+
+/* ---------- Language switch ---------- */
+
+.lang,
+.langInline {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  border-radius: 999px;
+}
+
+.lang {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  z-index: 7;
+}
+
+.langInline {
+  display: inline-flex;
+  border: 1px solid var(--hairline);
+}
+
+.langButton {
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-faint);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition:
+    color 0.25s var(--ease),
+    background 0.25s var(--ease);
+}
+
+.langButton:hover {
+  color: var(--ink);
+}
+
+.langButton[aria-pressed='true'] {
+  color: var(--ink);
+  background: rgba(143, 227, 255, 0.12);
+}
+
+.langSep {
+  color: var(--hairline-strong);
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .lang {
+    right: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .lang {
+    top: 15px;
+  }
+  .langButton {
+    padding: 6px 9px;
+  }
+}

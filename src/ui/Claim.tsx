@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState } from 'react';
 import type { Claim as ClaimData } from '@/content/schema';
-import { fr } from '@/i18n/fr';
+import { useL, useT } from '@/i18n/locale';
 import styles from './panel.module.css';
 
 /** Numbers sources in order of first citation within one panel. */
@@ -22,16 +22,18 @@ export const CitationContext = createContext<CitationIndex | null>(null);
 
 /** A sourced statement: text, citation numbers, and an optional "simplification" disclosure. */
 export function Claim({ claim, as: Tag = 'p' }: { claim: ClaimData; as?: 'p' | 'span' }) {
+  const t = useT();
+  const l = useL();
   const index = useContext(CitationContext);
   const [open, setOpen] = useState(false);
   const numbers = index ? claim.sources.map((s) => index.number(s.id)) : [];
   return (
     <Tag className={styles.claim}>
-      {claim.text.fr}
+      {l(claim.text)}
       {numbers.length > 0 && (
         <sup className={styles.cite}>
           {numbers.map((n, i) => (
-            <a key={n} href={`#source-${n}`} aria-label={`${fr.panel.source} ${n}`}>
+            <a key={n} href={`#source-${n}`} aria-label={`${t.panel.source} ${n}`}>
               {n}
               {i < numbers.length - 1 ? ',' : ''}
             </a>
@@ -47,9 +49,9 @@ export function Claim({ claim, as: Tag = 'p' }: { claim: ClaimData; as?: 'p' | '
             aria-expanded={open}
             onClick={() => setOpen((o) => !o)}
           >
-            {fr.panel.simplified}
+            {t.panel.simplified}
           </button>
-          {open && <span className={styles.simplifiedText}>{claim.simplification.fr}</span>}
+          {open && <span className={styles.simplifiedText}>{l(claim.simplification)}</span>}
         </>
       )}
     </Tag>

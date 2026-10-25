@@ -2,11 +2,12 @@
 
 import { useMemo } from 'react';
 import type { Disease, Source } from '@/content/schema';
-import { fr } from '@/i18n/fr';
+import { useL, useT } from '@/i18n/locale';
 import { CitationContext, CitationIndex, Claim } from './Claim';
 import styles from './disease.module.css';
 
 function SourceItem({ source, n }: { source: Source; n: number }) {
+  const t = useT();
   return (
     <li id={`source-${n}`} className={styles.source}>
       <span className={styles.sourceN}>{n}</span>
@@ -25,7 +26,7 @@ function SourceItem({ source, n }: { source: Source; n: number }) {
           <>
             {' '}
             <a href={source.url} target="_blank" rel="noreferrer">
-              {fr.panel.read} ↗
+              {t.panel.read} ↗
             </a>
           </>
         )}
@@ -50,6 +51,8 @@ export function DiseaseDetails({
   /** 3 inside the explorer panel (under its h2), 2 on the disease page (under the h1). */
   headingLevel?: 2 | 3;
 }) {
+  const t = useT();
+  const l = useL();
   const H = `h${headingLevel}` as 'h2' | 'h3';
   const citations = useMemo(() => new CitationIndex(), [disease]); // eslint-disable-line react-hooks/exhaustive-deps
   const byId = useMemo(() => new Map(sources.map((s) => [s.id, s])), [sources]);
@@ -60,7 +63,7 @@ export function DiseaseDetails({
       <div className={styles.details}>
         <ul className={styles.chips}>
           {disease.categories.map((c) => (
-            <li key={c}>{fr.diseases.categories[c] ?? c}</li>
+            <li key={c}>{t.diseases.categories[c] ?? c}</li>
           ))}
         </ul>
 
@@ -71,7 +74,7 @@ export function DiseaseDetails({
         {current && current.cellularSigns.length > 0 && (
           <section className={styles.now}>
             <H className="label">
-              {fr.diseases.signs} · {current.title.fr}
+              {t.diseases.signs} · {l(current.title)}
             </H>
             {current.cellularSigns.map((s, i) => (
               <Claim key={i} claim={s} />
@@ -80,24 +83,24 @@ export function DiseaseDetails({
         )}
 
         <section>
-          <H className="label">{fr.diseases.cell}</H>
-          <p className={styles.cellType}>{fr.diseases.cellTypes[disease.cellContext.cellType]}</p>
+          <H className="label">{t.diseases.cell}</H>
+          <p className={styles.cellType}>{t.diseases.cellTypes[disease.cellContext.cellType]}</p>
           {disease.cellContext.note && <Claim claim={disease.cellContext.note} />}
         </section>
 
         <section>
-          <H className="label">{fr.diseases.cause}</H>
+          <H className="label">{t.diseases.cause}</H>
           {disease.cause.map((c, i) => (
             <Claim key={i} claim={c} />
           ))}
         </section>
 
         <section>
-          <H className="label">{fr.diseases.mechanism}</H>
+          <H className="label">{t.diseases.mechanism}</H>
           <ol className={styles.mechanism}>
             {disease.mechanism.map((m, i) => (
               <li key={i}>
-                <strong>{m.title.fr}</strong>
+                <strong>{l(m.title)}</strong>
                 <Claim claim={m.explanation} />
               </li>
             ))}
@@ -106,12 +109,12 @@ export function DiseaseDetails({
 
         {disease.treatmentsNote && (
           <section>
-            <H className="label">{fr.diseases.treatment}</H>
+            <H className="label">{t.diseases.treatment}</H>
             <Claim claim={disease.treatmentsNote} />
           </section>
         )}
 
-        <p className={styles.disclaimer}>{fr.diseases.disclaimer}</p>
+        <p className={styles.disclaimer}>{t.diseases.disclaimer}</p>
 
         <Sources citations={citations} byId={byId} heading={H} />
       </div>
@@ -121,9 +124,10 @@ export function DiseaseDetails({
 
 /** Rendered last, so every citation above has been numbered. */
 function Sources({ citations, byId, heading: H }: { citations: CitationIndex; byId: Map<string, Source>; heading: 'h2' | 'h3' }) {
+  const t = useT();
   return (
     <section>
-      <H className="label">{fr.panel.sources}</H>
+      <H className="label">{t.panel.sources}</H>
       <ol className={styles.sources}>
         {citations.ids.map((id, i) => {
           const s = byId.get(id);

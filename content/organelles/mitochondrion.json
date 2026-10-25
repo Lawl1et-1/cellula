@@ -81,7 +81,9 @@
   ],
   "keyMolecules": [
     {
-      "name": "ATP synthase",
+      "name": {
+        "fr": "ATP synthase"
+      },
       "role": {
         "text": {
           "fr": "Turbine moléculaire de la membrane interne qui fabrique l'ATP grâce au flux de protons."
@@ -94,7 +96,9 @@
       }
     },
     {
-      "name": "Complexes de la chaîne respiratoire",
+      "name": {
+        "fr": "Complexes de la chaîne respiratoire"
+      },
       "role": {
         "text": {
           "fr": "Transfèrent les électrons jusqu'à l'oxygène en pompant des protons."

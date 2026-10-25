@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { fr } from '@/i18n/fr';
+import { useL, useT } from '@/i18n/locale';
 import { useSelection } from '@/state/selection';
 import { useTour } from '@/state/tour';
 import { cameraPosition } from '@/scene/camera/focus';
@@ -14,6 +14,8 @@ import styles from './player.module.css';
 
 /** Guided tour: frames each organelle in turn and narrates its sourced summary. */
 export function TourCard() {
+  const t = useT();
+  const l = useL();
   const tour = useTour((s) => s.tour);
   const step = useTour((s) => s.step);
   const playing = useTour((s) => s.playing);
@@ -49,19 +51,19 @@ export function TourCard() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 16 }}
-      aria-label={tour.name.fr}
+      aria-label={l(tour.name)}
       aria-live="polite"
     >
       <div className={styles.tourHead}>
         <span className="label">
-          {tour.name.fr} · {step + 1}/{tour.steps.length}
+          {l(tour.name)} · {step + 1}/{tour.steps.length}
         </span>
-        <button className={styles.closeBtn} onClick={stop} aria-label={fr.player.close}>
+        <button className={styles.closeBtn} onClick={stop} aria-label={t.player.close}>
           ×
         </button>
       </div>
       <motion.div key={step} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-        <h3 className={styles.stageTitle}>{organelle?.name.fr}</h3>
+        <h3 className={styles.stageTitle}>{organelle && l(organelle.name)}</h3>
         {claim && (
           <>
             <Claim claim={claim} />
@@ -76,11 +78,11 @@ export function TourCard() {
       </div>
       <div className={styles.tourControls}>
         <button onClick={() => go(step - 1)} disabled={step === 0}>
-          ← {fr.player.prev}
+          ← {t.player.prev}
         </button>
-        <button onClick={() => setPlaying(!playing)}>{playing ? fr.player.pause : fr.player.play}</button>
+        <button onClick={() => setPlaying(!playing)}>{playing ? t.player.pause : t.player.play}</button>
         <button onClick={() => go(step + 1)}>
-          {step === tour.steps.length - 1 ? fr.player.finish : fr.player.next} →
+          {step === tour.steps.length - 1 ? t.player.finish : t.player.next} →
         </button>
       </div>
     </motion.section>
