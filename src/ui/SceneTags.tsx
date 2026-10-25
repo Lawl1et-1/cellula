@@ -31,7 +31,9 @@ export function SceneTags() {
           continue;
         }
         el.style.transform = `translate(${p.x}px, ${p.y}px) translate(-50%, -100%)`;
-        el.style.opacity = p.visible ? '1' : '0';
+        // Not under the top bar (wordmark, menu, language switch).
+        const top = window.innerWidth <= 640 ? 120 : 70;
+        el.style.opacity = p.visible && p.y - el.offsetHeight > top ? '1' : '0';
       }
       raf = requestAnimationFrame(tick);
     };

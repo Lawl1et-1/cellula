@@ -223,7 +223,7 @@ build('diabete-type-1', [
          C("Le système immunitaire se retourne contre les cellules bêta du pancréas : des lymphocytes T les reconnaissent et les attaquent.",
            "The immune system turns against the beta cells of the pancreas: T lymphocytes recognise and attack them.",
            'sp-t1d'),
-         'plasma-membrane', camera={"view": "cell", "radius": 120},
+         'plasma-membrane', camera={"at": "outside", "radius": 48},
          heroes=[hero('t-cell', 'outside', ('Lymphocyte T', 'T lymphocyte'), offset=(25, 4, 22))]),
     step('signals', ("Des signaux de mort", "Death signals"),
          C("Les cellules immunitaires envoient à la cellule bêta des signaux qui déclenchent sa mort programmée, l'apoptose.",

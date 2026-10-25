@@ -208,11 +208,13 @@ function HeroActor({ hero, stage, labelKey }: { hero: Hero; stage: [number, numb
     const curve = points.length > 1 ? new CatmullRomCurve3(points, false, 'centripetal') : null;
     const rng = createRng(hero.model.length * 31 + hero.path.length);
     const spread = (RADIUS[hero.model] ?? 1) * 2.4;
-    const copies = Array.from({ length: hero.count }, (_, i) =>
-      i === 0 ? new Vector3() : rng.direction().multiplyScalar(spread * rng.range(0.8, 1.4)),
-    );
-    // Receptors stand on the membrane: their up axis is the outward normal there.
+    // Receptors stand on the membrane: their up axis is the outward normal there, and copies spread along it.
     const normal = points[points.length - 1]!.clone().normalize();
+    const copies = Array.from({ length: hero.count }, (_, i) => {
+      if (i === 0) return new Vector3();
+      const c = rng.direction().multiplyScalar(spread * rng.range(0.8, 1.4));
+      return hero.model === 'receptor' ? c.addScaledVector(normal, -c.dot(normal)).multiplyScalar(1.6) : c;
+    });
     return { points, curve, copies, normal };
   }, [hero]);
 
@@ -241,7 +243,7 @@ function HeroActor({ hero, stage, labelKey }: { hero: Hero; stage: [number, numb
     }
     if (hero.label) {
       const at = labelWorld.get(labelKey) ?? new Vector3();
-      labelWorld.set(labelKey, at.copy(base).addScaledVector(UP, (RADIUS[hero.model] ?? 1.2) + 1.2));
+      labelWorld.set(labelKey, at.copy(base).addScaledVector(UP, (RADIUS[hero.model] ?? 1.2) * 0.75 + 0.8));
     }
   });
   useEffect(() => () => void labelWorld.delete(labelKey), [labelKey]);

@@ -75,6 +75,18 @@ interface StageCamera {
 /** Camera framing for a scenario stage: the very place where its actors play. */
 export function stageFocus(organelle: OrganelleId, camera?: StageCamera): Focus {
   const anchor = camera?.at ? anchors()[camera.at] : null;
+  // At the cell surface, always look from outside and slightly to the side: the membrane reads as an edge,
+  // with what arrives from outside on one side and the cytoplasm on the other.
+  if (camera?.at === 'membrane' || camera?.at === 'outside') {
+    const side = new Vector3(0, 1, 0).cross(EXCHANGE_DIR).normalize();
+    const from = EXCHANGE_DIR.clone().multiplyScalar(0.35).add(side).add(new Vector3(0, 0.2, 0)).normalize();
+    return {
+      organelle,
+      position: [anchor!.x, anchor!.y, anchor!.z],
+      radius: camera.radius ?? 20,
+      from: [from.x, from.y, from.z],
+    };
+  }
   const base = anchor
     ? { ...baseFocus(organelle), position: [anchor.x, anchor.y, anchor.z] as [number, number, number] }
     : baseFocus(organelle);
