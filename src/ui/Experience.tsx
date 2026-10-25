@@ -12,6 +12,7 @@ import { OrganelleList } from './OrganelleList';
 import { HoverLabel } from './HoverLabel';
 import { ScenarioMenu } from './ScenarioMenu';
 import { StepPlayer } from './StepPlayer';
+import { SceneTags } from './SceneTags';
 import { TourCard } from './TourCard';
 import { DnaStepper } from './DnaStepper';
 import { DiseasePanel } from './DiseasePanel';
@@ -68,6 +69,7 @@ export function Experience({ intro, content }: { intro: boolean; content: Explor
         >
           <CellCanvas />
         </div>
+        <SceneTags />
         <AnimatePresence mode="wait">
           {mode === 'intro' ? (
             <IntroOverlay key="intro" onEnter={() => setCameraMode('orbit')} />

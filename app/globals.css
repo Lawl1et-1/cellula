@@ -81,3 +81,17 @@ button {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Labels pinned in the 3D scene (focus mode). */
+.scene-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(3, 6, 12, 0.72);
+  color: #f2f8ff;
+  font: 500 12px/1.2 var(--font-ui);
+  white-space: nowrap;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+}

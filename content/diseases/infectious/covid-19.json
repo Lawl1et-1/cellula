@@ -123,19 +123,76 @@
   ],
   "stages": [
     {
-      "id": "entree",
+      "id": "attachment",
       "title": {
-        "fr": "Entrée du virus",
-        "en": "Virus entry"
+        "fr": "Fixation au récepteur ACE2",
+        "en": "Binding to the ACE2 receptor"
       },
       "range": [
-        0,
-        0.2
+        0.0,
+        0.1667
       ],
       "description": {
         "text": {
-          "fr": "Le virus se fixe au récepteur ACE2 et son génome entre dans la cellule.",
-          "en": "The virus attaches to the ACE2 receptor and its genome enters the cell."
+          "fr": "Le SARS-CoV-2 s'approche de la cellule : sa protéine Spike se fixe au récepteur ACE2, une protéine de la membrane plasmique.",
+          "en": "SARS-CoV-2 approaches the cell: its Spike protein binds to ACE2, a receptor protein in the plasma membrane."
+        },
+        "sources": [
+          {
+            "id": "sp-covid"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 10
+      },
+      "heroes": [
+        {
+          "model": "coronavirus",
+          "path": [
+            "outside",
+            "membrane"
+          ],
+          "offset": [
+            4.1,
+            0.7,
+            3.6
+          ],
+          "label": {
+            "fr": "SARS-CoV-2",
+            "en": "SARS-CoV-2"
+          }
+        },
+        {
+          "model": "receptor",
+          "path": [
+            "membrane"
+          ],
+          "label": {
+            "fr": "Récepteur ACE2",
+            "en": "ACE2 receptor"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "entry",
+      "title": {
+        "fr": "Entrée dans la cellule",
+        "en": "Entry into the cell"
+      },
+      "range": [
+        0.1667,
+        0.3333
+      ],
+      "description": {
+        "text": {
+          "fr": "L'enveloppe du virus fusionne avec une membrane de la cellule, à la surface ou après avoir été englobée dans une vésicule (endocytose).",
+          "en": "The virus's envelope fuses with a cell membrane, either at the surface or after being taken in inside a vesicle (endocytosis)."
         },
         "sources": [
           {
@@ -147,26 +204,113 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "plasma-membrane"
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 12
+      },
+      "highlight": [
+        "vesicle"
+      ],
+      "heroes": [
+        {
+          "model": "coronavirus",
+          "path": [
+            "membrane",
+            "endosome"
+          ],
+          "offset": [
+            4.1,
+            0.7,
+            3.6
+          ],
+          "label": {
+            "fr": "SARS-CoV-2",
+            "en": "SARS-CoV-2"
+          }
+        },
+        {
+          "model": "receptor",
+          "path": [
+            "membrane"
+          ],
+          "label": {
+            "fr": "Récepteur ACE2",
+            "en": "ACE2 receptor"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "replication",
+      "id": "release",
       "title": {
-        "fr": "Usines de réplication",
-        "en": "Replication factories"
+        "fr": "Libération du génome",
+        "en": "Genome release"
       },
       "range": [
-        0.2,
-        0.55
+        0.3333,
+        0.5
       ],
       "description": {
         "text": {
-          "fr": "Les protéines virales remodèlent le RE en vésicules à double membrane où le génome est copié.",
-          "en": "Viral proteins remodel the ER into double-membrane vesicles where the genome is copied."
+          "fr": "Une fois l'enveloppe fusionnée, le génome du virus, une longue molécule d'ARN, est libéré dans le cytoplasme.",
+          "en": "Once the envelope has fused, the virus's genome, a long RNA molecule, is released into the cytoplasm."
         },
         "sources": [
           {
+            "id": "sp-covid"
+          },
+          {
+            "id": "mboc4-virus-entry"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "endosome",
+        "radius": 11
+      },
+      "heroes": [
+        {
+          "model": "viral-rna",
+          "path": [
+            "endosome",
+            "cytoplasm"
+          ],
+          "label": {
+            "fr": "ARN viral",
+            "en": "Viral RNA"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "hijack",
+      "title": {
+        "fr": "Détournement des ribosomes et du RE",
+        "en": "Hijacking ribosomes and the ER"
+      },
+      "range": [
+        0.5,
+        0.6667
+      ],
+      "description": {
+        "text": {
+          "fr": "Les ribosomes de la cellule traduisent l'ARN viral en protéines virales ; celles-ci remodèlent le réticulum endoplasmique en vésicules à double membrane où le génome viral est copié.",
+          "en": "The cell's ribosomes translate the viral RNA into viral proteins; these remodel the endoplasmic reticulum into double-membrane vesicles where the viral genome is copied."
+        },
+        "sources": [
+          {
+            "id": "sp-covid"
+          },
+          {
             "id": "pm-dmv-2020"
+          },
+          {
+            "id": "mboc4-viruses-host"
           }
         ]
       },
@@ -183,72 +327,217 @@
           ]
         }
       ],
-      "focus": "rough-er"
+      "focus": "rough-er",
+      "camera": {
+        "at": "rough-er",
+        "radius": 14
+      },
+      "highlight": [
+        "ribosome",
+        "replication"
+      ],
+      "heroes": [
+        {
+          "model": "viral-rna",
+          "path": [
+            "rough-er"
+          ],
+          "offset": [
+            0,
+            4,
+            0
+          ],
+          "label": {
+            "fr": "ARN viral",
+            "en": "Viral RNA"
+          }
+        },
+        {
+          "model": "protein",
+          "path": [
+            "rough-er"
+          ],
+          "offset": [
+            3,
+            -2,
+            2
+          ],
+          "count": 6,
+          "label": {
+            "fr": "Protéines virales",
+            "en": "Viral proteins"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "assemblage",
+      "id": "assembly",
       "title": {
-        "fr": "Assemblage",
-        "en": "Assembly"
+        "fr": "Assemblage de nouveaux virus",
+        "en": "Assembly of new viruses"
       },
       "range": [
-        0.55,
-        0.8
+        0.6667,
+        0.8333
       ],
       "description": {
         "text": {
-          "fr": "Les nouvelles particules virales sont assemblées en utilisant les membranes de la cellule.",
-          "en": "New virus particles are assembled using the cell's membranes."
+          "fr": "Les nouveaux génomes et les protéines virales s'assemblent en particules virales en utilisant les membranes du RE et de l'appareil de Golgi.",
+          "en": "New genomes and viral proteins assemble into virus particles using the membranes of the ER and the Golgi apparatus."
         },
         "sources": [
+          {
+            "id": "sp-covid"
+          },
           {
             "id": "mboc4-viruses-host"
           }
         ]
       },
       "cellularSigns": [],
-      "focus": "golgi"
+      "focus": "golgi",
+      "camera": {
+        "at": "golgi",
+        "radius": 16
+      },
+      "highlight": [
+        "rough-er",
+        "virions"
+      ],
+      "heroes": [
+        {
+          "model": "coronavirus",
+          "path": [
+            "rough-er",
+            "golgi"
+          ],
+          "count": 3,
+          "label": {
+            "fr": "Nouveaux virions",
+            "en": "New virions"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "liberation",
+      "id": "exit",
       "title": {
-        "fr": "Libération",
-        "en": "Release"
+        "fr": "Sortie de la cellule",
+        "en": "Leaving the cell"
       },
       "range": [
-        0.8,
+        0.8333,
         1
       ],
       "description": {
         "text": {
-          "fr": "Les virions quittent la cellule et vont infecter d'autres cellules.",
-          "en": "The virions leave the cell and go on to infect other cells."
+          "fr": "Les nouveaux virions sont transportés vers la membrane et libérés hors de la cellule, prêts à infecter d'autres cellules.",
+          "en": "The new virions are carried to the membrane and released from the cell, ready to infect other cells."
         },
         "sources": [
+          {
+            "id": "sp-covid"
+          },
           {
             "id": "mboc4-pathogen-entry-exit"
           }
         ]
       },
       "cellularSigns": [],
-      "focus": "plasma-membrane"
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 18
+      },
+      "highlight": [
+        "virions",
+        "vesicle"
+      ],
+      "heroes": [
+        {
+          "model": "coronavirus",
+          "path": [
+            "golgi.trans",
+            "membrane",
+            "outside"
+          ],
+          "count": 4,
+          "label": {
+            "fr": "Virions libérés",
+            "en": "Released virions"
+          }
+        }
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
+    {
+      "channel": "membrane.pit",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.1834,
+          "v": 0.0
+        },
+        {
+          "t": 0.2833,
+          "v": 1
+        },
+        {
+          "t": 0.35,
+          "v": 1
+        },
+        {
+          "t": 0.45,
+          "v": 0
+        }
+      ]
+    },
     {
       "channel": "er.replicationOrganelles",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.2,
-          "v": 0
+          "t": 0.5167,
+          "v": 0.0
         },
         {
-          "t": 0.55,
-          "v": 1
+          "t": 0.6167,
+          "v": 0.8
+        }
+      ]
+    },
+    {
+      "channel": "er.stress",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.5167,
+          "v": 0.0
+        },
+        {
+          "t": 0.6167,
+          "v": 0.35
+        },
+        {
+          "t": 0.85,
+          "v": 0.35
+        },
+        {
+          "t": 0.95,
+          "v": 0.5
         }
       ]
     },
@@ -257,117 +546,31 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.55,
-          "v": 0.1
+          "t": 0.6834,
+          "v": 0.0
         },
         {
-          "t": 0.9,
-          "v": 1
-        }
-      ]
-    },
-    {
-      "channel": "cell.viability",
-      "keys": [
-        {
-          "t": 0,
-          "v": 1
+          "t": 0.7833,
+          "v": 0.35
         },
         {
           "t": 0.85,
-          "v": 0.95
-        },
-        {
-          "t": 1,
-          "v": 0.7
-        }
-      ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
-        },
-        {
-          "t": 0.05,
-          "v": 0.45
+          "v": 0.35
         },
         {
           "t": 0.95,
-          "v": 0.45
-        },
-        {
-          "t": 1,
-          "v": 0
+          "v": 0.8
         }
       ]
     }
   ],
-  "actors": [
-    {
-      "actor": "path",
-      "at": 0.0,
-      "until": 0.22,
-      "params": {
-        "path": [
-          "outside",
-          "membrane",
-          "cytoplasm"
-        ],
-        "cargo": "virion",
-        "count": 3
-      }
-    },
-    {
-      "actor": "path",
-      "at": 0.15,
-      "until": 0.4,
-      "params": {
-        "path": [
-          "cytoplasm",
-          "rough-er"
-        ],
-        "cargo": "mrna",
-        "count": 4
-      }
-    },
-    {
-      "actor": "path",
-      "at": 0.55,
-      "until": 0.85,
-      "params": {
-        "path": [
-          "rough-er",
-          "golgi.cis",
-          "golgi.trans"
-        ],
-        "cargo": "virion",
-        "count": 6
-      }
-    },
-    {
-      "actor": "path",
-      "at": 0.78,
-      "until": 1.0,
-      "params": {
-        "path": [
-          "golgi.trans",
-          "membrane",
-          "outside"
-        ],
-        "cargo": "virion",
-        "count": 8
-      }
-    }
-  ],
+  "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -379,5 +582,6 @@
         "id": "sp-covid"
       }
     ]
-  }
+  },
+  "durationSeconds": 72
 }
