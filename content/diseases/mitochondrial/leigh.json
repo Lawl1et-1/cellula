@@ -2,7 +2,8 @@
   "id": "leigh",
   "slug": "syndrome-de-leigh",
   "name": {
-    "fr": "Syndrome de Leigh (forme liée à l'ADN mitochondrial)"
+    "fr": "Syndrome de Leigh (forme liée à l'ADN mitochondrial)",
+    "en": "Leigh syndrome (mitochondrial DNA-associated form)"
   },
   "aliases": [],
   "categories": [
@@ -14,7 +15,8 @@
     "cellType": "neuron",
     "note": {
       "text": {
-        "fr": "Le cerveau en développement est le plus touché, avec des lésions de certaines régions. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Le cerveau en développement est le plus touché, avec des lésions de certaines régions. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "The developing brain is the most affected, with lesions in certain regions. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -25,7 +27,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie mitochondriale : un défaut de la chaîne respiratoire réduit la production d'énergie (ATP) par les mitochondries."
+      "fr": "Maladie mitochondriale : un défaut de la chaîne respiratoire réduit la production d'énergie (ATP) par les mitochondries.",
+      "en": "A mitochondrial disease: a defect in the respiratory chain reduces the production of energy (ATP) by mitochondria."
     },
     "sources": [
       {
@@ -39,7 +42,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Des variants de l'ADN mitochondrial, par exemple dans le gène MT-ATP6 d'une sous-unité de l'ATP synthase, altèrent la phosphorylation oxydative."
+        "fr": "Des variants de l'ADN mitochondrial, par exemple dans le gène MT-ATP6 d'une sous-unité de l'ATP synthase, altèrent la phosphorylation oxydative.",
+        "en": "Variants of mitochondrial DNA, for example in the MT-ATP6 gene for a subunit of ATP synthase, impair oxidative phosphorylation."
       },
       "sources": [
         {
@@ -57,11 +61,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Mutation de l'ADN mitochondrial"
+        "fr": "Mutation de l'ADN mitochondrial",
+        "en": "Mitochondrial DNA mutation"
       },
       "explanation": {
         "text": {
-          "fr": "Des variants de l'ADN mitochondrial, par exemple dans le gène MT-ATP6 d'une sous-unité de l'ATP synthase, altèrent la phosphorylation oxydative."
+          "fr": "Des variants de l'ADN mitochondrial, par exemple dans le gène MT-ATP6 d'une sous-unité de l'ATP synthase, altèrent la phosphorylation oxydative.",
+          "en": "Variants of mitochondrial DNA, for example in the MT-ATP6 gene for a subunit of ATP synthase, impair oxidative phosphorylation."
         },
         "sources": [
           {
@@ -73,11 +79,13 @@
     },
     {
       "title": {
-        "fr": "Panne énergétique"
+        "fr": "Panne énergétique",
+        "en": "Energy failure"
       },
       "explanation": {
         "text": {
-          "fr": "La production d'ATP par les mitochondries diminue."
+          "fr": "La production d'ATP par les mitochondries diminue.",
+          "en": "ATP production by mitochondria falls."
         },
         "sources": [
           {
@@ -95,7 +103,8 @@
     {
       "id": "mutation",
       "title": {
-        "fr": "Variant pathogène"
+        "fr": "Variant pathogène",
+        "en": "Pathogenic variant"
       },
       "range": [
         0,
@@ -103,7 +112,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Des variants de l'ADN mitochondrial, par exemple dans le gène MT-ATP6 d'une sous-unité de l'ATP synthase, altèrent la phosphorylation oxydative."
+          "fr": "Des variants de l'ADN mitochondrial, par exemple dans le gène MT-ATP6 d'une sous-unité de l'ATP synthase, altèrent la phosphorylation oxydative.",
+          "en": "Variants of mitochondrial DNA, for example in the MT-ATP6 gene for a subunit of ATP synthase, impair oxidative phosphorylation."
         },
         "sources": [
           {
@@ -117,7 +127,8 @@
     {
       "id": "chaine",
       "title": {
-        "fr": "Chaîne respiratoire déficiente"
+        "fr": "Chaîne respiratoire déficiente",
+        "en": "Deficient respiratory chain"
       },
       "range": [
         0.25,
@@ -125,7 +136,8 @@
       ],
       "description": {
         "text": {
-          "fr": "La production d'ATP par les mitochondries diminue."
+          "fr": "La production d'ATP par les mitochondries diminue.",
+          "en": "ATP production by mitochondria falls."
         },
         "sources": [
           {
@@ -142,7 +154,8 @@
     {
       "id": "mitochondries",
       "title": {
-        "fr": "Mitochondries anormales"
+        "fr": "Mitochondries anormales",
+        "en": "Abnormal mitochondria"
       },
       "range": [
         0.6,
@@ -150,7 +163,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les mitochondries deviennent anormales ; leur membrane interne et leurs crêtes peuvent être désorganisées."
+          "fr": "Les mitochondries deviennent anormales ; leur membrane interne et leurs crêtes peuvent être désorganisées.",
+          "en": "Mitochondria become abnormal; their inner membrane and cristae can become disorganised."
         },
         "sources": [
           {
@@ -158,13 +172,15 @@
           }
         ],
         "simplification": {
-          "fr": "L'aspect des mitochondries malades est schématisé (gonflement, perte des crêtes, baisse de la lueur)."
+          "fr": "L'aspect des mitochondries malades est schématisé (gonflement, perte des crêtes, baisse de la lueur).",
+          "en": "The look of diseased mitochondria is schematic (swelling, loss of cristae, dimmer glow)."
         }
       },
       "cellularSigns": [
         {
           "text": {
-            "fr": "Les mitochondries des cellules touchées produisent moins d'énergie."
+            "fr": "Les mitochondries des cellules touchées produisent moins d'énergie.",
+            "en": "Mitochondria in the affected cells produce less energy."
           },
           "sources": [
             {
@@ -178,7 +194,8 @@
     {
       "id": "cellule",
       "title": {
-        "fr": "Souffrance cellulaire"
+        "fr": "Souffrance cellulaire",
+        "en": "Cell distress"
       },
       "range": [
         0.85,
@@ -186,7 +203,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le cerveau en développement est le plus touché, avec des lésions de certaines régions. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+          "fr": "Le cerveau en développement est le plus touché, avec des lésions de certaines régions. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+          "en": "The developing brain is the most affected, with lesions in certain regions. The model shows a generic cell; the changes shown are those described in the affected cells."
         },
         "sources": [
           {
@@ -329,7 +347,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Il n'existe pas de traitement curatif ; la prise en charge est symptomatique."
+      "fr": "Il n'existe pas de traitement curatif ; la prise en charge est symptomatique.",
+      "en": "There is no cure; care is supportive."
     },
     "sources": [
       {

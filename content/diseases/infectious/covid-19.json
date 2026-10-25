@@ -2,7 +2,8 @@
   "id": "covid-19",
   "slug": "covid-19",
   "name": {
-    "fr": "COVID-19 (SARS-CoV-2)"
+    "fr": "COVID-19 (SARS-CoV-2)",
+    "en": "COVID-19 (SARS-CoV-2)"
   },
   "aliases": [
     "SARS-CoV-2"
@@ -14,7 +15,8 @@
     "cellType": "epithelial",
     "note": {
       "text": {
-        "fr": "Le virus infecte notamment les cellules épithéliales des voies respiratoires. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Le virus infecte notamment les cellules épithéliales des voies respiratoires. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "The virus infects, among others, the epithelial cells of the airways. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -25,7 +27,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Infection par le coronavirus SARS-CoV-2, qui entre dans la cellule, détourne ses membranes pour fabriquer des usines de réplication et produit de nouvelles particules virales."
+      "fr": "Infection par le coronavirus SARS-CoV-2, qui entre dans la cellule, détourne ses membranes pour fabriquer des usines de réplication et produit de nouvelles particules virales.",
+      "en": "Infection with the SARS-CoV-2 coronavirus, which enters the cell, hijacks its membranes to build replication factories and produces new virus particles."
     },
     "sources": [
       {
@@ -39,7 +42,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Le virus SARS-CoV-2, transmis surtout par voie respiratoire."
+        "fr": "Le virus SARS-CoV-2, transmis surtout par voie respiratoire.",
+        "en": "The SARS-CoV-2 virus, spread mainly through the airways."
       },
       "sources": [
         {
@@ -61,11 +65,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Entrée"
+        "fr": "Entrée",
+        "en": "Entry"
       },
       "explanation": {
         "text": {
-          "fr": "La protéine Spike du virus se lie au récepteur ACE2 de la cellule, puis l'enveloppe virale fusionne avec une membrane cellulaire."
+          "fr": "La protéine Spike du virus se lie au récepteur ACE2 de la cellule, puis l'enveloppe virale fusionne avec une membrane cellulaire.",
+          "en": "The virus's Spike protein binds to the cell's ACE2 receptor, then the viral envelope fuses with a cell membrane."
         },
         "sources": [
           {
@@ -80,11 +86,13 @@
     },
     {
       "title": {
-        "fr": "Usines de réplication"
+        "fr": "Usines de réplication",
+        "en": "Replication factories"
       },
       "explanation": {
         "text": {
-          "fr": "Le génome viral est répliqué dans des vésicules à double membrane formées à partir du réticulum endoplasmique."
+          "fr": "Le génome viral est répliqué dans des vésicules à double membrane formées à partir du réticulum endoplasmique.",
+          "en": "The viral genome is replicated in double-membrane vesicles formed from the endoplasmic reticulum."
         },
         "sources": [
           {
@@ -96,11 +104,13 @@
     },
     {
       "title": {
-        "fr": "Assemblage et sortie"
+        "fr": "Assemblage et sortie",
+        "en": "Assembly and exit"
       },
       "explanation": {
         "text": {
-          "fr": "Les nouvelles particules sont assemblées grâce aux membranes de la cellule puis libérées."
+          "fr": "Les nouvelles particules sont assemblées grâce aux membranes de la cellule puis libérées.",
+          "en": "New particles are assembled using the cell's membranes and then released."
         },
         "sources": [
           {
@@ -115,7 +125,8 @@
     {
       "id": "entree",
       "title": {
-        "fr": "Entrée du virus"
+        "fr": "Entrée du virus",
+        "en": "Virus entry"
       },
       "range": [
         0,
@@ -123,7 +134,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le virus se fixe au récepteur ACE2 et son génome entre dans la cellule."
+          "fr": "Le virus se fixe au récepteur ACE2 et son génome entre dans la cellule.",
+          "en": "The virus attaches to the ACE2 receptor and its genome enters the cell."
         },
         "sources": [
           {
@@ -140,7 +152,8 @@
     {
       "id": "replication",
       "title": {
-        "fr": "Usines de réplication"
+        "fr": "Usines de réplication",
+        "en": "Replication factories"
       },
       "range": [
         0.2,
@@ -148,7 +161,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les protéines virales remodèlent le RE en vésicules à double membrane où le génome est copié."
+          "fr": "Les protéines virales remodèlent le RE en vésicules à double membrane où le génome est copié.",
+          "en": "Viral proteins remodel the ER into double-membrane vesicles where the genome is copied."
         },
         "sources": [
           {
@@ -159,7 +173,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Vésicules à double membrane près du RE."
+            "fr": "Vésicules à double membrane près du RE.",
+            "en": "Double-membrane vesicles near the ER."
           },
           "sources": [
             {
@@ -173,7 +188,8 @@
     {
       "id": "assemblage",
       "title": {
-        "fr": "Assemblage"
+        "fr": "Assemblage",
+        "en": "Assembly"
       },
       "range": [
         0.55,
@@ -181,7 +197,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les nouvelles particules virales sont assemblées en utilisant les membranes de la cellule."
+          "fr": "Les nouvelles particules virales sont assemblées en utilisant les membranes de la cellule.",
+          "en": "New virus particles are assembled using the cell's membranes."
         },
         "sources": [
           {
@@ -195,7 +212,8 @@
     {
       "id": "liberation",
       "title": {
-        "fr": "Libération"
+        "fr": "Libération",
+        "en": "Release"
       },
       "range": [
         0.8,
@@ -203,7 +221,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les virions quittent la cellule et vont infecter d'autres cellules."
+          "fr": "Les virions quittent la cellule et vont infecter d'autres cellules.",
+          "en": "The virions leave the cell and go on to infect other cells."
         },
         "sources": [
           {
@@ -352,7 +371,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "La prévention (vaccination) et les traitements relèvent d'un avis médical."
+      "fr": "La prévention (vaccination) et les traitements relèvent d'un avis médical.",
+      "en": "Prevention (vaccination) and treatment require medical advice."
     },
     "sources": [
       {

@@ -2,7 +2,8 @@
   "id": "grippe",
   "slug": "grippe",
   "name": {
-    "fr": "Grippe (influenza A)"
+    "fr": "Grippe (influenza A)",
+    "en": "Flu (influenza A)"
   },
   "aliases": [],
   "categories": [
@@ -12,7 +13,8 @@
     "cellType": "epithelial",
     "note": {
       "text": {
-        "fr": "Le virus infecte les cellules épithéliales des voies respiratoires. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Le virus infecte les cellules épithéliales des voies respiratoires. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "The virus infects the epithelial cells of the airways. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -23,7 +25,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Infection par le virus de la grippe, qui entre par endocytose, fait copier son génome dans le noyau puis bourgeonne à la membrane de la cellule."
+      "fr": "Infection par le virus de la grippe, qui entre par endocytose, fait copier son génome dans le noyau puis bourgeonne à la membrane de la cellule.",
+      "en": "Infection with the flu virus, which enters by endocytosis, has its genome copied in the nucleus and then buds from the cell membrane."
     },
     "sources": [
       {
@@ -40,7 +43,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Les virus influenza, transmis par voie respiratoire."
+        "fr": "Les virus influenza, transmis par voie respiratoire.",
+        "en": "Influenza viruses, spread through the airways."
       },
       "sources": [
         {
@@ -62,11 +66,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Entrée par endocytose"
+        "fr": "Entrée par endocytose",
+        "en": "Entry by endocytosis"
       },
       "explanation": {
         "text": {
-          "fr": "Le virus est internalisé dans un endosome ; l'acidité de l'endosome déclenche la fusion de l'enveloppe virale avec sa membrane."
+          "fr": "Le virus est internalisé dans un endosome ; l'acidité de l'endosome déclenche la fusion de l'enveloppe virale avec sa membrane.",
+          "en": "The virus is taken into an endosome; the acidity of the endosome triggers fusion of the viral envelope with the endosome membrane."
         },
         "sources": [
           {
@@ -78,11 +84,13 @@
     },
     {
       "title": {
-        "fr": "Réplication nucléaire"
+        "fr": "Réplication nucléaire",
+        "en": "Replication in the nucleus"
       },
       "explanation": {
         "text": {
-          "fr": "Le génome viral est transporté dans le noyau, où il est copié."
+          "fr": "Le génome viral est transporté dans le noyau, où il est copié.",
+          "en": "The viral genome is carried into the nucleus, where it is copied."
         },
         "sources": [
           {
@@ -90,18 +98,21 @@
           }
         ],
         "simplification": {
-          "fr": "Les nombreux segments du génome viral sont représentés comme un seul flux."
+          "fr": "Les nombreux segments du génome viral sont représentés comme un seul flux.",
+          "en": "The many segments of the viral genome are shown as a single stream."
         }
       },
       "organelle": "nucleus"
     },
     {
       "title": {
-        "fr": "Bourgeonnement"
+        "fr": "Bourgeonnement",
+        "en": "Budding"
       },
       "explanation": {
         "text": {
-          "fr": "Les nouvelles particules bourgeonnent à la membrane plasmique et sont libérées."
+          "fr": "Les nouvelles particules bourgeonnent à la membrane plasmique et sont libérées.",
+          "en": "New particles bud from the plasma membrane and are released."
         },
         "sources": [
           {
@@ -119,7 +130,8 @@
     {
       "id": "entree",
       "title": {
-        "fr": "Entrée"
+        "fr": "Entrée",
+        "en": "Entry"
       },
       "range": [
         0,
@@ -127,7 +139,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le virus se fixe à la cellule puis entre par endocytose."
+          "fr": "Le virus se fixe à la cellule puis entre par endocytose.",
+          "en": "The virus attaches to the cell and then enters by endocytosis."
         },
         "sources": [
           {
@@ -144,7 +157,8 @@
     {
       "id": "noyau",
       "title": {
-        "fr": "Dans le noyau"
+        "fr": "Dans le noyau",
+        "en": "In the nucleus"
       },
       "range": [
         0.25,
@@ -152,7 +166,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le génome viral entre dans le noyau, où il est copié et transcrit."
+          "fr": "Le génome viral entre dans le noyau, où il est copié et transcrit.",
+          "en": "The viral genome enters the nucleus, where it is copied and transcribed."
         },
         "sources": [
           {
@@ -166,7 +181,8 @@
     {
       "id": "synthese",
       "title": {
-        "fr": "Protéines virales"
+        "fr": "Protéines virales",
+        "en": "Viral proteins"
       },
       "range": [
         0.55,
@@ -174,7 +190,8 @@
       ],
       "description": {
         "text": {
-          "fr": "La machinerie de la cellule fabrique les protéines virales."
+          "fr": "La machinerie de la cellule fabrique les protéines virales.",
+          "en": "The cell's machinery makes the viral proteins."
         },
         "sources": [
           {
@@ -188,7 +205,8 @@
     {
       "id": "bourgeonnement",
       "title": {
-        "fr": "Bourgeonnement"
+        "fr": "Bourgeonnement",
+        "en": "Budding"
       },
       "range": [
         0.78,
@@ -196,7 +214,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les nouveaux virions bourgeonnent à la membrane et sont libérés."
+          "fr": "Les nouveaux virions bourgeonnent à la membrane et sont libérés.",
+          "en": "New virions bud from the membrane and are released."
         },
         "sources": [
           {
@@ -337,7 +356,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "La prévention (vaccination) et les traitements antiviraux relèvent d'un avis médical."
+      "fr": "La prévention (vaccination) et les traitements antiviraux relèvent d'un avis médical.",
+      "en": "Prevention (vaccination) and antiviral treatment require medical advice."
     },
     "sources": [
       {

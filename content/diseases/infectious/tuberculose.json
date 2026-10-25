@@ -2,7 +2,8 @@
   "id": "tuberculose",
   "slug": "tuberculose",
   "name": {
-    "fr": "Tuberculose"
+    "fr": "Tuberculose",
+    "en": "Tuberculosis"
   },
   "aliases": [],
   "categories": [
@@ -12,7 +13,8 @@
     "cellType": "macrophage",
     "note": {
       "text": {
-        "fr": "La bactérie infecte surtout les macrophages des alvéoles pulmonaires. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "La bactérie infecte surtout les macrophages des alvéoles pulmonaires. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "The bacterium mainly infects the macrophages of the lung alveoli. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -23,7 +25,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Infection par Mycobacterium tuberculosis, qui survit à l'intérieur des macrophages en empêchant la maturation du phagosome qui la contient."
+      "fr": "Infection par Mycobacterium tuberculosis, qui survit à l'intérieur des macrophages en empêchant la maturation du phagosome qui la contient.",
+      "en": "Infection with Mycobacterium tuberculosis, which survives inside macrophages by preventing the phagosome that holds it from maturing."
     },
     "sources": [
       {
@@ -37,7 +40,8 @@
   "cause": [
     {
       "text": {
-        "fr": "La bactérie Mycobacterium tuberculosis, transmise par voie aérienne."
+        "fr": "La bactérie Mycobacterium tuberculosis, transmise par voie aérienne.",
+        "en": "The bacterium Mycobacterium tuberculosis, spread through the air."
       },
       "sources": [
         {
@@ -57,11 +61,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Phagocytose"
+        "fr": "Phagocytose",
+        "en": "Phagocytosis"
       },
       "explanation": {
         "text": {
-          "fr": "Le macrophage englobe la bactérie dans un phagosome."
+          "fr": "Le macrophage englobe la bactérie dans un phagosome.",
+          "en": "The macrophage engulfs the bacterium in a phagosome."
         },
         "sources": [
           {
@@ -76,11 +82,13 @@
     },
     {
       "title": {
-        "fr": "Maturation bloquée"
+        "fr": "Maturation bloquée",
+        "en": "Maturation blocked"
       },
       "explanation": {
         "text": {
-          "fr": "La bactérie empêche le phagosome de mûrir et de fusionner avec les lysosomes, qui l'auraient détruite."
+          "fr": "La bactérie empêche le phagosome de mûrir et de fusionner avec les lysosomes, qui l'auraient détruite.",
+          "en": "The bacterium stops the phagosome from maturing and fusing with lysosomes, which would have destroyed it."
         },
         "sources": [
           {
@@ -95,11 +103,13 @@
     },
     {
       "title": {
-        "fr": "Persistance"
+        "fr": "Persistance",
+        "en": "Persistence"
       },
       "explanation": {
         "text": {
-          "fr": "Protégée dans son phagosome, la bactérie se multiplie ; l'organisme forme des granulomes autour des cellules infectées."
+          "fr": "Protégée dans son phagosome, la bactérie se multiplie ; l'organisme forme des granulomes autour des cellules infectées.",
+          "en": "Sheltered in its phagosome, the bacterium multiplies; the body forms granulomas around the infected cells."
         },
         "sources": [
           {
@@ -113,7 +123,8 @@
     {
       "id": "phagocytose",
       "title": {
-        "fr": "Phagocytose"
+        "fr": "Phagocytose",
+        "en": "Phagocytosis"
       },
       "range": [
         0,
@@ -121,7 +132,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le macrophage englobe les bactéries."
+          "fr": "Le macrophage englobe les bactéries.",
+          "en": "The macrophage engulfs the bacteria."
         },
         "sources": [
           {
@@ -135,7 +147,8 @@
     {
       "id": "blocage",
       "title": {
-        "fr": "Phagosome bloqué"
+        "fr": "Phagosome bloqué",
+        "en": "Blocked phagosome"
       },
       "range": [
         0.25,
@@ -143,7 +156,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le phagosome ne fusionne pas avec les lysosomes."
+          "fr": "Le phagosome ne fusionne pas avec les lysosomes.",
+          "en": "The phagosome does not fuse with lysosomes."
         },
         "sources": [
           {
@@ -154,7 +168,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Bactéries vivantes à l'intérieur de vacuoles."
+            "fr": "Bactéries vivantes à l'intérieur de vacuoles.",
+            "en": "Live bacteria inside vacuoles."
           },
           "sources": [
             {
@@ -171,7 +186,8 @@
     {
       "id": "multiplication",
       "title": {
-        "fr": "Multiplication"
+        "fr": "Multiplication",
+        "en": "Multiplication"
       },
       "range": [
         0.6,
@@ -179,7 +195,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les bactéries survivent et se multiplient à l'intérieur du macrophage."
+          "fr": "Les bactéries survivent et se multiplient à l'intérieur du macrophage.",
+          "en": "The bacteria survive and multiply inside the macrophage."
         },
         "sources": [
           {
@@ -296,7 +313,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Le traitement repose sur une association d'antibiotiques prise plusieurs mois ; il relève d'un avis médical."
+      "fr": "Le traitement repose sur une association d'antibiotiques prise plusieurs mois ; il relève d'un avis médical.",
+      "en": "Treatment relies on a combination of antibiotics taken for several months and requires medical advice."
     },
     "sources": [
       {

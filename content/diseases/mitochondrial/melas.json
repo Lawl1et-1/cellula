@@ -2,7 +2,8 @@
   "id": "melas",
   "slug": "syndrome-melas",
   "name": {
-    "fr": "Syndrome MELAS"
+    "fr": "Syndrome MELAS",
+    "en": "MELAS syndrome"
   },
   "aliases": [
     "Encéphalomyopathie mitochondriale avec acidose lactique et épisodes pseudo-AVC"
@@ -16,7 +17,8 @@
     "cellType": "muscle-fiber",
     "note": {
       "text": {
-        "fr": "Les muscles et le cerveau, très dépendants de l'énergie, sont les plus touchés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Les muscles et le cerveau, très dépendants de l'énergie, sont les plus touchés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "Muscles and the brain, which depend heavily on energy, are the most affected. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -27,7 +29,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie mitochondriale : un défaut de la chaîne respiratoire réduit la production d'énergie (ATP) par les mitochondries."
+      "fr": "Maladie mitochondriale : un défaut de la chaîne respiratoire réduit la production d'énergie (ATP) par les mitochondries.",
+      "en": "A mitochondrial disease: a defect in the respiratory chain reduces the production of energy (ATP) by mitochondria."
     },
     "sources": [
       {
@@ -41,7 +44,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Le plus souvent, un variant de l'ADN mitochondrial (m.3243A>G, dans le gène MT-TL1 d'un ARN de transfert) altère la fabrication des protéines mitochondriales."
+        "fr": "Le plus souvent, un variant de l'ADN mitochondrial (m.3243A>G, dans le gène MT-TL1 d'un ARN de transfert) altère la fabrication des protéines mitochondriales.",
+        "en": "Most often, a variant of mitochondrial DNA (m.3243A>G, in the MT-TL1 gene for a transfer RNA) impairs the making of mitochondrial proteins."
       },
       "sources": [
         {
@@ -59,11 +63,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Mutation de l'ADN mitochondrial"
+        "fr": "Mutation de l'ADN mitochondrial",
+        "en": "Mitochondrial DNA mutation"
       },
       "explanation": {
         "text": {
-          "fr": "Le plus souvent, un variant de l'ADN mitochondrial (m.3243A>G, dans le gène MT-TL1 d'un ARN de transfert) altère la fabrication des protéines mitochondriales."
+          "fr": "Le plus souvent, un variant de l'ADN mitochondrial (m.3243A>G, dans le gène MT-TL1 d'un ARN de transfert) altère la fabrication des protéines mitochondriales.",
+          "en": "Most often, a variant of mitochondrial DNA (m.3243A>G, in the MT-TL1 gene for a transfer RNA) impairs the making of mitochondrial proteins."
         },
         "sources": [
           {
@@ -75,11 +81,13 @@
     },
     {
       "title": {
-        "fr": "Panne énergétique"
+        "fr": "Panne énergétique",
+        "en": "Energy failure"
       },
       "explanation": {
         "text": {
-          "fr": "Les complexes de la chaîne respiratoire sont mal assemblés : la production d'ATP diminue."
+          "fr": "Les complexes de la chaîne respiratoire sont mal assemblés : la production d'ATP diminue.",
+          "en": "The respiratory chain complexes are poorly assembled: ATP production falls."
         },
         "sources": [
           {
@@ -97,7 +105,8 @@
     {
       "id": "mutation",
       "title": {
-        "fr": "Variant pathogène"
+        "fr": "Variant pathogène",
+        "en": "Pathogenic variant"
       },
       "range": [
         0,
@@ -105,7 +114,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le plus souvent, un variant de l'ADN mitochondrial (m.3243A>G, dans le gène MT-TL1 d'un ARN de transfert) altère la fabrication des protéines mitochondriales."
+          "fr": "Le plus souvent, un variant de l'ADN mitochondrial (m.3243A>G, dans le gène MT-TL1 d'un ARN de transfert) altère la fabrication des protéines mitochondriales.",
+          "en": "Most often, a variant of mitochondrial DNA (m.3243A>G, in the MT-TL1 gene for a transfer RNA) impairs the making of mitochondrial proteins."
         },
         "sources": [
           {
@@ -119,7 +129,8 @@
     {
       "id": "chaine",
       "title": {
-        "fr": "Chaîne respiratoire déficiente"
+        "fr": "Chaîne respiratoire déficiente",
+        "en": "Deficient respiratory chain"
       },
       "range": [
         0.25,
@@ -127,7 +138,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les complexes de la chaîne respiratoire sont mal assemblés : la production d'ATP diminue."
+          "fr": "Les complexes de la chaîne respiratoire sont mal assemblés : la production d'ATP diminue.",
+          "en": "The respiratory chain complexes are poorly assembled: ATP production falls."
         },
         "sources": [
           {
@@ -144,7 +156,8 @@
     {
       "id": "mitochondries",
       "title": {
-        "fr": "Mitochondries anormales"
+        "fr": "Mitochondries anormales",
+        "en": "Abnormal mitochondria"
       },
       "range": [
         0.6,
@@ -152,7 +165,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les mitochondries deviennent anormales ; leur membrane interne et leurs crêtes peuvent être désorganisées."
+          "fr": "Les mitochondries deviennent anormales ; leur membrane interne et leurs crêtes peuvent être désorganisées.",
+          "en": "Mitochondria become abnormal; their inner membrane and cristae can become disorganised."
         },
         "sources": [
           {
@@ -160,13 +174,15 @@
           }
         ],
         "simplification": {
-          "fr": "L'aspect des mitochondries malades est schématisé (gonflement, perte des crêtes, baisse de la lueur)."
+          "fr": "L'aspect des mitochondries malades est schématisé (gonflement, perte des crêtes, baisse de la lueur).",
+          "en": "The look of diseased mitochondria is schematic (swelling, loss of cristae, dimmer glow)."
         }
       },
       "cellularSigns": [
         {
           "text": {
-            "fr": "Dans le muscle, des mitochondries anormales s'accumulent (fibres « rouges déchiquetées » à la biopsie)."
+            "fr": "Dans le muscle, des mitochondries anormales s'accumulent (fibres « rouges déchiquetées » à la biopsie).",
+            "en": "In muscle, abnormal mitochondria accumulate (“ragged red fibres” on biopsy)."
           },
           "sources": [
             {
@@ -180,7 +196,8 @@
     {
       "id": "cellule",
       "title": {
-        "fr": "Souffrance cellulaire"
+        "fr": "Souffrance cellulaire",
+        "en": "Cell distress"
       },
       "range": [
         0.85,
@@ -188,7 +205,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les muscles et le cerveau, très dépendants de l'énergie, sont les plus touchés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+          "fr": "Les muscles et le cerveau, très dépendants de l'énergie, sont les plus touchés. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+          "en": "Muscles and the brain, which depend heavily on energy, are the most affected. The model shows a generic cell; the changes shown are those described in the affected cells."
         },
         "sources": [
           {
@@ -331,7 +349,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Il n'existe pas de traitement curatif ; la prise en charge vise les symptômes et relève d'un avis spécialisé."
+      "fr": "Il n'existe pas de traitement curatif ; la prise en charge vise les symptômes et relève d'un avis spécialisé.",
+      "en": "There is no cure; care aims at the symptoms and requires specialist advice."
     },
     "sources": [
       {

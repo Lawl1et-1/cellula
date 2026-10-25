@@ -2,7 +2,8 @@
   "id": "masld",
   "slug": "steatose-hepatique-metabolique",
   "name": {
-    "fr": "Stéatose hépatique métabolique (MASLD)"
+    "fr": "Stéatose hépatique métabolique (MASLD)",
+    "en": "Metabolic dysfunction-associated steatotic liver disease (MASLD)"
   },
   "aliases": [
     "NAFLD",
@@ -15,7 +16,8 @@
     "cellType": "hepatocyte",
     "note": {
       "text": {
-        "fr": "Ce sont les hépatocytes, les cellules du foie, qui se chargent de graisse. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Ce sont les hépatocytes, les cellules du foie, qui se chargent de graisse. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "The liver cells, the hepatocytes, are the ones that fill with fat. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -26,7 +28,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie du foie liée au métabolisme : des graisses s'accumulent dans les hépatocytes sous forme de gouttelettes lipidiques ; la maladie peut évoluer vers l'inflammation et la fibrose."
+      "fr": "Maladie du foie liée au métabolisme : des graisses s'accumulent dans les hépatocytes sous forme de gouttelettes lipidiques ; la maladie peut évoluer vers l'inflammation et la fibrose.",
+      "en": "A liver disease linked to metabolism: fats build up in hepatocytes as lipid droplets; the disease can progress to inflammation and fibrosis."
     },
     "sources": [
       {
@@ -37,7 +40,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Elle est associée au surpoids, au diabète de type 2 et à d'autres facteurs métaboliques."
+        "fr": "Elle est associée au surpoids, au diabète de type 2 et à d'autres facteurs métaboliques.",
+        "en": "It is associated with excess weight, type 2 diabetes and other metabolic factors."
       },
       "sources": [
         {
@@ -55,11 +59,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Stéatose"
+        "fr": "Stéatose",
+        "en": "Steatosis"
       },
       "explanation": {
         "text": {
-          "fr": "Les triglycérides s'accumulent dans l'hépatocyte en gouttelettes lipidiques."
+          "fr": "Les triglycérides s'accumulent dans l'hépatocyte en gouttelettes lipidiques.",
+          "en": "Triglycerides build up in the hepatocyte as lipid droplets."
         },
         "sources": [
           {
@@ -71,11 +77,13 @@
     },
     {
       "title": {
-        "fr": "Évolution"
+        "fr": "Évolution",
+        "en": "Progression"
       },
       "explanation": {
         "text": {
-          "fr": "Chez certains patients apparaissent une inflammation et des lésions des hépatocytes, puis une fibrose."
+          "fr": "Chez certains patients apparaissent une inflammation et des lésions des hépatocytes, puis une fibrose.",
+          "en": "In some patients, inflammation and hepatocyte damage appear, followed by fibrosis."
         },
         "sources": [
           {
@@ -89,7 +97,8 @@
     {
       "id": "gouttelettes",
       "title": {
-        "fr": "Gouttelettes lipidiques"
+        "fr": "Gouttelettes lipidiques",
+        "en": "Lipid droplets"
       },
       "range": [
         0,
@@ -97,7 +106,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Des gouttelettes de graisse apparaissent dans le cytoplasme."
+          "fr": "Des gouttelettes de graisse apparaissent dans le cytoplasme.",
+          "en": "Fat droplets appear in the cytoplasm."
         },
         "sources": [
           {
@@ -111,7 +121,8 @@
     {
       "id": "steatose",
       "title": {
-        "fr": "Stéatose"
+        "fr": "Stéatose",
+        "en": "Steatosis"
       },
       "range": [
         0.5,
@@ -119,7 +130,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les gouttelettes grossissent et occupent une grande partie de la cellule."
+          "fr": "Les gouttelettes grossissent et occupent une grande partie de la cellule.",
+          "en": "The droplets grow and fill a large part of the cell."
         },
         "sources": [
           {
@@ -130,7 +142,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Grosses gouttelettes lipidiques dans le cytoplasme."
+            "fr": "Grosses gouttelettes lipidiques dans le cytoplasme.",
+            "en": "Large lipid droplets in the cytoplasm."
           },
           "sources": [
             {
@@ -147,7 +160,8 @@
     {
       "id": "lesions",
       "title": {
-        "fr": "Lésions"
+        "fr": "Lésions",
+        "en": "Damage"
       },
       "range": [
         0.8,
@@ -155,7 +169,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Dans les formes évolutives, les hépatocytes sont lésés."
+          "fr": "Dans les formes évolutives, les hépatocytes sont lésés.",
+          "en": "In progressive forms, the hepatocytes are damaged."
         },
         "sources": [
           {
@@ -235,7 +250,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "La prise en charge repose surtout sur l'hygiène de vie ; elle relève d'un avis médical."
+      "fr": "La prise en charge repose surtout sur l'hygiène de vie ; elle relève d'un avis médical.",
+      "en": "Care relies mainly on lifestyle changes and requires medical advice."
     },
     "sources": [
       {

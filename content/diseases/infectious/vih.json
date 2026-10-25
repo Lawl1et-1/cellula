@@ -2,7 +2,8 @@
   "id": "vih",
   "slug": "vih-sida",
   "name": {
-    "fr": "Infection par le VIH"
+    "fr": "Infection par le VIH",
+    "en": "HIV infection"
   },
   "aliases": [
     "VIH",
@@ -15,7 +16,8 @@
     "cellType": "t-lymphocyte",
     "note": {
       "text": {
-        "fr": "Le VIH infecte surtout les lymphocytes T CD4, des cellules du système immunitaire. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Le VIH infecte surtout les lymphocytes T CD4, des cellules du système immunitaire. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "HIV mainly infects CD4 T lymphocytes, cells of the immune system. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -26,7 +28,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Infection par le VIH, un rétrovirus : son génome d'ARN est recopié en ADN puis intégré dans les chromosomes de la cellule, qui produit alors de nouveaux virus."
+      "fr": "Infection par le VIH, un rétrovirus : son génome d'ARN est recopié en ADN puis intégré dans les chromosomes de la cellule, qui produit alors de nouveaux virus.",
+      "en": "Infection with HIV, a retrovirus: its RNA genome is copied into DNA and then integrated into the cell's chromosomes, so the cell goes on to produce new viruses."
     },
     "sources": [
       {
@@ -40,7 +43,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Le virus de l'immunodéficience humaine, transmis notamment par voie sexuelle ou sanguine."
+        "fr": "Le virus de l'immunodéficience humaine, transmis notamment par voie sexuelle ou sanguine.",
+        "en": "The human immunodeficiency virus, transmitted notably through sexual contact or blood."
       },
       "sources": [
         {
@@ -61,11 +65,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Entrée"
+        "fr": "Entrée",
+        "en": "Entry"
       },
       "explanation": {
         "text": {
-          "fr": "Le virus se fixe au récepteur CD4 et à un corécepteur, puis son enveloppe fusionne avec la membrane."
+          "fr": "Le virus se fixe au récepteur CD4 et à un corécepteur, puis son enveloppe fusionne avec la membrane.",
+          "en": "The virus binds to the CD4 receptor and a co-receptor, then its envelope fuses with the membrane."
         },
         "sources": [
           {
@@ -80,11 +86,13 @@
     },
     {
       "title": {
-        "fr": "Intégration"
+        "fr": "Intégration",
+        "en": "Integration"
       },
       "explanation": {
         "text": {
-          "fr": "La transcriptase inverse recopie l'ARN viral en ADN, que l'intégrase insère dans un chromosome de la cellule."
+          "fr": "La transcriptase inverse recopie l'ARN viral en ADN, que l'intégrase insère dans un chromosome de la cellule.",
+          "en": "Reverse transcriptase copies the viral RNA into DNA, which integrase inserts into one of the cell's chromosomes."
         },
         "sources": [
           {
@@ -99,11 +107,13 @@
     },
     {
       "title": {
-        "fr": "Production et perte de lymphocytes"
+        "fr": "Production et perte de lymphocytes",
+        "en": "Virus production and lymphocyte loss"
       },
       "explanation": {
         "text": {
-          "fr": "La cellule produit de nouveaux virus ; au fil du temps, le nombre de lymphocytes T CD4 diminue."
+          "fr": "La cellule produit de nouveaux virus ; au fil du temps, le nombre de lymphocytes T CD4 diminue.",
+          "en": "The cell produces new viruses; over time, the number of CD4 T lymphocytes falls."
         },
         "sources": [
           {
@@ -117,7 +127,8 @@
     {
       "id": "entree",
       "title": {
-        "fr": "Fusion"
+        "fr": "Fusion",
+        "en": "Fusion"
       },
       "range": [
         0,
@@ -125,7 +136,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le virus fusionne avec la membrane du lymphocyte."
+          "fr": "Le virus fusionne avec la membrane du lymphocyte.",
+          "en": "The virus fuses with the lymphocyte's membrane."
         },
         "sources": [
           {
@@ -139,7 +151,8 @@
     {
       "id": "integration",
       "title": {
-        "fr": "Intégration"
+        "fr": "Intégration",
+        "en": "Integration"
       },
       "range": [
         0.2,
@@ -147,7 +160,8 @@
       ],
       "description": {
         "text": {
-          "fr": "L'ADN viral entre dans le noyau et s'intègre au génome."
+          "fr": "L'ADN viral entre dans le noyau et s'intègre au génome.",
+          "en": "The viral DNA enters the nucleus and is integrated into the genome."
         },
         "sources": [
           {
@@ -164,7 +178,8 @@
     {
       "id": "production",
       "title": {
-        "fr": "Production de virus"
+        "fr": "Production de virus",
+        "en": "Virus production"
       },
       "range": [
         0.5,
@@ -172,7 +187,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les gènes viraux sont exprimés et de nouveaux virions s'assemblent à la membrane."
+          "fr": "Les gènes viraux sont exprimés et de nouveaux virions s'assemblent à la membrane.",
+          "en": "Viral genes are expressed and new virions assemble at the membrane."
         },
         "sources": [
           {
@@ -186,7 +202,8 @@
     {
       "id": "perte",
       "title": {
-        "fr": "Mort du lymphocyte"
+        "fr": "Mort du lymphocyte",
+        "en": "Death of the lymphocyte"
       },
       "range": [
         0.8,
@@ -194,7 +211,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les lymphocytes T CD4 infectés finissent par mourir."
+          "fr": "Les lymphocytes T CD4 infectés finissent par mourir.",
+          "en": "Infected CD4 T lymphocytes eventually die."
         },
         "sources": [
           {
@@ -357,7 +375,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Les traitements antirétroviraux contrôlent l'infection ; ils relèvent d'un avis médical."
+      "fr": "Les traitements antirétroviraux contrôlent l'infection ; ils relèvent d'un avis médical.",
+      "en": "Antiretroviral treatment controls the infection and requires medical advice."
     },
     "sources": [
       {

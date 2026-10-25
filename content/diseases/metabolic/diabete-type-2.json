@@ -2,7 +2,8 @@
   "id": "diabete-type-2",
   "slug": "diabete-de-type-2",
   "name": {
-    "fr": "Diabète de type 2"
+    "fr": "Diabète de type 2",
+    "en": "Type 2 diabetes"
   },
   "aliases": [],
   "categories": [
@@ -12,7 +13,8 @@
     "cellType": "generic",
     "note": {
       "text": {
-        "fr": "Les muscles, le foie et le tissu adipeux deviennent résistants à l'insuline. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Les muscles, le foie et le tissu adipeux deviennent résistants à l'insuline. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "Muscle, liver and fat tissue become resistant to insulin. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -23,7 +25,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie métabolique : les cellules répondent moins bien à l'insuline (insulinorésistance) et le pancréas n'en produit plus assez pour compenser, d'où une hyperglycémie."
+      "fr": "Maladie métabolique : les cellules répondent moins bien à l'insuline (insulinorésistance) et le pancréas n'en produit plus assez pour compenser, d'où une hyperglycémie.",
+      "en": "A metabolic disease: cells respond less well to insulin (insulin resistance) and the pancreas can no longer make enough to compensate, leading to high blood sugar."
     },
     "sources": [
       {
@@ -34,7 +37,8 @@
   "cause": [
     {
       "text": {
-        "fr": "Une combinaison de prédisposition génétique et de facteurs de mode de vie, notamment le surpoids et la sédentarité."
+        "fr": "Une combinaison de prédisposition génétique et de facteurs de mode de vie, notamment le surpoids et la sédentarité.",
+        "en": "A combination of genetic predisposition and lifestyle factors, notably excess weight and physical inactivity."
       },
       "sources": [
         {
@@ -53,11 +57,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Insulinorésistance"
+        "fr": "Insulinorésistance",
+        "en": "Insulin resistance"
       },
       "explanation": {
         "text": {
-          "fr": "Les cellules répondent moins à l'insuline et captent moins de glucose."
+          "fr": "Les cellules répondent moins à l'insuline et captent moins de glucose.",
+          "en": "Cells respond less to insulin and take up less glucose."
         },
         "sources": [
           {
@@ -69,11 +75,13 @@
     },
     {
       "title": {
-        "fr": "Épuisement des cellules bêta"
+        "fr": "Épuisement des cellules bêta",
+        "en": "Beta-cell exhaustion"
       },
       "explanation": {
         "text": {
-          "fr": "Avec le temps, la sécrétion d'insuline par les cellules bêta du pancréas devient insuffisante."
+          "fr": "Avec le temps, la sécrétion d'insuline par les cellules bêta du pancréas devient insuffisante.",
+          "en": "Over time, insulin secretion by the beta cells of the pancreas becomes insufficient."
         },
         "sources": [
           {
@@ -87,7 +95,8 @@
     {
       "id": "normal",
       "title": {
-        "fr": "Réponse normale"
+        "fr": "Réponse normale",
+        "en": "Normal response"
       },
       "range": [
         0,
@@ -95,7 +104,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Sous l'effet de l'insuline, le glucose entre dans la cellule."
+          "fr": "Sous l'effet de l'insuline, le glucose entre dans la cellule.",
+          "en": "Under the effect of insulin, glucose enters the cell."
         },
         "sources": [
           {
@@ -109,7 +119,8 @@
     {
       "id": "resistance",
       "title": {
-        "fr": "Insulinorésistance"
+        "fr": "Insulinorésistance",
+        "en": "Insulin resistance"
       },
       "range": [
         0.3,
@@ -117,7 +128,8 @@
       ],
       "description": {
         "text": {
-          "fr": "La cellule répond moins à l'insuline : le glucose entre moins."
+          "fr": "La cellule répond moins à l'insuline : le glucose entre moins.",
+          "en": "The cell responds less to insulin: less glucose gets in."
         },
         "sources": [
           {
@@ -131,7 +143,8 @@
     {
       "id": "hyperglycemie",
       "title": {
-        "fr": "Hyperglycémie"
+        "fr": "Hyperglycémie",
+        "en": "High blood sugar"
       },
       "range": [
         0.7,
@@ -139,7 +152,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le glucose reste dans le sang."
+          "fr": "Le glucose reste dans le sang.",
+          "en": "Glucose stays in the blood."
         },
         "sources": [
           {
@@ -223,7 +237,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Le traitement associe hygiène de vie et médicaments ; il relève d'un avis médical."
+      "fr": "Le traitement associe hygiène de vie et médicaments ; il relève d'un avis médical.",
+      "en": "Treatment combines lifestyle measures and medication and requires medical advice."
     },
     "sources": [
       {

@@ -2,7 +2,8 @@
   "id": "parkinson",
   "slug": "maladie-de-parkinson",
   "name": {
-    "fr": "Maladie de Parkinson"
+    "fr": "Maladie de Parkinson",
+    "en": "Parkinson disease"
   },
   "aliases": [],
   "categories": [
@@ -12,7 +13,8 @@
     "cellType": "neuron",
     "note": {
       "text": {
-        "fr": "Ce sont surtout les neurones dopaminergiques de la substance noire qui dégénèrent. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Ce sont surtout les neurones dopaminergiques de la substance noire qui dégénèrent. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "It is mainly the dopaminergic neurons of the substantia nigra that degenerate. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -23,7 +25,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie neurodégénérative marquée par la perte des neurones dopaminergiques de la substance noire et par des inclusions d'alpha-synucléine, les corps de Lewy."
+      "fr": "Maladie neurodégénérative marquée par la perte des neurones dopaminergiques de la substance noire et par des inclusions d'alpha-synucléine, les corps de Lewy.",
+      "en": "A neurodegenerative disease marked by the loss of dopaminergic neurons in the substantia nigra and by inclusions of alpha-synuclein, the Lewy bodies."
     },
     "sources": [
       {
@@ -34,7 +37,8 @@
   "cause": [
     {
       "text": {
-        "fr": "La plupart des cas n'ont pas de cause unique identifiée ; des facteurs génétiques et environnementaux interviennent, et de rares formes sont monogéniques."
+        "fr": "La plupart des cas n'ont pas de cause unique identifiée ; des facteurs génétiques et environnementaux interviennent, et de rares formes sont monogéniques.",
+        "en": "Most cases have no single identified cause; genetic and environmental factors play a part, and rare forms are monogenic."
       },
       "sources": [
         {
@@ -54,11 +58,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "Corps de Lewy"
+        "fr": "Corps de Lewy",
+        "en": "Lewy bodies"
       },
       "explanation": {
         "text": {
-          "fr": "L'alpha-synucléine mal repliée s'agrège en inclusions dans les neurones."
+          "fr": "L'alpha-synucléine mal repliée s'agrège en inclusions dans les neurones.",
+          "en": "Misfolded alpha-synuclein aggregates into inclusions inside neurons."
         },
         "sources": [
           {
@@ -73,11 +79,13 @@
     },
     {
       "title": {
-        "fr": "Mitochondries fragilisées"
+        "fr": "Mitochondries fragilisées",
+        "en": "Weakened mitochondria"
       },
       "explanation": {
         "text": {
-          "fr": "Un dysfonctionnement mitochondrial est impliqué dans la mort des neurones dopaminergiques."
+          "fr": "Un dysfonctionnement mitochondrial est impliqué dans la mort des neurones dopaminergiques.",
+          "en": "Mitochondrial dysfunction is involved in the death of dopaminergic neurons."
         },
         "sources": [
           {
@@ -92,7 +100,8 @@
     {
       "id": "synucleine",
       "title": {
-        "fr": "Agrégation de l'alpha-synucléine"
+        "fr": "Agrégation de l'alpha-synucléine",
+        "en": "Alpha-synuclein aggregation"
       },
       "range": [
         0,
@@ -100,7 +109,8 @@
       ],
       "description": {
         "text": {
-          "fr": "L'alpha-synucléine se replie mal et s'agrège."
+          "fr": "L'alpha-synucléine se replie mal et s'agrège.",
+          "en": "Alpha-synuclein misfolds and aggregates."
         },
         "sources": [
           {
@@ -117,7 +127,8 @@
     {
       "id": "lewy",
       "title": {
-        "fr": "Corps de Lewy"
+        "fr": "Corps de Lewy",
+        "en": "Lewy bodies"
       },
       "range": [
         0.35,
@@ -125,7 +136,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les agrégats forment des inclusions, les corps de Lewy."
+          "fr": "Les agrégats forment des inclusions, les corps de Lewy.",
+          "en": "The aggregates form inclusions, the Lewy bodies."
         },
         "sources": [
           {
@@ -136,7 +148,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Inclusions protéiques dans le cytoplasme."
+            "fr": "Inclusions protéiques dans le cytoplasme.",
+            "en": "Protein inclusions in the cytoplasm."
           },
           "sources": [
             {
@@ -150,7 +163,8 @@
     {
       "id": "mitochondries",
       "title": {
-        "fr": "Stress mitochondrial"
+        "fr": "Stress mitochondrial",
+        "en": "Mitochondrial stress"
       },
       "range": [
         0.65,
@@ -158,7 +172,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les mitochondries fonctionnent moins bien."
+          "fr": "Les mitochondries fonctionnent moins bien.",
+          "en": "Mitochondria work less well."
         },
         "sources": [
           {
@@ -172,7 +187,8 @@
     {
       "id": "perte",
       "title": {
-        "fr": "Mort neuronale"
+        "fr": "Mort neuronale",
+        "en": "Neuronal death"
       },
       "range": [
         0.85,
@@ -180,7 +196,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les neurones dopaminergiques meurent, ce qui réduit la dopamine disponible."
+          "fr": "Les neurones dopaminergiques meurent, ce qui réduit la dopamine disponible.",
+          "en": "Dopaminergic neurons die, which reduces the dopamine available."
         },
         "sources": [
           {
@@ -298,7 +315,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Des traitements symptomatiques existent ; ils relèvent d'un avis médical."
+      "fr": "Des traitements symptomatiques existent ; ils relèvent d'un avis médical.",
+      "en": "Symptomatic treatments exist; they require medical advice."
     },
     "sources": [
       {

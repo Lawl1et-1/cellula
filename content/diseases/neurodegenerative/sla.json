@@ -2,7 +2,8 @@
   "id": "sla",
   "slug": "sclerose-laterale-amyotrophique",
   "name": {
-    "fr": "Sclérose latérale amyotrophique (SLA)"
+    "fr": "Sclérose latérale amyotrophique (SLA)",
+    "en": "Amyotrophic lateral sclerosis (ALS)"
   },
   "aliases": [
     "Maladie de Charcot"
@@ -14,7 +15,8 @@
     "cellType": "neuron",
     "note": {
       "text": {
-        "fr": "Les neurones moteurs du cerveau et de la moelle épinière dégénèrent. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées."
+        "fr": "Les neurones moteurs du cerveau et de la moelle épinière dégénèrent. Le modèle montre une cellule générique ; les changements représentés sont ceux décrits dans les cellules touchées.",
+        "en": "Motor neurons in the brain and spinal cord degenerate. The model shows a generic cell; the changes shown are those described in the affected cells."
       },
       "sources": [
         {
@@ -25,7 +27,8 @@
   },
   "summary": {
     "text": {
-      "fr": "Maladie neurodégénérative des neurones moteurs. Dans la plupart des cas, la protéine TDP-43 quitte le noyau et forme des agrégats dans le cytoplasme."
+      "fr": "Maladie neurodégénérative des neurones moteurs. Dans la plupart des cas, la protéine TDP-43 quitte le noyau et forme des agrégats dans le cytoplasme.",
+      "en": "A neurodegenerative disease of motor neurons. In most cases, the TDP-43 protein leaves the nucleus and forms aggregates in the cytoplasm."
     },
     "sources": [
       {
@@ -39,7 +42,8 @@
   "cause": [
     {
       "text": {
-        "fr": "La plupart des cas sont sporadiques ; une minorité est familiale, liée notamment aux gènes C9orf72, SOD1, TARDBP ou FUS."
+        "fr": "La plupart des cas sont sporadiques ; une minorité est familiale, liée notamment aux gènes C9orf72, SOD1, TARDBP ou FUS.",
+        "en": "Most cases are sporadic; a minority are familial, linked notably to the C9orf72, SOD1, TARDBP or FUS genes."
       },
       "sources": [
         {
@@ -60,11 +64,13 @@
   "mechanism": [
     {
       "title": {
-        "fr": "TDP-43 hors du noyau"
+        "fr": "TDP-43 hors du noyau",
+        "en": "TDP-43 outside the nucleus"
       },
       "explanation": {
         "text": {
-          "fr": "TDP-43, une protéine qui lie l'ARN, se retrouve dans le cytoplasme où elle s'agrège."
+          "fr": "TDP-43, une protéine qui lie l'ARN, se retrouve dans le cytoplasme où elle s'agrège.",
+          "en": "TDP-43, an RNA-binding protein, ends up in the cytoplasm, where it aggregates."
         },
         "sources": [
           {
@@ -76,11 +82,13 @@
     },
     {
       "title": {
-        "fr": "Transport perturbé"
+        "fr": "Transport perturbé",
+        "en": "Disrupted transport"
       },
       "explanation": {
         "text": {
-          "fr": "Le transport le long de l'axone et le métabolisme de l'ARN font partie des processus perturbés."
+          "fr": "Le transport le long de l'axone et le métabolisme de l'ARN font partie des processus perturbés.",
+          "en": "Transport along the axon and RNA metabolism are among the processes disrupted."
         },
         "sources": [
           {
@@ -95,7 +103,8 @@
     {
       "id": "tdp43",
       "title": {
-        "fr": "Délocalisation de TDP-43"
+        "fr": "Délocalisation de TDP-43",
+        "en": "TDP-43 mislocalisation"
       },
       "range": [
         0,
@@ -103,7 +112,8 @@
       ],
       "description": {
         "text": {
-          "fr": "TDP-43 quitte le noyau et s'accumule dans le cytoplasme."
+          "fr": "TDP-43 quitte le noyau et s'accumule dans le cytoplasme.",
+          "en": "TDP-43 leaves the nucleus and builds up in the cytoplasm."
         },
         "sources": [
           {
@@ -117,7 +127,8 @@
     {
       "id": "agregats",
       "title": {
-        "fr": "Agrégats"
+        "fr": "Agrégats",
+        "en": "Aggregates"
       },
       "range": [
         0.4,
@@ -125,7 +136,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les protéines mal repliées s'agrègent dans le cytoplasme des neurones moteurs."
+          "fr": "Les protéines mal repliées s'agrègent dans le cytoplasme des neurones moteurs.",
+          "en": "Misfolded proteins aggregate in the cytoplasm of motor neurons."
         },
         "sources": [
           {
@@ -139,7 +151,8 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Agrégats protéiques dans le cytoplasme."
+            "fr": "Agrégats protéiques dans le cytoplasme.",
+            "en": "Protein aggregates in the cytoplasm."
           },
           "sources": [
             {
@@ -162,7 +175,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les neurones moteurs dégénèrent, ce qui entraîne une faiblesse musculaire progressive."
+          "fr": "Les neurones moteurs dégénèrent, ce qui entraîne une faiblesse musculaire progressive.",
+          "en": "Motor neurons degenerate, causing progressive muscle weakness."
         },
         "sources": [
           {
@@ -274,7 +288,8 @@
   },
   "treatmentsNote": {
     "text": {
-      "fr": "Il n'existe pas de traitement curatif ; certains traitements peuvent ralentir l'évolution et relèvent d'un avis spécialisé."
+      "fr": "Il n'existe pas de traitement curatif ; certains traitements peuvent ralentir l'évolution et relèvent d'un avis spécialisé.",
+      "en": "There is no cure; some treatments can slow the disease and require specialist advice."
     },
     "sources": [
       {
