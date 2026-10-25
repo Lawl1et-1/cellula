@@ -74,7 +74,8 @@ export function Hud() {
   const hasTour = useTour((s) => !!s.tour);
   const libraryOpen = useUi((s) => s.libraryOpen);
   const busy = hasSelection || hasScenario || hasTour || libraryOpen;
-  const showDock = !phone || (settingsOpen && !busy);
+  // Focus mode owns the bottom of the screen: the settings dock steps aside while a scenario plays.
+  const showDock = !hasScenario && (!phone || (settingsOpen && !busy));
 
   return (
     <motion.div className={styles.hud} {...fade}>
@@ -145,7 +146,7 @@ export function Hud() {
         </div>
       )}
 
-      <p className={styles.help}>{mode === 'flight' ? t.hud.flightHelp : t.hud.orbitHelp}</p>
+      {!hasScenario && <p className={styles.help}>{mode === 'flight' ? t.hud.flightHelp : t.hud.orbitHelp}</p>}
       <p className={styles.disclaimer}>{t.hud.disclaimer}</p>
     </motion.div>
   );

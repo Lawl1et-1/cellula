@@ -9,7 +9,6 @@ import { useSelection } from '@/state/selection';
 import { useContent } from './ContentContext';
 import { DiseaseDetails } from './DiseaseDetails';
 import { useUi } from '@/state/ui';
-import { usePhone } from './usePhone';
 import panel from './panel.module.css';
 
 /** Right-hand panel while a disease plays: what it is, why, and what is visible right now. */
@@ -21,10 +20,10 @@ export function DiseasePanel() {
   const selected = useSelection((s) => s.selected);
   const content = useContent();
   const disease = scenario?.kind === 'disease' ? scenario : null;
-  const phone = usePhone();
   const sheet = useUi((s) => s.diseaseSheet);
   const setSheet = useUi((s) => s.setDiseaseSheet);
-  const visible = !!disease && !selected && (!phone || sheet);
+  // Focus mode keeps the screen for the step; the full fact sheet opens on demand ("Fiche").
+  const visible = !!disease && !selected && sheet;
 
   return (
     <AnimatePresence>
@@ -46,11 +45,9 @@ export function DiseasePanel() {
             <Link className={panel.tagline} href={`/maladies/${disease.slug}`}>
               {t.diseases.readMore} →
             </Link>
-            {phone && (
-              <button className={panel.close} onClick={() => setSheet(false)} aria-label={t.panel.close}>
-                ×
-              </button>
-            )}
+            <button className={panel.close} onClick={() => setSheet(false)} aria-label={t.panel.close}>
+              ×
+            </button>
           </header>
           <div className={panel.body}>
             <DiseaseDetails disease={disease} sources={content.sources} stage={stageIndexAt(disease.stages, time)} />

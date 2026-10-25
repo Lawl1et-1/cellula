@@ -297,7 +297,7 @@ void main() {
   float ghost = uDim * uDimmable;
   if (ghost > 0.01) {
     float ign = fract(52.9829189 * fract(dot(gl_FragCoord.xy, vec2(0.06711056, 0.00583715))));
-    if (ign < ghost * 0.82 * (1.0 - smoothstep(0.1, 0.28, uHighlight))) discard;
+    if (ign < ghost * 0.9 * (1.0 - smoothstep(0.1, 0.28, uHighlight))) discard;
   }
   #ifdef USE_HOLES
   if (snoise(vLocal * 0.22 + vSeed * 3.0) > uHoles) discard;
@@ -354,7 +354,10 @@ void main() {
   float hl = uHighlight * vHighlightMask;
   float hlRim = pow(1.0 - abs(dot(N, V)), 2.0);
   col += (vec3(0.55, 0.9, 1.0) * hlRim * 1.1 + albedo * 0.2) * hl;
-  col *= 1.0 - uDim * uDimmable * 0.5 * (1.0 - smoothstep(0.1, 0.28, hl));
+  // Ghosted (not part of the current step): what remains of the surface turns grey and faint.
+  float ghosted = uDim * uDimmable * (1.0 - smoothstep(0.1, 0.28, hl));
+  float grey = dot(col, vec3(0.299, 0.587, 0.114));
+  col = mix(col, vec3(grey) * 0.55, ghosted * 0.85);
 
   float luma = dot(col, vec3(0.299, 0.587, 0.114));
   col = mix(col, luma * uTintColor * 1.6, uTint * 0.6);

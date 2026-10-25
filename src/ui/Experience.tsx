@@ -11,7 +11,7 @@ import { InfoPanel } from './InfoPanel';
 import { OrganelleList } from './OrganelleList';
 import { HoverLabel } from './HoverLabel';
 import { ScenarioMenu } from './ScenarioMenu';
-import { ProcessPlayer } from './ProcessPlayer';
+import { StepPlayer } from './StepPlayer';
 import { TourCard } from './TourCard';
 import { DnaStepper } from './DnaStepper';
 import { DiseasePanel } from './DiseasePanel';
@@ -86,7 +86,7 @@ export function Experience({ intro, content }: { intro: boolean; content: Explor
             <DiseasePanel />
             <DiseaseLibrary />
             <AnimatePresence>
-              <ProcessPlayer key="process" />
+              <StepPlayer key="focus" />
             </AnimatePresence>
             <AnimatePresence>
               <TourCard key="tour" />

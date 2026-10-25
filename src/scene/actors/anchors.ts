@@ -2,10 +2,11 @@ import { Vector3 } from 'three';
 import type { AnchorId } from '@/content/schema/scenario';
 import type { OrganelleId } from '@/content/schema/common';
 import type { Focus } from '@/state/selection';
-import { CELL, GOLGI_CENTER } from '../layout/cellLayout';
+import { CELL, CENTROSOME, GOLGI_CENTER } from '../layout/cellLayout';
 import { healthy, lysosomesLayout, mitochondriaLayout } from '../layout/organelleLayout';
 import { roughErAnchors } from '../organelles/EndoplasmicReticulum';
 import { membranePoint } from '../organelles/Membrane';
+import { mutationSite } from '../organelles/Nucleus';
 
 /** Side of the cell where secretion and uptake are shown: the Golgi pole, facing the default camera. */
 export const EXCHANGE_DIR = new Vector3(0.75, 0.12, 0.65).normalize();
@@ -48,6 +49,10 @@ export function anchors(): Record<AnchorId, Vector3> {
     mitochondrion: nearestInstance(healthy(mitochondriaLayout(), 'mitochondrion').matrices, CYTOPLASM_SPOT),
     lysosome: nearestInstance(healthy(lysosomesLayout(), 'lysosome').matrices, endosome),
     peroxisome: CYTOPLASM_SPOT.clone().add(new Vector3(6, 4, -5)),
+    // The chromatin locus where mutations are shown (same place as the dna.mutation marker).
+    dna: CELL.nucleus.center.clone().add(mutationSite()),
+    centrosome: CENTROSOME.clone(),
+    golgi: GOLGI_CENTER.clone(),
   };
   return cache;
 }
@@ -64,11 +69,15 @@ interface StageCamera {
   radius?: number;
   view?: 'organelle' | 'cell';
   sideOn?: [number, number, number];
+  at?: AnchorId;
 }
 
 /** Camera framing for a scenario stage: the very place where its actors play. */
 export function stageFocus(organelle: OrganelleId, camera?: StageCamera): Focus {
-  const base = baseFocus(organelle);
+  const anchor = camera?.at ? anchors()[camera.at] : null;
+  const base = anchor
+    ? { ...baseFocus(organelle), position: [anchor.x, anchor.y, anchor.z] as [number, number, number] }
+    : baseFocus(organelle);
   if (camera?.view === 'cell') return { organelle, position: [0, 0, 0], radius: camera.radius ?? 120, axis: camera.sideOn };
   return { ...base, radius: camera?.radius ?? base.radius, axis: camera?.sideOn ?? base.axis };
 }

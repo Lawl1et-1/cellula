@@ -6,7 +6,7 @@ import { BufferGeometry, InstancedBufferAttribute, InstancedMesh, Matrix4, Vecto
 import { mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { createOrganicMaterial, type OrganicOptions } from '../shaders/organicMaterial';
 import { useHighlight } from '../interaction/highlight';
-import type { OrganelleId } from '@/content/schema/common';
+import type { FocusKey } from '@/content/schema/scenario';
 
 interface Props {
   geometry: BufferGeometry;
@@ -18,7 +18,7 @@ interface Props {
   /** Skip the whole draw call while the camera is farther than this from every instance. */
   cullBeyond?: number;
   /** Organelle this mesh belongs to (hover / selection highlight). */
-  organelle?: OrganelleId;
+  organelle?: FocusKey;
   /** Scenario-driven presence in [0, 1], read every frame (1 = fully there). */
   presence?: () => number;
   /** How many instances to draw, read every frame (disease proliferation / loss). Defaults to all. */

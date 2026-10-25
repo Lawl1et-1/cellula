@@ -23,6 +23,7 @@ import { CELL, GOLGI_CENTER, insideCytoplasm, randomCytoplasmPoint } from '../la
 import { anchors } from '../actors/anchors';
 import { InstancedOrganelle, weld } from '../organelles/Instanced';
 import { createOrganicMaterial, type OrganicOptions } from '../shaders/organicMaterial';
+import { useHighlight } from '../interaction/highlight';
 
 /**
  * Things a disease adds to the cell. Each system has a fixed pool, drawn in proportion to its channel,
@@ -39,7 +40,6 @@ const AGGREGATE: OrganicOptions = {
   sss: 0.8,
   gloss: 0.4,
   diffuse: 0.6,
-  dimmable: false,
 };
 const LIPID: OrganicOptions = {
   color: '#f2c54e',
@@ -52,7 +52,6 @@ const LIPID: OrganicOptions = {
   wobble: 0.15,
   wobbleFreq: 0.4,
   drift: 0.6,
-  dimmable: false,
 };
 const GLYCOGEN: OrganicOptions = {
   color: '#4b3d5c',
@@ -62,7 +61,6 @@ const GLYCOGEN: OrganicOptions = {
   diffuse: 0.8,
   drift: 0.5,
   fade: [140, 240],
-  dimmable: false,
 };
 const VIRION: OrganicOptions = {
   color: '#d93a3a',
@@ -72,7 +70,6 @@ const VIRION: OrganicOptions = {
   sss: 0.8,
   gloss: 0.6,
   drift: 1.2,
-  dimmable: false,
 };
 const DMV: OrganicOptions = {
   color: '#d9a6ff',
@@ -85,7 +82,6 @@ const DMV: OrganicOptions = {
   diffuse: 0.2,
   rim: 1.6,
   drift: 0.3,
-  dimmable: false,
 };
 const INCLUSION: OrganicOptions = {
   color: '#d4a93c',
@@ -96,7 +92,6 @@ const INCLUSION: OrganicOptions = {
   patternScale: 1.2,
   sss: 0.8,
   gloss: 0.5,
-  dimmable: false,
 };
 const FRAGMENT: OrganicOptions = {
   color: '#3a2a6e',
@@ -107,7 +102,6 @@ const FRAGMENT: OrganicOptions = {
   patternScale: 0.8,
   sss: 0.7,
   gloss: 0.7,
-  dimmable: false,
 };
 const NEIGHBOUR: OrganicOptions = {
   color: '#cfe8ff',
@@ -132,7 +126,6 @@ const BACTERIUM: OrganicOptions = {
   patternScale: 0.8,
   sss: 0.8,
   gloss: 0.7,
-  dimmable: false,
 };
 const ACTIN_TAIL: OrganicOptions = {
   color: '#ff9c86',
@@ -140,7 +133,6 @@ const ACTIN_TAIL: OrganicOptions = {
   emissiveStrength: 1.2,
   sss: 0.6,
   gloss: 0.3,
-  dimmable: false,
 };
 const PHAGOSOME: OrganicOptions = {
   color: '#cfe0ff',
@@ -152,7 +144,6 @@ const PHAGOSOME: OrganicOptions = {
   rimOpacity: 0.8,
   diffuse: 0.2,
   rim: 1.4,
-  dimmable: false,
 };
 
 interface Pool {
@@ -268,6 +259,8 @@ function Bacteria() {
   }, []);
   const dummy = useMemo(() => new Object3D(), []);
   const travelled = useRef(0);
+  useHighlight('bacteria', assets.bodyMat, assets.tailMat);
+  useHighlight('phagosomes', assets.vacMat);
 
   useFrame(({ clock }, delta) => {
     const b = bodies.current;
@@ -411,6 +404,7 @@ export function DiseaseParticles() {
     <group name="disease">
       <InstancedOrganelle
         name="aggregates"
+        organelle="aggregates"
         geometry={systems.blob}
         material={AGGREGATE}
         {...systems.aggregates}
@@ -419,6 +413,7 @@ export function DiseaseParticles() {
       />
       <InstancedOrganelle
         name="lipid-droplets"
+        organelle="lipids"
         geometry={systems.sphere}
         material={LIPID}
         {...systems.lipids}
@@ -427,6 +422,7 @@ export function DiseaseParticles() {
       />
       <InstancedOrganelle
         name="glycogen"
+        organelle="glycogen"
         geometry={systems.small}
         material={GLYCOGEN}
         {...systems.glycogen}
@@ -434,6 +430,7 @@ export function DiseaseParticles() {
       />
       <InstancedOrganelle
         name="virions"
+        organelle="virions"
         geometry={systems.virion}
         material={VIRION}
         {...systems.virions}
@@ -442,6 +439,7 @@ export function DiseaseParticles() {
       {/* Inner membrane: replication organelles are double-membrane vesicles. */}
       <InstancedOrganelle
         name="replication-organelles-inner"
+        organelle="replication"
         geometry={systems.sphere}
         material={DMV}
         matrices={systems.dmvInner.matrices}
@@ -451,6 +449,7 @@ export function DiseaseParticles() {
       />
       <InstancedOrganelle
         name="replication-organelles"
+        organelle="replication"
         geometry={systems.sphere}
         material={DMV}
         {...systems.dmv}
@@ -459,6 +458,7 @@ export function DiseaseParticles() {
       />
       <InstancedOrganelle
         name="nuclear-inclusions"
+        organelle="inclusions"
         geometry={systems.blob}
         material={INCLUSION}
         {...systems.inclusions}
@@ -467,6 +467,7 @@ export function DiseaseParticles() {
       />
       <InstancedOrganelle
         name="nuclear-fragments"
+        organelle="fragments"
         geometry={systems.sphere}
         material={FRAGMENT}
         {...systems.fragments}

@@ -7,6 +7,7 @@ import { easing } from 'maath';
 import { sharedUniforms } from './shaders/organicMaterial';
 import { useScene } from '@/state/scene';
 import { useUi } from '@/state/ui';
+import { useScenario } from '@/state/scenario';
 import { timeScale } from './time';
 import { updateHighlights } from './interaction/highlight';
 import { applyDiseaseLooks } from './disease/bindings';
@@ -45,8 +46,10 @@ function Clock() {
     updateHighlights(delta);
     applyDiseaseLooks(delta);
     // The DNA close-up dims the rest of the cell like a scenario focus.
+    // Focus mode (a process or disease is playing) ghosts whatever the current step does not involve.
     const closeup = useUi.getState().dnaLevel !== null ? 0.9 : 0;
-    easing.damp(u.uDim, 'value', Math.max(liveChannels['view.focusDim'], closeup), 0.4, delta);
+    const focusMode = useScenario.getState().scenario ? 0.85 : 0;
+    easing.damp(u.uDim, 'value', Math.max(liveChannels['view.focusDim'], closeup, focusMode), 0.6, delta);
     const target = MOLECULAR_SCALE[useScene.getState().scaleMode];
     easing.damp(u.uMolecularScale, 'value', target, 0.35, delta);
   });

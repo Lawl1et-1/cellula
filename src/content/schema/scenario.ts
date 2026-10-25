@@ -29,6 +29,9 @@ export const ANCHOR_IDS = [
   'mitochondrion',
   'lysosome',
   'peroxisome',
+  'dna',
+  'centrosome',
+  'golgi',
 ] as const;
 export const AnchorId = z.enum(ANCHOR_IDS);
 export type AnchorId = z.infer<typeof AnchorId>;
@@ -71,6 +74,72 @@ export const NarrationCue = z.object({
   focus: OrganelleId.optional(),
 });
 
+/**
+ * Things a step can light up besides organelles: the systems a disease adds to the cell. Everything that is
+ * neither listed nor the step's focus is ghosted (focus mode).
+ */
+export const DISEASE_SYSTEMS = [
+  'virions',
+  'replication',
+  'aggregates',
+  'lipids',
+  'glycogen',
+  'inclusions',
+  'fragments',
+  'bacteria',
+  'phagosomes',
+  'lesions',
+] as const;
+export const FocusKey = z.union([OrganelleId, z.enum(DISEASE_SYSTEMS)]);
+export type FocusKey = z.infer<typeof FocusKey>;
+
+/**
+ * Key objects drawn enlarged so a beginner can follow them (the interface states the enlargement). Each
+ * model has a known real size, so the factor shown is honest.
+ */
+export const HERO_MODELS = [
+  'coronavirus',
+  'influenza',
+  'hiv',
+  'listeria',
+  'mycobacterium',
+  'receptor',
+  'viral-rna',
+  'mrna',
+  'protein',
+  'misfolded',
+  'enzyme',
+  'substrate',
+  'ldl',
+  'glucose',
+  'insulin',
+  't-cell',
+  'uv',
+] as const;
+export const HeroModel = z.enum(HERO_MODELS);
+export type HeroModel = z.infer<typeof HeroModel>;
+
+const Offset = z.tuple([z.number(), z.number(), z.number()]);
+
+export const Hero = z.object({
+  model: HeroModel,
+  /** One anchor (stays there) or several (travels through them during the step). */
+  path: z.array(AnchorId).min(1),
+  /** Shift from the anchors, in scene units. */
+  offset: Offset.optional(),
+  /** Several copies, spread around the path. */
+  count: z.number().int().min(1).max(12).default(1),
+  /** Names the object in the scene and in the enlargement note. */
+  label: LocalizedText.optional(),
+});
+export type Hero = z.infer<typeof Hero>;
+
+export const SceneLabel = z.object({
+  at: AnchorId,
+  offset: Offset.optional(),
+  text: LocalizedText,
+});
+
 export const Stage = z.object({
   id: z.string(),
   title: LocalizedText,
@@ -88,8 +157,16 @@ export const Stage = z.object({
       view: z.enum(['organelle', 'cell']).default('organelle'),
       /** Axis to look across (side-on), e.g. the mitotic spindle. */
       sideOn: z.tuple([z.number(), z.number(), z.number()]).optional(),
+      /** Point to frame instead of the focus organelle's default spot. */
+      at: AnchorId.optional(),
     })
     .optional(),
+  /** Focus mode: what stays in full colour besides `focus`. */
+  highlight: z.array(FocusKey).default([]),
+  heroes: z.array(Hero).default([]),
+  labels: z.array(SceneLabel).default([]),
+  /** Playback length of this step at normal speed (focus mode). */
+  seconds: z.number().positive().default(12),
 });
 export type Stage = z.infer<typeof Stage>;
 
