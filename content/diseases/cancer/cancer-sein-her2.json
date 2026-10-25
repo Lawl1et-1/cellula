@@ -119,17 +119,113 @@
     {
       "id": "amplification",
       "title": {
-        "fr": "Amplification du gène",
-        "en": "Gene amplification"
+        "fr": "Le gène HER2 en trop d'exemplaires",
+        "en": "Too many copies of HER2"
       },
       "range": [
-        0,
-        0.3
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Le gène HER2 est amplifié dans le noyau.",
-          "en": "The HER2 gene is amplified in the nucleus."
+          "fr": "Dans ces cellules de la glande mammaire, le gène HER2 (ERBB2) est présent en de nombreuses copies : on parle d'amplification.",
+          "en": "In these breast cells, the HER2 (ERBB2) gene is present in many copies: this is called amplification."
+        },
+        "sources": [
+          {
+            "id": "pm-her2-2014"
+          },
+          {
+            "id": "sp-breast-cancer"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "labels": [
+        {
+          "at": "dna",
+          "text": {
+            "fr": "Gène HER2 amplifié",
+            "en": "Amplified HER2 gene"
+          },
+          "offset": [
+            0,
+            3,
+            0
+          ]
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "expression",
+      "title": {
+        "fr": "Beaucoup d'ARN, beaucoup de récepteurs",
+        "en": "Lots of RNA, lots of receptors"
+      },
+      "range": [
+        0.2,
+        0.4
+      ],
+      "description": {
+        "text": {
+          "fr": "Ces copies produisent beaucoup d'ARN messager HER2 ; il est traduit en récepteurs sur le réticulum endoplasmique, puis envoyé vers la membrane.",
+          "en": "These copies produce a lot of HER2 messenger RNA; it is translated into receptors on the endoplasmic reticulum, then sent to the membrane."
+        },
+        "sources": [
+          {
+            "id": "pm-her2-2014"
+          },
+          {
+            "id": "mboc4-er"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "rough-er",
+      "camera": {
+        "at": "rough-er",
+        "radius": 14
+      },
+      "highlight": [
+        "ribosome",
+        "nucleus"
+      ],
+      "heroes": [
+        {
+          "model": "mrna",
+          "path": [
+            "nucleus.pore",
+            "rough-er"
+          ],
+          "count": 3,
+          "label": {
+            "fr": "ARN messager HER2",
+            "en": "HER2 messenger RNA"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "receptors",
+      "title": {
+        "fr": "Membrane couverte de récepteurs",
+        "en": "A membrane covered in receptors"
+      },
+      "range": [
+        0.4,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "La membrane se couvre de récepteurs HER2, bien plus nombreux qu'à la surface d'une cellule normale.",
+          "en": "The membrane becomes covered in HER2 receptors, far more of them than on a normal cell."
         },
         "sources": [
           {
@@ -137,39 +233,11 @@
           }
         ]
       },
-      "cellularSigns": [],
-      "focus": "nucleus"
-    },
-    {
-      "id": "recepteurs",
-      "title": {
-        "fr": "Surexpression de HER2",
-        "en": "HER2 overexpression"
-      },
-      "range": [
-        0.3,
-        0.65
-      ],
-      "description": {
-        "text": {
-          "fr": "Les récepteurs HER2 s'accumulent à la surface de la cellule.",
-          "en": "HER2 receptors pile up on the cell surface."
-        },
-        "sources": [
-          {
-            "id": "pm-her2-2014"
-          }
-        ],
-        "simplification": {
-          "fr": "Les récepteurs représentés sont génériques ; leur nombre figure la surexpression de HER2.",
-          "en": "The receptors shown are generic; their number stands for HER2 overexpression."
-        }
-      },
       "cellularSigns": [
         {
           "text": {
-            "fr": "Membrane couverte de récepteurs.",
-            "en": "Membrane covered in receptors."
+            "fr": "Les récepteurs représentés sont génériques ; leur nombre figure la surexpression de HER2.",
+            "en": "The receptors shown are generic; their number stands for HER2 overexpression."
           },
           "sources": [
             {
@@ -178,7 +246,65 @@
           ]
         }
       ],
-      "focus": "plasma-membrane"
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 13
+      },
+      "heroes": [
+        {
+          "model": "receptor",
+          "path": [
+            "membrane"
+          ],
+          "offset": [
+            0.6,
+            0.1,
+            0.5
+          ],
+          "count": 6,
+          "label": {
+            "fr": "Récepteurs HER2",
+            "en": "HER2 receptors"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "signals",
+      "title": {
+        "fr": "Signaux de croissance permanents",
+        "en": "Constant growth signals"
+      },
+      "range": [
+        0.6,
+        0.8
+      ],
+      "description": {
+        "text": {
+          "fr": "Ces récepteurs en excès envoient sans arrêt des signaux de croissance vers l'intérieur de la cellule.",
+          "en": "These surplus receptors keep sending growth signals into the cell."
+        },
+        "sources": [
+          {
+            "id": "pm-her2-2014"
+          },
+          {
+            "id": "mboc4-cancer-division"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 22
+      },
+      "highlight": [
+        "nucleus"
+      ],
+      "seconds": 12
     },
     {
       "id": "proliferation",
@@ -187,15 +313,18 @@
         "en": "Proliferation"
       },
       "range": [
-        0.65,
+        0.8,
         1
       ],
       "description": {
         "text": {
-          "fr": "Les signaux de croissance permanents entraînent la prolifération.",
-          "en": "Constant growth signals drive proliferation."
+          "fr": "Stimulées en permanence, les cellules se divisent davantage et la tumeur grossit. Des traitements ciblent spécifiquement HER2.",
+          "en": "Constantly stimulated, the cells divide more and the tumour grows. Some treatments specifically target HER2."
         },
         "sources": [
+          {
+            "id": "sp-breast-cancer"
+          },
           {
             "id": "pm-her2-2014"
           }
@@ -205,24 +334,42 @@
       "focus": "plasma-membrane",
       "camera": {
         "view": "cell",
-        "radius": 170
-      }
+        "radius": 150
+      },
+      "seconds": 12
     }
   ],
   "tracks": [
+    {
+      "channel": "dna.mutation",
+      "keys": [
+        {
+          "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.02,
+          "v": 0.0
+        },
+        {
+          "t": 0.14,
+          "v": 1
+        }
+      ]
+    },
     {
       "channel": "membrane.receptorDensity",
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.3,
-          "v": 1.2
+          "t": 0.42,
+          "v": 1.0
         },
         {
-          "t": 0.65,
+          "t": 0.54,
           "v": 4
         }
       ]
@@ -232,53 +379,46 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.65,
-          "v": 1.3
+          "t": 0.82,
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 4
-        }
-      ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
-        },
-        {
-          "t": 0.05,
-          "v": 0.25
-        },
-        {
-          "t": 0.95,
-          "v": 0.25
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.94,
+          "v": 3
         }
       ]
     }
   ],
   "actors": [
     {
-      "actor": "pulse",
-      "at": 0.0,
-      "until": 0.3,
+      "actor": "path",
+      "at": 0.61,
+      "until": 0.79,
       "params": {
-        "at": "nucleus"
+        "path": [
+          "membrane",
+          "cytoplasm",
+          "nucleus"
+        ],
+        "cargo": "protein",
+        "count": 8
+      }
+    },
+    {
+      "actor": "pulse",
+      "at": 0.6,
+      "until": 0.8,
+      "params": {
+        "at": "membrane"
       }
     }
   ],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -293,5 +433,6 @@
         "id": "sp-breast-cancer"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }
