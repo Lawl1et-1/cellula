@@ -14,6 +14,8 @@ export interface Focus extends Target {
   radius: number;
   /** Long axis of elongated organelles: the camera frames them side-on. */
   axis?: [number, number, number];
+  /** Direction to look from (camera side), instead of keeping the current viewing direction. */
+  from?: [number, number, number];
 }
 
 interface SelectionState {

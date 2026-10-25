@@ -135,8 +135,8 @@
       "cellularSigns": [],
       "focus": "plasma-membrane",
       "camera": {
-        "view": "cell",
-        "radius": 120
+        "at": "outside",
+        "radius": 48
       },
       "heroes": [
         {

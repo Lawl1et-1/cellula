@@ -134,10 +134,10 @@ export function CameraRig() {
       if (!f) return;
       const target = new Vector3(...f.position);
       const from = controls.getPosition(new Vector3());
-      const dir = from.sub(target);
+      const dir = f.from ? new Vector3(...f.from) : from.sub(target);
       if (dir.lengthSq() < 1e-6) dir.set(0.4, 0.3, 1);
       dir.normalize();
-      if (f.axis) {
+      if (f.axis && !f.from) {
         // Side-on view of elongated organelles, slightly from above.
         const axis = new Vector3(...f.axis);
         dir.addScaledVector(axis, -dir.dot(axis));
@@ -150,7 +150,7 @@ export function CameraRig() {
       const pos = target.clone().addScaledVector(dir, distance);
       // Focus mode: the caption and controls cover the lower part of the screen, so the subject is
       // framed a little above the centre.
-      const raise = useScenario.getState().scenario && !wholeCell ? distance * 0.14 : 0;
+      const raise = useScenario.getState().scenario && !wholeCell ? distance * 0.08 : 0;
       void controls.setFocalOffset(0, raise, 0, true);
       controls.smoothTime = 0.85;
       controls.minDistance = 2;
