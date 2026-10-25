@@ -2,11 +2,13 @@
   "id": "respiration",
   "slug": "respiration-cellulaire",
   "name": {
-    "fr": "Respiration cellulaire"
+    "fr": "Respiration cellulaire",
+    "en": "Cellular respiration"
   },
   "summary": {
     "text": {
-      "fr": "Comment la cellule tire son énergie du glucose : la glycolyse dans le cytosol, puis l'oxydation dans les mitochondries, qui produit l'essentiel de l'ATP grâce à l'oxygène."
+      "fr": "Comment la cellule tire son énergie du glucose : la glycolyse dans le cytosol, puis l'oxydation dans les mitochondries, qui produit l'essentiel de l'ATP grâce à l'oxygène.",
+      "en": "How the cell gets energy from glucose: glycolysis in the cytosol, then oxidation in the mitochondria, which makes most of the ATP using oxygen."
     },
     "sources": [
       {
@@ -17,7 +19,8 @@
       }
     ],
     "simplification": {
-      "fr": "Les quantités de molécules ne sont pas à l'échelle ; les flèches montrent le sens des échanges."
+      "fr": "Les quantités de molécules ne sont pas à l'échelle ; les flèches montrent le sens des échanges.",
+      "en": "Numbers of molecules are not to scale; the arrows show the direction of exchange."
     }
   },
   "durationSeconds": 60,
@@ -25,7 +28,8 @@
     {
       "id": "entree",
       "title": {
-        "fr": "Entrée du glucose"
+        "fr": "Entrée du glucose",
+        "en": "Glucose enters"
       },
       "range": [
         0,
@@ -33,7 +37,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le glucose traverse la membrane plasmique grâce à des protéines de transport."
+          "fr": "Le glucose traverse la membrane plasmique grâce à des protéines de transport.",
+          "en": "Glucose crosses the plasma membrane with the help of transport proteins."
         },
         "sources": [
           {
@@ -46,7 +51,8 @@
     {
       "id": "glycolyse",
       "title": {
-        "fr": "Glycolyse"
+        "fr": "Glycolyse",
+        "en": "Glycolysis"
       },
       "range": [
         0.2,
@@ -54,7 +60,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Dans le cytosol, la glycolyse découpe chaque molécule de glucose en deux molécules de pyruvate et produit un peu d'ATP."
+          "fr": "Dans le cytosol, la glycolyse découpe chaque molécule de glucose en deux molécules de pyruvate et produit un peu d'ATP.",
+          "en": "In the cytosol, glycolysis splits each glucose molecule into two molecules of pyruvate and makes a little ATP."
         },
         "sources": [
           {
@@ -67,7 +74,8 @@
     {
       "id": "krebs",
       "title": {
-        "fr": "Pyruvate et cycle de l'acide citrique"
+        "fr": "Pyruvate et cycle de l'acide citrique",
+        "en": "Pyruvate and the citric acid cycle"
       },
       "range": [
         0.4,
@@ -75,7 +83,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Le pyruvate entre dans la mitochondrie, où il est transformé en acétyl-CoA qui alimente le cycle de l'acide citrique dans la matrice."
+          "fr": "Le pyruvate entre dans la mitochondrie, où il est transformé en acétyl-CoA qui alimente le cycle de l'acide citrique dans la matrice.",
+          "en": "Pyruvate enters the mitochondrion, where it is converted into acetyl CoA, which feeds the citric acid cycle in the matrix."
         },
         "sources": [
           {
@@ -91,7 +100,8 @@
     {
       "id": "chaine",
       "title": {
-        "fr": "Chaîne respiratoire"
+        "fr": "Chaîne respiratoire",
+        "en": "Respiratory chain"
       },
       "range": [
         0.55,
@@ -99,7 +109,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les électrons riches en énergie passent le long de la chaîne respiratoire de la membrane interne jusqu'à l'oxygène ; l'énergie libérée sert à pomper des protons hors de la matrice."
+          "fr": "Les électrons riches en énergie passent le long de la chaîne respiratoire de la membrane interne jusqu'à l'oxygène ; l'énergie libérée sert à pomper des protons hors de la matrice.",
+          "en": "High-energy electrons pass along the respiratory chain in the inner membrane to oxygen; the energy released is used to pump protons out of the matrix."
         },
         "sources": [
           {
@@ -112,7 +123,8 @@
     {
       "id": "atp",
       "title": {
-        "fr": "Synthèse d'ATP"
+        "fr": "Synthèse d'ATP",
+        "en": "ATP synthesis"
       },
       "range": [
         0.8,
@@ -120,7 +132,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les protons reviennent dans la matrice à travers l'ATP synthase, qui fabrique l'ATP ; celui-ci est ensuite exporté vers le reste de la cellule."
+          "fr": "Les protons reviennent dans la matrice à travers l'ATP synthase, qui fabrique l'ATP ; celui-ci est ensuite exporté vers le reste de la cellule.",
+          "en": "Protons flow back into the matrix through ATP synthase, which makes ATP; the ATP is then exported to the rest of the cell."
         },
         "sources": [
           {

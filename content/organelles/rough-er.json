@@ -1,14 +1,17 @@
 {
   "id": "rough-er",
   "name": {
-    "fr": "Réticulum endoplasmique rugueux"
+    "fr": "Réticulum endoplasmique rugueux",
+    "en": "Rough endoplasmic reticulum"
   },
   "tagline": {
-    "fr": "Le chantier des protéines exportées"
+    "fr": "Le chantier des protéines exportées",
+    "en": "Where exported proteins are built"
   },
   "summary": {
     "text": {
-      "fr": "Réseau de sacs membranaires aplatis, couvert de ribosomes, où sont fabriquées les protéines destinées aux membranes, aux lysosomes ou à la sécrétion."
+      "fr": "Réseau de sacs membranaires aplatis, couvert de ribosomes, où sont fabriquées les protéines destinées aux membranes, aux lysosomes ou à la sécrétion.",
+      "en": "A network of flattened membrane sacs, covered in ribosomes, where proteins bound for membranes, lysosomes or secretion are made."
     },
     "sources": [
       {
@@ -19,7 +22,8 @@
   "function": [
     {
       "text": {
-        "fr": "Les ribosomes fixés à sa surface y injectent les protéines au fur et à mesure de leur synthèse."
+        "fr": "Les ribosomes fixés à sa surface y injectent les protéines au fur et à mesure de leur synthèse.",
+        "en": "Ribosomes bound to its surface feed proteins into it as they are being made."
       },
       "sources": [
         {
@@ -29,7 +33,8 @@
     },
     {
       "text": {
-        "fr": "Les protéines y sont repliées, souvent glycosylées, et contrôlées avant de partir vers l'appareil de Golgi."
+        "fr": "Les protéines y sont repliées, souvent glycosylées, et contrôlées avant de partir vers l'appareil de Golgi.",
+        "en": "There, proteins are folded, often glycosylated, and checked before they leave for the Golgi apparatus."
       },
       "sources": [
         {
@@ -42,7 +47,8 @@
     },
     {
       "text": {
-        "fr": "Il fabrique aussi la plupart des lipides des membranes de la cellule."
+        "fr": "Il fabrique aussi la plupart des lipides des membranes de la cellule.",
+        "en": "It also makes most of the lipids of the cell's membranes."
       },
       "sources": [
         {
@@ -54,7 +60,8 @@
   "structure": [
     {
       "text": {
-        "fr": "Ses membranes délimitent un espace intérieur continu, la lumière du RE, et se prolongent par l'enveloppe nucléaire."
+        "fr": "Ses membranes délimitent un espace intérieur continu, la lumière du RE, et se prolongent par l'enveloppe nucléaire.",
+        "en": "Its membranes enclose a continuous inner space, the ER lumen, and are continuous with the nuclear envelope."
       },
       "sources": [
         {
@@ -66,11 +73,13 @@
   "keyMolecules": [
     {
       "name": {
-        "fr": "Translocon"
+        "fr": "Translocon",
+        "en": "Translocon"
       },
       "role": {
         "text": {
-          "fr": "Pore protéique par lequel la chaîne protéique en cours de synthèse traverse la membrane du RE."
+          "fr": "Pore protéique par lequel la chaîne protéique en cours de synthèse traverse la membrane du RE.",
+          "en": "A protein pore through which the growing protein chain crosses the ER membrane."
         },
         "sources": [
           {
@@ -81,11 +90,13 @@
     },
     {
       "name": {
-        "fr": "Chaperons (ex. BiP)"
+        "fr": "Chaperons (ex. BiP)",
+        "en": "Chaperones (e.g. BiP)"
       },
       "role": {
         "text": {
-          "fr": "Aident les protéines à se replier correctement dans la lumière du RE."
+          "fr": "Aident les protéines à se replier correctement dans la lumière du RE.",
+          "en": "Help proteins fold correctly in the ER lumen."
         },
         "sources": [
           {
@@ -100,7 +111,8 @@
       "with": "ribosome",
       "description": {
         "text": {
-          "fr": "Les ribosomes s'y fixent dès que la protéine qu'ils fabriquent porte un signal d'adressage au RE."
+          "fr": "Les ribosomes s'y fixent dès que la protéine qu'ils fabriquent porte un signal d'adressage au RE.",
+          "en": "Ribosomes attach to it as soon as the protein they are making carries an ER-targeting signal."
         },
         "sources": [
           {
@@ -113,7 +125,8 @@
       "with": "golgi",
       "description": {
         "text": {
-          "fr": "Les protéines correctement repliées partent vers le Golgi dans des vésicules."
+          "fr": "Les protéines correctement repliées partent vers le Golgi dans des vésicules.",
+          "en": "Correctly folded proteins leave for the Golgi in vesicles."
         },
         "sources": [
           {
@@ -126,7 +139,8 @@
       "with": "nucleus",
       "description": {
         "text": {
-          "fr": "Il est en continuité avec la membrane externe de l'enveloppe nucléaire."
+          "fr": "Il est en continuité avec la membrane externe de l'enveloppe nucléaire.",
+          "en": "It is continuous with the outer membrane of the nuclear envelope."
         },
         "sources": [
           {

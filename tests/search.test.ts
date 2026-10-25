@@ -22,6 +22,12 @@ describe('disease search', () => {
     expect(lysosomal.every((d) => d.categories.includes('lysosomal-storage'))).toBe(true);
   });
 
+  it('finds diseases in English too', () => {
+    expect(searchDiseases(content.diseases, 'sickle cell', null, labels).map((d) => d.id)).toContain('drepanocytose');
+    expect(searchDiseases(content.diseases, 'cystic fibrosis', null, labels).map((d) => d.id)).toContain('mucoviscidose');
+    expect(searchDiseases(content.diseases, '', 'lysosomal-storage', labels).length).toBeGreaterThanOrEqual(6);
+  });
+
   it('every disease has a label for each of its categories', () => {
     for (const d of content.diseases) for (const c of d.categories) for (const l of labels) expect(l[c]).toBeTruthy();
   });

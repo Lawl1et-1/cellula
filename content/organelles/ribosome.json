@@ -1,14 +1,17 @@
 {
   "id": "ribosome",
   "name": {
-    "fr": "Ribosome"
+    "fr": "Ribosome",
+    "en": "Ribosome"
   },
   "tagline": {
-    "fr": "La machine qui traduit l'ARN en protéine"
+    "fr": "La machine qui traduit l'ARN en protéine",
+    "en": "The machine that translates RNA into protein"
   },
   "summary": {
     "text": {
-      "fr": "Grand complexe d'ARN et de protéines, formé de deux sous-unités, qui lit l'ARN messager et assemble les acides aminés en protéine."
+      "fr": "Grand complexe d'ARN et de protéines, formé de deux sous-unités, qui lit l'ARN messager et assemble les acides aminés en protéine.",
+      "en": "A large complex of RNA and proteins, made of two subunits, that reads messenger RNA and links amino acids into a protein."
     },
     "sources": [
       {
@@ -19,7 +22,8 @@
   "function": [
     {
       "text": {
-        "fr": "Il traduit la séquence de l'ARN messager en chaîne d'acides aminés, avec l'aide des ARN de transfert."
+        "fr": "Il traduit la séquence de l'ARN messager en chaîne d'acides aminés, avec l'aide des ARN de transfert.",
+        "en": "It translates the sequence of the messenger RNA into a chain of amino acids, with the help of transfer RNAs."
       },
       "sources": [
         {
@@ -29,7 +33,8 @@
     },
     {
       "text": {
-        "fr": "Plusieurs ribosomes peuvent traduire le même ARN messager en même temps (polyribosome)."
+        "fr": "Plusieurs ribosomes peuvent traduire le même ARN messager en même temps (polyribosome).",
+        "en": "Several ribosomes can translate the same messenger RNA at once (a polyribosome)."
       },
       "sources": [
         {
@@ -41,7 +46,8 @@
   "structure": [
     {
       "text": {
-        "fr": "Il est formé d'une grande et d'une petite sous-unité ; il peut être libre dans le cytosol ou fixé au réticulum endoplasmique."
+        "fr": "Il est formé d'une grande et d'une petite sous-unité ; il peut être libre dans le cytosol ou fixé au réticulum endoplasmique.",
+        "en": "It is made of a large and a small subunit; it can be free in the cytosol or bound to the endoplasmic reticulum."
       },
       "sources": [
         {
@@ -52,18 +58,21 @@
         }
       ],
       "simplification": {
-        "fr": "En échelle artistique, cette structure est agrandie environ ×2,5 pour rester visible. Le modèle montre beaucoup moins d'exemplaires que dans une vraie cellule, pour rester lisible et fluide."
+        "fr": "En échelle artistique, cette structure est agrandie environ ×2,5 pour rester visible. Le modèle montre beaucoup moins d'exemplaires que dans une vraie cellule, pour rester lisible et fluide.",
+        "en": "At artistic scale, this structure is enlarged about ×2.5 so that it stays visible. The model shows far fewer copies than a real cell, to stay readable and smooth."
       }
     }
   ],
   "keyMolecules": [
     {
       "name": {
-        "fr": "ARN ribosomiques"
+        "fr": "ARN ribosomiques",
+        "en": "Ribosomal RNAs"
       },
       "role": {
         "text": {
-          "fr": "Forment le cœur du ribosome et catalysent la formation des liaisons entre acides aminés."
+          "fr": "Forment le cœur du ribosome et catalysent la formation des liaisons entre acides aminés.",
+          "en": "Form the core of the ribosome and catalyse the bonds between amino acids."
         },
         "sources": [
           {
@@ -74,11 +83,13 @@
     },
     {
       "name": {
-        "fr": "ARN de transfert"
+        "fr": "ARN de transfert",
+        "en": "Transfer RNAs"
       },
       "role": {
         "text": {
-          "fr": "Apportent les acides aminés correspondant à chaque codon."
+          "fr": "Apportent les acides aminés correspondant à chaque codon.",
+          "en": "Bring the amino acid that matches each codon."
         },
         "sources": [
           {
@@ -93,7 +104,8 @@
       "with": "rough-er",
       "description": {
         "text": {
-          "fr": "Il se fixe au RE quand la protéine en cours de synthèse est destinée à la voie de sécrétion."
+          "fr": "Il se fixe au RE quand la protéine en cours de synthèse est destinée à la voie de sécrétion.",
+          "en": "It binds to the ER when the protein being made is bound for the secretory pathway."
         },
         "sources": [
           {
@@ -106,7 +118,8 @@
       "with": "nucleolus",
       "description": {
         "text": {
-          "fr": "Ses sous-unités sont assemblées dans le nucléole."
+          "fr": "Ses sous-unités sont assemblées dans le nucléole.",
+          "en": "Its subunits are assembled in the nucleolus."
         },
         "sources": [
           {

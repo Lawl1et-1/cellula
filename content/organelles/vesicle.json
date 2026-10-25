@@ -1,14 +1,17 @@
 {
   "id": "vesicle",
   "name": {
-    "fr": "Vésicules"
+    "fr": "Vésicules",
+    "en": "Vesicles"
   },
   "tagline": {
-    "fr": "Les navettes de transport"
+    "fr": "Les navettes de transport",
+    "en": "The transport shuttles"
   },
   "summary": {
     "text": {
-      "fr": "Petits sacs membranaires qui bourgeonnent d'un compartiment et fusionnent avec un autre, transportant protéines et lipides dans la cellule."
+      "fr": "Petits sacs membranaires qui bourgeonnent d'un compartiment et fusionnent avec un autre, transportant protéines et lipides dans la cellule.",
+      "en": "Small membrane sacs that bud from one compartment and fuse with another, carrying proteins and lipids around the cell."
     },
     "sources": [
       {
@@ -22,7 +25,8 @@
   "function": [
     {
       "text": {
-        "fr": "Elles relient le RE, le Golgi, les endosomes, les lysosomes et la membrane plasmique."
+        "fr": "Elles relient le RE, le Golgi, les endosomes, les lysosomes et la membrane plasmique.",
+        "en": "They link the ER, the Golgi, endosomes, lysosomes and the plasma membrane."
       },
       "sources": [
         {
@@ -35,7 +39,8 @@
     },
     {
       "text": {
-        "fr": "Des vésicules de sécrétion libèrent leur contenu hors de la cellule en fusionnant avec la membrane plasmique."
+        "fr": "Des vésicules de sécrétion libèrent leur contenu hors de la cellule en fusionnant avec la membrane plasmique.",
+        "en": "Secretory vesicles release their contents outside the cell by fusing with the plasma membrane."
       },
       "sources": [
         {
@@ -45,7 +50,8 @@
     },
     {
       "text": {
-        "fr": "Des vésicules d'endocytose apportent dans la cellule des molécules captées à sa surface."
+        "fr": "Des vésicules d'endocytose apportent dans la cellule des molécules captées à sa surface.",
+        "en": "Endocytic vesicles bring into the cell molecules captured at its surface."
       },
       "sources": [
         {
@@ -62,7 +68,8 @@
       "with": "golgi",
       "description": {
         "text": {
-          "fr": "Beaucoup naissent du réseau trans-golgien."
+          "fr": "Beaucoup naissent du réseau trans-golgien.",
+          "en": "Many arise from the trans-Golgi network."
         },
         "sources": [
           {
@@ -75,7 +82,8 @@
       "with": "cytoskeleton",
       "description": {
         "text": {
-          "fr": "Elles circulent le long des microtubules, tirées par des moteurs."
+          "fr": "Elles circulent le long des microtubules, tirées par des moteurs.",
+          "en": "They travel along microtubules, pulled by motors."
         },
         "sources": [
           {

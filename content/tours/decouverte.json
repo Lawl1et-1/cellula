@@ -1,10 +1,12 @@
 {
   "id": "decouverte",
   "name": {
-    "fr": "Visite guidée"
+    "fr": "Visite guidée",
+    "en": "Guided tour"
   },
   "intro": {
-    "fr": "Un tour de la cellule, de sa frontière à son centre, puis vers ses usines et ses centrales."
+    "fr": "Un tour de la cellule, de sa frontière à son centre, puis vers ses usines et ses centrales.",
+    "en": "A tour of the cell, from its border to its centre, then on to its factories and power stations."
   },
   "steps": [
     {

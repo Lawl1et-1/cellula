@@ -2,11 +2,13 @@
   "id": "synthese-proteines",
   "slug": "synthese-des-proteines",
   "name": {
-    "fr": "Synthèse et sécrétion d'une protéine"
+    "fr": "Synthèse et sécrétion d'une protéine",
+    "en": "Making and secreting a protein"
   },
   "summary": {
     "text": {
-      "fr": "Le trajet d'une protéine sécrétée : de son gène dans le noyau jusqu'à sa libération hors de la cellule, en passant par le réticulum endoplasmique et l'appareil de Golgi."
+      "fr": "Le trajet d'une protéine sécrétée : de son gène dans le noyau jusqu'à sa libération hors de la cellule, en passant par le réticulum endoplasmique et l'appareil de Golgi.",
+      "en": "The journey of a secreted protein: from its gene in the nucleus to its release outside the cell, by way of the endoplasmic reticulum and the Golgi apparatus."
     },
     "sources": [
       {
@@ -20,7 +22,8 @@
       }
     ],
     "simplification": {
-      "fr": "Les étapes sont enchaînées pour une seule protéine et fortement accélérées."
+      "fr": "Les étapes sont enchaînées pour une seule protéine et fortement accélérées.",
+      "en": "The steps follow a single protein in sequence and are greatly sped up."
     }
   },
   "durationSeconds": 70,
@@ -28,7 +31,8 @@
     {
       "id": "transcription",
       "title": {
-        "fr": "Transcription"
+        "fr": "Transcription",
+        "en": "Transcription"
       },
       "range": [
         0,
@@ -36,7 +40,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Dans le noyau, l'ARN polymérase copie un gène en ARN messager."
+          "fr": "Dans le noyau, l'ARN polymérase copie un gène en ARN messager.",
+          "en": "In the nucleus, RNA polymerase copies a gene into messenger RNA."
         },
         "sources": [
           {
@@ -49,7 +54,8 @@
     {
       "id": "export",
       "title": {
-        "fr": "Export de l'ARN messager"
+        "fr": "Export de l'ARN messager",
+        "en": "Messenger RNA export"
       },
       "range": [
         0.18,
@@ -57,7 +63,8 @@
       ],
       "description": {
         "text": {
-          "fr": "L'ARN messager mature quitte le noyau à travers les complexes du pore nucléaire."
+          "fr": "L'ARN messager mature quitte le noyau à travers les complexes du pore nucléaire.",
+          "en": "The mature messenger RNA leaves the nucleus through nuclear pore complexes."
         },
         "sources": [
           {
@@ -73,7 +80,8 @@
     {
       "id": "traduction",
       "title": {
-        "fr": "Traduction au contact du RE"
+        "fr": "Traduction au contact du RE",
+        "en": "Translation at the ER"
       },
       "range": [
         0.32,
@@ -81,7 +89,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Un ribosome commence la traduction ; une séquence signal de la protéine naissante le dirige vers le réticulum endoplasmique, et la chaîne protéique entre dans la lumière du RE au fur et à mesure de sa synthèse."
+          "fr": "Un ribosome commence la traduction ; une séquence signal de la protéine naissante le dirige vers le réticulum endoplasmique, et la chaîne protéique entre dans la lumière du RE au fur et à mesure de sa synthèse.",
+          "en": "A ribosome starts translation; a signal sequence on the new protein directs it to the endoplasmic reticulum, and the protein chain enters the ER lumen as it is made."
         },
         "sources": [
           {
@@ -97,7 +106,8 @@
     {
       "id": "maturation",
       "title": {
-        "fr": "Repliement et contrôle"
+        "fr": "Repliement et contrôle",
+        "en": "Folding and quality control"
       },
       "range": [
         0.5,
@@ -105,7 +115,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Dans le RE, la protéine est repliée avec l'aide de chaperons, souvent glycosylée, et contrôlée avant de poursuivre sa route."
+          "fr": "Dans le RE, la protéine est repliée avec l'aide de chaperons, souvent glycosylée, et contrôlée avant de poursuivre sa route.",
+          "en": "In the ER, the protein is folded with the help of chaperones, often glycosylated, and checked before it moves on."
         },
         "sources": [
           {
@@ -118,7 +129,8 @@
     {
       "id": "golgi",
       "title": {
-        "fr": "Passage dans le Golgi"
+        "fr": "Passage dans le Golgi",
+        "en": "Through the Golgi"
       },
       "range": [
         0.62,
@@ -126,7 +138,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Des vésicules l'apportent à la face cis du Golgi ; elle est modifiée en traversant les citernes puis triée dans le réseau trans-golgien."
+          "fr": "Des vésicules l'apportent à la face cis du Golgi ; elle est modifiée en traversant les citernes puis triée dans le réseau trans-golgien.",
+          "en": "Vesicles bring it to the cis face of the Golgi; it is modified as it passes through the cisternae and then sorted in the trans-Golgi network."
         },
         "sources": [
           {
@@ -139,7 +152,8 @@
     {
       "id": "secretion",
       "title": {
-        "fr": "Sécrétion"
+        "fr": "Sécrétion",
+        "en": "Secretion"
       },
       "range": [
         0.82,
@@ -147,7 +161,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Des vésicules de sécrétion fusionnent avec la membrane plasmique et libèrent la protéine à l'extérieur : c'est l'exocytose."
+          "fr": "Des vésicules de sécrétion fusionnent avec la membrane plasmique et libèrent la protéine à l'extérieur : c'est l'exocytose.",
+          "en": "Secretory vesicles fuse with the plasma membrane and release the protein outside: this is exocytosis."
         },
         "sources": [
           {

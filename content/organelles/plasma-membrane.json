@@ -1,14 +1,17 @@
 {
   "id": "plasma-membrane",
   "name": {
-    "fr": "Membrane plasmique"
+    "fr": "Membrane plasmique",
+    "en": "Plasma membrane"
   },
   "tagline": {
-    "fr": "La frontière vivante de la cellule"
+    "fr": "La frontière vivante de la cellule",
+    "en": "The cell's living border"
   },
   "summary": {
     "text": {
-      "fr": "Une bicouche de lipides, parsemée de protéines, qui enveloppe la cellule, sépare son contenu du milieu extérieur et contrôle ce qui entre et ce qui sort."
+      "fr": "Une bicouche de lipides, parsemée de protéines, qui enveloppe la cellule, sépare son contenu du milieu extérieur et contrôle ce qui entre et ce qui sort.",
+      "en": "A lipid bilayer studded with proteins that wraps the cell, separates its contents from the outside and controls what goes in and out."
     },
     "sources": [
       {
@@ -22,7 +25,8 @@
   "function": [
     {
       "text": {
-        "fr": "Elle forme une barrière sélective : les petites molécules non chargées la traversent, tandis que les ions et la plupart des molécules polaires ont besoin de protéines de transport."
+        "fr": "Elle forme une barrière sélective : les petites molécules non chargées la traversent, tandis que les ions et la plupart des molécules polaires ont besoin de protéines de transport.",
+        "en": "It forms a selective barrier: small uncharged molecules cross it, whereas ions and most polar molecules need transport proteins."
       },
       "sources": [
         {
@@ -32,7 +36,8 @@
     },
     {
       "text": {
-        "fr": "Des protéines de transport (transporteurs et canaux) font passer des ions et des nutriments précis d'un côté à l'autre."
+        "fr": "Des protéines de transport (transporteurs et canaux) font passer des ions et des nutriments précis d'un côté à l'autre.",
+        "en": "Transport proteins (carriers and channels) move specific ions and nutrients from one side to the other."
       },
       "sources": [
         {
@@ -45,7 +50,8 @@
     },
     {
       "text": {
-        "fr": "Des récepteurs membranaires captent des signaux extérieurs et les transmettent à l'intérieur de la cellule."
+        "fr": "Des récepteurs membranaires captent des signaux extérieurs et les transmettent à l'intérieur de la cellule.",
+        "en": "Membrane receptors pick up signals from outside and pass them on to the inside of the cell."
       },
       "sources": [
         {
@@ -55,7 +61,8 @@
     },
     {
       "text": {
-        "fr": "Elle peut englober des substances extérieures par endocytose et libérer des molécules par exocytose."
+        "fr": "Elle peut englober des substances extérieures par endocytose et libérer des molécules par exocytose.",
+        "en": "It can engulf outside substances by endocytosis and release molecules by exocytosis."
       },
       "sources": [
         {
@@ -70,7 +77,8 @@
   "structure": [
     {
       "text": {
-        "fr": "Les lipides s'organisent en deux couches : leurs têtes, attirées par l'eau, font face à l'extérieur et au cytosol ; leurs queues, qui repoussent l'eau, se cachent au centre."
+        "fr": "Les lipides s'organisent en deux couches : leurs têtes, attirées par l'eau, font face à l'extérieur et au cytosol ; leurs queues, qui repoussent l'eau, se cachent au centre.",
+        "en": "The lipids arrange themselves in two layers: their water-loving heads face the outside and the cytosol, while their water-repelling tails hide in the middle."
       },
       "sources": [
         {
@@ -80,7 +88,8 @@
     },
     {
       "text": {
-        "fr": "La bicouche est fluide : lipides et nombreuses protéines y diffusent latéralement."
+        "fr": "La bicouche est fluide : lipides et nombreuses protéines y diffusent latéralement.",
+        "en": "The bilayer is fluid: lipids and many proteins diffuse sideways within it."
       },
       "sources": [
         {
@@ -90,7 +99,8 @@
     },
     {
       "text": {
-        "fr": "Beaucoup de protéines et de lipides de la face externe portent des chaînes de sucres."
+        "fr": "Beaucoup de protéines et de lipides de la face externe portent des chaînes de sucres.",
+        "en": "Many proteins and lipids on the outer face carry sugar chains."
       },
       "sources": [
         {
@@ -102,11 +112,13 @@
   "keyMolecules": [
     {
       "name": {
-        "fr": "Phospholipides"
+        "fr": "Phospholipides",
+        "en": "Phospholipids"
       },
       "role": {
         "text": {
-          "fr": "Principaux constituants de la bicouche."
+          "fr": "Principaux constituants de la bicouche.",
+          "en": "The main components of the bilayer."
         },
         "sources": [
           {
@@ -117,11 +129,13 @@
     },
     {
       "name": {
-        "fr": "Cholestérol"
+        "fr": "Cholestérol",
+        "en": "Cholesterol"
       },
       "role": {
         "text": {
-          "fr": "Intercalé entre les phospholipides, il module la fluidité et la rigidité de la membrane."
+          "fr": "Intercalé entre les phospholipides, il module la fluidité et la rigidité de la membrane.",
+          "en": "Slotted between the phospholipids, it tunes the fluidity and stiffness of the membrane."
         },
         "sources": [
           {
@@ -132,11 +146,13 @@
     },
     {
       "name": {
-        "fr": "Canaux ioniques"
+        "fr": "Canaux ioniques",
+        "en": "Ion channels"
       },
       "role": {
         "text": {
-          "fr": "Pores protéiques qui laissent passer des ions précis, à l'origine des propriétés électriques des membranes."
+          "fr": "Pores protéiques qui laissent passer des ions précis, à l'origine des propriétés électriques des membranes.",
+          "en": "Protein pores that let specific ions through and give membranes their electrical properties."
         },
         "sources": [
           {
@@ -151,7 +167,8 @@
       "with": "vesicle",
       "description": {
         "text": {
-          "fr": "Les vésicules de sécrétion fusionnent avec elle (exocytose) ; des vésicules d'endocytose s'en détachent."
+          "fr": "Les vésicules de sécrétion fusionnent avec elle (exocytose) ; des vésicules d'endocytose s'en détachent.",
+          "en": "Secretory vesicles fuse with it (exocytosis); endocytic vesicles pinch off from it."
         },
         "sources": [
           {
@@ -167,7 +184,8 @@
       "with": "cytoskeleton",
       "description": {
         "text": {
-          "fr": "Un réseau d'actine, le cortex, la soutient de l'intérieur."
+          "fr": "Un réseau d'actine, le cortex, la soutient de l'intérieur.",
+          "en": "A network of actin, the cortex, supports it from the inside."
         },
         "sources": [
           {

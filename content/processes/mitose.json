@@ -2,11 +2,13 @@
   "id": "mitose",
   "slug": "mitose",
   "name": {
-    "fr": "Mitose et cytocinèse"
+    "fr": "Mitose et cytocinèse",
+    "en": "Mitosis and cytokinesis"
   },
   "summary": {
     "text": {
-      "fr": "La division d'une cellule en deux : les chromosomes, déjà dupliqués, sont répartis également entre deux noyaux, puis la cellule se scinde en deux."
+      "fr": "La division d'une cellule en deux : les chromosomes, déjà dupliqués, sont répartis également entre deux noyaux, puis la cellule se scinde en deux.",
+      "en": "One cell dividing into two: the chromosomes, already duplicated, are shared equally between two nuclei, then the cell splits in two."
     },
     "sources": [
       {
@@ -17,7 +19,8 @@
       }
     ],
     "simplification": {
-      "fr": "Seuls quelques chromosomes sont représentés et les organites ne sont pas répartis entre les cellules filles."
+      "fr": "Seuls quelques chromosomes sont représentés et les organites ne sont pas répartis entre les cellules filles.",
+      "en": "Only a few chromosomes are shown, and organelles are not shared out between the daughter cells."
     }
   },
   "durationSeconds": 80,
@@ -25,7 +28,8 @@
     {
       "id": "prophase",
       "title": {
-        "fr": "Prophase"
+        "fr": "Prophase",
+        "en": "Prophase"
       },
       "range": [
         0,
@@ -33,7 +37,8 @@
       ],
       "description": {
         "text": {
-          "fr": "La chromatine se condense en chromosomes, chacun formé de deux chromatides sœurs ; les deux centrosomes, dupliqués pendant l'interphase, s'écartent pour former le fuseau."
+          "fr": "La chromatine se condense en chromosomes, chacun formé de deux chromatides sœurs ; les deux centrosomes, dupliqués pendant l'interphase, s'écartent pour former le fuseau.",
+          "en": "Chromatin condenses into chromosomes, each made of two sister chromatids; the two centrosomes, duplicated during interphase, move apart to form the spindle."
         },
         "sources": [
           {
@@ -57,7 +62,8 @@
     {
       "id": "prometaphase",
       "title": {
-        "fr": "Prométaphase"
+        "fr": "Prométaphase",
+        "en": "Prometaphase"
       },
       "range": [
         0.18,
@@ -65,7 +71,8 @@
       ],
       "description": {
         "text": {
-          "fr": "L'enveloppe nucléaire se désassemble ; les microtubules du fuseau s'attachent aux chromosomes."
+          "fr": "L'enveloppe nucléaire se désassemble ; les microtubules du fuseau s'attachent aux chromosomes.",
+          "en": "The nuclear envelope breaks down; spindle microtubules attach to the chromosomes."
         },
         "sources": [
           {
@@ -89,7 +96,8 @@
     {
       "id": "metaphase",
       "title": {
-        "fr": "Métaphase"
+        "fr": "Métaphase",
+        "en": "Metaphase"
       },
       "range": [
         0.32,
@@ -97,7 +105,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les chromosomes s'alignent sur la plaque équatoriale, à mi-chemin entre les deux pôles du fuseau."
+          "fr": "Les chromosomes s'alignent sur la plaque équatoriale, à mi-chemin entre les deux pôles du fuseau.",
+          "en": "The chromosomes line up on the equatorial plate, halfway between the two spindle poles."
         },
         "sources": [
           {
@@ -118,7 +127,8 @@
     {
       "id": "anaphase",
       "title": {
-        "fr": "Anaphase"
+        "fr": "Anaphase",
+        "en": "Anaphase"
       },
       "range": [
         0.48,
@@ -126,7 +136,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Les chromatides sœurs se séparent et sont tirées vers les pôles opposés du fuseau."
+          "fr": "Les chromatides sœurs se séparent et sont tirées vers les pôles opposés du fuseau.",
+          "en": "Sister chromatids separate and are pulled towards opposite poles of the spindle."
         },
         "sources": [
           {
@@ -150,7 +161,8 @@
     {
       "id": "telophase",
       "title": {
-        "fr": "Télophase"
+        "fr": "Télophase",
+        "en": "Telophase"
       },
       "range": [
         0.64,
@@ -158,7 +170,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Une enveloppe nucléaire se reforme autour de chaque lot de chromosomes, qui se décondensent."
+          "fr": "Une enveloppe nucléaire se reforme autour de chaque lot de chromosomes, qui se décondensent.",
+          "en": "A nuclear envelope re-forms around each set of chromosomes, which decondense."
         },
         "sources": [
           {
@@ -179,7 +192,8 @@
     {
       "id": "cytocinese",
       "title": {
-        "fr": "Cytocinèse"
+        "fr": "Cytocinèse",
+        "en": "Cytokinesis"
       },
       "range": [
         0.8,
@@ -187,7 +201,8 @@
       ],
       "description": {
         "text": {
-          "fr": "Un anneau contractile d'actine et de myosine II resserre la cellule en son milieu et la divise en deux cellules filles."
+          "fr": "Un anneau contractile d'actine et de myosine II resserre la cellule en son milieu et la divise en deux cellules filles.",
+          "en": "A contractile ring of actin and myosin II tightens around the middle of the cell and divides it into two daughter cells."
         },
         "sources": [
           {

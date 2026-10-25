@@ -66,6 +66,23 @@ export function collectSourceRefs(value: unknown, acc: string[] = []): string[] 
   return acc;
 }
 
+/**
+ * Paths of every localised text that has no English. French is the reference language; English is
+ * required too so that the language switch never shows half-translated pages.
+ */
+export function collectMissingEnglish(value: unknown, path = '', acc: string[] = []): string[] {
+  if (Array.isArray(value)) value.forEach((v, i) => collectMissingEnglish(v, `${path}[${i}]`, acc));
+  else if (value && typeof value === 'object') {
+    const obj = value as Record<string, unknown>;
+    if (typeof obj.fr === 'string') {
+      if (typeof obj.en !== 'string' || !obj.en.trim()) acc.push(path || '(racine)');
+      return acc;
+    }
+    for (const [k, v] of Object.entries(obj)) collectMissingEnglish(v, path ? `${path}.${k}` : k, acc);
+  }
+  return acc;
+}
+
 /** Cross-file checks the schemas cannot express. */
 function checkStages(owner: string, stages: { id: string; range: [number, number] }[], issues: LoadIssue[]) {
   const sorted = [...stages].sort((a, b) => a.range[0] - b.range[0]);
@@ -92,6 +109,7 @@ export function checkIntegrity({ sources, organelles, processes, tours, diseases
   const check = (owner: string, value: unknown) => {
     for (const ref of collectSourceRefs(value))
       if (!sourceIds.has(ref)) issues.push({ file: owner, message: `source inconnue : ${ref}` });
+    for (const path of collectMissingEnglish(value)) issues.push({ file: owner, message: `traduction anglaise manquante : ${path}` });
   };
   organelles.forEach((o) => check(`organelle ${o.id}`, o));
 
