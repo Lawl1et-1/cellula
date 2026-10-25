@@ -126,17 +126,17 @@
     {
       "id": "mutation",
       "title": {
-        "fr": "Premières mutations",
-        "en": "First mutations"
+        "fr": "Une première mutation",
+        "en": "A first mutation"
       },
       "range": [
-        0,
-        0.3
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Une cellule acquiert une mutation dans un gène qui contrôle la division.",
-          "en": "A cell acquires a mutation in a gene that controls division."
+          "fr": "Une cellule acquiert une mutation dans l'un des gènes qui contrôlent la division cellulaire.",
+          "en": "A cell acquires a mutation in one of the genes that control cell division."
         },
         "sources": [
           {
@@ -144,23 +144,90 @@
           }
         ]
       },
-      "cellularSigns": [],
-      "focus": "dna"
+      "cellularSigns": [
+        {
+          "text": {
+            "fr": "La mutation est marquée en rouge dans l'ADN.",
+            "en": "The mutation is marked in red in the DNA."
+          },
+          "sources": [
+            {
+              "id": "mboc4-cancer-division"
+            }
+          ]
+        }
+      ],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 12
+      },
+      "seconds": 12
     },
     {
-      "id": "proliferation",
+      "id": "signal",
       "title": {
-        "fr": "Prolifération",
-        "en": "Proliferation"
+        "fr": "Un frein lâche, un accélérateur bloqué",
+        "en": "A failed brake, a stuck accelerator"
       },
       "range": [
-        0.3,
-        0.65
+        0.2,
+        0.4
       ],
       "description": {
         "text": {
-          "fr": "Elle se divise plus que ses voisines et transmet ses mutations à ses descendantes.",
-          "en": "It divides more than its neighbours and passes its mutations on to its daughter cells."
+          "fr": "Selon le gène touché, la protéine produite devient trop active et pousse à la division (oncogène), ou bien le frein qui arrêtait la division disparaît (gène suppresseur de tumeur, comme p53).",
+          "en": "Depending on the gene hit, the protein it makes becomes overactive and drives division (an oncogene), or the brake that stopped division is lost (a tumour suppressor gene, such as p53)."
+        },
+        "sources": [
+          {
+            "id": "mboc4-cancer-division"
+          },
+          {
+            "id": "mboc4-cancer-behaviour"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "nucleus.pore",
+        "radius": 13
+      },
+      "highlight": [
+        "dna",
+        "nucleus"
+      ],
+      "heroes": [
+        {
+          "model": "protein",
+          "path": [
+            "nucleus.pore",
+            "cytoplasm"
+          ],
+          "count": 4,
+          "label": {
+            "fr": "Protéine du gène muté",
+            "en": "Protein of the mutated gene"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "division",
+      "title": {
+        "fr": "Division incontrôlée",
+        "en": "Uncontrolled division"
+      },
+      "range": [
+        0.4,
+        0.6
+      ],
+      "description": {
+        "text": {
+          "fr": "La cellule se divise plus que ses voisines et transmet ses mutations à toutes ses descendantes.",
+          "en": "The cell divides more than its neighbours and passes its mutations on to all its daughter cells."
         },
         "sources": [
           {
@@ -171,12 +238,12 @@
       "cellularSigns": [
         {
           "text": {
-            "fr": "Les cellules se divisent sans contrôle.",
-            "en": "The cells divide out of control."
+            "fr": "Les cellules voisines qui apparaissent sont schématiques.",
+            "en": "The neighbouring cells that appear are schematic."
           },
           "sources": [
             {
-              "id": "mboc4-cancer-division"
+              "id": "mboc4-cancer"
             }
           ]
         }
@@ -184,39 +251,81 @@
       "focus": "plasma-membrane",
       "camera": {
         "view": "cell",
-        "radius": 170
-      }
+        "radius": 150
+      },
+      "highlight": [
+        "nucleus"
+      ],
+      "seconds": 12
     },
     {
-      "id": "instabilite",
+      "id": "apoptosis",
       "title": {
-        "fr": "Instabilité et survie",
-        "en": "Instability and survival"
+        "fr": "Échapper à la mort programmée",
+        "en": "Escaping programmed death"
       },
       "range": [
-        0.65,
-        1
+        0.6,
+        0.8
       ],
       "description": {
         "text": {
-          "fr": "De nouvelles mutations s'accumulent et permettent aux cellules d'échapper à l'apoptose.",
-          "en": "New mutations build up and let the cells escape apoptosis."
+          "fr": "Normalement, une cellule anormale se suicide par apoptose. Des mutations de gènes qui régulent l'apoptose permettent aux cellules cancéreuses d'y échapper.",
+          "en": "Normally, an abnormal cell kills itself by apoptosis. Mutations in genes that regulate apoptosis let cancer cells escape it."
         },
         "sources": [
           {
             "id": "mboc4-cancer-apoptosis"
-          },
-          {
-            "id": "mboc4-cancer-behaviour"
           }
         ]
       },
       "cellularSigns": [],
-      "focus": "plasma-membrane",
+      "focus": "nucleus",
       "camera": {
-        "view": "cell",
-        "radius": 190
-      }
+        "at": "nucleus",
+        "radius": 34
+      },
+      "highlight": [
+        "dna"
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "instability",
+      "title": {
+        "fr": "Instabilité génétique",
+        "en": "Genetic instability"
+      },
+      "range": [
+        0.8,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "Au fil des divisions, de nouvelles mutations s'accumulent : chaque cancer finit par porter son propre ensemble de lésions génétiques.",
+          "en": "Over successive divisions, new mutations build up: each cancer ends up carrying its own set of genetic lesions."
+        },
+        "sources": [
+          {
+            "id": "mboc4-cancer-behaviour"
+          }
+        ],
+        "simplification": {
+          "fr": "Les marques jaunes figurent les lésions accumulées ; elles ne sont pas à l'échelle.",
+          "en": "The yellow marks stand for the accumulated lesions; they are not to scale."
+        }
+      },
+      "cellularSigns": [],
+      "focus": "dna",
+      "camera": {
+        "at": "dna",
+        "radius": 16
+      },
+      "highlight": [
+        "lesions",
+        "nucleus"
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
@@ -225,14 +334,14 @@
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.12,
-          "v": 1
+          "t": 0.02,
+          "v": 0.0
         },
         {
-          "t": 1,
+          "t": 0.14,
           "v": 1
         }
       ]
@@ -242,18 +351,22 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.3,
-          "v": 1.5
+          "t": 0.42,
+          "v": 1.0
         },
         {
-          "t": 0.65,
-          "v": 4
+          "t": 0.54,
+          "v": 3
         },
         {
-          "t": 1,
+          "t": 0.82,
+          "v": 3
+        },
+        {
+          "t": 0.94,
           "v": 5
         }
       ]
@@ -263,46 +376,45 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 1,
-          "v": 1.25
+          "t": 0.42,
+          "v": 1.0
+        },
+        {
+          "t": 0.54,
+          "v": 1.2
+        },
+        {
+          "t": 0.82,
+          "v": 1.2
+        },
+        {
+          "t": 0.94,
+          "v": 1.35
         }
       ]
     },
     {
-      "channel": "view.focusDim",
+      "channel": "dna.damage",
       "keys": [
         {
           "t": 0,
-          "v": 0
+          "v": 0.0
         },
         {
-          "t": 0.05,
-          "v": 0.2
+          "t": 0.82,
+          "v": 0.0
         },
         {
-          "t": 0.95,
-          "v": 0.2
-        },
-        {
-          "t": 1,
-          "v": 0
+          "t": 0.94,
+          "v": 0.45
         }
       ]
     }
   ],
-  "actors": [
-    {
-      "actor": "pulse",
-      "at": 0.0,
-      "until": 0.3,
-      "params": {
-        "at": "nucleus"
-      }
-    }
-  ],
+  "actors": [],
   "review": {
     "status": "draft",
     "lastChecked": "2026-10-25"
@@ -317,5 +429,6 @@
         "id": "mboc4-cancer"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }
