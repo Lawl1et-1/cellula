@@ -15,7 +15,7 @@ import {
 import type { ActorCue, CargoKind } from '@/content/schema/scenario';
 import { activeCues, evaluateChannels, stageIndexAt } from '@/engine/timeline/evaluate';
 import { liveChannels } from '@/engine/timeline/live';
-import { useScenario } from '@/state/scenario';
+import { STEP_EPSILON, useScenario } from '@/state/scenario';
 import { useSelection } from '@/state/selection';
 import { anchors, stageFocus } from './anchors';
 import { Mitosis } from './Mitosis';
@@ -48,23 +48,43 @@ const hash = (n: number) => {
 const smooth = (x: number) => x * x * (3 - 2 * x);
 const clamp01 = (x: number) => Math.min(1, Math.max(0, x));
 
-/** Advances time, evaluates channels and frames the camera on each new stage. */
+/** Pause between two steps when they are chained automatically (time to read the caption). */
+const AUTOPLAY_PAUSE = 1.6;
+
+/**
+ * Advances time step by step, evaluates channels, frames the camera on each new step and tells the scene
+ * what the step is about (focus mode). Each step plays at its own pace and holds on its last frame.
+ */
 function Player() {
   const lastStage = useRef<string | null>(null);
+  const held = useRef(0);
   useFrame((_, delta) => {
     const s = useScenario.getState();
     const p = s.scenario;
     if (!p) {
       if (lastStage.current !== null) {
         evaluateChannels([], 0, liveChannels);
+        useSelection.getState().setFocusKeys([]);
         lastStage.current = null;
       }
       return;
     }
     if (s.playing) {
-      const t = s.t + (Math.min(delta, 0.1) * s.speed) / p.durationSeconds;
-      if (t >= 1) useScenario.setState({ t: 1, playing: false });
-      else useScenario.setState({ t });
+      const i = stageIndexAt(p.stages, s.t);
+      const stage = p.stages[i]!;
+      const [a, b] = stage.range;
+      const last = i === p.stages.length - 1;
+      const end = last ? 1 : b - STEP_EPSILON;
+      const dt = Math.min(delta, 0.1) * s.speed;
+      let t = s.t + (dt * (b - a)) / stage.seconds;
+      if (t >= end) {
+        t = end;
+        if (last || !s.autoplay) useScenario.setState({ t, playing: false });
+        else if ((held.current += dt) >= AUTOPLAY_PAUSE) {
+          held.current = 0;
+          useScenario.setState({ t: b + STEP_EPSILON });
+        } else useScenario.setState({ t });
+      } else useScenario.setState({ t });
     }
     const t = useScenario.getState().t;
     evaluateChannels(p.tracks, t, liveChannels);
@@ -72,7 +92,10 @@ function Player() {
     const key = `${p.id}:${stage.id}`;
     if (key !== lastStage.current) {
       lastStage.current = key;
-      if (stage.focus) useSelection.getState().frame(stageFocus(stage.focus, stage.camera));
+      held.current = 0;
+      const keys = [...(stage.focus ? [stage.focus] : []), ...stage.highlight];
+      useSelection.getState().setFocusKeys(keys.length ? keys : ['cytoplasm']);
+      if (stage.focus) useSelection.getState().frame(stageFocus(stage.focus, stage.camera), null);
     }
   }, -10);
   return null;

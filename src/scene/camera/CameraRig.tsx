@@ -7,6 +7,8 @@ import CameraControlsImpl from 'camera-controls';
 import { Vector3 } from 'three';
 import { useScene } from '@/state/scene';
 import { useSelection } from '@/state/selection';
+import { useScenario } from '@/state/scenario';
+import { useUi } from '@/state/ui';
 import { timeScale } from '../time';
 import { cameraPosition, focusPoint } from './focus';
 
@@ -59,6 +61,10 @@ export function CameraRig() {
   const keys = useFlightKeys();
   const wheelBoost = useRef(0);
   const prevMode = useRef(mode);
+  // Focus mode: the step frames the camera; the reader can unlock it from the control bar.
+  const scenarioOn = useScenario((s) => !!s.scenario);
+  const unlocked = useUi((s) => s.cameraUnlocked);
+  const locked = scenarioOn && !unlocked;
 
   // Mode transitions.
   useEffect(() => {
@@ -151,6 +157,25 @@ export function CameraRig() {
     });
   }, [controls]);
 
+  // Focus mode: remember the view when a scenario starts and fly back to it when the reader exits.
+  useEffect(() => {
+    if (!controls) return;
+    let saved: { position: Vector3; target: Vector3 } | null = null;
+    return useScenario.subscribe((state, prev) => {
+      if (state.scenario && !prev.scenario) {
+        saved = { position: controls.getPosition(new Vector3()), target: controls.getTarget(new Vector3()) };
+        useUi.getState().setCameraUnlocked(false);
+      } else if (!state.scenario && prev.scenario && saved) {
+        const { position: p, target: t } = saved;
+        saved = null;
+        controls.smoothTime = 0.9;
+        void controls.setLookAt(p.x, p.y, p.z, t.x, t.y, t.z, true).then(() => {
+          controls.smoothTime = 0.45;
+        });
+      }
+    });
+  }, [controls]);
+
   // Wheel moves forward in flight mode.
   useEffect(() => {
     if (mode !== 'flight') return;
@@ -170,7 +195,9 @@ export function CameraRig() {
     if (mode === 'intro') {
       c.azimuthAngle += dt * 0.006 * timeScale();
     } else if (mode === 'orbit') {
-      if (performance.now() - lastInteraction > IDLE_DELAY) c.azimuthAngle += dt * 0.03 * timeScale();
+      // No idle drift while a step is framed: the camera stays on the action.
+      const framedStep = !!useScenario.getState().scenario && !useUi.getState().cameraUnlocked;
+      if (!framedStep && performance.now() - lastInteraction > IDLE_DELAY) c.azimuthAngle += dt * 0.03 * timeScale();
     } else {
       const k = keys.current;
       const boost = k.has('ShiftLeft') || k.has('ShiftRight') ? 3 : 1;
@@ -211,7 +238,7 @@ export function CameraRig() {
     <CameraControls
       ref={setControls}
       makeDefault
-      enabled={mode !== 'intro'}
+      enabled={mode !== 'intro' && !locked}
       smoothTime={0.45}
       draggingSmoothTime={0.12}
       onStart={touch}

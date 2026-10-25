@@ -24,7 +24,7 @@ export function OrganelleList() {
 
   const libraryOpen = useUi((s) => s.libraryOpen);
   // The library drawer and the disease narration use the same space on the left…
-  const diseasePlaying = useScenario((s) => s.scenario?.kind === 'disease');
+  const diseasePlaying = useScenario((s) => !!s.scenario);
   // So does the DNA close-up card.
   const dnaCloseup = useUi((s) => s.dnaLevel !== null);
   if (libraryOpen || diseasePlaying || dnaCloseup) return null;

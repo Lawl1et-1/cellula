@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import type { OrganelleId } from '@/content/schema/common';
+import type { FocusKey } from '@/content/schema/scenario';
 
 export interface Target {
   organelle: OrganelleId;
@@ -22,6 +23,9 @@ interface SelectionState {
   framing: Focus | null;
   /** Organelle lit up by a process or the tour. */
   spotlight: OrganelleId | null;
+  /** Focus mode: everything a scenario step involves (kept in colour while the rest is ghosted). */
+  focusKeys: FocusKey[];
+  setFocusKeys: (keys: FocusKey[]) => void;
   hover: (t: Target | null) => void;
   select: (f: Focus | null) => void;
   frame: (f: Focus | null, spotlight?: OrganelleId | null) => void;
@@ -35,6 +39,8 @@ export const useSelection = create<SelectionState>((set, get) => ({
   selected: null,
   framing: null,
   spotlight: null,
+  focusKeys: [],
+  setFocusKeys: (focusKeys) => set({ focusKeys }),
   hover: (t) => {
     if (!same(get().hovered, t)) set({ hovered: t });
   },

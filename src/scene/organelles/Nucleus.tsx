@@ -95,12 +95,11 @@ const LESION: OrganicOptions = {
   emissiveStrength: 2.2,
   sss: 0.5,
   gloss: 0.6,
-  dimmable: false,
 };
 
 /** Where the point mutation is shown: a chromatin locus on the side the default camera looks from. */
 const FRONT = new Vector3(-0.15, 0.14, 0.98).normalize();
-function mutationSite() {
+export function mutationSite() {
   let best = new Vector3();
   let score = -Infinity;
   for (const p of chromatinSamples) {
@@ -356,6 +355,7 @@ export function Nucleus() {
         <mesh geometry={parts.nucleolus2} material={parts.nucleolusMat} position={NUCLEOLI[1]!.at} />
         <InstancedOrganelle
           name="dna-lesions"
+          organelle="lesions"
           geometry={markers.geometry}
           material={LESION}
           {...markers.lesions}
