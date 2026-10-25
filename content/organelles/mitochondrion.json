@@ -1,14 +1,17 @@
 {
   "id": "mitochondrion",
   "name": {
-    "fr": "Mitochondrie"
+    "fr": "Mitochondrie",
+    "en": "Mitochondrion"
   },
   "tagline": {
-    "fr": "La centrale énergétique"
+    "fr": "La centrale énergétique",
+    "en": "The power station"
   },
   "summary": {
     "text": {
-      "fr": "Organite à deux membranes où l'énergie des nutriments est convertie en ATP, principale monnaie énergétique de la cellule, grâce à l'oxygène."
+      "fr": "Organite à deux membranes où l'énergie des nutriments est convertie en ATP, principale monnaie énergétique de la cellule, grâce à l'oxygène.",
+      "en": "A double-membrane organelle where the energy in nutrients is converted, using oxygen, into ATP, the cell's main energy currency."
     },
     "sources": [
       {
@@ -22,7 +25,8 @@
   "function": [
     {
       "text": {
-        "fr": "Elle oxyde le pyruvate et les acides gras dans sa matrice (cycle de l'acide citrique), ce qui fournit des électrons riches en énergie."
+        "fr": "Elle oxyde le pyruvate et les acides gras dans sa matrice (cycle de l'acide citrique), ce qui fournit des électrons riches en énergie.",
+        "en": "It oxidises pyruvate and fatty acids in its matrix (the citric acid cycle), which supplies high-energy electrons."
       },
       "sources": [
         {
@@ -35,7 +39,8 @@
     },
     {
       "text": {
-        "fr": "La chaîne respiratoire de la membrane interne utilise ces électrons pour pomper des protons ; le gradient ainsi créé alimente l'ATP synthase."
+        "fr": "La chaîne respiratoire de la membrane interne utilise ces électrons pour pomper des protons ; le gradient ainsi créé alimente l'ATP synthase.",
+        "en": "The respiratory chain in the inner membrane uses these electrons to pump protons; the resulting gradient drives ATP synthase."
       },
       "sources": [
         {
@@ -47,7 +52,8 @@
   "structure": [
     {
       "text": {
-        "fr": "Elle a une membrane externe, une membrane interne, l'espace entre les deux (espace intermembranaire) et un compartiment central, la matrice."
+        "fr": "Elle a une membrane externe, une membrane interne, l'espace entre les deux (espace intermembranaire) et un compartiment central, la matrice.",
+        "en": "It has an outer membrane, an inner membrane, the space between them (the intermembrane space) and a central compartment, the matrix."
       },
       "sources": [
         {
@@ -57,7 +63,8 @@
     },
     {
       "text": {
-        "fr": "La membrane interne forme de nombreux replis, les crêtes, qui augmentent sa surface."
+        "fr": "La membrane interne forme de nombreux replis, les crêtes, qui augmentent sa surface.",
+        "en": "The inner membrane forms many folds, the cristae, which increase its surface area."
       },
       "sources": [
         {
@@ -65,12 +72,14 @@
         }
       ],
       "simplification": {
-        "fr": "Les crêtes sont représentées comme des lames régulières ; leur forme réelle varie selon le type de cellule."
+        "fr": "Les crêtes sont représentées comme des lames régulières ; leur forme réelle varie selon le type de cellule.",
+        "en": "The cristae are shown as regular plates; their real shape varies with the cell type."
       }
     },
     {
       "text": {
-        "fr": "Elle possède son propre ADN."
+        "fr": "Elle possède son propre ADN.",
+        "en": "It has its own DNA."
       },
       "sources": [
         {
@@ -82,11 +91,13 @@
   "keyMolecules": [
     {
       "name": {
-        "fr": "ATP synthase"
+        "fr": "ATP synthase",
+        "en": "ATP synthase"
       },
       "role": {
         "text": {
-          "fr": "Turbine moléculaire de la membrane interne qui fabrique l'ATP grâce au flux de protons."
+          "fr": "Turbine moléculaire de la membrane interne qui fabrique l'ATP grâce au flux de protons.",
+          "en": "A molecular turbine in the inner membrane that makes ATP using the flow of protons."
         },
         "sources": [
           {
@@ -97,11 +108,13 @@
     },
     {
       "name": {
-        "fr": "Complexes de la chaîne respiratoire"
+        "fr": "Complexes de la chaîne respiratoire",
+        "en": "Respiratory chain complexes"
       },
       "role": {
         "text": {
-          "fr": "Transfèrent les électrons jusqu'à l'oxygène en pompant des protons."
+          "fr": "Transfèrent les électrons jusqu'à l'oxygène en pompant des protons.",
+          "en": "Pass electrons along to oxygen while pumping protons."
         },
         "sources": [
           {
@@ -116,7 +129,8 @@
       "with": "cytoplasm",
       "description": {
         "text": {
-          "fr": "Le pyruvate produit dans le cytosol par la glycolyse est importé dans la mitochondrie."
+          "fr": "Le pyruvate produit dans le cytosol par la glycolyse est importé dans la mitochondrie.",
+          "en": "Pyruvate produced in the cytosol by glycolysis is imported into the mitochondrion."
         },
         "sources": [
           {
@@ -129,7 +143,8 @@
       "with": "cytoskeleton",
       "description": {
         "text": {
-          "fr": "Elle se déplace le long des microtubules grâce aux protéines motrices."
+          "fr": "Elle se déplace le long des microtubules grâce aux protéines motrices.",
+          "en": "It moves along microtubules with the help of motor proteins."
         },
         "sources": [
           {
@@ -142,7 +157,8 @@
       "with": "dna",
       "description": {
         "text": {
-          "fr": "Elle possède son propre petit génome, distinct de l'ADN du noyau."
+          "fr": "Elle possède son propre petit génome, distinct de l'ADN du noyau.",
+          "en": "It has its own small genome, separate from the DNA in the nucleus."
         },
         "sources": [
           {

@@ -1,14 +1,17 @@
 {
   "id": "peroxisome",
   "name": {
-    "fr": "Peroxysome"
+    "fr": "Peroxysome",
+    "en": "Peroxisome"
   },
   "tagline": {
-    "fr": "Oxydations et détoxification"
+    "fr": "Oxydations et détoxification",
+    "en": "Oxidation and detoxification"
   },
   "summary": {
     "text": {
-      "fr": "Petit organite entouré d'une seule membrane, qui utilise l'oxygène pour des réactions d'oxydation et produit puis détruit du peroxyde d'hydrogène."
+      "fr": "Petit organite entouré d'une seule membrane, qui utilise l'oxygène pour des réactions d'oxydation et produit puis détruit du peroxyde d'hydrogène.",
+      "en": "A small organelle surrounded by a single membrane that uses oxygen for oxidation reactions and both makes and destroys hydrogen peroxide."
     },
     "sources": [
       {
@@ -19,7 +22,8 @@
   "function": [
     {
       "text": {
-        "fr": "Il oxyde divers composés, dont les acides gras, et participe à leur dégradation."
+        "fr": "Il oxyde divers composés, dont les acides gras, et participe à leur dégradation.",
+        "en": "It oxidises various compounds, including fatty acids, and helps break them down."
       },
       "sources": [
         {
@@ -29,7 +33,8 @@
     },
     {
       "text": {
-        "fr": "La catalase y décompose le peroxyde d'hydrogène, toxique, ou l'utilise pour oxyder d'autres molécules."
+        "fr": "La catalase y décompose le peroxyde d'hydrogène, toxique, ou l'utilise pour oxyder d'autres molécules.",
+        "en": "There, catalase breaks down toxic hydrogen peroxide or uses it to oxidise other molecules."
       },
       "sources": [
         {
@@ -39,7 +44,8 @@
     },
     {
       "text": {
-        "fr": "Il participe à la synthèse de certains lipides, les plasmalogènes, abondants dans la myéline."
+        "fr": "Il participe à la synthèse de certains lipides, les plasmalogènes, abondants dans la myéline.",
+        "en": "It helps make certain lipids, the plasmalogens, which are abundant in myelin."
       },
       "sources": [
         {
@@ -51,7 +57,8 @@
   "structure": [
     {
       "text": {
-        "fr": "Il ne possède ni ADN ni ribosomes : ses protéines viennent du cytosol, guidées par un court signal d'adressage."
+        "fr": "Il ne possède ni ADN ni ribosomes : ses protéines viennent du cytosol, guidées par un court signal d'adressage.",
+        "en": "It has neither DNA nor ribosomes: its proteins come from the cytosol, guided by a short targeting signal."
       },
       "sources": [
         {
@@ -63,11 +70,13 @@
   "keyMolecules": [
     {
       "name": {
-        "fr": "Catalase"
+        "fr": "Catalase",
+        "en": "Catalase"
       },
       "role": {
         "text": {
-          "fr": "Enzyme qui décompose le peroxyde d'hydrogène."
+          "fr": "Enzyme qui décompose le peroxyde d'hydrogène.",
+          "en": "An enzyme that breaks down hydrogen peroxide."
         },
         "sources": [
           {
@@ -82,7 +91,8 @@
       "with": "cytoplasm",
       "description": {
         "text": {
-          "fr": "Ses enzymes sont fabriquées dans le cytosol puis importées."
+          "fr": "Ses enzymes sont fabriquées dans le cytosol puis importées.",
+          "en": "Its enzymes are made in the cytosol and then imported."
         },
         "sources": [
           {

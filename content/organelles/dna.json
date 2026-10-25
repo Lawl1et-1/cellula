@@ -1,14 +1,17 @@
 {
   "id": "dna",
   "name": {
-    "fr": "ADN et chromatine"
+    "fr": "ADN et chromatine",
+    "en": "DNA and chromatin"
   },
   "tagline": {
-    "fr": "Le génome, empaqueté dans le noyau"
+    "fr": "Le génome, empaqueté dans le noyau",
+    "en": "The genome, packaged in the nucleus"
   },
   "summary": {
     "text": {
-      "fr": "L'ADN est la molécule qui porte l'information génétique. Dans le noyau, il est associé à des protéines pour former la chromatine, un enchevêtrement de fibres très fines."
+      "fr": "L'ADN est la molécule qui porte l'information génétique. Dans le noyau, il est associé à des protéines pour former la chromatine, un enchevêtrement de fibres très fines.",
+      "en": "DNA is the molecule that carries genetic information. In the nucleus, it is bound to proteins to form chromatin, a tangle of very thin fibres."
     },
     "sources": [
       {
@@ -22,7 +25,8 @@
   "function": [
     {
       "text": {
-        "fr": "Les gènes sont des segments d'ADN. Lors de la transcription, un brin sert de modèle pour fabriquer un ARN de séquence complémentaire."
+        "fr": "Les gènes sont des segments d'ADN. Lors de la transcription, un brin sert de modèle pour fabriquer un ARN de séquence complémentaire.",
+        "en": "Genes are stretches of DNA. During transcription, one strand serves as the template for making an RNA with the complementary sequence."
       },
       "sources": [
         {
@@ -35,7 +39,8 @@
     },
     {
       "text": {
-        "fr": "Les ARN messagers quittent le noyau par les complexes du pore nucléaire, puis sont traduits en protéines par les ribosomes, libres dans le cytosol ou fixés au réticulum endoplasmique rugueux."
+        "fr": "Les ARN messagers quittent le noyau par les complexes du pore nucléaire, puis sont traduits en protéines par les ribosomes, libres dans le cytosol ou fixés au réticulum endoplasmique rugueux.",
+        "en": "Messenger RNAs leave the nucleus through nuclear pore complexes and are then translated into proteins by ribosomes, either free in the cytosol or bound to the rough endoplasmic reticulum."
       },
       "sources": [
         {
@@ -48,7 +53,8 @@
     },
     {
       "text": {
-        "fr": "Avant chaque division, l'ADN est entièrement copié : les deux brins se séparent et chacun sert de modèle à un nouveau brin complémentaire."
+        "fr": "Avant chaque division, l'ADN est entièrement copié : les deux brins se séparent et chacun sert de modèle à un nouveau brin complémentaire.",
+        "en": "Before each division, the DNA is copied in full: the two strands separate and each serves as the template for a new complementary strand."
       },
       "sources": [
         {
@@ -63,7 +69,8 @@
   "structure": [
     {
       "text": {
-        "fr": "L'ADN est formé de deux brins enroulés l'un autour de l'autre en double hélice. Chaque brin est une chaîne de nucléotides reliés par un squelette de sucres (désoxyribose) et de phosphates."
+        "fr": "L'ADN est formé de deux brins enroulés l'un autour de l'autre en double hélice. Chaque brin est une chaîne de nucléotides reliés par un squelette de sucres (désoxyribose) et de phosphates.",
+        "en": "DNA is made of two strands wound around each other in a double helix. Each strand is a chain of nucleotides linked by a backbone of sugars (deoxyribose) and phosphates."
       },
       "sources": [
         {
@@ -76,7 +83,8 @@
     },
     {
       "text": {
-        "fr": "Il existe quatre bases : adénine (A), thymine (T), guanine (G) et cytosine (C). Les deux brins sont complémentaires : A s'apparie toujours avec T, et G avec C."
+        "fr": "Il existe quatre bases : adénine (A), thymine (T), guanine (G) et cytosine (C). Les deux brins sont complémentaires : A s'apparie toujours avec T, et G avec C.",
+        "en": "There are four bases: adenine (A), thymine (T), guanine (G) and cytosine (C). The two strands are complementary: A always pairs with T, and G with C."
       },
       "sources": [
         {
@@ -86,7 +94,8 @@
     },
     {
       "text": {
-        "fr": "Le génome humain compte environ 3,2 milliards de paires de nucléotides, réparties sur 24 chromosomes différents ; une cellule somatique en possède deux jeux, soit 46 chromosomes (23 paires)."
+        "fr": "Le génome humain compte environ 3,2 milliards de paires de nucléotides, réparties sur 24 chromosomes différents ; une cellule somatique en possède deux jeux, soit 46 chromosomes (23 paires).",
+        "en": "The human genome contains about 3.2 billion nucleotide pairs, spread over 24 different chromosomes; a somatic cell has two sets, that is 46 chromosomes (23 pairs)."
       },
       "sources": [
         {
@@ -96,7 +105,8 @@
     },
     {
       "text": {
-        "fr": "Mis bout à bout, l'ADN d'une seule cellule humaine mesurerait environ 2 mètres, alors que le noyau ne mesure qu'environ 6 µm de diamètre."
+        "fr": "Mis bout à bout, l'ADN d'une seule cellule humaine mesurerait environ 2 mètres, alors que le noyau ne mesure qu'environ 6 µm de diamètre.",
+        "en": "Laid end to end, the DNA of a single human cell would be about 2 metres long, while the nucleus is only about 6 µm across."
       },
       "sources": [
         {
@@ -106,7 +116,8 @@
     },
     {
       "text": {
-        "fr": "L'unité de base de cet empaquetage est le nucléosome : environ 146 paires de nucléotides d'ADN enroulées autour d'un cœur de huit histones. Reliés par de l'ADN de liaison, les nucléosomes forment un « collier de perles »."
+        "fr": "L'unité de base de cet empaquetage est le nucléosome : environ 146 paires de nucléotides d'ADN enroulées autour d'un cœur de huit histones. Reliés par de l'ADN de liaison, les nucléosomes forment un « collier de perles ».",
+        "en": "The basic unit of this packaging is the nucleosome: about 146 nucleotide pairs of DNA wrapped around a core of eight histones. Joined by linker DNA, nucleosomes form “beads on a string”."
       },
       "sources": [
         {
@@ -116,7 +127,8 @@
     },
     {
       "text": {
-        "fr": "Les nucléosomes s'empilent en une fibre de chromatine plus compacte, d'environ 30 nm de diamètre, qui se replie à son tour ; au moment de la division, elle se condense au maximum en chromosomes."
+        "fr": "Les nucléosomes s'empilent en une fibre de chromatine plus compacte, d'environ 30 nm de diamètre, qui se replie à son tour ; au moment de la division, elle se condense au maximum en chromosomes.",
+        "en": "Nucleosomes stack into a more compact chromatin fibre, about 30 nm across, which folds further; at division, it condenses as far as it can into chromosomes."
       },
       "sources": [
         {
@@ -127,12 +139,14 @@
         }
       ],
       "simplification": {
-        "fr": "La fibre de 30 nm est montrée selon le modèle classique des manuels ; l'organisation réelle de la chromatine est plus irrégulière."
+        "fr": "La fibre de 30 nm est montrée selon le modèle classique des manuels ; l'organisation réelle de la chromatine est plus irrégulière.",
+        "en": "The 30 nm fibre is shown according to the classic textbook model; the real organisation of chromatin is more irregular."
       }
     },
     {
       "text": {
-        "fr": "L'hétérochromatine, très condensée, est en général silencieuse ; l'euchromatine, moins compacte, contient la plupart des gènes actifs."
+        "fr": "L'hétérochromatine, très condensée, est en général silencieuse ; l'euchromatine, moins compacte, contient la plupart des gènes actifs.",
+        "en": "Heterochromatin, highly condensed, is generally silent; euchromatin, less compact, contains most of the active genes."
       },
       "sources": [
         {
@@ -140,12 +154,14 @@
         }
       ],
       "simplification": {
-        "fr": "Dans le modèle, l'hétérochromatine (plus sombre) est placée contre l'enveloppe et autour du nucléole, l'euchromatine (plus claire) au centre."
+        "fr": "Dans le modèle, l'hétérochromatine (plus sombre) est placée contre l'enveloppe et autour du nucléole, l'euchromatine (plus claire) au centre.",
+        "en": "In the model, heterochromatin (darker) sits against the envelope and around the nucleolus, and euchromatin (lighter) in the centre."
       }
     },
     {
       "text": {
-        "fr": "Les mitochondries possèdent aussi leur propre petit génome, distinct de l'ADN du noyau."
+        "fr": "Les mitochondries possèdent aussi leur propre petit génome, distinct de l'ADN du noyau.",
+        "en": "Mitochondria also have their own small genome, separate from the DNA in the nucleus."
       },
       "sources": [
         {
@@ -160,11 +176,13 @@
   "keyMolecules": [
     {
       "name": {
-        "fr": "Histones"
+        "fr": "Histones",
+        "en": "Histones"
       },
       "role": {
         "text": {
-          "fr": "Protéines autour desquelles l'ADN s'enroule pour former les nucléosomes."
+          "fr": "Protéines autour desquelles l'ADN s'enroule pour former les nucléosomes.",
+          "en": "Proteins around which DNA wraps to form nucleosomes."
         },
         "sources": [
           {
@@ -175,11 +193,13 @@
     },
     {
       "name": {
-        "fr": "ARN polymérase"
+        "fr": "ARN polymérase",
+        "en": "RNA polymerase"
       },
       "role": {
         "text": {
-          "fr": "Enzyme qui fabrique un ARN en copiant un brin d'ADN."
+          "fr": "Enzyme qui fabrique un ARN en copiant un brin d'ADN.",
+          "en": "An enzyme that makes RNA by copying one strand of DNA."
         },
         "sources": [
           {
@@ -190,11 +210,13 @@
     },
     {
       "name": {
-        "fr": "ADN polymérase"
+        "fr": "ADN polymérase",
+        "en": "DNA polymerase"
       },
       "role": {
         "text": {
-          "fr": "Enzyme qui copie l'ADN lors de la réplication."
+          "fr": "Enzyme qui copie l'ADN lors de la réplication.",
+          "en": "An enzyme that copies DNA during replication."
         },
         "sources": [
           {
@@ -209,7 +231,8 @@
       "with": "nucleus",
       "description": {
         "text": {
-          "fr": "L'enveloppe nucléaire isole l'ADN du cytoplasme ; les échanges passent par les pores nucléaires."
+          "fr": "L'enveloppe nucléaire isole l'ADN du cytoplasme ; les échanges passent par les pores nucléaires.",
+          "en": "The nuclear envelope keeps DNA apart from the cytoplasm; traffic passes through the nuclear pores."
         },
         "sources": [
           {
@@ -222,7 +245,8 @@
       "with": "nucleolus",
       "description": {
         "text": {
-          "fr": "Le nucléole se forme autour des gènes des ARN ribosomiques."
+          "fr": "Le nucléole se forme autour des gènes des ARN ribosomiques.",
+          "en": "The nucleolus forms around the genes for ribosomal RNAs."
         },
         "sources": [
           {
@@ -235,7 +259,8 @@
       "with": "ribosome",
       "description": {
         "text": {
-          "fr": "Les ARN messagers transcrits à partir de l'ADN sont traduits par les ribosomes."
+          "fr": "Les ARN messagers transcrits à partir de l'ADN sont traduits par les ribosomes.",
+          "en": "Messenger RNAs transcribed from DNA are translated by ribosomes."
         },
         "sources": [
           {
@@ -248,7 +273,8 @@
       "with": "mitochondrion",
       "description": {
         "text": {
-          "fr": "Les mitochondries ont leur propre ADN, distinct de celui du noyau."
+          "fr": "Les mitochondries ont leur propre ADN, distinct de celui du noyau.",
+          "en": "Mitochondria have their own DNA, separate from that of the nucleus."
         },
         "sources": [
           {
@@ -263,14 +289,17 @@
     {
       "id": "helix",
       "title": {
-        "fr": "Double hélice"
+        "fr": "Double hélice",
+        "en": "Double helix"
       },
       "scale": {
-        "fr": "≈ 2 nm"
+        "fr": "≈ 2 nm",
+        "en": "≈ 2 nm"
       },
       "claim": {
         "text": {
-          "fr": "La double hélice d'ADN mesure environ 2 nm de diamètre. Les paires de bases (A–T et G–C) forment les barreaux de cette échelle torsadée, entre deux squelettes de sucres et de phosphates."
+          "fr": "La double hélice d'ADN mesure environ 2 nm de diamètre. Les paires de bases (A–T et G–C) forment les barreaux de cette échelle torsadée, entre deux squelettes de sucres et de phosphates.",
+          "en": "The DNA double helix is about 2 nm across. The base pairs (A–T and G–C) form the rungs of this twisted ladder, between two backbones of sugars and phosphates."
         },
         "sources": [
           {
@@ -285,14 +314,17 @@
     {
       "id": "nucleosome",
       "title": {
-        "fr": "Nucléosomes"
+        "fr": "Nucléosomes",
+        "en": "Nucleosomes"
       },
       "scale": {
-        "fr": "≈ 11 nm"
+        "fr": "≈ 11 nm",
+        "en": "≈ 11 nm"
       },
       "claim": {
         "text": {
-          "fr": "L'ADN s'enroule autour de cœurs de huit histones : c'est le « collier de perles », d'environ 11 nm de diamètre."
+          "fr": "L'ADN s'enroule autour de cœurs de huit histones : c'est le « collier de perles », d'environ 11 nm de diamètre.",
+          "en": "DNA wraps around cores of eight histones: these are the “beads on a string”, about 11 nm across."
         },
         "sources": [
           {
@@ -307,14 +339,17 @@
     {
       "id": "fiber",
       "title": {
-        "fr": "Fibre de chromatine"
+        "fr": "Fibre de chromatine",
+        "en": "Chromatin fibre"
       },
       "scale": {
-        "fr": "≈ 30 nm"
+        "fr": "≈ 30 nm",
+        "en": "≈ 30 nm"
       },
       "claim": {
         "text": {
-          "fr": "Les nucléosomes s'empilent en une fibre plus compacte, d'environ 30 nm de diamètre."
+          "fr": "Les nucléosomes s'empilent en une fibre plus compacte, d'environ 30 nm de diamètre.",
+          "en": "Nucleosomes stack into a more compact fibre, about 30 nm across."
         },
         "sources": [
           {
@@ -322,21 +357,25 @@
           }
         ],
         "simplification": {
-          "fr": "Modèle classique des manuels ; l'organisation réelle de la chromatine est plus irrégulière."
+          "fr": "Modèle classique des manuels ; l'organisation réelle de la chromatine est plus irrégulière.",
+          "en": "Classic textbook model; the real organisation of chromatin is more irregular."
         }
       }
     },
     {
       "id": "chromosome",
       "title": {
-        "fr": "Chromosome condensé"
+        "fr": "Chromosome condensé",
+        "en": "Condensed chromosome"
       },
       "scale": {
-        "fr": "≈ 1,4 µm"
+        "fr": "≈ 1,4 µm",
+        "en": "≈ 1.4 µm"
       },
       "claim": {
         "text": {
-          "fr": "Au moment de la division, la chromatine se condense au maximum : chaque chromosome est alors formé de deux chromatides sœurs, visibles au microscope optique."
+          "fr": "Au moment de la division, la chromatine se condense au maximum : chaque chromosome est alors formé de deux chromatides sœurs, visibles au microscope optique.",
+          "en": "At division, chromatin condenses as far as it can: each chromosome is then made of two sister chromatids, visible under a light microscope."
         },
         "sources": [
           {

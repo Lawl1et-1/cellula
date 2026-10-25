@@ -1,14 +1,17 @@
 {
   "id": "lysosome",
   "name": {
-    "fr": "Lysosome"
+    "fr": "Lysosome",
+    "en": "Lysosome"
   },
   "tagline": {
-    "fr": "Le centre de recyclage"
+    "fr": "Le centre de recyclage",
+    "en": "The recycling centre"
   },
   "summary": {
     "text": {
-      "fr": "Compartiment acide rempli d'enzymes digestives (hydrolases) capables de dégrader les grandes molécules biologiques."
+      "fr": "Compartiment acide rempli d'enzymes digestives (hydrolases) capables de dégrader les grandes molécules biologiques.",
+      "en": "An acidic compartment full of digestive enzymes (hydrolases) that can break down large biological molecules."
     },
     "sources": [
       {
@@ -19,7 +22,8 @@
   "function": [
     {
       "text": {
-        "fr": "Il digère les macromolécules apportées par l'endocytose, la phagocytose ou l'autophagie."
+        "fr": "Il digère les macromolécules apportées par l'endocytose, la phagocytose ou l'autophagie.",
+        "en": "It digests macromolecules brought in by endocytosis, phagocytosis or autophagy."
       },
       "sources": [
         {
@@ -32,7 +36,8 @@
     },
     {
       "text": {
-        "fr": "Les produits de la digestion sont renvoyés dans le cytosol pour être réutilisés."
+        "fr": "Les produits de la digestion sont renvoyés dans le cytosol pour être réutilisés.",
+        "en": "The products of digestion are sent back to the cytosol to be reused."
       },
       "sources": [
         {
@@ -44,7 +49,8 @@
   "structure": [
     {
       "text": {
-        "fr": "Sa membrane contient des pompes à protons qui maintiennent un pH acide à l'intérieur, nécessaire à l'activité de ses enzymes."
+        "fr": "Sa membrane contient des pompes à protons qui maintiennent un pH acide à l'intérieur, nécessaire à l'activité de ses enzymes.",
+        "en": "Its membrane contains proton pumps that keep the inside acidic, which its enzymes need in order to work."
       },
       "sources": [
         {
@@ -56,11 +62,13 @@
   "keyMolecules": [
     {
       "name": {
-        "fr": "Hydrolases acides"
+        "fr": "Hydrolases acides",
+        "en": "Acid hydrolases"
       },
       "role": {
         "text": {
-          "fr": "Enzymes (protéases, nucléases, lipases…) actives seulement en milieu acide."
+          "fr": "Enzymes (protéases, nucléases, lipases…) actives seulement en milieu acide.",
+          "en": "Enzymes (proteases, nucleases, lipases…) that are active only in an acidic environment."
         },
         "sources": [
           {
@@ -71,11 +79,13 @@
     },
     {
       "name": {
-        "fr": "Pompe à protons (ATPase de type V)"
+        "fr": "Pompe à protons (ATPase de type V)",
+        "en": "Proton pump (V-type ATPase)"
       },
       "role": {
         "text": {
-          "fr": "Acidifie l'intérieur du lysosome."
+          "fr": "Acidifie l'intérieur du lysosome.",
+          "en": "Acidifies the inside of the lysosome."
         },
         "sources": [
           {
@@ -90,7 +100,8 @@
       "with": "golgi",
       "description": {
         "text": {
-          "fr": "Ses enzymes lui sont livrées depuis le Golgi, triées grâce au mannose-6-phosphate."
+          "fr": "Ses enzymes lui sont livrées depuis le Golgi, triées grâce au mannose-6-phosphate.",
+          "en": "Its enzymes are delivered from the Golgi, sorted thanks to mannose 6-phosphate."
         },
         "sources": [
           {
@@ -103,7 +114,8 @@
       "with": "vesicle",
       "description": {
         "text": {
-          "fr": "Les endosomes et autres vésicules lui apportent le matériel à dégrader."
+          "fr": "Les endosomes et autres vésicules lui apportent le matériel à dégrader.",
+          "en": "Endosomes and other vesicles bring it the material to break down."
         },
         "sources": [
           {

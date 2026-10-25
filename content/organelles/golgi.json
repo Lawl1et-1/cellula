@@ -1,14 +1,17 @@
 {
   "id": "golgi",
   "name": {
-    "fr": "Appareil de Golgi"
+    "fr": "Appareil de Golgi",
+    "en": "Golgi apparatus"
   },
   "tagline": {
-    "fr": "Le centre de tri et d'expédition"
+    "fr": "Le centre de tri et d'expédition",
+    "en": "The sorting and shipping centre"
   },
   "summary": {
     "text": {
-      "fr": "Empilement de sacs aplatis, les citernes, qui reçoit les protéines et les lipides du réticulum endoplasmique, les modifie, les trie et les expédie vers leur destination."
+      "fr": "Empilement de sacs aplatis, les citernes, qui reçoit les protéines et les lipides du réticulum endoplasmique, les modifie, les trie et les expédie vers leur destination.",
+      "en": "A stack of flattened sacs, the cisternae, that receives proteins and lipids from the endoplasmic reticulum, modifies them, sorts them and ships them to their destination."
     },
     "sources": [
       {
@@ -19,7 +22,8 @@
   "function": [
     {
       "text": {
-        "fr": "Il modifie les protéines, notamment leurs chaînes de sucres, en passant d'une citerne à l'autre."
+        "fr": "Il modifie les protéines, notamment leurs chaînes de sucres, en passant d'une citerne à l'autre.",
+        "en": "It modifies proteins, notably their sugar chains, as they pass from one cisterna to the next."
       },
       "sources": [
         {
@@ -29,7 +33,8 @@
     },
     {
       "text": {
-        "fr": "Dans le réseau trans-golgien, il trie les molécules vers les lysosomes, la membrane plasmique ou la sécrétion."
+        "fr": "Dans le réseau trans-golgien, il trie les molécules vers les lysosomes, la membrane plasmique ou la sécrétion.",
+        "en": "In the trans-Golgi network, it sorts molecules towards lysosomes, the plasma membrane or secretion."
       },
       "sources": [
         {
@@ -44,7 +49,8 @@
   "structure": [
     {
       "text": {
-        "fr": "Il a une polarité : une face cis, qui reçoit les vésicules du RE, et une face trans, d'où partent les produits triés."
+        "fr": "Il a une polarité : une face cis, qui reçoit les vésicules du RE, et une face trans, d'où partent les produits triés.",
+        "en": "It has a polarity: a cis face, which receives vesicles from the ER, and a trans face, from which the sorted products leave."
       },
       "sources": [
         {
@@ -54,7 +60,8 @@
     },
     {
       "text": {
-        "fr": "Dans les cellules animales, il se trouve souvent près du noyau et du centrosome."
+        "fr": "Dans les cellules animales, il se trouve souvent près du noyau et du centrosome.",
+        "en": "In animal cells, it is often found near the nucleus and the centrosome."
       },
       "sources": [
         {
@@ -62,18 +69,21 @@
         }
       ],
       "simplification": {
-        "fr": "Le modèle montre une seule pile de six citernes ; une vraie cellule peut en avoir plusieurs, reliées entre elles."
+        "fr": "Le modèle montre une seule pile de six citernes ; une vraie cellule peut en avoir plusieurs, reliées entre elles.",
+        "en": "The model shows a single stack of six cisternae; a real cell can have several, linked together."
       }
     }
   ],
   "keyMolecules": [
     {
       "name": {
-        "fr": "Glycosyltransférases"
+        "fr": "Glycosyltransférases",
+        "en": "Glycosyltransferases"
       },
       "role": {
         "text": {
-          "fr": "Enzymes qui ajoutent ou modifient les chaînes de sucres des protéines."
+          "fr": "Enzymes qui ajoutent ou modifient les chaînes de sucres des protéines.",
+          "en": "Enzymes that add or modify the sugar chains of proteins."
         },
         "sources": [
           {
@@ -84,11 +94,13 @@
     },
     {
       "name": {
-        "fr": "Mannose-6-phosphate"
+        "fr": "Mannose-6-phosphate",
+        "en": "Mannose 6-phosphate"
       },
       "role": {
         "text": {
-          "fr": "Étiquette ajoutée aux enzymes destinées aux lysosomes, reconnue par un récepteur du réseau trans-golgien."
+          "fr": "Étiquette ajoutée aux enzymes destinées aux lysosomes, reconnue par un récepteur du réseau trans-golgien.",
+          "en": "A tag added to enzymes bound for lysosomes, recognised by a receptor in the trans-Golgi network."
         },
         "sources": [
           {
@@ -103,7 +115,8 @@
       "with": "rough-er",
       "description": {
         "text": {
-          "fr": "Il reçoit les protéines fabriquées dans le RE."
+          "fr": "Il reçoit les protéines fabriquées dans le RE.",
+          "en": "It receives the proteins made in the ER."
         },
         "sources": [
           {
@@ -116,7 +129,8 @@
       "with": "lysosome",
       "description": {
         "text": {
-          "fr": "Il envoie aux lysosomes leurs enzymes, marquées par le mannose-6-phosphate."
+          "fr": "Il envoie aux lysosomes leurs enzymes, marquées par le mannose-6-phosphate.",
+          "en": "It sends lysosomes their enzymes, tagged with mannose 6-phosphate."
         },
         "sources": [
           {
@@ -129,7 +143,8 @@
       "with": "plasma-membrane",
       "description": {
         "text": {
-          "fr": "Des vésicules issues du Golgi fusionnent avec la membrane plasmique (exocytose)."
+          "fr": "Des vésicules issues du Golgi fusionnent avec la membrane plasmique (exocytose).",
+          "en": "Vesicles from the Golgi fuse with the plasma membrane (exocytosis)."
         },
         "sources": [
           {

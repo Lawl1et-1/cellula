@@ -1,14 +1,17 @@
 {
   "id": "nucleolus",
   "name": {
-    "fr": "Nucléole"
+    "fr": "Nucléole",
+    "en": "Nucleolus"
   },
   "tagline": {
-    "fr": "L'usine à ribosomes"
+    "fr": "L'usine à ribosomes",
+    "en": "The ribosome factory"
   },
   "summary": {
     "text": {
-      "fr": "Région dense du noyau, sans membrane, où les ARN ribosomiques sont produits et assemblés avec des protéines pour former les sous-unités des ribosomes."
+      "fr": "Région dense du noyau, sans membrane, où les ARN ribosomiques sont produits et assemblés avec des protéines pour former les sous-unités des ribosomes.",
+      "en": "A dense region of the nucleus, with no membrane, where ribosomal RNAs are made and assembled with proteins into ribosome subunits."
     },
     "sources": [
       {
@@ -19,7 +22,8 @@
   "function": [
     {
       "text": {
-        "fr": "Il transcrit les gènes des ARN ribosomiques et assemble les sous-unités des ribosomes, qui sont ensuite exportées vers le cytoplasme."
+        "fr": "Il transcrit les gènes des ARN ribosomiques et assemble les sous-unités des ribosomes, qui sont ensuite exportées vers le cytoplasme.",
+        "en": "It transcribes the genes for ribosomal RNAs and assembles ribosome subunits, which are then exported to the cytoplasm."
       },
       "sources": [
         {
@@ -31,7 +35,8 @@
   "structure": [
     {
       "text": {
-        "fr": "Il n'est pas entouré de membrane : c'est un assemblage de gènes d'ARN ribosomique, d'ARN en cours de maturation et de protéines."
+        "fr": "Il n'est pas entouré de membrane : c'est un assemblage de gènes d'ARN ribosomique, d'ARN en cours de maturation et de protéines.",
+        "en": "It is not surrounded by a membrane: it is a cluster of ribosomal RNA genes, maturing RNAs and proteins."
       },
       "sources": [
         {
@@ -45,7 +50,8 @@
       "with": "ribosome",
       "description": {
         "text": {
-          "fr": "Les sous-unités produites ici deviennent les ribosomes du cytoplasme."
+          "fr": "Les sous-unités produites ici deviennent les ribosomes du cytoplasme.",
+          "en": "The subunits made here become the ribosomes of the cytoplasm."
         },
         "sources": [
           {

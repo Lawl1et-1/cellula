@@ -1,14 +1,17 @@
 {
   "id": "cytoskeleton",
   "name": {
-    "fr": "Cytosquelette"
+    "fr": "Cytosquelette",
+    "en": "Cytoskeleton"
   },
   "tagline": {
-    "fr": "Charpente et autoroutes de la cellule"
+    "fr": "Charpente et autoroutes de la cellule",
+    "en": "The cell's scaffolding and highways"
   },
   "summary": {
     "text": {
-      "fr": "Réseau de filaments protéiques (filaments d'actine, microtubules, filaments intermédiaires) qui donne sa forme à la cellule, lui permet de bouger et organise le transport à l'intérieur."
+      "fr": "Réseau de filaments protéiques (filaments d'actine, microtubules, filaments intermédiaires) qui donne sa forme à la cellule, lui permet de bouger et organise le transport à l'intérieur.",
+      "en": "A network of protein filaments (actin filaments, microtubules, intermediate filaments) that gives the cell its shape, lets it move and organises transport inside it."
     },
     "sources": [
       {
@@ -19,7 +22,8 @@
   "function": [
     {
       "text": {
-        "fr": "Les microtubules servent de rails aux protéines motrices (kinésines, dynéines) qui transportent vésicules et organites."
+        "fr": "Les microtubules servent de rails aux protéines motrices (kinésines, dynéines) qui transportent vésicules et organites.",
+        "en": "Microtubules act as rails for motor proteins (kinesins, dyneins) that carry vesicles and organelles."
       },
       "sources": [
         {
@@ -29,7 +33,8 @@
     },
     {
       "text": {
-        "fr": "Les filaments intermédiaires donnent à la cellule sa résistance mécanique."
+        "fr": "Les filaments intermédiaires donnent à la cellule sa résistance mécanique.",
+        "en": "Intermediate filaments give the cell its mechanical strength."
       },
       "sources": [
         {
@@ -39,7 +44,8 @@
     },
     {
       "text": {
-        "fr": "Le cortex d'actine, sous la membrane, contrôle la forme et les mouvements de la surface cellulaire."
+        "fr": "Le cortex d'actine, sous la membrane, contrôle la forme et les mouvements de la surface cellulaire.",
+        "en": "The actin cortex, just under the membrane, controls the shape and movements of the cell surface."
       },
       "sources": [
         {
@@ -51,7 +57,8 @@
   "structure": [
     {
       "text": {
-        "fr": "Les microtubules rayonnent depuis le centrosome ; ils s'allongent et se raccourcissent sans cesse (instabilité dynamique)."
+        "fr": "Les microtubules rayonnent depuis le centrosome ; ils s'allongent et se raccourcissent sans cesse (instabilité dynamique).",
+        "en": "Microtubules radiate from the centrosome; they keep growing and shrinking (dynamic instability)."
       },
       "sources": [
         {
@@ -64,7 +71,8 @@
     },
     {
       "text": {
-        "fr": "Les protéines motrices avancent par petits pas le long des filaments en consommant de l'ATP."
+        "fr": "Les protéines motrices avancent par petits pas le long des filaments en consommant de l'ATP.",
+        "en": "Motor proteins move in small steps along the filaments, using ATP."
       },
       "sources": [
         {
@@ -72,18 +80,21 @@
         }
       ],
       "simplification": {
-        "fr": "En échelle artistique, cette structure est agrandie environ ×2,5 pour rester visible."
+        "fr": "En échelle artistique, cette structure est agrandie environ ×2,5 pour rester visible.",
+        "en": "At artistic scale, this structure is enlarged about ×2.5 so that it stays visible."
       }
     }
   ],
   "keyMolecules": [
     {
       "name": {
-        "fr": "Tubuline"
+        "fr": "Tubuline",
+        "en": "Tubulin"
       },
       "role": {
         "text": {
-          "fr": "Protéine qui forme les microtubules."
+          "fr": "Protéine qui forme les microtubules.",
+          "en": "The protein that makes up microtubules."
         },
         "sources": [
           {
@@ -94,11 +105,13 @@
     },
     {
       "name": {
-        "fr": "Actine"
+        "fr": "Actine",
+        "en": "Actin"
       },
       "role": {
         "text": {
-          "fr": "Protéine qui forme les microfilaments."
+          "fr": "Protéine qui forme les microfilaments.",
+          "en": "The protein that makes up microfilaments."
         },
         "sources": [
           {
@@ -109,11 +122,13 @@
     },
     {
       "name": {
-        "fr": "Kinésines et dynéines"
+        "fr": "Kinésines et dynéines",
+        "en": "Kinesins and dyneins"
       },
       "role": {
         "text": {
-          "fr": "Moteurs qui marchent le long des microtubules, en général vers l'extrémité plus (kinésines) ou moins (dynéines)."
+          "fr": "Moteurs qui marchent le long des microtubules, en général vers l'extrémité plus (kinésines) ou moins (dynéines).",
+          "en": "Motors that walk along microtubules, usually towards the plus end (kinesins) or the minus end (dyneins)."
         },
         "sources": [
           {
@@ -128,7 +143,8 @@
       "with": "centrosome",
       "description": {
         "text": {
-          "fr": "Le centrosome organise le réseau de microtubules."
+          "fr": "Le centrosome organise le réseau de microtubules.",
+          "en": "The centrosome organises the microtubule network."
         },
         "sources": [
           {
@@ -141,7 +157,8 @@
       "with": "vesicle",
       "description": {
         "text": {
-          "fr": "Les vésicules sont transportées le long des microtubules."
+          "fr": "Les vésicules sont transportées le long des microtubules.",
+          "en": "Vesicles are carried along microtubules."
         },
         "sources": [
           {

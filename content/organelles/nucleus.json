@@ -1,14 +1,17 @@
 {
   "id": "nucleus",
   "name": {
-    "fr": "Noyau"
+    "fr": "Noyau",
+    "en": "Nucleus"
   },
   "tagline": {
-    "fr": "Le coffre-fort de l'ADN"
+    "fr": "Le coffre-fort de l'ADN",
+    "en": "The vault that keeps the DNA"
   },
   "summary": {
     "text": {
-      "fr": "Compartiment entouré d'une double membrane, l'enveloppe nucléaire, qui contient l'essentiel de l'ADN de la cellule. L'ADN y est copié et transcrit en ARN."
+      "fr": "Compartiment entouré d'une double membrane, l'enveloppe nucléaire, qui contient l'essentiel de l'ADN de la cellule. L'ADN y est copié et transcrit en ARN.",
+      "en": "A compartment surrounded by a double membrane, the nuclear envelope, that holds most of the cell's DNA. There, DNA is copied and transcribed into RNA."
     },
     "sources": [
       {
@@ -22,7 +25,8 @@
   "function": [
     {
       "text": {
-        "fr": "Il protège le génome et le sépare des activités du cytoplasme."
+        "fr": "Il protège le génome et le sépare des activités du cytoplasme.",
+        "en": "It protects the genome and keeps it apart from the activity of the cytoplasm."
       },
       "sources": [
         {
@@ -32,7 +36,8 @@
     },
     {
       "text": {
-        "fr": "Les gènes y sont transcrits en ARN, qui est ensuite exporté vers le cytoplasme pour être traduit en protéines."
+        "fr": "Les gènes y sont transcrits en ARN, qui est ensuite exporté vers le cytoplasme pour être traduit en protéines.",
+        "en": "Genes are transcribed there into RNA, which is then exported to the cytoplasm to be translated into proteins."
       },
       "sources": [
         {
@@ -45,7 +50,8 @@
     },
     {
       "text": {
-        "fr": "Il contrôle les échanges avec le cytoplasme grâce aux complexes du pore nucléaire."
+        "fr": "Il contrôle les échanges avec le cytoplasme grâce aux complexes du pore nucléaire.",
+        "en": "It controls traffic with the cytoplasm through nuclear pore complexes."
       },
       "sources": [
         {
@@ -60,7 +66,8 @@
   "structure": [
     {
       "text": {
-        "fr": "L'enveloppe nucléaire est faite de deux membranes ; la membrane externe est en continuité avec le réticulum endoplasmique."
+        "fr": "L'enveloppe nucléaire est faite de deux membranes ; la membrane externe est en continuité avec le réticulum endoplasmique.",
+        "en": "The nuclear envelope is made of two membranes; the outer membrane is continuous with the endoplasmic reticulum."
       },
       "sources": [
         {
@@ -73,7 +80,8 @@
     },
     {
       "text": {
-        "fr": "Des complexes du pore nucléaire traversent l'enveloppe ; chacun est une grande structure formée de nombreuses protéines différentes, organisée selon une symétrie d'ordre 8."
+        "fr": "Des complexes du pore nucléaire traversent l'enveloppe ; chacun est une grande structure formée de nombreuses protéines différentes, organisée selon une symétrie d'ordre 8.",
+        "en": "Nuclear pore complexes span the envelope; each is a large structure made of many different proteins, arranged with eightfold symmetry."
       },
       "sources": [
         {
@@ -81,12 +89,14 @@
         }
       ],
       "simplification": {
-        "fr": "Le modèle montre quelques centaines de pores ; une vraie cellule de mammifère en a plusieurs milliers."
+        "fr": "Le modèle montre quelques centaines de pores ; une vraie cellule de mammifère en a plusieurs milliers.",
+        "en": "The model shows a few hundred pores; a real mammalian cell has several thousand."
       }
     },
     {
       "text": {
-        "fr": "L'ADN y est associé à des protéines pour former la chromatine, répartie en chromosomes qui occupent chacun leur propre territoire."
+        "fr": "L'ADN y est associé à des protéines pour former la chromatine, répartie en chromosomes qui occupent chacun leur propre territoire.",
+        "en": "There, DNA is bound to proteins to form chromatin, divided into chromosomes that each occupy their own territory."
       },
       "sources": [
         {
@@ -98,11 +108,13 @@
   "keyMolecules": [
     {
       "name": {
-        "fr": "ADN et histones"
+        "fr": "ADN et histones",
+        "en": "DNA and histones"
       },
       "role": {
         "text": {
-          "fr": "L'ADN s'enroule autour des histones pour former la chromatine."
+          "fr": "L'ADN s'enroule autour des histones pour former la chromatine.",
+          "en": "DNA wraps around histones to form chromatin."
         },
         "sources": [
           {
@@ -113,11 +125,13 @@
     },
     {
       "name": {
-        "fr": "Ran"
+        "fr": "Ran",
+        "en": "Ran"
       },
       "role": {
         "text": {
-          "fr": "Petite GTPase qui donne sa direction au transport à travers les pores nucléaires."
+          "fr": "Petite GTPase qui donne sa direction au transport à travers les pores nucléaires.",
+          "en": "A small GTPase that gives transport through nuclear pores its direction."
         },
         "sources": [
           {
@@ -132,7 +146,8 @@
       "with": "rough-er",
       "description": {
         "text": {
-          "fr": "La membrane externe de l'enveloppe se prolonge directement par le réticulum endoplasmique."
+          "fr": "La membrane externe de l'enveloppe se prolonge directement par le réticulum endoplasmique.",
+          "en": "The outer membrane of the envelope is directly continuous with the endoplasmic reticulum."
         },
         "sources": [
           {
@@ -145,7 +160,8 @@
       "with": "ribosome",
       "description": {
         "text": {
-          "fr": "Les ARN messagers sortent par les pores et sont traduits par les ribosomes dans le cytoplasme."
+          "fr": "Les ARN messagers sortent par les pores et sont traduits par les ribosomes dans le cytoplasme.",
+          "en": "Messenger RNAs leave through the pores and are translated by ribosomes in the cytoplasm."
         },
         "sources": [
           {
@@ -161,7 +177,8 @@
       "with": "nucleolus",
       "description": {
         "text": {
-          "fr": "Le nucléole, à l'intérieur du noyau, fabrique les sous-unités des ribosomes."
+          "fr": "Le nucléole, à l'intérieur du noyau, fabrique les sous-unités des ribosomes.",
+          "en": "The nucleolus, inside the nucleus, makes ribosome subunits."
         },
         "sources": [
           {
@@ -174,7 +191,8 @@
       "with": "dna",
       "description": {
         "text": {
-          "fr": "Le noyau renferme l'ADN, empaqueté en chromatine."
+          "fr": "Le noyau renferme l'ADN, empaqueté en chromatine.",
+          "en": "The nucleus holds the DNA, packaged as chromatin."
         },
         "sources": [
           {

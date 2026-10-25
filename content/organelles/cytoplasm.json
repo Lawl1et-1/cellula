@@ -1,14 +1,17 @@
 {
   "id": "cytoplasm",
   "name": {
-    "fr": "Cytoplasme"
+    "fr": "Cytoplasme",
+    "en": "Cytoplasm"
   },
   "tagline": {
-    "fr": "Un milieu dense et animé"
+    "fr": "Un milieu dense et animé",
+    "en": "A crowded, busy medium"
   },
   "summary": {
     "text": {
-      "fr": "Contenu de la cellule entre la membrane plasmique et le noyau : les organites baignent dans le cytosol, un gel aqueux très encombré de protéines."
+      "fr": "Contenu de la cellule entre la membrane plasmique et le noyau : les organites baignent dans le cytosol, un gel aqueux très encombré de protéines.",
+      "en": "Everything in the cell between the plasma membrane and the nucleus: the organelles sit in the cytosol, a watery gel densely crowded with proteins."
     },
     "sources": [
       {
@@ -19,7 +22,8 @@
   "function": [
     {
       "text": {
-        "fr": "Le cytosol est le siège de nombreuses réactions, dont la glycolyse, première étape de la dégradation du glucose."
+        "fr": "Le cytosol est le siège de nombreuses réactions, dont la glycolyse, première étape de la dégradation du glucose.",
+        "en": "The cytosol is where many reactions take place, including glycolysis, the first stage in breaking down glucose."
       },
       "sources": [
         {
@@ -29,7 +33,8 @@
     },
     {
       "text": {
-        "fr": "La plupart des protéines y sont fabriquées par les ribosomes libres."
+        "fr": "La plupart des protéines y sont fabriquées par les ribosomes libres.",
+        "en": "Most proteins are made there by free ribosomes."
       },
       "sources": [
         {
@@ -41,7 +46,8 @@
   "structure": [
     {
       "text": {
-        "fr": "Il est traversé par le cytosquelette et rempli d'organites et de macromolécules."
+        "fr": "Il est traversé par le cytosquelette et rempli d'organites et de macromolécules.",
+        "en": "It is criss-crossed by the cytoskeleton and packed with organelles and macromolecules."
       },
       "sources": [
         {
@@ -52,7 +58,8 @@
         }
       ],
       "simplification": {
-        "fr": "Les particules qui dérivent représentent l'encombrement moléculaire de façon symbolique, pas des molécules précises."
+        "fr": "Les particules qui dérivent représentent l'encombrement moléculaire de façon symbolique, pas des molécules précises.",
+        "en": "The drifting particles stand for molecular crowding symbolically, not for specific molecules."
       }
     }
   ],
@@ -61,7 +68,8 @@
       "with": "mitochondrion",
       "description": {
         "text": {
-          "fr": "Le pyruvate formé dans le cytosol alimente les mitochondries."
+          "fr": "Le pyruvate formé dans le cytosol alimente les mitochondries.",
+          "en": "Pyruvate formed in the cytosol fuels the mitochondria."
         },
         "sources": [
           {

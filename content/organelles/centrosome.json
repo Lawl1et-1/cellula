@@ -1,14 +1,17 @@
 {
   "id": "centrosome",
   "name": {
-    "fr": "Centrosome"
+    "fr": "Centrosome",
+    "en": "Centrosome"
   },
   "tagline": {
-    "fr": "Le centre organisateur des microtubules"
+    "fr": "Le centre organisateur des microtubules",
+    "en": "The microtubule-organising centre"
   },
   "summary": {
     "text": {
-      "fr": "Petite structure proche du noyau, formée d'une paire de centrioles entourée d'une matrice, d'où partent les microtubules."
+      "fr": "Petite structure proche du noyau, formée d'une paire de centrioles entourée d'une matrice, d'où partent les microtubules.",
+      "en": "A small structure near the nucleus, made of a pair of centrioles surrounded by a matrix, from which microtubules grow."
     },
     "sources": [
       {
@@ -19,7 +22,8 @@
   "function": [
     {
       "text": {
-        "fr": "Il sert de point de départ (nucléation) aux microtubules de la cellule."
+        "fr": "Il sert de point de départ (nucléation) aux microtubules de la cellule.",
+        "en": "It is the starting point (nucleation site) for the cell's microtubules."
       },
       "sources": [
         {
@@ -29,7 +33,8 @@
     },
     {
       "text": {
-        "fr": "Il se duplique avant la division ; les deux centrosomes organisent les pôles du fuseau mitotique."
+        "fr": "Il se duplique avant la division ; les deux centrosomes organisent les pôles du fuseau mitotique.",
+        "en": "It duplicates before division; the two centrosomes organise the poles of the mitotic spindle."
       },
       "sources": [
         {
@@ -41,7 +46,8 @@
   "structure": [
     {
       "text": {
-        "fr": "Les deux centrioles sont des cylindres disposés à angle droit, formés de neuf triplets de microtubules."
+        "fr": "Les deux centrioles sont des cylindres disposés à angle droit, formés de neuf triplets de microtubules.",
+        "en": "The two centrioles are cylinders set at right angles, each made of nine triplets of microtubules."
       },
       "sources": [
         {
@@ -49,7 +55,8 @@
         }
       ],
       "simplification": {
-        "fr": "Les triplets de microtubules sont représentés par de simples bâtonnets."
+        "fr": "Les triplets de microtubules sont représentés par de simples bâtonnets.",
+        "en": "The microtubule triplets are shown as simple rods."
       }
     }
   ],
@@ -58,7 +65,8 @@
       "with": "cytoskeleton",
       "description": {
         "text": {
-          "fr": "Les microtubules rayonnent depuis lui vers la périphérie."
+          "fr": "Les microtubules rayonnent depuis lui vers la périphérie.",
+          "en": "Microtubules radiate from it towards the periphery."
         },
         "sources": [
           {
