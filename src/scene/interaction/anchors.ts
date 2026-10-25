@@ -82,8 +82,9 @@ export function anchorFor(organelle: OrganelleId, camera: Vector3): Focus {
     case 'nucleus':
       return at(CELL.nucleus.center, CELL.nucleus.radius);
     case 'dna':
-      // Just outside the envelope, which fades while DNA is selected.
-      return at(CELL.nucleus.center, 11);
+      // Inside the nucleus, among the chromatin (the envelope fades while DNA is selected). Framed from
+      // just outside, the idle orbit would sweep the camera through the ER and pores around the envelope.
+      return at(CELL.nucleus.center, 7.5);
     case 'nucleolus':
       return at(CELL.nucleus.center.clone().add(NUCLEOLUS_OFFSET), 7);
     case 'plasma-membrane':
