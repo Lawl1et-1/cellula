@@ -12,21 +12,22 @@ scientifiques citées.
 > performance, accessibilité, mobile), ainsi que l'ADN explorable et le site en français et en anglais. Voir
 > [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) et les bilans de [phase 1](docs/reviews/phase-1.md),
 > [phase 2](docs/reviews/phase-2.md), [phase 3](docs/reviews/phase-3.md), [phase 4](docs/reviews/phase-4.md) et
-> [ADN et langues](docs/reviews/dna-and-languages.md). Le contenu scientifique attend encore une relecture experte.
+> [ADN et langues](docs/reviews/dna-and-languages.md), ainsi que le [mode guidé](docs/reviews/focus-mode.md). Le contenu scientifique attend encore une relecture experte.
 
 ## Ce que l'on peut faire
 
 - Explorer une cellule humaine en 3D, cliquer sur chaque organite et lire sa fiche (rôle, structure,
   molécules clés, interactions), chaque affirmation renvoyant à une section précise d'un manuel de référence.
-- Plonger dans l'ADN du noyau : chromatine, nucléole, et un gros plan sur l'empaquetage en quatre niveaux
-  (double hélice, nucléosomes, fibre de chromatine, chromosome condensé), avec les ARN messagers qui sortent
-  par les pores.
+- Plonger dans l'ADN du noyau : un clic sur l'ADN zoome jusqu'à la double hélice (bases A–T et G–C
+  étiquetées) ; un gros plan montre aussi l'empaquetage en quatre niveaux (double hélice, nucléosomes, fibre de
+  chromatine, chromosome condensé), avec les ARN messagers qui sortent par les pores.
 - Suivre une visite guidée de 12 étapes.
 - Regarder quatre processus animés, étape par étape : synthèse et sécrétion d'une protéine, respiration
   cellulaire, endocytose et exocytose, mitose et cytocinèse.
 - Choisir parmi 31 maladies (surcharges lysosomales, maladies mitochondriales, neurodégénératives,
-  infections, cancers, xeroderma pigmentosum, drépanocytose…) et voir, étape par étape, ce qu'elles font à la
-  cellule. 96 sources, toutes vérifiées sur NCBI (PubMed, GeneReviews, StatPearls).
+  infections, cancers, xeroderma pigmentosum, drépanocytose…) et les suivre en mode guidé, étape par étape :
+  ce qui ne joue pas de rôle s'estompe, la caméra cadre l'action, virus et molécules clés sont agrandis
+  (facteur indiqué) et nommés. 96 sources, toutes vérifiées sur NCBI (PubMed, GeneReviews, StatPearls).
 - Passer du français à l'anglais à tout moment (bouton « FR | EN »), sans recharger la scène.
 
 ## Lancer le projet
