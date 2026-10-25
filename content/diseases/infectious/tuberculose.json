@@ -121,47 +121,126 @@
   ],
   "stages": [
     {
-      "id": "phagocytose",
+      "id": "phagocytosis",
       "title": {
-        "fr": "Phagocytose",
-        "en": "Phagocytosis"
+        "fr": "Le macrophage englobe la bactérie",
+        "en": "The macrophage engulfs the bacterium"
       },
       "range": [
-        0,
-        0.25
+        0.0,
+        0.2
       ],
       "description": {
         "text": {
-          "fr": "Le macrophage englobe les bactéries.",
-          "en": "The macrophage engulfs the bacteria."
+          "fr": "Inhalée, Mycobacterium tuberculosis atteint les alvéoles pulmonaires, où un macrophage l'englobe dans un phagosome.",
+          "en": "Once inhaled, Mycobacterium tuberculosis reaches the lung alveoli, where a macrophage engulfs it in a phagosome."
         },
         "sources": [
           {
             "id": "sp-tuberculosis"
+          },
+          {
+            "id": "mboc4-pathogen-traffic"
           }
         ]
       },
       "cellularSigns": [],
-      "focus": "cytoplasm"
+      "focus": "plasma-membrane",
+      "camera": {
+        "at": "membrane",
+        "radius": 18
+      },
+      "highlight": [
+        "bacteria",
+        "phagosomes"
+      ],
+      "heroes": [
+        {
+          "model": "mycobacterium",
+          "path": [
+            "outside",
+            "membrane",
+            "endosome"
+          ],
+          "offset": [
+            9,
+            1.5,
+            8
+          ],
+          "label": {
+            "fr": "Mycobacterium tuberculosis",
+            "en": "Mycobacterium tuberculosis"
+          }
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "blocage",
+      "id": "normal",
       "title": {
-        "fr": "Phagosome bloqué",
-        "en": "Blocked phagosome"
+        "fr": "Ce qui devrait se passer",
+        "en": "What should happen"
       },
       "range": [
-        0.25,
+        0.2,
+        0.4
+      ],
+      "description": {
+        "text": {
+          "fr": "Normalement, le phagosome mûrit et fusionne avec les lysosomes, dont les enzymes digèrent la bactérie.",
+          "en": "Normally, the phagosome matures and fuses with lysosomes, whose enzymes digest the bacterium."
+        },
+        "sources": [
+          {
+            "id": "mboc4-pathogen-traffic"
+          },
+          {
+            "id": "pm-tb-phagosome-2004"
+          }
+        ]
+      },
+      "cellularSigns": [],
+      "focus": "lysosome",
+      "camera": {
+        "at": "endosome",
+        "radius": 16
+      },
+      "highlight": [
+        "phagosomes",
+        "bacteria"
+      ],
+      "labels": [
+        {
+          "at": "lysosome",
+          "text": {
+            "fr": "Lysosomes",
+            "en": "Lysosomes"
+          }
+        }
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "blocked",
+      "title": {
+        "fr": "Maturation bloquée",
+        "en": "Maturation blocked"
+      },
+      "range": [
+        0.4,
         0.6
       ],
       "description": {
         "text": {
-          "fr": "Le phagosome ne fusionne pas avec les lysosomes.",
-          "en": "The phagosome does not fuse with lysosomes."
+          "fr": "La bactérie empêche le phagosome de mûrir : il ne fusionne pas avec les lysosomes, qui l'auraient détruite.",
+          "en": "The bacterium stops the phagosome from maturing: it does not fuse with the lysosomes, which would have destroyed it."
         },
         "sources": [
           {
             "id": "pm-tb-phagosome-2004"
+          },
+          {
+            "id": "mboc4-pathogen-traffic"
           }
         ]
       },
@@ -180,23 +259,44 @@
       ],
       "focus": "cytoplasm",
       "camera": {
-        "radius": 40
-      }
+        "at": "endosome",
+        "radius": 16
+      },
+      "highlight": [
+        "phagosomes",
+        "bacteria",
+        "lysosome"
+      ],
+      "labels": [
+        {
+          "at": "endosome",
+          "text": {
+            "fr": "Phagosome bloqué",
+            "en": "Blocked phagosome"
+          },
+          "offset": [
+            0,
+            9,
+            0
+          ]
+        }
+      ],
+      "seconds": 12
     },
     {
-      "id": "multiplication",
+      "id": "persistence",
       "title": {
-        "fr": "Multiplication",
-        "en": "Multiplication"
+        "fr": "Survie et multiplication",
+        "en": "Survival and multiplication"
       },
       "range": [
         0.6,
-        1
+        0.8
       ],
       "description": {
         "text": {
-          "fr": "Les bactéries survivent et se multiplient à l'intérieur du macrophage.",
-          "en": "The bacteria survive and multiply inside the macrophage."
+          "fr": "Protégée dans son phagosome, la bactérie survit et se multiplie lentement à l'intérieur du macrophage.",
+          "en": "Sheltered in its phagosome, the bacterium survives and slowly multiplies inside the macrophage."
         },
         "sources": [
           {
@@ -205,7 +305,53 @@
         ]
       },
       "cellularSigns": [],
-      "focus": "cytoplasm"
+      "focus": "cytoplasm",
+      "camera": {
+        "at": "cytoplasm",
+        "radius": 28
+      },
+      "highlight": [
+        "phagosomes",
+        "bacteria"
+      ],
+      "seconds": 12
+    },
+    {
+      "id": "granuloma",
+      "title": {
+        "fr": "Le granulome",
+        "en": "The granuloma"
+      },
+      "range": [
+        0.8,
+        1
+      ],
+      "description": {
+        "text": {
+          "fr": "L'organisme entoure les macrophages infectés d'autres cellules immunitaires, formant un granulome qui peut contenir l'infection pendant longtemps.",
+          "en": "The body surrounds infected macrophages with other immune cells, forming a granuloma that can contain the infection for a long time."
+        },
+        "sources": [
+          {
+            "id": "sp-tuberculosis"
+          }
+        ],
+        "simplification": {
+          "fr": "Les cellules autour sont schématiques.",
+          "en": "The surrounding cells are schematic."
+        }
+      },
+      "cellularSigns": [],
+      "focus": "plasma-membrane",
+      "camera": {
+        "view": "cell",
+        "radius": 140
+      },
+      "highlight": [
+        "bacteria",
+        "phagosomes"
+      ],
+      "seconds": 12
     }
   ],
   "tracks": [
@@ -214,19 +360,23 @@
       "keys": [
         {
           "t": 0,
-          "v": 0.1
+          "v": 0.0
         },
         {
-          "t": 0.25,
-          "v": 0.3
+          "t": 0.22,
+          "v": 0.0
         },
         {
-          "t": 0.6,
+          "t": 0.34,
+          "v": 0.08
+        },
+        {
+          "t": 0.62,
+          "v": 0.08
+        },
+        {
+          "t": 0.74,
           "v": 0.5
-        },
-        {
-          "t": 1,
-          "v": 0.9
         }
       ]
     },
@@ -235,20 +385,32 @@
       "keys": [
         {
           "t": 0,
+          "v": 0.0
+        },
+        {
+          "t": 0.22,
+          "v": 0.0
+        },
+        {
+          "t": 0.34,
           "v": 1
         }
       ]
     },
     {
-      "channel": "lysosome.count",
+      "channel": "cell.divisionRate",
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.6,
-          "v": 1.4
+          "t": 0.82,
+          "v": 1.0
+        },
+        {
+          "t": 0.94,
+          "v": 3
         }
       ]
     },
@@ -257,59 +419,23 @@
       "keys": [
         {
           "t": 0,
-          "v": 1
+          "v": 1.0
         },
         {
-          "t": 0.85,
-          "v": 1
+          "t": 0.82,
+          "v": 1.0
         },
         {
-          "t": 1,
+          "t": 0.94,
           "v": 0.75
         }
       ]
-    },
-    {
-      "channel": "view.focusDim",
-      "keys": [
-        {
-          "t": 0,
-          "v": 0
-        },
-        {
-          "t": 0.05,
-          "v": 0.45
-        },
-        {
-          "t": 0.95,
-          "v": 0.45
-        },
-        {
-          "t": 1,
-          "v": 0
-        }
-      ]
     }
   ],
-  "actors": [
-    {
-      "actor": "path",
-      "at": 0.0,
-      "until": 0.25,
-      "params": {
-        "path": [
-          "outside",
-          "membrane",
-          "endosome"
-        ],
-        "cargo": "vesicle",
-        "count": 3
-      }
-    }
-  ],
+  "actors": [],
   "review": {
     "status": "draft",
-    "lastChecked": "2026-10-24"
+    "lastChecked": "2026-10-25"
   },
   "treatmentsNote": {
     "text": {
@@ -321,5 +447,6 @@
         "id": "sp-tuberculosis"
       }
     ]
-  }
+  },
+  "durationSeconds": 60
 }

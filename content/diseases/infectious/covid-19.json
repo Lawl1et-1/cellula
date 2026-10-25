@@ -171,6 +171,11 @@
           "path": [
             "membrane"
           ],
+          "offset": [
+            0.6,
+            0.1,
+            0.5
+          ],
           "label": {
             "fr": "Récepteur ACE2",
             "en": "ACE2 receptor"
@@ -233,6 +238,11 @@
           "model": "receptor",
           "path": [
             "membrane"
+          ],
+          "offset": [
+            0.6,
+            0.1,
+            0.5
           ],
           "label": {
             "fr": "Récepteur ACE2",
@@ -512,7 +522,7 @@
         },
         {
           "t": 0.6167,
-          "v": 0.8
+          "v": 0.35
         }
       ]
     },

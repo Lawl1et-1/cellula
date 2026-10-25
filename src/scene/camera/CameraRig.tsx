@@ -148,6 +148,10 @@ export function CameraRig() {
       const wholeCell = f.organelle === 'plasma-membrane' && f.radius >= 90;
       const distance = wholeCell ? f.radius * 2.75 : Math.min(Math.max(f.radius * 2.6, 7), 420);
       const pos = target.clone().addScaledVector(dir, distance);
+      // Focus mode: the caption and controls cover the lower part of the screen, so the subject is
+      // framed a little above the centre.
+      const raise = useScenario.getState().scenario && !wholeCell ? -distance * 0.14 : 0;
+      void controls.setFocalOffset(0, raise, 0, true);
       controls.smoothTime = 0.85;
       controls.minDistance = 2;
       void controls.setLookAt(pos.x, pos.y, pos.z, target.x, target.y, target.z, true).then(() => {
@@ -165,7 +169,10 @@ export function CameraRig() {
       if (state.scenario && !prev.scenario) {
         saved = { position: controls.getPosition(new Vector3()), target: controls.getTarget(new Vector3()) };
         useUi.getState().setCameraUnlocked(false);
-      } else if (!state.scenario && prev.scenario && saved) {
+      } else if (!state.scenario && prev.scenario) {
+        void controls.setFocalOffset(0, 0, 0, true);
+      }
+      if (!state.scenario && prev.scenario && saved) {
         const { position: p, target: t } = saved;
         saved = null;
         controls.smoothTime = 0.9;
