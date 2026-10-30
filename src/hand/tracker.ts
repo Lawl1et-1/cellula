@@ -48,6 +48,7 @@ export async function startHandTracking(callbacks: {
       handBridge.video = video;
       callbacks.onReady();
     } else if (msg.type === 'error') {
+      console.warn('Hand tracking failed to start:', msg.message);
       callbacks.onError('failed');
     } else if (msg.type === 'result') {
       busy = false;
@@ -69,7 +70,10 @@ export async function startHandTracking(callbacks: {
       }
     }
   };
-  worker.onerror = () => !stopped && callbacks.onError('failed');
+  worker.onerror = (e) => {
+    console.warn('Hand tracking worker error:', e.message);
+    if (!stopped) callbacks.onError('failed');
+  };
   worker.postMessage({
     type: 'init',
     wasmPath: new URL(HAND_CONFIG.wasmPath, window.location.href).href,

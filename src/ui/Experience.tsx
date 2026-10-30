@@ -13,6 +13,7 @@ import { HoverLabel } from './HoverLabel';
 import { ScenarioMenu } from './ScenarioMenu';
 import { StepPlayer } from './StepPlayer';
 import { SceneTags } from './SceneTags';
+import { HandController, HandCursor, HandStatus, HandTutorial } from './HandMode';
 import { TourCard } from './TourCard';
 import { DnaStepper } from './DnaStepper';
 import { DiseasePanel } from './DiseasePanel';
@@ -96,6 +97,10 @@ export function Experience({ intro, content }: { intro: boolean; content: Explor
             <AnimatePresence>
               <DnaStepper key="dna" />
             </AnimatePresence>
+            <HandController />
+            <HandStatus />
+            <HandTutorial />
+            <HandCursor />
           </>
         )}
       </main>

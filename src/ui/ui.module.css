@@ -152,7 +152,7 @@
   transform: translateX(-50%);
   display: flex;
   align-items: flex-end;
-  gap: 18px;
+  gap: 14px;
   padding: 10px 14px 12px;
   max-width: calc(100vw - 32px);
   overflow-x: auto;
@@ -229,6 +229,14 @@
   font-size: 11px;
   line-height: 1.5;
   color: var(--ink-faint);
+}
+
+/* The settings dock is wide: below this width the corner notes sit above it instead of beside it. */
+@media (max-width: 1640px) {
+  .help,
+  .disclaimer {
+    bottom: 104px;
+  }
 }
 
 @media (max-width: 1100px) {

@@ -17,14 +17,24 @@ type InitMessage = {
 type FrameMessage = { type: 'frame'; bitmap: ImageBitmap; t: number };
 
 let landmarker: HandLandmarker | null = null;
+
+/** `importScripts` exists in both kinds of worker but only works in classic ones. */
+function isModuleWorker() {
+  try {
+    importScripts();
+    return false;
+  } catch {
+    return true;
+  }
+}
 let lastT = 0;
 
 self.onmessage = async (e: MessageEvent<InitMessage | FrameMessage>) => {
   const msg = e.data;
   if (msg.type === 'init') {
     try {
-      // `true`: the ES-module build of the runtime, which loads inside a module worker.
-      const fileset = await FilesetResolver.forVisionTasks(msg.wasmPath, true);
+      // The bundler may emit a classic or a module worker: pick the runtime build that loads in this one.
+      const fileset = await FilesetResolver.forVisionTasks(msg.wasmPath, isModuleWorker());
       landmarker = await HandLandmarker.createFromOptions(fileset, {
         baseOptions: { modelAssetPath: msg.modelUrl, delegate: 'CPU' },
         runningMode: 'VIDEO',

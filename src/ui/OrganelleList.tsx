@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useL, useT } from '@/i18n/locale';
 import { useSelection } from '@/state/selection';
 import { useUi } from '@/state/ui';
+import { useHand } from '@/hand/store';
 import { useScenario } from '@/state/scenario';
 import { cameraPosition } from '@/scene/camera/focus';
 import { anchorFor } from '@/scene/interaction/anchors';
@@ -27,10 +28,12 @@ export function OrganelleList() {
   const diseasePlaying = useScenario((s) => !!s.scenario);
   // So does the DNA close-up card.
   const dnaCloseup = useUi((s) => s.dnaLevel !== null);
+  // The hand-mode status sits where the list starts; the list moves down.
+  const handsOn = useHand((s) => s.enabled || !!s.error);
   if (libraryOpen || diseasePlaying || dnaCloseup) return null;
 
   return (
-    <nav className={`glass ${styles.list}`} aria-label={t.list.title} data-open={open}>
+    <nav className={`glass ${styles.list}`} aria-label={t.list.title} data-open={open} data-below-hand={handsOn}>
       <button className={styles.listToggle} onClick={() => setOpen((o) => !o)} aria-expanded={open}>
         <span className="label">{t.list.title}</span>
         <span aria-hidden>{open ? '–' : '+'}</span>
