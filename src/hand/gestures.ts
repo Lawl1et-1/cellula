@@ -48,7 +48,7 @@ export const palmCenter = (h: Landmark[]) => {
  * Your real left / right hand. MediaPipe's label assumes a mirrored image (see `handedness.swap`). If both
  * hands get the same label (it happens when they cross), the one on your left of the frame is the left one.
  */
-export function assignSides(hands: DetectedHand[], swap = HAND_CONFIG.handedness.swap): Partial<Record<HandSide, DetectedHand>> {
+export function assignSides(hands: DetectedHand[], swap: boolean = HAND_CONFIG.handedness.swap): Partial<Record<HandSide, DetectedHand>> {
   const sideOf = (h: DetectedHand): HandSide => ((h.label === 'Left') !== swap ? 'left' : 'right');
   if (hands.length >= 2) {
     const [a, b] = hands as [DetectedHand, DetectedHand];
