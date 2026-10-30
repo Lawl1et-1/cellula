@@ -16,6 +16,9 @@ export const handBridge = {
   pan: { x: 0, y: 0 },
   panning: false,
   panHand: null as HandSide | null,
+  /** Rotation velocity wanted by the left hand, in frame widths per second (zero when not rotating). */
+  rotate: { x: 0, y: 0 },
+  rotating: false,
   /** When the last detection arrived (performance.now()). */
   updatedAt: 0,
   /** Latest raw detections (webcam preview). */
@@ -37,6 +40,8 @@ export function resetBridge() {
   handBridge.pan = { x: 0, y: 0 };
   handBridge.panning = false;
   handBridge.panHand = null;
+  handBridge.rotate = { x: 0, y: 0 };
+  handBridge.rotating = false;
   handBridge.updatedAt = 0;
   handBridge.raw = [];
   handBridge.video = null;

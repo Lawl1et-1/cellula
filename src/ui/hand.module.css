@@ -98,16 +98,23 @@
   border-color: rgba(255, 211, 107, 0.55);
 }
 
-.status[data-left-pan='true'] .side[data-side='left'],
 .status[data-right-pan='true'] .side[data-side='right'] {
   color: #8fe3ff;
   border-color: rgba(143, 227, 255, 0.6);
   background: rgba(143, 227, 255, 0.1);
 }
 
-/* Current action: only the matching item shows. */
+.status[data-left-rotate='true'] .side[data-side='left'] {
+  color: #c79bff;
+  border-color: rgba(199, 155, 255, 0.6);
+  background: rgba(199, 155, 255, 0.1);
+}
+
+/* Current actions: only the matching items show (panning and rotating can show together). */
 .action {
   flex: none;
+  display: flex;
+  gap: 10px;
   min-width: 118px;
 }
 
@@ -119,16 +126,20 @@
   color: var(--ink-soft);
 }
 
-.status[data-action='idle'] .actionItem[data-action='idle'],
-.status[data-action='pan'] .actionItem[data-action='pan'],
-.status[data-action='zoomIn'] .actionItem[data-action='zoomIn'],
-.status[data-action='zoomOut'] .actionItem[data-action='zoomOut'],
-.status[data-action='locked'] .actionItem[data-action='locked'] {
+.status[data-action~='idle'] .actionItem[data-action='idle'],
+.status[data-action~='pan'] .actionItem[data-action='pan'],
+.status[data-action~='rotate'] .actionItem[data-action='rotate'],
+.status[data-action~='zoomIn'] .actionItem[data-action='zoomIn'],
+.status[data-action~='zoomOut'] .actionItem[data-action='zoomOut'],
+.status[data-action~='locked'] .actionItem[data-action='locked'] {
   display: inline-flex;
 }
 
 .actionItem[data-action='pan'] {
   color: #8fe3ff;
+}
+.actionItem[data-action='rotate'] {
+  color: #c79bff;
 }
 .actionItem[data-action='zoomIn'],
 .actionItem[data-action='zoomOut'] {

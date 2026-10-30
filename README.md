@@ -30,7 +30,8 @@ scientifiques citées.
   (facteur indiqué) et nommés. 96 sources, toutes vérifiées sur NCBI (PubMed, GeneReviews, StatPearls).
 - Passer du français à l'anglais à tout moment (bouton « FR | EN »), sans recharger la scène.
 - En option, piloter la cellule avec ses mains devant la webcam (réglages → Contrôle → Mains) : fermer la
-  main droite pour zoomer, la main gauche pour reculer, déplacer une main ouverte pour explorer. La vidéo est
+  main droite pour zoomer, la main gauche pour reculer, déplacer la main droite ouverte pour explorer et la
+  main gauche ouverte pour faire tourner la cellule. La vidéo est
   analysée uniquement dans le navigateur ([détails](docs/reviews/hand-mode.md)).
 
 ## Lancer le projet

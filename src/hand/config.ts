@@ -5,7 +5,8 @@
  * Gestures:
  * - right hand open → closed: one eased zoom-in step
  * - left hand open → closed: one eased zoom-out step
- * - an open, steady hand moving: pan the view the same way (with inertia, clamped to the cell)
+ * - the right hand, open and steady, moving: pan the view the same way (with inertia, clamped to the cell)
+ * - the left hand, open and steady, moving: rotate the cell on itself (yaw / pitch, pitch clamped)
  */
 export const HAND_CONFIG = {
   /** MediaPipe hand landmarker model, fetched once by the browser. No video ever leaves the device. */
@@ -67,9 +68,12 @@ export const HAND_CONFIG = {
     speed: 1.4,
     /** Hand movement per detection below which nothing happens (tremor). */
     deadZone: 0.003,
-    /** The hand must have been open this long (ms) before it pans, so opening/closing never pans. */
+    /**
+     * The hand must have been open this long (ms) before it pans (or rotates, for the left hand), so opening /
+     * closing for zoom never moves the view.
+     */
     stableMs: 220,
-    /** …and its openness must change slower than this (per second): a hand that is closing does not pan. */
+    /** …and its openness must change slower than this (per second): a hand that is closing does not move it. */
     maxOpennessRate: 1.2,
     /** How long the view keeps gliding after the hand stops (s): higher = more inertia. */
     inertiaSeconds: 0.3,
@@ -79,6 +83,27 @@ export const HAND_CONFIG = {
     invert: false,
     /** The point the camera looks at stays inside the cell, scaled by this (1 = the cell's own size). */
     clampToCell: 0.7,
+  },
+
+  rotate: {
+    /**
+     * Rotation per unit of hand movement across the frame, in radians: 3.2 turns the cell about 180° for a
+     * movement across the whole frame.
+     */
+    speed: 3.2,
+    /** Hand movement per detection below which the cell does not turn (tremor). */
+    deadZone: 0.003,
+    /** How long the cell keeps turning after the hand stops (s): higher = more inertia. */
+    inertiaSeconds: 0.35,
+    /** How quickly the rotation catches up with the hand (s): lower = snappier. */
+    followSeconds: 0.06,
+    /**
+     * Vertical rotation limit, in degrees above or below the cell's equator as seen by the camera, so the
+     * cell never flips upside down.
+     */
+    maxPitchDegrees: 70,
+    /** Reverse the direction (hand to the right then turns the cell's front to the left). */
+    invert: false,
   },
 
   /** One Euro filter (Casiez et al., 2012): low jitter when still, low lag when moving. */

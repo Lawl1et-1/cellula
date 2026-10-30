@@ -32,6 +32,10 @@ function readCameraParam() {
 }
 
 const tmp = new Vector3();
+const UP = new Vector3(0, 1, 0);
+const rotPos = new Vector3();
+const rotTarget = new Vector3();
+const rotAxis = new Vector3();
 const forward = new Vector3();
 
 /** Keyboard state for free flight (WASD / arrows, Space / C for up / down, Shift to boost). */
@@ -64,7 +68,7 @@ export function CameraRig() {
   const keys = useFlightKeys();
   const wheelBoost = useRef(0);
   const prevMode = useRef(mode);
-  const handState = useRef({ vx: 0, vy: 0, bounded: false });
+  const handState = useRef({ vx: 0, vy: 0, rx: 0, ry: 0, zoomLeft: 0, bounded: false });
   // Focus mode: the step frames the camera; the reader can unlock it from the control bar.
   const scenarioOn = useScenario((s) => !!s.scenario);
   const unlocked = useUi((s) => s.cameraUnlocked);
@@ -208,8 +212,10 @@ export function CameraRig() {
     const dt = Math.min(delta, 0.05);
     const { lastInteraction } = useScene.getState();
 
-    // Hand mode: a fist cycle zooms one eased step, a steady open hand pans with a little inertia. The
-    // point looked at stays inside the cell. A framed focus-mode step keeps its camera unless freed.
+    // Hand mode: a fist cycle zooms one eased step; the steady open right hand pans and the left hand
+    // rotates the cell, both with a little inertia. The point looked at stays inside the cell. A framed
+    // focus-mode step keeps its camera unless freed. Every move is applied directly each frame, so zoom, pan
+    // and rotation combine without cancelling each other.
     const hands = handState.current;
     if (handBridge.active) {
       if (!hands.bounded) {
@@ -221,18 +227,20 @@ export function CameraRig() {
       const usable = mode === 'orbit' && !framedStep;
       const steps = handBridge.zoomSteps;
       handBridge.zoomSteps = 0;
+      const z = HAND_CONFIG.zoom;
       if (steps && usable) {
-        const z = HAND_CONFIG.zoom;
-        const from = c.distance;
+        const from = c.distance - hands.zoomLeft;
         const to = Math.min(z.maxDistance, Math.max(z.minDistance, from * Math.pow(1 - z.step, steps)));
-        if (Math.abs(to - from) > 1e-3) {
-          c.smoothTime = z.easeSeconds;
-          void c.dolly(from - to, true).then(() => {
-            c.smoothTime = 0.45;
-          });
-          touch();
-        }
+        hands.zoomLeft += from - to;
       }
+      // Eased zoom step: each frame covers a share of what is left (exponential ease-out).
+      if (usable && Math.abs(hands.zoomLeft) > 1e-3) {
+        const share = Math.abs(hands.zoomLeft) < 0.02 ? 1 : 1 - Math.exp(-dt / (z.easeSeconds / 3));
+        const d = hands.zoomLeft * share;
+        hands.zoomLeft -= d;
+        void c.dolly(d, false);
+        touch();
+      } else if (!usable) hands.zoomLeft = 0;
       // Velocity follows the hand quickly while it moves and glides to a stop when it stops (inertia).
       const p = HAND_CONFIG.pan;
       const fresh = performance.now() - handBridge.updatedAt < 250;
@@ -246,10 +254,43 @@ export function CameraRig() {
         void c.truck(hands.vx * scale, hands.vy * scale, false);
         touch();
       } else if (!usable) hands.vx = hands.vy = 0;
+
+      // Rotation: turning the cell by an angle gives the same picture as turning the camera — its position
+      // and the point it looks at — by the opposite angle around the cell's centre, so the cell spins in
+      // place and any pan offset is kept.
+      const r = HAND_CONFIG.rotate;
+      const wantedR = handBridge.rotating && fresh ? handBridge.rotate : { x: 0, y: 0 };
+      const turning = wantedR.x !== 0 || wantedR.y !== 0;
+      const kr = 1 - Math.exp(-dt / (turning ? r.followSeconds : r.inertiaSeconds));
+      hands.rx += (wantedR.x - hands.rx) * kr;
+      hands.ry += (wantedR.y - hands.ry) * kr;
+      if (usable && Math.hypot(hands.rx, hands.ry) > 1e-3) {
+        const sign = r.invert ? -1 : 1;
+        const p0 = c.getPosition(rotPos, false);
+        const t0 = c.getTarget(rotTarget, false);
+        // Hand to the right: the cell's front turns right, i.e. the camera goes round to the left.
+        const yaw = -sign * hands.rx * r.speed * dt;
+        p0.applyAxisAngle(UP, yaw);
+        t0.applyAxisAngle(UP, yaw);
+        // Hand up: the cell's front rolls up, i.e. the camera goes down; clamped so it never flips over.
+        const maxElevation = (r.maxPitchDegrees * Math.PI) / 180;
+        const elevation = Math.asin(Math.max(-1, Math.min(1, p0.y / (p0.length() || 1))));
+        const next = Math.max(-maxElevation, Math.min(maxElevation, elevation + sign * hands.ry * r.speed * dt));
+        const right = rotAxis.subVectors(t0, p0).cross(UP);
+        if (right.lengthSq() > 1e-8 && Math.abs(next - elevation) > 1e-6) {
+          right.normalize();
+          p0.applyAxisAngle(right, -(next - elevation));
+          t0.applyAxisAngle(right, -(next - elevation));
+        }
+        void c.setLookAt(p0.x, p0.y, p0.z, t0.x, t0.y, t0.z, false);
+        touch();
+      } else if (!usable) hands.rx = hands.ry = 0;
     } else if (hands.bounded) {
       c.setBoundary();
       hands.bounded = false;
       hands.vx = hands.vy = 0;
+      hands.rx = hands.ry = 0;
+      hands.zoomLeft = 0;
     }
 
     if (mode === 'intro') {

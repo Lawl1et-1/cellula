@@ -71,9 +71,11 @@ export interface GestureFrame {
   hands: Record<HandSide, HandReport | null>;
   /** Zoom steps triggered by this frame: +1 in (right hand closed), −1 out (left hand closed). */
   zoom: number;
-  /** Pan velocity in frame widths per second (x right, y down, in the user's view), null when not panning. */
+  /** Pan velocity from the right hand, in frame widths per second (x right, y down), null when not panning. */
   pan: { x: number; y: number } | null;
   panHand: HandSide | null;
+  /** Rotation velocity from the left hand, in frame widths per second (x right, y down), null when not rotating. */
+  rotate: { x: number; y: number } | null;
 }
 
 const deadZone = (v: number, dz: number) => (Math.abs(v) <= dz ? 0 : v - Math.sign(v) * dz);
@@ -91,8 +93,11 @@ class SideTracker {
   private lastPalm: { x: number; y: number } | null = null;
   lastSeen = -Infinity;
 
-  /** `t` in ms. Returns the report, whether a close completed an open→close cycle, and the palm velocity. */
-  update(hand: DetectedHand, t: number) {
+  /**
+   * `t` in ms; `dz` is the movement dead zone for what this hand drives. Returns the report, whether a close
+   * completed an open→close cycle, and the palm velocity (only while the hand is steady and open).
+   */
+  update(hand: DetectedHand, t: number, dz: number) {
     const c = HAND_CONFIG;
     const ts = t / 1000;
     const dt = Math.max(1e-3, (t - this.lastT) / 1000);
@@ -123,8 +128,8 @@ class SideTracker {
     const p = this.palmFilter.filter(1 - raw.x, raw.y, ts);
     let velocity: { x: number; y: number } | null = null;
     if (steady && this.lastPalm && !fresh) {
-      const dx = deadZone(p.x - this.lastPalm.x, c.pan.deadZone);
-      const dy = deadZone(p.y - this.lastPalm.y, c.pan.deadZone);
+      const dx = deadZone(p.x - this.lastPalm.x, dz);
+      const dy = deadZone(p.y - this.lastPalm.y, dz);
       velocity = { x: dx / dt, y: dy / dt };
     }
     // Not steady: forget the reference, so panning resumes from where the hand is (no jump).
@@ -143,15 +148,17 @@ class SideTracker {
   }
 }
 
-/** Turns detections into intentions: zoom steps from fist cycles, pan from a steady open hand. */
+/**
+ * Turns detections into intentions: zoom steps from fist cycles (right in, left out), panning from the steady
+ * open right hand and rotation from the steady open left hand. Both hands can act at the same time.
+ */
 export class GestureEngine {
   private sides: Record<HandSide, SideTracker> = { left: new SideTracker(), right: new SideTracker() };
 
   /** `t` in ms (the capture time of the analysed frame). */
   update(hands: DetectedHand[], t: number): GestureFrame {
     const assigned = assignSides(hands);
-    const out: GestureFrame = { hands: { left: null, right: null }, zoom: 0, pan: null, panHand: null };
-    const moving: { side: HandSide; v: { x: number; y: number } }[] = [];
+    const out: GestureFrame = { hands: { left: null, right: null }, zoom: 0, pan: null, panHand: null, rotate: null };
     for (const side of ['left', 'right'] as const) {
       const hand = assigned[side];
       const tracker = this.sides[side];
@@ -159,18 +166,18 @@ export class GestureEngine {
         if (t - tracker.lastSeen > HAND_CONFIG.lostAfterMs) tracker.reset();
         continue;
       }
-      const r = tracker.update(hand, t);
+      const dz = side === 'right' ? HAND_CONFIG.pan.deadZone : HAND_CONFIG.rotate.deadZone;
+      const r = tracker.update(hand, t, dz);
       out.hands[side] = r.report;
       if (r.closed) out.zoom += side === 'right' ? 1 : -1;
-      if (r.velocity) moving.push({ side, v: r.velocity });
-    }
-    if (moving.length) {
-      const sign = HAND_CONFIG.pan.invert ? -1 : 1;
-      out.pan = {
-        x: (sign * moving.reduce((s, m) => s + m.v.x, 0)) / moving.length,
-        y: (sign * moving.reduce((s, m) => s + m.v.y, 0)) / moving.length,
-      };
-      out.panHand = moving.length === 1 ? moving[0]!.side : 'right';
+      if (!r.velocity) continue;
+      if (side === 'right') {
+        const sign = HAND_CONFIG.pan.invert ? -1 : 1;
+        out.pan = { x: sign * r.velocity.x, y: sign * r.velocity.y };
+        out.panHand = 'right';
+      } else {
+        out.rotate = r.velocity;
+      }
     }
     return out;
   }
