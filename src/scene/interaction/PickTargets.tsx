@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
-import { useThree, type ThreeEvent } from '@react-three/fiber';
+import { useFrame, useThree, type ThreeEvent } from '@react-three/fiber';
 import {
   CapsuleGeometry,
   DoubleSide,
@@ -10,8 +10,11 @@ import {
   Matrix4,
   MeshBasicMaterial,
   Quaternion,
+  Vector2,
   Vector3,
   type BufferGeometry,
+  type Group,
+  type Intersection,
   type Object3D,
 } from 'three';
 import type { OrganelleId } from '@/content/schema/common';
@@ -20,6 +23,7 @@ import { useScene } from '@/state/scene';
 import { CELL, CENTROSOME, GOLGI_CENTER, cellDistance } from '../layout/cellLayout';
 import { roughErAnchors, smoothErNodes } from '../organelles/EndoplasmicReticulum';
 import { INSTANCED, anchorFor, instanceFocus } from './anchors';
+import { handBridge } from '@/hand/bridge';
 
 /**
  * Invisible, low-poly stand-ins used only for picking. They live on layer 1, which the camera never
@@ -71,9 +75,9 @@ function hitTarget(object: Object3D, instanceId: number | undefined): Target | n
 }
 
 /** Membrane hits are a fallback: anything visible through it wins. Inside the cell, empty space is cytoplasm. */
-function pick(e: ThreeEvent<PointerEvent | MouseEvent>, cameraInside: boolean) {
+function pick(intersections: Intersection[], cameraInside: boolean) {
   let fallback: { target: Target; point: Vector3 } | null = null;
-  for (const hit of e.intersections) {
+  for (const hit of intersections) {
     const target = hitTarget(hit.object, hit.instanceId);
     if (!target) continue;
     if (target.organelle === 'plasma-membrane') {
@@ -126,7 +130,7 @@ export function PickTargets() {
 
   const onMove = (e: ThreeEvent<PointerEvent>) => {
     if (e.buttons) return; // dragging the camera
-    const hit = pick(e, insideCell());
+    const hit = pick(e.intersections, insideCell());
     useSelection.getState().hover(hit?.target ?? null);
     gl.domElement.style.cursor = hit ? 'pointer' : '';
   };
@@ -138,9 +142,36 @@ export function PickTargets() {
 
   const onClick = (e: ThreeEvent<MouseEvent>) => {
     if (e.delta > 4) return; // it was a drag, not a click
-    const hit = pick(e, insideCell());
+    const hit = pick(e.intersections, insideCell());
     if (!hit) return;
     e.stopPropagation();
+    selectHit(hit);
+  };
+
+  // Hand mode: the hand cursor hovers like the mouse, and a pinch selects what is under it.
+  const group = useRef<Group>(null);
+  const ndc = useMemo(() => new Vector2(), []);
+  const lastSelect = useRef(handBridge.selectSeq);
+  const handHover = useRef(false);
+  useFrame(({ size }) => {
+    if (!handBridge.active || !handBridge.cursor || !group.current) {
+      if (handHover.current) useSelection.getState().hover(null);
+      handHover.current = false;
+      lastSelect.current = handBridge.selectSeq;
+      return;
+    }
+    ndc.set((handBridge.cursor.x / size.width) * 2 - 1, -(handBridge.cursor.y / size.height) * 2 + 1);
+    raycaster.setFromCamera(ndc, camera);
+    const hit = pick(raycaster.intersectObject(group.current, true), insideCell());
+    useSelection.getState().hover(hit?.target ?? null);
+    handHover.current = true;
+    if (handBridge.selectSeq !== lastSelect.current) {
+      lastSelect.current = handBridge.selectSeq;
+      if (hit) selectHit(hit);
+    }
+  });
+
+  function selectHit(hit: NonNullable<ReturnType<typeof pick>>) {
     const { target, point } = hit;
     let focus: Focus | null = null;
     if (target.instance !== undefined) focus = instanceFocus(target.organelle, target.instance);
@@ -169,10 +200,10 @@ export function PickTargets() {
     }
     if (useScene.getState().cameraMode === 'flight') useScene.getState().setCameraMode('orbit');
     useSelection.getState().select(focus);
-  };
+  }
 
   return (
-    <group name="pick-targets" onPointerMove={onMove} onPointerOut={onOut} onClick={onClick}>
+    <group ref={group} name="pick-targets" onPointerMove={onMove} onPointerOut={onOut} onClick={onClick}>
       {proxies.map((p) => (
         <Proxies key={p.organelle} {...p} />
       ))}

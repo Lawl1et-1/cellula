@@ -4,7 +4,9 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "predev": "node scripts/copy-mediapipe.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/copy-mediapipe.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -14,7 +16,8 @@
     "check": "npm run typecheck && npm run lint && npm run validate:content && npm run test",
     "perf": "tsx scripts/perf.ts",
     "shots": "tsx scripts/shots.ts",
-    "verify:sources": "tsx scripts/verify-sources.ts"
+    "verify:sources": "tsx scripts/verify-sources.ts",
+    "postinstall": "node scripts/copy-mediapipe.mjs"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",
@@ -31,6 +34,7 @@
     "vitest": "^5.0.5"
   },
   "dependencies": {
+    "@mediapipe/tasks-vision": "1.1.1",
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.2",
     "@react-three/postprocessing": "^3.2.2",
