@@ -9,18 +9,24 @@ settings ("Contrôle : Souris | Mains").
 |---|---|
 | Right hand: open, then close | One eased zoom-in step |
 | Left hand: open, then close | One eased zoom-out step |
-| Open, steady hand moving | Pan the view the same way (with inertia), clamped to the cell |
+| Right hand, open and steady, moving | Pan the view the same way (with inertia), clamped to the cell |
+| Left hand, open and steady, moving | Rotate the cell on itself: left/right = yaw, up/down = pitch (clamped, never upside down) |
 
 - A zoom step needs a full open → closed cycle: keeping the fist closed does nothing more.
 - Open / closed comes from finger curl with two thresholds (hysteresis), so a half-closed hand does not
   flicker.
-- Panning only happens once the hand has been open for a moment and is not changing shape, so opening and
-  closing for zoom never pans.
+- Panning and rotating only happen once the hand has been open for a moment and is not changing shape, so
+  opening and closing for zoom never moves the view.
+- Both hands can act at once: the right hand pans while the left rotates.
+- Rotation turns the camera and the point it looks at together around the cell's centre: on screen the cell
+  spins in place and any pan offset is kept. Zoom steps, pan and rotation are all applied frame by frame, so
+  they combine without cancelling each other.
 - Left and right are the user's real hands: MediaPipe labels hands as if the image were mirrored and we
   analyse the raw camera image, so its labels are swapped (`handedness.swap` in the config can undo that).
 
 On screen: an **L / R** (FR **G / D**) badge per hand shows whether it is detected and open, closed or half;
-the action next to it shows *panning*, *zoom in* or *zoom out*; a large magnifier flashes in the middle of
+the actions next to it show *panning* (right hand, blue), *rotating* (left hand, violet), *zoom in* or
+*zoom out*; a large magnifier flashes in the middle of
 the screen on each zoom step. The status chip also shows the detection rate.
 
 The old gestures (open hand to orbit, pinch to select, two hands to zoom, fist to freeze) and the hand
@@ -55,6 +61,11 @@ for the GPU, and in testing it stalled the scene. The CPU path keeps the scene a
 | Pans when opening or closing the hand | raise `pan.stableMs`, lower `pan.maxOpennessRate` |
 | Too much / too little glide after stopping | `pan.inertiaSeconds` |
 | Pan direction feels backwards | `pan.invert: true` (drag-the-cell feel) |
+| Rotation too fast / slow | `rotate.speed` (3.2 ≈ half a turn across the frame) |
+| Rotates on small tremors | raise `rotate.deadZone` |
+| Too much / too little spin after stopping | `rotate.inertiaSeconds` |
+| Vertical rotation too limited / too free | `rotate.maxPitchDegrees` |
+| Rotation direction feels backwards | `rotate.invert: true` |
 | Left / right reversed | `handedness.swap` |
 | Jittery | lower `filter.minCutoff` (smoother) — laggy: raise `filter.beta` |
 | Cell lost too easily / exploration too limited | `pan.clampToCell` |
@@ -68,7 +79,8 @@ the app itself (`scripts/copy-mediapipe.mjs`).
 
 ## Checked
 
-- 13 unit tests on the gesture engine: openness, side mapping and swap, same-label hands, one zoom step per
+- 17 unit tests on the gesture engine (rotation: left hand rotates and never pans, right hand pans and never
+  rotates, both at once, closing the left hand zooms out without rotating); openness, side mapping and swap, same-label hands, one zoom step per
   cycle (none while the fist stays closed, none for a hand that starts closed), hysteresis, pan direction
   (right, up), dead zone, no pan while closing or just after opening.
 - Headless Chrome with a fake camera, desktop and phone: detection rate, 60 fps scene, zoom step (eased, with

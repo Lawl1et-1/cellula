@@ -41,7 +41,7 @@ export function HandController() {
   return null;
 }
 
-type IconKind = 'open' | 'closed' | 'between' | 'none' | 'zoomIn' | 'zoomOut' | 'pan' | 'idle' | 'locked';
+type IconKind = 'open' | 'closed' | 'between' | 'none' | 'zoomIn' | 'zoomOut' | 'pan' | 'rotate' | 'idle' | 'locked';
 
 /** Small line icons, drawn in the current colour. */
 function Icon({ kind, size = 22 }: { kind: IconKind; size?: number }) {
@@ -65,6 +65,12 @@ function Icon({ kind, size = 22 }: { kind: IconKind; size?: number }) {
         </>
       )}
       {kind === 'pan' && <path d="M12 3v18M3 12h18M12 3l-2.5 2.5M12 3l2.5 2.5M12 21l-2.5-2.5M12 21l2.5-2.5M3 12l2.5-2.5M3 12l2.5 2.5M21 12l-2.5-2.5M21 12l-2.5 2.5" />}
+      {kind === 'rotate' && (
+        <>
+          <ellipse cx="12" cy="12" rx="5" ry="8" />
+          <path d="M4 12a8 4 0 0 0 16 0M20 12l-2.5-1.5M20 12l-1 2.6" />
+        </>
+      )}
       {kind === 'idle' && <circle cx="12" cy="12" r="3" />}
       {kind === 'locked' && (
         <>
@@ -77,7 +83,7 @@ function Icon({ kind, size = 22 }: { kind: IconKind; size?: number }) {
 }
 
 const SHAPES = ['open', 'closed', 'between', 'none'] as const;
-const ACTIONS = ['idle', 'pan', 'zoomIn', 'zoomOut', 'locked'] as const;
+const ACTIONS = ['idle', 'pan', 'rotate', 'zoomIn', 'zoomOut', 'locked'] as const;
 
 /**
  * What the system thinks the hands are doing: a badge per hand (detected? open or closed?), the current action,
@@ -99,19 +105,21 @@ function useHandFeedback(
         for (const side of ['left', 'right'] as const) {
           const h = handBridge.hands[side];
           el.dataset[side] = h ? h.shape : 'none';
-          el.dataset[`${side}Pan`] = String(handBridge.panning && handBridge.panHand === side);
         }
+        el.dataset.rightPan = String(handBridge.panning);
+        el.dataset.leftRotate = String(handBridge.rotating);
         const framed = !!useScenario.getState().scenario && !useUi.getState().cameraUnlocked;
         const zoomAge = performance.now() - handBridge.lastZoom.at;
-        el.dataset.action = framed
-          ? 'locked'
-          : zoomAge < 700 && handBridge.lastZoom.dir
-            ? handBridge.lastZoom.dir > 0
-              ? 'zoomIn'
-              : 'zoomOut'
-            : handBridge.panning
-              ? 'pan'
-              : 'idle';
+        // Several actions can show at once (panning with the right hand while rotating with the left).
+        const actions: string[] = [];
+        if (framed) actions.push('locked');
+        else {
+          if (zoomAge < 700 && handBridge.lastZoom.dir) actions.push(handBridge.lastZoom.dir > 0 ? 'zoomIn' : 'zoomOut');
+          if (handBridge.panning) actions.push('pan');
+          if (handBridge.rotating) actions.push('rotate');
+          if (!actions.length) actions.push('idle');
+        }
+        el.dataset.action = actions.join(' ');
         if (flash.current) {
           flash.current.dataset.show = String(zoomAge < 700 && !framed && !!handBridge.lastZoom.dir);
           flash.current.dataset.dir = handBridge.lastZoom.dir > 0 ? 'in' : 'out';
@@ -276,6 +284,7 @@ export function HandTutorial() {
     { icons: ['open', 'closed', 'zoomIn'], title: tt.zoomIn, text: tt.zoomInText },
     { icons: ['open', 'closed', 'zoomOut'], title: tt.zoomOut, text: tt.zoomOutText },
     { icons: ['open', 'pan'], title: tt.pan, text: tt.panText },
+    { icons: ['open', 'rotate'], title: tt.rotate, text: tt.rotateText },
   ] as const;
 
   return (

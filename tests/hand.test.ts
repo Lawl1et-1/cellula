@@ -137,3 +137,36 @@ describe('panning', () => {
     expect(reopening.every((f) => !f.pan)).toBe(true);
   });
 });
+
+describe('rotation (left hand)', () => {
+  it('a steady open left hand moving rotates instead of panning', () => {
+    const e = new GestureEngine();
+    run(e, repeat(15, () => [realLeft(hand(0.6, 0.5))]));
+    const frames = run(e, repeat(10, (i) => [realLeft(hand(0.6 - i * 0.02, 0.5))]), 500);
+    expect(frames.some((f) => f.rotate && f.rotate.x > 0)).toBe(true);
+    expect(frames.every((f) => !f.pan)).toBe(true);
+  });
+
+  it('the right hand pans and never rotates', () => {
+    const e = new GestureEngine();
+    run(e, repeat(15, () => [realRight(hand(0.4, 0.5))]));
+    const frames = run(e, repeat(10, (i) => [realRight(hand(0.4, 0.5 - i * 0.02))]), 500);
+    expect(frames.some((f) => f.pan && f.pan.y < 0)).toBe(true);
+    expect(frames.every((f) => !f.rotate)).toBe(true);
+  });
+
+  it('both hands moving pan and rotate at the same time', () => {
+    const e = new GestureEngine();
+    run(e, repeat(15, () => [realLeft(hand(0.75, 0.5)), realRight(hand(0.25, 0.5))]));
+    const frames = run(e, repeat(10, (i) => [realLeft(hand(0.75, 0.5 - i * 0.02)), realRight(hand(0.25 - i * 0.02, 0.5))]), 500);
+    expect(frames.some((f) => f.pan && f.rotate)).toBe(true);
+  });
+
+  it('closing the left hand to zoom out never rotates', () => {
+    const e = new GestureEngine();
+    run(e, repeat(15, () => [realLeft(hand(0.6, 0.5))]));
+    const frames = run(e, repeat(12, (i) => [realLeft(hand(0.6 - i * 0.02, 0.5, i / 11))]), 500);
+    expect(frames.slice(1).every((f) => !f.rotate || (f.rotate.x === 0 && f.rotate.y === 0))).toBe(true);
+    expect(frames.reduce((s, f) => s + f.zoom, 0)).toBe(-1);
+  });
+});

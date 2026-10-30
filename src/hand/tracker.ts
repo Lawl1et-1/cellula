@@ -80,6 +80,8 @@ export async function startHandTracking(callbacks: {
       handBridge.panning = !!frame.pan;
       handBridge.panHand = frame.panHand;
       handBridge.pan = frame.pan ?? { x: 0, y: 0 };
+      handBridge.rotating = !!frame.rotate;
+      handBridge.rotate = frame.rotate ?? { x: 0, y: 0 };
       handBridge.updatedAt = performance.now();
       if (msg.ms !== undefined) handBridge.detectMs += (msg.ms - handBridge.detectMs) * 0.2;
       count++;
