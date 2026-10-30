@@ -72,12 +72,14 @@ self.onmessage = async (e: MessageEvent<InitMessage | FrameMessage>) => {
       // Timestamps must increase strictly.
       const t = Math.max(Math.round(msg.t), lastT + 1);
       lastT = t;
+      const started = performance.now();
       const r = landmarker.detectForVideo(bitmap, t);
+      const ms = performance.now() - started;
       const hands = r.landmarks.map((points, i) => ({
         landmarks: points.map((p) => ({ x: p.x, y: p.y, z: p.z })),
         label: r.handedness[i]?.[0]?.categoryName === 'Left' ? 'Left' : 'Right',
       }));
-      postMessage({ type: 'result', hands, t: msg.t });
+      postMessage({ type: 'result', hands, t: msg.t, ms });
     } catch (err) {
       postMessage({ type: 'result', hands: [], t: msg.t, warning: err instanceof Error ? err.message : String(err) });
     } finally {

@@ -25,6 +25,8 @@ export const handBridge = {
   /** Detections per second actually achieved, and the backend in use. */
   fps: 0,
   backend: '' as '' | 'GPU' | 'CPU',
+  /** Average time the worker spends on one detection (ms). */
+  detectMs: 0,
 };
 
 export function resetBridge() {
@@ -40,4 +42,5 @@ export function resetBridge() {
   handBridge.video = null;
   handBridge.fps = 0;
   handBridge.backend = '';
+  handBridge.detectMs = 0;
 }

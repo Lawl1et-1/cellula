@@ -42,19 +42,23 @@ export async function startHandTracking(callbacks: {
   let stopped = false;
   let ready = false;
   let busySince = 0; // 0 = idle
+  // A camera frame arrived that has not been analysed yet (sent as soon as the worker is free).
+  let pending = false;
   let count = 0;
   let since = performance.now();
   let frameRequest = 0;
   let fallbackTimer = 0;
 
   worker.onmessage = (e: MessageEvent) => {
-    const msg = e.data as { type: string; hands?: DetectedHand[]; t?: number; message?: string; backend?: 'GPU' | 'CPU' };
+    const msg = e.data as { type: string; hands?: DetectedHand[]; t?: number; ms?: number; message?: string; backend?: 'GPU' | 'CPU' };
     if (stopped) return;
     if (msg.type === 'ready') {
       ready = true;
       handBridge.active = true;
       handBridge.video = video;
       handBridge.backend = msg.backend ?? '';
+      // Development only: lets automated checks inspect detection and inject gestures.
+      if (process.env.NODE_ENV !== 'production') (window as unknown as { __cellulaHand: typeof handBridge }).__cellulaHand = handBridge;
       callbacks.onReady();
       schedule();
     } else if (msg.type === 'error') {
@@ -62,6 +66,8 @@ export async function startHandTracking(callbacks: {
       callbacks.onError('failed');
     } else if (msg.type === 'result') {
       busySince = 0;
+      // Do not wait for the next camera frame: analyse the newest one right away.
+      if (pending) void send();
       const hands = msg.hands ?? [];
       // The capture time of the frame, not the arrival time: the filters need the real interval.
       const frame = engine.update(hands, msg.t ?? performance.now());
@@ -75,6 +81,7 @@ export async function startHandTracking(callbacks: {
       handBridge.panHand = frame.panHand;
       handBridge.pan = frame.pan ?? { x: 0, y: 0 };
       handBridge.updatedAt = performance.now();
+      if (msg.ms !== undefined) handBridge.detectMs += (msg.ms - handBridge.detectMs) * 0.2;
       count++;
       const now = performance.now();
       if (now - since > 1000) {
@@ -102,6 +109,7 @@ export async function startHandTracking(callbacks: {
     const free = busySince === 0 || now - busySince > HAND_CONFIG.workerTimeoutMs;
     if (!ready || !free || video.readyState < 2 || document.hidden) return;
     busySince = now;
+    pending = false;
     try {
       const bitmap = await createImageBitmap(video, {
         resizeWidth: cam.analysisWidth,
@@ -120,11 +128,13 @@ export async function startHandTracking(callbacks: {
     if (stopped) return;
     if (video.requestVideoFrameCallback) {
       frameRequest = video.requestVideoFrameCallback(() => {
+        pending = true;
         void send();
         schedule();
       });
     } else {
       fallbackTimer = window.setTimeout(() => {
+        pending = true;
         void send();
         schedule();
       }, 33);

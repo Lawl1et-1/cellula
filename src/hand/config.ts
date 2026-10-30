@@ -21,7 +21,7 @@ export const HAND_CONFIG = {
     analysisWidth: 320,
     analysisHeight: 240,
     /** Detection on the GPU (WebGL in the worker), falling back to the CPU if unavailable. */
-    delegate: 'GPU' as 'GPU' | 'CPU',
+    delegate: 'CPU' as 'GPU' | 'CPU',
   },
 
   detection: {
@@ -78,7 +78,7 @@ export const HAND_CONFIG = {
     /** Reverse the direction (moving the hand left then moves the view right, like dragging the cell). */
     invert: false,
     /** The point the camera looks at stays inside the cell, scaled by this (1 = the cell's own size). */
-    clampToCell: 0.85,
+    clampToCell: 0.7,
   },
 
   /** One Euro filter (Casiez et al., 2012): low jitter when still, low lag when moving. */

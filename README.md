@@ -29,8 +29,8 @@ scientifiques citées.
   ce qui ne joue pas de rôle s'estompe, la caméra cadre l'action, virus et molécules clés sont agrandis
   (facteur indiqué) et nommés. 96 sources, toutes vérifiées sur NCBI (PubMed, GeneReviews, StatPearls).
 - Passer du français à l'anglais à tout moment (bouton « FR | EN »), sans recharger la scène.
-- En option, piloter la cellule avec ses mains devant la webcam (réglages → Contrôle → Mains) : main ouverte
-  pour tourner, pincement pour sélectionner, deux mains pour zoomer, poing pour figer la caméra. La vidéo est
+- En option, piloter la cellule avec ses mains devant la webcam (réglages → Contrôle → Mains) : fermer la
+  main droite pour zoomer, la main gauche pour reculer, déplacer une main ouverte pour explorer. La vidéo est
   analysée uniquement dans le navigateur ([détails](docs/reviews/hand-mode.md)).
 
 ## Lancer le projet

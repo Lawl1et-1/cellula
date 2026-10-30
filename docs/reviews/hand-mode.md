@@ -1,56 +1,76 @@
 # Review — Hand-tracking control
 
-Status: **built; off by default.** Mouse and touch stay the default; hand mode is switched on from the
+Status: **reworked; off by default.** Mouse and touch stay the default; hand mode is switched on from the
 settings ("Contrôle : Souris | Mains").
 
 ## Gestures
 
 | Gesture | Effect |
 |---|---|
-| Open hand, moving | Orbit the cell |
-| Relaxed hand (fingers slightly bent) | Move the cursor without rotating |
-| Pinch (thumb + index) | Select the organelle under the cursor |
-| Two hands spreading / closing | Zoom in / out |
-| Closed fist | Freeze the camera |
+| Right hand: open, then close | One eased zoom-in step |
+| Left hand: open, then close | One eased zoom-out step |
+| Open, steady hand moving | Pan the view the same way (with inertia), clamped to the cell |
 
-A short tutorial opens the first time hand mode is switched on, and again from the "Gestes" button.
+- A zoom step needs a full open → closed cycle: keeping the fist closed does nothing more.
+- Open / closed comes from finger curl with two thresholds (hysteresis), so a half-closed hand does not
+  flicker.
+- Panning only happens once the hand has been open for a moment and is not changing shape, so opening and
+  closing for zoom never pans.
+- Left and right are the user's real hands: MediaPipe labels hands as if the image were mirrored and we
+  analyse the raw camera image, so its labels are swapped (`handedness.swap` in the config can undo that).
 
-## How it works
+On screen: an **L / R** (FR **G / D**) badge per hand shows whether it is detected and open, closed or half;
+the action next to it shows *panning*, *zoom in* or *zoom out*; a large magnifier flashes in the middle of
+the screen on each zoom step. The status chip also shows the detection rate.
 
-- **Webcam → worker.** The page captures the webcam at 640×480, downscales each frame to 256×192 on the GPU
-  (`createImageBitmap`) and hands it to a Web Worker (`src/hand/hand.worker.ts`) that runs MediaPipe's hand
-  landmarker on the CPU. The worker never receives a new frame before answering the previous one, so it can
-  never pile up work. Measured: the 3D scene stays at 60 fps with tracking running; tracking is ready in
-  about 3–5 s.
-- **Gestures** (`src/hand/gestures.ts`): poses from the 21 landmarks (pinch with hysteresis, extended
-  fingers for open hand and fist), a few frames of confirmation before a gesture takes effect, dead zones on
-  movement and zoom, a cooldown between pinch selections, and a One Euro filter on the cursor, the palm and
-  the distance between the hands.
-- **Scene**: orbit and zoom feed the camera controller (a framed focus-mode step keeps its camera unless
-  freed); the hand cursor hovers and a pinch selects through the same picking as the mouse.
-- **Tuning**: every sensitivity, threshold and the detection frame rate live in `src/hand/config.ts`.
+The old gestures (open hand to orbit, pinch to select, two hands to zoom, fist to freeze) and the hand
+cursor were removed: they conflicted with the new mapping. Orbiting and selecting stay on the mouse / touch.
+
+## Pipeline fixes (audit)
+
+| Problem | Fix |
+|---|---|
+| Left and right hands reversed | Labels corrected for the unmirrored image, with a config switch |
+| Slow detection (~7/s): frames polled on a timer, worker idle until the next tick | One detection per new camera frame (`requestVideoFrameCallback`), and the newest frame is sent as soon as the worker answers: ~15/s while searching for hands, faster once a hand is tracked |
+| Tiny analysis frames (256×192): jittery landmarks | 320×240 |
+| Filters timed on result arrival, not capture | Capture time passed through the worker |
+| Double smoothing (One Euro + the camera's 0.45 s easing) made moves lag | Pan applied directly each frame with its own short follow / inertia; zoom steps keep a deliberate ease |
+| A lost worker answer could stall detection forever | Watchdog (`workerTimeoutMs`) |
+| Several gestures fighting over the same hand | Single, separated mapping (above) |
+
+GPU detection is available (`camera.delegate: 'GPU'`) but off: in a worker it competes with the 3D scene
+for the GPU, and in testing it stalled the scene. The CPU path keeps the scene at 60 fps.
+
+## Tuning (`src/hand/config.ts`)
+
+| Feels… | Change |
+|---|---|
+| Zoom steps too big / small | `zoom.step` (fraction of the distance per step) |
+| Zoom too abrupt / slow | `zoom.easeSeconds` |
+| Fist not recognised | raise `curl.closedBelow` (e.g. 1.35) |
+| Open hand not recognised | lower `curl.openAbove` (e.g. 1.5) |
+| Flickers between open and closed | widen the gap between `openAbove` and `closedBelow` |
+| Pan too fast / slow | `pan.speed` |
+| Pans on small tremors | raise `pan.deadZone` |
+| Pans when opening or closing the hand | raise `pan.stableMs`, lower `pan.maxOpennessRate` |
+| Too much / too little glide after stopping | `pan.inertiaSeconds` |
+| Pan direction feels backwards | `pan.invert: true` (drag-the-cell feel) |
+| Left / right reversed | `handedness.swap` |
+| Jittery | lower `filter.minCutoff` (smoother) — laggy: raise `filter.beta` |
+| Cell lost too easily / exploration too limited | `pan.clampToCell` |
 
 ## Privacy
 
 All video processing stays in the browser: no image is sent or recorded, and the UI says so (status chip,
 tutorial). The only download is the hand-detection model file, fetched once from Google's MediaPipe storage
-(`HAND_CONFIG.modelUrl`; point it at a self-hosted copy to avoid any third-party request). The WASM runtime is
-served by the app itself (`scripts/copy-mediapipe.mjs` copies it into `public/mediapipe` on install, dev and
-build).
+(`modelUrl`; point it at a self-hosted copy to avoid any third-party request). The WASM runtime is served by
+the app itself (`scripts/copy-mediapipe.mjs`).
 
 ## Checked
 
-- Unit tests for the One Euro filter and the gesture interpreter (poses, confirmation, dead zone, one
-  selection per pinch, fist).
-- Headless Chrome with a fake camera, desktop (1440×900) and phone (390×844): the model loads in the worker,
-  the scene keeps 60 fps, the tutorial, status chip, preview and settings toggle do not overlap other UI;
-  production build included.
-- Not checkable here: real hands in front of a real webcam. See the manual checks below.
-
-## Manual checks
-
-1. Switch to "Mains", allow the camera, follow the tutorial.
-2. Open hand: the cell turns; relaxed hand: only the cursor moves; pinch over an organelle: its panel opens.
-3. Two hands apart / together: zoom; fist: the camera stays still.
-4. If it feels too fast, too slow or jittery, adjust `orbit.speed`, `zoom.speed`, `filter.minCutoff` /
-   `filter.beta` and the dead zones in `src/hand/config.ts`.
+- 13 unit tests on the gesture engine: openness, side mapping and swap, same-label hands, one zoom step per
+  cycle (none while the fist stays closed, none for a hand that starts closed), hysteresis, pan direction
+  (right, up), dead zone, no pan while closing or just after opening.
+- Headless Chrome with a fake camera, desktop and phone: detection rate, 60 fps scene, zoom step (eased, with
+  the flash), pan direction, clamp after a long pan, status chip and tutorial layout.
+- Not checkable here: real hands in front of a real webcam.

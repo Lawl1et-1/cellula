@@ -316,16 +316,21 @@
 }
 
 @media (max-width: 640px) {
+  /* Two rows on a phone: what it is on the first, hands, action and buttons on the second. */
   .status {
     top: 108px;
     left: 12px;
     right: 12px;
     max-width: none;
-    gap: 8px;
-    padding: 6px 6px 6px 10px;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+    padding: 8px 8px 8px 10px;
   }
   .texts {
-    flex: 1;
+    flex: 1 1 calc(100% - 24px);
+  }
+  .action {
+    min-width: 0;
   }
   /* On a phone the chip keeps the hands and the action; the action label and the rate go. */
   .actionItem span,
@@ -336,7 +341,7 @@
     padding: 6px 9px;
   }
   .preview {
-    top: 172px;
+    top: 212px;
     right: 12px;
     bottom: auto;
     width: 144px;
