@@ -6,6 +6,8 @@ import { handBridge } from '@/hand/bridge';
 import { handSupported, useHand } from '@/hand/store';
 import { startHandTracking } from '@/hand/tracker';
 import { useT } from '@/i18n/locale';
+import { useScenario } from '@/state/scenario';
+import { useUi } from '@/state/ui';
 import styles from './hand.module.css';
 
 /** Starts and stops the webcam and the tracker when hand mode is switched on or off. */
@@ -39,35 +41,90 @@ export function HandController() {
   return null;
 }
 
-/** The hand cursor: a small ring that changes with the gesture. Moved directly, without React renders. */
-export function HandCursor() {
-  const status = useHand((s) => s.status);
-  const ref = useRef<HTMLDivElement>(null);
+type IconKind = 'open' | 'closed' | 'between' | 'none' | 'zoomIn' | 'zoomOut' | 'pan' | 'idle' | 'locked';
+
+/** Small line icons, drawn in the current colour. */
+function Icon({ kind, size = 22 }: { kind: IconKind; size?: number }) {
+  const p = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
+  return (
+    <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden {...p}>
+      {kind === 'open' && <path d="M8 13V5.5m3 7V4m3 8.5V5m3 8V7.5M5.5 12.5l1.5 4c1 2.5 3 4 5.5 4s4.5-2 4.5-5V13" />}
+      {kind === 'closed' && (
+        <>
+          <rect x="6" y="8" width="12" height="9" rx="3.5" />
+          <path d="M9.5 8v3m3-3v3m3-3v3M8 17c0 2 1.8 3.5 4 3.5s4-1.5 4-3.5" />
+        </>
+      )}
+      {kind === 'between' && <path d="M8 13V9m3 3V7.5m3 4.5V8.5m3 4.5v-2M5.5 12.5l1.5 4c1 2.5 3 4 5.5 4s4.5-2 4.5-5V13" />}
+      {kind === 'none' && <path d="M8 13V5.5m3 7V4m3 8.5V5m3 8V7.5M5.5 12.5l1.5 4c1 2.5 3 4 5.5 4s4.5-2 4.5-5V13M4 4l16 16" />}
+      {(kind === 'zoomIn' || kind === 'zoomOut') && (
+        <>
+          <circle cx="10.5" cy="10.5" r="6" />
+          <path d="M15 15l5 5M8 10.5h5" />
+          {kind === 'zoomIn' && <path d="M10.5 8v5" />}
+        </>
+      )}
+      {kind === 'pan' && <path d="M12 3v18M3 12h18M12 3l-2.5 2.5M12 3l2.5 2.5M12 21l-2.5-2.5M12 21l2.5-2.5M3 12l2.5-2.5M3 12l2.5 2.5M21 12l-2.5-2.5M21 12l-2.5 2.5" />}
+      {kind === 'idle' && <circle cx="12" cy="12" r="3" />}
+      {kind === 'locked' && (
+        <>
+          <rect x="6" y="11" width="12" height="9" rx="2" />
+          <path d="M9 11V8a3 3 0 0 1 6 0v3" />
+        </>
+      )}
+    </svg>
+  );
+}
+
+const SHAPES = ['open', 'closed', 'between', 'none'] as const;
+const ACTIONS = ['idle', 'pan', 'zoomIn', 'zoomOut', 'locked'] as const;
+
+/**
+ * What the system thinks the hands are doing: a badge per hand (detected? open or closed?), the current action,
+ * and a large flash in the middle of the screen for each zoom step. Updated directly, without React renders.
+ */
+function useHandFeedback(
+  root: React.RefObject<HTMLElement | null>,
+  flash: React.RefObject<HTMLElement | null>,
+  rateText: React.RefObject<(n: number, backend: string) => string>,
+  active: boolean,
+) {
   useEffect(() => {
-    if (status !== 'on') return;
+    if (!active) return;
     let raf = 0;
+    let shownRate = '';
     const tick = () => {
-      const el = ref.current;
+      const el = root.current;
       if (el) {
-        const c = handBridge.cursor;
-        el.style.opacity = c ? '1' : '0';
-        if (c) el.style.transform = `translate(${c.x}px, ${c.y}px)`;
-        if (el.dataset.mode !== handBridge.mode) el.dataset.mode = handBridge.mode;
+        for (const side of ['left', 'right'] as const) {
+          const h = handBridge.hands[side];
+          el.dataset[side] = h ? h.shape : 'none';
+          el.dataset[`${side}Pan`] = String(handBridge.panning && handBridge.panHand === side);
+        }
+        const framed = !!useScenario.getState().scenario && !useUi.getState().cameraUnlocked;
+        const zoomAge = performance.now() - handBridge.lastZoom.at;
+        el.dataset.action = framed
+          ? 'locked'
+          : zoomAge < 700 && handBridge.lastZoom.dir
+            ? handBridge.lastZoom.dir > 0
+              ? 'zoomIn'
+              : 'zoomOut'
+            : handBridge.panning
+              ? 'pan'
+              : 'idle';
+        if (flash.current) {
+          flash.current.dataset.show = String(zoomAge < 700 && !framed && !!handBridge.lastZoom.dir);
+          flash.current.dataset.dir = handBridge.lastZoom.dir > 0 ? 'in' : 'out';
+        }
+        const rate = el.querySelector<HTMLElement>('[data-rate]');
+        const text = rateText.current(handBridge.fps, handBridge.backend);
+        if (rate && text !== shownRate) rate.textContent = shownRate = text;
       }
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [status]);
-  if (status !== 'on') return null;
-  return (
-    <div ref={ref} className={styles.cursor} data-mode="none" aria-hidden>
-      <span className={styles.ring} />
-      <span className={styles.dot} />
-      <span className={styles.zoom}>⇔</span>
-      <span className={styles.lock}>❚❚</span>
-    </div>
-  );
+  }, [root, flash, rateText, active]);
 }
 
 const CONNECTIONS = [
@@ -78,7 +135,7 @@ const CONNECTIONS = [
   [13, 17], [17, 18], [18, 19], [19, 20], [0, 17],
 ] as const;
 
-/** Mirrored webcam thumbnail with the detected hand skeleton, drawn at a modest rate. */
+/** Mirrored webcam thumbnail with the detected hand skeletons, drawn at a modest rate. */
 function Preview() {
   const canvas = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -98,17 +155,17 @@ function Preview() {
       ctx.drawImage(video, 0, 0, w, h);
       ctx.restore();
       ctx.lineWidth = 1.5;
-      for (const hand of handBridge.hands) {
-        const p = hand.landmarks.map((l) => [(1 - l.x) * w, l.y * h] as const);
+      for (const hand of handBridge.raw) {
+        const pts = hand.landmarks.map((l) => [(1 - l.x) * w, l.y * h] as const);
         ctx.strokeStyle = 'rgba(143, 227, 255, 0.85)';
         ctx.beginPath();
         for (const [a, b] of CONNECTIONS) {
-          ctx.moveTo(p[a]![0], p[a]![1]);
-          ctx.lineTo(p[b]![0], p[b]![1]);
+          ctx.moveTo(pts[a]![0], pts[a]![1]);
+          ctx.lineTo(pts[b]![0], pts[b]![1]);
         }
         ctx.stroke();
         ctx.fillStyle = '#ff8fc1';
-        for (const [x, y] of p) ctx.fillRect(x - 1.5, y - 1.5, 3, 3);
+        for (const [x, y] of pts) ctx.fillRect(x - 1.5, y - 1.5, 3, 3);
       }
     };
     raf = requestAnimationFrame(draw);
@@ -117,26 +174,15 @@ function Preview() {
   return <canvas ref={canvas} className={`glass ${styles.preview}`} width={192} height={144} />;
 }
 
-/** Hand mode status: what the hand is doing, local-processing notice, preview, gestures, stop. */
+/** Hand mode status: detected hands, current action, local-processing notice, preview, gestures, stop. */
 export function HandStatus() {
   const t = useT();
   const { enabled, status, error, preview, setPreview, setEnabled, setTutorial } = useHand();
-  const hint = useRef<HTMLSpanElement>(null);
-  const modes = useRef(t.hand.modes);
-  modes.current = t.hand.modes;
-
-  useEffect(() => {
-    if (status !== 'on') return;
-    let raf = 0;
-    let shown = '';
-    const tick = () => {
-      const text = modes.current[handBridge.cursor ? handBridge.mode : 'none'] ?? '';
-      if (text !== shown && hint.current) hint.current.textContent = shown = text;
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [status]);
+  const root = useRef<HTMLDivElement>(null);
+  const flash = useRef<HTMLDivElement>(null);
+  const rateText = useRef(t.hand.rate);
+  rateText.current = t.hand.rate;
+  useHandFeedback(root, flash, rateText, status === 'on');
 
   if (error && !enabled) {
     return (
@@ -150,17 +196,40 @@ export function HandStatus() {
   }
   if (!enabled) return null;
 
+  const on = status === 'on';
   return (
     <>
-      <div className={`glass ${styles.status}`} role="status">
-        <span className={styles.live} data-on={status === 'on'} aria-hidden />
+      <div ref={root} className={`glass ${styles.status}`} role="status" data-left="none" data-right="none" data-action="idle">
+        <span className={styles.live} data-on={on} aria-hidden />
         <span className={styles.texts}>
-          <strong>{status === 'on' ? t.hand.title : t.hand.loading}</strong>
-          {status === 'on' ? <span ref={hint} className={styles.hint} /> : null}
+          <strong>{on ? t.hand.title : t.hand.loading}</strong>
           <span className={styles.local} title={t.hand.privacy}>
             {t.hand.privacyShort}
           </span>
+          {on && <span className={styles.rate} data-rate />}
         </span>
+        {on && (
+          <>
+            {(['left', 'right'] as const).map((side) => (
+              <span key={side} className={styles.side} data-side={side} title={t.hand[side]}>
+                <b>{side === 'left' ? t.hand.leftShort : t.hand.rightShort}</b>
+                {SHAPES.map((shape) => (
+                  <span key={shape} className={styles.shape} data-shape={shape} title={t.hand.shapes[shape]}>
+                    <Icon kind={shape} size={18} />
+                  </span>
+                ))}
+              </span>
+            ))}
+            <span className={styles.action}>
+              {ACTIONS.map((a) => (
+                <span key={a} className={styles.actionItem} data-action={a}>
+                  <Icon kind={a} size={18} />
+                  <span>{t.hand.actions[a]}</span>
+                </span>
+              ))}
+            </span>
+          </>
+        )}
         <button className={styles.textButton} aria-pressed={preview} aria-label={t.hand.previewLabel} onClick={() => setPreview(!preview)}>
           {t.hand.preview}
         </button>
@@ -171,49 +240,19 @@ export function HandStatus() {
           ×
         </button>
       </div>
-      {preview && status === 'on' && <Preview />}
+      {/* Large feedback in the middle of the screen for each zoom step. */}
+      {on && (
+        <div ref={flash} className={styles.flash} data-show="false" data-dir="in" aria-hidden>
+          <span className={styles.flashIn}>
+            <Icon kind="zoomIn" size={46} />
+          </span>
+          <span className={styles.flashOut}>
+            <Icon kind="zoomOut" size={46} />
+          </span>
+        </div>
+      )}
+      {preview && on && <Preview />}
     </>
-  );
-}
-
-function Icon({ kind }: { kind: 'orbit' | 'point' | 'pinch' | 'zoom' | 'fist' }) {
-  const common = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
-  return (
-    <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden {...common}>
-      {kind === 'orbit' && (
-        <>
-          <path d="M18 34V18m5 16V13m5 21V15m5 19V20M13 33l-2-7" />
-          <path d="M14 34c0 6 5 9 10 9s10-3 10-9" />
-          <path d="M6 10c4-4 10-6 18-6m0 0-3-3m3 3-3 3" />
-        </>
-      )}
-      {kind === 'point' && (
-        <>
-          <path d="M20 34V16m5 18V22m5 12V24m5 10V26" />
-          <path d="M15 34c0 6 5 9 10 9s10-3 10-9" />
-        </>
-      )}
-      {kind === 'pinch' && (
-        <>
-          <circle cx="24" cy="14" r="3" />
-          <path d="M14 20c4-2 7-4 10-6m10 6c-4-2-7-4-10-6" />
-          <path d="M16 34c0 6 4 9 9 9s9-3 9-9V24" />
-        </>
-      )}
-      {kind === 'zoom' && (
-        <>
-          <path d="M12 30V18m4 12V16m4 14V19" />
-          <path d="M36 30V18m-4 12V16m-4 14V19" />
-          <path d="M4 40h10m-3-3 3 3-3 3M44 40H34m3-3-3 3 3 3" />
-        </>
-      )}
-      {kind === 'fist' && (
-        <>
-          <rect x="14" y="16" width="20" height="16" rx="6" />
-          <path d="M20 16v6m6-6v6m6-5v5M16 32c0 6 4 10 9 10s9-4 9-10" />
-        </>
-      )}
-    </svg>
   );
 }
 
@@ -227,18 +266,16 @@ export function HandTutorial() {
   useEffect(() => {
     if (!open) return;
     button.current?.focus();
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && close();
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && useHand.getState().setTutorial(false);
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
   const tt = t.hand.tutorial;
   const items = [
-    { kind: 'orbit', title: tt.orbit, text: tt.orbitText },
-    { kind: 'point', title: tt.point, text: tt.pointText },
-    { kind: 'pinch', title: tt.pinch, text: tt.pinchText },
-    { kind: 'zoom', title: tt.zoom, text: tt.zoomText },
-    { kind: 'fist', title: tt.fist, text: tt.fistText },
+    { icons: ['open', 'closed', 'zoomIn'], title: tt.zoomIn, text: tt.zoomInText },
+    { icons: ['open', 'closed', 'zoomOut'], title: tt.zoomOut, text: tt.zoomOutText },
+    { icons: ['open', 'pan'], title: tt.pan, text: tt.panText },
   ] as const;
 
   return (
@@ -261,9 +298,11 @@ export function HandTutorial() {
             <p className={styles.tutorialLead}>{tt.lead}</p>
             <ul className={styles.gestures}>
               {items.map((it) => (
-                <li key={it.kind}>
+                <li key={it.title}>
                   <span className={styles.gestureIcon}>
-                    <Icon kind={it.kind} />
+                    {it.icons.map((k, i) => (
+                      <Icon key={i} kind={k} size={22} />
+                    ))}
                   </span>
                   <span>
                     <strong>{it.title}</strong>
@@ -271,6 +310,16 @@ export function HandTutorial() {
                   </span>
                 </li>
               ))}
+              <li>
+                <span className={styles.gestureIcon}>
+                  <b className={styles.sideLetter}>{t.hand.leftShort}</b>
+                  <b className={styles.sideLetter}>{t.hand.rightShort}</b>
+                </span>
+                <span>
+                  <strong>{tt.feedback}</strong>
+                  <span>{tt.feedbackText}</span>
+                </span>
+              </li>
             </ul>
             <p className={styles.privacy}>
               <strong>{t.hand.privacy}</strong> {t.hand.model}

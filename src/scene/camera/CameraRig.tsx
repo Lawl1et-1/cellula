@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { CameraControls } from '@react-three/drei';
 import CameraControlsImpl from 'camera-controls';
-import { Vector3, type PerspectiveCamera } from 'three';
+import { Box3, Vector3, type PerspectiveCamera } from 'three';
 import { useScene } from '@/state/scene';
 import { useSelection } from '@/state/selection';
 import { useScenario } from '@/state/scenario';
@@ -12,6 +12,8 @@ import { useUi } from '@/state/ui';
 import { timeScale } from '../time';
 import { cameraPosition, focusPoint } from './focus';
 import { handBridge } from '@/hand/bridge';
+import { HAND_CONFIG } from '@/hand/config';
+import { CELL } from '../layout/cellLayout';
 
 const ACTION = CameraControlsImpl.ACTION;
 const INTRO_POSITION = new Vector3(-90, 80, 560);
@@ -62,6 +64,7 @@ export function CameraRig() {
   const keys = useFlightKeys();
   const wheelBoost = useRef(0);
   const prevMode = useRef(mode);
+  const handState = useRef({ vx: 0, vy: 0, bounded: false });
   // Focus mode: the step frames the camera; the reader can unlock it from the control bar.
   const scenarioOn = useScenario((s) => !!s.scenario);
   const unlocked = useUi((s) => s.cameraUnlocked);
@@ -205,20 +208,48 @@ export function CameraRig() {
     const dt = Math.min(delta, 0.05);
     const { lastInteraction } = useScene.getState();
 
-    // Hand mode: an open hand orbits, two hands zoom, a fist freezes the camera. A framed focus-mode step
-    // keeps its camera unless the reader freed it.
+    // Hand mode: a fist cycle zooms one eased step, a steady open hand pans with a little inertia. The
+    // point looked at stays inside the cell. A framed focus-mode step keeps its camera unless freed.
+    const hands = handState.current;
     if (handBridge.active) {
-      const { theta, phi } = handBridge.orbit;
-      const zoom = handBridge.zoom;
-      handBridge.orbit.theta = handBridge.orbit.phi = 0;
-      handBridge.zoom = 0;
-      const framedStep = !!useScenario.getState().scenario && !useUi.getState().cameraUnlocked;
-      if (handBridge.mode === 'fist') touch();
-      else if (mode === 'orbit' && !framedStep && (theta || phi || zoom)) {
-        if (theta || phi) void c.rotate(theta, phi, true);
-        if (zoom) void c.dolly(zoom * c.distance, true);
-        touch();
+      if (!hands.bounded) {
+        const k = HAND_CONFIG.pan.clampToCell;
+        c.setBoundary(new Box3(CELL.radii.clone().multiplyScalar(-k), CELL.radii.clone().multiplyScalar(k)));
+        hands.bounded = true;
       }
+      const framedStep = !!useScenario.getState().scenario && !useUi.getState().cameraUnlocked;
+      const usable = mode === 'orbit' && !framedStep;
+      const steps = handBridge.zoomSteps;
+      handBridge.zoomSteps = 0;
+      if (steps && usable) {
+        const z = HAND_CONFIG.zoom;
+        const from = c.distance;
+        const to = Math.min(z.maxDistance, Math.max(z.minDistance, from * Math.pow(1 - z.step, steps)));
+        if (Math.abs(to - from) > 1e-3) {
+          c.smoothTime = z.easeSeconds;
+          void c.dolly(from - to, true).then(() => {
+            c.smoothTime = 0.45;
+          });
+          touch();
+        }
+      }
+      // Velocity follows the hand quickly while it moves and glides to a stop when it stops (inertia).
+      const p = HAND_CONFIG.pan;
+      const fresh = performance.now() - handBridge.updatedAt < 250;
+      const wanted = handBridge.panning && fresh ? handBridge.pan : { x: 0, y: 0 };
+      const moving = wanted.x !== 0 || wanted.y !== 0;
+      const k = 1 - Math.exp(-dt / (moving ? p.followSeconds : p.inertiaSeconds));
+      hands.vx += (wanted.x - hands.vx) * k;
+      hands.vy += (wanted.y - hands.vy) * k;
+      if (usable && Math.hypot(hands.vx, hands.vy) > 1e-3) {
+        const scale = p.speed * c.distance * dt;
+        void c.truck(hands.vx * scale, hands.vy * scale, false);
+        touch();
+      } else if (!usable) hands.vx = hands.vy = 0;
+    } else if (hands.bounded) {
+      c.setBoundary();
+      hands.bounded = false;
+      hands.vx = hands.vy = 0;
     }
 
     if (mode === 'intro') {

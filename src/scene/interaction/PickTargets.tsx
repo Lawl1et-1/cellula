@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
-import { useFrame, useThree, type ThreeEvent } from '@react-three/fiber';
+import { useThree, type ThreeEvent } from '@react-three/fiber';
 import {
   CapsuleGeometry,
   DoubleSide,
@@ -10,10 +10,8 @@ import {
   Matrix4,
   MeshBasicMaterial,
   Quaternion,
-  Vector2,
   Vector3,
   type BufferGeometry,
-  type Group,
   type Intersection,
   type Object3D,
 } from 'three';
@@ -23,7 +21,6 @@ import { useScene } from '@/state/scene';
 import { CELL, CENTROSOME, GOLGI_CENTER, cellDistance } from '../layout/cellLayout';
 import { roughErAnchors, smoothErNodes } from '../organelles/EndoplasmicReticulum';
 import { INSTANCED, anchorFor, instanceFocus } from './anchors';
-import { handBridge } from '@/hand/bridge';
 
 /**
  * Invisible, low-poly stand-ins used only for picking. They live on layer 1, which the camera never
@@ -148,29 +145,6 @@ export function PickTargets() {
     selectHit(hit);
   };
 
-  // Hand mode: the hand cursor hovers like the mouse, and a pinch selects what is under it.
-  const group = useRef<Group>(null);
-  const ndc = useMemo(() => new Vector2(), []);
-  const lastSelect = useRef(handBridge.selectSeq);
-  const handHover = useRef(false);
-  useFrame(({ size }) => {
-    if (!handBridge.active || !handBridge.cursor || !group.current) {
-      if (handHover.current) useSelection.getState().hover(null);
-      handHover.current = false;
-      lastSelect.current = handBridge.selectSeq;
-      return;
-    }
-    ndc.set((handBridge.cursor.x / size.width) * 2 - 1, -(handBridge.cursor.y / size.height) * 2 + 1);
-    raycaster.setFromCamera(ndc, camera);
-    const hit = pick(raycaster.intersectObject(group.current, true), insideCell());
-    useSelection.getState().hover(hit?.target ?? null);
-    handHover.current = true;
-    if (handBridge.selectSeq !== lastSelect.current) {
-      lastSelect.current = handBridge.selectSeq;
-      if (hit) selectHit(hit);
-    }
-  });
-
   function selectHit(hit: NonNullable<ReturnType<typeof pick>>) {
     const { target, point } = hit;
     let focus: Focus | null = null;
@@ -203,7 +177,7 @@ export function PickTargets() {
   }
 
   return (
-    <group ref={group} name="pick-targets" onPointerMove={onMove} onPointerOut={onOut} onClick={onClick}>
+    <group name="pick-targets" onPointerMove={onMove} onPointerOut={onOut} onClick={onClick}>
       {proxies.map((p) => (
         <Proxies key={p.organelle} {...p} />
       ))}
