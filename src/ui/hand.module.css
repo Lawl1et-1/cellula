@@ -1,92 +1,5 @@
 /* ---------- Hand mode ---------- */
 
-.cursor {
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 50;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s var(--ease);
-  --c: #8fe3ff;
-}
-
-.ring,
-.dot,
-.zoom,
-.lock {
-  position: absolute;
-  left: 0;
-  top: 0;
-  transform: translate(-50%, -50%);
-  transition:
-    width 0.2s var(--ease),
-    height 0.2s var(--ease),
-    background 0.2s var(--ease),
-    border-color 0.2s var(--ease),
-    opacity 0.2s var(--ease);
-}
-
-.ring {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 1.5px solid var(--c);
-  box-shadow:
-    0 0 14px color-mix(in srgb, var(--c) 55%, transparent),
-    inset 0 0 8px color-mix(in srgb, var(--c) 30%, transparent);
-}
-
-.dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--c);
-}
-
-.zoom,
-.lock {
-  opacity: 0;
-  font-size: 13px;
-  color: var(--c);
-  white-space: nowrap;
-}
-
-.cursor[data-mode='point'] .ring {
-  width: 22px;
-  height: 22px;
-  opacity: 0.8;
-}
-
-.cursor[data-mode='pinch'] {
-  --c: #ff8fc1;
-}
-.cursor[data-mode='pinch'] .ring {
-  width: 18px;
-  height: 18px;
-  background: color-mix(in srgb, var(--c) 35%, transparent);
-}
-
-.cursor[data-mode='fist'] {
-  --c: #ffd36b;
-}
-.cursor[data-mode='fist'] .dot {
-  opacity: 0;
-}
-.cursor[data-mode='fist'] .lock {
-  opacity: 1;
-  font-size: 10px;
-}
-
-.cursor[data-mode='zoom'] .dot {
-  opacity: 0;
-}
-.cursor[data-mode='zoom'] .zoom {
-  opacity: 1;
-}
-
 /* Status: top-left, under the wordmark (the organelle list moves down to make room). */
 .status {
   position: absolute;
@@ -96,7 +9,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  max-width: min(420px, calc(100vw - 40px));
+  max-width: min(640px, calc(100vw - 40px));
   padding: 8px 8px 8px 12px;
   border-radius: 14px;
   font-size: 12.5px;
@@ -130,13 +43,141 @@
   font-weight: 500;
 }
 
-.hint {
+.local,
+.rate {
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+/* One badge per hand: dim when not seen, the icon shows open / closed / half. */
+.side {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 7px 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--hairline);
+  color: var(--ink-faint);
+  transition:
+    color 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    background 0.2s var(--ease);
+}
+
+.side b {
+  font-weight: 600;
+  font-size: 11.5px;
+}
+
+.shape {
+  display: none;
+  line-height: 0;
+}
+
+.status[data-left='open'] .side[data-side='left'] .shape[data-shape='open'],
+.status[data-left='closed'] .side[data-side='left'] .shape[data-shape='closed'],
+.status[data-left='between'] .side[data-side='left'] .shape[data-shape='between'],
+.status[data-left='none'] .side[data-side='left'] .shape[data-shape='none'],
+.status[data-right='open'] .side[data-side='right'] .shape[data-shape='open'],
+.status[data-right='closed'] .side[data-side='right'] .shape[data-shape='closed'],
+.status[data-right='between'] .side[data-side='right'] .shape[data-shape='between'],
+.status[data-right='none'] .side[data-side='right'] .shape[data-shape='none'] {
+  display: inline-block;
+}
+
+.status:not([data-left='none']) .side[data-side='left'],
+.status:not([data-right='none']) .side[data-side='right'] {
+  color: var(--ink);
+  border-color: var(--hairline-strong);
+}
+
+.status[data-left='closed'] .side[data-side='left'],
+.status[data-right='closed'] .side[data-side='right'] {
+  color: #ffd36b;
+  border-color: rgba(255, 211, 107, 0.55);
+}
+
+.status[data-left-pan='true'] .side[data-side='left'],
+.status[data-right-pan='true'] .side[data-side='right'] {
+  color: #8fe3ff;
+  border-color: rgba(143, 227, 255, 0.6);
+  background: rgba(143, 227, 255, 0.1);
+}
+
+/* Current action: only the matching item shows. */
+.action {
+  flex: none;
+  min-width: 118px;
+}
+
+.actionItem {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
   color: var(--ink-soft);
 }
 
-.local {
-  font-size: 11px;
-  color: var(--ink-faint);
+.status[data-action='idle'] .actionItem[data-action='idle'],
+.status[data-action='pan'] .actionItem[data-action='pan'],
+.status[data-action='zoomIn'] .actionItem[data-action='zoomIn'],
+.status[data-action='zoomOut'] .actionItem[data-action='zoomOut'],
+.status[data-action='locked'] .actionItem[data-action='locked'] {
+  display: inline-flex;
+}
+
+.actionItem[data-action='pan'] {
+  color: #8fe3ff;
+}
+.actionItem[data-action='zoomIn'],
+.actionItem[data-action='zoomOut'] {
+  color: #5cf0a8;
+}
+
+/* Zoom step flash, in the middle of the screen. */
+.flash {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  margin: -46px 0 0 -46px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(92, 240, 168, 0.7);
+  background: rgba(3, 6, 12, 0.45);
+  color: #5cf0a8;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.85);
+  transition:
+    opacity 0.25s var(--ease),
+    transform 0.35s var(--ease);
+}
+
+.flash[data-show='true'] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.flashIn,
+.flashOut {
+  grid-area: 1 / 1;
+  line-height: 0;
+  opacity: 0;
+}
+
+.flash[data-dir='in'] .flashIn,
+.flash[data-dir='out'] .flashOut {
+  opacity: 1;
+}
+
+.sideLetter {
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .textButton,
@@ -238,9 +279,11 @@
 
 .gestureIcon {
   flex: none;
-  display: grid;
-  place-items: center;
-  width: 54px;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
   height: 54px;
   border-radius: 14px;
   border: 1px solid var(--hairline);
@@ -273,26 +316,32 @@
 }
 
 @media (max-width: 640px) {
+  /* Two rows on a phone: what it is on the first, hands, action and buttons on the second. */
   .status {
     top: 108px;
     left: 12px;
     right: 12px;
     max-width: none;
-    gap: 8px;
-    padding: 6px 6px 6px 10px;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+    padding: 8px 8px 8px 10px;
   }
   .texts {
-    flex: 1;
+    flex: 1 1 calc(100% - 24px);
   }
-  /* On a phone the cursor itself shows the gesture; the chip keeps the title and the privacy notice. */
-  .hint {
+  .action {
+    min-width: 0;
+  }
+  /* On a phone the chip keeps the hands and the action; the action label and the rate go. */
+  .actionItem span,
+  .rate {
     display: none;
   }
   .textButton {
     padding: 6px 9px;
   }
   .preview {
-    top: 172px;
+    top: 212px;
     right: 12px;
     bottom: auto;
     width: 144px;

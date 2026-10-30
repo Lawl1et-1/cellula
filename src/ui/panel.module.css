@@ -394,6 +394,6 @@
 
 @media (max-width: 640px) {
   .list[data-below-hand='true'] {
-    top: 172px;
+    top: 212px;
   }
 }

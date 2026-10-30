@@ -1,6 +1,11 @@
 /**
  * Hand-tracking control: every tunable value in one place.
- * Positions are in normalised image units (0..1 across the webcam frame) unless stated otherwise.
+ * Hand positions are in normalised image units (0..1 across the webcam frame) unless stated otherwise.
+ *
+ * Gestures:
+ * - right hand open → closed: one eased zoom-in step
+ * - left hand open → closed: one eased zoom-out step
+ * - an open, steady hand moving: pan the view the same way (with inertia, clamped to the cell)
  */
 export const HAND_CONFIG = {
   /** MediaPipe hand landmarker model, fetched once by the browser. No video ever leaves the device. */
@@ -12,11 +17,11 @@ export const HAND_CONFIG = {
     /** Webcam capture size requested from the browser. */
     width: 640,
     height: 480,
-    /** Frames are downscaled to this before detection: small = fast. */
-    analysisWidth: 256,
-    analysisHeight: 192,
-    /** Upper bound on detections per second (the worker also never gets more than one frame at a time). */
-    maxFps: 30,
+    /** Frames are downscaled to this before detection (bigger = steadier landmarks, slower). */
+    analysisWidth: 320,
+    analysisHeight: 240,
+    /** Detection on the GPU (WebGL in the worker), falling back to the CPU if unavailable. */
+    delegate: 'CPU' as 'GPU' | 'CPU',
   },
 
   detection: {
@@ -26,44 +31,67 @@ export const HAND_CONFIG = {
     minTrackingConfidence: 0.5,
   },
 
-  /** One Euro filter (Casiez et al., 2012): low jitter when still, low lag when moving. */
-  filter: {
-    /** Lower = smoother when the hand is still (more lag). */
-    minCutoff: 1.2,
-    /** Higher = less lag on fast movements. */
-    beta: 8,
-    dCutoff: 1,
+  handedness: {
+    /**
+     * MediaPipe labels hands as if the image were a mirrored selfie; we analyse the raw camera image, so its
+     * "Left" is your real right hand. `true` corrects that. If left and right still come out reversed on your
+     * camera (some webcams mirror their own output), set it to `false`.
+     */
+    swap: true,
   },
 
-  /** Part of the webcam frame mapped to the whole screen (a margin makes the edges reachable). */
-  cursorMargin: 0.15,
-
-  orbit: {
-    /** Radians of camera rotation per unit of hand movement across the frame. */
-    speed: 4.2,
-    /** Movement per frame below which the hand is considered still (jitter). */
-    deadZone: 0.0035,
+  /**
+   * Open / closed hand, from how curled the fingers are. Openness = average, over the four fingers, of
+   * (wrist → fingertip) ÷ (wrist → knuckle): about 1.9 for an open hand, about 1.0 for a fist.
+   * Two thresholds (hysteresis) so a hand halfway does not flicker between the two.
+   */
+  curl: {
+    /** Above this the hand counts as open… */
+    openAbove: 1.6,
+    /** …and below this as closed. In between, it keeps its previous state. */
+    closedBelow: 1.25,
   },
 
   zoom: {
-    /** Fraction of the camera distance travelled per unit of change in the distance between the two hands. */
-    speed: 2.6,
-    /** Change in hand distance per frame below which nothing happens. */
-    deadZone: 0.004,
+    /** Fraction of the camera distance covered by one zoom step (0.3 = 30 % closer). */
+    step: 0.3,
+    /** Duration of the eased zoom movement, in seconds. */
+    easeSeconds: 0.55,
+    /** Limits of the camera distance from what it looks at (scene units; the cell is ~200 wide). */
+    minDistance: 8,
+    maxDistance: 700,
   },
 
-  gestures: {
-    /** Thumb–index distance, relative to the hand size, that starts a pinch… */
-    pinchOn: 0.32,
-    /** …and the larger distance that ends it (hysteresis: no flicker at the threshold). */
-    pinchOff: 0.48,
-    /** A finger counts as extended when its tip is this much farther from the wrist than its middle joint. */
-    extendedRatio: 1.12,
-    /** Frames a new gesture must persist before it takes effect (false triggers). */
-    confirmFrames: 3,
-    /** Minimum time between two selections by pinching, in ms. */
-    pinchCooldownMs: 700,
-    /** Hands lost for longer than this (ms) are forgotten. */
-    lostAfterMs: 400,
+  pan: {
+    /** View movement per unit of hand movement across the frame, as a fraction of the camera distance. */
+    speed: 1.4,
+    /** Hand movement per detection below which nothing happens (tremor). */
+    deadZone: 0.003,
+    /** The hand must have been open this long (ms) before it pans, so opening/closing never pans. */
+    stableMs: 220,
+    /** …and its openness must change slower than this (per second): a hand that is closing does not pan. */
+    maxOpennessRate: 1.2,
+    /** How long the view keeps gliding after the hand stops (s): higher = more inertia. */
+    inertiaSeconds: 0.3,
+    /** How quickly the view catches up with the hand (s): lower = snappier. */
+    followSeconds: 0.06,
+    /** Reverse the direction (moving the hand left then moves the view right, like dragging the cell). */
+    invert: false,
+    /** The point the camera looks at stays inside the cell, scaled by this (1 = the cell's own size). */
+    clampToCell: 0.7,
   },
+
+  /** One Euro filter (Casiez et al., 2012): low jitter when still, low lag when moving. */
+  filter: {
+    /** Lower = smoother when the hand is still (more lag). */
+    minCutoff: 1.5,
+    /** Higher = less lag on fast movements. */
+    beta: 12,
+    dCutoff: 1,
+  },
+
+  /** A hand not seen for longer than this (ms) is forgotten. */
+  lostAfterMs: 300,
+  /** If the worker has not answered for this long (ms), the next frame is sent anyway. */
+  workerTimeoutMs: 1000,
 } as const;

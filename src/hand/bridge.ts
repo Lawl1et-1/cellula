@@ -1,34 +1,46 @@
-import type { DetectedHand, HandMode } from './gestures';
+import type { DetectedHand, HandReport, HandSide } from './gestures';
 
 /**
- * Hand input shared with the 3D scene and the overlays, updated by the tracker ~30 times a second and read
- * every frame. Plain mutable data (no React state): nothing re-renders at tracking rate.
+ * Hand input shared with the 3D scene and the overlays, updated after each detection and read every frame.
+ * Plain mutable data (no React state): nothing re-renders at tracking rate.
  */
 export const handBridge = {
   active: false,
-  /** Cursor on screen in pixels (null when no hand is seen). */
-  cursor: null as { x: number; y: number } | null,
-  mode: 'none' as HandMode,
-  /** Camera moves accumulated since the scene last consumed them. */
-  orbit: { theta: 0, phi: 0 },
-  zoom: 0,
-  /** Increases on every pinch-to-select. */
-  selectSeq: 0,
-  /** Latest raw detections (for the webcam preview). */
-  hands: [] as DetectedHand[],
-  /** The live webcam stream (for the preview). */
+  /** What each of the user's hands is doing (null when not seen). */
+  hands: { left: null, right: null } as Record<HandSide, HandReport | null>,
+  /** Zoom steps waiting for the camera (+ in, − out). */
+  zoomSteps: 0,
+  /** Last zoom step, for the on-screen feedback. */
+  lastZoom: { dir: 0, at: 0 },
+  /** Pan velocity wanted by the hand, in frame widths per second (zero when not panning). */
+  pan: { x: 0, y: 0 },
+  panning: false,
+  panHand: null as HandSide | null,
+  /** When the last detection arrived (performance.now()). */
+  updatedAt: 0,
+  /** Latest raw detections (webcam preview). */
+  raw: [] as DetectedHand[],
+  /** The live webcam stream (webcam preview). */
   video: null as HTMLVideoElement | null,
-  /** Detections per second actually achieved. */
+  /** Detections per second actually achieved, and the backend in use. */
   fps: 0,
+  backend: '' as '' | 'GPU' | 'CPU',
+  /** Average time the worker spends on one detection (ms). */
+  detectMs: 0,
 };
 
 export function resetBridge() {
   handBridge.active = false;
-  handBridge.cursor = null;
-  handBridge.mode = 'none';
-  handBridge.orbit.theta = handBridge.orbit.phi = 0;
-  handBridge.zoom = 0;
-  handBridge.hands = [];
+  handBridge.hands = { left: null, right: null };
+  handBridge.zoomSteps = 0;
+  handBridge.lastZoom = { dir: 0, at: 0 };
+  handBridge.pan = { x: 0, y: 0 };
+  handBridge.panning = false;
+  handBridge.panHand = null;
+  handBridge.updatedAt = 0;
+  handBridge.raw = [];
   handBridge.video = null;
   handBridge.fps = 0;
+  handBridge.backend = '';
+  handBridge.detectMs = 0;
 }
