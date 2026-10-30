@@ -385,3 +385,15 @@
     max-height: 55vh;
   }
 }
+
+/* Hand mode: its status takes the top of the left column. */
+.list[data-below-hand='true'] {
+  top: 132px;
+  max-height: calc(100vh - 260px);
+}
+
+@media (max-width: 640px) {
+  .list[data-below-hand='true'] {
+    top: 172px;
+  }
+}

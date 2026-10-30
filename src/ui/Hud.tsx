@@ -10,6 +10,7 @@ import { useScenario } from '@/state/scenario';
 import { useTour } from '@/state/tour';
 import { useUi } from '@/state/ui';
 import { usePhone, useTouch } from './usePhone';
+import { useHand } from '@/hand/store';
 import styles from './ui.module.css';
 
 interface SegmentedProps<T extends string> {
@@ -65,6 +66,9 @@ export function Hud() {
   const setMotion = useScene((s) => s.setMotion);
   const setLevel = useQuality((s) => s.setLevel);
   const phone = usePhone();
+  const handsOn = useHand((s) => s.enabled);
+  const setHands = useHand((s) => s.setEnabled);
+  const handPreview = useHand((s) => s.enabled && s.preview);
   const touchDevice = useTouch();
   const settingsOpen = useUi((s) => s.settingsOpen);
   const setSettingsOpen = useUi((s) => s.setSettingsOpen);
@@ -143,11 +147,22 @@ export function Hud() {
               label: t.hud.qualityLevels[k] ?? QUALITY_PRESETS[k].label,
             }))}
           />
+          <span className={styles.divider} aria-hidden />
+          {/* Mouse and touch stay the default; hand tracking is opt-in. */}
+          <Segmented<'pointer' | 'hands'>
+            label={t.hand.control}
+            value={handsOn ? 'hands' : 'pointer'}
+            onChange={(v) => setHands(v === 'hands')}
+            options={[
+              { value: 'pointer', label: t.hand.pointer },
+              { value: 'hands', label: t.hand.hands },
+            ]}
+          />
         </div>
       )}
 
-      {!hasScenario && <p className={styles.help}>{mode === 'flight' ? t.hud.flightHelp : t.hud.orbitHelp}</p>}
-      <p className={styles.disclaimer}>{t.hud.disclaimer}</p>
+      {!hasScenario && !handsOn && <p className={styles.help}>{mode === 'flight' ? t.hud.flightHelp : t.hud.orbitHelp}</p>}
+      {!handPreview && <p className={styles.disclaimer}>{t.hud.disclaimer}</p>}
     </motion.div>
   );
 }

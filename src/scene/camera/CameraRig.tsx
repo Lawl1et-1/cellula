@@ -11,6 +11,7 @@ import { useScenario } from '@/state/scenario';
 import { useUi } from '@/state/ui';
 import { timeScale } from '../time';
 import { cameraPosition, focusPoint } from './focus';
+import { handBridge } from '@/hand/bridge';
 
 const ACTION = CameraControlsImpl.ACTION;
 const INTRO_POSITION = new Vector3(-90, 80, 560);
@@ -164,7 +165,7 @@ export function CameraRig() {
       });
       useScene.getState().touch();
     });
-  }, [controls]);
+  }, [controls, camera]);
 
   // Focus mode: remember the view when a scenario starts and fly back to it when the reader exits.
   useEffect(() => {
@@ -203,6 +204,22 @@ export function CameraRig() {
     if (!c) return;
     const dt = Math.min(delta, 0.05);
     const { lastInteraction } = useScene.getState();
+
+    // Hand mode: an open hand orbits, two hands zoom, a fist freezes the camera. A framed focus-mode step
+    // keeps its camera unless the reader freed it.
+    if (handBridge.active) {
+      const { theta, phi } = handBridge.orbit;
+      const zoom = handBridge.zoom;
+      handBridge.orbit.theta = handBridge.orbit.phi = 0;
+      handBridge.zoom = 0;
+      const framedStep = !!useScenario.getState().scenario && !useUi.getState().cameraUnlocked;
+      if (handBridge.mode === 'fist') touch();
+      else if (mode === 'orbit' && !framedStep && (theta || phi || zoom)) {
+        if (theta || phi) void c.rotate(theta, phi, true);
+        if (zoom) void c.dolly(zoom * c.distance, true);
+        touch();
+      }
+    }
 
     if (mode === 'intro') {
       c.azimuthAngle += dt * 0.006 * timeScale();
